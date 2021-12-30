@@ -28,6 +28,9 @@ INSTALLED_APPS = [
 	'core',
 	'search',
 
+	'wagtail_localize',
+	'wagtail_localize.locales',
+
 	'wagtail.contrib.forms',
 	'wagtail.contrib.redirects',
 	'wagtail.embeds',
@@ -60,6 +63,7 @@ MIDDLEWARE = [
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 	'django.middleware.security.SecurityMiddleware',
 
+	'django.middleware.locale.LocaleMiddleware',
 	'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
@@ -119,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'de'
 
 TIME_ZONE = 'UTC'
 
@@ -129,6 +133,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+WAGTAIL_I18N_ENABLED = True
+
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
+	("de", "German"),
+	("en", "English"),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

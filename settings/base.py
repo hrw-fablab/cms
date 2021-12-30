@@ -63,7 +63,7 @@ MIDDLEWARE = [
 	'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
-ROOT_URLCONF = 'cms.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
 	{
@@ -83,7 +83,7 @@ TEMPLATES = [
 	},
 ]
 
-WSGI_APPLICATION = 'cms.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database

@@ -9,7 +9,7 @@
 		"type": "git",
 		"url": "git+https://github.com/hrw-fablab/cms.git"
 	},
-	"author": "",
+	"author": "Max Graw",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/hrw-fablab/cms/issues"

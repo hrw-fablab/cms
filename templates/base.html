@@ -27,6 +27,8 @@
 	<body class="{% block body_class %}{% endblock %}">
 		{% wagtailuserbar %}
 
+		{% include "organisms/navigation.html" %}
+
 		{% block content %}{% endblock %}
 
 		{# Global javascript #}

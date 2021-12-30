@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 	'user',
 	'core',
 	'search',
+	'fablab_web',
 
 	'wagtail_localize',
 	'wagtail_localize.locales',

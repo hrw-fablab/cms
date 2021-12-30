@@ -1,4 +1,5 @@
 from wagtail.core import blocks, telepath
+from abstract.blocks.articles import ArticlesBlock
 
 from abstract.blocks.cards import CardsBlock
 from abstract.blocks.heading import HeadingBlock
@@ -18,6 +19,10 @@ class Cards(CardsBlock):
 	class Meta:
 		template = "templates/cards.html"
 
+class Articles(ArticlesBlock):
+	class Meta:
+		template = "templates/articles.html"
+
 class Heading(HeadingBlock):
 	class Meta:
 		template = "atoms/heading.html"
@@ -32,3 +37,4 @@ class StructBlock(blocks.StreamBlock):
 	hero = Hero()
 	split = Split()
 	cards = Cards()
+	articles = Articles()

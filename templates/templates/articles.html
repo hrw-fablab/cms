@@ -1,0 +1,15 @@
+{% block content %}
+<div class="fl-cards fl-articles">
+	{% for pages in value.pages%}
+		{% for page in pages.get_children.specific|slice:"3"%}
+			{% if forloop.counter == 1 %}
+				{% include "molecules/card.html" with element=page featured=True%}
+			{% endif %}
+			{% if forloop.counter == 1 %}
+				{% include "molecules/card.html" with element=page long=True%}
+			{% endif %}
+			{% include "molecules/card.html" with element=page featured=False%}
+		{% endfor %}
+	{% endfor%}
+</div>
+{% endblock content %}

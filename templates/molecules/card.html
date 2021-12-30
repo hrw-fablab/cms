@@ -1,6 +1,5 @@
 {% block content %}
-<section class="fl-card aspect-16">
-
+<section class="fl-card {% if long %}long{% endif %} {% if featured %}featured{% endif %}">
 	{% if element.image%}
 		{% load wagtailimages_tags %}
 		<picture>

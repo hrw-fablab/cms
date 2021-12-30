@@ -1,0 +1,7 @@
+{% block content %}
+<div class="fl-card-layout">
+	{% for element in value.cards%}
+		{% include "molecules/card.html" with element=element%}
+	{% endfor %}
+</div>
+{% endblock content %}

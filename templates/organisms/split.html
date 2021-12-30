@@ -1,0 +1,25 @@
+{% load wagtailimages_tags %}
+{% block content %}
+<section class="fl-split">
+	<div class="fl-split-body">
+		{% if value.title %}
+			<h2>{{value.title}}</h2>
+		{% endif %}
+
+		{% if value.text %}
+			<p>{{value.text}}</p>
+		{% endif %}
+
+		{% if value.link_url %}
+			<a href="{{ value.link_url }}">{{ value.link_title}}</a>
+		{% endif %}
+	</div>
+	<div class="fl-split-media">
+		<picture>
+			{% image value.image original as wide_image %}
+				<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
+			{% image value.image width-800%}
+		</picture>
+	</div>
+</section>
+{% endblock content %}

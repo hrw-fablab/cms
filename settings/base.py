@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
 	'user',
-	'home',
+	'core',
 	'search',
 
 	'wagtail.contrib.forms',
@@ -172,3 +172,7 @@ BASE_URL = 'http://example.com'
 
 # Use Custom User Model
 AUTH_USER_MODEL = 'user.FablabUser'
+
+WAGTAILIMAGES_IMAGE_MODEL = "core.FablabImage"
+
+WAGTAILDOCS_DOCUMENT_MODEL = "core.FablabDocument"

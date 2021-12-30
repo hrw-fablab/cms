@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<main class="fl-main index" id="main">
+	<div class="fl-cards">
+		{% for page in children %}
+			{% include "molecules/card.html" with element=page%}
+		{% endfor %}
+	</div>
+</main>
+{% endblock content %}

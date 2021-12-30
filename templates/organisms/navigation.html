@@ -4,6 +4,9 @@
 <div class="fl-navigation">
 	<nav class="fl-menu" aria-label="Main Menu">
 		<ul>
+			<li>
+				<a href="{{ current_site.root_url }}">Home</a>
+			</li>
 			{% for element in menuitems %}
 			<li>
 				{% if element.content_type.model == "folderpage"%}

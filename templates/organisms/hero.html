@@ -1,5 +1,17 @@
 {% block content %}
 <section class="fl-hero">
-	<video src="{{ value.video.url }}" muted autoplay loop></video>
+	{% if value.video %}
+		<video src="{{ value.video.url }}" muted autoplay loop></video>
+	{% endif %}
+	{% if value.image %}
+		{% load wagtailimages_tags %}
+		{% image value.image original %}
+	{% endif %}
+	<div class="fl-content">
+		<div class="fl-hero-content">
+			<h1>{{ value.title }}</h1>
+			<p>{{ value.text }}</p>
+		</div>
+	</div>
 </section>
 {% endblock content %}

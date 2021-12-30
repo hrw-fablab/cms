@@ -26,6 +26,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
 	'user',
 	'core',
+	'site_settings',
 	'search',
 	'fablab_web',
 

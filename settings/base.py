@@ -98,12 +98,8 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': 'fablab_db',
-		'USER': 'postgres',
-		'PASSWORD': '3798',
-		'HOST': 'localhost',
-		'PORT': '5432',
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 	}
 }
 

@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 	'user',
 	'core',
 	'site_settings',
+	'snippets',
 	'search',
 	'fablab_web',
 
@@ -101,7 +102,7 @@ DATABASES = {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
 		'NAME': 'fablab_db',
 		'USER': 'postgres',
-		'PASSWORD': '3798',
+		'PASSWORD': 'password',
 		'HOST': 'localhost',
 		'PORT': '5432',
 	}

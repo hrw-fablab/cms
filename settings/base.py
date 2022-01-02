@@ -101,7 +101,7 @@ DATABASES = {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
 		'NAME': 'fablab_db',
 		'USER': 'postgres',
-		'PASSWORD': 'empty',
+		'PASSWORD': '3798',
 		'HOST': 'localhost',
 		'PORT': '5432',
 	}

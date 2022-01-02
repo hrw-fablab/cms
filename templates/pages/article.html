@@ -9,12 +9,13 @@
 			{% image page.image original %}
 		{% endif %}
 		<header class="fl-article-header">
-			<a href="">Tags</a>
+			<a href="">{{page.tag}}</a>
 			<h2>{{page.title}}</h2>
 			<div>
 				<a href="" class="fl-author">
-					<img src="joel2.jpg" alt="">
-					Maximilian Graw
+					{% image page.author.image original %}
+					{{page.author.first_name}}
+					{{page.author.last_name}}
 				</a>
 				<time>{{page.date}}</time>
 			</div>

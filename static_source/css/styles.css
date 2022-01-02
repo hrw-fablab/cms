@@ -252,7 +252,10 @@
 body {
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
+	height: 100%;
+	overflow: auto;
 }
+
 img,
 picture,
 video,
@@ -571,6 +574,8 @@ address {
 	color: var(--gray-1);
 	padding: var(--size-fluid-2);
 	margin-top: var(--size-fluid-4);
+	position: sticky;
+	top: 100%;
 }
 .fl-footer ul {
 	list-style: none;

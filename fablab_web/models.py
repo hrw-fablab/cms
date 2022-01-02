@@ -33,8 +33,6 @@ class ArticleIndexPage(AbstractIndexPage):
 		context["children"] = children
 		return context
 
-
-
 class ArticlePage(AbstractArticlePage):
 	template = "pages/article.html"
 	

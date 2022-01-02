@@ -100,9 +100,9 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': 'fablab_db',
+		'NAME': 'data',
 		'USER': 'postgres',
-		'PASSWORD': '3798',
+		'PASSWORD': '1234',
 		'HOST': 'localhost',
 		'PORT': '5432',
 	}

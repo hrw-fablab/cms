@@ -34,5 +34,7 @@ class ArticleIndexPage(AbstractIndexPage):
 		return context
 
 class ArticlePage(AbstractArticlePage):
+	template = "pages/article.html"
+	
 	parent_page_types = ["ArticleIndexPage"]
 	subpage_type = []

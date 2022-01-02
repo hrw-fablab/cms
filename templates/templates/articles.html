@@ -1,5 +1,5 @@
 {% block content %}
-<div class="fl-cards fl-articles">
+<div class="fl-content fl-cards fl-articles">
 	{% for pages in value.pages%}
 		{% for page in pages.get_children.specific|slice:"3"%}
 			{% if forloop.counter == 1 %}

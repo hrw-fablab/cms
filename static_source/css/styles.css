@@ -250,6 +250,7 @@
 	margin: 0;
 }
 body {
+	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 }
 img,
@@ -431,20 +432,38 @@ address {
 }
 .fl-content {
 	max-width: 1440px;
+	margin: 0 auto
+}
+@media (max-width: 1440px) {
+		.fl-content {
+			padding: var(--size-fluid-1);
+			margin: inherit;
+		}
+	}
+.fl-content.medium {
+	max-width: 1024px;
 	margin: 0 auto;
+}
+.fl-content.small {
+	max-width: 768px;
+	margin: 0 auto;
+}
+.fl-author {
+	display: flex;
+	align-items: center;
+	gap: var(--size-3);
+}
+.fl-author img {
+	width: var(--size-6);
+	height: var(--size-6);
+	object-fit: cover;
+	border-radius: 50%;
 }
 .fl-split {
 	display: grid;
 	grid-template-columns: 1fr 0.7fr;
-	gap: var(--size-fluid-5);
-	max-width: 1440px;
-	margin: 0 auto
+	gap: var(--size-fluid-5)
 }
-@media (max-width: 1440px) {
-		.fl-split {
-			padding: var(--size-fluid-2);
-		}
-	}
 @media (max-width: 1024px) {
 		.fl-split {
 			grid-template-columns: 1fr;
@@ -523,23 +542,34 @@ address {
 .fl-body {
 	background-color: var(--gray-0);
 }
-.fl-main {
-	display: flex;
-	flex-direction: column;
-	gap: var(--size-fluid-4);
-}
-.fl-main.index {
+.fl-main > * {
+	margin-bottom: var(--size-fluid-4);
 	padding-top: var(--size-fluid-4);
 }
-.fl-article {
-	
+.fl-main.homepage {
+	padding-top: 0;
+}
+.fl-article > img {
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+.fl-article-header {
+	margin-bottom: var(--size-fluid-3);
+}
+.fl-article-header h2 {
+	margin-bottom: var(--size-fluid-1);
+}
+.fl-article-header div {
+	display: flex;
+	align-items: center;
+	gap: var(--size-fluid-3);
 }
 .fl-footer {
 	background-color: var(--gray-9);
 	color: var(--gray-1);
 	padding: var(--size-fluid-2);
-	position: sticky;
-	top: 100vh;
 	margin-top: var(--size-fluid-4);
 }
 .fl-footer ul {
@@ -562,12 +592,6 @@ address {
 	}
 .fl-cards .long {
 		aspect-ratio: var(--aspect-box);
-	}
-@media (max-width: 1440px) {
-		.fl-cards {
-			padding: var(--size-fluid-2);
-			margin: inherit;
-		}
 	}
 @media (max-width: 768px) {
 		.fl-cards .featured {

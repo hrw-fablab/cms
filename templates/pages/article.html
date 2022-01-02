@@ -3,6 +3,27 @@
 
 {% block content %}
 <main class="fl-main" id="main">
-	
+	<article class="fl-article fl-content medium">
+		{% if page.image %}
+			{% load wagtailimages_tags %}
+			{% image page.image original %}
+		{% endif %}
+		<header class="fl-article-header">
+			<a href="">Tags</a>
+			<h2>{{page.title}}</h2>
+			<div>
+				<a href="" class="fl-author">
+					<img src="joel2.jpg" alt="">
+					Maximilian Graw
+				</a>
+				<time>{{page.date}}</time>
+			</div>
+		</header>
+		<section class="fl-content small">
+			<p>
+				{{ page.body|richtext }}
+			</p>
+		</section>
+	</article>
 </main>
 {% endblock content %}

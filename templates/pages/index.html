@@ -3,7 +3,7 @@
 
 {% block content %}
 <main class="fl-main index" id="main">
-	<div class="fl-cards">
+	<div class="fl-content fl-cards">
 		{% for page in children %}
 			{% include "molecules/card.html" with element=page%}
 		{% endfor %}

@@ -30,6 +30,9 @@ class Author(models.Model):
 		ImageChooserPanel('image')
 	]
 
+	def __str__(self):
+		return self.last_name
+
 	class Meta:
 		verbose_name = "Autor"
 		verbose_name_plural = "Autoren"

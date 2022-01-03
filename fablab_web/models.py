@@ -31,6 +31,10 @@ class ArticleIndexPage(AbstractIndexPage):
 		context = super().get_context(request)
 		children = ArticlePage.objects.live().public().order_by('-last_published_at')
 		context["children"] = children
+
+		if request.GET.get('author'):
+			children = ArticlePage.objects.live().public().filter(author__last_name=request.GET.get('author')).order_by('-last_published_at')
+			context["children"] = children
 		return context
 
 class ArticlePage(AbstractArticlePage):

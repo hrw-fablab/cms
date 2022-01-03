@@ -1,4 +1,4 @@
-from wagtail.core import blocks, telepath
+from wagtail.core import blocks
 from abstract.blocks.articles import ArticlesBlock
 
 from abstract.blocks.cards import CardsBlock
@@ -6,6 +6,7 @@ from abstract.blocks.heading import HeadingBlock
 from abstract.blocks.hero import HeroBlock
 from abstract.blocks.paragraph import ParagraphBlock
 from abstract.blocks.split import SplitBlock
+from abstract.blocks.gallery import GalleryBlock
 
 class Hero(HeroBlock):
 	class Meta:
@@ -31,6 +32,10 @@ class Paragraph(ParagraphBlock):
 	class Meta:
 		template = "molecules/paragraph.html"
 
+class Gallery(GalleryBlock):
+	class Meta:
+		template = "templates/gallery.html"
+
 class StructBlock(blocks.StreamBlock):
 	heading = Heading()
 	paragraph = Paragraph()
@@ -38,3 +43,4 @@ class StructBlock(blocks.StreamBlock):
 	split = Split()
 	cards = Cards()
 	articles = Articles()
+	gallery = Gallery()

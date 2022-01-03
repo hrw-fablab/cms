@@ -15,15 +15,15 @@
 				<time>{{element.date}}</time>
 			{% endif %}
 			{% if element.url %}
-				<a href="{{element.url}}">
-					<h3>{{element.title}}</h3>
-				</a>
-				{% elif element.link %}
-					<a href="{{element.link}}">
-						<h3>{{element.title}}</h3>
-					</a>
-				{% else %}
-					<h3>{{element.title}}</h3>
+			<a href="{{element.url}}">
+				<h3>{{element.title}}</h3>
+			</a>
+			{% elif element.link %}
+			<a href="{{element.link}}">
+				<h3>{{element.title}}</h3>
+			</a>
+			{% else %}
+			<h3>{{element.title}}</h3>
 			{% endif %}
 		</header>
 	{% endif %}

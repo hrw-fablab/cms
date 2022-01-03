@@ -35,10 +35,20 @@ class ArticleIndexPage(AbstractIndexPage):
 		if request.GET.get('author'):
 			children = ArticlePage.objects.live().public().filter(author__last_name=request.GET.get('author')).order_by('-last_published_at')
 			context["children"] = children
+		
+		if request.GET.get('tag'):
+			children = ArticlePage.objects.live().public().filter(tag__name=request.GET.get('tag')).order_by('-last_published_at')
+			context["children"] = children
 		return context
 
 class ArticlePage(AbstractArticlePage):
 	template = "pages/article.html"
+
+	def get_context(self, request):
+		context = super().get_context(request)
+		parent = Page.get_parent(self)
+		context["parent"] = parent
+		return context
 	
 	parent_page_types = ["ArticleIndexPage"]
 	subpage_type = []

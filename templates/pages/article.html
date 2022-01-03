@@ -9,10 +9,10 @@
 			{% image page.image original %}
 		{% endif %}
 		<header class="fl-article-header">
-			<a href="">{{page.tag}}</a>
+			<a href="{{parent.url}}?tag={{page.tag}}">{{page.tag}}</a>
 			<h2>{{page.title}}</h2>
 			<div>
-				<a href="" class="fl-author">
+				<a href="{{parent.url}}?author={{page.author.last_name}}" class="fl-author">
 					{% image page.author.image original %}
 					{{page.author.first_name}}
 					{{page.author.last_name}}

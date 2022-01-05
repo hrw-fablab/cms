@@ -1,12 +1,15 @@
 {% load wagtailimages_tags%}
 {% block content %}
-<div class="fl-content fl-cards">
-	{% for element in value.cards%}
-		<picture>
-			{% image element original as wide_image %}
-			<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
-			{% image element original jpegquality-30 %}
-		</picture>
-	{% endfor %}
+<div class="fl-content">
+	<h2 class="fl-heading">{{value.title}}</h2>
+	<div class="fl-cards">
+		{% for element in value.cards%}
+			<picture>
+				{% image element original as wide_image %}
+				<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
+				{% image element original jpegquality-30 %}
+			</picture>
+		{% endfor %}
+	</div>
 </div>
 {% endblock content %}

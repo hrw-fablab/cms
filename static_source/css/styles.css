@@ -239,6 +239,11 @@
 	--aspect-widescreen: 16/9;
 }
 /* purgecss end ignore */
+.centered {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 /* purgecss start ignore */
 *,
 *::before,
@@ -319,7 +324,7 @@ button {
 	font-size: var(--font-size-4);
 }
 h1{
-	font-size: var(--font-size-8);
+	font-size: var(--font-size-7);
 	font-family: Segoe UI;
 }
 h2{
@@ -363,7 +368,10 @@ address {
 	font-size: var(--font-size-4);
 }
 .fl-heading {
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: var(--size-fluid-2);
 }
 .fl-card {
 	aspect-ratio: var(--aspect-widescreen);
@@ -474,6 +482,9 @@ address {
 	grid-template-columns: 1fr 0.7fr;
 	gap: var(--size-fluid-5)
 }
+.fl-split :where(picture, img) {
+		aspect-ratio: 16 / 9;
+	}
 @media (max-width: 1024px) {
 		.fl-split {
 			grid-template-columns: 1fr;

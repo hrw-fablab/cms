@@ -9,7 +9,8 @@ class Card(blocks.StructBlock):
 	link_title = blocks.CharBlock(required=False)
 
 class CardsBlock(blocks.StructBlock):
-	cards = blocks.ListBlock(Card(), max_num=5)
+	title = blocks.CharBlock(required=False)
+	cards = blocks.ListBlock(Card())
 
 	class Meta:
 		abstract=True

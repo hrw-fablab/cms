@@ -1,19 +1,17 @@
 {% block content %}
 <section class="fl-hero">
-	<div class="fl-hero-media">
-	{% if value.video %}
-		<video src="{{ value.video.url }}" muted autoplay loop></video>
-	{% endif %}
-	{% if value.image %}
-		{% load wagtailimages_tags %}
-		{% image value.image original%}
-	{% endif %}
+	<div class="fl-hero-content">
+		<h1>{{ value.title }}</h1>
+		<p>{{ value.text }}</p>
 	</div>
-	<div class="fl-content">
-		<div class="fl-hero-content">
-			<h1>{{ value.title }}</h1>
-			<p>{{ value.text }}</p>
-		</div>
+	<div class="fl-hero-media">
+		{% if value.video %}
+			<video src="{{ value.video.url }}" muted autoplay loop></video>
+		{% endif %}
+			{% if value.image %}
+			{% load wagtailimages_tags %}
+			{% image value.image original%}
+		{% endif %}
 	</div>
 </section>
 {% endblock content %}

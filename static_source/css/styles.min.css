@@ -244,6 +244,21 @@
 	justify-content: center;
 	align-items: center;
 }
+.padding {
+	padding: var(--size-fluid-4);
+}
+.padding-top {
+	padding-top: var(--size-fluid-4);
+}
+.padding-bottom {
+	padding-top: var(--size-fluid-4);
+}
+.padding-left {
+	padding-top: var(--size-fluid-4);
+}
+.padding-right {
+	padding-top: var(--size-fluid-4);
+}
 /* purgecss start ignore */
 *,
 *::before,
@@ -260,6 +275,9 @@ body {
 	-webkit-font-smoothing: antialiased;
 	height: 100%;
 	overflow: auto;
+}
+main {
+	min-height: 100vh;
 }
 img,
 picture,
@@ -450,7 +468,7 @@ blockquote {
 }
 .fl-content {
 	max-width: 1440px;
-	margin: 0 auto
+	margin: 0 auto 0 auto
 }
 @media (max-width: 1440px) {
 		.fl-content {
@@ -460,11 +478,11 @@ blockquote {
 	}
 .fl-content.medium {
 	max-width: 1024px;
-	margin: 0 auto;
+	margin: 0 auto 0 auto;
 }
 .fl-content.small {
 	max-width: 768px;
-	margin: 0 auto;
+	margin: 0 auto 0 auto;
 }
 .fl-author {
 	display: flex;
@@ -532,6 +550,7 @@ blockquote {
 	position: sticky;
 	top: 0;
 	width: 100%;
+	z-index: 10;
 }
 .fl-navigation .fl-menu {
 	max-width: 1440px;
@@ -539,53 +558,50 @@ blockquote {
 	margin: 0 auto;
 }
 .fl-hero {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	z-index: -1;
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
+.fl-hero-content {
+	position: absolute;
+	color: white;
+	width: 100vw;
+	max-width: 1440px;
+	margin: 0 auto 0 auto
+}
+.fl-hero-content p {
+		font-size: var(--font-size-6);
+	}
 .fl-hero-media {
 	width: 100%;
-	height: 100vh;
-	object-fit: cover;
+	height: 90vh;
+	object-fit: cover
 }
 .fl-hero-media > * {
-	width: 100%;
-	height: 100vh;
-	object-fit: cover;
-}
-.fl-hero + * {
-	margin-top: 100vh;
-}
-.fl-hero .fl-content {
-		position: absolute;
-		width: 100vw;
-		height: max-content;
-		z-index: 10;
+		width: 100%;
+		height: 90vh;
+		object-fit: cover;
 	}
-.fl-hero .fl-hero-content {
-		width: 50%;
-		padding: 0;
-		color: white
+.fl-hero-media.medium {
+	height: 50vh
+}
+.fl-hero-media.medium > * {
+		width: 100%;
+		height: 50vh;
+		object-fit: cover;
 	}
-.fl-hero .fl-hero-content p {
-			font-size: var(--font-size-6);
-		}
+.fl-hero-media.small {
+	height: 30vh
+}
+.fl-hero-media.small > * {
+		width: 100%;
+		height: 30vh;
+		object-fit: cover;
+	}
 .fl-body {
 	background-color: var(--gray-0);
-}
-.fl-main > * {
-	margin-bottom: var(--size-fluid-4);
-	padding-top: var(--size-fluid-4);
-}
-.fl-main.homepage {
-	padding-top: 0;
 }
 .fl-article > img {
 	width: 100%;

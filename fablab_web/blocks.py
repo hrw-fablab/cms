@@ -36,11 +36,18 @@ class Gallery(GalleryBlock):
 	class Meta:
 		template = "templates/gallery.html"
 
-class StructBlock(blocks.StreamBlock):
+class HomeBlock(blocks.StreamBlock):
 	heading = Heading()
 	paragraph = Paragraph()
 	hero = Hero()
 	split = Split()
 	cards = Cards()
 	articles = Articles()
+	gallery = Gallery()
+
+class FlexBlock(blocks.StreamBlock):
+	heading = Heading()
+	paragraph = Paragraph()
+	split = Split()
+	cards = Cards()
 	gallery = Gallery()

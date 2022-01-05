@@ -5,7 +5,12 @@
 	<nav class="fl-content fl-menu" aria-label="Main Menu">
 		<ul>
 			<li>
-				<a href="{{ current_site.root_url }}">Home</a>
+				<a class="fl-logo" href="{{ current_site.root_url }}">
+					<svg width="3rem" height="3rem" viewBox="0 0 115 131">
+						<path d="M58 0 39 11l7 5 12-2c14 1 23 8 23 18 0 8-10 17-24 17s-27-7-27-17v-4l-10-6L0 33v66l18 10V96l-4-5c-7-12-6-26 2-31s21 1 28 13c7 13 6 26-2 31l-2 1v16l17 10 58-32V77l-10 6-4 8c-7 13-19 18-27 14-9-5-9-19-2-32 6-12 19-18 27-13l4 3 12-7V33l-2-1L73 9z"/>
+					 </svg>
+					 HRW Fablab				 
+				</a>
 			</li>
 			{% for element in menuitems %}
 			<li>

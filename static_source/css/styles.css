@@ -390,26 +390,27 @@ address {
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--size-fluid-4);
+	align-items: center;
+	gap: var(--size-fluid-4)
 }
-.fl-menu li {
-	position: relative;
-}
-.fl-menu a {
-	text-decoration: none;
-	border-bottom: solid thin transparent;
-}
+.fl-menu ul li {
+		position: relative;
+	}
+.fl-menu ul a {
+		text-decoration: none;
+		border-bottom: solid thin transparent;
+	}
+.fl-menu ul button {
+		background-color: transparent;
+		border: none;
+		border-bottom: solid thin transparent;
+		font-size: var(--font-size-3);
+	}
 .fl-menu a:hover {
 	border-bottom: solid thin;
 }
 .fl-menu button:hover {
 	border-bottom: solid thin;
-}
-.fl-menu button {
-	background-color: transparent;
-	border: none;
-	border-bottom: solid thin transparent;
-	font-size: var(--font-size-3);
 }
 .fl-submenu.hidden {
 	display: none;
@@ -461,6 +462,12 @@ address {
 	height: var(--size-6);
 	object-fit: cover;
 	border-radius: 50%;
+}
+.fl-logo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--size-3);
 }
 .fl-split {
 	display: grid;

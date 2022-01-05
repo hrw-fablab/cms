@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<main class="fl-main" id="main">
+	{% regroup children by category as category_list %}
+	{% for category in category_list %}
+	<div class="fl-content">
+		<h2>{{category.grouper}}</h2>
+		<div class="fl-cards">
+		{% for page in category.list %}
+		{% include "molecules/card.html" with element=page%}
+		{% endfor %}
+		</div>
+	</div>
+	{% endfor %}
+</main>
+{% endblock content %}

@@ -3,7 +3,7 @@ from ..models import Author, DeviceCategory, ProjectCategory, Tag
 
 register = template.Library()
 
-@register.inclusion_tag('templates/', takes_context=True)
+@register.inclusion_tag('', takes_context=True)
 def authors(context):
 	return {
 		'authors': Author.objects.all(),

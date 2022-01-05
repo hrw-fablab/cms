@@ -1,0 +1,33 @@
+{% load index_tag%}
+{% block content %}
+{% if children.paginator.num_pages > 1 %}
+<nav class="fl-content fl-menu centered" aria-label="pagination">
+	<ul>
+		{% if children.has_previous %}
+		<li>
+			<a href="{% url_replace request page=children.previous_page_number %}">
+				Newer
+			</a>
+		</li>
+		{% endif %}
+		
+
+		{% for page_num in children.paginator.page_range %}
+		<li>
+			<a href="{% url_replace request page=page_num %}">
+				{{ page_num }}
+			</a>
+		</li>
+		{% endfor %}
+
+		{% if children.has_next %}
+		<li>
+			<a href="{% url_replace request page=children.next_page_number %}">
+				Older
+			</a>
+		</li>
+		{% endif %}
+	</ul>
+</nav>
+{% endif %}
+{% endblock content %}

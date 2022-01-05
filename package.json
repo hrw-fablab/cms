@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"description": "",
 	"scripts": {
-		"build": "postcss static_source/css/styles.css -o static_source/css/styles.min.css"
+		"build": "postcss static_source/css/styles.css -o static_source/css/styles.min.css",
+		"watch": "postcss ../design-system/styles.css -o static_source/css/styles.min.css --watch"
 	},
 	"repository": {
 		"type": "git",

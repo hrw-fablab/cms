@@ -5,6 +5,8 @@ from abstract.pages.article import AbstractArticlePage
 from abstract.pages.device import AbstractDevicePage
 from abstract.pages.flex import AbstractFlexPage
 
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+
 from abstract.pages.home import AbstractHomePage
 from abstract.pages.folder import AbstractFolderPage
 from abstract.pages.index import AbstractIndexPage
@@ -32,15 +34,22 @@ class ArticleIndexPage(AbstractIndexPage):
 
 	def get_context(self, request):
 		context = super().get_context(request)
-		children = ArticlePage.objects.live().public().order_by('-last_published_at')
+		all_children = ArticlePage.objects.live().public().child_of(self).order_by('-last_published_at')
+		if request.GET.get('author'):
+			all_children = all_children.filter(author__last_name=request.GET.get('author')).order_by('-last_published_at')
+		
+		paginator = Paginator(all_children, 6)
+		page = request.GET.get("page")
+		try:
+			children = paginator.page(page)
+		except PageNotAnInteger:
+			children = paginator.page(1)
+		except EmptyPage:
+			children = paginator.page(paginator.num_pages)
 		context["children"] = children
 
-		if request.GET.get('author'):
-			children = ArticlePage.objects.live().public().filter(author__last_name=request.GET.get('author')).order_by('-last_published_at')
-			context["children"] = children
-		
 		if request.GET.get('tag'):
-			children = ArticlePage.objects.live().public().filter(tag__name=request.GET.get('tag')).order_by('-last_published_at')
+			children = ArticlePage.objects.live().public().child_of(self).filter(tag__name=request.GET.get('tag')).order_by('-last_published_at')
 			context["children"] = children
 		return context
 
@@ -52,7 +61,7 @@ class DeviceIndexPage(AbstractIndexPage):
 
 	def get_context(self, request):
 		context = super().get_context(request)
-		children = DevicePage.objects.live().public().order_by('-last_published_at')
+		children = DevicePage.objects.live().public().child_of(self).order_by('-last_published_at')
 		context["children"] = children
 		return context
 

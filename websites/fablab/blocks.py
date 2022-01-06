@@ -5,6 +5,7 @@ from abstract.blocks.cards import CardsBlock
 from abstract.blocks.heading import HeadingBlock
 from abstract.blocks.hero import HeroBlock
 from abstract.blocks.paragraph import ParagraphBlock
+from abstract.blocks.profiles import ProfilesBlock
 from abstract.blocks.split import SplitBlock
 from abstract.blocks.gallery import GalleryBlock
 from abstract.blocks.blockquote import BlockquoteBlock
@@ -41,6 +42,10 @@ class Blockquote(BlockquoteBlock):
 	class Meta:
 		template = "molecules/blockquote.html"
 
+class Profiles(ProfilesBlock):
+	class Meta:
+		template = "templates/profiles.html"
+
 class HomeBlock(blocks.StreamBlock):
 	heading = Heading()
 	paragraph = Paragraph()
@@ -58,3 +63,4 @@ class FlexBlock(blocks.StreamBlock):
 	cards = Cards()
 	gallery = Gallery()
 	blockquote = Blockquote()
+	profiles = Profiles()

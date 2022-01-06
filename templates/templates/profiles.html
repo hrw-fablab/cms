@@ -1,0 +1,12 @@
+{% block content %}
+<div class="fl-content">
+	{% if value.title %}
+		<h2 class="fl-heading">{{value.title}}</h2>
+	{% endif %}
+	<div class="fl-cards">
+		{% for element in value.cards%}
+			{% include "molecules/profile.html" with element=element%}
+		{% endfor %}
+	</div>
+</div>
+{% endblock content %}

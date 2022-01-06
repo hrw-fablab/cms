@@ -1,0 +1,60 @@
+{% block content %}
+<section class="fl-card fl-profile">
+	{% if element.image%}
+	{% load wagtailimages_tags %}
+	<picture>
+		{% image element.image original as wide_image %}
+		<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
+		{% image element.image width-800 jpegquality-60 %}
+	</picture>
+	{% endif %}
+
+	<div>
+		{% if element.name %}
+		<header>
+			<h3>{{element.name}}</h3>
+		</header>
+		{% endif %}
+
+		<dl class="fl-dl">
+			<div>
+				{% if element.since %}
+				<dt>Im Labor seit:</dt>
+				<dd>{{element.since}}</dd>
+				{% endif %}
+			</div>
+
+			<div>
+				{% if element.career %}
+				<dt>Lebenslauf:</dt>
+				<dd>{{element.career}}</dd>
+				{% endif %}
+			</div>
+
+			<div>
+				{% if element.responsibility %}
+				<dt>Aufgabenbereiche:</dt>
+				<dd>{{element.responsibility}}</dd>
+				{% endif %}
+			</div>
+
+			<div>
+				{% if element.expert %}
+				<dt>Expertin für:</dt>
+				<dd>{{element.expert}}</dd>
+				{% endif %}
+			</div>
+
+			<div>
+				{% if element.projects %}
+				<dt>Projekte:</dt>
+				<dd>{{element.projects}}</dd>
+				{% endif %}
+			</div>
+		</dl>
+		{% if element.description %}
+		<p>{{element.description}}</p>
+		{% endif %}
+	</div>
+</section>
+{% endblock content %}

@@ -2,7 +2,7 @@ from abstract.pages.index import AbstractIndexPage
 from .project import ProjectPage
 
 class ProjectIndexPage(AbstractIndexPage):
-	template = "pages/category.html"
+	template = "pages/projects.html"
 	
 	parent_page_types = ["FolderPage", "HomePage"]
 	subpage_type = ["ProjectPage"]

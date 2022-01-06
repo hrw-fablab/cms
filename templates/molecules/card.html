@@ -1,44 +1,45 @@
 {% block content %}
-<section class="fl-card {% if long %}long{% endif %} {% if featured %}featured{% endif %}">
+<section class=" fl-card
+{% if long %} long {% endif %}
+{% if featured %} featured {% endif %}
+{% if align == 'centered' %} centered {% endif %}
+">
 	{% if element.image%}
-		{% load wagtailimages_tags %}
-		<picture>
-			{% image element.image original as wide_image %}
-			<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
-			{% image element.image width-800 jpegquality-60 %}
-		</picture>
+	{% load wagtailimages_tags %}
+	<picture>
+		{% image element.image original as wide_image %}
+		<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
+		{% image element.image width-800 jpegquality-60 %}
+	</picture>
 	{% endif %}
 
+	<div>
 	{% if element.title %}
-		<header>
-			{% if element.date %}
-				<time>{{element.date}}</time>
-			{% endif %}
-			{% if element.url %}
-			<a href="{{element.url}}">
-				<h3>{{element.title}}</h3>
-			</a>
-			{% elif element.link %}
-			<a href="{{element.link}}">
-				<h3>{{element.title}}</h3>
-			</a>
-			{% else %}
+	<header>
+		{% if element.date %}
+		<time>{{element.date}}</time>
+		{% endif %}
+		{% if element.url %}
+		<a href="{{element.url}}">
 			<h3>{{element.title}}</h3>
-			{% endif %}
-		</header>
+		</a>
+		{% else %}
+		<h3>{{element.title}}</h3>
+		{% endif %}
+	</header>
 	{% endif %}
 
 	{% if element.text%}
-		<p>{{element.text}}</p>
+	<p>{{element.text}}</p>
 	{% endif%}
 
 	{% if element.introduction%}
-		<p>{{element.introduction}}</p>
+	<p>{{element.introduction}}</p>
 	{% endif%}
 
 	{% if element.link %}
-		<a href="{{element.link.url}}">{{element.link_title}}</a>
+	<a href="{{element.link.url}}">{{element.link_title}}</a>
 	{% endif %}
-
+</div>
 </section>
 {% endblock content %}

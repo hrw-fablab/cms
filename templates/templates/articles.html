@@ -6,11 +6,11 @@
 		{% for page in pages.get_children.specific|slice:"3"%}
 			{% if forloop.counter == 1 %}
 				{% include "molecules/card.html" with element=page featured=True%}
-			{% endif %}
-			{% if forloop.counter == 1 %}
+			{% elif forloop.counter == 2 %}
 				{% include "molecules/card.html" with element=page long=True%}
+			{% else %}
+				{% include "molecules/card.html" with element=page featured=False%}
 			{% endif %}
-			{% include "molecules/card.html" with element=page featured=False%}
 		{% endfor %}
 	{% endfor%}
 	</div>

@@ -3,12 +3,12 @@ from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core.fields import StreamField
 from abstract.pages.flex import AbstractFlexPage
 
-from fablab_web.blocks import FlexBlock
+from ..blocks import FlexBlock
 
-class FlexPage(AbstractFlexPage):
+class QuFlexPage(AbstractFlexPage):
 	template = "pages/flex.html"
 
-	parent_page_types = ["Folderpage", "Homepage"]
+	parent_page_types = ["QuHomepage"]
 	subpage_type = []
 
 	body = StreamField(FlexBlock())
@@ -16,3 +16,6 @@ class FlexPage(AbstractFlexPage):
 	content_panels = Page.content_panels + [
 		StreamFieldPanel("body"),
 	]
+
+	class Meta:
+		verbose_name = "QuFablab Flexseite"

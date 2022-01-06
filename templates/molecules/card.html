@@ -36,5 +36,9 @@
 		<p>{{element.introduction}}</p>
 	{% endif%}
 
+	{% if element.link %}
+		<a href="{{element.link.url}}">{{element.link_title}}</a>
+	{% endif %}
+
 </section>
 {% endblock content %}

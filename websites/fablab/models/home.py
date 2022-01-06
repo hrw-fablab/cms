@@ -3,7 +3,7 @@ from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core.fields import StreamField
 
 from abstract.pages.home import AbstractHomePage
-from fablab_web.blocks import HomeBlock
+from ..blocks import HomeBlock
 
 
 class HomePage(AbstractHomePage):
@@ -14,3 +14,6 @@ class HomePage(AbstractHomePage):
 	content_panels = Page.content_panels + [
 		StreamFieldPanel("body"),
 	]
+
+	class Meta:
+		verbose_name = "Fablab Startseite"

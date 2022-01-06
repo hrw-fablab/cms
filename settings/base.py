@@ -29,7 +29,8 @@ INSTALLED_APPS = [
 	'site_settings',
 	'snippets',
 	'search',
-	'fablab_web',
+	'websites.fablab',
+	'websites.qu_fablab',
 
 	'wagtail_localize',
 	'wagtail_localize.locales',

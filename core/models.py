@@ -25,7 +25,7 @@ class FablabDocument(AbstractDocument):
 class FablabBasePage(Page):
 	def get_context(self, request):
 		context = super().get_context(request)
-		context['menuitems'] = Site.find_for_request(request).root_page.get_children().live()
+		context['menuitems'] = Site.find_for_request(request).root_page.get_children().live().in_menu()
 		return context
 
 	class Meta:

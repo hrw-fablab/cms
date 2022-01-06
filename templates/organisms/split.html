@@ -10,8 +10,8 @@
 			<p>{{value.text}}</p>
 		{% endif %}
 
-		{% if value.link_url %}
-			<a href="{{ value.link_url }}">{{ value.link_title}}</a>
+		{% if value.link %}
+			<a href="{{ value.link.url }}">{{ value.link_title}}</a>
 		{% endif %}
 	</div>
 	<div class="fl-split-media">

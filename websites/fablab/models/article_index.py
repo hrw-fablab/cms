@@ -1,6 +1,6 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from abstract.pages.index import AbstractIndexPage
-from fablab_web.models.article import ArticlePage
+from ..models.article import ArticlePage
 
 class ArticleIndexPage(AbstractIndexPage):
 	template = "pages/index.html"

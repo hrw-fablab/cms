@@ -1,6 +1,7 @@
 {% load wagtailimages_tags %}
 {% block content %}
-<section class="fl-content fl-split">
+<div class="fl-accent">
+<section class="fl-content fl-split padding-top padding-bottom">
 	<div class="fl-split-body">
 		{% if value.title %}
 			<h2>{{value.title}}</h2>
@@ -22,4 +23,5 @@
 		</picture>
 	</div>
 </section>
+</div>
 {% endblock content %}

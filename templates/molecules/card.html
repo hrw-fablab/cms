@@ -1,9 +1,5 @@
 {% block content %}
-<section class=" fl-card
-{% if long %} long {% endif %}
-{% if featured %} featured {% endif %}
-{% if align == 'centered' %} centered {% endif %}
-">
+<section class=" fl-card {{class}} ">
 	{% if element.image%}
 	{% load wagtailimages_tags %}
 	<picture>
@@ -38,7 +34,7 @@
 	{% endif%}
 
 	{% if element.link %}
-	<a href="{{element.link.url}}">{{element.link_title}}</a>
+	<a href="{{element.link.get_url}}">Erfahre Mehr</a>
 	{% endif %}
 </div>
 </section>

@@ -1,18 +1,18 @@
 {% block content %}
-<div class="fl-content">
+<div class="fl-content padding-top padding-bottom">
 	<h2 class="fl-heading">{{value.title}}</h2>
 	<div class="fl-cards">
 		{% for pages in value.pages%}
-		{% for page in pages.get_children.specific|slice:"5"%}
-			{% if forloop.counter == 1 %}
-				{% include "molecules/card.html" with element=page featured=True%}
-			{% elif forloop.counter == 2 %}
-				{% include "molecules/card.html" with element=page long=True%}
-			{% else %}
-				{% include "molecules/card.html" with element=page featured=False%}
-			{% endif %}
-		{% endfor %}
-	{% endfor%}
+			{% for page in pages.get_children.specific|slice:"5"%}
+				{% if forloop.counter == 1 %}
+					{% include "molecules/card.html" with element=page class="featured"%}
+					{% elif forloop.counter == 2 %}
+					{% include "molecules/card.html" with element=page class="long"%}
+					{% else %}
+					{% include "molecules/card.html" with element=page%}
+				{% endif %}
+			{% endfor %}
+		{% endfor%}
 	</div>
 </div>
 {% endblock content %}

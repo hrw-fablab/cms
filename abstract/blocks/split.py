@@ -1,13 +1,12 @@
 from wagtail.core import blocks
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail.core.blocks.field_block import PageChooserBlock
+from .media import MediaBlock
+from wagtail_link_block.blocks import LinkBlock
 
 class SplitBlock(blocks.StructBlock):
 	title = blocks.TextBlock(required=False)
 	text = blocks.TextBlock(required=False)
-	link_title = blocks.CharBlock(required=False)
-	link = PageChooserBlock(required=False)
-	image = ImageChooserBlock()
+	link = LinkBlock(required=False)
+	media = MediaBlock(required=False)
 
 	class Meta:
 		abstract=True

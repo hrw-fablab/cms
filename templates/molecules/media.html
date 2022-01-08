@@ -1,0 +1,11 @@
+{% block content %}
+<div class="fl-content medium">
+	<h2 class="fl-heading">{{value.title}}</h2>
+	{% if value.image %}
+		{% load wagtailimages_tags %}
+		{% image value.image original %}
+	{% elif value.video %}
+		<video src="{{ value.video.url }}" controls></video>
+	{% endif %}
+</div>
+{% endblock %}

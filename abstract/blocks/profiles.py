@@ -10,7 +10,7 @@ class Profile(blocks.StructBlock):
 	responsibility = blocks.CharBlock(required=False)
 	expert = blocks.CharBlock(required=False)
 	projects = blocks.CharBlock(required=False)
-	description = blocks.CharBlock(required=False)
+	description = blocks.TextBlock(required=False)
 
 class ProfilesBlock(blocks.StructBlock):
 	cards = blocks.ListBlock(Profile())

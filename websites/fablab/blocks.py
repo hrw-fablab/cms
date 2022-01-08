@@ -4,6 +4,7 @@ from abstract.blocks.articles import ArticlesBlock
 from abstract.blocks.cards import CardsBlock
 from abstract.blocks.heading import HeadingBlock
 from abstract.blocks.hero import HeroBlock
+from abstract.blocks.media import MediaBlock
 from abstract.blocks.paragraph import ParagraphBlock
 from abstract.blocks.profiles import ProfilesBlock
 from abstract.blocks.split import SplitBlock
@@ -46,6 +47,10 @@ class Profiles(ProfilesBlock):
 	class Meta:
 		template = "templates/profiles.html"
 
+class Media(MediaBlock):
+	class Meta:
+		template = "molecules/media.html"
+
 class HomeBlock(blocks.StreamBlock):
 	heading = Heading()
 	paragraph = Paragraph()
@@ -55,6 +60,7 @@ class HomeBlock(blocks.StreamBlock):
 	articles = Articles()
 	gallery = Gallery()
 	blockquote = Blockquote()
+	media = Media()
 
 class FlexBlock(blocks.StreamBlock):
 	heading = Heading()
@@ -64,3 +70,4 @@ class FlexBlock(blocks.StreamBlock):
 	gallery = Gallery()
 	blockquote = Blockquote()
 	profiles = Profiles()
+	media = Media()

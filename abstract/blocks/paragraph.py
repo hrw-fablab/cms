@@ -1,7 +1,7 @@
 from wagtail.core import blocks
 
 class ParagraphBlock(blocks.StructBlock):
-	title = blocks.CharBlock()
+	title = blocks.CharBlock(required=False)
 	text = blocks.RichTextBlock(features=['h3', 'ul', 'link', 'image', 'embed'])
 
 	class Meta:

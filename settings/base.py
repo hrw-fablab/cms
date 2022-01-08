@@ -32,6 +32,8 @@ INSTALLED_APPS = [
 	'websites.fablab',
 	'websites.qu_fablab',
 
+	'wagtail_link_block',
+	'wagtailmedia',
 	'wagtail_localize',
 	'wagtail_localize.locales',
 
@@ -190,3 +192,10 @@ AUTH_USER_MODEL = 'user.FablabUser'
 WAGTAILIMAGES_IMAGE_MODEL = "core.FablabImage"
 
 WAGTAILDOCS_DOCUMENT_MODEL = "core.FablabDocument"
+
+WAGTAILMEDIA = {
+	"MEDIA_MODEL": "core.FablabMedia",
+	"MEDIA_FORM_BASE": "",
+	"AUDIO_EXTENSIONS": [],
+	"VIDEO_EXTENSIONS": [],
+}

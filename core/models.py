@@ -3,6 +3,7 @@ from django.db import models
 from wagtail.core.models import Page, Site
 from wagtail.documents.models import Document, AbstractDocument
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
+from wagtailmedia.models import AbstractMedia
 
 class FablabImage(AbstractImage):
 	credit = models.CharField(max_length=255, blank=True)
@@ -21,6 +22,9 @@ class FablabDocument(AbstractDocument):
 	credit = models.CharField(max_length=255, blank=True)
 
 	admin_form_fields = Document.admin_form_fields + ('credit',)
+
+class FablabMedia(AbstractMedia):
+	admin_form_fields = Document.admin_form_fields
 
 class FablabBasePage(Page):
 	def get_context(self, request):

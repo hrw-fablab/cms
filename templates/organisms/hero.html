@@ -6,7 +6,7 @@
 	</div>
 	<div class="fl-hero-media">
 		{% if value.video %}
-			<video src="{{ value.media.video.url }}" muted autoplay loop></video>
+			<video src="{{ value.video.url }}" muted autoplay loop></video>
 		{% elif value.image %}
 			{% load wagtailimages_tags %}
 			{% image value.image original%}

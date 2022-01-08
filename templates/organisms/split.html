@@ -1,6 +1,5 @@
-{% load wagtailimages_tags %}
 {% block content %}
-<div class="fl-accent">
+<div class="fl-accent margin-top margin-bottom">
 <section class="fl-content fl-split padding-top padding-bottom">
 	<div class="fl-split-body">
 		{% if value.title %}
@@ -11,16 +10,21 @@
 			<p>{{value.text}}</p>
 		{% endif %}
 
-		{% if value.link %}
+		{% if value.link.get_url != None %}
 			<a href="{{value.link.get_url}}">Erfahre Mehr</a>
 		{% endif %}
 	</div>
 	<div class="fl-split-media">
+		{% if value.video %}
+			<video src="{{ value.video.url }}" controls></video>
+		{% elif value.image %}
 		<picture>
+			{% load wagtailimages_tags %}
 			{% image value.image original as wide_image %}
 				<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
 			{% image value.image width-800%}
 		</picture>
+		{% endif %}
 	</div>
 </section>
 </div>

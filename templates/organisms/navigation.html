@@ -1,8 +1,9 @@
-{% load wagtailcore_tags %}
+{% load navigation_tags %}
+{% load wagtailcore_tags i18n %}
 {% wagtail_site as current_site%}
 {% block content %}
 <div class="fl-navigation">
-	<nav class="fl-content fl-menu" aria-label="Main Menu">
+	<nav class="fl-content medium fl-menu" aria-label="Main Menu">
 		<ul>
 			<li>
 				<a class="fl-logo" href="{{ current_site.root_url }}">
@@ -20,18 +21,19 @@
 			{% for element in menuitems %}
 			<li>
 				{% if element.content_type.model == "folderpage"%}
-				<button>{{element.title}}</button>
+				<button>{{element.localized}}</button>
 				<ul class="fl-submenu hidden">
 					{% for subelement in element.get_children.specific%}
-					<li><a href="{{subelement.url}}">{{subelement.title}}</a></li>
+					<li><a href="{{subelement.url}}">{{subelement.localized}}</a></li>
 					{% endfor%}
 				</ul>
 				{% else %}
-				<a href="{{element.url}}">{{element.title}}</a>
+				<a href="{{element.url}}">{{element.localized}}</a>
 				{% endif %}
 			</li>
 			{% endfor %}
 		</ul>
 	</nav>
+	{% include "molecules/language.html"%}
 </div>
 {% endblock content %}

@@ -1,4 +1,4 @@
-from wagtail.core.models import Page
+from wagtail.core.models import Page, Site
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core.fields import StreamField
 

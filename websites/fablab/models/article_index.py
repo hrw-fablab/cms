@@ -14,7 +14,7 @@ class ArticleIndexPage(AbstractIndexPage):
 		if request.GET.get('author'):
 			all_children = all_children.filter(author__last_name=request.GET.get('author')).order_by('-last_published_at')
 		
-		paginator = Paginator(all_children, 6)
+		paginator = Paginator(all_children, 4)
 		page = request.GET.get("page")
 		try:
 			children = paginator.page(page)

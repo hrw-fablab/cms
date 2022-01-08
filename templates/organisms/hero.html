@@ -5,9 +5,9 @@
 		<p>{{ value.text }}</p>
 	</div>
 	<div class="fl-hero-media">
-		{% if value.media.video %}
+		{% if value.video %}
 			<video src="{{ value.media.video.url }}" muted autoplay loop></video>
-		{% elif value.media.image %}
+		{% elif value.image %}
 			{% load wagtailimages_tags %}
 			{% image value.image original%}
 		{% endif %}

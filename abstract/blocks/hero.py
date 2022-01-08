@@ -1,10 +1,12 @@
 from wagtail.core import blocks
-from .media import MediaBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtailmedia.blocks import VideoChooserBlock
 
 class HeroBlock(blocks.StructBlock):
 	title = blocks.TextBlock(required=False)
 	text = blocks.TextBlock(required=False)
-	media = MediaBlock(required=False)
+	image = ImageChooserBlock(required=False)
+	video = VideoChooserBlock(required=False, icon = 'media')
 
 	class Meta:
 		abstract=True

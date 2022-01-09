@@ -5,11 +5,11 @@
 <main class="fl-main padding-top" id="main">
 	{% regroup children by category as category_list %}
 	{% for category in category_list %}
-	<div class="fl-content">
+	<div class="fl-content large">
 		<h2>{{category.grouper}}</h2>
-		<div class="fl-cards">
+		<div class="fl-grid list">
 		{% for page in category.list %}
-		{% include "molecules/card.html" with element=page%}
+		{% include "molecules/card.html" with element=page class="row"%}
 		{% endfor %}
 		</div>
 	</div>

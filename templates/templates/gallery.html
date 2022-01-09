@@ -1,8 +1,10 @@
 {% load wagtailimages_tags%}
 {% block content %}
-<div class="fl-content">
-	<h2 class="fl-heading">{{value.title}}</h2>
-	<div class="fl-cards">
+<div class="fl-content large">
+	{% if value.title %}
+		<h2 class="text-centered">{{value.title}}</h2>
+	{% endif %}
+	<div class="fl-grid cards">
 		{% for element in value.cards%}
 			<picture>
 				{% image element original as wide_image %}

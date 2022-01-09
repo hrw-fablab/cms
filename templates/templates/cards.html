@@ -1,9 +1,9 @@
 {% block content %}
-<div class="fl-content">
+<div class="fl-content large">
 	{% if value.title %}
-		<h2 class="fl-heading">{{value.title}}</h2>
+		<h2 class="text-centered">{{value.title}}</h2>
 	{% endif %}
-	<div class="fl-cards">
+	<div class="fl-grid cards">
 		{% for element in value.cards%}
 		{% include "molecules/card.html" with element=element class="text-centered"%}
 		{% endfor %}

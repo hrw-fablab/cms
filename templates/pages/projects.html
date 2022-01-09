@@ -3,9 +3,9 @@
 
 {% block content %}
 <main class="fl-main index padding-top" id="main">
-	<div class="fl-content fl-list">
+	<div class="fl-content large fl-grid list">
 		{% for page in children %}
-			{% include "molecules/card.html" with element=page%}
+			{% include "molecules/card.html" with element=page class="row"%}
 		{% endfor %}
 	</div>
 </main>

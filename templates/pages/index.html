@@ -3,7 +3,7 @@
 
 {% block content %}
 <main class="fl-main index padding-top" id="main">
-	<div class="fl-content fl-columns">
+	<div class="fl-content large fl-grid columns">
 		{% for page in children %}
 			{% include "molecules/card.html" with element=page%}
 		{% endfor %}

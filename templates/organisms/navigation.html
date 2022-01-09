@@ -3,7 +3,7 @@
 {% wagtail_site as current_site%}
 {% block content %}
 <div class="fl-navigation">
-	<nav class="fl-content fl-menu" aria-label="Main Menu">
+	<nav class="fl-content large fl-menu" aria-label="Main Menu">
 		<ul>
 			<li>
 				<a class="fl-logo" href="{{ current_site.root_url }}">
@@ -27,7 +27,7 @@
 			<li>
 				{% if element.content_type.model == "folderpage"%}
 				<button>{{element.localized}}</button>
-				<ul class="fl-submenu hidden">
+				<ul class="fl-menu submenu hidden">
 					{% for subelement in element.get_children.specific%}
 					<li><a href="{{subelement.url}}">{{subelement.localized}}</a></li>
 					{% endfor%}

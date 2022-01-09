@@ -8,19 +8,19 @@
 			{% load wagtailimages_tags %}
 			{% image page.image original %}
 		{% endif %}
-		<header class="fl-article-header">
+		<header class="fl-article-header margin-bottom">
 			<a href="{{parent.url}}?tag={{page.tag}}">{{page.tag}}</a>
 			<h1>{{page.title}}</h1>
 			<div>
 				<a href="{{parent.url}}?author={{page.author.last_name}}" class="fl-author">
-					{% image page.author.image original %}
+					{% image page.author.image fill-120x120 %}
 					{{page.author.first_name}}
 					{{page.author.last_name}}
 				</a>
 				<time>{{page.date}}</time>
 			</div>
 		</header>
-		<section class="fl-content fl-article-body small">
+		<section class="fl-content small fl-richtext">
 			<p>
 				{{ page.body|richtext }}
 			</p>

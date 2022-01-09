@@ -1,5 +1,17 @@
 {% block content %}
-<div class="fl-content small margin-top margin-bottom">
+<div class="
+fl-content
+{% if value.image %}
+fl-split medium
+{% else %}
+small
+{% endif %}
+margin-top
+margin-bottom">
+	{% if value.image %}
+		{% load wagtailimages_tags %}
+		{% image value.image width-800 jpegquality-60 %}
+	{% endif %}
 	<blockquote class="fl-blockquote">
 		<p>
 			{{value.text}}

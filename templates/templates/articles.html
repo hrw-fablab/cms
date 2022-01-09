@@ -1,7 +1,9 @@
 {% block content %}
-<div class="fl-content padding-top padding-bottom">
-	<h2 class="fl-heading">{{value.title}}</h2>
-	<div class="fl-cards">
+<div class="fl-content large padding-top padding-bottom">
+	{% if value.title %}
+		<h2 class="text-centered">{{value.title}}</h2>
+	{% endif %}
+	<div class="fl-grid cards">
 		{% for pages in value.pages%}
 			{% for page in pages.get_children.specific|slice:"5"%}
 				{% if forloop.counter == 1 %}

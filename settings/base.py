@@ -59,6 +59,8 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+
+	'wagtailthemes',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +74,7 @@ MIDDLEWARE = [
 
 	'django.middleware.locale.LocaleMiddleware',
 	'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+	'wagtailthemes.middleware.ThemeMiddleware',
 ]
 
 ROOT_URLCONF = 'urls'
@@ -82,7 +85,6 @@ TEMPLATES = [
 		'DIRS': [
 			os.path.join(PROJECT_DIR, 'templates'),
 		],
-		'APP_DIRS': True,
 		'OPTIONS': {
 			'context_processors': [
 				'django.template.context_processors.debug',
@@ -90,6 +92,11 @@ TEMPLATES = [
 				'django.contrib.auth.context_processors.auth',
 				'django.contrib.messages.context_processors.messages',
 			],
+			'loaders': [
+				'wagtailthemes.loaders.ThemeLoader',
+				'django.template.loaders.filesystem.Loader',
+				'django.template.loaders.app_directories.Loader',
+			]
 		},
 	},
 ]
@@ -199,3 +206,14 @@ WAGTAILMEDIA = {
 	"AUDIO_EXTENSIONS": [],
 	"VIDEO_EXTENSIONS": [],
 }
+
+# Wagtail themes
+# https://github.com/moorinteractive/wagtail-themes
+
+WAGTAIL_THEME_PATH = 'themes'
+WAGTAIL_THEMES = [
+	('fablab', 'Fablab site'),
+	('personal', 'Personal site')
+]
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

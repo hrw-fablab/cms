@@ -39,11 +39,14 @@ class ProjectAuthor(TranslatableMixin, Orderable):
 class ProjectPage(AbstractProjectPage):
 	template = "pages/project.html"
 
-	parent_page_types = ["ProjectIndexPage"]
+	parent_page_types = ["IndexCategoryPage"]
 	subpage_type = []
 
 	content_panels = AbstractProjectPage.content_panels + [
 		InlinePanel('page_link', label="Project Links"),
 		InlinePanel('project_author', label="Project Authors"),
 	]
+
+	class Meta:
+		verbose_name = "Projekt Seite"
 

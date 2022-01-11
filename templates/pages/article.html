@@ -13,7 +13,8 @@
 			<h1>{{page.title}}</h1>
 			<div>
 				<a href="{{parent.url}}?author={{page.author.last_name}}" class="fl-author">
-					{% image page.author.image fill-120x120 %}
+					{% image page.author.image fill-120x120 as author_image %}
+					<img src="{{ author_image.url }}" alt="{{ author_image.alt }}">
 					{{page.author.first_name}}
 					{{page.author.last_name}}
 				</a>

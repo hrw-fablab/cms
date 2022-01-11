@@ -2,7 +2,7 @@ from wagtail.core.models import Page
 from abstract.pages.article import AbstractArticlePage
 
 class ArticlePage(AbstractArticlePage):
-	parent_page_types = ["ArticleIndexPage"]
+	parent_page_types = ["IndexPage"]
 	subpage_type = []
 
 	template = "pages/article.html"
@@ -12,3 +12,6 @@ class ArticlePage(AbstractArticlePage):
 		parent = Page.get_parent(self)
 		context["parent"] = parent
 		return context
+	
+	class Meta:
+		verbose_name = "Artikel Seite"

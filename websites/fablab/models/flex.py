@@ -16,3 +16,6 @@ class FlexPage(AbstractFlexPage):
 	content_panels = Page.content_panels + [
 		StreamFieldPanel("body"),
 	]
+
+	class Meta:
+		verbose_name = "Flexible Seite"

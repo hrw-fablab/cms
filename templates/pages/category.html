@@ -7,9 +7,9 @@
 	{% for category in category_list %}
 	<div class="fl-content large">
 		<h2>{{category.grouper}}</h2>
-		<div class="fl-grid list">
+		<div class="fl-grid cards">
 		{% for page in category.list %}
-		{% include "molecules/card.html" with element=page class="row"%}
+		{% include "molecules/card.html" with element=page%}
 		{% endfor %}
 		</div>
 	</div>

@@ -22,6 +22,9 @@
 		{% else %}
 		<h3>{{element.title}}</h3>
 		{% endif %}
+		{% if element.number %}
+			<p>Anzahl: {{element.number}}</p>
+		{% endif %}
 	</header>
 	{% endif %}
 
@@ -33,7 +36,7 @@
 	<p>{{element.introduction}}</p>
 	{% endif%}
 
-	{% if element.link %}
+	{% if element.link.get_url != None %}
 	<a href="{{element.link.get_url}}">Erfahre Mehr</a>
 	{% endif %}
 </div>

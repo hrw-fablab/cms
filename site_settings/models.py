@@ -7,7 +7,7 @@ from wagtail.contrib.settings.models import BaseSetting, register_setting
 class Footer(BaseSetting):
 	street = models.CharField(max_length=255)
 	housenumber = models.CharField(max_length=20)
-	place = models.CharField(max_length=255)
+	city = models.CharField(max_length=255)
 	plz = models.CharField(max_length=255)
 	email = models.CharField(max_length=255)
 
@@ -43,7 +43,7 @@ class Footer(BaseSetting):
 			[
 			FieldPanel("street"),
 			FieldPanel("housenumber"),
-			FieldPanel("place"),
+			FieldPanel("city"),
 			FieldPanel("plz"),
 			FieldPanel("email"),
 			],heading="Adress"

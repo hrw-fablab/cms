@@ -17,11 +17,13 @@
 			<li>
 				{% if element.content_type.model == "folderpage"%}
 				<button>{{element.localized}}</button>
-				<ul class="fl-menu submenu hidden">
-					{% for subelement in element.get_children.specific%}
-					<li><a href="{{subelement.url}}">{{subelement.localized}}</a></li>
-					{% endfor%}
-				</ul>
+					{% if element.get_children.count != 0 %}
+					<ul class="fl-menu submenu hidden">
+						{% for subelement in element.get_children.specific%}
+						<li><a href="{{subelement.url}}">{{subelement.localized}}</a></li>
+						{% endfor%}
+					</ul>
+				{% endif %}
 				{% else %}
 				<a href="{{element.url}}">{{element.localized}}</a>
 				{% endif %}

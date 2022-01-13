@@ -223,6 +223,9 @@ body {
 	background-color: var(--surface-1);
 	color: var(--text-1);
 }
+a:hover {
+	color: var(--brand);
+}
 .fl-grid {
 	display: grid;
 	gap: var(--size-fluid-3);
@@ -459,6 +462,13 @@ td {
 }
 .fl-accent a:hover {
 		color: var(--text-1);
+	}
+.fl-accent:nth-child(3n) {
+	background-color: inherit;
+	color: inherit
+}
+.fl-accent:nth-child(3n) a:hover {
+		color: var(--brand);
 	}
 .margin {
 	margin: var(--size-fluid-4);

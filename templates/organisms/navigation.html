@@ -4,28 +4,29 @@
 {% block content %}
 <div class="fl-navigation">
 	<nav class="fl-content large fl-menu" aria-label="Main Menu">
+		<a class="fl-logo" href="{{ current_site.root_url }}">
+			<svg width="3rem" height="3rem" viewBox="0 0 114.6 130.3">
+				<use href="#logo"/>
+			</svg>
+			{{ current_site.site_name }}
+		</a>
+		<button id="menu-button" class="fl-button">Menu</button>
 		<ul>
-			<li>
-				<a class="fl-logo" href="{{ current_site.root_url }}">
-					<svg width="3rem" height="3rem" viewBox="0 0 114.6 130.3">
-						<use href="#logo"/>
-					</svg>
-					{{ current_site.site_name }}
-				</a>
-			</li>
 			{% for element in menuitems %}
 			<li>
 				{% if element.content_type.model == "folderpage"%}
-				<button>{{element.localized}}</button>
+				<button>
+					{{element.localized}}
+				</button>
 					{% if element.get_children.count != 0 %}
 					<ul class="fl-menu submenu hidden">
 						{% for subelement in element.get_children.specific%}
-						<li><a href="{{subelement.url}}">{{subelement.localized}}</a></li>
+						<li><a href="{{subelement.url.localized}}">{{subelement.localized}}</a></li>
 						{% endfor%}
 					</ul>
 				{% endif %}
 				{% else %}
-				<a href="{{element.url}}">{{element.localized}}</a>
+				<a href="{{element.url.localized}}">{{element.localized}}</a>
 				{% endif %}
 			</li>
 			{% endfor %}

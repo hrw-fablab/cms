@@ -226,6 +226,12 @@ body {
 a:hover {
 	color: var(--brand);
 }
+button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--size-2);
+}
 .fl-grid {
 	display: grid;
 	gap: var(--size-fluid-3);
@@ -250,7 +256,7 @@ a:hover {
 		}
 	}
 .fl-content.large {
-	max-width: 1440px;
+	max-width: 1340px;
 }
 .fl-content.medium {
 	max-width: 1024px;
@@ -267,6 +273,12 @@ a:hover {
 	}
 .fl-card header {
 		margin-bottom: var(--size-4);
+	}
+@media (max-width: 768px) {
+		.fl-card {
+			grid-column: inherit !important;
+			aspect-ratio: var(--aspect-widescreen) !important;
+		}
 	}
 .fl-card.featured {
 	grid-column: 1 / 3;
@@ -301,12 +313,40 @@ a:hover {
 .fl-language {
 	margin-left: auto;
 }
+.fl-menu {
+	display: flex;
+	gap: var(--size-fluid-4);
+	align-items: center
+}
+.fl-menu a {
+		text-decoration: none;
+	}
+.fl-menu :hover:where(button, a) {
+		color: var(--brand);
+		text-decoration: underline;
+	}
+.fl-menu > button {
+		display: none;
+		margin-left: auto;
+	}
+@media (max-width: 1024px) {
+		.fl-menu {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			place-items: center start;
+		}
+
+		.fl-menu > button {
+			display: block;
+		}
+	}
 .fl-menu ul {
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: var(--size-fluid-4)
+	gap: var(--size-fluid-4);
+	width: 100%
 }
 .fl-menu ul li {
 		display: flex;
@@ -314,12 +354,21 @@ a:hover {
 		justify-content: center;
 		position: relative;
 	}
-.fl-menu ul a {
-		text-decoration: none;
-	}
-.fl-menu ul :hover:where(button, a) {
-		color: var(--brand);
-		text-decoration: underline;
+@media (max-width: 1024px) {
+		.fl-menu ul {
+			grid-column: 1 / 3;
+			flex-direction: column;
+			align-items: start;
+			display: none;
+		}
+
+		.fl-menu ul li {
+			width: 100%;
+			align-items: inherit;
+			flex-direction: column;
+			border-bottom: solid thin var(--surface-3);
+			padding: var(--size-3) 0 var(--size-3) 0;
+		}
 	}
 .fl-menu.submenu {
 	flex-direction: column;
@@ -331,13 +380,24 @@ a:hover {
 	background-color: var(--surface-2);
 	padding: var(--size-fluid-1);
 	box-shadow: var(--shadow-2);
-	border-radius: var(--size-2);
+	border-radius: var(--size-2)
 }
+@media (max-width: 1024px) {
+		.fl-menu.submenu {
+			transform: inherit;
+			background-color: inherit;
+			box-shadow: inherit;
+			display: flex;
+			position: inherit;
+			align-items: start;
+		}
+	}
 .fl-logo {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	gap: var(--size-2)
+	justify-content: flex-start;
+	gap: var(--size-2);
+	flex-shrink: 0
 }
 .fl-logo svg {
 		fill: var(--brand);
@@ -365,6 +425,7 @@ a:hover {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	gap: var(--size-fluid-1);
 }
 .fl-author {
 	display: flex;
@@ -406,13 +467,13 @@ a:hover {
 			font-size: var(--font-size-6);
 		}
 .fl-hero.large {
-	height: 80vh;
+	max-height: 80vh;
 }
 .fl-hero.medium {
-	height: 50vh;
+	max-height: 50vh;
 }
 .fl-hero.small {
-	height: 30vh;
+	max-height: 30vh;
 }
 table {
 width: 100%;

@@ -12,7 +12,7 @@ class QuIndexPage(AbstractIndexPage):
     def get_context(self, request):
         context = super().get_context(request)
         all_children = (
-            ArticlePage.objects.live()
+            QuArticlePage.objects.live()
             .public()
             .child_of(self)
             .order_by("-last_published_at")
@@ -34,7 +34,7 @@ class QuIndexPage(AbstractIndexPage):
 
         if request.GET.get("tag"):
             children = (
-                ArticlePage.objects.live()
+                QuArticlePage.objects.live()
                 .public()
                 .child_of(self)
                 .filter(tag__name=request.GET.get("tag"))

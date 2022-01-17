@@ -1,19 +1,19 @@
 {% block content %}
 <div class="fl-content large padding-top padding-bottom">
 	{% if value.title %}
-		<h2 class="text-centered margin-bottom">{{value.title}}</h2>
+	<h2 class="text-centered margin-bottom">{{value.title}}</h2>
 	{% endif %}
 	<div class="fl-grid cards">
 		{% for pages in value.pages%}
-			{% for page in pages.get_children.specific|slice:"5"%}
-				{% if forloop.counter == 1 %}
-					{% include "molecules/card.html" with element=page class="featured"%}
-					{% elif forloop.counter == 2 %}
-					{% include "molecules/card.html" with element=page class="long"%}
-					{% else %}
-					{% include "molecules/card.html" with element=page%}
-				{% endif %}
-			{% endfor %}
+		{% for page in pages.get_children.specific|slice:"5"%}
+		{% if forloop.counter == 1 %}
+		{% include "molecules/card.html" with element=page class="featured"%}
+		{% elif forloop.counter == 2 %}
+		{% include "molecules/card.html" with element=page class="long"%}
+		{% else %}
+		{% include "molecules/card.html" with element=page%}
+		{% endif %}
+		{% endfor %}
 		{% endfor%}
 	</div>
 </div>

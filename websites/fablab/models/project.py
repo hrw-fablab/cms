@@ -9,44 +9,49 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class ProjectPageLink(TranslatableMixin, Orderable):
-	page = ParentalKey("ProjectPage", on_delete=models.CASCADE, related_name="page_link")
-	link_url = models.URLField()
-	link_title = models.CharField(max_length=255)
+    page = ParentalKey(
+        "ProjectPage", on_delete=models.CASCADE, related_name="page_link"
+    )
+    link_url = models.URLField()
+    link_title = models.CharField(max_length=255)
 
-	panels = [
-		FieldPanel("link_url"),
-		FieldPanel("link_title"),
-	]
+    panels = [
+        FieldPanel("link_url"),
+        FieldPanel("link_title"),
+    ]
+
 
 class ProjectAuthor(TranslatableMixin, Orderable):
-	page = ParentalKey("ProjectPage", on_delete=models.CASCADE, related_name="project_author")
-	first_name = models.CharField(max_length=255)
-	last_name = models.CharField(max_length=255)
-	image = models.ForeignKey(
-		'core.FablabImage',
-		null=True,
-		blank=True,
-		on_delete=models.SET_NULL,
-		related_name='+'
-	)
+    page = ParentalKey(
+        "ProjectPage", on_delete=models.CASCADE, related_name="project_author"
+    )
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    image = models.ForeignKey(
+        "core.FablabImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
-	panels = [
-		FieldPanel("first_name"),
-		FieldPanel("last_name"),
-		ImageChooserPanel("image"),
-	]
+    panels = [
+        FieldPanel("first_name"),
+        FieldPanel("last_name"),
+        ImageChooserPanel("image"),
+    ]
+
 
 class ProjectPage(AbstractProjectPage):
-	template = "pages/project.html"
+    template = "pages/project.html"
 
-	parent_page_types = ["IndexCategoryPage"]
-	subpage_type = []
+    parent_page_types = ["IndexCategoryPage"]
+    subpage_type = []
 
-	content_panels = AbstractProjectPage.content_panels + [
-		InlinePanel('page_link', label="Project Links"),
-		InlinePanel('project_author', label="Project Authors"),
-	]
+    content_panels = AbstractProjectPage.content_panels + [
+        InlinePanel("page_link", label="Project Links"),
+        InlinePanel("project_author", label="Project Authors"),
+    ]
 
-	class Meta:
-		verbose_name = "Projekt Seite"
-
+    class Meta:
+        verbose_name = "Projekt Seite"

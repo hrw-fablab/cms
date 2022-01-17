@@ -7,13 +7,13 @@ from ..blocks import HomeBlock
 
 
 class HomePage(AbstractHomePage):
-	template = "pages/home.html"
+    template = "pages/home.html"
 
-	body = StreamField(HomeBlock())
+    body = StreamField(HomeBlock())
 
-	content_panels = Page.content_panels + [
-		StreamFieldPanel("body"),
-	]
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body"),
+    ]
 
-	class Meta:
-		verbose_name = "Fablab Startseite"
+    class Meta:
+        verbose_name = "Fablab Startseite"

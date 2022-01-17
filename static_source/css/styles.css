@@ -127,6 +127,7 @@ main {
 img,
 picture,
 video,
+iframe,
 canvas {
 	display: inline-block;
 	width: 100%;
@@ -513,6 +514,9 @@ td {
 	}
 .fl-blockquote p::after {
 		content: close-quote;
+	}
+.fl-media > :where(img,video,iframe) {
+		aspect-ratio: var(--aspect-widescreen);
 	}
 .fl-article > img {
 	aspect-ratio: var(--aspect-widescreen);

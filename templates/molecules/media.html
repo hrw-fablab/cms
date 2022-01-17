@@ -1,11 +1,16 @@
 {% block content %}
-<div class="fl-content medium margin-top margin-bottom">
+<div class="fl-content medium fl-media margin-top margin-bottom">
+	{% if value.title %}
 	<h2 class="text-centered margin-bottom">{{value.title}}</h2>
+	{% endif %}
 	{% if value.image %}
-		{% load wagtailimages_tags %}
-		{% image value.image original %}
+	{% load wagtailimages_tags %}
+	{% image value.image original %}
 	{% elif value.video %}
-		<video src="{{ value.video.url }}" controls></video>
+	<video src="{{ value.video.url }}" controls></video>
+	{% elif value.embed %}
+	{% load wagtailembeds_tags %}
+	{% embed value.embed.url%}
 	{% endif %}
 </div>
 {% endblock %}

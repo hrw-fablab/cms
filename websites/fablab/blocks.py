@@ -1,15 +1,17 @@
 from wagtail.core import blocks
-from abstract.blocks.articles import ArticlesBlock
 
+from abstract.blocks.articles import ArticlesBlock
 from abstract.blocks.cards import CardsBlock
 from abstract.blocks.heading import HeadingBlock
 from abstract.blocks.hero import HeroBlock
-from abstract.blocks.media import MediaBlock
 from abstract.blocks.paragraph import ParagraphBlock
 from abstract.blocks.profiles import ProfilesBlock
 from abstract.blocks.split import SplitBlock
 from abstract.blocks.gallery import GalleryBlock
 from abstract.blocks.blockquote import BlockquoteBlock
+from abstract.blocks.image import ImageBlock
+from abstract.blocks.video import VideoBlock
+from abstract.blocks.embed import EmbedBlock
 
 
 class Hero(HeroBlock):
@@ -57,7 +59,17 @@ class Profiles(ProfilesBlock):
         template = "templates/profiles.html"
 
 
-class Media(MediaBlock):
+class Image(ImageBlock):
+    class Meta:
+        template = "molecules/media.html"
+
+
+class Video(VideoBlock):
+    class Meta:
+        template = "molecules/media.html"
+
+
+class Embed(EmbedBlock):
     class Meta:
         template = "molecules/media.html"
 
@@ -71,7 +83,9 @@ class HomeBlock(blocks.StreamBlock):
     articles = Articles()
     gallery = Gallery()
     blockquote = Blockquote()
-    media = Media()
+    video = Video()
+    image = Image()
+    embed = Embed()
 
 
 class FlexBlock(blocks.StreamBlock):
@@ -82,4 +96,6 @@ class FlexBlock(blocks.StreamBlock):
     gallery = Gallery()
     blockquote = Blockquote()
     profiles = Profiles()
-    media = Media()
+    video = Video()
+    image = Image()
+    embed = Embed()

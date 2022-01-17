@@ -1,4 +1,3 @@
-{% load navigation_tags %}
 {% load wagtailcore_tags i18n %}
 {% wagtail_site as current_site%}
 {% block content %}
@@ -6,7 +5,7 @@
 	<nav class="fl-content large fl-menu" aria-label="Main Menu">
 		<a class="fl-logo" href="{{ current_site.root_url }}">
 			<svg width="3rem" height="3rem" viewBox="0 0 114.6 130.3">
-				<use href="#logo"/>
+				<use href="#logo" />
 			</svg>
 			{{ current_site.site_name }}
 		</a>
@@ -18,15 +17,15 @@
 				<button>
 					{{element.localized}}
 				</button>
-					{% if element.get_children.count != 0 %}
-					<ul class="fl-menu submenu hidden">
-						{% for subelement in element.get_children.specific%}
-						<li><a href="{{subelement.localized.url}}">{{subelement.localized}}</a></li>
-						{% endfor%}
-					</ul>
+				{% if element.get_children.count != 0 %}
+				<ul class="fl-menu submenu hidden">
+					{% for subelement in element.get_children.specific%}
+					<li><a href="{{subelement.localized.url}}">{{subelement.localized}}</a></li>
+					{% endfor%}
+				</ul>
 				{% endif %}
 				{% else %}
-					<a href="{{element.localized.url}}">{{element.localized}}</a>
+				<a href="{{element.localized.url}}">{{element.localized}}</a>
 				{% endif %}
 			</li>
 			{% endfor %}

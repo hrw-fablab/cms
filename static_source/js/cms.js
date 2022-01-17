@@ -1,8 +1,7 @@
+// Function for handling Display of Submenus
 document.addEventListener("click", (event) => {
 	if (event.target.tagName == "BUTTON" && event.target.id != "menu-button") {
-		console.log("1");
 		if (getComputedStyle(event.target.nextElementSibling).display === "none") {
-			console.log("2");
 			for (element of document.getElementsByClassName("submenu")) { element.classList.add("hidden") }
 			return event.target.nextElementSibling.classList.remove("hidden")
 		}
@@ -11,6 +10,7 @@ document.addEventListener("click", (event) => {
 	for (element of document.getElementsByClassName("submenu")) { element.classList.add("hidden") }
 });
 
+// Function to handle Display of Menu on Mobile Navigation
 document.getElementById("menu-button").addEventListener("click", (event) => {
 	if (getComputedStyle(event.target.nextElementSibling).display === "none") {
 		event.target.nextElementSibling.style.display = "flex";

@@ -1,4 +1,4 @@
-from wagtail.core.models import Page
+from wagtail.core.models import Page, Site
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core.fields import StreamField
 
@@ -7,13 +7,13 @@ from ..blocks import HomeBlock
 
 
 class QuHomePage(AbstractHomePage):
-	template = "pages/home.html"
+    template = "pages/home.html"
 
-	body = StreamField(HomeBlock())
+    body = StreamField(HomeBlock())
 
-	content_panels = Page.content_panels + [
-		StreamFieldPanel("body"),
-	]
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body"),
+    ]
 
-	class Meta:
-		verbose_name = "QuFablab Startseite"
+    class Meta:
+        verbose_name = "QuFablab Startseite"

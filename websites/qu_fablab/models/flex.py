@@ -5,17 +5,18 @@ from abstract.pages.flex import AbstractFlexPage
 
 from ..blocks import FlexBlock
 
+
 class QuFlexPage(AbstractFlexPage):
-	template = "pages/flex.html"
+    template = "pages/flex.html"
 
-	parent_page_types = ["QuHomepage"]
-	subpage_type = []
+    parent_page_types = ["QuFolderpage", "QuHomepage"]
+    subpage_type = []
 
-	body = StreamField(FlexBlock())
+    body = StreamField(FlexBlock())
 
-	content_panels = Page.content_panels + [
-		StreamFieldPanel("body"),
-	]
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body"),
+    ]
 
-	class Meta:
-		verbose_name = "QuFablab Flexseite"
+    class Meta:
+        verbose_name = "Flexible Seite"

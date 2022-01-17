@@ -8,7 +8,7 @@
 
 ## Setup
 
-### Checke Dependencies
+### Check Dependencies
 Wir benutzen Wagtail als CMS Tool welches Python 3.6, 3.7, 3.8, 3.9 und 3.10 unterstützt
 Schaue zunächst ob du eine passende Python Version installiert hast
 

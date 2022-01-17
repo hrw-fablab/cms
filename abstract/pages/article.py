@@ -6,47 +6,46 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from core.models import FablabBasePage
 
+
 class AbstractArticlePage(FablabBasePage):
-	image = models.ForeignKey(
-		'core.FablabImage',
-		null=True,
-		blank=True,
-		on_delete=models.SET_NULL,
-		related_name='+'
-	)
+    image = models.ForeignKey(
+        "core.FablabImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
-	author = models.ForeignKey(
-		'snippets.Author',
-		null=True,
-		blank=True,
-		on_delete=models.SET_NULL,
-		related_name='+'
-	)
+    author = models.ForeignKey(
+        "snippets.Author",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
-	tag = models.ForeignKey(
-		'snippets.Tag', 
-		null=True,
-		blank=True,
-		on_delete=models.SET_NULL,
-		related_name='+'
-	)
+    tag = models.ForeignKey(
+        "snippets.Tag",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
-	date = models.DateField()
+    date = models.DateField()
 
-	introduction = models.CharField(max_length=255)
+    introduction = models.CharField(max_length=255)
 
-	body = RichTextField(
-		features=['h3', 'ul', 'link', 'image', 'embed']
-	)
+    body = RichTextField(features=["h3", "ul", "link", "image", "embed"])
 
-	content_panels = FablabBasePage.content_panels + [
-		ImageChooserPanel("image"),
-		SnippetChooserPanel("author"),
-		SnippetChooserPanel("tag"),
-		FieldPanel("date"),
-		FieldPanel("introduction"),
-		FieldPanel("body"),
-	]
+    content_panels = FablabBasePage.content_panels + [
+        ImageChooserPanel("image"),
+        SnippetChooserPanel("author"),
+        SnippetChooserPanel("tag"),
+        FieldPanel("date"),
+        FieldPanel("introduction"),
+        FieldPanel("body"),
+    ]
 
-	class Meta:
-		abstract=True
+    class Meta:
+        abstract = True

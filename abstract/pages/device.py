@@ -8,38 +8,37 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from core.models import FablabBasePage
 
+
 class AbstractDevicePage(FablabBasePage):
-	image = models.ForeignKey(
-		'core.FablabImage',
-		null=True,
-		blank=True,
-		on_delete=models.SET_NULL,
-		related_name='+'
-	)
+    image = models.ForeignKey(
+        "core.FablabImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
-	number = IntegerField()
+    number = IntegerField()
 
-	category = models.ForeignKey(
-		'snippets.DeviceCategory', 
-		null=True,
-		blank=True,
-		on_delete=models.SET_NULL,
-		related_name='+'
-	)
+    category = models.ForeignKey(
+        "snippets.DeviceCategory",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
-	introduction = models.CharField(max_length=255)
+    introduction = models.CharField(max_length=255)
 
-	body = RichTextField(
-		features=['h3', 'ul', 'link', 'image', 'embed']
-	)
+    body = RichTextField(features=["h3", "ul", "link", "image", "embed"])
 
-	content_panels = FablabBasePage.content_panels + [
-		ImageChooserPanel("image"),
-		FieldPanel("number"),
-		SnippetChooserPanel("category"),
-		FieldPanel("introduction"),
-		FieldPanel("body"),
-	]
+    content_panels = FablabBasePage.content_panels + [
+        ImageChooserPanel("image"),
+        FieldPanel("number"),
+        SnippetChooserPanel("category"),
+        FieldPanel("introduction"),
+        FieldPanel("body"),
+    ]
 
-	class Meta:
-		abstract=True
+    class Meta:
+        abstract = True

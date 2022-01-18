@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('fablab', '0001_initial'),
+        ('qu_fablab', '0001_initial'),
         ('core', '0001_initial'),
         ('wagtailcore', '0066_collection_management_permissions'),
         ('snippets', '0001_initial'),
@@ -18,14 +18,39 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name='projectpage',
+            model_name='quprojectpage',
             name='category',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='snippets.projectcategory'),
         ),
         migrations.AddField(
-            model_name='projectpage',
+            model_name='quprojectpage',
             name='image',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='core.fablabimage'),
+        ),
+        migrations.AddField(
+            model_name='quarticlepage',
+            name='author',
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='snippets.author'),
+        ),
+        migrations.AddField(
+            model_name='quarticlepage',
+            name='image',
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='core.fablabimage'),
+        ),
+        migrations.AddField(
+            model_name='quarticlepage',
+            name='tag',
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='snippets.tag'),
+        ),
+        migrations.AddField(
+            model_name='projectpagelink',
+            name='locale',
+            field=models.ForeignKey(editable=False, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtailcore.locale'),
+        ),
+        migrations.AddField(
+            model_name='projectpagelink',
+            name='page',
+            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='page_link', to='qu_fablab.quprojectpage'),
         ),
         migrations.AddField(
             model_name='projectauthor',
@@ -40,32 +65,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='projectauthor',
             name='page',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='project_author', to='fablab.projectpage'),
-        ),
-        migrations.AddField(
-            model_name='devicepage',
-            name='category',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='snippets.devicecategory'),
-        ),
-        migrations.AddField(
-            model_name='devicepage',
-            name='image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='core.fablabimage'),
-        ),
-        migrations.AddField(
-            model_name='articlepage',
-            name='author',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='snippets.author'),
-        ),
-        migrations.AddField(
-            model_name='articlepage',
-            name='image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='core.fablabimage'),
-        ),
-        migrations.AddField(
-            model_name='articlepage',
-            name='tag',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='snippets.tag'),
+            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='project_author', to='qu_fablab.quprojectpage'),
         ),
         migrations.AlterUniqueTogether(
             name='projectpagelink',

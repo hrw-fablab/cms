@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "wagtailthemes",
 ]
 
 MIDDLEWARE = [
@@ -68,7 +67,6 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-    "wagtailthemes.middleware.ThemeMiddleware",
 ]
 
 ROOT_URLCONF = "urls"
@@ -88,9 +86,8 @@ TEMPLATES = [
                 "wagtail.contrib.settings.context_processors.settings",
             ],
             "loaders": [
-                "wagtailthemes.loaders.ThemeLoader",
-                "django.template.loaders.filesystem.Loader",
                 "django.template.loaders.app_directories.Loader",
+                "django.template.loaders.filesystem.Loader",
             ],
         },
     },
@@ -201,11 +198,5 @@ WAGTAILMEDIA = {
     "AUDIO_EXTENSIONS": [],
     "VIDEO_EXTENSIONS": [],
 }
-
-# Wagtail themes
-# https://github.com/moorinteractive/wagtail-themes
-
-WAGTAIL_THEME_PATH = "themes"
-WAGTAIL_THEMES = [("fablab", "Fablab Theme"), ("qu_fablab", "QuFablab Theme")]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

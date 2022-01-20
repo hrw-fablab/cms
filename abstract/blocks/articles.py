@@ -7,4 +7,5 @@ class ArticlesBlock(blocks.StructBlock):
     pages = blocks.ListBlock(PageChooserBlock())
 
     class Meta:
+        icon = "grip"
         abstract = True

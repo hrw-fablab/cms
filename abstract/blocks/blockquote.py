@@ -8,4 +8,5 @@ class BlockquoteBlock(blocks.StructBlock):
     cite = blocks.CharBlock(required=False)
 
     class Meta:
+        icon = "openquote"
         abstract = True

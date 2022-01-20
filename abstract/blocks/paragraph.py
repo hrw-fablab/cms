@@ -8,4 +8,5 @@ class ParagraphBlock(blocks.StructBlock):
     )
 
     class Meta:
+        icon = "doc-full"
         abstract = True

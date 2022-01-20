@@ -7,4 +7,5 @@ class GalleryBlock(blocks.StructBlock):
     cards = blocks.ListBlock(ImageChooserBlock(required=False))
 
     class Meta:
+        icon = "grip"
         abstract = True

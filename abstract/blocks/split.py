@@ -9,7 +9,7 @@ class SplitBlock(blocks.StructBlock):
     text = blocks.TextBlock(required=False)
     link = LinkBlock(required=False)
     image = ImageChooserBlock(required=False)
-    video = VideoChooserBlock(required=False, icon="media")
+    video = VideoChooserBlock(required=False)
 
     class Meta:
         abstract = True

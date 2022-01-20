@@ -18,4 +18,5 @@ class ProfilesBlock(blocks.StructBlock):
     cards = blocks.ListBlock(Profile())
 
     class Meta:
+        icon = "user"
         abstract = True

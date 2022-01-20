@@ -15,4 +15,5 @@ class CardsBlock(blocks.StructBlock):
     cards = blocks.ListBlock(Card())
 
     class Meta:
+        icon = "grip"
         abstract = True

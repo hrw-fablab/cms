@@ -8,5 +8,5 @@ class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock(required=False)
 
     class Meta:
-        icon = "media"
+        icon = "image"
         abstract = True

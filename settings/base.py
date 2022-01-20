@@ -182,6 +182,9 @@ WAGTAILSEARCH_BACKENDS = {
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = "https://www.qufablab.de"
 
+# Use Custom User Model
+AUTH_USER_MODEL = "user.FablabUser"
+
 WAGTAILIMAGES_IMAGE_MODEL = "core.FablabImage"
 
 WAGTAILDOCS_DOCUMENT_MODEL = "core.FablabDocument"

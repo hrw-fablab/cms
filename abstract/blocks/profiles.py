@@ -13,10 +13,13 @@ class Profile(blocks.StructBlock):
     projects = blocks.CharBlock(required=False)
     description = blocks.TextBlock(required=False)
 
+    class Meta:
+        icon = "user"
+
 
 class ProfilesBlock(blocks.StructBlock):
     cards = blocks.ListBlock(Profile())
 
     class Meta:
-        icon = "user"
+        icon = "grip"
         abstract = True

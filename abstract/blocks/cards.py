@@ -9,6 +9,9 @@ class Card(blocks.StructBlock):
     text = blocks.TextBlock(required=False)
     link = LinkBlock(required=False)
 
+    class Meta:
+        icon = "doc-full"
+
 
 class CardsBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)

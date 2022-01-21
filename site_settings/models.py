@@ -70,6 +70,7 @@ class SiteSettings(BaseSetting):
                 FieldPanel("logo_title"),
             ],
             heading="Logo",
+            classname="collapsible"
         ),
         MultiFieldPanel(
             [
@@ -80,6 +81,7 @@ class SiteSettings(BaseSetting):
                 NativeColorPanel("surface_color_three"),
             ],
             heading="Brand",
+            classname="collapsible"
         ),
         MultiFieldPanel(
             [
@@ -90,6 +92,7 @@ class SiteSettings(BaseSetting):
                 FieldPanel("email"),
             ],
             heading="Adress",
+            classname="collapsible"
         ),
         MultiFieldPanel(
             [
@@ -98,6 +101,7 @@ class SiteSettings(BaseSetting):
                 PageChooserPanel("data_protection"),
             ],
             heading="Service",
+            classname="collapsible"
         ),
         MultiFieldPanel(
             [
@@ -108,5 +112,6 @@ class SiteSettings(BaseSetting):
                 FieldPanel("twitter"),
             ],
             heading="Social Media",
+            classname="collapsible"
         ),
     ]

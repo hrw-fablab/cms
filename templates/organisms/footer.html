@@ -4,36 +4,67 @@
 		<div>
 			<h3>Kontakt</h3>
 			<address>
+				{% if settings.site_settings.Footer.street%}
 				{{settings.site_settings.Footer.street}}
-				{{settings.site_settings.Footer.housenumber}}<br>
+				{% endif %}
+
+				{% if settings.site_settings.Footer.housenumber%}
+				{{settings.site_settings.Footer.housenumber}}
+				{% endif %}
+
+				<br>
+
+				{% if settings.site_settings.Footer.city%}
 				{{settings.site_settings.Footer.city}}
-				{{settings.site_settings.Footer.plz}}<br>
+				{% endif %}
+
+				{% if settings.site_settings.Footer.plz%}
+				{{settings.site_settings.Footer.plz}}
+				{% endif %}
+
+				<br>
+
+				{% if settings.site_settings.Footer.email%}
 				<a href="mailto:{{settings.site_settings.Footer.email}}">{{settings.site_settings.Footer.email}}</a>
+				{% endif %}
 			</address>
 		</div>
-		<ul>
-			<li>
-				<h3>Service</h3>
-			</li>
-			<li>
-				<a href="">Kontakt</a>
-			</li>
-			<li>
-				<a href="">Impressum</a>
-			</li>
-			<li>
-				<a href="">Datenschutzerklärung</a>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<h3>Social Media</h3>
-			</li>
-			<li><a href="{{settings.site_settings.Footer.facebook}}">Facebook</a></li>
-			<li><a href="{{settings.site_settings.Footer.instagram}}">Instagram</a></li>
-			<li><a href="{{settings.site_settings.Footer.youtube}}">Youtube</a></li>
-			<li><a href="{{settings.site_settings.Footer.thingiverse}}">Thingiverse</a></li>
-		</ul>
+
+		<div>
+			<h3>Service</h3>
+			<ul>
+				<li>
+					<a href="{{settings.site_settings.Footer.contact.url}}">Kontakt</a>
+				</li>
+				<li>
+					<a href="{{settings.site_settings.Footer.contact.impressum}}">Impressum</a>
+				</li>
+				<li>
+					<a href="{{settings.site_settings.Footer.contact.data_protection}}">Datenschutzerklärung</a>
+				</li>
+			</ul>
+		</div>
+
+		<div>
+			<h3>Social Media</h3>
+			<ul>
+				{% if settings.site_settings.Footer.facebook%}
+				<li><a href="{{settings.site_settings.Footer.facebook}}">Facebook</a></li>
+				{% endif %}
+
+				{% if settings.site_settings.Footer.instagram%}
+				<li><a href="{{settings.site_settings.Footer.instagram}}">Instagram</a></li>
+				{% endif %}
+
+				{% if settings.site_settings.Footer.youtube%}
+				<li><a href="{{settings.site_settings.Footer.youtube}}">Youtube</a></li>
+				{% endif %}
+
+				{% if settings.site_settings.Footer.thingiverse%}
+				<li><a href="{{settings.site_settings.Footer.thingiverse}}">Thingiverse</a></li>
+				{% endif %}
+			</ul>
+		</div>
 	</div>
 </footer>
 {% endblock content %}

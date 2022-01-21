@@ -95,6 +95,7 @@ class FlexBlock(blocks.StreamBlock):
     cards = Cards()
     gallery = Gallery()
     blockquote = Blockquote()
+    articles = Articles()
     profiles = Profiles()
     video = Video()
     image = Image()

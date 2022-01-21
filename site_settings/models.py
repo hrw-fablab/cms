@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 from wagtail.admin.edit_handlers import PageChooserPanel
 from wagtail.admin.edit_handlers import MultiFieldPanel, FieldPanel
@@ -115,3 +116,6 @@ class SiteSettings(BaseSetting):
             classname="collapsible"
         ),
     ]
+
+    class Meta:
+        verbose_name = "Seiten Konfiguration"

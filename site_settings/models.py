@@ -2,10 +2,14 @@ from django.db import models
 from wagtail.admin.edit_handlers import PageChooserPanel
 from wagtail.admin.edit_handlers import MultiFieldPanel, FieldPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.images.edit_handlers import ImageChooserPanel
+
+from wagtail_color_panel.fields import ColorField
+from wagtail_color_panel.edit_handlers import NativeColorPanel
 
 
 @register_setting
-class Footer(BaseSetting):
+class SiteSettings(BaseSetting):
     street = models.CharField(max_length=255, null=True, blank=True)
     housenumber = models.CharField(max_length=20, null=True, blank=True)
     city = models.CharField(max_length=255, null=True, blank=True)
@@ -42,7 +46,41 @@ class Footer(BaseSetting):
     thingiverse = models.URLField(null=True, blank=True)
     twitter = models.URLField(null=True, blank=True)
 
+    logo = models.ForeignKey(
+        "core.FablabImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    logo_title = models.CharField(max_length=30, null=True, blank=True)
+
+    brand_color = ColorField(null=True, blank=True)
+    text_color = ColorField(null=True, blank=True)
+
+    surface_color_one = ColorField(null=True, blank=True)
+    surface_color_two = ColorField(null=True, blank=True)
+    surface_color_three = ColorField(null=True, blank=True)
+
     panels = [
+        MultiFieldPanel(
+            [
+                ImageChooserPanel("logo"),
+                FieldPanel("logo_title"),
+            ],
+            heading="Logo",
+        ),
+        MultiFieldPanel(
+            [
+                NativeColorPanel("brand_color"),
+                NativeColorPanel("text_color"),
+                NativeColorPanel("surface_color_one"),
+                NativeColorPanel("surface_color_two"),
+                NativeColorPanel("surface_color_three"),
+            ],
+            heading="Brand",
+        ),
         MultiFieldPanel(
             [
                 FieldPanel("street"),

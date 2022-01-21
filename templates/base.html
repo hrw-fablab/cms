@@ -4,41 +4,49 @@
 <html class="no-js" lang="de">
 
 <head>
-	<meta charset="utf-8" />
-	<title>
-		{% block title %}
-		{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
-		{% endblock %}
-		{% block title_suffix %}
-		{% wagtail_site as current_site %}
-		{% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
-		{% endblock %}
-	</title>
-	<meta name="description" content="" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+        {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+        {% endblock %}
+        {% block title_suffix %}
+        {% wagtail_site as current_site %}
+        {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+        {% endblock %}
+    </title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	{# Global stylesheets #}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.min.css' %}">
+    {# Global stylesheets #}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.min.css' %}">
 
-	{% block extra_css %}{% endblock %}
+    <style>
+        :root {
+            --brand: {{settings.site_settings.SiteSettings.brand_color}};
+            --text-1: {{settings.site_settings.SiteSettings.text_color}};
+            --surface-1: {{settings.site_settings.SiteSettings.surface_color_one}};
+            --surface-2: {{settings.site_settings.SiteSettings.surface_color_two}};
+            --surface-3: {{settings.site_settings.SiteSettings.surface_color_three}};
+        }
+    </style>
 </head>
 
 <body class="fl-body">
-	{% block svg %}{% endblock %}
+    {% block svg %}{% endblock %}
 
-	{% wagtailuserbar %}
+    {% wagtailuserbar %}
 
-	{% include "organisms/navigation.html" %}
+    {% include "organisms/navigation.html" %}
 
-	{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 
-	{% include "organisms/footer.html" %}
-	{# Global javascript #}
-	<script src="{% static 'js/cms.js' %}"></script>
+    {% include "organisms/footer.html" %}
+    {# Global javascript #}
+    <script src="{% static 'js/cms.js' %}"></script>
 
-	{% block extra_js %}
-	{# Override this in templates to add extra javascript #}
-	{% endblock %}
+    {% block extra_js %}
+    {# Override this in templates to add extra javascript #}
+    {% endblock %}
 </body>
 
 </html>

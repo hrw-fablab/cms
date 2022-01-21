@@ -4,10 +4,13 @@
 <div class="fl-navigation">
 	<nav class="fl-content large fl-menu" aria-label="Main Menu">
 		<a class="fl-logo" href="{{ current_site.root_url }}">
-			<svg width="3rem" height="3rem" viewBox="0 0 114.6 130.3">
-				<use href="#logo" />
-			</svg>
-			{{ current_site.site_name }}
+			{% if settings.site_settings.SiteSettings.logo %}
+				{% load wagtailimages_tags %}
+				{% image settings.site_settings.SiteSettings.logo original%}
+			{% endif %}
+			{% if settings.site_settings.SiteSettings.logo_title%}
+				{{settings.site_settings.SiteSettings.logo_title}}
+			{% endif %}
 		</a>
 		<button id="menu-button" class="fl-button">Menu</button>
 		<ul>

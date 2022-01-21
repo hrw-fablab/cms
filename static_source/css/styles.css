@@ -409,6 +409,10 @@ button {
 	gap: var(--size-2);
 	flex-shrink: 0
 }
+.fl-logo img {
+		width: auto;
+		max-height: 2rem;
+	}
 .fl-logo svg {
 		fill: var(--brand);
 	}

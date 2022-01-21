@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "websites.fablab",
     "websites.qu_fablab",
     "wagtail_link_block",
+    "wagtail_color_panel",
     "wagtailmedia",
     "wagtail_localize",
     "wagtail_localize.locales",

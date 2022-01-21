@@ -66,6 +66,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
@@ -135,6 +136,7 @@ LANGUAGE_CODE = "de"
 TIME_ZONE = "UTC"
 
 USE_I18N = True
+WAGTAIL_I18N_ENABLED = True
 
 USE_L10N = True
 

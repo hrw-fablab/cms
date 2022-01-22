@@ -3,15 +3,11 @@ from .models import ArticlePage
 
 
 class RssFeed(Feed):
-    title = "HRW-Fablab"
+    title = "HRW-Fablab Neuigkeiten"
     link = "feed/"
-    description = "HRW-Fablab"
-    feed_url = "/feed/"
-
-    language = "de"
 
     def items(self):
-        return ArticlePage.objects.order_by("-date")[:5]
+        return ArticlePage.objects.live().public().order_by("-date")[:20]
 
     def item_title(self, item):
         return item.title

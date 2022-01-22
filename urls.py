@@ -15,7 +15,6 @@ urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
-	path("feed/", RssFeed()),
 ]
 
 

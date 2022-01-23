@@ -102,7 +102,6 @@
 	--text-2: gray;
 	--surface-1: lightgray;
 	--surface-2: lightgray;
-	--surface-3: lightgray;
 }
 /* purgecss start ignore */
 *,
@@ -160,12 +159,12 @@ footer {
 }
 /* purgecss end ignore */
 h1{
-	padding: var(--size-4);
+	padding: var(--size-4) 0 var(--size-4) 0;
 	font-size: var(--font-size-6);
 	font-family: Segoe UI;
 }
 h2{
-	padding: var(--size-4);
+	padding: var(--size-4) 0 var(--size-4) 0;
 	font-size: var(--font-size-6);
 	font-family: Segoe UI;
 }
@@ -263,7 +262,7 @@ button {
 }
 @media (max-width: 1440px) {
 		.fl-content.large {
-			padding: 0 var(--size-fluid-1) 0 var(--size-fluid-1);
+			padding: var(--size-fluid-1);
 		}
 	}
 .fl-content.medium {
@@ -271,7 +270,7 @@ button {
 }
 @media (max-width: 768px) {
 		.fl-content.medium {
-			padding: 0 var(--size-fluid-1) 0 var(--size-fluid-1);
+			padding: var(--size-fluid-1);
 		}
 	}
 .fl-content.small {
@@ -279,7 +278,7 @@ button {
 }
 @media (max-width: 768px) {
 		.fl-content.small {
-			padding: 0 var(--size-fluid-1) 0 var(--size-fluid-1);
+			padding: var(--size-fluid-1);
 		}
 	}
 .fl-card {
@@ -384,7 +383,7 @@ button {
 			width: 100%;
 			align-items: inherit;
 			flex-direction: column;
-			border-bottom: solid thin var(--surface-3);
+			border-bottom: solid thin var(--surface-2);
 			padding: var(--size-3) 0 var(--size-3) 0;
 		}
 	}
@@ -426,7 +425,7 @@ button {
 	}
 .fl-split {
 	display: grid;
-	grid-template-columns: 1fr 0.7fr;
+	grid-template-columns: 1fr 0.9fr;
 	gap: var(--size-fluid-5);
 	transition: box-shadow 0.3s ease
 }
@@ -483,9 +482,18 @@ button {
 		position: absolute;
 		color: var(--text-1);
 		max-width: 1440px;
-		margin: 0 auto 0 auto
+		margin: 0 auto 0 auto;
+		left: 5rem
 	}
+.fl-hero .fl-hero-content h1 {
+			padding: var(--size-2) var(--size-4);
+			display: inline-flex;
+			font-size: var(--font-size-7);
+			margin-bottom: var(--size-4);
+		}
 .fl-hero .fl-hero-content p {
+			padding: var(--size-2) var(--size-4);
+			display: inline-flex;
 			font-size: var(--font-size-6);
 		}
 .fl-hero.large {
@@ -560,17 +568,27 @@ td {
 }
 .fl-accent {
 	background-color: var(--brand);
-	color: var(--surface-2)
+	color: var(--surface-1)
 }
 .fl-accent a:hover {
 		color: var(--text-1);
 	}
-.fl-accent:nth-child(3n) {
+.fl-accent:nth-child(2n) {
 	background-color: inherit;
 	color: inherit
 }
-.fl-accent:nth-child(3n) a:hover {
+.fl-accent:nth-child(2n) a:hover {
 		color: var(--brand);
+	}
+.fl-accent:nth-child(2n) .fl-split-body {
+		order: 1;
+	}
+.fl-brand {
+	background-color: var(--brand);
+	color: var(--surface-1)
+}
+.fl-brand a:hover {
+		color: var(--text-1);
 	}
 .margin {
 	margin: var(--size-fluid-4);

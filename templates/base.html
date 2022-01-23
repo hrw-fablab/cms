@@ -1,24 +1,18 @@
-{% load static wagtailcore_tags wagtailuserbar %}
+{% load static wagtailcore_tags wagtailuserbar wagtailimages_tags%}
 
 <!DOCTYPE html>
 <html class="no-js" lang="de">
-
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         {% block title %}
         {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
         {% endblock %}
-        {% block title_suffix %}
-        {% wagtail_site as current_site %}
-        {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
-        {% endblock %}
     </title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="description" content="{{page.search_description}}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.min.css' %}">
-
+    <script defer src="{% static 'js/cms.js' %}"></script>
     <style>
         :root {
             --brand: {{settings.site_settings.SiteSettings.brand_color}};
@@ -28,6 +22,18 @@
             --surface-3: {{settings.site_settings.SiteSettings.surface_color_three}};
         }
     </style>
+    <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}">
+    <meta property="og:description" content="{{page.search_description}}">
+
+    {% image page.og_image original as og_image %}
+    <meta property="og:image" content="{{og_image.full_url}}">
+    <meta property="og:image:alt" content="{{page.og_image_alt}}">
+    <meta property="og:locale" content="de">
+    <meta property="og:type" content="{{page.og_type}}">
+    <meta property="og:url" content="{{page.full_url}}">
+    <meta name="twitter:card" content="{{page.tw_size}}">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="{{page.full_url}}">
 </head>
 
 <body class="fl-body">
@@ -41,8 +47,6 @@
 
     {% include "organisms/footer.html" %}
     
-    <script src="{% static 'js/cms.js' %}"></script>
-
     {% block extra_js %}
     {# Override this in templates to add extra javascript #}
     {% endblock %}

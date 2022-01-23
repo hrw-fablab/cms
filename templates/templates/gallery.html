@@ -6,12 +6,7 @@
 	{% endif %}
 	<div class="fl-grid gallery">
 		{% for element in value.cards%}
-		{% if element.block_type != "embed"%}
-		{{element}}
-		{% else %}
-		{% load wagtailembeds_tags %}
-		{% embed 'https://www.youtube.com/watch?v=Ffu-2jEdLPw' %}
-		{% endif %}
+			{{element}}
 		{% endfor %}
 	</div>
 </div>

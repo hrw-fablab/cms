@@ -1,8 +1,8 @@
 {% block content %}
 <section class="fl-hero large">
 	<div class="fl-hero-content">
-		<h1>{{ value.title }}</h1>
-		<p>{{ value.text }}</p>
+		<h1 class="fl-brand">{{ value.title }}</h1>
+		<p class="fl-brand">{{ value.text }}</p>
 	</div>
 	{% if value.video %}
 		<video src="{{ value.video.url }}" muted autoplay loop></video>

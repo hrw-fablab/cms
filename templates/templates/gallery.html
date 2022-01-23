@@ -1,16 +1,17 @@
 {% load wagtailimages_tags%}
 {% block content %}
-<div class="fl-content large">
+<div class="fl-content large margin-top margin-bottom">
 	{% if value.title %}
-		<h2 class="text-centered margin-bottom">{{value.title}}</h2>
+		<h2 class="text-centered">{{value.title}}</h2>
 	{% endif %}
-	<div class="fl-grid cards">
+	<div class="fl-grid gallery">
 		{% for element in value.cards%}
-			<picture>
-				{% image element original as wide_image %}
-				<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
-				{% image element original jpegquality-30 %}
-			</picture>
+		{% if element.block_type != "embed"%}
+		{{element}}
+		{% else %}
+		{% load wagtailembeds_tags %}
+		{% embed 'https://www.youtube.com/watch?v=Ffu-2jEdLPw' %}
+		{% endif %}
 		{% endfor %}
 	</div>
 </div>

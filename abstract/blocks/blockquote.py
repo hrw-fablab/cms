@@ -8,5 +8,6 @@ class BlockquoteBlock(blocks.StructBlock):
     cite = blocks.CharBlock(required=False)
 
     class Meta:
+        template = "molecules/blockquote.html"
         icon = "openquote"
         abstract = True

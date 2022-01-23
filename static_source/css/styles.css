@@ -160,10 +160,12 @@ footer {
 }
 /* purgecss end ignore */
 h1{
+	padding: var(--size-4);
 	font-size: var(--font-size-6);
 	font-family: Segoe UI;
 }
 h2{
+	padding: var(--size-4);
 	font-size: var(--font-size-6);
 	font-family: Segoe UI;
 }
@@ -239,8 +241,14 @@ button {
 	justify-content: center;
 }
 .fl-grid.cards {
-	grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), max-content));
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
 }
+.fl-grid.gallery {
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr))
+}
+.fl-grid.gallery > * {
+		aspect-ratio: var(--aspect-landscape);
+	}
 .fl-grid.columns {
 	grid-template-columns: 1fr 1fr;
 }

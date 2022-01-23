@@ -8,5 +8,6 @@ class ParagraphBlock(blocks.StructBlock):
     )
 
     class Meta:
+        template = "molecules/paragraph.html"
         icon = "doc-full"
         abstract = True

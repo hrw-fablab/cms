@@ -10,4 +10,5 @@ class HeroBlock(blocks.StructBlock):
     video = VideoChooserBlock(required=False, icon="media")
 
     class Meta:
+        template = "organisms/hero.html"
         abstract = True

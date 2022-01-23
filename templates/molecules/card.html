@@ -1,43 +1,43 @@
 {% block content %}
 <section class=" fl-card {{class}} ">
-	{% if element.image%}
+	{% if value.image%}
 	{% load wagtailimages_tags %}
 	<picture>
-		{% image element.image original as wide_image %}
+		{% image value.image original as wide_image %}
 		<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
-		{% image element.image width-800 jpegquality-60 %}
+		{% image value.image width-800 jpegquality-60 %}
 	</picture>
 	{% endif %}
 
 	<div>
-	{% if element.title %}
+	{% if value.title %}
 	<header>
-		{% if element.date %}
-		<time>{{element.date}}</time>
+		{% if value.date %}
+		<time>{{value.date}}</time>
 		{% endif %}
-		{% if element.url %}
-		<a href="{{element.url}}">
-			<h3>{{element.title}}</h3>
+		{% if value.url %}
+		<a href="{{value.localized.url}}">
+			<h3>{{value.localized.title}}</h3>
 		</a>
 		{% else %}
-		<h3>{{element.title}}</h3>
+		<h3>{{value.title}}</h3>
 		{% endif %}
-		{% if element.number %}
-			<p>Anzahl: {{element.number}}</p>
+		{% if value.number %}
+			<p>Anzahl: {{value.number}}</p>
 		{% endif %}
 	</header>
 	{% endif %}
 
-	{% if element.text%}
-	<p>{{element.text}}</p>
+	{% if value.text%}
+	<p>{{value.localized.text}}</p>
 	{% endif%}
 
-	{% if element.introduction%}
-	<p>{{element.introduction}}</p>
+	{% if value.introduction%}
+	<p>{{value.localized.introduction}}</p>
 	{% endif%}
 
-	{% if element.link.get_url != None %}
-	<a href="{{element.link.get_url}}">Erfahre Mehr</a>
+	{% if value.link.get_url != None %}
+	<a href="{{value.link.get_url}}">Erfahre Mehr</a>
 	{% endif %}
 </div>
 </section>

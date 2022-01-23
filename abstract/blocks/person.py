@@ -2,7 +2,7 @@ from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
 
-class Profile(blocks.StructBlock):
+class PersonBlock(blocks.StructBlock):
     image = ImageChooserBlock(required=False)
     name = blocks.CharBlock(required=False)
     employment = blocks.ChoiceBlock(choices=[("SHK", "shk")], required=False)
@@ -15,11 +15,4 @@ class Profile(blocks.StructBlock):
 
     class Meta:
         icon = "user"
-
-
-class ProfilesBlock(blocks.StructBlock):
-    cards = blocks.ListBlock(Profile())
-
-    class Meta:
-        icon = "grip"
         abstract = True

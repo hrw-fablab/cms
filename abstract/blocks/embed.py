@@ -7,5 +7,6 @@ class EmbedBlock(blocks.StructBlock):
     embed = EmbedBlock(required=False)
 
     class Meta:
+        template = "molecules/media.html"
         icon = "media"
         abstract = True

@@ -12,4 +12,5 @@ class SplitBlock(blocks.StructBlock):
     video = VideoChooserBlock(required=False)
 
     class Meta:
+        template = "organisms/split.html"
         abstract = True

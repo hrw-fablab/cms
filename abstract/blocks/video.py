@@ -7,5 +7,6 @@ class VideoBlock(blocks.StructBlock):
     video = VideoChooserBlock(required=False, icon="media")
 
     class Meta:
+        template = "molecules/media.html"
         icon = "media"
         abstract = True

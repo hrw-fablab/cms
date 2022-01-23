@@ -1,102 +1,63 @@
 from wagtail.core import blocks
 
-from abstract.blocks.articles import ArticlesBlock
-from abstract.blocks.cards import CardsBlock
+from abstract.blocks.grabber import GrabberBlock
+from abstract.blocks.grid import GridBlock
 from abstract.blocks.heading import HeadingBlock
 from abstract.blocks.hero import HeroBlock
 from abstract.blocks.paragraph import ParagraphBlock
-from abstract.blocks.profiles import ProfilesBlock
+from abstract.blocks.person import PersonBlock
 from abstract.blocks.split import SplitBlock
 from abstract.blocks.gallery import GalleryBlock
 from abstract.blocks.blockquote import BlockquoteBlock
 from abstract.blocks.image import ImageBlock
 from abstract.blocks.video import VideoBlock
 from abstract.blocks.embed import EmbedBlock
+from abstract.blocks.card import CardBlock
 
 
-class Hero(HeroBlock):
-    class Meta:
-        template = "organisms/hero.html"
+class HomeGridBlockElements(blocks.StreamBlock):
+    card = CardBlock()
 
 
-class Split(SplitBlock):
-    class Meta:
-        template = "organisms/split.html"
-
-
-class Cards(CardsBlock):
-    class Meta:
-        template = "templates/cards.html"
-
-
-class Articles(ArticlesBlock):
-    class Meta:
-        template = "templates/articles.html"
-
-
-class Heading(HeadingBlock):
-    class Meta:
-        template = "atoms/heading.html"
-
-
-class Paragraph(ParagraphBlock):
-    class Meta:
-        template = "molecules/paragraph.html"
-
-
-class Gallery(GalleryBlock):
-    class Meta:
-        template = "templates/gallery.html"
-
-
-class Blockquote(BlockquoteBlock):
-    class Meta:
-        template = "molecules/blockquote.html"
-
-
-class Profiles(ProfilesBlock):
-    class Meta:
-        template = "templates/profiles.html"
-
-
-class Image(ImageBlock):
-    class Meta:
-        template = "molecules/media.html"
-
-
-class Video(VideoBlock):
-    class Meta:
-        template = "molecules/media.html"
-
-
-class Embed(EmbedBlock):
-    class Meta:
-        template = "molecules/media.html"
+class HomeGridBlock(GridBlock):
+    cards = HomeGridBlockElements()
 
 
 class HomeBlock(blocks.StreamBlock):
-    heading = Heading()
-    paragraph = Paragraph()
-    hero = Hero()
-    split = Split()
-    cards = Cards()
-    articles = Articles()
-    gallery = Gallery()
-    blockquote = Blockquote()
-    video = Video()
-    image = Image()
-    embed = Embed()
+    heading = HeadingBlock()
+    paragraph = ParagraphBlock()
+    hero = HeroBlock()
+    split = SplitBlock()
+    grid = HomeGridBlock()
+    grabber = GrabberBlock()
+    gallery = GalleryBlock()
+    blockquote = BlockquoteBlock()
+    video = VideoBlock()
+    image = ImageBlock()
+    embed = EmbedBlock()
+    card = CardBlock()
+    person = PersonBlock()
+
+
+class FlexGridBlockElements(blocks.StreamBlock):
+    card = CardBlock()
+    person = PersonBlock()
+
+
+class FlexGridBlock(GridBlock):
+    cards = FlexGridBlockElements()
 
 
 class FlexBlock(blocks.StreamBlock):
-    heading = Heading()
-    paragraph = Paragraph()
-    split = Split()
-    cards = Cards()
-    gallery = Gallery()
-    blockquote = Blockquote()
-    articles = Articles()
-    profiles = Profiles()
-    video = Video()
-    image = Image()
-    embed = Embed()
+    heading = HeadingBlock()
+    paragraph = ParagraphBlock()
+    blockquote = BlockquoteBlock()
+    split = SplitBlock()
+    grid = FlexGridBlock()
+    grabber = GrabberBlock()
+    gallery = GalleryBlock()
+    video = VideoBlock()
+    image = ImageBlock()
+    embed = EmbedBlock()
+    card = CardBlock()
+    person = PersonBlock()

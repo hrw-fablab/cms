@@ -1,6 +1,5 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
-from wagtailmedia.blocks import VideoChooserBlock
 
 
 class ImageBlock(blocks.StructBlock):
@@ -8,5 +7,6 @@ class ImageBlock(blocks.StructBlock):
     image = ImageChooserBlock(required=False)
 
     class Meta:
+        template = "molecules/media.html"
         icon = "image"
         abstract = True

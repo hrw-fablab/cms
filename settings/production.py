@@ -1,11 +1,13 @@
 from .base import *
 
-DEBUG = False
+DEBUG = True
 
-SECRET_KEY = str(os.getenv("SECRET_KEY"))
+SECRET_KEY = str(os.environ.get("SECRET_KEY"))
 
 # SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
+
+print(ALLOWED_HOSTS)
 
 try:
     from .local import *

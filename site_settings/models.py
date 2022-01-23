@@ -62,7 +62,6 @@ class SiteSettings(BaseSetting):
 
     surface_color_one = ColorField(null=True, blank=True)
     surface_color_two = ColorField(null=True, blank=True)
-    surface_color_three = ColorField(null=True, blank=True)
 
     panels = [
         MultiFieldPanel(
@@ -79,9 +78,8 @@ class SiteSettings(BaseSetting):
                 NativeColorPanel("text_color"),
                 NativeColorPanel("surface_color_one"),
                 NativeColorPanel("surface_color_two"),
-                NativeColorPanel("surface_color_three"),
             ],
-            heading="Brand",
+            heading="Brand Farben",
             classname="collapsible"
         ),
         MultiFieldPanel(

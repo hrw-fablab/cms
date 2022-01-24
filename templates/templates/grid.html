@@ -8,7 +8,7 @@
 			{% if element.block_type == "card" %}
 				{% include "molecules/card.html" with value=element.value class="text-centered"%}
 			{% elif element.block_type == "person" %}
-				{% include "molecules/profile.html" with value=element.value%}
+				{% include "molecules/person.html" with value=element.value%}
 			{% else %}
 				{{element}}
 			{% endif %}

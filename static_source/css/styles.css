@@ -260,7 +260,7 @@ button {
 }
 .fl-content.large {
 	max-width: 1340px;
-	padding: inherit
+	padding: 0
 }
 @media (max-width: 1440px) {
 		.fl-content.large {
@@ -269,7 +269,7 @@ button {
 	}
 .fl-content.medium {
 	max-width: 1024px;
-	padding: inherit
+	padding: 0
 }
 @media (max-width: 768px) {
 		.fl-content.medium {
@@ -278,7 +278,7 @@ button {
 	}
 .fl-content.small {
 	max-width: 768px;
-	padding: inherit
+	padding: 0
 }
 @media (max-width: 768px) {
 		.fl-content.small {
@@ -287,7 +287,7 @@ button {
 	}
 .fl-content.tiny {
 	max-width: 480px;
-	padding: inherit
+	padding: 0
 }
 @media (max-width: 768px) {
 		.fl-content.tiny {

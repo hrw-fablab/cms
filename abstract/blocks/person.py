@@ -14,5 +14,6 @@ class PersonBlock(blocks.StructBlock):
     description = blocks.TextBlock(required=False)
 
     class Meta:
+        template = "templates/person.html"
         icon = "user"
         abstract = True

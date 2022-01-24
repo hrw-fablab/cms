@@ -1,16 +1,55 @@
-from tabnanny import verbose
 from django.db import models
 from wagtail.admin.edit_handlers import PageChooserPanel
-from wagtail.admin.edit_handlers import MultiFieldPanel, FieldPanel
+from wagtail.admin.edit_handlers import (
+    MultiFieldPanel,
+    FieldPanel,
+    InlinePanel,
+)
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from wagtail_color_panel.fields import ColorField
 from wagtail_color_panel.edit_handlers import NativeColorPanel
 
+from modelcluster.models import ClusterableModel
+
+from wagtail.core.models import Orderable
+from modelcluster.fields import ParentalKey
+
+
+class Sponsor(Orderable):
+    logo = models.ForeignKey(
+        "core.FablabImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    logo_alt = models.CharField(max_length=255, null=True, blank=True)
+
+    page = ParentalKey("SiteSettings", on_delete=models.CASCADE, related_name="sponsor")
+
+    panels = [
+        ImageChooserPanel("logo"),
+        FieldPanel("logo_alt"),
+    ]
+
+
+class Social(Orderable):
+    title = models.CharField(max_length=255, null=True, blank=True)
+    url = models.URLField(null=True, blank=True)
+
+    page = ParentalKey("SiteSettings", on_delete=models.CASCADE, related_name="social")
+
+    panels = [
+        FieldPanel("title"),
+        FieldPanel("url"),
+    ]
+
 
 @register_setting
-class SiteSettings(BaseSetting):
+class SiteSettings(BaseSetting, ClusterableModel):
     street = models.CharField(max_length=255, null=True, blank=True)
     housenumber = models.CharField(max_length=20, null=True, blank=True)
     city = models.CharField(max_length=255, null=True, blank=True)
@@ -70,7 +109,7 @@ class SiteSettings(BaseSetting):
                 FieldPanel("logo_title"),
             ],
             heading="Logo",
-            classname="collapsible"
+            classname="collapsible",
         ),
         MultiFieldPanel(
             [
@@ -80,7 +119,7 @@ class SiteSettings(BaseSetting):
                 NativeColorPanel("surface_color_two"),
             ],
             heading="Brand Farben",
-            classname="collapsible"
+            classname="collapsible",
         ),
         MultiFieldPanel(
             [
@@ -91,7 +130,7 @@ class SiteSettings(BaseSetting):
                 FieldPanel("email"),
             ],
             heading="Adress",
-            classname="collapsible"
+            classname="collapsible",
         ),
         MultiFieldPanel(
             [
@@ -100,19 +139,10 @@ class SiteSettings(BaseSetting):
                 PageChooserPanel("data_protection"),
             ],
             heading="Service",
-            classname="collapsible"
+            classname="collapsible",
         ),
-        MultiFieldPanel(
-            [
-                FieldPanel("facebook"),
-                FieldPanel("instagram"),
-                FieldPanel("youtube"),
-                FieldPanel("thingiverse"),
-                FieldPanel("twitter"),
-            ],
-            heading="Social Media",
-            classname="collapsible"
-        ),
+        InlinePanel("sponsor", label="Sponsoren"),
+        InlinePanel("social", label="Social Media"),
     ]
 
     class Meta:

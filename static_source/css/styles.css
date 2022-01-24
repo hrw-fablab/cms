@@ -256,9 +256,11 @@ button {
 }
 .fl-content {
 	margin: 0 auto 0 auto;
+	max-width: 1720px;
 }
 .fl-content.large {
-	max-width: 1340px
+	max-width: 1340px;
+	padding: inherit
 }
 @media (max-width: 1440px) {
 		.fl-content.large {
@@ -266,7 +268,8 @@ button {
 		}
 	}
 .fl-content.medium {
-	max-width: 1024px
+	max-width: 1024px;
+	padding: inherit
 }
 @media (max-width: 768px) {
 		.fl-content.medium {
@@ -274,7 +277,8 @@ button {
 		}
 	}
 .fl-content.small {
-	max-width: 768px
+	max-width: 768px;
+	padding: inherit
 }
 @media (max-width: 768px) {
 		.fl-content.small {
@@ -282,7 +286,8 @@ button {
 		}
 	}
 .fl-content.tiny {
-	max-width: 480px
+	max-width: 480px;
+	padding: inherit
 }
 @media (max-width: 768px) {
 		.fl-content.tiny {
@@ -423,7 +428,8 @@ button {
 	align-items: center;
 	justify-content: flex-start;
 	gap: var(--size-2);
-	flex-shrink: 0
+	flex-shrink: 0;
+	font-size: var(--font-size-4)
 }
 .fl-logo img {
 		width: auto;
@@ -608,34 +614,34 @@ td {
 		color: var(--text-1);
 	}
 .margin {
-	margin: var(--size-fluid-4);
+	margin: var(--size-fluid-4) !important;
 }
 .margin-top {
-	margin-top: var(--size-fluid-4);
+	margin-top: var(--size-fluid-4) !important;
 }
 .margin-bottom {
-	margin-bottom: var(--size-fluid-4);
+	margin-bottom: var(--size-fluid-4) !important;
 }
 .margin-left {
-	margin-left: var(--size-fluid-4);
+	margin-left: var(--size-fluid-4) !important;
 }
 .margin-right {
-	margin-right: var(--size-fluid-4);
+	margin-right: var(--size-fluid-4) !important;
 }
 .padding {
-	padding: var(--size-fluid-4);
+	padding: var(--size-fluid-4) !important;
 }
 .padding-top {
-	padding-top: var(--size-fluid-4);
+	padding-top: var(--size-fluid-4) !important;
 }
 .padding-bottom {
-	padding-bottom: var(--size-fluid-4);
+	padding-bottom: var(--size-fluid-4) !important;
 }
 .padding-left {
-	padding-left: var(--size-fluid-4);
+	padding-left: var(--size-fluid-4) !important;
 }
 .padding-right {
-	padding-right: var(--size-fluid-4);
+	padding-right: var(--size-fluid-4) !important;
 }
 .bg-color-brand {
 	background-color: var(--brand);

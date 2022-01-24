@@ -2,7 +2,7 @@
 {% wagtail_site as current_site%}
 {% block content %}
 <div class="fl-navigation">
-	<nav class="fl-content large fl-menu" aria-label="Main Menu">
+	<nav class="fl-content fl-menu" aria-label="Main Menu">
 		<a class="fl-logo" href="{{ current_site.root_url }}">
 			{% if settings.site_settings.SiteSettings.logo %}
 				{% load wagtailimages_tags %}
@@ -16,10 +16,10 @@
 		<ul>
 			{% for element in menuitems %}
 			<li>
-				{% if element.content_type.model == "folderpage"%}
+				{% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage"%}
 				<button>
 					{{element.localized}}
-					<svg width="1rem" viewBox="0 0 102 60">
+					<svg width="0.8rem" viewBox="0 0 102 60">
 						<path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
 					</svg>
 				</button>

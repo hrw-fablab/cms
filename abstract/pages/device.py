@@ -30,7 +30,18 @@ class AbstractDevicePage(FablabBasePage):
 
     introduction = models.CharField(max_length=255)
 
-    body = RichTextField(features=["h3", "ul", "link", "image", "embed"])
+    body = RichTextField(
+        features=[
+            "bold",
+            "italic",
+            "h3",
+            "ul",
+            "link",
+            "document-link",
+            "image",
+            "embed",
+        ]
+    )
 
     content_panels = FablabBasePage.content_panels + [
         ImageChooserPanel("image"),

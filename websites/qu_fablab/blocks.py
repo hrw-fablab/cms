@@ -4,8 +4,10 @@ from abstract.blocks.grabber import GrabberBlock
 from abstract.blocks.grid import GridBlock
 from abstract.blocks.heading import HeadingBlock
 from abstract.blocks.hero import HeroBlock
+from abstract.blocks.html import HTMLBlock
 from abstract.blocks.paragraph import ParagraphBlock
 from abstract.blocks.person import PersonBlock
+from abstract.blocks.spacer import SpacerBlock
 from abstract.blocks.split import SplitBlock
 from abstract.blocks.gallery import GalleryBlock
 from abstract.blocks.blockquote import BlockquoteBlock
@@ -32,11 +34,13 @@ class HomeBlock(blocks.StreamBlock):
     grabber = GrabberBlock()
     gallery = GalleryBlock()
     blockquote = BlockquoteBlock()
+    spacer = SpacerBlock()
     video = VideoBlock()
     image = ImageBlock()
     embed = EmbedBlock()
     card = CardBlock()
     person = PersonBlock()
+    html = HTMLBlock()
 
 
 class FlexGridBlockElements(blocks.StreamBlock):
@@ -55,9 +59,11 @@ class FlexBlock(blocks.StreamBlock):
     split = SplitBlock()
     grid = FlexGridBlock()
     grabber = GrabberBlock()
+    spacer = SpacerBlock()
     gallery = GalleryBlock()
     video = VideoBlock()
     image = ImageBlock()
     embed = EmbedBlock()
     card = CardBlock()
     person = PersonBlock()
+    html = HTMLBlock()

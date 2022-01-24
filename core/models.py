@@ -1,12 +1,25 @@
 from django.db import models
-from django.forms import ChoiceField
 
 from wagtail.core.models import Page, Site
 from wagtail.documents.models import Document, AbstractDocument
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
 from wagtailmedia.models import AbstractMedia
 
-from wagtail.admin.edit_handlers import TabbedInterface, FieldPanel, ObjectList
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+
+
+OGTYPECHOICES = (
+    ("website", "website"),
+    ("article", "article"),
+    ("profile", "profile"),
+)
+
+TWTYPECHOICES = (
+    ("summary_large_image", "summary_large_image"),
+    ("summary", "summary"),
+    ("player", "player"),
+)
 
 # Custom Image Model
 # https://docs.wagtail.io/en/stable/advanced_topics/images/custom_image_model.html
@@ -40,23 +53,6 @@ class FablabMedia(AbstractMedia):
     admin_form_fields = Document.admin_form_fields
 
 
-from django.db import models
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
-
-
-OGTYPECHOICES = (
-    ("website", "website"),
-    ("article", "article"),
-    ("profile", "profile"),
-)
-
-TWTYPECHOICES = (
-    ("summary_large_image", "summary_large_image"),
-    ("summary", "summary"),
-    ("player", "player"),
-)
-
 # Abstract Base Page Layout
 class FablabBasePage(Page):
     og_image = models.ForeignKey(
@@ -71,7 +67,9 @@ class FablabBasePage(Page):
 
     og_type = models.CharField(max_length=255, choices=OGTYPECHOICES, default="website")
 
-    tw_size = models.CharField(max_length=255, choices=TWTYPECHOICES, default="summary_large_image")
+    tw_size = models.CharField(
+        max_length=255, choices=TWTYPECHOICES, default="summary_large_image"
+    )
 
     promote_panels = Page.promote_panels + [
         MultiFieldPanel(

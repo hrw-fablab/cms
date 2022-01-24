@@ -281,6 +281,14 @@ button {
 			padding: var(--size-fluid-1);
 		}
 	}
+.fl-content.tiny {
+	max-width: 480px
+}
+@media (max-width: 768px) {
+		.fl-content.tiny {
+			padding: var(--size-fluid-1);
+		}
+	}
 .fl-card {
 	transition: box-shadow 0.3s ease;
 	aspect-ratio: var(--aspect-landscape)
@@ -397,7 +405,8 @@ button {
 	background-color: var(--surface-2);
 	padding: var(--size-fluid-1);
 	box-shadow: var(--shadow-2);
-	border-radius: var(--size-2)
+	border-radius: var(--size-2);
+	width: max-content
 }
 @media (max-width: 1024px) {
 		.fl-menu.submenu {
@@ -459,17 +468,20 @@ button {
 		object-fit: cover;
 		border-radius: 50%;
 	}
-.fl-richtext img {
-		aspect-ratio: 3 / 2;
-		width: 100%;
+.fl-paragraph img {
+		aspect-ratio: var(--aspect-landscape);
 	}
-.fl-richtext ul {
+.fl-paragraph ul {
 		padding: revert;
 	}
-.fl-richtext iframe {
+.fl-paragraph div {
 		aspect-ratio: 3 / 2;
 		width: 100%;
 		height: 100%;
+	}
+.fl-paragraph .richtext-image.left {
+		aspect-ratio: inherit;
+		width: inherit;
 	}
 .fl-hero {
 	position: relative;
@@ -537,6 +549,11 @@ td {
 	}
 .fl-media > :where(img,video,iframe) {
 		aspect-ratio: var(--aspect-widescreen);
+	}
+.fl-person dl > div {
+		display: flex;
+		gap: var(--size-3);
+		margin-bottom: var(--size-3);
 	}
 .fl-article > img {
 	aspect-ratio: var(--aspect-widescreen);

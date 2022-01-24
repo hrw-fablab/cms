@@ -1,9 +1,15 @@
 {% block content %}
 <section class="fl-hero large">
+	{% if value.title or value.text %}
 	<div class="fl-hero-content">
-		<h1 class="fl-brand">{{ value.title }}</h1>
-		<p class="fl-brand">{{ value.text }}</p>
+		{% if value.title %}
+			<h1 class="fl-brand">{{ value.title }}</h1>
+		{% endif %}
+		{% if  value.text %}
+			<p class="fl-brand">{{ value.text }}</p>
+		{% endif %}
 	</div>
+	{% endif %}
 	{% if value.video %}
 		<video src="{{ value.video.url }}" muted autoplay loop></video>
 	{% elif value.image %}

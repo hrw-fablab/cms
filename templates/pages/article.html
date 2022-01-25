@@ -5,12 +5,15 @@
 <main class="fl-main padding-top" id="main">
 	<article class="fl-article fl-content medium">
 		{% if page.image %}
-			{% load wagtailimages_tags %}
-			{% image page.image original %}
+		{% load wagtailimages_tags %}
+		{% image page.image original %}
 		{% endif %}
 		<header class="fl-article-header margin-bottom">
+			{% if page.tag %}
 			<a href="{{parent.url}}?tag={{page.tag}}">{{page.tag}}</a>
+			{% endif %}
 			<h1>{{page.title}}</h1>
+			{% if page.author %}
 			<div>
 				<a href="{{parent.url}}?author={{page.author.last_name}}" class="fl-author">
 					{% image page.author.image fill-120x120 as author_image %}
@@ -20,6 +23,7 @@
 				</a>
 				<time>{{page.date}}</time>
 			</div>
+			{% endif %}
 		</header>
 		<section class="fl-content small fl-richtext">
 			<p>

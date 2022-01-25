@@ -1,20 +1,22 @@
 {% block content %}
 <section class="fl-hero large">
 	{% if value.title or value.text %}
-	<div class="fl-hero-content">
-		{% if value.title %}
-		<h1>{{ value.title }}</h1>
-		{% endif %}
-		{% if value.text %}
-		<p>{{ value.text }}</p>
-		{% endif %}
+	<div>
+		<div class="fl-content fl-hero-content">
+			{% if value.title %}
+			<h1>{{ value.title }}</h1>
+			{% endif %}
+			{% if value.text %}
+			<p>{{ value.text }}</p>
+			{% endif %}
+		</div>
 	</div>
 	{% endif %}
 	{% if value.video %}
 	<video src="{{ value.video.url }}" muted autoplay loop></video>
 	{% elif value.image %}
 		{% load wagtailimages_tags %}
-		{% image value.image original%}
+		{% image value.image fill-1920x600-c75%}
 	{% endif %}
 </section>
 {% endblock content %}

@@ -501,22 +501,23 @@ button {
   height: 70vh;
   overflow: hidden
 }
+.fl-hero > * {
+    grid-area: container;
+    width: 100%;
+  }
 .fl-hero .fl-hero-content {
     padding: var(--size-4);
-    grid-area: container;
-    color: var(--surface-1);
-    width: 80%
+    color: var(--surface-1)
   }
 .fl-hero .fl-hero-content h1 {
       padding: var(--size-2) var(--size-4);
-      display: inline-flex;
       font-size: var(--font-size-7);
       margin-bottom: var(--size-4);
     }
 .fl-hero .fl-hero-content p {
       padding: var(--size-2) var(--size-4);
-      display: inline-flex;
       font-size: var(--font-size-5);
+      width: 60%;
     }
 .fl-hero img {
     grid-area: container;
@@ -530,15 +531,13 @@ button {
     .fl-hero {
       height: 50vh;
     }
-    .fl-hero .fl-hero-content {
-      width: 100%;
-    }
     .fl-hero h1 {
       font-size: var(--font-size-6) !important;
     }
 
     .fl-hero p {
       font-size: var(--font-size-4) !important;
+      width: inherit !important;
     }
 
     .fl-hero img {
@@ -605,8 +604,9 @@ td {
   grid-template: "container";
   place-items: center center;
   text-align: center;
-  height: 60vh;
-  max-height: 500px
+  height: 40vh;
+  max-height: 500px;
+  overflow: hidden
 }
 .fl-banner .fl-banner-content {
     padding: var(--size-4);
@@ -622,7 +622,8 @@ td {
 .fl-banner img {
     grid-area: container;
     z-index: -1;
-	height: min(60vh, 500px);
+    height: min(40vh, 500px);
+    transform: scale(1.1);
   }
 .fl-article > img {
 	aspect-ratio: var(--aspect-widescreen);
@@ -659,14 +660,14 @@ td {
 .fl-accent a:hover {
 		color: var(--text-1);
 	}
-.fl-accent:nth-child(2n) {
+.fl-accent:nth-child(odd) {
 	background-color: inherit;
 	color: inherit
 }
-.fl-accent:nth-child(2n) a:hover {
+.fl-accent:nth-child(odd) a:hover {
 		color: var(--brand);
 	}
-.fl-accent:nth-child(2n) .fl-split-body {
+.fl-accent:nth-child(odd) .fl-split-body {
 		order: 1;
 	}
 .fl-brand {

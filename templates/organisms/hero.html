@@ -14,7 +14,7 @@
 	<video src="{{ value.video.url }}" muted autoplay loop></video>
 	{% elif value.image %}
 	{% load wagtailimages_tags %}
-	{% image value.image fill-1920x600-c75%}
+	{% image value.image fill-1920x600-c75 format-webp%}
 	{% endif %}
 </section>
 {% endblock content %}

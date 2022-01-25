@@ -1,18 +1,13 @@
+{% load wagtailimages_tags %}
+{% image value.image original as banner_image %}
 {% block content %}
-<section class="fl-banner">
+<section class="fl-banner" style="background-image: url({{banner_image.url}});">
 	{% if value.title or value.text %}
-	<div class="fl-banner-content">
+	<div class="fl-hero-content">
 		{% if value.title %}
 		<h1>{{ value.title }}</h1>
 		{% endif %}
-		{% if value.text %}
-		<p>{{ value.text }}</p>
-		{% endif %}
 	</div>
-	{% endif %}
-	{% if value.image %}
-		{% load wagtailimages_tags %}
-		{% image value.image fill-1920x600-c75%}
 	{% endif %}
 </section>
 {% endblock content %}

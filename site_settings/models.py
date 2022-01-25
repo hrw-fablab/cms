@@ -16,7 +16,6 @@ from modelcluster.models import ClusterableModel
 from wagtail.core.models import Orderable
 from modelcluster.fields import ParentalKey
 
-
 class Sponsor(Orderable):
     logo = models.ForeignKey(
         "core.FablabImage",

@@ -1,70 +1,83 @@
+{% load wagtailcore_tags i18n %}
+{% wagtail_site as current_site%}
 {% block content %}
 <footer class="fl-brand margin-top">
-	<div class="fl-content large fl-grid cards padding-top padding-bottom">
-		<div>
-			<h3>Kontakt</h3>
-			<address>
-				{% if settings.site_settings.SiteSettings.street%}
-				{{settings.site_settings.SiteSettings.street}}
-				{% endif %}
+	<div class="fl-content large fl-footer padding-top padding-bottom">
+		<div class="fl-footer-content">
+			{% if settings.site_settings.SiteSettings.sponsor.all|length != 0%}
+			<div class="fl-flex row">
+				{% for element in settings.site_settings.SiteSettings.sponsor.all %}
+				{% load wagtailimages_tags %}
+				{% image element.logo original as sp_image %}
+				<img src="{{sp_image.url}}" alt="">
+				{% endfor %}
+			</div>
+			{% endif %}
 
-				{% if settings.site_settings.SiteSettings.housenumber%}
-				{{settings.site_settings.SiteSettings.housenumber}}
-				{% endif %}
+			{% if settings.site_settings.SiteSettings.street or settings.site_settings.SiteSettings.email %}
+			<div>
+				<div>
+				<h3>Kontakt</h3>
+				<address>
+					{% if settings.site_settings.SiteSettings.street%}
+					{{settings.site_settings.SiteSettings.street}}
+					{% endif %}
 
-				<br>
+					{% if settings.site_settings.SiteSettings.housenumber%}
+					{{settings.site_settings.SiteSettings.housenumber}}
+					{% endif %}
 
-				{% if settings.site_settings.SiteSettings.city%}
-				{{settings.site_settings.SiteSettings.city}}
-				{% endif %}
+					<br>
 
-				{% if settings.site_settings.SiteSettings.plz%}
-				{{settings.site_settings.SiteSettings.plz}}
-				{% endif %}
+					{% if settings.site_settings.SiteSettings.city%}
+					{{settings.site_settings.SiteSettings.city}}
+					{% endif %}
 
-				<br>
+					{% if settings.site_settings.SiteSettings.plz%}
+					{{settings.site_settings.SiteSettings.plz}}
+					{% endif %}
 
-				{% if settings.site_settings.SiteSettings.email%}
-				<a href="mailto:{{settings.site_settings.SiteSettings.email}}">{{settings.site_settings.SiteSettings.email}}</a>
-				{% endif %}
-			</address>
+					<br>
+
+					{% if settings.site_settings.SiteSettings.email%}
+					<a
+						href="mailto:{{settings.site_settings.SiteSettings.email}}">{{settings.site_settings.SiteSettings.email}}</a>
+					{% endif %}
+				</address>
+			</div>
+			</div>
+			{% endif %}
+
+			{% if settings.site_settings.SiteSettings.social.all|length != 0%}
+			<div>
+				<div>
+					<h3>Social Media</h3>
+					<ul>
+						{% for element in settings.site_settings.SiteSettings.social.all%}
+						<li>
+							<a href="element.url">{{element.title}}</a>
+						</li>
+						{% endfor%}
+					</ul>
+				</div>
+			</div>
+			{% endif %}
+
 		</div>
-
-		<div>
-			<h3>Service</h3>
+		<nav class="fl-footer-nav">
 			<ul>
 				<li>
-					<a href="{{settings.site_settings.SiteSettings.contact.url}}">Kontakt</a>
+					<a href="{{settings.site_settings.SiteSettings.contact.localized.url}}">Kontakt</a>
 				</li>
 				<li>
-					<a href="{{settings.site_settings.SiteSettings.impressum.url}}">Impressum</a>
+					<a href="{{settings.site_settings.SiteSettings.impressum.localized.url}}">Impressum</a>
 				</li>
 				<li>
-					<a href="{{settings.site_settings.SiteSettings.data_protection.url}}">Datenschutzerklärung</a>
+					<a
+						href="{{settings.site_settings.SiteSettings.data_protection.localized.url}}">Datenschutzerklärung</a>
 				</li>
 			</ul>
-		</div>
-
-		<div>
-			<h3>Social Media</h3>
-			<ul>
-				{% if settings.site_settings.SiteSettings.facebook%}
-				<li><a href="{{settings.site_settings.SiteSettings.facebook}}">Facebook</a></li>
-				{% endif %}
-
-				{% if settings.site_settings.SiteSettings.instagram%}
-				<li><a href="{{settings.site_settings.SiteSettings.instagram}}">Instagram</a></li>
-				{% endif %}
-
-				{% if settings.site_settings.SiteSettings.youtube%}
-				<li><a href="{{settings.site_settings.SiteSettings.youtube}}">Youtube</a></li>
-				{% endif %}
-
-				{% if settings.site_settings.SiteSettings.thingiverse%}
-				<li><a href="{{settings.site_settings.SiteSettings.thingiverse}}">Thingiverse</a></li>
-				{% endif %}
-			</ul>
-		</div>
+		</nav>
 	</div>
 </footer>
 {% endblock content %}

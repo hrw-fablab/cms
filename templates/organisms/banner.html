@@ -1,7 +1,7 @@
 {% block content %}
-<section class="fl-hero large">
+<section class="fl-banner">
 	{% if value.title or value.text %}
-	<div class="fl-hero-content">
+	<div class="fl-banner-content">
 		{% if value.title %}
 		<h1>{{ value.title }}</h1>
 		{% endif %}
@@ -10,9 +10,7 @@
 		{% endif %}
 	</div>
 	{% endif %}
-	{% if value.video %}
-	<video src="{{ value.video.url }}" muted autoplay loop></video>
-	{% elif value.image %}
+	{% if value.image %}
 		{% load wagtailimages_tags %}
 		{% image value.image original%}
 	{% endif %}

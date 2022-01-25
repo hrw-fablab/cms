@@ -6,7 +6,15 @@
 	{% endif %}
 	<div class="fl-grid gallery">
 		{% for element in value.cards%}
+		{% if element.block_type == "image"%}
+			<picture>
+				{% image element.value width-800 as wide_image %}
+				<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
+				{% image element.value width-500 %}
+			</picture>
+		{% else %}
 			{{element}}
+		{% endif %}
 		{% endfor %}
 	</div>
 </div>

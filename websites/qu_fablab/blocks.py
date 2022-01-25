@@ -1,4 +1,5 @@
 from wagtail.core import blocks
+from abstract.blocks.banner import BannerBlock
 
 from abstract.blocks.grabber import GrabberBlock
 from abstract.blocks.grid import GridBlock
@@ -41,6 +42,7 @@ class HomeBlock(blocks.StreamBlock):
     card = CardBlock()
     person = PersonBlock()
     html = HTMLBlock()
+    banner = BannerBlock()
 
 
 class FlexGridBlockElements(blocks.StreamBlock):
@@ -67,3 +69,4 @@ class FlexBlock(blocks.StreamBlock):
     card = CardBlock()
     person = PersonBlock()
     html = HTMLBlock()
+    banner = BannerBlock()

@@ -490,13 +490,13 @@ svg {
 .fl-paragraph .richtext-image.left {
 		aspect-ratio: inherit;
 		max-width: 100%;
-		width: inherit;
+		width: unset;
 	}
 .fl-paragraph .richtext-image.centered {
 		aspect-ratio: inherit;
 		align-self: center;
 		max-width: 100%;
-		width: inherit;
+		width: unset;
 	}
 /* purgecss end ignore */
 .fl-hero {
@@ -530,7 +530,6 @@ svg {
   align-self: end;
   position: relative;
   grid-area: container;
-  color: var(--text-1);
   background-color: var(--brand);
   color: var(--surface-1);
   display: flex;
@@ -547,7 +546,6 @@ svg {
   }
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     .fl-hero-content {
-      color: var(--surface-1);
       background-color: inherit;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
@@ -632,9 +630,9 @@ td {
   align-self: center;
   justify-content: center;
   grid-area: container;
-  color: var(--text-1);
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: var(--size-fluid-1)
+  color: var(--surface-1);
+  background-color: var(--brand);
+  padding: var(--size-5)
 }
 .fl-banner-content h1 {
     font-size: var(--font-size-7);
@@ -644,8 +642,6 @@ td {
   }
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     .fl-banner-content {
-      padding: var(--size-fluid-5);
-      color: var(--surface-1);
       background-color: inherit;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);

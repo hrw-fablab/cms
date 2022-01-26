@@ -257,45 +257,22 @@ button {
 }
 /* purgecss end ignore */
 .fl-content {
-	margin: 0 auto 0 auto;
-	max-width: 1720px;
+	--width: 85vw;
+	width: min(var(--width), 100rem);
+	margin-inline: auto;
 }
 .fl-content.large {
-	max-width: 1340px;
-	padding: 0
+	width: min(var(--width), 75rem);
 }
-@media (max-width: 1440px) {
-		.fl-content.large {
-			padding: var(--size-fluid-1);
-		}
-	}
 .fl-content.medium {
-	max-width: 1024px;
-	padding: 0
+	width: min(var(--width), 60rem);
 }
-@media (max-width: 768px) {
-		.fl-content.medium {
-			padding: var(--size-fluid-1);
-		}
-	}
 .fl-content.small {
-	max-width: 768px;
-	padding: 0
+	width: min(var(--width), 50rem);
 }
-@media (max-width: 768px) {
-		.fl-content.small {
-			padding: var(--size-fluid-1);
-		}
-	}
 .fl-content.tiny {
-	max-width: 480px;
-	padding: 0
+	width: min(var(--width), 50rem);
 }
-@media (max-width: 768px) {
-		.fl-content.tiny {
-			padding: var(--size-fluid-1);
-		}
-	}
 .fl-flex {
 	display: flex;
 	gap: var(--size-fluid-3);
@@ -441,7 +418,7 @@ button {
 }
 .fl-logo img {
 		width: auto;
-		max-height: 2rem;
+		max-height: var(--size-fluid-3);
 	}
 .fl-logo svg {
 		fill: var(--brand);
@@ -524,31 +501,16 @@ button {
   grid-template: "container";
   place-items: center center;
   height: 70vh;
+  max-height: 700px;
   overflow: hidden
 }
 .fl-hero img {
     grid-area: container;
     z-index: -1;
-    transform: scale(1.2);
-    height: 70vh;
-    aspect-ratio: 16 / 9;
-    object-position: center top;
   }
 @media (max-width: 768px) {
     .fl-hero {
-      height: max-content;
-    }
-
-    .fl-hero h1 {
-      font-size: var(--font-size-6) !important;
-    }
-
-    .fl-hero p {
-      font-size: var(--font-size-4) !important;
-      width: inherit !important;
-    }
-
-    .fl-hero img {
+      min-height: 40vh;
       height: max-content;
     }
   }
@@ -556,7 +518,8 @@ button {
   grid-area: container;
   color: var(--text-1);
   background-color: rgba(255, 255, 255, 0.85);
-  padding: var(--size-fluid-1)
+  padding: var(--size-fluid-1);
+  display: flex
 }
 .fl-hero-content h1 {
     font-size: var(--font-size-7);
@@ -565,14 +528,29 @@ button {
     font-size: var(--font-size-5);
   }
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-  .fl-hero-content {
-    padding: var(--size-fluid-5);
-    color: var(--surface-1);
-    background-color: inherit !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    .fl-hero-content {
+      padding: var(--size-fluid-5);
+      color: var(--surface-1);
+      background-color: inherit;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
   }
-}
+@media (max-width: 768px) {
+    .fl-hero-content {
+      align-self: end;
+      padding: var(--size-fluid-4);
+    }
+
+    .fl-hero-content h1 {
+      font-size: var(--font-size-6);
+    }
+
+    .fl-hero-content p {
+      font-size: var(--font-size-4);
+      width: inherit;
+    }
+  }
 table {
 width: 100%;
 margin: 20px auto;
@@ -625,8 +603,47 @@ td {
 }
 @media (max-width: 768px) {
     .fl-banner {
-      min-height: 20vh;
       height: max-content;
+    }
+  }
+.fl-banner-content {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  grid-area: container;
+  color: var(--text-1);
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: var(--size-fluid-1)
+}
+.fl-banner-content h1 {
+    font-size: var(--font-size-7);
+  }
+.fl-banner-content p {
+    font-size: var(--font-size-5);
+  }
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .fl-banner-content {
+      padding: var(--size-fluid-5);
+      color: var(--surface-1);
+      background-color: inherit;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+  }
+@media (max-width: 768px) {
+    .fl-banner-content {
+      height: 100%;
+      width: 100%;
+      padding: var(--size-fluid-5);
+    }
+
+    .fl-banner-content h1 {
+      font-size: var(--font-size-6);
+    }
+
+    .fl-banner-content p {
+      font-size: var(--font-size-4);
+      width: inherit;
     }
   }
 .fl-footer {

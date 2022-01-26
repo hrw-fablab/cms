@@ -455,7 +455,7 @@ button {
 	gap: var(--size-fluid-5);
 	transition: box-shadow 0.3s ease
 }
-.fl-split img {
+.fl-split :where(img, picture) {
 		object-fit: contain;
 		aspect-ratio: var(--aspect-landscape);
 	}
@@ -683,6 +683,9 @@ td {
 }
 .fl-accent:nth-child(odd) a:hover {
 		color: var(--brand);
+	}
+.fl-accent:nth-child(odd) .fl-split {
+		grid-template-columns: 0.9fr 1fr;
 	}
 .fl-accent:nth-child(odd) .fl-split-body {
 		order: 1;

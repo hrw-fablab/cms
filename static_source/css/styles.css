@@ -159,12 +159,10 @@ footer {
 }
 /* purgecss end ignore */
 h1{
-	padding: var(--size-4) 0 var(--size-4) 0;
 	font-size: var(--font-size-6);
 	font-family: Segoe UI;
 }
 h2{
-	padding: var(--size-4) 0 var(--size-4) 0;
 	font-size: var(--font-size-6);
 	font-family: Segoe UI;
 }
@@ -455,14 +453,18 @@ button {
 	gap: var(--size-fluid-5);
 	transition: box-shadow 0.3s ease
 }
-.fl-split :where(img, picture) {
-		object-fit: contain;
-		aspect-ratio: var(--aspect-landscape);
+.fl-split :where(picture, img) {
+		object-fit: cover;
+		aspect-ratio: var(--aspect-widescreen);
 	}
 @media (max-width: 1024px) {
 		.fl-split {
-			grid-template-columns: 1fr;
-			gap: var(--size-fluid-2);
+			grid-template-columns: 1fr !important;
+			gap: 0;
+		}
+
+		.fl-split .fl-split-body{
+			order: 1;
 		}
 
 		.fl-split .fl-split-media img{
@@ -470,7 +472,7 @@ button {
 		}
 	}
 .fl-split-media {
-	align-self: start;
+	align-self: center;
 }
 .fl-split-body {
 	display: flex;
@@ -508,12 +510,14 @@ button {
 	}
 .fl-paragraph .richtext-image.left {
 		aspect-ratio: inherit;
+		max-width: 100%;
 		width: inherit;
 	}
 .fl-paragraph .richtext-image.centered {
 		aspect-ratio: inherit;
-		width: inherit;
 		align-self: center;
+		max-width: 100%;
+		width: inherit;
 	}
 /* purgecss end ignore */
 .fl-hero {

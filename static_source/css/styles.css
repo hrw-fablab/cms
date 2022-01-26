@@ -232,6 +232,9 @@ button {
 	justify-content: center;
 	gap: var(--size-2);
 }
+svg {
+	pointer-events: none;
+}
 /* purgecss start ignore */
 .fl-grid {
 	display: grid;
@@ -271,7 +274,7 @@ button {
 	width: min(var(--width), 50rem);
 }
 .fl-content.tiny {
-	width: min(var(--width), 50rem);
+	width: min(var(--width), 30rem);
 }
 .fl-flex {
 	display: flex;
@@ -318,7 +321,7 @@ button {
 		justify-content: center;
 	}
 .fl-navigation {
-	padding: var(--size-fluid-1);
+	padding: var(--size-fluid-2);
 	box-shadow: var(--shadow-2);
 	background-color: var(--surface-1);
 	position: sticky;
@@ -504,32 +507,46 @@ button {
   max-height: 700px;
   overflow: hidden
 }
+.fl-hero > * {
+    grid-area: container;
+  }
 .fl-hero img {
     grid-area: container;
     z-index: -1;
   }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .fl-hero {
-      min-height: 40vh;
+      min-height: 50vh;
       height: max-content;
+    }
+
+    .fl-hero .fl-content {
+      align-self: end;
+      width: 100%;
+      height: 100%;
     }
   }
 .fl-hero-content {
+  align-self: end;
+  position: relative;
   grid-area: container;
   color: var(--text-1);
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: var(--size-fluid-1);
-  display: flex
+  background-color: var(--brand);
+  color: var(--surface-1);
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  padding: var(--size-5)
 }
 .fl-hero-content h1 {
     font-size: var(--font-size-7);
+    margin-bottom: var(--size-5);
   }
 .fl-hero-content p {
-    font-size: var(--font-size-5);
+    font-size: var(--font-size-4);
   }
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     .fl-hero-content {
-      padding: var(--size-fluid-5);
       color: var(--surface-1);
       background-color: inherit;
       backdrop-filter: blur(8px);
@@ -538,8 +555,10 @@ button {
   }
 @media (max-width: 768px) {
     .fl-hero-content {
-      align-self: end;
-      padding: var(--size-fluid-4);
+      width: 100%;
+      height: 100%;
+      justify-content: end;
+      align-items: center;
     }
 
     .fl-hero-content h1 {
@@ -547,8 +566,7 @@ button {
     }
 
     .fl-hero-content p {
-      font-size: var(--font-size-4);
-      width: inherit;
+      font-size: var(--font-size-3);
     }
   }
 table {

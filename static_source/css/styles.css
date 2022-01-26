@@ -602,6 +602,9 @@ td {
 .fl-media > :where(img,video,iframe) {
 		aspect-ratio: var(--aspect-widescreen);
 	}
+.fl-person {
+		aspect-ratio: var(--aspect-landscape);
+	}
 .fl-person dl > div {
 		display: flex;
 		gap: var(--size-3);

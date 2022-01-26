@@ -486,6 +486,11 @@ button {
 		border-radius: 50%;
 	}
 /* purgecss start ignore */
+.fl-paragraph {
+	display: flex;
+	flex-direction: column;
+	align-items: start
+}
 .fl-paragraph img {
 		aspect-ratio: var(--aspect-landscape);
 	}
@@ -500,6 +505,11 @@ button {
 .fl-paragraph .richtext-image.left {
 		aspect-ratio: inherit;
 		width: inherit;
+	}
+.fl-paragraph .richtext-image.centered {
+		aspect-ratio: inherit;
+		width: inherit;
+		align-self: center;
 	}
 /* purgecss end ignore */
 .fl-hero {
@@ -537,7 +547,7 @@ button {
 .fl-hero-content {
   grid-area: container;
   color: var(--text-1);
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.85);
   padding: var(--size-fluid-1)
 }
 .fl-hero-content h1 {

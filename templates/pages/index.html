@@ -3,11 +3,13 @@
 
 {% block content %}
 <main class="fl-main index padding-top" id="main">
-	<div class="fl-content large fl-grid columns">
-		{% for page in children %}
-			{% include "molecules/card.html" with value=page%}
-		{% endfor %}
+	<div class="fl-content large">
+		<div class="fl-grid columns">
+			{% for page in children %}
+				{% include "molecules/card.html" with value=page%}
+			{% endfor %}
+		</div>
+		{% include "molecules/pagination.html" with element=page%}
 	</div>
-	{% include "molecules/pagination.html" with element=page%}
 </main>
 {% endblock content %}

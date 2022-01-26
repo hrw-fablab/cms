@@ -1,6 +1,13 @@
 {% load wagtailimages_tags%}
 {% block content %}
-<div class="fl-content large margin-bottom">
+<div class="
+fl-content
+{% if value.cards|length <= 2%}
+medium
+{% else %}
+large
+{% endif %}
+margin-bottom">
 	{% if value.title %}
 		<h2 class="text-centered">{{value.title}}</h2>
 	{% endif %}
@@ -8,9 +15,9 @@
 		{% for element in value.cards%}
 		{% if element.block_type == "image"%}
 			<picture>
-				{% image element.value width-800 as wide_image %}
+				{% image element.value width-800 format-webp as wide_image %}
 				<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
-				{% image element.value width-500 %}
+				{% image element.value width-500 format-webp %}
 			</picture>
 		{% else %}
 			{{element}}

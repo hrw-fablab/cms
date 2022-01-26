@@ -3,9 +3,9 @@
 	{% if value.image%}
 	{% load wagtailimages_tags %}
 	<picture>
-		{% image value.image original as wide_image %}
+		{% image value.image width-800 as wide_image %}
 		<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
-		{% image value.image width-800 jpegquality-60 %}
+		{% image value.image width-600 %}
 	</picture>
 	{% endif %}
 

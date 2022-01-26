@@ -1,5 +1,12 @@
 {% block content %}
-<div class="fl-content large margin-bottom">
+<div class="
+fl-content
+{% if value.cards|length <= 2%}
+medium
+{% else %}
+large
+{% endif %}
+margin-bottom">
 	{% if value.title %}
 		<h2 class="text-centered">{{value.title}}</h2>
 	{% endif %}

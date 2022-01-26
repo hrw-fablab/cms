@@ -20,7 +20,7 @@
 		{% elif value.image %}
 		<picture>
 			{% load wagtailimages_tags %}
-			{% image value.image original as wide_image %}
+			{% image value.image width-1000 as wide_image %}
 				<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
 			{% image value.image width-800%}
 		</picture>

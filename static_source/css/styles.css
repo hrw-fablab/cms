@@ -456,7 +456,8 @@ button {
 	transition: box-shadow 0.3s ease
 }
 .fl-split img {
-		aspect-ratio: 16 / 9;
+		object-fit: contain;
+		aspect-ratio: var(--aspect-landscape);
 	}
 @media (max-width: 1024px) {
 		.fl-split {
@@ -468,6 +469,9 @@ button {
 			aspect-ratio: 6/ 3;
 		}
 	}
+.fl-split-media {
+	align-self: start;
+}
 .fl-split-body {
 	display: flex;
 	flex-direction: column;

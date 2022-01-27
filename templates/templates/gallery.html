@@ -14,11 +14,21 @@ margin-bottom">
 	<div class="fl-grid gallery">
 		{% for element in value.cards%}
 		{% if element.block_type == "image"%}
-			<picture>
-				{% image element.value width-800 format-webp as wide_image %}
-				<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
-				{% image element.value width-500 format-webp %}
-			</picture>
+			{% load wagtailimages_tags %}
+			{% image element.value width-768 format-webp as image_768 %}
+			{% image element.value width-480 format-webp as image_480 %}
+			<img decoding="async" loading="lazy"
+				class="{% if value.contain %}contain{% endif %}"
+				alt="{{image_480.alt}}" 
+				src="{{image_480.url}}" 
+				srcset="
+				{{image_480.url}} 480w,
+				{{image_768.url}} 768w,
+				" 
+				sizes="
+				(min-width: 768px) 768px,
+				(min-width: 480px) 480px
+				">
 		{% else %}
 			{{element}}
 		{% endif %}

@@ -15,20 +15,31 @@ margin-bottom">
 		{% for element in value.cards%}
 		{% if element.block_type == "image"%}
 			{% load wagtailimages_tags %}
-			{% image element.value width-768 format-webp as image_768 %}
-			{% image element.value width-480 format-webp as image_480 %}
-			<img decoding="async" loading="lazy"
-				class="{% if value.contain %}contain{% endif %}"
-				alt="{{image_480.alt}}" 
-				src="{{image_480.url}}" 
-				srcset="
-				{{image_480.url}} 480w,
-				{{image_768.url}} 768w,
-				" 
-				sizes="
-				(min-width: 768px) 768px,
-				(min-width: 480px) 480px
-				">
+				<picture>
+					{% image element.value width-768 format-webp as image_768 %}
+					{% image element.value width-480 format-webp as image_480 %}
+					<source
+					srcset="
+					{{image_480.url}} 480w,
+					{{image_768.url}} 768w,"
+					sizes="
+					(min-width: 768px) 768px,
+					(min-width: 480px) 480px"
+					type="image/webp"
+					>
+					{% image element.value width-768 format-jpeg as image_768 %}
+					{% image element.value width-480 format-jpeg as image_480 %}
+					<source
+					srcset="
+					{{image_480.url}} 480w,
+					{{image_768.url}} 768w,"
+					sizes="
+					(min-width: 768px) 768px,
+					(min-width: 480px) 480px"
+					type="image/jpg"
+					>
+					<img src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="lazy">
+				</picture>
 		{% else %}
 			{{element}}
 		{% endif %}

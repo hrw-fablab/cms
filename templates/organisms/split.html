@@ -18,12 +18,23 @@
 		{% if value.video %}
 			<video src="{{ value.video.url }}" controls></video>
 		{% elif value.image %}
-		<picture>
-			{% load wagtailimages_tags %}
-			{% image value.image width-1000 as wide_image %}
-				<source srcset="{{ wide_image.url }}" media="(min-width: 800px)">
-			{% image value.image width-800%}
-		</picture>
+		{% load wagtailimages_tags %}
+			{% image value.image fill-1024x768 format-webp as image_1024 %}
+			{% image value.image fill-768x576 format-webp as image_768 %}
+			{% image value.image fill-480x360 format-webp as image_480 %}
+			<img decoding="async" loading="lazy"
+				alt="{{image_480.alt}}" 
+				src="{{image_480.url}}" 
+				srcset="
+				{{image_480.url}} 480w,
+				{{image_768.url}} 768w,
+				{{image_1024.url}} 1024w,
+				" 
+				sizes="
+				(min-width: 1024px) 1024px,
+				(min-width: 768px) 768px,
+				(min-width: 480px) 480px
+				">
 		{% endif %}
 	</div>
 </section>

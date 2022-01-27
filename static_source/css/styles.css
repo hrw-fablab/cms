@@ -248,9 +248,9 @@ svg {
 .fl-grid.gallery {
 	grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr))
 }
-.fl-grid.gallery *:where(picture, img) {
+.fl-grid.gallery img {
 		aspect-ratio: var(--aspect-widescreen);
-		object-fit: contain;
+		object-fit: cover;
 	}
 .fl-grid.columns {
 	grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 1fr));
@@ -551,6 +551,14 @@ svg {
       -webkit-backdrop-filter: blur(8px);
     }
   }
+@media (max-width: 1024px) {
+    .fl-hero-content {
+      width: 60%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 @media (max-width: 768px) {
     .fl-hero-content {
       width: 100%;
@@ -685,6 +693,7 @@ td {
 		}
 .fl-footer-nav ul {
 		display: flex;
+		flex-wrap: wrap;
 		list-style: none;
 		gap: var(--size-4);
 	}
@@ -696,6 +705,7 @@ td {
 	align-items: center;
 	gap: var(--size-fluid-3);
 }
+/* purgecss start ignore */
 .hidden {
 	display: none !important;
 }
@@ -783,3 +793,13 @@ td {
 .color-text-1 {
 	color: var(--text-1);
 }
+.aspect-landscape{
+	aspect-ratio: var(--aspect-landscape);
+}
+.aspect-widescreen{
+	aspect-ratio: var(--aspect-widescreen);
+}
+.contain {
+	object-fit: contain !important;
+}
+/* purgecss end ignore */

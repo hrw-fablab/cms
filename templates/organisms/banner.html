@@ -1,5 +1,5 @@
 {% load wagtailimages_tags %}
-{% image value.image fill-1920x600-c75 format-webp as banner_image %}
+{% image value.image fill-1440x600-c75 format-jpeg as banner_image %}
 {% block content %}
 <section class="fl-banner margin-bottom" style="background-image: url({{banner_image.url}})">
 	{% if value.title or value.text %}

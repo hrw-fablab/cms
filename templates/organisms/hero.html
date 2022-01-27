@@ -16,7 +16,31 @@
 	<video src="{{ value.video.url }}" muted autoplay loop></video>
 	{% elif value.image %}
 	{% load wagtailimages_tags %}
-	{% image value.image fill-1920x600-c75 format-webp%}
+	{% image value.image fill-1920x700 format-webp as image_1920 %}
+	{% image value.image fill-1440x700 format-webp as image_1440 %}
+	{% image value.image fill-1024x600 format-webp as image_1024 %}
+	{% image value.image fill-768x576 format-webp as image_768 %}
+	{% image value.image fill-480x360 format-webp as image_480 %}
+	<img
+		decoding="async"
+		loading="eager"
+		rel="preload"
+		alt="{{image_480.alt}}" 
+		src="{{image_480_jpeg.url}}" 
+		srcset="
+		{{image_480.url}} 480w,
+		{{image_768.url}} 768w,
+		{{image_1024.url}} 1024w,
+		{{image_1440.url}} 1440w,
+		{{image_1920.url}} 1920w,
+		" 
+		sizes="
+		(min-width: 1920px) 1920px,
+		(min-width: 1440px) 1440px,
+		(min-width: 1024px) 1024px,
+		(min-width: 768px) 768px,
+		(min-width: 480px) 480px
+		">
 	{% endif %}
 </section>
 {% endblock content %}

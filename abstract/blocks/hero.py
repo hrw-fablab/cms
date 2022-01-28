@@ -5,7 +5,7 @@ from wagtailmedia.blocks import VideoChooserBlock
 
 class HeroBlock(blocks.StructBlock):
     title = blocks.TextBlock(required=False)
-    text = blocks.TextBlock(required=False)
+    text = blocks.TextBlock(required=False, max_length=255)
     image = ImageChooserBlock(required=False)
     video = VideoChooserBlock(required=False, icon="media")
 

@@ -12,46 +12,56 @@
 	<div>
 		{% if value.name %}
 		<header>
-			<h3>{{value.name}}</h3>
+			{% if value.employment %}
+			<p>{{value.employment}}</p>
+			{% endif %}
+			{% if value.link %}
+				<a href="{{value.link}}"><h3>{{value.name}}</h3></a>
+			{% else %}
+				<h3>{{value.name}}</h3>
+			{% endif %}
 		</header>
 		{% endif %}
 
+		{% if value.since or value.career or value.responsibility or value.expert or value.projects%}
 		<dl class="fl-dl">
-			<div>
+			<div class="fl-flex row">
 				{% if value.since %}
 				<dt><strong>Im Labor seit:</strong></dt>
 				<dd>{{value.since}}</dd>
 				{% endif %}
 			</div>
 
-			<div>
-				{% if value.career %}
+			{% if value.career %}
+			<div class="fl-flex column">
 				<dt><strong>Lebenslauf:</strong></dt>
 				<dd>{{value.career}}</dd>
-				{% endif %}
 			</div>
+			{% endif %}
 
-			<div>
-				{% if value.responsibility %}
+			{% if value.responsibility %}
+			<div class="fl-flex column">
 				<dt><strong>Aufgabenbereiche:</strong></dt>
 				<dd>{{value.responsibility}}</dd>
-				{% endif %}
 			</div>
+			{% endif %}
 
-			<div>
-				{% if value.expert %}
+			{% if value.expert %}
+			<div class="fl-flex column">
 				<dt><strong>Experte für:</strong></dt>
 				<dd>{{value.expert}}</dd>
-				{% endif %}
 			</div>
+			{% endif %}
 
-			<div>
-				{% if value.projects %}
+			{% if value.projects %}
+			<div class="fl-flex column">
 				<dt><strong>Projekte:</strong></dt>
 				<dd>{{value.projects}}</dd>
-				{% endif %}
 			</div>
+			{% endif %}
 		</dl>
+		{% endif %}
+
 		{% if value.description %}
 		<p>{{value.description}}</p>
 		{% endif %}

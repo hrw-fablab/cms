@@ -17,11 +17,11 @@
 	{% elif value.image %}
 	{% load wagtailimages_tags %}
 	<picture>
-		{% image value.image fill-1920x700 format-webp as image_1920 %}
-		{% image value.image fill-1440x700 format-webp as image_1440 %}
-		{% image value.image fill-1024x700 format-webp as image_1024 %}
-		{% image value.image fill-768x576 format-webp as image_768 %}
-		{% image value.image fill-480x360 format-webp as image_480 %}
+		{% image value.image fill-1920x700 format-webp webpquality-60 as image_1920 %}
+		{% image value.image fill-1440x700 format-webp webpquality-60 as image_1440 %}
+		{% image value.image fill-1024x700 format-webp webpquality-60 as image_1024 %}
+		{% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
+		{% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
 		<source
 		srcset="
 		{{image_480.url}} 480w,
@@ -37,7 +37,7 @@
 		(min-width: 480px) 480px"
 		type="image/webp"
 		>
-		{% image value.image fill-1920x700 format-jpeg as image_1920 %}
+		{% image value.image fill-1920x700 format-jpeg  as image_1920 %}
 		{% image value.image fill-1440x700 format-jpeg as image_1440 %}
 		{% image value.image fill-1024x700 format-jpeg as image_1024 %}
 		{% image value.image fill-768x576 format-jpeg as image_768 %}

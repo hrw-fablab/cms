@@ -5,7 +5,8 @@ from wagtail.images.blocks import ImageChooserBlock
 class PersonBlock(blocks.StructBlock):
     image = ImageChooserBlock(required=False)
     name = blocks.CharBlock(required=False)
-    employment = blocks.ChoiceBlock(choices=[("SHK", "shk")], required=False)
+    employment = blocks.CharBlock(required=False)
+    link = blocks.URLBlock(required=False)
     since = blocks.DateBlock(required=False)
     career = blocks.CharBlock(required=False)
     responsibility = blocks.CharBlock(required=False)

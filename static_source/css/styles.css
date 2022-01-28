@@ -160,14 +160,10 @@ h2{
 	font-family: Segoe UI;
 }
 h3{
-	font-size: var(--font-size-5);
-	font-family: Segoe UI;
-}
-h4{
 	font-size: var(--font-size-4);
 	font-family: Segoe UI;
 }
-h5{
+h4{
 	font-size: var(--font-size-3);
 	font-family: Segoe UI;
 }
@@ -253,7 +249,7 @@ svg {
 	margin-inline: auto;
 }
 .fl-content.large {
-	width: min(var(--width), 75rem);
+	width: min(var(--width), 80rem);
 }
 .fl-content.medium {
 	width: min(var(--width), 60rem);
@@ -589,7 +585,7 @@ svg {
 		padding: 0 !important;
 	}
 .fl-person header {
-		margin-bottom: var(--size-2);
+		margin-bottom: var(--size-3);
 	}
 .fl-person dl {
 		display: flex;

@@ -8,7 +8,7 @@ document.addEventListener("click", (event) => {
 		return event.target.nextElementSibling.classList.add("hidden")
 	}
 	for (element of document.getElementsByClassName("submenu")) { element.classList.add("hidden") }
-});
+}, {passive: true});
 
 // Function to handle Display of Menu on Mobile Navigation
 document.getElementById("menu-button").addEventListener("click", (event) => {
@@ -17,4 +17,4 @@ document.getElementById("menu-button").addEventListener("click", (event) => {
 		return;
 	}
 	event.target.nextElementSibling.style.display = "none";
-})
+}, {passive: true})

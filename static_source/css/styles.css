@@ -120,10 +120,7 @@
 .fl-accent:nth-child(odd) a:hover {
 		color: var(--brand);
 	}
-.fl-accent:nth-child(odd) .fl-split {
-		grid-template-columns: 0.9fr 1fr;
-	}
-.fl-accent:nth-child(odd) .fl-split-body {
+.fl-accent:nth-child(odd) .fl-split > :first-child {
 		order: 1;
 	}
 .fl-brand {
@@ -269,6 +266,9 @@
 .padding-small {
 	padding: var(--size-fluid-1);
 }
+.padding-tiny {
+	padding: var(--size-2);
+}
 .padding-block-large {
 	padding-block: var(--size-fluid-6);
 }
@@ -277,6 +277,9 @@
 }
 .padding-block-small {
 	padding-block: var(--size-fluid-1);
+}
+.padding-block-tiny {
+	padding-block: var(--size-2);
 }
 .padding-inline-large {
 	padding-inline: var(--size-fluid-6);
@@ -287,6 +290,9 @@
 .padding-inline-small {
 	padding-inline: var(--size-fluid-1);
 }
+.padding-inline-tiny {
+	padding-inline: var(--size-2);
+}
 .padding-inline-start-large {
 	padding-inline-start: var(--size-fluid-6);
 }
@@ -295,6 +301,9 @@
 }
 .padding-inline-start-small {
 	padding-inline-start: var(--size-fluid-1);
+}
+.padding-inline-start-tiny {
+	padding-inline-start: var(--size-2);
 }
 .padding-inline-end-large {
 	padding-inline-end: var(--size-fluid-6);
@@ -305,6 +314,9 @@
 .padding-inline-end-small {
 	padding-inline-end: var(--size-fluid-1);
 }
+.padding-inline-end-tiny {
+	padding-inline-end: var(--size-2);
+}
 .padding-block-start-large {
 	padding-block-start: var(--size-fluid-6);
 }
@@ -314,6 +326,9 @@
 .padding-block-start-small {
 	padding-block-start: var(--size-fluid-1);
 }
+.padding-block-start-tiny {
+	padding-block-start: var(--size-2);
+}
 .padding-block-end-large {
 	padding-block-end: var(--size-fluid-6);
 }
@@ -322,6 +337,9 @@
 }
 .padding-block-end-small {
 	padding-block-end: var(--size-fluid-1);
+}
+.padding-block-end-tiny {
+	padding-block-end: var(--size-2);
 }
 .text-start {
 	text-align: start;
@@ -513,12 +531,6 @@ svg {
 	flex-direction: column;
 	gap: var(--size-2);
 }
-.fl-card > :not(picture, img) {
-		padding: 0 var(--size-2);
-	}
-.fl-card header {
-		margin-bottom: var(--size-4);
-	}
 @media (max-width: 768px) {
 		.fl-card {
 			grid-column: inherit !important;
@@ -638,7 +650,7 @@ svg {
 }
 @media (max-width: 1024px) {
 		.fl-split {
-			grid-template-columns: 1fr !important;
+			grid-template-columns: 1fr;
 			gap: inherit;
 		}
 
@@ -782,9 +794,6 @@ svg {
 	}
 .fl-media > :where(img,video,iframe) {
 		aspect-ratio: var(--aspect-widescreen);
-	}
-.fl-person {
-		padding: 0 !important;
 	}
 .fl-banner {
   display: flex;

@@ -19,7 +19,7 @@
 			<video class="aspect-widescreen cover" src="{{ value.video.url }}" controls></video>
 		{% elif value.image %}
 		{% load wagtailimages_tags %}
-		<picture class="aspect-widescreen cover">
+		<picture>
 			{% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
 			{% image value.image fill-600x360 format-webp webpquality-60 as image_600 %}
 			{% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
@@ -46,7 +46,7 @@
 			(min-width: 1024px) 480px"
 			type="image/jpg"
 			>
-			<img src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="eager" rel="preload">
+			<img class="aspect-widescreen" src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="eager" rel="preload">
 		</picture>
 		{% endif %}
 	</div>

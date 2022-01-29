@@ -317,7 +317,7 @@ svg {
 	z-index: 10;
 }
 .fl-language {
-	margin-left: auto;
+	margin-inline-start: auto;
 }
 .fl-menu {
 	display: flex;
@@ -333,7 +333,7 @@ svg {
 	}
 .fl-menu > button {
 		display: none;
-		margin-left: auto;
+		margin-inline-start: auto;
 	}
 @media (max-width: 1440px) {
 		.fl-menu {
@@ -528,7 +528,7 @@ svg {
 }
 .fl-hero-content h1 {
     font-size: var(--font-size-7);
-    margin-bottom: var(--size-5);
+    margin-block-end: var(--size-5);
   }
 .fl-hero-content p {
     font-size: var(--font-size-4);

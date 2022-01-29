@@ -6,14 +6,14 @@ medium
 {% else %}
 large
 {% endif %}
-margin-bottom">
+margin-block-end-medium">
 	{% if value.title %}
-		<h2 class="text-centered margin-bottom">{{value.title}}</h2>
+		<h2 class="text-centered margin-block-end-small">{{value.title}}</h2>
 	{% endif %}
-	<div class="fl-grid cards">
+	<div class="fl-grid cards gap-medium">
 		{% for element in value.cards%}
 			{% if element.block_type == "card" %}
-				{% include "molecules/card.html" with value=element.value class="text-centered"%}
+				{% include "molecules/card.html" with value=element.value class="text-centered aspect-widescreen"%}
 			{% elif element.block_type == "person" %}
 				{% include "molecules/person.html" with value=element.value%}
 			{% else %}

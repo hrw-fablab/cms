@@ -1,7 +1,7 @@
 {% block content %}
-<div class="fl-accent margin-bottom">
-<section class="fl-content large fl-split padding-top padding-bottom">
-	<div class="fl-split-body">
+<div class="fl-accent margin-block-end-medium padding-block-medium">
+<section class="fl-content large fl-split gap-medium">
+	<div class="fl-flex-column justify-center gap-small">
 		{% if value.title %}
 			<h2>{{value.title}}</h2>
 		{% endif %}
@@ -14,12 +14,12 @@
 			<a href="{{value.link.get_url}}">Erfahre Mehr</a>
 		{% endif %}
 	</div>
-	<div class="fl-split-media">
+	<div class="align-self-center">
 		{% if value.video %}
-			<video src="{{ value.video.url }}" controls></video>
+			<video class="aspect-widescreen cover" src="{{ value.video.url }}" controls></video>
 		{% elif value.image %}
 		{% load wagtailimages_tags %}
-		<picture>
+		<picture class="aspect-widescreen cover">
 			{% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
 			{% image value.image fill-600x360 format-webp webpquality-60 as image_600 %}
 			{% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}

@@ -7,11 +7,11 @@ medium
 {% else %}
 large
 {% endif %}
-margin-bottom">
+margin-block-end-medium">
 	{% if value.title %}
-		<h2 class="text-centered margin-bottom">{{value.title}}</h2>
+		<h2 class="text-centered margin-block-end-medium">{{value.title}}</h2>
 	{% endif %}
-	<div class="fl-grid gallery">
+	<div class="fl-grid gallery gap-medium">
 		{% for element in value.cards%}
 		{% if element.block_type == "image"%}
 			{% load wagtailimages_tags %}

@@ -1,5 +1,5 @@
 {% block content %}
-<section class="fl-card fl-person">
+<section class="fl-card aspect-box">
 	{% load wagtailimages_tags %}
 	<picture>
 		{% image value.image original as wide_image %}
@@ -7,9 +7,9 @@
 		{% image value.image width-800 jpegquality-60 %}
 	</picture>
 
-	<div>
+	<div class="padding-inline-tiny">
 		{% if value.name %}
-		<header>
+		<header class="margin-block-end-small">
 			{% if value.employment %}
 			<p>{{value.employment}}</p>
 			{% endif %}
@@ -22,7 +22,7 @@
 		{% endif %}
 
 		{% if value.since or value.career or value.responsibility or value.expert or value.projects%}
-		<dl class="fl-dl">
+		<dl class="fl-flex-column gap-small">
 			<div class="fl-flex row">
 				{% if value.since %}
 				<dt><strong>Im Labor seit:</strong></dt>

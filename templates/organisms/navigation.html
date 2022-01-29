@@ -1,8 +1,8 @@
 {% load wagtailcore_tags i18n %}
 {% wagtail_site as current_site%}
 {% block content %}
-<div class="fl-navigation">
-	<nav class="fl-content fl-menu" aria-label="Main Menu">
+<div class="fl-navigation padding-small">
+	<nav class="fl-content fl-menu gap-medium" aria-label="Main Menu">
 		<a class="fl-logo" href="{{ current_site.root_url }}">
 			{% if settings.site_settings.SiteSettings.logo %}
 				{% load wagtailimages_tags %}
@@ -24,7 +24,7 @@
 					</svg>
 				</button>
 				{% if element.get_children.count != 0 %}
-				<ul class="fl-menu submenu hidden">
+				<ul class="fl-menu gap-medium submenu hidden">
 					{% for subelement in element.get_children.specific%}
 					<li><a href="{{subelement.localized.url}}">{{subelement.localized}}</a></li>
 					{% endfor%}

@@ -1,19 +1,12 @@
 {% block content %}
-<div class="
-fl-content
-{% if value.cards|length <= 2%}
-medium
-{% else %}
-large
-{% endif %}
-margin-block-end-medium">
+<div class="fl-content large margin-block-end-medium">
 	{% if value.title %}
 		<h2 class="text-centered margin-block-end-small">{{value.title}}</h2>
 	{% endif %}
-	<div class="fl-grid cards gap-medium">
+	<div class="fl-grid {% if value.cards|length <= 2 %} columns {% else %} cards {% endif %} gap-medium">
 		{% for element in value.cards%}
 			{% if element.block_type == "card" %}
-				{% include "molecules/card.html" with value=element.value class="text-centered aspect-widescreen"%}
+				{% include "molecules/card.html" with value=element.value class="aspect-widescreen"%}
 			{% elif element.block_type == "person" %}
 				{% include "molecules/person.html" with value=element.value%}
 			{% else %}

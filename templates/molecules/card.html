@@ -35,13 +35,19 @@
 		{% if value.date %}
 		<time>{{value.date}}</time>
 		{% endif %}
+
 		{% if value.url %}
 		<a href="{{value.localized.url}}">
 			<h3>{{value.localized.title}}</h3>
 		</a>
+		{% elif value.link %}
+		<a href="{{value.link.get_url}}">
+			<h3>{{value.title}}</h3>
+		</a>
 		{% else %}
 		<h3>{{value.title}}</h3>
 		{% endif %}
+
 		{% if value.number %}
 			<p>Anzahl: {{value.number}}</p>
 		{% endif %}
@@ -55,10 +61,6 @@
 	{% if value.introduction%}
 	<p>{{value.localized.introduction}}</p>
 	{% endif%}
-
-	{% if value.link.get_url != None %}
-	<a href="{{value.link.get_url}}">Erfahre Mehr</a>
-	{% endif %}
 </div>
 </section>
 {% endblock content %}

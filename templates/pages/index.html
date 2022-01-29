@@ -6,7 +6,7 @@
 	<div class="fl-content large margin-block-start-medium">
 		<div class="fl-grid columns gap-medium">
 			{% for page in children %}
-				{% include "molecules/card.html" with value=page%}
+				{% include "molecules/card.html" with value=page class="aspect-widescreen"%}
 			{% endfor %}
 		</div>
 		{% include "molecules/pagination.html" with element=page%}

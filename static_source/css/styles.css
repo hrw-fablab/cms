@@ -408,6 +408,7 @@ h4 {
 	align-items: center
 }.fl-menu a {
 		text-decoration: none;
+		text-decoration-thickness: .1em;
 	}.fl-menu :hover:where(button, a) {
 		color: var(--brand);
 		text-decoration: underline;

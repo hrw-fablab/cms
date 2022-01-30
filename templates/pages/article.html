@@ -13,7 +13,7 @@
 			<a href="{{parent.url}}?tag={{page.tag}}">{{page.tag}}</a>
 			{% endif %}
 			<h1>{{page.title}}</h1>
-			<div class="fl-flex row gap">
+			<div class="fl-flex-row gap-medium">
 				{% if page.author %}
 				<a href="{{parent.url}}?author={{page.author.last_name}}" class="fl-author">
 					{% image page.author.image fill-120x120 as author_image %}
@@ -22,7 +22,7 @@
 					{{page.author.last_name}}
 				</a>
 				{% endif %}
-				<time class="fl-flex row">
+				<time class="fl-flex-row gap-tiny align-center">
 					<svg viewBox="0 0 24 24" width="1.5rem" height="1.5rem"><path d="M20 20h-4v-4h4v4zm-6-10h-4v4h4v-4zm6 0h-4v4h4v-4zM8 16H4v4h4v-4zm6 0h-4v4h4v-4zm-6-6H4v4h4v-4zm16-8v22H0V2h3v1a2 2 0 0 0 4 0V2h10v1a2 2 0 0 0 4 0V2h3zm-2 6H2v14h20V8zm-2-7a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V1zM6 3a1 1 0 1 1-2 0V1a1 1 0 1 1 2 0v2z"/></svg>
 					{{page.date}}
 				</time>

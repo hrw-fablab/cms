@@ -1,4 +1,4 @@
-# Content Managment System HRW-Fablab
+# Content Managment System
 
 Das Content Managment System für das HRW-Fablab sowie weitere Projektseiten. Wir verwenden [Wagtail](https://wagtail.io/) als CMS System.
 

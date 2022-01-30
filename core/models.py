@@ -91,7 +91,7 @@ class FablabBasePage(Page):
     def get_context(self, request):
         context = super().get_context(request)
         context["menuitems"] = (
-            Site.find_for_request(request).root_page.get_children().live().in_menu()
+            Site.find_for_request(request).root_page.get_children().live().public().in_menu()
         )
         return context
 

@@ -1,7 +1,7 @@
 {% load wagtailimages_tags %}
 {% image value.image fill-1440x600-c75 format-jpeg as banner_image %}
 {% block content %}
-<section class="fl-banner fl-flex justify-center align-center margin-block-end-medium" style="background-image: url({{banner_image.url}})">
+<section class="fl-banner fl-flex-column justify-center align-center margin-block-end-medium" style="background-image: url({{banner_image.url}})">
 	{% if value.title or value.text %}
 	<div class="fl-flex fl-glass padding-medium">
 		{% if value.title %}

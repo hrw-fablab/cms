@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "search",
     "websites.fablab",
     "websites.qu_fablab",
+    "wagtailcache",
     "wagtail_link_block",
     "wagtail_color_panel",
     "wagtailmedia",
@@ -62,6 +63,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "wagtailcache.cache.UpdateCacheMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -72,6 +74,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    "wagtailcache.cache.FetchFromCacheMiddleware",
 ]
 
 ROOT_URLCONF = "urls"
@@ -205,3 +208,12 @@ WAGTAILMEDIA = {
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(PROJECT_DIR, 'cache'),
+        'KEY_PREFIX': 'wagtailcache',
+        'TIMEOUT': 3600,
+    }
+}

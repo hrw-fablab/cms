@@ -1,17 +1,17 @@
 {% block content %}
 <div class="fl-accent margin-block-end-medium padding-block-medium">
 <section class="fl-content large fl-split gap-medium">
-	<div class="fl-flex-column justify-center gap-small">
+	<div class="fl-flex-column justify-center gap-tiny">
 		{% if value.title %}
-			<h2>{{value.title}}</h2>
+			{% if value.link.get_url != None %}
+				<a href="{{value.link.get_url}}"><h2>{{value.title}}</h2></a>
+			{% else %}
+				<h2>{{value.title}}</h2>
+			{% endif %}
 		{% endif %}
 
 		{% if value.text %}
 			<p>{{value.text}}</p>
-		{% endif %}
-
-		{% if value.link.get_url != None %}
-			<a href="{{value.link.get_url}}">Erfahre Mehr</a>
 		{% endif %}
 	</div>
 	<div class="align-self-center">

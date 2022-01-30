@@ -40,7 +40,7 @@
 		<a href="{{value.localized.url}}">
 			<h3>{{value.localized.title}}</h3>
 		</a>
-		{% elif value.link %}
+		{% elif value.link.get_url != None %}
 		<a href="{{value.link.get_url}}">
 			<h3>{{value.title}}</h3>
 		</a>

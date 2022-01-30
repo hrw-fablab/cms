@@ -22,7 +22,7 @@ class QuIndexPage(AbstractIndexPage):
                 author__last_name=request.GET.get("author")
             ).order_by("-last_published_at")
 
-        paginator = Paginator(all_children, 4)
+        paginator = Paginator(all_children, 8)
         page = request.GET.get("page")
         try:
             children = paginator.page(page)

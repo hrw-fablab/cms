@@ -8,6 +8,7 @@ from wagtailmedia.models import AbstractMedia
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 
+from wagtailcache.cache import WagtailCacheMixin
 
 OGTYPECHOICES = (
     ("website", "website"),
@@ -54,7 +55,7 @@ class FablabMedia(AbstractMedia):
 
 
 # Abstract Base Page Layout
-class FablabBasePage(Page):
+class FablabBasePage(WagtailCacheMixin, Page):
     og_image = models.ForeignKey(
         "core.FablabImage",
         null=True,

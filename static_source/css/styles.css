@@ -532,7 +532,11 @@ h4 {
 		align-self: center;
 		max-width: 100%;
 		width: unset;
-	}/* purgecss end ignore */.fl-hero {
+	}@media (max-width: 1024px) {
+		.fl-richtext p {
+			text-align: unset;
+		}
+	  }/* purgecss end ignore */.fl-hero {
   display: grid;
   grid-template: "container";
   place-items: center center;

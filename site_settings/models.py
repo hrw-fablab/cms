@@ -101,6 +101,14 @@ class SiteSettings(BaseSetting, ClusterableModel):
     surface_color_one = ColorField(null=True, blank=True)
     surface_color_two = ColorField(null=True, blank=True)
 
+    intern_website = models.ForeignKey(
+        "wagtailcore.Page",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
     panels = [
         MultiFieldPanel(
             [
@@ -142,6 +150,7 @@ class SiteSettings(BaseSetting, ClusterableModel):
         ),
         InlinePanel("sponsor", label="Sponsoren"),
         InlinePanel("social", label="Social Media"),
+        PageChooserPanel("intern_website"),
     ]
 
     class Meta:

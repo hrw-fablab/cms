@@ -34,7 +34,7 @@ class AbstractArticlePage(FablabBasePage):
 
     date = models.DateField()
 
-    introduction = models.CharField(max_length=255)
+    introduction = models.CharField(max_length=150)
 
     body = RichTextField(
         features=[

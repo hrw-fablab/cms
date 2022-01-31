@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html class="no-js" lang="de">
 <head>
+    {% if page.index == "noindex"%}
+        <meta name="robots" content="noindex" />
+    {% endif %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
@@ -22,6 +25,7 @@
             --surface-2: {{settings.site_settings.SiteSettings.surface_color_two}};
         }
     </style>
+
     <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}">
     <meta property="og:description" content="{{page.search_description}}">
 

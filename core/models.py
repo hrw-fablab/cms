@@ -22,6 +22,11 @@ TWTYPECHOICES = (
     ("player", "player"),
 )
 
+INDEXCHOICES = (
+    ("index", "index"),
+    ("noindex", "noindex"),
+)
+
 # Custom Image Model
 # https://docs.wagtail.io/en/stable/advanced_topics/images/custom_image_model.html
 class FablabImage(AbstractImage):
@@ -56,6 +61,8 @@ class FablabMedia(AbstractMedia):
 
 # Abstract Base Page Layout
 class FablabBasePage(WagtailCacheMixin, Page):
+    index = models.CharField(max_length=255, choices=INDEXCHOICES, default="index")
+
     og_image = models.ForeignKey(
         "core.FablabImage",
         null=True,
@@ -73,6 +80,7 @@ class FablabBasePage(WagtailCacheMixin, Page):
     )
 
     promote_panels = Page.promote_panels + [
+        FieldPanel("index", heading="Index"),
         MultiFieldPanel(
             [
                 ImageChooserPanel("og_image", heading="Image"),

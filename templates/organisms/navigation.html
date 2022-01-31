@@ -3,7 +3,7 @@
 {% block content %}
 <div class="fl-navigation padding-small">
 	<nav class="fl-content fl-menu gap-medium" aria-label="Main Menu">
-		<a class="fl-logo" href="{{ current_site.root_url }}">
+		<a class="fl-logo" href="{{ current_site.root_url }}/{{LANGUAGE_CODE}}">
 			{% if settings.site_settings.SiteSettings.logo %}
 				{% load wagtailimages_tags %}
 				{% image settings.site_settings.SiteSettings.logo original%}

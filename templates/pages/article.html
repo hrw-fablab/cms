@@ -6,7 +6,42 @@
 	<article class="fl-content medium margin-block-start-medium">
 		{% if page.image %}
 		{% load wagtailimages_tags %}
-		{% image page.image original class="aspect-widescreen" %}
+		<figure class="aspect-widescreen">
+			<picture>
+				{% image page.image fill-1024x700 format-webp webpquality-60 as image_1024 %}
+				{% image page.image fill-768x576 format-webp webpquality-60 as image_768 %}
+				{% image page.image fill-480x360 format-webp webpquality-60 as image_480 %}
+				<source
+				srcset="
+				{{image_480.url}} 480w,
+				{{image_768.url}} 768w,
+				{{image_1024.url}} 1024w,"
+				sizes="
+				(min-width: 1024px) 1024px,
+				(min-width: 768px) 768px,
+				(min-width: 480px) 480px"
+				type="image/webp"
+				>
+				{% image page.image fill-1024x700 format-jpeg as image_1024 %}
+				{% image page.image fill-768x576 format-jpeg as image_768 %}
+				{% image page.image fill-480x360 format-jpeg as image_480 %}
+				<source
+				srcset="
+				{{image_480.url}} 480w,
+				{{image_768.url}} 768w,
+				{{image_1024.url}} 1024w,"
+				sizes="
+				(min-width: 1024px) 1024px,
+				(min-width: 768px) 768px,
+				(min-width: 480px) 480px"
+				type="image/jpg"
+				>
+				<img src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="eager" rel="preload" class="aspect-widescreen">
+			</picture>
+			<figcaption>
+				{{page.image.credit}}
+			</figcaption>
+		</figure>
 		{% endif %}
 		<header class="fl-flex column margin-block-start-small margin-block-end-medium">
 			{% if page.tag %}

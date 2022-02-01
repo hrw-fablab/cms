@@ -1,32 +1,37 @@
 {% block content %}
-<section class=" fl-card {{class}} ">
+<section class=" fl-card aspect-widescreen">
 	{% if value.image%}
 	{% load wagtailimages_tags %}
-	<picture>
-		{% image value.image fill-768x576 format-webp as image_768 %}
-		{% image value.image fill-480x360 format-webp as image_480 %}
-		<source
-		srcset="
-		{{image_480.url}} 480w,
-		{{image_768.url}} 768w,"
-		sizes="
-		(min-width: 768px) 768px,
-		(min-width: 480px) 480px"
-		type="image/webp"
-		>
-		{% image value.image fill-768x576 format-jpeg as image_768 %}
-		{% image value.image fill-480x360 format-jpeg as image_480 %}
-		<source
-		srcset="
-		{{image_480.url}} 480w,
-		{{image_768.url}} 768w,"
-		sizes="
-		(min-width: 768px) 768px,
-		(min-width: 480px) 480px"
-		type="image/jpg"
-		>
-		<img src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="lazy">
-	</picture>
+	<figure>
+		<picture>
+			{% image value.image fill-768x576 format-webp as image_768 %}
+			{% image value.image fill-480x360 format-webp as image_480 %}
+			<source
+			srcset="
+			{{image_480.url}} 480w,
+			{{image_768.url}} 768w,"
+			sizes="
+			(min-width: 768px) 768px,
+			(min-width: 480px) 480px"
+			type="image/webp"
+			>
+			{% image value.image fill-768x576 format-jpeg as image_768 %}
+			{% image value.image fill-480x360 format-jpeg as image_480 %}
+			<source
+			srcset="
+			{{image_480.url}} 480w,
+			{{image_768.url}} 768w,"
+			sizes="
+			(min-width: 768px) 768px,
+			(min-width: 480px) 480px"
+			type="image/jpg"
+			>
+			<img class="aspect-widescreen" src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="lazy">
+		</picture>
+		<figcaption>
+			{{value.image.credit}}
+		</figcaption>
+	</figure>
 	{% endif %}
 
 	<div class="padding-inline-tiny">

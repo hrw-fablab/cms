@@ -22,7 +22,7 @@
 			{% image value.image fill-1440x700 format-webp webpquality-60 as image_1440 %}
 			{% image value.image fill-1024x700 format-webp webpquality-60 as image_1024 %}
 			{% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
-			{% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
+			{% image value.image fill-260x200 format-webp webpquality-60 as image_480 %}
 			<source
 			srcset="
 			{{image_480.url}} 480w,
@@ -42,7 +42,7 @@
 			{% image value.image fill-1440x700 format-jpeg as image_1440 %}
 			{% image value.image fill-1024x700 format-jpeg as image_1024 %}
 			{% image value.image fill-768x576 format-jpeg as image_768 %}
-			{% image value.image fill-480x360 format-jpeg as image_480 %}
+			{% image value.image fill-260x200 format-jpeg as image_480 %}
 			<source
 			srcset="
 			{{image_480.url}} 480w,
@@ -58,7 +58,7 @@
 			(min-width: 480px) 480px"
 			type="image/jpg"
 			>
-			<img src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="eager" rel="preload">
+			<img src="{{image_480.url}}" alt="{{image_480.alt}}" decoding="async" loading="eager" rel="preload">
 		</picture>
 		<figcaption>
 			{{value.image.credit}}

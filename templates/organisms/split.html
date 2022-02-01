@@ -14,12 +14,12 @@
 			<p>{{value.text}}</p>
 		{% endif %}
 	</div>
-	<div class="align-self-center">
+	<div class="align-self-center aspect-widescreen">
 		{% if value.video %}
 			<video class="aspect-widescreen cover" src="{{ value.video.url }}" controls></video>
 		{% elif value.image %}
 		{% load wagtailimages_tags %}
-		<figure class="aspect-widescreen">
+		<figure>
 			<picture>
 				{% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
 				{% image value.image fill-600x360 format-webp webpquality-60 as image_600 %}
@@ -36,7 +36,7 @@
 				sizes="(max-width: 520px) 480px,(max-width: 768px) 768px,(min-width: 1024px) 480px"
 				type="image/jpg"
 				>
-				<img class="aspect-widescreen" src="{{image_600.url}}" alt="image_600.alt" decoding="async" loading="eager" rel="preload">
+				<img class="aspect-widescreen" src="{{image_600.url}}" alt="{{image_600.alt}}" decoding="async" loading="eager" rel="preload">
 			</picture>
 			<figcaption>
 				{{value.image.credit}}

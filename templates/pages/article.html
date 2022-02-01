@@ -3,10 +3,10 @@
 
 {% block content %}
 <main class="fl-main" id="main">
-	<article class="fl-content medium margin-block-start-medium">
+	<article class="fl-content medium margin-block-start-medium aspect-widescreen">
 		{% if page.image %}
 		{% load wagtailimages_tags %}
-		<figure class="aspect-widescreen">
+		<figure>
 			<picture>
 				{% image page.image fill-1024x700 format-webp webpquality-60 as image_1024 %}
 				{% image page.image fill-768x576 format-webp webpquality-60 as image_768 %}
@@ -36,7 +36,7 @@
 				(min-width: 480px) 480px"
 				type="image/jpg"
 				>
-				<img src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="eager" rel="preload" class="aspect-widescreen">
+				<img src="{{image_480.url}}" alt="{{image_480.alt}}" decoding="async" loading="eager" rel="preload" class="aspect-widescreen">
 			</picture>
 			<figcaption>
 				{{page.image.credit}}

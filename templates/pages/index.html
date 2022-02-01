@@ -7,7 +7,7 @@
 		<h1 class="text-centered margin-block-end-medium">{{page.heading}}</h1>
 		<div class="fl-grid columns gap-medium">
 			{% for page in children %}
-				{% include "molecules/card.html" with value=page class="aspect-widescreen"%}
+				{% include "molecules/card.html" with value=page%}
 			{% endfor %}
 		</div>
 		{% include "molecules/pagination.html" with element=page%}

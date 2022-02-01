@@ -4,9 +4,9 @@
 	<div class="fl-flex-column justify-center gap-tiny">
 		{% if value.title %}
 			{% if value.link.get_url != None %}
-				<a href="{{value.link.get_url}}"><h2>{{value.title}}</h2></a>
+				<a href="{{value.link.get_url}}"><h3>{{value.title}}</h3></a>
 			{% else %}
-				<h2>{{value.title}}</h2>
+				<h3>{{value.title}}</h3>
 			{% endif %}
 		{% endif %}
 

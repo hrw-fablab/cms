@@ -273,10 +273,10 @@
 picture,
 video,
 iframe,
+figure,
 canvas {
-	display: inline-block;
 	width: 100%;
-	height: 100%;
+	height: auto;
 	object-fit: cover;
 }input,
 button,
@@ -356,6 +356,18 @@ h4 {
 	gap: var(--size-2);
 }svg {
 	pointer-events: none;
+}figure {
+    position: relative;
+    display: grid;
+    height: 100%;
+}figcaption {
+    position: absolute;
+    background-color: black;
+    color: white;
+    right: 0;
+    bottom: 0;
+    padding-inline: 1rem;
+    z-index: 10;
 }/* purgecss start ignore */.fl-grid {
 	display: grid;
 }.fl-grid.cards {
@@ -482,7 +494,7 @@ h4 {
 	font-size: var(--font-size-4)
 }.fl-logo img {
 		width: auto;
-		max-height: var(--size-fluid-3);
+		max-height: var(--size-fluid-2);
 	}.fl-logo svg {
 		fill: var(--brand);
 	}.fl-split {
@@ -540,50 +552,27 @@ h4 {
 	  }/* purgecss end ignore */.fl-hero {
   display: grid;
   grid-template: "container";
-  place-items: center center;
-  overflow: hidden
+  place-items: center start
 }.fl-hero > * {
     grid-area: container;
-  }.fl-hero :where(picture, img) {
-    max-height: 700px;
-    z-index: -1;
-  }@media (max-width: 1024px) {
-    .fl-hero {
-      min-height: 55vh;
-      height: max-content;
-    }
-
+  }.fl-hero :where(picture, img, figure) {
+    height: 100%;
+  }.fl-hero .fl-content {
+    z-index: 1;
+  }@media (max-width: 768px) {
     .fl-hero .fl-content {
-      align-self: end;
-      width: 100%;
-      height: 100%;
-    }
-
-    .fl-hero :where(picture, img) {
-      max-height: inherit;
-      z-index: -1;
+        width: inherit;
     }
   }.fl-hero-content {
-  grid-area: container;
-  width: 70%
+  width: min(100%, 70rem)
 }.fl-hero-content h1 {
     font-size: var(--font-size-7);
   }.fl-hero-content p {
     font-size: var(--font-size-4);
-  }@media (max-width: 1024px) {
-    .fl-hero-content {
-      width: 60%;
-      height: 100%;
-      justify-content: center;
-      align-items: center;
-    }
-  }@media (max-width: 768px) {
-    .fl-hero-content {
-      width: 100%;
-      height: 100%;
-      justify-content: end;
-      align-items: start;
-    }
+  }@media (max-width: 768px) {.fl-hero-content {
+    padding-block-start: var(--size-fluid-7);
+    padding-block-end: var(--size-fluid-5)
+}
 
     .fl-hero-content h1 {
       font-size: var(--font-size-6);

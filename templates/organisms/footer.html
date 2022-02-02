@@ -67,17 +67,40 @@
 		<nav class="fl-footer-nav">
 			<ul>
 				<li>
-					<a href="{{settings.site_settings.SiteSettings.contact.localized.url}}">Kontakt</a>
+					<a href="{{settings.site_settings.SiteSettings.contact.localized.url}}">
+						{% if LANGUAGE_CODE == "en"%}
+							Contact
+						{% else %}
+							Kontakt
+						{% endif %}
+					</a>
 				</li>
 				<li>
-					<a href="{{settings.site_settings.SiteSettings.impressum.localized.url}}">Impressum</a>
+					<a href="{{settings.site_settings.SiteSettings.impressum.localized.url}}">
+						{% if LANGUAGE_CODE == "en"%}
+							Imprint
+						{% else %}
+							Impressum
+						{% endif %}
+					</a>
 				</li>
 				<li>
-					<a
-						href="{{settings.site_settings.SiteSettings.data_protection.localized.url}}">Datenschutzerklärung</a>
+					<a href="{{settings.site_settings.SiteSettings.data_protection.localized.url}}">
+						{% if LANGUAGE_CODE == "en"%}
+							Data Privacy
+						{% else %}
+							Datenschutzerklärung
+						{% endif %}
+					</a>
 				</li>
 				<li style="margin-inline-start: auto">
-					<a href="{{settings.site_settings.SiteSettings.intern_website.url}}" style="margin-inline-start: auto;">Intern</a>
+					<a href="{{settings.site_settings.SiteSettings.intern_website.url}}" style="margin-inline-start: auto;">
+						{% if LANGUAGE_CODE == "en"%}
+							Internal
+						{% else %}
+							Intern
+						{% endif %}
+					</a>
 				</li>
 			</ul>
 		</nav>

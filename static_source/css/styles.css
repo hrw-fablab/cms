@@ -117,42 +117,56 @@
 	margin: var(--size-fluid-4);
 }.margin-small {
 	margin: var(--size-fluid-1);
+}.margin-tiny {
+	margin: var(--size-2);
 }.margin-block-large {
 	margin-block: var(--size-fluid-6);
 }.margin-block-medium {
 	margin-block: var(--size-fluid-4);
 }.margin-block-small {
 	margin-block: var(--size-fluid-1);
+}.margin-block-tiny {
+	margin-block: var(--size-2);
 }.margin-inline-large {
 	margin-inline: var(--size-fluid-6);
 }.margin-inline-medium {
 	margin-inline: var(--size-fluid-4);
 }.margin-inline-small {
 	margin-inline: var(--size-fluid-1);
+}.margin-inline-tiny {
+	margin-inline: var(--size-2);
 }.margin-inline-start-large {
 	margin-inline-start: var(--size-fluid-6);
 }.margin-inline-start-medium {
 	margin-inline-start: var(--size-fluid-4);
 }.margin-inline-start-small {
 	margin-inline-start: var(--size-fluid-1);
+}.margin-inline-start-tiny {
+	margin-inline-start: var(--size-2);
 }.margin-inline-end-large {
 	margin-inline-end: var(--size-fluid-6);
 }.margin-inline-end-medium {
 	margin-inline-end: var(--size-fluid-4);
 }.margin-inline-end-small {
 	margin-inline-end: var(--size-fluid-1);
+}.margin-inline-end-tiny {
+	margin-inline-end: var(--size-2);
 }.margin-block-start-large {
 	margin-block-start: var(--size-fluid-6);
 }.margin-block-start-medium {
 	margin-block-start: var(--size-fluid-4);
 }.margin-block-start-small {
 	margin-block-start: var(--size-fluid-1);
+}.margin-block-start-tiny {
+	margin-block-start: var(--size-2);
 }.margin-block-end-large {
 	margin-block-end: var(--size-fluid-6);
 }.margin-block-end-medium {
 	margin-block-end: var(--size-fluid-4);
 }.margin-block-end-small {
 	margin-block-end: var(--size-fluid-1);
+}.margin-block-end-tiny {
+	margin-block-end: var(--size-2);
 }.gap-large {
 	gap: var(--size-fluid-6);
 }.gap-medium {

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		@import url("https://rsms.me/inter/inter.css");
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: "Inter";
+			width: min(90vw, 40rem);
+			margin-inline: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			padding-block-start: 1rem;
+			text-align: center;
+		}
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			list-style: none;
+			width: 100%;
+		}
+
+		li {
+			border: solid 0.1em;
+		}
+
+		li:hover {
+			background-color: hsl(0, 0%, 84%);
+		}
+
+		a {
+			text-decoration: none;
+			padding: 0.5rem;
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+			color: inherit;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>HRW-FabLab</h1>
+	<ul class="fl-collection">
+		{% for element in page.link.all%}
+			{% if element.expire %}
+				{% if element.is_visible %}
+				<li>
+					<a href="{{element.url}}">{{element.title}}</a>
+				</li>
+				{% endif %}
+			{% else %}
+			<li>
+				<a href="{{element.url}}">{{element.title}}</a>
+			</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+</body>
+
+</html>

@@ -7,9 +7,14 @@
 			{% if settings.site_settings.SiteSettings.sponsor.all|length != 0%}
 			<div class="fl-flex row">
 				{% for element in settings.site_settings.SiteSettings.sponsor.all %}
-				{% load wagtailimages_tags %}
-				{% image element.logo original as sp_image %}
-				<img src="{{sp_image.url}}" alt="">
+					{% load wagtailimages_tags %}
+					{% if LANGUAGE_CODE == "en"%}
+							{% image element.logo_en original as sp_image %}
+							<img src="{{sp_image.url}}" alt="{{element.logo_alt_en}}">
+						{% else %}
+							{% image element.logo original as sp_image %}
+							<img src="{{sp_image.url}}" alt="{{element.logo_alt}}">
+					{% endif %}
 				{% endfor %}
 			</div>
 			{% endif %}

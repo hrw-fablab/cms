@@ -27,11 +27,23 @@ class Sponsor(Orderable):
 
     logo_alt = models.CharField(max_length=255, null=True, blank=True)
 
+    logo_en = models.ForeignKey(
+        "core.FablabImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    logo_alt_en = models.CharField(max_length=255, null=True, blank=True)
+
     page = ParentalKey("SiteSettings", on_delete=models.CASCADE, related_name="sponsor")
 
     panels = [
         ImageChooserPanel("logo"),
-        FieldPanel("logo_alt"),
+         FieldPanel("logo_alt"),
+        ImageChooserPanel("logo_en"),
+        FieldPanel("logo_alt_en"),
     ]
 
 

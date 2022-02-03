@@ -442,23 +442,25 @@ h4 {
 	}.fl-menu > button {
 		display: none;
 		margin-inline-start: auto;
+		padding-inline: var(--size-2);
 	}@media (max-width: 1440px) {
 		.fl-menu {
 			display: grid;
+			gap: 1rem;
 			grid-template-columns: 1fr auto;
 			place-items: center start;
 		}
 
 		.fl-menu > button {
-			display: block;
+			display: flex;
 		}
 	}.fl-menu ul {
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: var(--size-fluid-4);
-	width: 100%
+	width: 100%;
+	gap: 2rem
 }.fl-menu ul li {
 		display: flex;
 		align-items: center;
@@ -466,18 +468,37 @@ h4 {
 		position: relative;
 	}@media (max-width: 1440px) {
 		.fl-menu ul {
+			margin-top: var(--size-4);
+			gap: unset;
 			grid-column: 1 / 3;
 			flex-direction: column;
-			align-items: start;
 			display: none;
+			border-block-start: solid thin rgb(221, 221, 221);
 		}
 
 		.fl-menu ul li {
+			padding-block: var(--size-3);
 			width: 100%;
-			align-items: inherit;
 			flex-direction: column;
-			border-bottom: solid thin var(--surface-2);
-			padding: var(--size-3) 0 var(--size-3) 0;
+			border-block-end: solid thin rgb(221, 221, 221);
+		}
+
+		.fl-menu ul li :where(a, button) {
+			width: 100%;
+			height: 100%;
+		}
+
+		.fl-menu ul button {
+			justify-content: space-between !important;
+		}
+
+		.fl-menu ul svg {
+			width: 1rem;
+		}
+
+		.fl-menu ul .fl-language {
+			margin-block-start: var(--size-3);
+			padding-block: var(--size-3);
 		}
 	}.fl-menu.submenu {
 	flex-direction: column;
@@ -493,12 +514,17 @@ h4 {
 	width: max-content
 }@media (max-width: 1440px) {
 		.fl-menu.submenu {
+			padding-inline-start: var(--size-3);
+			border: none;
+			margin: inherit;
+			gap: 0;
+			padding: inherit;
+			width: inherit;
 			transform: inherit;
 			background-color: inherit;
 			box-shadow: inherit;
 			display: flex;
 			position: inherit;
-			align-items: start;
 		}
 	}.fl-logo {
 	display: flex;

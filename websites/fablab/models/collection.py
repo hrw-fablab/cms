@@ -28,7 +28,7 @@ class Link(Orderable):
     def is_visible(self):
         return date.today() < self.expire
 
-    parent = ParentalKey("QuCollectionPage", on_delete=models.CASCADE, related_name="collection_link")
+    parent = ParentalKey("CollectionPage", on_delete=models.CASCADE, related_name="collection_link")
 
     panels = [
         FieldPanel("url"),
@@ -47,14 +47,17 @@ class Page(Orderable):
 
     amount = models.IntegerField()
 
-    parent = ParentalKey("QuCollectionPage", on_delete=models.CASCADE, related_name="collection_page")
+    parent = ParentalKey("CollectionPage", on_delete=models.CASCADE, related_name="collection_page")
 
     panels = [
         PageChooserPanel("page"),
         FieldPanel("amount")
     ]
 
-class QuCollectionPage(FablabBasePage, ClusterableModel):
+class CollectionPage(FablabBasePage, ClusterableModel):
+    parent_page_types = ["HomePage"]
+    subpage_type = []
+
     template = "pages/collection.html"
     
     content_panels = FablabBasePage.content_panels + [

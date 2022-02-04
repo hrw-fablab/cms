@@ -392,10 +392,7 @@ h4 {
 		grid-template-columns: .5fr 1fr;
 		gap: var(--size-fluid-3);
 		place-items: center start
-	}.fl-grid-extrem > **:nth-child(2n) {
-			background-color: var(--brand);
-			color: var(--surface-1);
-		}.fl-grid-extrem > * :where(picture, img) {
+	}.fl-grid-extrem > * :where(picture, img) {
 			height: 100%;
 		}.fl-grid-extrem > * >:last-child {
 			flex-direction: column;
@@ -435,11 +432,13 @@ h4 {
 	width: 100%;
 }@media (max-width: 768px) {
 		.fl-card {
+			display: inline-block;
 			grid-column: inherit !important;
-			aspect-ratio: var(--aspect-widescreen) !important;
+			aspect-ratio: var(--aspect-widescreen);
+			grid-template-columns: inherit;
 		}
 
-		.fl-card img {
+		.fl-card img { 
 			aspect-ratio: var(--aspect-widescreen) !important;
 		}
 	}.fl-card.featured {

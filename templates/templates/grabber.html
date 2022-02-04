@@ -1,5 +1,5 @@
 {% block content %}
-<div class="fl-content large margin-block-end-medium">
+<div class="fl-content large margin-block-end-large">
 	{% if value.title %}
 	<h2 class="text-centered margin-block-end-small">{{value.title}}</h2>
 	{% endif %}
@@ -9,9 +9,9 @@
 			{% if forloop.counter == 1 %}
 				{% include "molecules/card.html" with value=page class="featured"%}
 			{% elif forloop.counter == 2 %}
-				{% include "molecules/card.html" with value=page class="aspect-box"%}
+				{% include "molecules/card.html" with value=page class="long"%}
 			{% else %}
-				{% include "molecules/card.html" with value=page class="aspect-widescreen"%}
+				{% include "molecules/card.html" with value=page%}
 			{% endif %}
 			{% endfor %}
 		{% endfor%}

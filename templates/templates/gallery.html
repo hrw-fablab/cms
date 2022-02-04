@@ -9,9 +9,9 @@ large
 {% endif %}
 margin-block-end-large">
 	{% if value.title %}
-		<h2 class="text-centered margin-block-end-small">{{value.title}}</h2>
+		<h2 class="text-centered margin-block-end-medium">{{value.title}}</h2>
 	{% endif %}
-	<div class="fl-grid gallery gap-medium">
+	<div class="fl-grid-small gap-medium">
 		{% for element in value.cards%}
 		{% if element.block_type == "image"%}
 			{% load wagtailimages_tags %}
@@ -38,7 +38,7 @@ margin-block-end-large">
 					(min-width: 480px) 480px"
 					type="image/jpg"
 					>
-					<img class="{% if value.contain %}contain{% endif %}" src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="lazy">
+					<img class="{% if value.contain %}contain{% else %}cover{% endif %} aspect-widescreen" src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="lazy">
 				</picture>
 		{% else %}
 			{{element}}

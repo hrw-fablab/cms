@@ -5,9 +5,9 @@
 <main class="fl-main index" id="main">
 	<div class="fl-content large margin-block-start-medium">
 		<h1 class="text-centered margin-block-end-medium">{{page.heading}}</h1>
-		<div class="fl-grid columns gap-medium">
+		<div class="fl-grid-large gap-medium">
 			{% for page in children %}
-				{% include "molecules/card.html" with value=page%}
+				{% include "molecules/card.html" with value=page class="aspect-widescreen" %}
 			{% endfor %}
 		</div>
 		{% include "molecules/pagination.html" with element=page%}

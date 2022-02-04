@@ -377,25 +377,30 @@ h4 {
 }figcaption {
     position: absolute;
     background-color: black;
-    color: white;
+    color: var(--surface-2);
     right: 0;
-    bottom: 0;
-    padding-inline-end: 0.2rem;
+    top: 0;
+    padding-inline: 0.2rem;
     z-index: 3;
     font-size: 0.8rem;
-}/* purgecss start ignore */.fl-grid {
+}/* purgecss start ignore */.fl-grid-extrem {
 	display: grid;
-}.fl-grid.cards {
-	grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
-}.fl-grid.gallery {
-	grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr))
-}.fl-grid.gallery img {
-		aspect-ratio: var(--aspect-widescreen);
-		object-fit: cover;
-	}.fl-grid.columns {
+	grid-template-columns: 1fr
+}.fl-grid-extrem > * {
+		aspect-ratio: inherit;
+		display: grid;
+		grid-template-columns: .5fr 1fr;
+		gap: var(--size-fluid-3);
+		place-items: center start;
+	}.fl-grid-large {
+	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
-}.fl-grid.list {
-	grid-template-columns: 1fr;
+}.fl-grid-medium {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+}.fl-grid-small {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
 }/* purgecss end ignore */.fl-content {
 	--width: 85vw;
 	width: min(var(--width), 100rem);
@@ -417,11 +422,13 @@ h4 {
 	width: 100%;
 }@media (max-width: 768px) {
 		.fl-card {
+			display: inline-block;
 			grid-column: inherit !important;
-			aspect-ratio: var(--aspect-widescreen) !important;
+			aspect-ratio: var(--aspect-widescreen);
+			grid-template-columns: inherit;
 		}
 
-		.fl-card img {
+		.fl-card img { 
 			aspect-ratio: var(--aspect-widescreen) !important;
 		}
 	}.fl-card.featured {
@@ -430,6 +437,13 @@ h4 {
 		aspect-ratio: var(--aspect-box);
 	}.fl-card.long img {
 		aspect-ratio: var(--aspect-box);
+	}@media (max-width: 768px) {
+		.fl-card.long {
+			aspect-ratio: var(--aspect-widescreen);
+		}
+	}.fl-person img {
+		height: auto;
+		aspect-ratio: var(--aspect-box) !important;
 	}.fl-navigation {
 	box-shadow: var(--shadow-2);
 	background-color: var(--surface-1);

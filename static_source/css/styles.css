@@ -392,16 +392,11 @@ h4 {
 		grid-template-columns: .5fr 1fr;
 		gap: var(--size-fluid-3);
 		place-items: center start
-	}.fl-grid-extrem > * :where(picture, img) {
-			height: 100%;
-		}.fl-grid-extrem > * >:last-child {
+	}.fl-grid-extrem > * >:last-child {
 			flex-direction: column;
 			display: flex;
 			justify-content: center;
 			align-items: start;
-		}.fl-grid-extrem > * dl > div {
-			gap: var(--size-2);
-			flex-direction: row;
 		}.fl-grid-large {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
@@ -447,6 +442,13 @@ h4 {
 		aspect-ratio: var(--aspect-box);
 	}.fl-card.long img {
 		aspect-ratio: var(--aspect-box);
+	}@media (max-width: 768px) {
+		.fl-card.long {
+			aspect-ratio: var(--aspect-widescreen);
+		}
+	}.fl-person img {
+		height: auto;
+		aspect-ratio: var(--aspect-box) !important;
 	}.fl-navigation {
 	box-shadow: var(--shadow-2);
 	background-color: var(--surface-1);

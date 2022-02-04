@@ -1,5 +1,5 @@
 {% block content %}
-<section class="fl-card">
+<section class="fl-card fl-person">
 	{% load wagtailimages_tags %}
 	<picture>
 		{% image value.image fill-768x576 format-webp as image_768 %}
@@ -43,7 +43,7 @@
 
 		{% if value.since or value.career or value.responsibility or value.expert or value.projects%}
 		<dl class="fl-flex-column gap-small">
-			<div class="fl-flex-row">
+			<div class="fl-flex-row gap-tiny">
 				{% if value.since %}
 				<dt><strong>Im Labor seit:</strong></dt>
 				<dd>{{value.since}}</dd>

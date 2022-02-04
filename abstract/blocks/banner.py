@@ -1,6 +1,5 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail_link_block.blocks import LinkBlock
 
 
 class BannerBlock(blocks.StructBlock):

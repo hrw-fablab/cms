@@ -1,17 +1,17 @@
 {% block content %}
 <div class="fl-content large margin-block-end-large">
 	{% if value.title %}
-	<h2 class="text-centered margin-block-end-small">{{value.title}}</h2>
+	<h2 class="text-centered margin-block-end-medium">{{value.title}}</h2>
 	{% endif %}
-	<div class="fl-grid cards gap-medium">
+	<div class="fl-grid-medium gap-medium">
 		{% for pages in value.pages%}
 			{% for page in pages.get_children.specific|slice:"5"%}
 			{% if forloop.counter == 1 %}
-				{% include "molecules/card.html" with value=page class="featured"%}
+				{% include "molecules/card.html" with value=page class="featured aspect-widescreen"%}
 			{% elif forloop.counter == 2 %}
-				{% include "molecules/card.html" with value=page class="long"%}
+				{% include "molecules/card.html" with value=page class="long aspect-box"%}
 			{% else %}
-				{% include "molecules/card.html" with value=page%}
+				{% include "molecules/card.html" with value=page class="aspect-widescreen"%}
 			{% endif %}
 			{% endfor %}
 		{% endfor%}

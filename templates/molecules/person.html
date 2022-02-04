@@ -43,7 +43,7 @@
 
 		{% if value.since or value.career or value.responsibility or value.expert or value.projects%}
 		<dl class="fl-flex-column gap-small">
-			<div class="fl-flex row">
+			<div class="fl-flex-row">
 				{% if value.since %}
 				<dt><strong>Im Labor seit:</strong></dt>
 				<dd>{{value.since}}</dd>
@@ -51,28 +51,28 @@
 			</div>
 
 			{% if value.career %}
-			<div class="fl-flex column">
+			<div class="fl-flex-column">
 				<dt><strong>Lebenslauf:</strong></dt>
 				<dd>{{value.career}}</dd>
 			</div>
 			{% endif %}
 
 			{% if value.responsibility %}
-			<div class="fl-flex column">
+			<div class="fl-flex-column">
 				<dt><strong>Aufgabenbereiche:</strong></dt>
 				<dd>{{value.responsibility}}</dd>
 			</div>
 			{% endif %}
 
 			{% if value.expert %}
-			<div class="fl-flex column">
+			<div class="fl-flex-column">
 				<dt><strong>Experte für:</strong></dt>
 				<dd>{{value.expert}}</dd>
 			</div>
 			{% endif %}
 
 			{% if value.projects %}
-			<div class="fl-flex column">
+			<div class="fl-flex-column">
 				<dt><strong>Projekte:</strong></dt>
 				<dd>{{value.projects}}</dd>
 			</div>

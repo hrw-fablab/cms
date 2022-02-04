@@ -377,10 +377,10 @@ h4 {
 }figcaption {
     position: absolute;
     background-color: black;
-    color: white;
+    color: var(--surface-2);
     right: 0;
-    bottom: 0;
-    padding-inline-end: 0.2rem;
+    top: 0;
+    padding-inline: 0.2rem;
     z-index: 3;
     font-size: 0.8rem;
 }/* purgecss start ignore */.fl-grid-extrem {
@@ -391,13 +391,8 @@ h4 {
 		display: grid;
 		grid-template-columns: .5fr 1fr;
 		gap: var(--size-fluid-3);
-		place-items: center start
-	}.fl-grid-extrem > * >:last-child {
-			flex-direction: column;
-			display: flex;
-			justify-content: center;
-			align-items: start;
-		}.fl-grid-large {
+		place-items: center start;
+	}.fl-grid-large {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
 }.fl-grid-medium {

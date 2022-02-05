@@ -864,8 +864,7 @@ figcaption {
 .fl-banner {
   display: grid;
   grid-template: "container";
-  place-items: center center;
-  height: max-content
+  place-items: center center
 }
 .fl-banner > * {
     grid-area: container;
@@ -877,13 +876,11 @@ figcaption {
     z-index: 1;
   }
 @media (max-width: 768px) {
+    .fl-banner {
+      place-items: inherit;
+    }
     .fl-banner :where(picture, img, figure) {
       height: 100%;
-    }
-
-    .fl-banner > :first-child {
-      height: 100%;
-      width: inherit;
     }
   }
 .fl-footer-content {

@@ -62,3 +62,17 @@ class FlexBlock(blocks.StreamBlock):
     person = PersonBlock()
     html = HTMLBlock()
     banner = BannerBlock()
+
+class ProjectBlock(blocks.StreamBlock):
+    heading = HeadingBlock()
+    paragraph = ParagraphBlock()
+    blockquote = BlockquoteBlock()
+    split = SplitBlock()
+    grid = GridBlock()
+    spacer = SpacerBlock()
+    gallery = GalleryBlock()
+    video = VideoBlock()
+    image = ImageBlock()
+    embed = EmbedBlock()
+    html = HTMLBlock()
+    banner = BannerBlock()

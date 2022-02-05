@@ -3,28 +3,10 @@
 {% load wagtailimages_tags %}
 {% block content %}
 <main class="fl-main" id="main">
-	<div class="fl-hero medium">
-		{% if page.image %}
-			{% load wagtailimages_tags %}
-			{% image page.image original %}
-		{% endif %}
-	</div>
-	<article class="fl-article fl-content medium">
-		<header class="fl-article-header margin-bottom">
-			<a href="{{parent.url}}?tag={{page.tag}}">{{page.tag}}</a>
-			<h1>{{page.title}}</h1>
-			<time>Startdatum: {{page.date}}</time>
-			<div>
-				{% for link in page.page_link.all%}
-					<a href="{{link.link_url}}">{{link.link_title}}</a>
-				{% endfor %}
-			</div>
-		</header>
-		<section class="fl-content medium fl-richtext">
-			<p>
-				{{ page.body|richtext }}
-			</p>
-		</section>
-	</article>
+	{% include "organisms/banner.html" with value=page%}
+	
+	{% for block in page.body %}
+		{% include_block block %}
+	{% endfor %}
 </main>
 {% endblock content %}

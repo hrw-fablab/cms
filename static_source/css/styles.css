@@ -517,6 +517,10 @@ figcaption {
     z-index: 3;
     font-size: 0.8rem;
 }
+input {
+    padding: var(--size-2);
+    border: solid .1em var(--brand);
+}
 /* purgecss start ignore */
 .fl-grid-extrem {
 	display: grid;
@@ -914,4 +918,26 @@ figcaption {
 }
 .fl-skip:focus {
 	transform: translateY(0%);
+}
+.fl-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: var(--size-5);
+    list-style: none;
+    width: 100%;
+}
+.info {
+    color: var(--surface-2);
+    font-size: 1rem;
+}
+.fl-search input {
+        max-width: 12rem;
+    }
+.fl-info {
+    display: flex;
+    flex-direction: row;
+    margin-inline-start: auto;
+    gap: var(--size-4);
 }

@@ -5,4 +5,3 @@ from .article import QuArticlePage
 from .project import QuProjectPage
 
 from .index import QuIndexPage
-from .index_category import QuIndexCategoryPage

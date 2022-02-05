@@ -1,13 +1,60 @@
 {% load wagtailimages_tags %}
-{% image value.image fill-1440x600-c75 format-jpeg as banner_image %}
 {% block content %}
-<section class="fl-banner fl-flex-column justify-center align-center margin-block-end-medium" style="background-image: url({{banner_image.url}})">
+<section class="fl-banner margin-block-end-medium">
 	{% if value.title or value.text %}
-	<div class="fl-flex fl-glass padding-medium">
+	<div class="fl-flex-column justify-center fl-glass padding-medium">
 		{% if value.title %}
-		<h1>{{ value.title }}</h1>
+		<h1 class="text-centered">{{ value.title }}</h1>
 		{% endif %}
 	</div>
 	{% endif %}
+	<figure>
+		<picture>
+			{% image value.image fill-1920x500 format-webp webpquality-60 as image_1920 %}
+			{% image value.image fill-1440x500 format-webp webpquality-60 as image_1440 %}
+			{% image value.image fill-1024x500 format-webp webpquality-60 as image_1024 %}
+			{% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
+			{% image value.image fill-260x200 format-webp webpquality-60 as image_480 %}
+			<source
+			srcset="
+			{{image_480.url}} 480w,
+			{{image_768.url}} 768w,
+			{{image_1024.url}} 1024w,
+			{{image_1440.url}} 1440w,
+			{{image_1920.url}} 1920w,"
+			sizes="
+			(min-width: 1920px) 1920px,
+			(min-width: 1440px) 1440px,
+			(min-width: 1024px) 1024px,
+			(min-width: 768px) 768px,
+			(min-width: 480px) 480px"
+			type="image/webp"
+			>
+			{% image value.image fill-1920x500 format-jpeg  as image_1920 %}
+			{% image value.image fill-1440x500 format-jpeg as image_1440 %}
+			{% image value.image fill-1024x500 format-jpeg as image_1024 %}
+			{% image value.image fill-768x576 format-jpeg as image_768 %}
+			{% image value.image fill-260x200 format-jpeg as image_480 %}
+			<source
+			srcset="
+			{{image_480.url}} 480w,
+			{{image_768.url}} 768w,
+			{{image_1024.url}} 1024w,
+			{{image_1440.url}} 1440w,
+			{{image_1920.url}} 1920w,"
+			sizes="
+			(min-width: 1920px) 1920px,
+			(min-width: 1440px) 1440px,
+			(min-width: 1024px) 1024px,
+			(min-width: 768px) 768px,
+			(min-width: 480px) 480px"
+			type="image/jpg"
+			>
+			<img src="{{image_480.url}}" alt="{{image_480.alt}}" decoding="async" loading="eager" rel="preload">
+		</picture>
+		<figcaption>
+			{{value.image.credit}}
+		</figcaption>
+	</figure>
 </section>
 {% endblock content %}

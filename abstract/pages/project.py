@@ -29,25 +29,11 @@ class AbstractProjectPage(FablabBasePage):
 
     introduction = models.CharField(max_length=255)
 
-    body = RichTextField(
-        features=[
-            "bold",
-            "italic",
-            "h3",
-            "ul",
-            "link",
-            "document-link",
-            "image",
-            "embed",
-        ]
-    )
-
     content_panels = FablabBasePage.content_panels + [
         ImageChooserPanel("image"),
         SnippetChooserPanel("category"),
         FieldPanel("date"),
         FieldPanel("introduction"),
-        FieldPanel("body"),
     ]
 
     class Meta:

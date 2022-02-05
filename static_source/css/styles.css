@@ -93,14 +93,14 @@
   color: var(--surface-1)
 }
 .fl-accent a:hover {
-    color: var(--surface-2);
+    color: var(--surface-2) !important;
   }
 .fl-accent:nth-child(odd) {
   background-color: inherit;
   color: inherit
 }
 .fl-accent:nth-child(odd) a:hover {
-    color: var(--brand);
+    color: var(--brand) !important;
   }
 .fl-accent:nth-child(odd) .fl-split {
     grid-template-columns: 0.9fr 1fr;
@@ -113,7 +113,7 @@
   color: var(--surface-1)
 }
 .fl-brand a:hover {
-    color: var(--surface-2);
+    color: var(--surface-2) !important;
   }
 .fl-glass {
   background-color: var(--brand);
@@ -493,9 +493,6 @@ body {
 a {
 	text-decoration-thickness: 0.1em;
 }
-a:hover {
-	color: var(--brand);
-}
 button {
 	display: flex;
 	align-items: center;
@@ -772,7 +769,8 @@ figcaption {
 		text-align: justify;
 	}
 .fl-richtext img {
-		aspect-ratio: var(--aspect-landscape);
+		margin-block: var(--size-4);
+		aspect-ratio: var(--aspect-widescreen);
 	}
 .fl-richtext ul {
 		padding: revert;

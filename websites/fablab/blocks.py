@@ -1,4 +1,5 @@
 from wagtail.core import blocks
+from abstract.blocks.banner import BannerBlock
 
 from abstract.blocks.grabber import GrabberBlock
 from abstract.blocks.grid import GridBlock
@@ -17,12 +18,13 @@ from abstract.blocks.embed import EmbedBlock
 from abstract.blocks.card import CardBlock
 
 
-class HomeGridBlockElements(blocks.StreamBlock):
+class GridBlockElements(blocks.StreamBlock):
     card = CardBlock()
+    person = PersonBlock()
 
 
-class HomeGridBlock(GridBlock):
-    cards = HomeGridBlockElements()
+class GridBlock(GridBlock):
+    cards = GridBlockElements()
 
 
 class HomeBlock(blocks.StreamBlock):
@@ -30,7 +32,7 @@ class HomeBlock(blocks.StreamBlock):
     paragraph = ParagraphBlock()
     hero = HeroBlock()
     split = SplitBlock()
-    grid = HomeGridBlock()
+    grid = GridBlock()
     grabber = GrabberBlock()
     gallery = GalleryBlock()
     blockquote = BlockquoteBlock()
@@ -41,15 +43,7 @@ class HomeBlock(blocks.StreamBlock):
     card = CardBlock()
     person = PersonBlock()
     html = HTMLBlock()
-
-
-class FlexGridBlockElements(blocks.StreamBlock):
-    card = CardBlock()
-    person = PersonBlock()
-
-
-class FlexGridBlock(GridBlock):
-    cards = FlexGridBlockElements()
+    banner = BannerBlock()
 
 
 class FlexBlock(blocks.StreamBlock):
@@ -57,7 +51,7 @@ class FlexBlock(blocks.StreamBlock):
     paragraph = ParagraphBlock()
     blockquote = BlockquoteBlock()
     split = SplitBlock()
-    grid = FlexGridBlock()
+    grid = GridBlock()
     grabber = GrabberBlock()
     spacer = SpacerBlock()
     gallery = GalleryBlock()
@@ -67,3 +61,18 @@ class FlexBlock(blocks.StreamBlock):
     card = CardBlock()
     person = PersonBlock()
     html = HTMLBlock()
+    banner = BannerBlock()
+
+class ProjectBlock(blocks.StreamBlock):
+    heading = HeadingBlock()
+    paragraph = ParagraphBlock()
+    blockquote = BlockquoteBlock()
+    split = SplitBlock()
+    grid = GridBlock()
+    spacer = SpacerBlock()
+    gallery = GalleryBlock()
+    video = VideoBlock()
+    image = ImageBlock()
+    embed = EmbedBlock()
+    html = HTMLBlock()
+    banner = BannerBlock()

@@ -2,9 +2,17 @@
 {% block content %}
 <section class="fl-banner margin-block-end-medium">
 	{% if value.title or value.text %}
-	<div class="fl-flex-column justify-center align-center fl-glass padding-medium">
+	<div class="fl-flex-column justify-center align-start fl-glass padding-medium">
+		{% if value.date %}
+			<time>Startdatum: {{page.date}}</time>
+		{% endif %}
 		{% if value.title %}
-		<h2 class="text-centered">{{ value.title }}</h2>
+		<h2>{{ value.title }}</h2>
+		<div class="fl-flex-row gap-small">
+			{% for link in page.page_link.all%}
+			<a href="{{link.link_url}}">{{link.link_title}}</a>
+			{% endfor %}
+		</div>
 		{% endif %}
 	</div>
 	{% endif %}

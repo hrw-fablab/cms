@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     "core",
     "site_settings",
     "snippets",
-    "search",
     "websites.qu_fablab",
     "websites.fablab",
     "wagtailcache",

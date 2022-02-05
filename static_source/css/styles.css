@@ -932,12 +932,20 @@ input {
     color: var(--surface-2);
     font-size: 1rem;
 }
-.fl-search input {
-        max-width: 12rem;
-    }
 .fl-info {
     display: flex;
     flex-direction: row;
     margin-inline-start: auto;
-    gap: var(--size-4);
+    gap: var(--size-4)
 }
+@media (max-width: 1024px) {
+		.fl-info {
+            width: 100%;
+            margin-block-start: 2rem;
+			flex-direction: column;
+		}
+
+        .fl-info :where(form, input) {
+            width: 100%;
+        }
+	}

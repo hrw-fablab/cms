@@ -493,6 +493,9 @@ body {
 a {
 	text-decoration-thickness: 0.1em;
 }
+a:hover {
+	color: var(--brand);
+}
 button {
 	display: flex;
 	align-items: center;

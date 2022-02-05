@@ -3,7 +3,7 @@
 {% block content %}
 <div class="fl-navigation padding-small">
 	<a class="fl-skip" href="#main">Skip to content</a>
-	<nav class="fl-content fl-menu gap-medium" aria-label="Main Menu">
+	<nav class="fl-content fl-menu gap-medium padding-inline-medium" aria-label="Main Menu">
 		<a class="fl-logo" href="{{ current_site.root_url }}/{{LANGUAGE_CODE}}">
 			{% if settings.site_settings.SiteSettings.logo %}
 				{% load wagtailimages_tags %}
@@ -36,7 +36,16 @@
 				{% endif %}
 			</li>
 			{% endfor %}
-			{% include "molecules/language.html"%}
+			<div class="fl-info">
+				{% if settings.site_settings.SiteSettings.search %}
+					<form class="fl-search" action="{{settings.site_settings.SiteSettings.search.localized.url}}" method="get">
+						<input type="text" name="query" placeholder="Suche ...">
+						<input type="text" name="locale" value={{LANGUAGE_CODE}} style="display: none;">
+						<input type="submit" style="display: none;">
+					</form>
+				{% endif %}
+					{% include "molecules/language.html"%}
+			</div>
 		</ul>
 	</nav>
 </div>

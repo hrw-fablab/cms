@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags index_tag %}
+
+{% block content %}
+<main class="fl-main" id="main">
+    <div class="fl-content small margin-block-start-medium">
+        {% if results %}
+        <ul class="fl-result">
+            {% for result in results %}
+            <li class="fl-flex-column">
+                <p class="info">{{ result.get_verbose_name }}</p>
+                <a href="{% pageurl result %}">
+                    <p>{{ result.title }}</p>
+                </a>
+                <p>{{result.introduction}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% include "molecules/pagination.html" with children=results%}
+
+        {% else %}
+            <p class="text-centered">Nichts gefunden</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

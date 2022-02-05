@@ -91,6 +91,14 @@ class SiteSettings(BaseSetting, ClusterableModel):
         related_name="+",
     )
 
+    search = models.ForeignKey(
+        "wagtailcore.Page",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
     facebook = models.URLField(null=True, blank=True)
     instagram = models.URLField(null=True, blank=True)
     youtube = models.URLField(null=True, blank=True)
@@ -156,6 +164,7 @@ class SiteSettings(BaseSetting, ClusterableModel):
                 PageChooserPanel("contact"),
                 PageChooserPanel("impressum"),
                 PageChooserPanel("data_protection"),
+                PageChooserPanel("search"),
             ],
             heading="Service",
             classname="collapsible",

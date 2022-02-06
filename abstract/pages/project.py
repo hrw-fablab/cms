@@ -3,9 +3,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-
 from core.models import FablabBasePage
-
 
 class AbstractProjectPage(FablabBasePage):
     image = models.ForeignKey(

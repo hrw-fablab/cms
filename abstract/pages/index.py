@@ -17,15 +17,7 @@ class AbstractIndexPage(FablabBasePage):
 
     def get_context(self, request):
         context = super().get_context(request)
-        all_children = (
-            Page.
-            objects.
-            live().
-            public().
-            child_of(self).
-            specific().
-            order_by("-last_published_at")
-        )
+        all_children = self.get_children().live().specific().order_by("-last_published_at")
 
         paginator = Paginator(all_children, 8)
         page = request.GET.get("page")

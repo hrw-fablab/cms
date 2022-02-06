@@ -24,14 +24,6 @@ class AbstractArticlePage(FablabBasePage):
         related_name="+",
     )
 
-    tag = models.ForeignKey(
-        "snippets.Tag",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
     date = models.DateField()
 
     introduction = models.CharField(max_length=150)
@@ -52,7 +44,6 @@ class AbstractArticlePage(FablabBasePage):
     content_panels = FablabBasePage.content_panels + [
         ImageChooserPanel("image"),
         SnippetChooserPanel("author"),
-        SnippetChooserPanel("tag"),
         FieldPanel("date"),
         FieldPanel("introduction"),
         FieldPanel("body"),

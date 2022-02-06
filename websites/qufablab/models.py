@@ -13,7 +13,6 @@ from websites.base.blocks import HomeBlock, FlexBlock
 from django.db import models
 from wagtail.core.models import Page
 
-
 class HomePage(AbstractHomePage):
     page_ptr = models.OneToOneField(
         Page,

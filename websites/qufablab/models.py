@@ -13,13 +13,14 @@ from websites.base.blocks import HomeBlock, FlexBlock
 from django.db import models
 from wagtail.core.models import Page
 
+
 class HomePage(AbstractHomePage):
     page_ptr = models.OneToOneField(
         Page,
         auto_created=True,
         parent_link=True,
-        related_name='+',
-        on_delete=models.CASCADE
+        related_name="+",
+        on_delete=models.CASCADE,
     )
 
     template = "pages/home.html"
@@ -39,8 +40,8 @@ class FolderPage(AbstractFolderPage):
         Page,
         auto_created=True,
         parent_link=True,
-        related_name='+',
-        on_delete=models.CASCADE
+        related_name="+",
+        on_delete=models.CASCADE,
     )
 
     parent_page_types = ["HomePage"]
@@ -52,8 +53,8 @@ class FlexPage(AbstractFlexPage):
         Page,
         auto_created=True,
         parent_link=True,
-        related_name='+',
-        on_delete=models.CASCADE
+        related_name="+",
+        on_delete=models.CASCADE,
     )
     parent_page_types = ["HomePage", "FolderPage"]
     subpage_type = []
@@ -66,26 +67,28 @@ class FlexPage(AbstractFlexPage):
         StreamFieldPanel("body"),
     ]
 
+
 class ArticlePage(AbstractArticlePage):
     page_ptr = models.OneToOneField(
         Page,
         auto_created=True,
         parent_link=True,
-        related_name='+',
-        on_delete=models.CASCADE
+        related_name="+",
+        on_delete=models.CASCADE,
     )
     parent_page_types = ["IndexPage"]
     subpage_type = []
 
     template = "pages/article.html"
 
+
 class IndexPage(AbstractIndexPage):
     page_ptr = models.OneToOneField(
         Page,
         auto_created=True,
         parent_link=True,
-        related_name='+',
-        on_delete=models.CASCADE
+        related_name="+",
+        on_delete=models.CASCADE,
     )
 
     childrenPage = ArticlePage
@@ -101,8 +104,8 @@ class SearchPage(AbstractSearchPage):
         Page,
         auto_created=True,
         parent_link=True,
-        related_name='+',
-        on_delete=models.CASCADE
+        related_name="+",
+        on_delete=models.CASCADE,
     )
     parent_page_types = ["HomePage"]
     subpage_type = []

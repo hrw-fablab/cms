@@ -37,4 +37,5 @@ class AbstractProjectPage(FablabBasePage):
     ]
 
     class Meta:
+        verbose_name = "Projekt"
         abstract = True

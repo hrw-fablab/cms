@@ -32,4 +32,5 @@ class AbstractSearchPage(FablabBasePage):
         return context
  
     class Meta:
+        verbose_name = "Suche"
         abstract = True

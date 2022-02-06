@@ -5,7 +5,7 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from core.models import FablabBasePage
-
+from wagtail.core.models import Page
 
 class AbstractArticlePage(FablabBasePage):
     image = models.ForeignKey(
@@ -58,5 +58,12 @@ class AbstractArticlePage(FablabBasePage):
         FieldPanel("body"),
     ]
 
+    def get_context(self, request):
+        context = super().get_context(request)
+        parent = Page.get_parent(self)
+        context["parent"] = parent
+        return context
+
     class Meta:
+        verbose_name = "Artikel"
         abstract = True

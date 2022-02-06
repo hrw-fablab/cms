@@ -1,6 +1,4 @@
-from wagtail.core.models import Page
 from abstract.pages.article import AbstractArticlePage
-
 
 class ArticlePage(AbstractArticlePage):
     parent_page_types = ["IndexPage"]

@@ -63,6 +63,7 @@ class FlexBlock(blocks.StreamBlock):
     html = HTMLBlock()
     banner = BannerBlock()
 
+
 class ProjectBlock(blocks.StreamBlock):
     heading = HeadingBlock()
     paragraph = ParagraphBlock()

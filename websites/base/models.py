@@ -1,6 +1,12 @@
-from wagtail.admin.edit_handlers import StreamFieldPanel, InlinePanel
+from wagtail.core.models import Orderable
+from django.db import models
 
+from wagtail.admin.edit_handlers import StreamFieldPanel, InlinePanel
 from wagtail.core.fields import StreamField
+
+from modelcluster.fields import ParentalKey
+from modelcluster.models import ClusterableModel
+from modelcluster.fields import ParentalKey
 
 from abstract.pages.home import AbstractHomePage
 from abstract.pages.folder import AbstractFolderPage
@@ -14,15 +20,6 @@ from abstract.pages.base import AbstractBasePage
 from abstract.models.links import Link, ExpireLink, PageLink
 
 from websites.base.blocks import HomeBlock, FlexBlock, ProjectBlock
-
-from modelcluster.fields import ParentalKey
-from wagtail.core import models
-from wagtail.core.models import Orderable
-from django.db import models
-
-from modelcluster.models import ClusterableModel
-from modelcluster.fields import ParentalKey
-from datetime import date
 
 
 class HomePage(AbstractHomePage):
@@ -60,8 +57,6 @@ class ArticlePage(AbstractArticlePage):
 
 
 class IndexPage(AbstractIndexPage):
-    childrenPage = ArticlePage
-
     parent_page_types = ["HomePage", "FolderPage"]
     subpage_type = ["ArticlePage"]
 

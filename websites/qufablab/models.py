@@ -1,3 +1,6 @@
+from django.db import models
+from wagtail.core.models import Page
+
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core.fields import StreamField
 
@@ -9,9 +12,6 @@ from abstract.pages.article import AbstractArticlePage
 from abstract.pages.search import AbstractSearchPage
 
 from websites.base.blocks import HomeBlock, FlexBlock
-
-from django.db import models
-from wagtail.core.models import Page
 
 
 class HomePage(AbstractHomePage):

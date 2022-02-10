@@ -52,4 +52,5 @@ class AbstractDevicePage(FablabBasePage):
     ]
 
     class Meta:
+        verbose_name = "Gerät"
         abstract = True

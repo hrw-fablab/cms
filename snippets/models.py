@@ -4,7 +4,6 @@ from wagtail.admin.edit_handlers import (
     FieldRowPanel,
     MultiFieldPanel,
 )
-from wagtail.core.models import TranslatableMixin
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
@@ -44,7 +43,7 @@ class Author(models.Model):
         verbose_name_plural = "Autoren"
 
 
-class DeviceCategory(TranslatableMixin):
+class DeviceCategory(models.Model):
     name = models.CharField("Category Name", max_length=255, blank=False)
 
     panels = [
@@ -53,9 +52,13 @@ class DeviceCategory(TranslatableMixin):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Gerätekategorie"
+        verbose_name_plural = "Gerätekategorien"
 
 
-class ProjectCategory(TranslatableMixin):
+class ProjectCategory(models.Model):
     name = models.CharField("Category Name", max_length=255, blank=False)
 
     panels = [
@@ -64,20 +67,12 @@ class ProjectCategory(TranslatableMixin):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Projektkategorie"
+        verbose_name_plural = "Projektkategorien"
 
 
-class Tag(TranslatableMixin):
-    name = models.CharField("Tag Name", max_length=255, blank=False)
-
-    panels = [
-        FieldPanel("name"),
-    ]
-
-    def __str__(self):
-        return self.name
-
-
-register_snippet(Tag)
 register_snippet(Author)
 register_snippet(DeviceCategory)
 register_snippet(ProjectCategory)

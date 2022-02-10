@@ -1,5 +1,5 @@
 from django import template
-from ..models import Author, DeviceCategory, ProjectCategory, Tag
+from ..models import Author, DeviceCategory, ProjectCategory
 
 register = template.Library()
 
@@ -7,13 +7,6 @@ register = template.Library()
 def authors(context):
 	return {
 		'authors': Author.objects.all(),
-		'request': context['request'],
-	}
-
-@register.inclusion_tag('', takes_context=True)
-def tags(context):
-	return {
-		'tags': Tag.objects.all(),
 		'request': context['request'],
 	}
 

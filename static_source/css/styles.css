@@ -521,8 +521,9 @@ figcaption {
     font-size: 0.8rem;
 }
 input {
-    padding: var(--size-2);
-    border: solid .1em var(--brand);
+  padding: var(--size-2);
+  border: solid 0.1em var(--brand);
+  width: 10rem;
 }
 /* purgecss start ignore */
 .fl-grid-extrem {
@@ -617,111 +618,111 @@ input {
 	margin-inline-start: auto;
 }
 .fl-menu {
-	display: flex;
-	align-items: center
+  display: flex;
+  align-items: center
 }
 .fl-menu a {
-		text-decoration: none;
-		text-decoration-thickness: .1em;
-	}
+    text-decoration: none;
+    text-decoration-thickness: 0.1em;
+  }
 .fl-menu :hover:where(button, a) {
-		color: var(--brand);
-		text-decoration: underline;
-	}
+    color: var(--brand);
+    text-decoration: underline;
+  }
 .fl-menu > button {
-		display: none;
-		margin-inline-start: auto;
-		padding-inline: var(--size-2);
-	}
+    display: none;
+    margin-inline-start: auto;
+    padding-inline: var(--size-2);
+  }
 @media (max-width: 1440px) {
-		.fl-menu {
-			display: grid;
-			gap: 1rem;
-			grid-template-columns: 1fr auto;
-			place-items: center start;
-		}
+    .fl-menu {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr auto;
+      place-items: center start;
+    }
 
-		.fl-menu > button {
-			display: flex;
-		}
-	}
+    .fl-menu > button {
+      display: flex;
+    }
+  }
 .fl-menu ul {
-	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	width: 100%;
-	gap: 2rem
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  gap: 2rem
 }
 .fl-menu ul li {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-	}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
 @media (max-width: 1440px) {
-		.fl-menu ul {
-			margin-top: var(--size-4);
-			gap: unset;
-			grid-column: 1 / 3;
-			flex-direction: column;
-			display: none;
-			border-block-start: solid thin rgb(221, 221, 221);
-		}
+    .fl-menu ul {
+      margin-top: var(--size-4);
+      gap: unset;
+      grid-column: 1 / 3;
+      flex-direction: column;
+      display: none;
+      border-block-start: solid thin rgb(221, 221, 221);
+    }
 
-		.fl-menu ul li {
-			padding-block: var(--size-3);
-			width: 100%;
-			flex-direction: column;
-			border-block-end: solid thin rgb(221, 221, 221);
-		}
+    .fl-menu ul li {
+      padding-block: var(--size-3);
+      width: 100%;
+      flex-direction: column;
+      border-block-end: solid thin rgb(221, 221, 221);
+    }
 
-		.fl-menu ul li :where(a, button) {
-			width: 100%;
-			height: 100%;
-		}
+    .fl-menu ul li :where(a, button) {
+      width: 100%;
+      height: 100%;
+    }
 
-		.fl-menu ul button {
-			justify-content: space-between !important;
-		}
+    .fl-menu ul button {
+      justify-content: space-between !important;
+    }
 
-		.fl-menu ul svg {
-			width: 1rem;
-		}
+    .fl-menu ul svg {
+      width: 1rem;
+    }
 
-		.fl-menu ul .fl-language {
-			margin-block-start: var(--size-3);
-			padding-block: var(--size-3);
-		}
-	}
+    .fl-menu ul .fl-language {
+      margin-block-start: var(--size-3);
+      padding-block: var(--size-3);
+    }
+  }
 .fl-menu.submenu {
-	flex-direction: column;
-	align-items: start;
-	left: 0;
-	gap: var(--size-fluid-2);
-	transform: translateY(70%);
-	position: absolute;
-	background-color: var(--surface-2);
-	padding: var(--size-fluid-1);
-	box-shadow: var(--shadow-2);
-	border-radius: var(--size-2);
-	width: max-content
+  flex-direction: column;
+  align-items: start;
+  left: 0;
+  gap: var(--size-fluid-2);
+  transform: translateY(70%);
+  position: absolute;
+  background-color: var(--surface-2);
+  padding: var(--size-fluid-1);
+  box-shadow: var(--shadow-2);
+  border-radius: var(--size-2);
+  width: max-content
 }
 @media (max-width: 1440px) {
-		.fl-menu.submenu {
-			padding-inline-start: var(--size-3);
-			border: none;
-			margin: inherit;
-			gap: 0;
-			padding: inherit;
-			width: inherit;
-			transform: inherit;
-			background-color: inherit;
-			box-shadow: inherit;
-			display: flex;
-			position: inherit;
-		}
-	}
+    .fl-menu.submenu {
+      padding-inline-start: var(--size-3);
+      border: none;
+      margin: inherit;
+      gap: 0;
+      padding: inherit;
+      width: inherit;
+      transform: inherit;
+      background-color: inherit;
+      box-shadow: inherit;
+      display: flex;
+      position: inherit;
+    }
+  }
 .fl-logo {
 	display: flex;
 	align-items: center;

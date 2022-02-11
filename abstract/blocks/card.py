@@ -9,7 +9,7 @@ class CardBlock(blocks.StructBlock):
     image = ImageChooserBlock(required=False)
     title = blocks.CharBlock(required=False)
     text = blocks.TextBlock(required=False)
-    link = PageChooserBlock(required=False)
+    page = PageChooserBlock(required=False)
 
     class Meta:
         template = "templates/card.html"

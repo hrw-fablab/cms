@@ -1,8 +1,7 @@
 from wagtail.core import blocks
-from wagtail_link_block.blocks import LinkBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import VideoChooserBlock
-
+from wagtail.core.blocks.field_block import PageChooserBlock
 
 class SplitBlock(blocks.StructBlock):
     title = blocks.TextBlock(required=False)
@@ -14,7 +13,7 @@ class SplitBlock(blocks.StructBlock):
             "ul",
         ],
     )
-    link = LinkBlock(required=False)
+    link = PageChooserBlock(required=False)
     image = ImageChooserBlock(required=False)
     video = VideoChooserBlock(required=False)
 

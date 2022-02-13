@@ -1,52 +1,57 @@
 {% load wagtailcore_tags i18n %}
 {% wagtail_site as current_site%}
 {% block content %}
-<div class="fl-navigation padding-small">
-	<a class="fl-skip" href="#main">Skip to content</a>
-	<nav class="fl-content fl-menu gap-medium" aria-label="Main Menu">
+<a class="fl-skip" href="#main">Skip to content</a>
+<header class="fl-navigation padding-small">
+	<div class="fl-content">
 		<a class="fl-logo" href="{{ current_site.root_url }}/{{LANGUAGE_CODE}}">
 			{% if settings.site_settings.SiteSettings.logo %}
-				{% load wagtailimages_tags %}
-				{% image settings.site_settings.SiteSettings.logo original%}
+			{% load wagtailimages_tags %}
+			{% image settings.site_settings.SiteSettings.logo original%}
 			{% endif %}
 			{% if settings.site_settings.SiteSettings.logo_title%}
-				{{settings.site_settings.SiteSettings.logo_title}}
+			{{settings.site_settings.SiteSettings.logo_title}}
 			{% endif %}
 		</a>
+
 		<button id="menu-button" class="fl-button">Menu</button>
-		<ul>
-			{% for element in menuitems %}
-			<li>
-				{% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage"%}
-				<button>
-					{{element.localized}}
-					<svg width="0.8rem" viewBox="0 0 102 60">
-						<path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
-					</svg>
-				</button>
-				{% if element.get_children.count != 0 %}
-				<ul class="fl-menu gap-medium submenu hidden">
-					{% for subelement in element.get_children.specific%}
-					<li><a href="{{subelement.localized.url}}">{{subelement.localized}}</a></li>
-					{% endfor%}
-				</ul>
-				{% endif %}
-				{% else %}
-				<a href="{{element.localized.url}}">{{element.localized}}</a>
-				{% endif %}
-			</li>
-			{% endfor %}
-			<div class="fl-info">
-				{% if settings.site_settings.SiteSettings.search %}
-					<form class="fl-search" action="{{settings.site_settings.SiteSettings.search.localized.url}}" method="get" autocomplete="off">
-						<input type="text" name="query" placeholder="Suche ...">
-						<input type="text" name="locale" value={{LANGUAGE_CODE}} style="display: none;">
-						<input type="submit" style="display: none;">
-					</form>
-				{% endif %}
-					{% include "molecules/language.html"%}
-			</div>
-		</ul>
-	</nav>
-</div>
+		<nav aria-label="Main Menu">
+			<ul class="fl-menu">
+				{% for element in menuitems %}
+				<li>
+					{% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage"%}
+					<button>
+						{{element.localized}}
+						<svg width="0.8rem" viewBox="0 0 102 60">
+							<path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
+						</svg>
+					</button>
+					{% if element.get_children.count != 0 %}
+					<ul class="fl-menu gap-small submenu hidden">
+						{% for subelement in element.get_children.specific%}
+						<li><a href="{{subelement.localized.url}}">{{subelement.localized}}</a></li>
+						{% endfor%}
+					</ul>
+					{% endif %}
+					{% else %}
+					<a href="{{element.localized.url}}">{{element.localized}}</a>
+					{% endif %}
+				</li>
+				{% endfor %}
+			</ul>
+		</nav>
+
+		<div class="fl-settings">
+			{% if settings.site_settings.SiteSettings.search %}
+			<form class="fl-search" action="{{settings.site_settings.SiteSettings.search.localized.url}}" method="get"
+				autocomplete="off">
+				<input type="text" name="query" placeholder="Suche ...">
+				<input type="text" name="locale" value={{LANGUAGE_CODE}} style="display: none;">
+				<input type="submit" style="display: none;">
+			</form>
+			{% endif %}
+			{% include "molecules/language.html"%}
+		</div>
+	</div>
+</header>
 {% endblock content %}

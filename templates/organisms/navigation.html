@@ -27,7 +27,7 @@
 						</svg>
 					</button>
 					{% if element.get_children.count != 0 %}
-					<ul class="fl-menu gap-small submenu hidden">
+					<ul class="fl-submenu gap-small hidden">
 						{% for subelement in element.get_children.specific%}
 						<li><a href="{{subelement.localized.url}}">{{subelement.localized}}</a></li>
 						{% endfor%}
@@ -41,7 +41,7 @@
 			</ul>
 		</nav>
 
-		<div class="fl-settings">
+		<div class="fl-settings" id="settings">
 			{% if settings.site_settings.SiteSettings.search %}
 			<form class="fl-search" action="{{settings.site_settings.SiteSettings.search.localized.url}}" method="get"
 				autocomplete="off">

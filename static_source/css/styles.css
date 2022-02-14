@@ -524,6 +524,7 @@ input {
   padding: var(--size-2);
   border: solid 0.1em var(--brand);
   width: 100%;
+  padding-inline: var(--size-3);
 }
 /* purgecss start ignore */
 .fl-grid-extrem {
@@ -614,12 +615,6 @@ input {
   top: 0;
   z-index: 10
 }
-.fl-navigation > div {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    flex-wrap: wrap;
-  }
 .fl-navigation a {
     text-decoration: none;
     text-decoration-thickness: 0.1em;
@@ -627,12 +622,20 @@ input {
 .fl-navigation :hover:where(button, a) {
     color: var(--brand);
     text-decoration: underline;
+    fill: var(--brand);
   }
 .fl-navigation .fl-logo {
     flex: 0;
   }
+.fl-navigation > div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 .fl-navigation nav {
-    flex: 2 1 45rem;
+    flex: 2 1 55rem;
   }
 .fl-navigation #menu-button {
     display: none;
@@ -649,29 +652,12 @@ input {
     .fl-navigation nav {
       display: none;
     }
-
-    .fl-navigation .fl-menu {
-      flex-direction: column;
-      width: 100%;
-      align-items: start
-    }
-
-      .fl-navigation .fl-menu li {
-        width: 100%;
-        border-block-end: solid thin rgb(221, 221, 221);
-      }
-
-      .fl-navigation .fl-menu li a {
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-      }
   }
 .fl-settings {
   justify-content: end;
   align-items: center;
   gap: var(--size-4);
-  flex: 1 0 10rem;
+  flex: 1 0 15rem;
   display: flex
 }
 .fl-settings form {
@@ -682,6 +668,7 @@ input {
   }
 @media (max-width: 1024px) {
     .fl-settings {
+      margin-block: var(--size-4);
       display: none;
     }
   }
@@ -689,7 +676,63 @@ input {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2rem
+}
+@media (max-width: 1024px) {
+    .fl-menu {
+      margin-top: var(--size-3);
+      flex-direction: column;
+      align-items: start;
+      width: 100%;
+      height: 100%;
+      gap: inherit;
+    }
+
+    .fl-menu :not(svg) {
+      width: 100%;
+      height: 100%;
+    }
+
+    .fl-menu li {
+      padding-block: var(--size-3);
+      border-bottom: solid thin #ddd;
+    }
+
+    .fl-menu li > a {
+      display: inline-block;
+    }
+
+    .fl-menu li button {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+.fl-submenu {
+  transform: translateY(2.2rem);
+  top: 0;
+  padding: var(--size-4);
+  padding-inline-end: var(--size-6);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: absolute;
+  background-color: var(--surface-2);
+  box-shadow: var(--shadow-2);
+  width: max-content
+}
+@media (max-width: 1024px) {
+    .fl-submenu {
+      padding: inherit;
+      padding-inline-start: 1rem;
+      box-shadow: inherit;
+      background-color: inherit;
+      transform: inherit;
+      position: inherit;
+    }
+  }
+li {
+  position: relative;
 }
 .fl-logo {
   display: flex;

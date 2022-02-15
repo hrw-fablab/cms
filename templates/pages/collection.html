@@ -110,9 +110,9 @@
 	</header>
 	<main>
 		<ul class="fl-collection">
-			{% for element in page.collection_link.all%}
+			{% for element in page.collection_links.all%}
 			{% if element.expire %}
-			{% if element.is_visible %}
+			{% if element.is_visible == False %}
 			<li>
 				<a href="{{element.url}}" target="_blank">{{element.title}}</a>
 			</li>
@@ -123,8 +123,8 @@
 			</li>
 			{% endif %}
 			{% endfor %}
-			{% for element in page.collection_page.all %}
-			{% for page in element.page.get_children|slice:element.amount %}
+			{% for element in page.collection_pages.all %}
+			{% for page in element.grabber.get_children|slice:element.amount %}
 			<li>
 				<a href="{{page.url}}" target="_blank">{{page.title}}</a>
 			</li>

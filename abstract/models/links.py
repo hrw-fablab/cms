@@ -21,7 +21,7 @@ class ExpireLink(Link):
 
     @property
     def is_visible(self):
-        return date.today() < self.expire
+        return date.today() > self.expire
 
     panels = [
         FieldPanel("url"),

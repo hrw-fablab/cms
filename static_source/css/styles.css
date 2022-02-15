@@ -95,17 +95,17 @@
 .fl-accent a:hover {
     color: var(--surface-2) !important;
   }
-.fl-accent:nth-child(odd) {
+.fl-accent:nth-child(2n) {
   background-color: inherit;
   color: inherit
 }
-.fl-accent:nth-child(odd) a:hover {
+.fl-accent:nth-child(2n) a:hover {
     color: var(--brand) !important;
   }
-.fl-accent:nth-child(odd) .fl-split {
+.fl-accent:nth-child(2n) .fl-split {
     grid-template-columns: 0.9fr 1fr;
   }
-.fl-accent:nth-child(odd) .fl-split > :first-child {
+.fl-accent:nth-child(2n) .fl-split > :first-child {
     order: 1;
   }
 .fl-brand {
@@ -623,9 +623,6 @@ input {
     color: var(--brand);
     text-decoration: underline;
     fill: var(--brand);
-  }
-.fl-navigation .fl-logo {
-    flex: 0;
   }
 .fl-navigation > div {
     display: flex;

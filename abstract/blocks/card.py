@@ -6,8 +6,8 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.core.blocks.field_block import PageChooserBlock
 
 class CardBlock(blocks.StructBlock):
-    image = ImageChooserBlock(required=False)
     title = blocks.CharBlock(required=False)
+    image = ImageChooserBlock(required=False)
     text = blocks.TextBlock(required=False)
     page = PageChooserBlock(required=False)
 

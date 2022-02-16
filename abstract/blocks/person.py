@@ -3,8 +3,8 @@ from wagtail.images.blocks import ImageChooserBlock
 
 
 class PersonBlock(blocks.StructBlock):
-    image = ImageChooserBlock(required=False)
     name = blocks.CharBlock(required=False)
+    image = ImageChooserBlock(required=False)
     employment = blocks.CharBlock(required=False)
     link = blocks.URLBlock(required=False)
     since = blocks.DateBlock(required=False)

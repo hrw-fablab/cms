@@ -3,8 +3,8 @@ from wagtail.images.blocks import ImageChooserBlock
 
 
 class BlockquoteBlock(blocks.StructBlock):
-    image = ImageChooserBlock(required=False)
     text = blocks.TextBlock(required=False)
+    image = ImageChooserBlock(required=False)
     cite = blocks.CharBlock(required=False)
 
     class Meta:

@@ -45,8 +45,8 @@
 		<a href="{{value.localized.url}}">
 			<h3>{{value.localized.title}}</h3>
 		</a>
-		{% elif value.link.get_url != None %}
-		<a href="{{value.link.get_url}}">
+		{% elif value.page != None %}
+		<a href="{{value.page.localized.url}}">
 			<h3>{{value.title}}</h3>
 		</a>
 		{% else %}

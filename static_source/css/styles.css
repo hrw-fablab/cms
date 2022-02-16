@@ -95,17 +95,17 @@
 .fl-accent a:hover {
     color: var(--surface-2) !important;
   }
-.fl-accent:nth-child(2n) {
+.fl-accent:nth-child(odd) {
   background-color: inherit;
   color: inherit
 }
-.fl-accent:nth-child(2n) a:hover {
+.fl-accent:nth-child(odd) a:hover {
     color: var(--brand) !important;
   }
-.fl-accent:nth-child(2n) .fl-split {
+.fl-accent:nth-child(odd) .fl-split {
     grid-template-columns: 0.9fr 1fr;
   }
-.fl-accent:nth-child(2n) .fl-split > :first-child {
+.fl-accent:nth-child(odd) .fl-split > :first-child {
     order: 1;
   }
 .fl-brand {
@@ -487,14 +487,15 @@ td {
   font-size: var(--font-size-3);
 }
 body {
-	background-color: var(--surface-1);
-	color: var(--text-1);
+  background-color: var(--surface-1);
+  color: var(--text-1);
+  background-size: 20%;
 }
 a {
-	text-decoration-thickness: 0.1em;
+  text-decoration-thickness: 0.1em;
 }
 a:hover {
-	color: var(--brand);
+  color: var(--brand);
 }
 button {
 	display: flex;
@@ -540,7 +541,7 @@ input {
 	}
 .fl-grid-large {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 1fr));
 }
 .fl-grid-medium {
 	display: grid;
@@ -557,7 +558,7 @@ input {
 	margin-inline: auto;
 }
 .fl-content.large {
-	width: min(var(--width), 80rem);
+	width: min(var(--width), 90rem);
 }
 .fl-content.medium {
 	width: min(var(--width), 60rem);

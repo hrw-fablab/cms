@@ -69,6 +69,12 @@ class IndexCategoryPage(AbstractIndexPage):
 
     template = "pages/category.html"
 
+    def get_context(self, request):
+        context = super().get_context(request)
+        all_children = self.get_children().live().specific()
+        context["children"] = all_children
+        return context
+
     class Meta:
         verbose_name = "Index Seite mit Kategorien"
 

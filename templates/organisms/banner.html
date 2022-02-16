@@ -9,8 +9,8 @@
 		{% if value.title %}
 		<h2>{{ value.title }}</h2>
 		<div class="fl-flex-row gap-small">
-			{% for link in page.page_link.all%}
-			<a href="{{link.link_url}}">{{link.link_title}}</a>
+			{% for link in page.project_links.all%}
+			<a href="{{link.url}}">{{link.title}}</a>
 			{% endfor %}
 		</div>
 		{% endif %}
@@ -31,7 +31,7 @@
 			{{image_1440.url}} 1440w,
 			{{image_1920.url}} 1920w,"
 			sizes="
-			(min-width: 1920px) 1920px,
+			(min-width: 1800px) 1920px,
 			(min-width: 1440px) 1440px,
 			(min-width: 1024px) 1024px,
 			(min-width: 768px) 768px,

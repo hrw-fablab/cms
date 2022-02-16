@@ -8,9 +8,9 @@
 		{% load wagtailimages_tags %}
 		<figure>
 			<picture>
-				{% image page.image fill-1024x700 format-webp webpquality-60 as image_1024 %}
-				{% image page.image fill-768x576 format-webp webpquality-60 as image_768 %}
-				{% image page.image fill-480x360 format-webp webpquality-60 as image_480 %}
+				{% image page.image fill-1024x588-c70 format-webp webpquality-60 as image_1024 %}
+				{% image page.image fill-768x576-c70 format-webp webpquality-60 as image_768 %}
+				{% image page.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
 				<source
 				srcset="
 				{{image_480.url}} 480w,
@@ -22,9 +22,9 @@
 				(min-width: 480px) 480px"
 				type="image/webp"
 				>
-				{% image page.image fill-1024x700 format-jpeg as image_1024 %}
-				{% image page.image fill-768x576 format-jpeg as image_768 %}
-				{% image page.image fill-480x360 format-jpeg as image_480 %}
+				{% image page.image fill-1024x700-c70 format-jpeg as image_1024 %}
+				{% image page.image fill-768x576-c70 format-jpeg as image_768 %}
+				{% image page.image fill-480x360-c70 format-jpeg as image_480 %}
 				<source
 				srcset="
 				{{image_480.url}} 480w,

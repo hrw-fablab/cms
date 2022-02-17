@@ -8,7 +8,7 @@
         <ul class="fl-result">
             {% for result in results %}
             <li class="fl-flex-column">
-                <p class="info">{{ result.get_verbose_name }}</p>
+                <p class="fl-info">{{ result.get_verbose_name }}</p>
                 <a href="{% pageurl result %}">
                     <p>{{ result.title }}</p>
                 </a>

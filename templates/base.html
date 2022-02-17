@@ -25,6 +25,11 @@
             --surface-1: {{settings.site_settings.SiteSettings.surface_color_one}};
             --surface-2: {{settings.site_settings.SiteSettings.surface_color_two}};
         }
+
+        .fl-brand, .fl-accent {
+            background-size: 40%;
+            background-image: url("{%static 'svg/background.svg'%}");
+        }
     </style>
 
     <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}">

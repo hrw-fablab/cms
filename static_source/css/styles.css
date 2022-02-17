@@ -33,43 +33,9 @@
 :where(html) {
 	--shadow-color: 220 3% 15%;
 	--shadow-strength: 1%;
-	--shadow-1: 0 1px 2px -1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
-	--shadow-2: 
+	--shadow-1: 
 	  0 3px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
 	  0 7px 14px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%));
-	--shadow-3: 
-	  0 -1px 3px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
-	  0 1px 2px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
-	  0 2px 5px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
-	  0 4px 12px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
-	  0 12px 15px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%));
-	--shadow-4: 
-	  0 -2px 5px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
-	  0 1px 1px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
-	  0 2px 2px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
-	  0 5px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
-	  0 9px 9px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
-	  0 16px 16px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
-	--shadow-5: 
-	  0 -1px 2px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
-	  0 2px 1px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
-	  0 5px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
-	  0 10px 10px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
-	  0 20px 20px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
-	  0 40px 40px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%));
-	--shadow-6: 
-	  0 -1px 2px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
-	  0 3px 2px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
-	  0 7px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
-	  0 12px 10px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
-	  0 22px 18px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
-	  0 41px 33px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%)),
-	  0 100px 80px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%));
-	--inner-shadow-0: inset 0 0 0 1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
-	--inner-shadow-1: inset 0 1px 2px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
-	--inner-shadow-2: inset 0 1px 4px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
-	--inner-shadow-3: inset 0 2px 8px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
-	--inner-shadow-4: inset 0 2px 14px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
 }
 :where(html) {
 	--aspect-box: 1;
@@ -425,14 +391,19 @@ footer {
 	top: 100vh;
 }
 /* purgecss end ignore */
-html {
+body {
   font-family: "Inter", sans-serif;
-  font-weight: normal;
+  font-size: var(--font-size-3);
 }
 @supports (font-variation-settings: normal) {
-  html {
+  body {
     font-family: "Inter var", sans-serif;
   }
+}
+body :where(h1, h2, h3, h4) {
+  font-family: Arial;
+  font-weight: bold;
+  line-height: 1.5;
 }
 h1 {
   font-size: var(--font-size-6);
@@ -444,46 +415,6 @@ h3 {
   font-size: var(--font-size-4);
 }
 h4 {
-  font-size: var(--font-size-3);
-}
-h1,
-h2,
-h3,
-h4 {
-  font-weight: bold;
-  line-height: 1.5;
-}
-p {
-  font-size: var(--font-size-3);
-}
-a {
-  font-size: var(--font-size-3);
-}
-time {
-  font-size: var(--font-size-3);
-}
-button {
-  font-size: var(--font-size-3);
-}
-button:hover {
-  color: var(--blue-8);
-}
-address {
-  font-size: var(--font-size-3);
-}
-li {
-  font-size: var(--font-size-3);
-}
-blockquote {
-  font-size: var(--font-size-4);
-}
-dl {
-  font-size: var(--font-size-3);
-}
-th {
-  font-size: var(--font-size-3);
-}
-td {
   font-size: var(--font-size-3);
 }
 body {
@@ -610,7 +541,7 @@ input {
 		aspect-ratio: var(--aspect-box) !important;
 	}
 .fl-navigation {
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow-1);
   background-color: var(--surface-1);
   position: sticky;
   top: 0;
@@ -716,7 +647,7 @@ input {
   align-items: start;
   position: absolute;
   background-color: var(--surface-2);
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow-1);
   width: max-content
 }
 @media (max-width: 1024px) {
@@ -941,6 +872,9 @@ li {
   gap: var(--size-5);
   list-style: none;
   width: 100%;
+}
+.fl-info {
+  color: lightgray
 }
 .fl-spacer {
     height: var(--size-fluid-4);

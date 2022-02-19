@@ -106,6 +106,7 @@ class ProjectPage(AbstractProjectPage):
         StreamFieldPanel("body"),
     ]
 
+
 class DevicePage(AbstractDevicePage):
     template = "pages/project.html"
 

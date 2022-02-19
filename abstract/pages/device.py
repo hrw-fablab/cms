@@ -30,13 +30,17 @@ class AbstractDevicePage(FablabBasePage):
     introduction = models.CharField(max_length=255)
 
     content_panels = FablabBasePage.content_panels + [
-        MultiFieldPanel([
-            ImageChooserPanel("image"),
-            FieldPanel("number"),
-            SnippetChooserPanel("category"),
-        ], heading="Hero"),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel("image"),
+                FieldPanel("number"),
+                SnippetChooserPanel("category"),
+            ],
+            heading="Hero",
+        ),
         FieldPanel("introduction"),
     ]
+
     class Meta:
         verbose_name = "Gerät"
         abstract = True

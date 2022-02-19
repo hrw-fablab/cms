@@ -2,8 +2,7 @@ from django.db import models
 from django.db.models.fields import IntegerField
 
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from core.models import FablabBasePage
@@ -30,27 +29,14 @@ class AbstractDevicePage(FablabBasePage):
 
     introduction = models.CharField(max_length=255)
 
-    body = RichTextField(
-        features=[
-            "bold",
-            "italic",
-            "h3",
-            "ul",
-            "link",
-            "document-link",
-            "image",
-            "embed",
-        ]
-    )
-
     content_panels = FablabBasePage.content_panels + [
-        ImageChooserPanel("image"),
-        FieldPanel("number"),
-        SnippetChooserPanel("category"),
+        MultiFieldPanel([
+            ImageChooserPanel("image"),
+            FieldPanel("number"),
+            SnippetChooserPanel("category"),
+        ], heading="Hero"),
         FieldPanel("introduction"),
-        FieldPanel("body"),
     ]
-
     class Meta:
         verbose_name = "Gerät"
         abstract = True

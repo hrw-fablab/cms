@@ -7,6 +7,7 @@ from wagtail.core.fields import StreamField
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
+from abstract.pages.device import AbstractDevicePage
 
 from abstract.pages.home import AbstractHomePage
 from abstract.pages.folder import AbstractFolderPage
@@ -102,6 +103,18 @@ class ProjectPage(AbstractProjectPage):
 
     content_panels = AbstractProjectPage.content_panels + [
         InlinePanel("project_links", label="Project Links"),
+        StreamFieldPanel("body"),
+    ]
+
+class DevicePage(AbstractDevicePage):
+    template = "pages/project.html"
+
+    parent_page_types = ["IndexCategoryPage"]
+    subpage_type = []
+
+    body = StreamField(ProjectBlock(), blank=True)
+
+    content_panels = AbstractDevicePage.content_panels + [
         StreamFieldPanel("body"),
     ]
 

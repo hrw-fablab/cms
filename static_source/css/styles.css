@@ -340,20 +340,20 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 * {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 body {
-	line-height: 1.7;
-	-webkit-font-smoothing: antialiased;
-	height: 100%;
-	overflow: auto;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  overflow: auto;
 }
 main {
-	min-height: 100vh;
+  min-height: 100vh;
 }
 img,
 picture,
@@ -361,17 +361,16 @@ video,
 iframe,
 figure,
 canvas {
-	width: 100%;
-	height: auto;
-	object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 input,
 button,
 textarea,
 select {
-	font: inherit;
-	background-color: transparent;
-	border: none;
+  background-color: transparent;
+  border: none;
 }
 p,
 h1,
@@ -380,15 +379,15 @@ h3,
 h4,
 h5,
 h6 {
-	overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 a {
-	color: inherit;
-	width: max-content;
+  color: inherit;
+  width: max-content;
 }
 footer {
-	position: sticky;
-	top: 100vh;
+  position: sticky;
+  top: 100vh;
 }
 /* purgecss end ignore */
 body {
@@ -415,6 +414,9 @@ h3 {
   font-size: var(--font-size-4);
 }
 h4 {
+  font-size: var(--font-size-3);
+}
+body :where(input, button, textarea) {
   font-size: var(--font-size-3);
 }
 body {

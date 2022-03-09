@@ -775,19 +775,21 @@ li {
 .fl-hero > * {
     grid-area: container;
   }
-.fl-hero :where(picture, img, figure) {
-    height: 700px;
+.fl-hero img {
+    max-height: 70vh;
+    aspect-ratio: 16 / 9;
   }
 .fl-hero .fl-content {
     z-index: 1;
   }
 @media (max-width: 768px) {
-    .fl-hero :where(picture, img, figure) {
+    .fl-hero img {
       height: 100%;
     }
 
     .fl-hero .fl-content {
-        width: inherit;
+      width: 100%;
+      height: 100%;
     }
   }
 .fl-hero-content {
@@ -801,6 +803,8 @@ li {
   }
 @media (max-width: 768px) {
 .fl-hero-content {
+    width: inherit;
+    height: inherit;
     padding-block-start: var(--size-fluid-7);
     padding-block-end: var(--size-fluid-5)
 }

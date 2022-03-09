@@ -15,16 +15,8 @@
     </title>
     <meta name="description" content="{{page.search_description}}" />
 
+    <link href="{% static 'fonts/font.css' %}" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'Inter var';
-            font-weight: 100 900;
-            font-display: swap;
-            font-style: normal;
-            font-named-instance: 'Regular';
-            src: url("{% static 'fonts/Inter-roman.var.woff2' %}") format("woff2");
-        }
-
         :root {
             --brand: {{settings.site_settings.SiteSettings.brand_color}};
             --text-1: {{settings.site_settings.SiteSettings.text_color}};
@@ -38,9 +30,6 @@
             background-attachment: fixed;
         }
     </style>
-
-<link href="https://rsms.me/inter/inter.css" rel="stylesheet">
-    <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.min.css' %}">
     <script defer src="{% static 'js/cms.js' %}"></script>
 

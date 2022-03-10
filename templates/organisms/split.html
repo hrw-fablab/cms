@@ -23,15 +23,14 @@
 		{% load wagtailimages_tags %}
 		<figure>
 			<picture>
-				{% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
-				{% image value.image fill-600x360 format-webp webpquality-60 as image_600 %}
+				{% image value.image fill-854x480 format-webp webpquality-80 as image_768 %}
 				{% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
 				<source
-				srcset="{{image_768.url}} 768w,{{image_600.url}} 600w,{{image_480.url}} 480w,"
-				sizes="(max-width: 520px) 480px,(max-width: 768px) 768px,(min-width: 1024px) 600px"
+				srcset="{{image_768.url}} 768w,{{image_480.url}} 480w,"
+				sizes="(max-width: 520px) 480px,(max-width: 768px) 768px"
 				type="image/webp"
 				>
-				{% image value.image fill-768x576 format-jpeg as image_768 %}
+				{% image value.image fill-854x480 format-jpeg as image_768 %}
 				{% image value.image fill-480x360 format-jpeg as image_480 %}
 				<source
 				srcset="{{image_768.url}} 768w,{{image_480.url}} 480w,"

@@ -4,7 +4,7 @@
 	{% load wagtailimages_tags %}
 	<figure>
 		<picture>
-			{% image value.image fill-768x576-c70 format-webp webpquality-60 as image_768 %}
+			{% image value.image fill-854x480-c70 format-webp webpquality-80 as image_768 %}
 			{% image value.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
 			<source
 			srcset="
@@ -15,7 +15,7 @@
 			(min-width: 480px) 480px"
 			type="image/webp"
 			>
-			{% image value.image fill-768x576 format-jpeg as image_768 %}
+			{% image value.image fill-854x480 format-jpeg as image_768 %}
 			{% image value.image fill-480x360 format-jpeg as image_480 %}
 			<source
 			srcset="

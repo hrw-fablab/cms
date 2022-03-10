@@ -418,6 +418,7 @@ h4 {
 }
 body :where(input, button, textarea) {
   font-size: var(--font-size-3);
+  font-family: "Inter var", sans-serif;
 }
 body {
   background-color: var(--surface-1);

@@ -4,8 +4,8 @@
 	{% load wagtailimages_tags %}
 	<figure>
 		<picture>
-			{% image value.image fill-768x576 format-webp as image_768 %}
-			{% image value.image fill-480x360 format-webp as image_480 %}
+			{% image value.image fill-768x576-c70 format-webp webpquality-60 as image_768 %}
+			{% image value.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
 			<source
 			srcset="
 			{{image_480.url}} 480w,
@@ -45,8 +45,8 @@
 		<a href="{{value.localized.url}}">
 			<h3>{{value.localized.title}}</h3>
 		</a>
-		{% elif value.link.get_url != None %}
-		<a href="{{value.link.get_url}}">
+		{% elif value.page %}
+		<a href="{{value.page.localized.url}}">
 			<h3>{{value.title}}</h3>
 		</a>
 		{% else %}

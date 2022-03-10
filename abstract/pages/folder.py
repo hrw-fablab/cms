@@ -7,4 +7,5 @@ class AbstractFolderPage(FablabBasePage):
         return HttpResponseRedirect("/")
 
     class Meta:
+        verbose_name = "Ordner"
         abstract = True

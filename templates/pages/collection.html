@@ -16,73 +16,69 @@
 		{% endblock %}
 	</title>
 	<meta name="description" content="{{page.search_description}}" />
-
 	<style>
 		* {
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
 		}
-
-		body,
-		html {
-			height: 100%;
-		}
-
 		body {
+			min-height: 100vh;
+			font-weight: bold;
 			font-family: sans-serif;
-			width: min(90vw, 40rem);
-			margin-inline: auto;
 			text-align: center;
-			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			gap: 3rem;
+			background-color: #0093E9;
+			background-image: linear-gradient(160deg, #0093E9 0%, #006ead 100%);
+			background-size: auto 100%;
+			background-repeat: no-repeat;
 		}
-
+		main {
+			margin-inline: auto;
+			width: min(90vw, 40rem);
+		}
 		header {
-			padding-block: 2rem;
+			padding-block-start: 3rem;
 		}
-
+		header a {
+			text-underline-offset: .3em;
+			text-decoration: underline;
+		}
 		footer {
-			padding-block: 2rem;
-			position: sticky;
-			top: 100vh;
+			padding-block-end: 3rem;
 		}
-
+		footer ul {
+			gap: 4rem;
+		}
 		ul {
 			list-style: none;
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: space-around;
+			justify-content: center;
 			align-items: center;
 			gap: 1.5rem;
 		}
-
 		svg {
+			fill: white;
 			width: 2.5rem;
 			height: 2.5rem;
 		}
-
 		a {
-			color: inherit;
-			text-decoration-thickness: .1em;
+			color: white;
+			text-decoration: none;
 		}
-
 		.fl-collection {
 			flex-direction: column;
 		}
-
 		.fl-collection li {
-			border: solid .15em;
 			width: 100%;
+			border: solid white .15em;
 		}
-
-		.fl-collection li:hover {
-			background-color: lightgray;
-		}
-
 		.fl-collection a {
-			text-decoration: none;
 			display: inline-block;
-			padding: 0.7rem;
+			padding: 1rem;
 			width: 100%;
 			height: 100%;
 		}
@@ -110,9 +106,9 @@
 	</header>
 	<main>
 		<ul class="fl-collection">
-			{% for element in page.collection_link.all%}
+			{% for element in page.collection_links.all%}
 			{% if element.expire %}
-			{% if element.is_visible %}
+			{% if element.is_visible == False %}
 			<li>
 				<a href="{{element.url}}" target="_blank">{{element.title}}</a>
 			</li>
@@ -123,8 +119,8 @@
 			</li>
 			{% endif %}
 			{% endfor %}
-			{% for element in page.collection_page.all %}
-			{% for page in element.page.get_children|slice:element.amount %}
+			{% for element in page.collection_pages.all %}
+			{% for page in element.grabber.get_children|slice:element.amount %}
 			<li>
 				<a href="{{page.url}}" target="_blank">{{page.title}}</a>
 			</li>

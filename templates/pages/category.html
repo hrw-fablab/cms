@@ -3,14 +3,16 @@
 
 {% block content %}
 <main class="fl-main padding-top" id="main">
-	{% regroup children by category as category_list %}
+	{% regroup children.specific by category as category_list %}
 	{% for category in category_list %}
-	<div class="fl-content large">
-		<h2>{{category.grouper}}</h2>
-		<div class="fl-grid cards">
-		{% for page in category.list %}
-		{% include "molecules/card.html" with element=page%}
-		{% endfor %}
+	<div class="fl-content large margin-block-start-medium">
+		{% if category.grouper != None %}
+		<h2 class="margin-block-end-small">{{category.grouper}}</h2>
+		{% endif %}
+		<div class="fl-grid-large gap-medium">
+			{% for page in category.list %}
+			{% include "molecules/card.html" with value=page class="aspect-widescreen"%}
+			{% endfor %}
 		</div>
 	</div>
 	{% endfor %}

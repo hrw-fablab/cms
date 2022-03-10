@@ -3,8 +3,10 @@
 <section class="fl-content large fl-split gap-medium">
 	<div class="fl-flex-column justify-center gap-tiny">
 		{% if value.title %}
-			{% if value.link.get_url != None %}
-				<a href="{{value.link.get_url}}"><h3>{{value.title}}</h3></a>
+			{% if value.page %}
+				<a href="{{value.page.localized.url}}">
+					<h3>{{value.title}}</h3>
+				</a>
 			{% else %}
 				<h3>{{value.title}}</h3>
 			{% endif %}

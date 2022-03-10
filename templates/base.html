@@ -25,6 +25,15 @@
             src: url("{% static 'fonts/inter.woff2' %}") format("woff2");
         }
 
+        @font-face {
+            font-family: 'Manrope VF';
+            font-weight: 700;
+            font-display: swap;
+            font-style: normal;
+            font-named-instance: 'Regular';
+            src: url("{% static 'fonts/manrope.woff2' %}") format("woff2");
+        }
+
         :root {
             --brand: {{settings.site_settings.SiteSettings.brand_color}};
             --text-1: {{settings.site_settings.SiteSettings.text_color}};

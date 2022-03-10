@@ -401,7 +401,7 @@ body {
   }
 }
 body :where(h1, h2, h3, h4) {
-  font-family: Arial;
+  font-family: "Manrope VF", sans-serif;
   font-weight: bold;
   line-height: 1.5;
 }

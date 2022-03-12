@@ -9,9 +9,9 @@ large
 {% endif %}
 margin-block-end-large">
 	{% if value.title %}
-		<h2 class="text-centered margin-block-end-medium">{{value.title}}</h2>
+		{% include "atoms/heading.html" with value=value%}
 	{% endif %}
-	<div class="fl-grid-small gap-medium">
+	<div class="fl-grid-{{value.layout}} gap-medium">
 		{% for element in value.cards%}
 		{% if element.block_type == "image"%}
 			{% load wagtailimages_tags %}

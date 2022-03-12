@@ -4,13 +4,29 @@
 	{% if value.title or value.text %}
 	<div class="fl-flex-column justify-center align-start fl-glass padding-medium">
 		{% if value.date %}
-			<time>Startdatum: {{page.date}}</time>
+		<time>Startdatum: {{page.date}}</time>
 		{% endif %}
 		{% if value.number %}
-			<p>Anzahl: {{page.number}}</p>
+		<p>Anzahl: {{page.number}}</p>
 		{% endif %}
 		{% if value.title %}
-		<h2>{{ value.title }}</h2>
+		{% if value.date or value.number %}
+		<h2>{{value.title}}</h2>
+		{% else %}
+		<h2
+		style="scroll-margin-top: 300px;" 
+		class="fl-flex-row align-center justify-center gap-small " 
+		id={{ value.title|cut:" "}}>
+			<a class=" fl-flex-row align-end" id=" {{ value.title|cut:" "}}" href="#{{ value.title|cut:" "}}">
+			<svg width="20" height="20" viewbox="0 0 16 16">
+				<path
+					d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+				</path>
+			</svg>
+			</a>
+			{{value.title}}
+		</h2>
+		{% endif %}
 		<div class="fl-flex-row gap-small">
 			{% for link in page.project_links.all%}
 			<a href="{{link.url}}">{{link.title}}</a>
@@ -26,41 +42,33 @@
 			{% image value.image fill-1024x500-c70 format-webp webpquality-60 as image_1024 %}
 			{% image value.image fill-768x576-c70 format-webp webpquality-60 as image_768 %}
 			{% image value.image fill-260x200-c70 format-webp webpquality-60 as image_480 %}
-			<source
-			srcset="
+			<source srcset="
 			{{image_480.url}} 480w,
 			{{image_768.url}} 768w,
 			{{image_1024.url}} 1024w,
 			{{image_1440.url}} 1440w,
-			{{image_1920.url}} 1920w,"
-			sizes="
+			{{image_1920.url}} 1920w," sizes="
 			(min-width: 1800px) 1920px,
 			(min-width: 1440px) 1440px,
 			(min-width: 1024px) 1024px,
 			(min-width: 768px) 768px,
-			(min-width: 480px) 480px"
-			type="image/webp"
-			>
-			{% image value.image fill-1920x500-c70 format-jpeg  as image_1920 %}
+			(min-width: 480px) 480px" type="image/webp">
+			{% image value.image fill-1920x500-c70 format-jpeg as image_1920 %}
 			{% image value.image fill-1440x500-c70 format-jpeg as image_1440 %}
 			{% image value.image fill-1024x500-c70 format-jpeg as image_1024 %}
 			{% image value.image fill-768x576-c70 format-jpeg as image_768 %}
 			{% image value.image fill-260x200-c70 format-jpeg as image_480 %}
-			<source
-			srcset="
+			<source srcset="
 			{{image_480.url}} 480w,
 			{{image_768.url}} 768w,
 			{{image_1024.url}} 1024w,
 			{{image_1440.url}} 1440w,
-			{{image_1920.url}} 1920w,"
-			sizes="
+			{{image_1920.url}} 1920w," sizes="
 			(min-width: 1920px) 1920px,
 			(min-width: 1440px) 1440px,
 			(min-width: 1024px) 1024px,
 			(min-width: 768px) 768px,
-			(min-width: 480px) 480px"
-			type="image/jpg"
-			>
+			(min-width: 480px) 480px" type="image/jpg">
 			<img src="{{image_480.url}}" alt="{{value.image.alt}}" decoding="async">
 		</picture>
 		<figcaption>

@@ -347,7 +347,6 @@
   margin: 0;
 }
 body {
-  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   height: 100%;
   overflow: auto;
@@ -692,9 +691,6 @@ li {
   position: relative;
 }
 .fl-logo {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   gap: var(--size-2);
   flex-shrink: 0;
   font-size: var(--font-size-4);
@@ -725,12 +721,7 @@ li {
 			aspect-ratio: var(--aspect-widescreen) !important;
 		}
 	}
-.fl-author {
-	display: flex;
-	align-items: center;
-	gap: var(--size-3)
-}
-.fl-author img {
+.fl-profile img {
 		width: var(--size-6);
 		height: var(--size-6);
 		object-fit: cover;
@@ -897,10 +888,6 @@ li {
 	transform: translateY(0%);
 }
 .fl-result {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
   gap: var(--size-5);
   list-style: none;
   width: 100%;

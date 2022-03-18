@@ -4,7 +4,7 @@
 <a class="fl-skip" href="#main">Skip to content</a>
 <header class="fl-navigation padding-small">
 	<div class="fl-content">
-		<a class="fl-logo" href="{{ current_site.root_url }}/{{LANGUAGE_CODE}}">
+		<a class="fl-flex-row align-center justify-start fl-logo" href="{{ current_site.root_url }}/{{LANGUAGE_CODE}}">
 			{% if settings.site_settings.SiteSettings.logo %}
 			{% load wagtailimages_tags %}
 			{% image settings.site_settings.SiteSettings.logo original%}

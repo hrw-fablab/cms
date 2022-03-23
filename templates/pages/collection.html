@@ -22,65 +22,70 @@
 			padding: 0;
 			box-sizing: border-box;
 		}
+
 		body {
-			min-height: 100vh;
-			font-weight: bold;
-			font-family: sans-serif;
+			font-weight: 600;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 			text-align: center;
 			display: flex;
 			flex-direction: column;
 			gap: 3rem;
-			background-color: #0093E9;
-			background-image: linear-gradient(160deg, #0093E9 0%, #006ead 100%);
-			background-size: auto 100%;
-			background-repeat: no-repeat;
-		}
-		main {
-			margin-inline: auto;
+			background-color: hsl(0, 0%, 95%);
+			margin: 2rem auto 2rem auto;
 			width: min(90vw, 40rem);
 		}
-		header {
-			padding-block-start: 3rem;
-		}
-		header a {
-			text-underline-offset: .3em;
-			text-decoration: underline;
-		}
-		footer {
-			padding-block-end: 3rem;
-		}
-		footer ul {
-			gap: 4rem;
-		}
+
 		ul {
 			list-style: none;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
 			align-items: center;
-			gap: 1.5rem;
+			gap: 2rem;
 		}
+
 		svg {
-			fill: white;
-			width: 2.5rem;
-			height: 2.5rem;
+			fill: #0093E9;
+			width: 2.2rem;
+			height: 2.2rem;
 		}
+
 		a {
-			color: white;
 			text-decoration: none;
+			color: #0093E9;
+			font-size: 110%;
 		}
+
+		footer ul {
+			gap: 4rem;
+		}
+
+		footer a {
+			padding: 0.5rem;
+			background-color: transparent;
+			box-shadow: inherit;
+		}
+
 		.fl-collection {
 			flex-direction: column;
 		}
+
 		.fl-collection li {
 			width: 100%;
-			border: solid white .15em;
 		}
-		.fl-collection a {
+
+		a {
 			display: inline-block;
-			padding: 1rem;
+			padding: 1.2rem;
 			width: 100%;
 			height: 100%;
+			border-radius: 0.5rem;
+			box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px 0px;
+			background-color: hsl(0, 0%, 100%);
+		}
+
+		a:hover {
+			background-color: hsl(0, 0%, 92%);
 		}
 	</style>
 	<meta property="og:title"
@@ -100,9 +105,7 @@
 
 <body>
 	<header>
-		<a href="{{ current_site.root_url }}/{{LANGUAGE_CODE}}">
-			<h1>HRW-Fablab</h1>
-		</a>
+		<h1>HRW-FabLab</h1>
 	</header>
 	<main>
 		<ul class="fl-collection">

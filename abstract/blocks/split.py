@@ -17,6 +17,7 @@ class SplitBlock(blocks.StructBlock):
     page = PageChooserBlock(required=False)
     image = ImageChooserBlock(required=False)
     video = VideoChooserBlock(required=False)
+    accent = blocks.BooleanBlock(required=False)
 
     class Meta:
         template = "organisms/split.html"

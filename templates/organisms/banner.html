@@ -2,7 +2,7 @@
 {% block content %}
 <section class="fl-banner margin-block-end-medium">
 	{% if value.title or value.text %}
-	<div class="fl-flex-column justify-center align-start fl-glass padding-medium">
+	<div class="fl-content medium fl-flex-column justify-center align-start fl-glass padding-medium">
 		{% if value.date %}
 			<time>Startdatum: {{page.date}}</time>
 		{% endif %}
@@ -19,6 +19,7 @@
 		</div>
 	</div>
 	{% endif %}
+	{% if value.image %}
 	<figure>
 		<picture>
 			{% image value.image fill-1920x500-c70 format-webp webpquality-60 as image_1920 %}
@@ -59,5 +60,8 @@
 			{{value.image.credit}}
 		</figcaption>
 	</figure>
+	{% else %}
+	<div class="fl-background"></div>
+	{% endif %}
 </section>
 {% endblock content %}

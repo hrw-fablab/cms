@@ -37,12 +37,12 @@
 
 		{% if value.since or value.career or value.responsibility or value.expert or value.projects%}
 		<dl class="fl-flex-column gap-small">
+			{% if value.since %}
 			<div class="fl-flex-row gap-tiny">
-				{% if value.since %}
 				<dt><strong>Im Labor seit:</strong></dt>
 				<dd>{{value.since}}</dd>
-				{% endif %}
 			</div>
+			{% endif %}
 
 			{% if value.career %}
 			<div class="fl-flex-column">

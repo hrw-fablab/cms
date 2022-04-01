@@ -1,5 +1,10 @@
 {% block content %}
-<div class="fl-accent margin-block-end-large padding-block-medium">
+<div class="
+{% if value.accent %}
+fl-accent 
+{% endif %}
+margin-block-end-large padding-block-medium
+">
 <section class="fl-content large fl-split gap-medium">
 	<div class="fl-flex-column justify-center gap-tiny">
 		{% if value.title %}

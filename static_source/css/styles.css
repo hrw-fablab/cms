@@ -61,26 +61,6 @@
 .fl-accent a:hover {
     color: var(--surface-2) !important;
   }
-.fl-accent:nth-child(odd) {
-  background-color: inherit;
-  color: inherit
-}
-.fl-accent:nth-child(odd) a:hover {
-    color: var(--brand) !important;
-  }
-.fl-accent:nth-child(odd) .fl-split {
-    grid-template-columns: 0.9fr 1fr;
-  }
-.fl-accent:nth-child(odd) .fl-split > :first-child {
-    order: 1;
-  }
-.fl-brand {
-  background-color: var(--brand);
-  color: var(--surface-1)
-}
-.fl-brand a:hover {
-    color: var(--surface-2) !important;
-  }
 .fl-glass {
   background-color: var(--brand);
   color: var(--surface-1)
@@ -704,23 +684,29 @@ li {
     fill: var(--brand);
   }
 .fl-split {
-	display: grid;
-	grid-template-columns: 1fr .9fr
+  display: grid;
+  grid-template-columns: 1fr 0.9fr
 }
 @media (max-width: 1024px) {
-		.fl-split {
-			grid-template-columns: 1fr !important;
-			gap: var(--size-4);
-		}
+    .fl-split {
+      grid-template-columns: 1fr !important;
+      gap: var(--size-4);
+    }
 
-		.fl-split >:first-child {
-			order: 0 !important; 
-		}
+    .fl-split > :first-child {
+      order: 0 !important;
+    }
 
-		.fl-split img {
-			aspect-ratio: var(--aspect-widescreen) !important;
-		}
-	}
+    .fl-split img {
+      aspect-ratio: var(--aspect-widescreen) !important;
+    }
+  }
+div:nth-child(odd) .fl-split {
+  grid-template-columns: 0.9fr 1fr
+}
+div:nth-child(odd) .fl-split > :first-child {
+    order: 1;
+  }
 .fl-profile img {
 		width: var(--size-6);
 		height: var(--size-6);
@@ -824,9 +810,11 @@ li {
 	}
 .fl-blockquote p::before {
 		content: open-quote;
+		color: var(--brand);
 	}
 .fl-blockquote p::after {
 		content: close-quote;
+		color: var(--brand);
 	}
 .fl-media > :where(img,video,iframe) {
 		aspect-ratio: var(--aspect-widescreen);
@@ -836,6 +824,9 @@ li {
   grid-template: "container";
   place-items: center center
 }
+.fl-banner h2 {
+    font-size: var(--font-size-7);
+  }
 .fl-banner > * {
     grid-area: container;
   }
@@ -845,12 +836,23 @@ li {
 .fl-banner > :first-child {
     z-index: 1;
   }
+.fl-banner .fl-background {
+    height: 500px;
+    width: 100%;
+    background-color: var(--brand);
+  }
 @media (max-width: 768px) {
     .fl-banner {
       place-items: inherit;
     }
-    .fl-banner :where(picture, img, figure) {
+    .fl-banner .fl-content {
+      width: 100%;
+    }
+    .fl-banner :where(picture, img, figure, .fl-background) {
       height: 100%;
+    }
+    .fl-banner h2 {
+      font-size: var(--font-size-6);
     }
   }
 .fl-footer-content {

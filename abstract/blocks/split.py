@@ -1,6 +1,5 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
-from wagtailmedia.blocks import VideoChooserBlock
 from wagtail.core.blocks.field_block import PageChooserBlock
 
 
@@ -16,7 +15,6 @@ class SplitBlock(blocks.StructBlock):
     )
     page = PageChooserBlock(required=False)
     image = ImageChooserBlock(required=False)
-    video = VideoChooserBlock(required=False)
     accent = blocks.BooleanBlock(required=False)
 
     class Meta:

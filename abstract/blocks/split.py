@@ -11,6 +11,7 @@ class SplitBlock(blocks.StructBlock):
             "bold",
             "italic",
             "ul",
+            "link",
         ],
     )
     page = PageChooserBlock(required=False)

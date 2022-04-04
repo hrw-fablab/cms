@@ -826,6 +826,7 @@ div:nth-child(odd) .fl-split > :first-child {
 }
 .fl-banner h2 {
     font-size: var(--font-size-7);
+    color: var(--surface-1);
   }
 .fl-banner > * {
     grid-area: container;
@@ -836,10 +837,15 @@ div:nth-child(odd) .fl-split > :first-child {
 .fl-banner > :first-child {
     z-index: 1;
   }
-.fl-banner .fl-background {
+.fl-banner :where(.fl-background, .fl-illustration) {
     height: 500px;
     width: 100%;
     background-color: var(--brand);
+  }
+.fl-banner .fl-illustration {
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: right bottom;
   }
 @media (max-width: 768px) {
     .fl-banner {

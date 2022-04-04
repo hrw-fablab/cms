@@ -2,15 +2,19 @@
 {% block content %}
 <section class="fl-banner margin-block-end-medium">
 	{% if value.title or value.text %}
-	<div class="fl-content medium fl-flex-column justify-center align-start fl-glass padding-medium">
+	<div class="fl-content medium fl-flex-column justify-center align-start
+	 {% if not value.illustration %}
+	  fl-glass
+	 {% endif %}
+	 padding-medium">
 		{% if value.date %}
-			<time>Startdatum: {{page.date}}</time>
+		<time>Startdatum: {{page.date}}</time>
 		{% endif %}
 		{% if value.number %}
-			<p>Anzahl: {{page.number}}</p>
+		<p>Anzahl: {{page.number}}</p>
 		{% endif %}
 		{% if value.title %}
-			<h2>{{value.title}}</h2>
+		<h2>{{value.title}}</h2>
 		{% endif %}
 		<div class="fl-flex-row gap-small">
 			{% for link in page.project_links.all%}
@@ -19,7 +23,11 @@
 		</div>
 	</div>
 	{% endif %}
-	{% if value.image %}
+
+	{% if value.illustration %}
+	{% image value.image height-700 format-webp as illustration%}
+	<div class="fl-background fl-illustration" style="background-image: url({{illustration.url}})"></div>
+	{% elif value.image %}
 	<figure>
 		<picture>
 			{% image value.image fill-1920x500-c70 format-webp webpquality-60 as image_1920 %}

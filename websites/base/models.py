@@ -145,3 +145,13 @@ class CollectionPage(AbstractBasePage, ClusterableModel):
 
     class Meta:
         verbose_name = "Link Sammlung"
+
+
+class EventsPage(AbstractBasePage):
+    parent_page_types = ["FolderPage", "HomePage"]
+    subpage_type = []
+
+    template = "pages/category.html"
+
+    class Meta:
+        verbose_name = "Events Auflistung"

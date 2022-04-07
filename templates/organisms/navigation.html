@@ -1,17 +1,15 @@
-{% load wagtailcore_tags i18n %}
+{% load wagtailcore_tags i18n wagtailimages_tags %}
 {% wagtail_site as current_site%}
 {% block content %}
 <a class="fl-skip" href="#main">Skip to content</a>
 <header class="fl-navigation padding-small">
 	<div class="fl-content">
-		<a class="fl-flex-row align-center justify-start fl-logo" href="{{ current_site.root_url }}/{{LANGUAGE_CODE}}">
+		<a class="fl-flex-row align-center justify-start gap-small fl-logo" href="{{ current_site.root_url }}/{{LANGUAGE_CODE}}">
 			{% if settings.site_settings.SiteSettings.logo %}
-			{% load wagtailimages_tags %}
-			{% image settings.site_settings.SiteSettings.logo original%}
+			{% image settings.site_settings.SiteSettings.logo original as logo_image%}
+			<img class="{% if settings.site_settings.SiteSettings.logo_title %} full {% endif %}" src="{{logo_image.url}}" alt="">
 			{% endif %}
-			{% if settings.site_settings.SiteSettings.logo_title%}
-			{{settings.site_settings.SiteSettings.logo_title}}
-			{% endif %}
+			{{settings.site_settings.SiteSettings.logo_title|default:''}}
 		</a>
 
 		<button id="menu-button" class="fl-button">Menu</button>

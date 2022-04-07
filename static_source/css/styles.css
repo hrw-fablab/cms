@@ -671,7 +671,6 @@ li {
   position: relative;
 }
 .fl-logo {
-  gap: var(--size-2);
   flex-shrink: 0;
   font-size: var(--font-size-4);
   margin-inline-end: 2rem
@@ -682,6 +681,9 @@ li {
   }
 .fl-logo svg {
     fill: var(--brand);
+  }
+.fl-logo .full {
+    max-height: var(--size-fluid-4);
   }
 .fl-split {
   display: grid;

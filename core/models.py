@@ -10,8 +10,6 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.admin.edit_handlers import StreamFieldPanel, InlinePanel
 from modelcluster.models import ClusterableModel
 
-from chooser.widgets import PersonChooser
-
 from wagtailcache.cache import WagtailCacheMixin
 
 OGTYPECHOICES = (

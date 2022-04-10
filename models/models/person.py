@@ -3,7 +3,6 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 
-
 class Person(models.Model):
     first_name = models.CharField("First Name", max_length=254)
     last_name = models.CharField("Last Name", max_length=254)

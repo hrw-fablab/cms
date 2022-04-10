@@ -2,8 +2,7 @@ from django.utils.translation import gettext_lazy as _
 
 from generic_chooser.widgets import AdminChooser
 
-from models.models import Person
-
+from .models import Person
 
 class PersonChooser(AdminChooser):
     choose_one_text = _('Choose a person')

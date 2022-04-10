@@ -7,6 +7,10 @@ from wagtailmedia.models import AbstractMedia
 
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import StreamFieldPanel, InlinePanel
+from modelcluster.models import ClusterableModel
+
+from chooser.widgets import PersonChooser
 
 from wagtailcache.cache import WagtailCacheMixin
 
@@ -100,9 +104,14 @@ class FablabBasePage(WagtailCacheMixin, Page):
     def get_context(self, request):
         context = super().get_context(request)
         context["menuitems"] = (
-            Site.find_for_request(request).root_page.get_children().live().public().in_menu()
+            Site.find_for_request(request)
+            .root_page.get_children()
+            .live()
+            .public()
+            .in_menu()
         )
         return context
 
     class Meta:
         abstract = True
+

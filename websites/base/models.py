@@ -6,7 +6,6 @@ from wagtail.core.fields import StreamField
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from modelcluster.fields import ParentalKey
 from abstract.pages.device import AbstractDevicePage
 
 from abstract.pages.home import AbstractHomePage

@@ -14,14 +14,6 @@ class AbstractProjectPage(FablabBasePage):
         related_name="+",
     )
 
-    category = models.ForeignKey(
-        "snippets.ProjectCategory",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
     date = models.DateField()
 
     introduction = models.CharField(max_length=255)
@@ -29,7 +21,6 @@ class AbstractProjectPage(FablabBasePage):
     content_panels = FablabBasePage.content_panels + [
         MultiFieldPanel([
             ImageChooserPanel("image"),
-            SnippetChooserPanel("category"),
             FieldPanel("date"),
         ], heading="Hero"),
         FieldPanel("introduction"),

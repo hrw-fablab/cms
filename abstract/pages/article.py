@@ -16,14 +16,6 @@ class AbstractArticlePage(FablabBasePage):
         related_name="+",
     )
 
-    author = models.ForeignKey(
-        "snippets.Author",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
     date = models.DateField()
 
     introduction = models.CharField(max_length=150)
@@ -44,7 +36,6 @@ class AbstractArticlePage(FablabBasePage):
     content_panels = FablabBasePage.content_panels + [
         ImageChooserPanel("image"),
         MultiFieldPanel([
-            SnippetChooserPanel("author"),
             FieldPanel("date"),
         ], heading="Informationen"),
         FieldPanel("introduction"),

@@ -19,14 +19,6 @@ class AbstractDevicePage(FablabBasePage):
 
     number = IntegerField()
 
-    category = models.ForeignKey(
-        "snippets.DeviceCategory",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
     introduction = models.CharField(max_length=255)
 
     content_panels = FablabBasePage.content_panels + [
@@ -34,7 +26,6 @@ class AbstractDevicePage(FablabBasePage):
             [
                 ImageChooserPanel("image"),
                 FieldPanel("number"),
-                SnippetChooserPanel("category"),
             ],
             heading="Hero",
         ),

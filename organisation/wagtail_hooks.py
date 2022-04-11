@@ -18,23 +18,24 @@ def register_person_chooser_viewset():
 
 class PersonAdmin(ModelAdmin):
     model = Person
-    menu_label = "Person"
-    menu_icon = "pilcrow"
+    menu_icon = "user"
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("first_name", "last_name")
-    list_filter = ("first_name", "last_name")
+    list_display = ("first_name", "last_name", "employment", "thumb_image")
+    list_filter = ("first_name", "last_name", "employment", "since")
     search_fields = ("first_name", "last_name")
 
 
 class ProjectAdmin(ModelAdmin):
     model = Project
-    menu_label = "Project"
-    menu_icon = "pilcrow"
+    menu_icon = "group"
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
+    list_display = ("name",)
+    list_filter = ("name",)
+    search_fields = ("name",)
 
 
 class OrganisationGroup(ModelAdminGroup):
@@ -49,8 +50,7 @@ modeladmin_register(OrganisationGroup)
 
 class DeviceAdmin(ModelAdmin):
     model = DeviceCategory
-    menu_label = "Gerätekategorie"
-    menu_icon = "pilcrow"
+    menu_icon = "tag"
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
@@ -58,8 +58,7 @@ class DeviceAdmin(ModelAdmin):
 
 class ProjectAdmin(ModelAdmin):
     model = ProjectCategory
-    menu_label = "Projektkategorien"
-    menu_icon = "pilcrow"
+    menu_icon = "tag"
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
@@ -67,7 +66,7 @@ class ProjectAdmin(ModelAdmin):
 
 class CategoryGroup(ModelAdminGroup):
     menu_label = "Kategorien"
-    menu_icon = "folder-open-inverse"
+    menu_icon = "tag"
     menu_order = 200
     items = (DeviceAdmin, ProjectAdmin)
 

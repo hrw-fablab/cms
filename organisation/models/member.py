@@ -17,5 +17,11 @@ class Member(models.Model):
     panels = [FieldPanel("member", widget=PersonChooser)]
 
     link = ParentalKey(
-        "organisation.Project", on_delete=models.CASCADE, related_name="related_member"
+        "organisation.Project",
+        on_delete=models.CASCADE,
+        related_name="related_member",
     )
+
+    class Meta:
+        verbose_name = "Mitglied"
+        verbose_name_plural = "Mitglieder"

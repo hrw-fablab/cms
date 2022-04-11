@@ -8,3 +8,7 @@ class Project(ClusterableModel, models.Model):
     name = models.CharField(max_length=254, null=True, blank=True)
 
     panels = [FieldPanel("name"), InlinePanel("related_member", heading="Mitglieder")]
+
+    class Meta:
+        verbose_name = "Projekt"
+        verbose_name_plural = "Projekte"

@@ -11,8 +11,12 @@ class Category(models.Model):
 
 
 class DeviceCategory(Category):
-    pass
+    class Meta:
+        verbose_name = "Gerätekategorie"
+        verbose_name_plural = "Gerätekategorien"
 
 
 class ProjectCategory(Category):
-    pass
+    class Meta:
+        verbose_name = "Projektkategorie"
+        verbose_name_plural = "Projektkategorien"

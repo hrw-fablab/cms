@@ -571,7 +571,7 @@ input {
     gap: 1rem;
   }
 .fl-navigation nav {
-    flex: 2 1 55rem;
+    flex: 2 1 40rem;
   }
 .fl-navigation #menu-button {
     display: none;
@@ -593,7 +593,7 @@ input {
   justify-content: end;
   align-items: center;
   gap: var(--size-4);
-  flex: 1 0 15rem;
+  flex: 1 0 10rem;
   display: flex
 }
 .fl-settings form {

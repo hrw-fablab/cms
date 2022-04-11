@@ -8,12 +8,17 @@ from .models import Person, Project, DeviceCategory, ProjectCategory
 
 from wagtail.core import hooks
 
-from .view import PersonChooserViewSet
+from .view import PersonChooserViewSet, ProjectChooserViewSet
 
 
 @hooks.register("register_admin_viewset")
 def register_person_chooser_viewset():
     return PersonChooserViewSet("person_chooser", url_prefix="person-chooser")
+
+
+@hooks.register("register_admin_viewset")
+def register_project_chooser_viewset():
+    return ProjectChooserViewSet("project_chooser", url_prefix="project-chooser")
 
 
 class PersonAdmin(ModelAdmin):
@@ -34,7 +39,7 @@ class ProjectAdmin(ModelAdmin):
     add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("name",)
-    list_filter = ("name",)
+    list_filter = ("name", "related_member__person")
     search_fields = ("name",)
 
 

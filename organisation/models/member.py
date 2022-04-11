@@ -4,17 +4,18 @@ from wagtail.admin.edit_handlers import FieldPanel
 from modelcluster.fields import ParentalKey
 from organisation.widgets import PersonChooser
 
+from modelcluster.models import ClusterableModel
 
-class Member(models.Model):
-    member = models.ForeignKey(
+class Member(ClusterableModel, models.Model):
+    person = models.ForeignKey(
         "organisation.Person",
-        related_name="member",
+        related_name="person",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
     )
 
-    panels = [FieldPanel("member", widget=PersonChooser)]
+    panels = [FieldPanel("person", widget=PersonChooser)]
 
     link = ParentalKey(
         "organisation.Project",

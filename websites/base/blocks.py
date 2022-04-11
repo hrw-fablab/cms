@@ -16,6 +16,7 @@ from abstract.blocks.image import ImageBlock
 from abstract.blocks.video import VideoBlock
 from abstract.blocks.embed import EmbedBlock
 from abstract.blocks.card import CardBlock
+from abstract.blocks.member import MemberBlock
 
 
 class GridBlockElements(blocks.StreamBlock):
@@ -44,6 +45,7 @@ class HomeBlock(blocks.StreamBlock):
     person = PersonBlock()
     html = HTMLBlock()
     banner = BannerBlock()
+    member = MemberBlock()
 
 
 class FlexBlock(blocks.StreamBlock):

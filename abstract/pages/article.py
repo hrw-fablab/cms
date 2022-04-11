@@ -2,7 +2,6 @@ from django.db import models
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from core.models import FablabBasePage
 from wagtail.core.models import Page
@@ -10,14 +9,6 @@ from wagtail.core.models import Page
 class AbstractArticlePage(FablabBasePage):
     image = models.ForeignKey(
         "core.FablabImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
-    author = models.ForeignKey(
-        "snippets.Author",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -44,7 +35,6 @@ class AbstractArticlePage(FablabBasePage):
     content_panels = FablabBasePage.content_panels + [
         ImageChooserPanel("image"),
         MultiFieldPanel([
-            SnippetChooserPanel("author"),
             FieldPanel("date"),
         ], heading="Informationen"),
         FieldPanel("introduction"),

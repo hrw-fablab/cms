@@ -7,8 +7,6 @@ from wagtailmedia.models import AbstractMedia
 
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
-from wagtail.admin.edit_handlers import StreamFieldPanel, InlinePanel
-from modelcluster.models import ClusterableModel
 
 from wagtailcache.cache import WagtailCacheMixin
 

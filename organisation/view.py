@@ -2,7 +2,7 @@ from django.utils.translation import gettext_lazy as _
 
 from generic_chooser.views import ModelChooserViewSet
 
-from models.models import Person
+from organisation.models import Person
 
 class PersonChooserViewSet(ModelChooserViewSet):
     icon = "user"

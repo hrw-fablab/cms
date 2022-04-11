@@ -1,22 +1,24 @@
 from wagtail.core import blocks
 
-from abstract.blocks.banner import BannerBlock
-from abstract.blocks.grabber import GrabberBlock
-from abstract.blocks.grid import GridBlock
-from abstract.blocks.heading import HeadingBlock
-from abstract.blocks.hero import HeroBlock
-from abstract.blocks.html import HTMLBlock
-from abstract.blocks.paragraph import ParagraphBlock
-from abstract.blocks.person import PersonBlock
-from abstract.blocks.spacer import SpacerBlock
-from abstract.blocks.split import SplitBlock
-from abstract.blocks.gallery import GalleryBlock
-from abstract.blocks.blockquote import BlockquoteBlock
-from abstract.blocks.image import ImageBlock
-from abstract.blocks.video import VideoBlock
-from abstract.blocks.embed import EmbedBlock
-from abstract.blocks.card import CardBlock
-from abstract.blocks.member import MemberBlock
+from abstract.blocks import (
+    BannerBlock,
+    GrabberBlock,
+    GridBlock,
+    HeadingBlock,
+    HeroBlock,
+    HTMLBlock,
+    ParagraphBlock,
+    PersonBlock,
+    SpacerBlock,
+    SplitBlock,
+    GalleryBlock,
+    BlockquoteBlock,
+    ImageBlock,
+    VideoBlock,
+    EmbedBlock,
+    CardBlock,
+    MembersBlock
+)
 
 
 class GridBlockElements(blocks.StreamBlock):
@@ -45,7 +47,7 @@ class HomeBlock(blocks.StreamBlock):
     person = PersonBlock()
     html = HTMLBlock()
     banner = BannerBlock()
-    member = MemberBlock()
+    members = MembersBlock()
 
 
 class FlexBlock(blocks.StreamBlock):

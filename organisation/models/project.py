@@ -13,6 +13,9 @@ class Project(ClusterableModel, models.Model):
         InlinePanel("related_member", heading="Mitglieder"),
     ]
 
+    def __str__(self):
+        return "{}".format(self.name)
+
     class Meta:
         verbose_name = "Projekt"
         verbose_name_plural = "Projekte"

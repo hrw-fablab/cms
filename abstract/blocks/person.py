@@ -1,18 +1,9 @@
 from wagtail.core import blocks
-from wagtail.images.blocks import ImageChooserBlock
+from abstract.blocks import PersonChooserBlock
 
 
 class PersonBlock(blocks.StructBlock):
-    name = blocks.CharBlock(required=False)
-    image = ImageChooserBlock(required=False)
-    employment = blocks.CharBlock(required=False)
-    link = blocks.URLBlock(required=False)
-    since = blocks.DateBlock(required=False)
-    career = blocks.CharBlock(required=False)
-    responsibility = blocks.CharBlock(required=False)
-    expert = blocks.CharBlock(required=False)
-    projects = blocks.CharBlock(required=False)
-    description = blocks.TextBlock(required=False)
+    person = PersonChooserBlock(required=False)
 
     class Meta:
         template = "templates/person.html"

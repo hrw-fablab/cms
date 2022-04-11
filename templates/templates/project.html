@@ -11,10 +11,10 @@ margin-block-end-large">
     {% include "atoms/heading.html" with value=value%}
     {% endif %}
     <div class="fl-grid-{{value.layout}} gap-medium">
-        {% for element in value.member.related_member.all%}
-            {% if element.member%}
-                {% include "molecules/person.html" with value=element.member%}
-            {% endif %}
+        {% for element in value.members.related_member.all%}
+        {% if element.person%}
+            {% include "molecules/person.html" with value=element.person%}
+        {% endif %}
         {% endfor %}
     </div>
 </div>

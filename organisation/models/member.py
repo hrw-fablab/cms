@@ -9,7 +9,7 @@ from modelcluster.models import ClusterableModel
 class Member(ClusterableModel, models.Model):
     person = models.ForeignKey(
         "organisation.Person",
-        related_name="person",
+        related_name="+",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

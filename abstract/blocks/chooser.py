@@ -31,3 +31,6 @@ class PersonChooserBlock(blocks.ChooserBlock):
         from organisation.widgets import PersonChooser
 
         return PersonChooser()
+
+    def get_form_state(self, value):
+        return self.widget.get_value_data(value)

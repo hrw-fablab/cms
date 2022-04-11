@@ -9,7 +9,7 @@ class PersonChooserViewSet(ModelChooserViewSet):
     icon = "user"
     model = Person
     page_title = _("Choose a person")
-    per_page = 10
+    per_page = 20
     order_by = "first_name"
     fields = ["first_name", "last_name"]
 

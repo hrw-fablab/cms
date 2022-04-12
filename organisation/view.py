@@ -15,7 +15,7 @@ class PersonChooserViewSet(ModelChooserViewSet):
 
 
 class ProjectChooserViewSet(ModelChooserViewSet):
-    icon = "user"
+    icon = "group"
     model = Project
     page_title = _("Choose a project")
     per_page = 10

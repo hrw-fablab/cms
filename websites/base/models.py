@@ -63,9 +63,9 @@ class IndexPage(AbstractIndexPage):
     template = "pages/index.html"
 
 
-class IndexCategoryPage(AbstractIndexPage):
+class DeviceIndexPage(AbstractIndexPage):
     parent_page_types = ["FolderPage", "HomePage"]
-    subpage_type = ["DevicePage", "ProjectPage"]
+    subpage_type = ["DevicePage"]
 
     template = "pages/category.html"
 
@@ -76,7 +76,23 @@ class IndexCategoryPage(AbstractIndexPage):
         return context
 
     class Meta:
-        verbose_name = "Index Seite mit Kategorien"
+        verbose_name = "Geräte"
+
+
+class ProjectIndexPage(AbstractIndexPage):
+    parent_page_types = ["FolderPage", "HomePage"]
+    subpage_type = ["ProjectPage"]
+
+    template = "pages/category.html"
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        all_children = self.get_children().live().specific()
+        context["children"] = all_children
+        return context
+
+    class Meta:
+        verbose_name = "Projekte"
 
 
 class SearchPage(AbstractSearchPage):
@@ -95,7 +111,7 @@ class ProjectPageLink(Orderable, Link):
 class ProjectPage(AbstractProjectPage):
     template = "pages/project.html"
 
-    parent_page_types = ["IndexCategoryPage"]
+    parent_page_types = ["ProjectIndexPage"]
     subpage_type = []
 
     body = StreamField(ProjectBlock(), blank=True)
@@ -109,7 +125,7 @@ class ProjectPage(AbstractProjectPage):
 class DevicePage(AbstractDevicePage):
     template = "pages/project.html"
 
-    parent_page_types = ["IndexCategoryPage"]
+    parent_page_types = ["DeviceIndexPage"]
     subpage_type = []
 
     body = StreamField(ProjectBlock(), blank=True)

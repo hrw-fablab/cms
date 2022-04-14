@@ -4,7 +4,7 @@ import django.core.validators
 from django.db import migrations, models
 import django.db.models.deletion
 import taggit.managers
-import wagtail.core.models.collections
+import wagtail.models.collections
 import wagtail.images.models
 import wagtail.search.index
 
@@ -84,7 +84,7 @@ class Migration(migrations.Migration):
                 ('height', models.PositiveIntegerField(blank=True, null=True, verbose_name='height')),
                 ('thumbnail', models.FileField(blank=True, upload_to='media_thumbnails', verbose_name='thumbnail')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('collection', models.ForeignKey(default=wagtail.core.models.collections.get_root_collection_id, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailcore.collection', verbose_name='collection')),
+                ('collection', models.ForeignKey(default=wagtail.models.collections.get_root_collection_id, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailcore.collection', verbose_name='collection')),
                 ('tags', taggit.managers.TaggableManager(blank=True, help_text=None, through='taggit.TaggedItem', to='taggit.Tag', verbose_name='tags')),
             ],
             options={

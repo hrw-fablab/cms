@@ -1,5 +1,5 @@
 from functools import cached_property
-from wagtail.core import blocks
+from wagtail import blocks
 
 
 class ProjectChooserBlock(blocks.ChooserBlock):

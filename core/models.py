@@ -1,12 +1,12 @@
 from django.db import models
 
-from wagtail.core.models import Page, Site
+from wagtail.models import Page, Site
 from wagtail.documents.models import Document, AbstractDocument
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
 from wagtailmedia.models import AbstractMedia
 
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 from wagtailcache.cache import WagtailCacheMixin
 

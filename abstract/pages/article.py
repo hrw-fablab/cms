@@ -1,10 +1,9 @@
 from django.db import models
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.fields import RichTextField
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 from core.models import FablabBasePage
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 class AbstractArticlePage(FablabBasePage):
     image = models.ForeignKey(
@@ -33,7 +32,7 @@ class AbstractArticlePage(FablabBasePage):
     )
 
     content_panels = FablabBasePage.content_panels + [
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
         MultiFieldPanel([
             FieldPanel("date"),
         ], heading="Informationen"),

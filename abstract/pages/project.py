@@ -1,6 +1,5 @@
 from django.db import models
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 from core.models import FablabBasePage
 
@@ -19,7 +18,7 @@ class AbstractProjectPage(FablabBasePage):
 
     content_panels = FablabBasePage.content_panels + [
         MultiFieldPanel([
-            ImageChooserPanel("image"),
+            FieldPanel("image"),
             FieldPanel("date"),
         ], heading="Hero"),
         FieldPanel("introduction"),

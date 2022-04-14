@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 import taggit.managers
-import wagtail.core.models.collections
+import wagtail.models.collections
 
 
 class Migration(migrations.Migration):
@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='fablabimage',
             name='collection',
-            field=models.ForeignKey(default=wagtail.core.models.collections.get_root_collection_id, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailcore.collection', verbose_name='collection'),
+            field=models.ForeignKey(default=wagtail.models.collections.get_root_collection_id, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailcore.collection', verbose_name='collection'),
         ),
         migrations.AddField(
             model_name='fablabimage',
@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='fablabdocument',
             name='collection',
-            field=models.ForeignKey(default=wagtail.core.models.collections.get_root_collection_id, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailcore.collection', verbose_name='collection'),
+            field=models.ForeignKey(default=wagtail.models.collections.get_root_collection_id, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailcore.collection', verbose_name='collection'),
         ),
         migrations.AddField(
             model_name='fablabdocument',

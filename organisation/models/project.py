@@ -9,7 +9,7 @@ class Project(ClusterableModel, models.Model):
     name = models.CharField(max_length=254, null=True, blank=True)
 
     panels = [
-        FieldPanel("name"),
+        FieldPanel("name", heading="Projektname"),
         InlinePanel("related_member", heading="Mitglieder"),
     ]
 

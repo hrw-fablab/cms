@@ -1,9 +1,9 @@
-from tabnanny import verbose
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.models import ClusterableModel
+
 
 class Person(ClusterableModel, models.Model):
     first_name = models.CharField("First Name", max_length=254)
@@ -28,24 +28,24 @@ class Person(ClusterableModel, models.Model):
     panels = [
         MultiFieldPanel(
             [
-                FieldPanel("first_name"),
-                FieldPanel("last_name"),
+                FieldPanel("first_name", heading="Vornahme"),
+                FieldPanel("last_name", heading="Nachnahme"),
             ],
             heading="Name",
         ),
-        ImageChooserPanel("image"),
+        ImageChooserPanel("image", heading="Bild"),
         MultiFieldPanel(
             [
-                FieldPanel("employment"),
-                FieldPanel("link"),
-                FieldPanel("since"),
-                FieldPanel("career"),
-                FieldPanel("responsibility"),
-                FieldPanel("expert"),
+                FieldPanel("employment", heading="Anstellungsart"),
+                FieldPanel("link", heading="Link"),
+                FieldPanel("since", heading="Seit"),
+                FieldPanel("career", heading="Lebenslauf"),
+                FieldPanel("responsibility", heading="Aufgabenbereiche"),
+                FieldPanel("expert", heading="Experte*in für"),
             ],
-            heading="Information",
+            heading="Informationen",
         ),
-        FieldPanel("description"),
+        FieldPanel("description", heading="Beschreibung"),
     ]
 
     @property

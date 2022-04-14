@@ -12,7 +12,6 @@ class PersonChooserViewSet(ModelChooserViewSet):
     page_title = _("Choose a person")
     per_page = 20
     order_by = "first_name"
-    fields = ["first_name", "last_name"]
 
 
 class ProjectChooserViewSet(ModelChooserViewSet):
@@ -21,7 +20,6 @@ class ProjectChooserViewSet(ModelChooserViewSet):
     page_title = _("Choose a project")
     per_page = 10
     order_by = "name"
-    fields = ["name"]
 
 
 class DeviceCategoryChooserViewSet(ModelChooserViewSet):
@@ -30,4 +28,3 @@ class DeviceCategoryChooserViewSet(ModelChooserViewSet):
     page_title = _("Choose a device")
     per_page = 10
     order_by = "name"
-    fields = ["name"]

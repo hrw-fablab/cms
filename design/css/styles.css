@@ -164,7 +164,7 @@
 	margin-block-end: var(--size-2);
 }
 .gap-large {
-	gap: var(--size-fluid-6);
+	gap: var(--size-fluid-8);
 }
 .gap-medium {
 	gap: var(--size-fluid-5);
@@ -396,10 +396,9 @@ h3 {
 h4 {
   font-size: var(--font-size-3);
 }
-body :where(input, button, textarea) {
+body :where(input, button, textarea, select) {
   font-size: var(--font-size-3);
   font-family: "Inter var", sans-serif;
-  line-height: 1.7;
 }
 body {
   background-color: var(--surface-1);
@@ -438,8 +437,12 @@ figcaption {
 }
 input {
   padding: var(--size-2);
-  border: solid 0.1em var(--brand);
-  width: 100%;
+  border: solid 0.1rem var(--brand);
+  padding-inline: var(--size-3);
+}
+select {
+  padding: var(--size-2);
+  border: solid 0.1rem var(--surface-1);
   padding-inline: var(--size-3);
 }
 /* purgecss start ignore */
@@ -581,30 +584,20 @@ input {
       display: flex;
     }
 
+    .fl-navigation form {
+      width: 100%;
+      display: none
+    }
+
+      .fl-navigation form input {
+        width: 100%;
+      }
+
     .fl-navigation .fl-logo {
       flex: 2;
     }
 
     .fl-navigation nav {
-      display: none;
-    }
-  }
-.fl-settings {
-  justify-content: end;
-  align-items: center;
-  gap: var(--size-4);
-  flex: 1 0 10rem;
-  display: flex
-}
-.fl-settings form {
-    flex: 1;
-  }
-.fl-settings a {
-    flex: 0;
-  }
-@media (max-width: 1024px) {
-    .fl-settings {
-      margin-block: var(--size-4);
       display: none;
     }
   }

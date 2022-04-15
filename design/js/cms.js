@@ -26,11 +26,11 @@ document.getElementById("menu-button").addEventListener(
   (event) => {
     if (getComputedStyle(event.target.nextElementSibling).display === "none") {
       event.target.nextElementSibling.style.display = "flex";
-      document.getElementById("settings").style.display = "flex";
+      document.getElementById("search").style.display = "flex";
       return;
     }
     event.target.nextElementSibling.style.display = "none";
-    document.getElementById("settings").style.display = "none";
+    document.getElementById("search").style.display = "none";
   },
   { passive: true }
 );

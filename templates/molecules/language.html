@@ -1,11 +1,17 @@
+{% load i18n %}
 {% block content %}
-	{% load i18n wagtailcore_tags %}
-	{% if page %}
-		{% for translation in page.get_translations.live %}
-			{% get_language_info for translation.locale.language_code as lang %}
-			<a href="{% pageurl translation %}" rel="alternate" hreflang="{{ language_code }}" class="fl-language">
-				{{ lang.name }}
-			</a>
-		{% endfor %}
-	{% endif %}
+<form class="fl-flex-row gap-small" style="margin-inline-start: auto;" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <label for="language">Sprache</label>
+    <select id="language" name="language" onchange="this.form.submit()">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+</form>
 {% endblock %}

@@ -1,114 +1,57 @@
-{% load wagtailcore_tags i18n %}
+{% load wagtailcore_tags i18n wagtailsettings_tags %}
 {% wagtail_site as current_site%}
 {% block content %}
 <footer class="fl-accent margin-block-start-medium padding-block-medium">
 	<div class="fl-content fl-flex-column gap-medium">
-		<div class="fl-footer-content">
-			{% if settings.global.GlobalSettings.sponsor.all|length != 0%}
-			<div class="fl-flex row">
-				{% for element in settings.global.GlobalSettings.sponsor.all %}
-					{% load wagtailimages_tags %}
-					{% if LANGUAGE_CODE == "en"%}
-							{% image element.logo_en original as sp_image %}
-							<img src="{{sp_image.url}}" alt="{{element.logo_alt_en}}">
-						{% else %}
-							{% image element.logo original as sp_image %}
-							<img src="{{sp_image.url}}" alt="{{element.logo_alt}}">
-					{% endif %}
-				{% endfor %}
-			</div>
-			{% endif %}
-
-			{% if settings.global.GlobalSettings.street or settings.global.GlobalSettings.email %}
-			<div>
-				<div>
-				<h3>Kontakt</h3>
-				<address>
-					{% if settings.global.GlobalSettings.street%}
-					{{settings.global.GlobalSettings.street}}
-					{% endif %}
-
-					{% if settings.global.GlobalSettings.housenumber%}
-					{{settings.global.GlobalSettings.housenumber}}
-					{% endif %}
-
-					<br>
-
-					{% if settings.global.GlobalSettings.city%}
-					{{settings.global.GlobalSettings.city}}
-					{% endif %}
-
-					{% if settings.global.GlobalSettings.plz%}
-					{{settings.global.GlobalSettings.plz}}
-					{% endif %}
-
-					<br>
-
-					{% if settings.global.GlobalSettings.email%}
-					<a
-						href="mailto:{{settings.global.GlobalSettings.email}}">{{settings.global.GlobalSettings.email}}</a>
-					{% endif %}
-				</address>
-			</div>
-			</div>
-			{% endif %}
-
-			{% if settings.global.GlobalSettings.social.all|length != 0%}
-			<div>
-				<div>
-					<h3>Social Media</h3>
-					<ul>
-						{% for element in settings.global.GlobalSettings.social.all%}
-						<li>
-							<a href="element.url">{{element.title}}</a>
-						</li>
-						{% endfor%}
-					</ul>
-				</div>
-			</div>
-			{% endif %}
-
+		{% include "atoms/sponsors.html" with value=settings.global.GlobalSettings%}
+		<div class="fl-flex-row gap-large">
+			{% include "atoms/adress.html" with value=settings.global.GlobalSettings%}
+			{% include "atoms/social.html" with value=settings.global.GlobalSettings%}
 		</div>
-		<nav class="fl-footer-nav">
-			<ul>
-				<li>
-					<a href="{{settings.global.GlobalSettings.contact.localized.url}}">
-						{% if LANGUAGE_CODE == "en"%}
+		<div class="fl-flex-row gap-medium">
+			<nav class="fl-footer-nav">
+				<ul>
+					<li>
+						<a href="{{settings.global.GlobalSettings.contact.localized.url}}">
+							{% if LANGUAGE_CODE == "en"%}
 							Contact
-						{% else %}
+							{% else %}
 							Kontakt
-						{% endif %}
-					</a>
-				</li>
-				<li>
-					<a href="{{settings.global.GlobalSettings.impressum.localized.url}}">
-						{% if LANGUAGE_CODE == "en"%}
+							{% endif %}
+						</a>
+					</li>
+					<li>
+						<a href="{{settings.global.GlobalSettings.impressum.localized.url}}">
+							{% if LANGUAGE_CODE == "en"%}
 							Imprint
-						{% else %}
+							{% else %}
 							Impressum
-						{% endif %}
-					</a>
-				</li>
-				<li>
-					<a href="{{settings.global.GlobalSettings.data_protection.localized.url}}">
-						{% if LANGUAGE_CODE == "en"%}
+							{% endif %}
+						</a>
+					</li>
+					<li>
+						<a href="{{settings.global.GlobalSettings.data_protection.localized.url}}">
+							{% if LANGUAGE_CODE == "en"%}
 							Data Privacy
-						{% else %}
+							{% else %}
 							Datenschutzerklärung
-						{% endif %}
-					</a>
-				</li>
-				<li style="margin-inline-start: auto">
-					<a href="{{settings.global.GlobalSettings.intern_website.url}}" style="margin-inline-start: auto;">
-						{% if LANGUAGE_CODE == "en"%}
+							{% endif %}
+						</a>
+					</li>
+					<li>
+						<a href="{{settings.global.GlobalSettings.intern_website.url}}"
+							style="margin-inline-start: auto;">
+							{% if LANGUAGE_CODE == "en"%}
 							Internal
-						{% else %}
+							{% else %}
 							Intern
-						{% endif %}
-					</a>
-				</li>
-			</ul>
-		</nav>
+							{% endif %}
+						</a>
+					</li>
+				</ul>
+			</nav>
+			{% include "molecules/language.html"%}
+		</div>
 	</div>
 </footer>
 {% endblock content %}

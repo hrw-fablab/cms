@@ -1,15 +1,14 @@
-from functools import cached_property
-from wagtail import blocks
+from wagtail.core import blocks
 
 
 class ProjectChooserBlock(blocks.ChooserBlock):
-    @cached_property
+    @property
     def target_model(self):
         from organisation.models import Project
 
         return Project
 
-    @cached_property
+    @property
     def widget(self):
         from organisation.widgets import ProjectChooser
 
@@ -20,13 +19,13 @@ class ProjectChooserBlock(blocks.ChooserBlock):
 
 
 class PersonChooserBlock(blocks.ChooserBlock):
-    @cached_property
+    @property
     def target_model(self):
         from organisation.models import Person
 
         return Person
 
-    @cached_property
+    @property
     def widget(self):
         from organisation.widgets import PersonChooser
 

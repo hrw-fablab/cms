@@ -1,5 +1,6 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.models import ClusterableModel
 
@@ -48,7 +49,7 @@ class Person(ClusterableModel, models.Model):
             ],
             heading="Name",
         ),
-        FieldPanel("image", heading="Bild"),
+        ImageChooserPanel("image", heading="Bild"),
         MultiFieldPanel(
             [
                 FieldPanel("employment", heading="Anstellungsart"),

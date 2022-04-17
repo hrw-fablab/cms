@@ -4,10 +4,10 @@
     {% load wagtailimages_tags %}
     {% if LANGUAGE_CODE == "en"%}
     {% image element.logo_en width-200 format-webp webpquality-60 as sp_image %}
-    <img class="contain" src="{{sp_image.url}}" alt="{{element.logo_alt_en}}">
+    <img style="width: inherit; height: inherit" class="contain" src="{{sp_image.url}}" alt="{{element.logo_alt}}">
     {% else %}
     {% image element.logo width-200 format-webp webpquality-60 as sp_image %}
-    <img class="contain" src="{{sp_image.url}}" alt="{{element.logo_alt}}">
+    <img style="width: inherit; height: inherit" class="contain" src="{{sp_image.url}}" alt="{{element.logo_alt}}">
     {% endif %}
     {% endfor %}
 </div>

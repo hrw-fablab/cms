@@ -1,4 +1,10 @@
+{% load wagtailimages_tags i18n%}
+{% get_current_language as LANGUAGE_CODE %}
+
+{{LANGUAGE_CODE}}
+
 {% block content %}
+{% if LANGUAGE_CODE == "de" %}
 <section class="fl-card fl-person">
 	{% load wagtailimages_tags %}
 	<picture>
@@ -77,4 +83,84 @@
 		{% endif %}
 	</div>
 </section>
+{% else %}
+<section class="fl-card fl-person">
+	{% load wagtailimages_tags %}
+	<picture>
+		{% image value.image fill-500x500 format-webp as image_768 %}
+		{% image value.image fill-300x300 format-webp as image_480 %}
+		<source srcset="
+		{{image_480.url}} 480w,
+		{{image_768.url}} 768w," sizes="
+		(min-width: 768px) 768px,
+		(min-width: 480px) 480px" type="image/webp">
+		{% image value.image fill-500x500 format-jpeg as image_768 %}
+		{% image value.image fill-300x300 format-jpeg as image_480 %}
+		<source srcset="
+		{{image_480.url}} 480w,
+		{{image_768.url}} 768w," sizes="
+		(min-width: 768px) 768px,
+		(min-width: 480px) 480px" type="image/jpg">
+		<img class="aspect-box" src="{{image_480.url}}" alt="{{value.image.alt}}" decoding="async" loading="lazy">
+	</picture>
+
+	<div class="padding-inline-tiny">
+		<header class="margin-block-end-small">
+			{% if value.en_employment %}
+			<p>{{value.en_employment}}</p>
+			{% endif %}
+			{% if value.link %}
+			<a href="{{value.link}}">
+				<h3>{{value}}</h3>
+			</a>
+			{% else %}
+			<h3>{{value}}</h3>
+			{% endif %}
+		</header>
+
+		{% if value.since or value.en_career or value.en_responsibility or value.en_expert or value.en_projects%}
+		<dl class="fl-flex-column gap-small">
+			{% if value.since %}
+			<div class="fl-flex-row gap-tiny">
+				<dt><strong>Since:</strong></dt>
+				<dd>{{value.since}}</dd>
+			</div>
+			{% endif %}
+
+			{% if value.en_career %}
+			<div class="fl-flex-column">
+				<dt><strong>Career:</strong></dt>
+				<dd>{{value.en_career}}</dd>
+			</div>
+			{% endif %}
+
+			{% if value.en_responsibility %}
+			<div class="fl-flex-column">
+				<dt><strong>Responsibility:</strong></dt>
+				<dd>{{value.en_responsibility}}</dd>
+			</div>
+			{% endif %}
+
+			{% if value.en_expert %}
+			<div class="fl-flex-column">
+				<dt><strong>Expert</strong></dt>
+				<dd>{{value.en_expert}}</dd>
+			</div>
+			{% endif %}
+
+			{% if value.en_projects %}
+			<div class="fl-flex-column">
+				<dt><strong>Projects</strong></dt>
+				<dd>{{value.en_projects}}</dd>
+			</div>
+			{% endif %}
+		</dl>
+		{% endif %}
+
+		{% if value.description %}
+		<p>{{value.description}}</p>
+		{% endif %}
+	</div>
+</section>
+{% endif %}
 {% endblock content %}

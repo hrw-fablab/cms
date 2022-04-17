@@ -1,6 +1,8 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel
 
+from wagtail.core.models import TranslatableMixin
+
 
 class Category(models.Model):
     name = models.CharField("Name der Kategorie", max_length=254)
@@ -11,6 +13,9 @@ class Category(models.Model):
 
     def __str__(self):
         return "{}".format(self.name)
+
+    class Meta:
+        abstract: True
 
 
 class DeviceCategory(Category):

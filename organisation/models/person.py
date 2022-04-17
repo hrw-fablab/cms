@@ -3,6 +3,16 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 
 from modelcluster.models import ClusterableModel
 
+from django.db import models
+from wagtail.admin.edit_handlers import (
+    MultiFieldPanel,
+    FieldPanel,
+    TabbedInterface,
+    ObjectList,
+)
+
+from modelcluster.models import ClusterableModel
+
 
 class Person(ClusterableModel, models.Model):
     first_name = models.CharField("First Name", max_length=254)
@@ -24,7 +34,13 @@ class Person(ClusterableModel, models.Model):
     expert = models.CharField(max_length=254, null=True, blank=True)
     description = models.TextField(max_length=254, null=True, blank=True)
 
-    panels = [
+    en_employment = models.CharField(max_length=254, null=True, blank=True)
+    en_career = models.CharField(max_length=254, null=True, blank=True)
+    en_responsibility = models.CharField(max_length=254, null=True, blank=True)
+    en_expert = models.CharField(max_length=254, null=True, blank=True)
+    en_description = models.TextField(max_length=254, null=True, blank=True)
+
+    german = [
         MultiFieldPanel(
             [
                 FieldPanel("first_name", heading="Vornahme"),
@@ -46,6 +62,26 @@ class Person(ClusterableModel, models.Model):
         ),
         FieldPanel("description", heading="Beschreibung"),
     ]
+
+    english = [
+        MultiFieldPanel(
+            [
+                FieldPanel("en_employment", heading="Anstellungsart"),
+                FieldPanel("en_career", heading="Lebenslauf"),
+                FieldPanel("en_responsibility", heading="Aufgabenbereiche"),
+                FieldPanel("en_expert", heading="Experte*in für"),
+            ],
+            heading="Informationen",
+        ),
+        FieldPanel("en_description", heading="Beschreibung"),
+    ]
+
+    edit_handler = TabbedInterface(
+        [
+            ObjectList(german, heading="Deutsch"),
+            ObjectList(english, heading="English"),
+        ]
+    )
 
     @property
     def thumb_image(self):

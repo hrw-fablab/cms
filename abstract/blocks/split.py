@@ -1,6 +1,5 @@
-from wagtail import blocks
+from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.blocks.field_block import PageChooserBlock
 
 
 class SplitBlock(blocks.StructBlock):
@@ -14,7 +13,7 @@ class SplitBlock(blocks.StructBlock):
             "link",
         ],
     )
-    page = PageChooserBlock(required=False)
+    page = blocks.PageChooserBlock(required=False)
     image = ImageChooserBlock(required=False)
     accent = blocks.BooleanBlock(required=False)
 

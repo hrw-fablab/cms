@@ -1,4 +1,3 @@
-from msilib.schema import Icon
 from wagtail.core import blocks
 
 from abstract.blocks import ProjectChooserBlock

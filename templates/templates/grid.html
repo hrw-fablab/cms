@@ -15,7 +15,7 @@ margin-block-end-large">
 			{% if element.block_type == "card" %}
 				{% include "molecules/card.html" with value=element.value class="aspect-widescreen"%}
 			{% elif element.block_type == "person" %}
-				{% include "molecules/person.html" with value=element.value%}
+				{% include "molecules/person.html" with value=element.value.person%}
 			{% endif %}
 		{% endfor %}
 	</div>

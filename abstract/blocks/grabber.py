@@ -1,6 +1,6 @@
 from email.policy import default
-from wagtail.core import blocks
-from wagtail.core.blocks.field_block import PageChooserBlock
+from wagtail import blocks
+from wagtail.blocks.field_block import PageChooserBlock
 
 
 class GrabberBlock(blocks.StructBlock):

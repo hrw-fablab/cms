@@ -30,15 +30,16 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     "user",
     "core",
-    "site_settings",
-    "snippets",
+    "organisation",
+    "global",
+    "generic_chooser",
     "websites.base",
     "websites.qufablab",
     "wagtailcache",
-    "wagtail_color_panel",
     "wagtailmedia",
     "wagtail_localize",
     "wagtail_localize.locales",
+    "wagtail.contrib.modeladmin",
     "wagtail.contrib.settings",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -158,7 +159,7 @@ STATICFILES_FINDERS = [
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, "static_source"),
+    os.path.join(PROJECT_DIR, "design"),
 ]
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
@@ -187,7 +188,7 @@ WAGTAILSEARCH_BACKENDS = {
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = "https://www.qufablab.de"
+WAGTAILADMIN_BASE_URL = "https://www.qufablab.de"
 
 # Use Custom User Model
 AUTH_USER_MODEL = "user.FablabUser"

@@ -1,11 +1,10 @@
 from django.db import models
 from django.db.models.fields import IntegerField
 
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 from core.models import FablabBasePage
+from organisation.widgets import DeviceCategoryChooser
 
 
 class AbstractDevicePage(FablabBasePage):
@@ -17,24 +16,24 @@ class AbstractDevicePage(FablabBasePage):
         related_name="+",
     )
 
-    number = IntegerField()
-
     category = models.ForeignKey(
-        "snippets.DeviceCategory",
+        "organisation.DeviceCategory",
+        related_name="+",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name="+",
     )
+
+    number = IntegerField()
 
     introduction = models.CharField(max_length=255)
 
     content_panels = FablabBasePage.content_panels + [
         MultiFieldPanel(
             [
-                ImageChooserPanel("image"),
+                FieldPanel("image"),
                 FieldPanel("number"),
-                SnippetChooserPanel("category"),
+                FieldPanel("category", widget=DeviceCategoryChooser)
             ],
             heading="Hero",
         ),

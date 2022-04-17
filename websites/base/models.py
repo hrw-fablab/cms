@@ -6,7 +6,6 @@ from wagtail.core.fields import StreamField
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from modelcluster.fields import ParentalKey
 from abstract.pages.device import AbstractDevicePage
 
 from abstract.pages.home import AbstractHomePage
@@ -25,7 +24,7 @@ from websites.base.blocks import HomeBlock, FlexBlock, ProjectBlock
 
 class HomePage(AbstractHomePage):
     template = "pages/home.html"
-    body = StreamField(HomeBlock(), blank=True)
+    body = StreamField(HomeBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractHomePage.content_panels + [
         StreamFieldPanel("body"),
@@ -43,7 +42,7 @@ class FlexPage(AbstractFlexPage):
 
     template = "pages/flex.html"
 
-    body = StreamField(FlexBlock(), blank=True)
+    body = StreamField(FlexBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractHomePage.content_panels + [
         StreamFieldPanel("body"),
@@ -64,9 +63,9 @@ class IndexPage(AbstractIndexPage):
     template = "pages/index.html"
 
 
-class IndexCategoryPage(AbstractIndexPage):
+class DeviceIndexPage(AbstractIndexPage):
     parent_page_types = ["FolderPage", "HomePage"]
-    subpage_type = ["DevicePage", "ProjectPage"]
+    subpage_type = ["DevicePage"]
 
     template = "pages/category.html"
 
@@ -77,7 +76,23 @@ class IndexCategoryPage(AbstractIndexPage):
         return context
 
     class Meta:
-        verbose_name = "Index Seite mit Kategorien"
+        verbose_name = "Geräte"
+
+
+class ProjectIndexPage(AbstractIndexPage):
+    parent_page_types = ["FolderPage", "HomePage"]
+    subpage_type = ["ProjectPage"]
+
+    template = "pages/category.html"
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        all_children = self.get_children().live().specific()
+        context["children"] = all_children
+        return context
+
+    class Meta:
+        verbose_name = "Projekte"
 
 
 class SearchPage(AbstractSearchPage):
@@ -96,10 +111,10 @@ class ProjectPageLink(Orderable, Link):
 class ProjectPage(AbstractProjectPage):
     template = "pages/project.html"
 
-    parent_page_types = ["IndexCategoryPage"]
+    parent_page_types = ["ProjectIndexPage"]
     subpage_type = []
 
-    body = StreamField(ProjectBlock(), blank=True)
+    body = StreamField(ProjectBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractProjectPage.content_panels + [
         InlinePanel("project_links", label="Project Links"),
@@ -110,10 +125,10 @@ class ProjectPage(AbstractProjectPage):
 class DevicePage(AbstractDevicePage):
     template = "pages/project.html"
 
-    parent_page_types = ["IndexCategoryPage"]
+    parent_page_types = ["DeviceIndexPage"]
     subpage_type = []
 
-    body = StreamField(ProjectBlock(), blank=True)
+    body = StreamField(ProjectBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractDevicePage.content_panels + [
         StreamFieldPanel("body"),

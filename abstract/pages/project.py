@@ -1,7 +1,5 @@
 from django.db import models
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 from core.models import FablabBasePage
 
@@ -15,11 +13,11 @@ class AbstractProjectPage(FablabBasePage):
     )
 
     category = models.ForeignKey(
-        "snippets.ProjectCategory",
+        "organisation.ProjectCategory",
+        related_name="+",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name="+",
     )
 
     date = models.DateField()
@@ -28,9 +26,9 @@ class AbstractProjectPage(FablabBasePage):
 
     content_panels = FablabBasePage.content_panels + [
         MultiFieldPanel([
-            ImageChooserPanel("image"),
-            SnippetChooserPanel("category"),
+            FieldPanel("image"),
             FieldPanel("date"),
+            FieldPanel("category"),
         ], heading="Hero"),
         FieldPanel("introduction"),
     ]

@@ -1,6 +1,6 @@
-from wagtail.core import blocks
+from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.core.blocks.field_block import PageChooserBlock
+from wagtail.blocks.field_block import PageChooserBlock
 
 
 class SplitBlock(blocks.StructBlock):

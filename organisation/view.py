@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from generic_chooser.views import ModelChooserViewSet
 
 from organisation.models import Person, Project
-from organisation.models.category import DeviceCategory
+from organisation.models.category import DeviceCategory, ProjectCategory
 
 
 class PersonChooserViewSet(ModelChooserViewSet):
@@ -25,6 +25,13 @@ class ProjectChooserViewSet(ModelChooserViewSet):
 class DeviceCategoryChooserViewSet(ModelChooserViewSet):
     icon = "group"
     model = DeviceCategory
+    page_title = _("Choose a device")
+    per_page = 10
+    order_by = "name"
+
+class ProjectCategoryChooserViewSet(ModelChooserViewSet):
+    icon = "group"
+    model = ProjectCategory
     page_title = _("Choose a device")
     per_page = 10
     order_by = "name"

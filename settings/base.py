@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     "websites.base",
     "websites.qufablab",
     "wagtailcache",
-    "wagtail_color_panel",
     "wagtailmedia",
     "wagtail_localize",
     "wagtail_localize.locales",

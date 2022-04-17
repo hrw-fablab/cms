@@ -10,7 +10,7 @@ from wagtail.core import hooks
 
 from wagtail.core.models import TranslatableMixin
 
-from .view import PersonChooserViewSet, ProjectChooserViewSet, DeviceCategoryChooserViewSet
+from .view import PersonChooserViewSet, ProjectChooserViewSet, DeviceCategoryChooserViewSet, ProjectCategoryChooserViewSet
 
 @hooks.register("register_admin_viewset")
 def register_person_chooser_viewset():
@@ -24,6 +24,10 @@ def register_project_chooser_viewset():
 @hooks.register("register_admin_viewset")
 def register_devicecategory_chooser_viewset():
     return DeviceCategoryChooserViewSet("devicecategory_chooser", url_prefix="devicecategory-chooser")
+
+@hooks.register("register_admin_viewset")
+def register_projectcategory_chooser_viewset():
+    return ProjectCategoryChooserViewSet("projectcategory_chooser", url_prefix="projectcategory-chooser")
 
 
 class PersonAdmin(ModelAdmin, TranslatableMixin):
@@ -50,7 +54,7 @@ class ProjectAdmin(ModelAdmin, TranslatableMixin):
 
 class OrganisationGroup(ModelAdminGroup):
     menu_label = "Organisation"
-    menu_icon = "folder-open-inverse"
+    menu_icon = "group"
     menu_order = 200
     items = (PersonAdmin, ProjectAdmin)
 

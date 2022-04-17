@@ -10,9 +10,6 @@ from wagtail.admin.edit_handlers import (
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-from wagtail_color_panel.fields import ColorField
-from wagtail_color_panel.edit_handlers import NativeColorPanel
-
 from modelcluster.models import ClusterableModel
 
 from wagtail.core.models import Orderable
@@ -118,11 +115,11 @@ class GlobalSettings(BaseSetting, ClusterableModel):
 
     logo_title = models.CharField(max_length=30, null=True, blank=True)
 
-    brand_color = ColorField(null=True, blank=True)
-    text_color = ColorField(null=True, blank=True)
+    brand_color = models.CharField(max_length=30, null=True, blank=True)
+    text_color = models.CharField(max_length=30, null=True, blank=True)
 
-    surface_color_one = ColorField(null=True, blank=True)
-    surface_color_two = ColorField(null=True, blank=True)
+    surface_color_one = models.CharField(max_length=30, null=True, blank=True)
+    surface_color_two = models.CharField(max_length=30, null=True, blank=True)
 
     intern_website = models.ForeignKey(
         "wagtailcore.Page",
@@ -143,10 +140,10 @@ class GlobalSettings(BaseSetting, ClusterableModel):
         ),
         MultiFieldPanel(
             [
-                NativeColorPanel("brand_color"),
-                NativeColorPanel("text_color"),
-                NativeColorPanel("surface_color_one"),
-                NativeColorPanel("surface_color_two"),
+                FieldPanel("brand_color"),
+                FieldPanel("text_color"),
+                FieldPanel("surface_color_one"),
+                FieldPanel("surface_color_two"),
             ],
             heading="Brand Farben",
         ),

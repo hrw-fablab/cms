@@ -12,6 +12,14 @@ class AbstractProjectPage(FablabBasePage):
         related_name="+",
     )
 
+    category = models.ForeignKey(
+        "organisation.ProjectCategory",
+        related_name="+",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
     date = models.DateField()
 
     introduction = models.CharField(max_length=255)
@@ -20,6 +28,7 @@ class AbstractProjectPage(FablabBasePage):
         MultiFieldPanel([
             FieldPanel("image"),
             FieldPanel("date"),
+            FieldPanel("category"),
         ], heading="Hero"),
         FieldPanel("introduction"),
     ]

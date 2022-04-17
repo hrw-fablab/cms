@@ -25,7 +25,7 @@ class HomePage(AbstractHomePage):
 
     template = "pages/home.html"
 
-    body = StreamField(HomeBlock(), blank=True, use_json_field=True)
+    body = StreamField(HomeBlock(), blank=True)
 
     content_panels = AbstractHomePage.content_panels + [
         StreamFieldPanel("body"),
@@ -61,7 +61,7 @@ class FlexPage(AbstractFlexPage):
 
     template = "pages/flex.html"
 
-    body = StreamField(FlexBlock(), blank=True, use_json_field=True)
+    body = StreamField(FlexBlock(), blank=True)
 
     content_panels = AbstractHomePage.content_panels + [
         StreamFieldPanel("body"),

@@ -1,4 +1,4 @@
-from wagtail import blocks
+from wagtail.core import blocks
 from wagtailmedia.blocks import VideoChooserBlock
 
 

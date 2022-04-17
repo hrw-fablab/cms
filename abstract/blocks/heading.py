@@ -1,4 +1,4 @@
-from wagtail import blocks
+from wagtail.core import blocks
 
 
 class HeadingBlock(blocks.StructBlock):

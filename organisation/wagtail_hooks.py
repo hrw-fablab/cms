@@ -8,8 +8,6 @@ from .models import Person, Project, DeviceCategory, ProjectCategory
 
 from wagtail.core import hooks
 
-from wagtail.core.models import TranslatableMixin
-
 from .view import PersonChooserViewSet, ProjectChooserViewSet, DeviceCategoryChooserViewSet, ProjectCategoryChooserViewSet
 
 @hooks.register("register_admin_viewset")
@@ -30,7 +28,7 @@ def register_projectcategory_chooser_viewset():
     return ProjectCategoryChooserViewSet("projectcategory_chooser", url_prefix="projectcategory-chooser")
 
 
-class PersonAdmin(ModelAdmin, TranslatableMixin):
+class PersonAdmin(ModelAdmin):
     model = Person
     menu_icon = "user"
     menu_order = 200
@@ -41,7 +39,7 @@ class PersonAdmin(ModelAdmin, TranslatableMixin):
     search_fields = ("first_name", "last_name")
 
 
-class ProjectAdmin(ModelAdmin, TranslatableMixin):
+class ProjectAdmin(ModelAdmin):
     model = Project
     menu_icon = "group"
     menu_order = 200

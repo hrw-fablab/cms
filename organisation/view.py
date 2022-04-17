@@ -6,6 +6,9 @@ from organisation.models import Person, Project
 from organisation.models.category import DeviceCategory, ProjectCategory
 
 
+from generic_chooser.views import ModelChooserViewSet
+
+
 class PersonChooserViewSet(ModelChooserViewSet):
     icon = "user"
     model = Person

@@ -1,6 +1,5 @@
 from email.policy import default
-from wagtail import blocks
-from wagtail.blocks.field_block import PageChooserBlock
+from wagtail.core import blocks
 
 
 class GrabberBlock(blocks.StructBlock):
@@ -18,7 +17,7 @@ class GrabberBlock(blocks.StructBlock):
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",
     )
     amount = blocks.IntegerBlock(default=5)
-    pages = blocks.ListBlock(PageChooserBlock())
+    pages = blocks.ListBlock(blocks.PageChooserBlock())
 
     class Meta:
         group = "Cointainer"

@@ -24,7 +24,7 @@ from websites.base.blocks import HomeBlock, FlexBlock, ProjectBlock
 
 class HomePage(AbstractHomePage):
     template = "pages/home.html"
-    body = StreamField(HomeBlock(), blank=True, use_json_field=True)
+    body = StreamField(HomeBlock(), blank=True)
 
     content_panels = AbstractHomePage.content_panels + [
         StreamFieldPanel("body"),
@@ -42,7 +42,7 @@ class FlexPage(AbstractFlexPage):
 
     template = "pages/flex.html"
 
-    body = StreamField(FlexBlock(), blank=True, use_json_field=True)
+    body = StreamField(FlexBlock(), blank=True)
 
     content_panels = AbstractHomePage.content_panels + [
         StreamFieldPanel("body"),
@@ -114,7 +114,7 @@ class ProjectPage(AbstractProjectPage):
     parent_page_types = ["ProjectIndexPage"]
     subpage_type = []
 
-    body = StreamField(ProjectBlock(), blank=True, use_json_field=True)
+    body = StreamField(ProjectBlock(), blank=True)
 
     content_panels = AbstractProjectPage.content_panels + [
         InlinePanel("project_links", label="Project Links"),
@@ -128,7 +128,7 @@ class DevicePage(AbstractDevicePage):
     parent_page_types = ["DeviceIndexPage"]
     subpage_type = []
 
-    body = StreamField(ProjectBlock(), blank=True, use_json_field=True)
+    body = StreamField(ProjectBlock(), blank=True)
 
     content_panels = AbstractDevicePage.content_panels + [
         StreamFieldPanel("body"),

@@ -14,7 +14,7 @@ class PersonAdmin(ModelAdmin):
     add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("name", "last_name", "organisation", "employment", "thumb_image")
-    list_filter = ("organisation", "employment", "since")
+    list_filter = ("organisation", "since")
     search_fields = ("first_name", "last_name", "organisation__name", "employment", "title")
 
 

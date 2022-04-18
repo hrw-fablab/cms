@@ -13,9 +13,9 @@ class PersonAdmin(ModelAdmin):
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("first_name", "last_name", "organisation", "employment", "thumb_image")
+    list_display = ("name", "last_name", "organisation", "employment", "thumb_image")
     list_filter = ("organisation", "employment", "since")
-    search_fields = ("first_name", "last_name", "organisation", "employment")
+    search_fields = ("first_name", "last_name", "organisation__name", "employment", "title")
 
 
 class ProjectAdmin(ModelAdmin):

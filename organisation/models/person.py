@@ -96,6 +96,13 @@ class Person(ClusterableModel, models.Model):
     )
 
     @property
+    def name(self):
+        if self.title:
+            return "{} {}".format(self.title, self.first_name)
+        else:
+            return "{}".format(self.first_name)
+
+    @property
     def thumb_image(self):
         # Returns an empty string if there is no profile pic or the rendition
         # file can't be found.

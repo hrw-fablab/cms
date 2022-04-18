@@ -17,7 +17,7 @@ class ProjectMembers(blocks.StructBlock):
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",
     )
 
-    members = ProjectChooserBlock(required=False)
+    members = ProjectChooserBlock(required=True)
 
     class Meta:
         group = "Content Grabber"

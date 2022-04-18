@@ -17,7 +17,7 @@ class OrganisationMembers(blocks.StructBlock):
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",
     )
 
-    members = OrganisationChooserBlock(required=False)
+    members = OrganisationChooserBlock(required=True)
 
     class Meta:
         group = "Content Grabber"

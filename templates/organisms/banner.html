@@ -2,11 +2,16 @@
 {% block content %}
 <section class="fl-banner margin-block-end-medium">
 	{% if value.title or value.text %}
-	<div class="fl-content medium fl-flex-column justify-center align-start
-	 {% if not value.illustration %}
-	  fl-glass
-	 {% endif %}
-	 padding-medium">
+	<div class="fl-content medium fl-flex-column justify-center
+	{% if centered != False %}
+	text-centered 
+	{% endif %}
+	align-center 
+	{% if not value.illustration %}
+	fl-glass 
+	{% endif %}
+	padding-medium"
+	>
 		{% if value.date %}
 		<time>Startdatum: {{page.date}}</time>
 		{% endif %}

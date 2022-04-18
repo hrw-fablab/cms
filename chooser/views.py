@@ -6,7 +6,18 @@ from organisation import models
 
 from organisation.models.category import DeviceCategory
 
-from generic_chooser.views import ModelChooserViewSet
+from generic_chooser.views import ModelChooserViewSet, ModelChooserMixin
+
+
+class PersonChooserMixin(ModelChooserMixin):
+    preserve_url_parameters = ['organisation','date']  # preserve this URL parameter on pagination / search
+
+    def get_unfiltered_object_list(self):
+        objects = super().get_unfiltered_object_list()
+        organisation = self.request.GET.get('organisation')
+        if organisation:
+            objects = objects.filter(organisation_id=organisation)
+        return objects
 
 
 class PersonChooserViewSet(ModelChooserViewSet):
@@ -15,6 +26,7 @@ class PersonChooserViewSet(ModelChooserViewSet):
     page_title = _("Choose a person")
     per_page = 20
     order_by = "first_name"
+    chooser_mixin_class = PersonChooserMixin
 
 
 class ProjectChooserViewSet(ModelChooserViewSet):

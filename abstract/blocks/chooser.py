@@ -33,3 +33,20 @@ class PersonChooserBlock(blocks.ChooserBlock):
 
     def get_form_state(self, value):
         return self.widget.get_value_data(value)
+
+
+class OrganisationChooserBlock(blocks.ChooserBlock):
+    @property
+    def target_model(self):
+        from organisation.models import Organisation
+
+        return Organisation
+
+    @property
+    def widget(self):
+        from chooser.widgets import OrganisationChooser
+
+        return OrganisationChooser()
+
+    def get_form_state(self, value):
+        return self.widget.get_value_data(value)

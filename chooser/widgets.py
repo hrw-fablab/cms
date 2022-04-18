@@ -1,13 +1,15 @@
 from django.utils.translation import gettext_lazy as _
 
-from generic_chooser.widgets import AdminChooser
+from generic_chooser.widgets import AdminChooser, LinkedFieldMixin
 
 from organisation import models
 
 from organisation.models.category import DeviceCategory
 from organisation.models.organisation import Organisation
 
-class PersonChooser(AdminChooser):
+
+
+class PersonChooser(LinkedFieldMixin, AdminChooser):
     choose_one_text = _("Choose a person")
     choose_another_text = _("Choose another person")
     link_to_chosen_text = _("Edit this person")

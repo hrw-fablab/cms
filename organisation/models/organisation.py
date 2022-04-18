@@ -1,17 +1,10 @@
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.admin.edit_handlers import InlinePanel
-
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel
+import organisation
 
-from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel
+from organisation.models.person import Person
 
-
-from modelcluster.models import ClusterableModel
-
-from organisation.models import Person
 
 class Organisation(ClusterableModel, models.Model):
     name = models.CharField(max_length=254, null=True, blank=True)
@@ -23,6 +16,10 @@ class Organisation(ClusterableModel, models.Model):
         FieldPanel("name", heading="Organisation"),
         InlinePanel("related_projects", heading="Projekte"),
     ]
+
+    @property
+    def related_members(self):
+        return Person.objects.all().filter(organisation__id=self.id)
 
     @property
     def Projektanzahl(self):

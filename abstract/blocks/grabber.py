@@ -20,7 +20,7 @@ class GrabberBlock(blocks.StructBlock):
     pages = blocks.ListBlock(blocks.PageChooserBlock())
 
     class Meta:
-        group = "Cointainer"
+        group = "Content Grabber"
         template = "templates/grabber.html"
         icon = "grip"
         abstract = True

@@ -3,7 +3,7 @@ from wagtail.core import blocks
 from abstract.blocks import ProjectChooserBlock
 
 
-class MembersBlock(blocks.StructBlock):
+class ProjectMembers(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
 
     layout = blocks.ChoiceBlock(
@@ -20,7 +20,7 @@ class MembersBlock(blocks.StructBlock):
     members = ProjectChooserBlock(required=False)
 
     class Meta:
-        group = "Cointainer"
+        group = "Content Grabber"
         icon = "group"
         template = "templates/project.html"
         abstract = True

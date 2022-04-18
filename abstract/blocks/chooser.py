@@ -10,7 +10,7 @@ class ProjectChooserBlock(blocks.ChooserBlock):
 
     @property
     def widget(self):
-        from organisation.widgets import ProjectChooser
+        from chooser.widgets import ProjectChooser
 
         return ProjectChooser()
 
@@ -27,7 +27,7 @@ class PersonChooserBlock(blocks.ChooserBlock):
 
     @property
     def widget(self):
-        from organisation.widgets import PersonChooser
+        from chooser.widgets import PersonChooser
 
         return PersonChooser()
 

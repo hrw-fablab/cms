@@ -2,7 +2,7 @@ from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel
 
 from modelcluster.fields import ParentalKey
-from organisation.widgets import PersonChooser
+from chooser.widgets import PersonChooser
 
 from modelcluster.models import ClusterableModel
 

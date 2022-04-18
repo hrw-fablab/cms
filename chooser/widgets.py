@@ -4,7 +4,7 @@ from generic_chooser.widgets import AdminChooser
 
 from organisation.models.category import DeviceCategory
 
-from .models import Person, Project
+from organisation.models import Person, Project
 
 
 class PersonChooser(AdminChooser):

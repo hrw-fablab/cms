@@ -4,28 +4,7 @@ from wagtail.contrib.modeladmin.options import (
     modeladmin_register,
 )
 
-from .models import Person, Project, DeviceCategory, ProjectCategory
-
-from wagtail.core import hooks
-
-from .view import PersonChooserViewSet, ProjectChooserViewSet, DeviceCategoryChooserViewSet, ProjectCategoryChooserViewSet
-
-@hooks.register("register_admin_viewset")
-def register_person_chooser_viewset():
-    return PersonChooserViewSet("person_chooser", url_prefix="person-chooser")
-
-
-@hooks.register("register_admin_viewset")
-def register_project_chooser_viewset():
-    return ProjectChooserViewSet("project_chooser", url_prefix="project-chooser")
-
-@hooks.register("register_admin_viewset")
-def register_devicecategory_chooser_viewset():
-    return DeviceCategoryChooserViewSet("devicecategory_chooser", url_prefix="devicecategory-chooser")
-
-@hooks.register("register_admin_viewset")
-def register_projectcategory_chooser_viewset():
-    return ProjectCategoryChooserViewSet("projectcategory_chooser", url_prefix="projectcategory-chooser")
+from .models import Person, Project, DeviceCategory, ProjectCategory, Organisation
 
 
 class PersonAdmin(ModelAdmin):
@@ -50,11 +29,22 @@ class ProjectAdmin(ModelAdmin):
     search_fields = ("name",)
 
 
+class OrganisationAdmin(ModelAdmin):
+    model = Organisation
+    menu_icon = "group"
+    menu_order = 200
+    add_to_settings_menu = False
+    exclude_from_explorer = False
+    list_display = ("name",)
+    list_filter = ("name",)
+    search_fields = ("name",)
+
+
 class OrganisationGroup(ModelAdminGroup):
     menu_label = "Organisation"
     menu_icon = "group"
     menu_order = 200
-    items = (PersonAdmin, ProjectAdmin)
+    items = (PersonAdmin, ProjectAdmin, OrganisationAdmin)
 
 
 modeladmin_register(OrganisationGroup)

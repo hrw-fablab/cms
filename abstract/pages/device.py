@@ -5,7 +5,7 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from core.models import FablabBasePage
-from organisation.widgets import DeviceCategoryChooser
+from chooser.widgets import DeviceCategoryChooser
 
 
 class AbstractDevicePage(FablabBasePage):

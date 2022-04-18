@@ -30,6 +30,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     "user",
     "core",
+    "chooser",
     "organisation",
     "global",
     "generic_chooser",

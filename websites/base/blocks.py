@@ -66,6 +66,7 @@ class FlexBlock(blocks.StreamBlock):
     person = PersonBlock()
     html = HTMLBlock()
     banner = BannerBlock()
+    members = MembersBlock()
 
 
 class ProjectBlock(blocks.StreamBlock):
@@ -81,3 +82,4 @@ class ProjectBlock(blocks.StreamBlock):
     embed = EmbedBlock()
     html = HTMLBlock()
     banner = BannerBlock()
+    members = MembersBlock()

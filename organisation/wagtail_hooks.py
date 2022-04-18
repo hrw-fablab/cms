@@ -24,7 +24,7 @@ class ProjectAdmin(ModelAdmin):
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("name", "Personenanzahl", "asdf")
+    list_display = ("name", "Personenanzahl")
     list_filter = ("name", "related_member__person")
     search_fields = ("name",)
 

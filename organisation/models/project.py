@@ -16,15 +16,8 @@ class Project(ClusterableModel, models.Model):
     ]
 
     @property
-    def asdf(self):
-        print(Project.objects.all())
-        return 1
-
-    @property
     def Personenanzahl(self):
         return self.related_member.count()
-
-
 
     def __str__(self):
         return "{}".format(self.name)

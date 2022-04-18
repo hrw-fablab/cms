@@ -5,6 +5,8 @@ from wagtail.admin.edit_handlers import InlinePanel
 from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel
 
+
+
 class Project(ClusterableModel, models.Model):
     name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -12,6 +14,17 @@ class Project(ClusterableModel, models.Model):
         FieldPanel("name", heading="Projektname"),
         InlinePanel("related_member", heading="Mitglieder"),
     ]
+
+    @property
+    def asdf(self):
+        print(Project.objects.all())
+        return 1
+
+    @property
+    def Personenanzahl(self):
+        return self.related_member.count()
+
+
 
     def __str__(self):
         return "{}".format(self.name)

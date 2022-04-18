@@ -13,9 +13,9 @@ class PersonAdmin(ModelAdmin):
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("first_name", "last_name", "employment", "thumb_image")
-    list_filter = ("first_name", "last_name", "employment", "since")
-    search_fields = ("first_name", "last_name")
+    list_display = ("first_name", "last_name", "organisation", "employment", "thumb_image")
+    list_filter = ("organisation", "employment", "since")
+    search_fields = ("first_name", "last_name", "organisation", "employment")
 
 
 class ProjectAdmin(ModelAdmin):
@@ -24,7 +24,7 @@ class ProjectAdmin(ModelAdmin):
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("name",)
+    list_display = ("name", "Personenanzahl", "asdf")
     list_filter = ("name", "related_member__person")
     search_fields = ("name",)
 
@@ -35,8 +35,8 @@ class OrganisationAdmin(ModelAdmin):
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("name",)
-    list_filter = ("name",)
+    list_display = ("name", "Projektanzahl")
+    list_filter = ("name", "related_projects__project")
     search_fields = ("name",)
 
 

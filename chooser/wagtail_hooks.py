@@ -6,7 +6,7 @@ from wagtail.contrib.modeladmin.options import (
 
 from wagtail.core import hooks
 
-from .views import PersonChooserViewSet, ProjectChooserViewSet, DeviceCategoryChooserViewSet, ProjectCategoryChooserViewSet
+from .views import PersonChooserViewSet, ProjectChooserViewSet, DeviceCategoryChooserViewSet, ProjectCategoryChooserViewSet, OrganisationChooserViewSet
 
 @hooks.register("register_admin_viewset")
 def register_person_chooser_viewset():
@@ -24,3 +24,7 @@ def register_devicecategory_chooser_viewset():
 @hooks.register("register_admin_viewset")
 def register_projectcategory_chooser_viewset():
     return ProjectCategoryChooserViewSet("projectcategory_chooser", url_prefix="projectcategory-chooser")
+
+@hooks.register("register_admin_viewset")
+def register_organisation_chooser_viewset():
+    return OrganisationChooserViewSet("organisation_chooser", url_prefix="organisation-chooser")

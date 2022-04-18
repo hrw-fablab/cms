@@ -27,6 +27,14 @@ class Person(ClusterableModel, models.Model):
         related_name="+",
     )
 
+    organisation = models.ForeignKey(
+        "organisation.Organisation", 
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+"
+    )
+
     employment = models.CharField(max_length=254, null=True, blank=True)
     link = models.URLField(max_length=254, null=True, blank=True)
     since = models.DateField(null=True, blank=True)
@@ -49,6 +57,7 @@ class Person(ClusterableModel, models.Model):
             ],
             heading="Name",
         ),
+        FieldPanel("organisation", heading="Organisation"),
         ImageChooserPanel("image", heading="Bild"),
         MultiFieldPanel(
             [

@@ -12,8 +12,12 @@ margin-block-end-large">
     {% endif %}
     <div class="fl-grid-{{value.layout}} gap-medium">
         {% for element in value.members.related_member.all%}
-        {% if element.person%}
+        {% if value.filter %}
+        {% if element.person.organisation == value.filter%}
             {% include "molecules/person.html" with value=element.person%}
+        {% endif %}
+        {% else %}
+        {% include "molecules/person.html" with value=element.person%}
         {% endif %}
         {% endfor %}
     </div>

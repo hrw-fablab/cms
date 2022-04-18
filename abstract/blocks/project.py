@@ -1,3 +1,4 @@
+from abstract.blocks.chooser import OrganisationChooserBlock
 from wagtail.core import blocks
 
 from abstract.blocks import ProjectChooserBlock
@@ -17,7 +18,9 @@ class ProjectMembers(blocks.StructBlock):
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",
     )
 
-    members = ProjectChooserBlock(required=True)
+    members = ProjectChooserBlock(required=True, label="Projektmitglieder")
+
+    filter = OrganisationChooserBlock(required=False, label="Filter", help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation")
 
     class Meta:
         group = "Content Grabber"

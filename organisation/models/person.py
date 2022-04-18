@@ -16,6 +16,7 @@ from modelcluster.models import ClusterableModel
 
 
 class Person(ClusterableModel, models.Model):
+    title = models.CharField("First Name", max_length=100, null=True, blank=True)
     first_name = models.CharField("First Name", max_length=254)
     last_name = models.CharField("Last Name", max_length=254)
 
@@ -52,6 +53,7 @@ class Person(ClusterableModel, models.Model):
     german = [
         MultiFieldPanel(
             [
+                FieldPanel("title", heading="Titel"),
                 FieldPanel("first_name", heading="Vornahme"),
                 FieldPanel("last_name", heading="Nachnahme"),
             ],
@@ -103,7 +105,10 @@ class Person(ClusterableModel, models.Model):
             return ""
 
     def __str__(self):
-        return "{} {}".format(self.first_name, self.last_name)
+        if self.title:
+            return "{} {} {}".format(self.title, self.first_name, self.last_name)
+        else:
+            return "{} {}".format(self.first_name, self.last_name)
 
     class Meta:
         verbose_name = "Person"

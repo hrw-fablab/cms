@@ -835,7 +835,8 @@ div:nth-child(odd) .fl-split > :first-child {
 .fl-banner {
   display: grid;
   grid-template: "container";
-  place-items: center center
+  place-items: center center;
+  color: white
 }
 .fl-banner h2 {
     font-size: var(--font-size-7);

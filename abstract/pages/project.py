@@ -4,6 +4,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 from core.models import FablabBasePage
 
+
 class AbstractProjectPage(FablabBasePage):
     image = models.ForeignKey(
         "core.FablabImage",
@@ -26,11 +27,14 @@ class AbstractProjectPage(FablabBasePage):
     introduction = models.CharField(max_length=255)
 
     content_panels = FablabBasePage.content_panels + [
-        MultiFieldPanel([
-            ImageChooserPanel("image"),
-            FieldPanel("date"),
-            FieldPanel("category"),
-        ], heading="Hero"),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel("image"),
+                FieldPanel("date"),
+                FieldPanel("category"),
+            ],
+            heading="Hero",
+        ),
         FieldPanel("introduction"),
     ]
 

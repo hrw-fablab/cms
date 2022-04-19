@@ -52,7 +52,6 @@ class HomeBlock(blocks.StreamBlock):
     organisation = OrganisationMembers(label="Organisations Mitglieder")
 
 
-
 class FlexBlock(blocks.StreamBlock):
     heading = HeadingBlock(label="Überschrift")
     paragraph = ParagraphBlock(label="Absatz")

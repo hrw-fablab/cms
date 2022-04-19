@@ -6,7 +6,6 @@ from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel
 
 
-
 class Project(ClusterableModel, models.Model):
     name = models.CharField(max_length=254, null=True, blank=True)
 

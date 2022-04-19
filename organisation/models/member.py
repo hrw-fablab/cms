@@ -6,6 +6,7 @@ from chooser.widgets import PersonChooser
 
 from modelcluster.models import ClusterableModel
 
+
 class Member(ClusterableModel, models.Model):
     person = models.ForeignKey(
         "organisation.Person",

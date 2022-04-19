@@ -1,6 +1,7 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
+
 class CardBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
     image = ImageChooserBlock(required=False)

@@ -14,6 +14,7 @@ from modelcluster.fields import ParentalKey
 
 from modelcluster.models import ClusterableModel
 
+
 class Area(ClusterableModel, models.Model):
     project = models.ForeignKey(
         "organisation.Project",

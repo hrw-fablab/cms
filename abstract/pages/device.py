@@ -34,7 +34,7 @@ class AbstractDevicePage(FablabBasePage):
             [
                 ImageChooserPanel("image"),
                 FieldPanel("number"),
-                FieldPanel("category", widget=DeviceCategoryChooser)
+                FieldPanel("category", widget=DeviceCategoryChooser),
             ],
             heading="Hero",
         ),

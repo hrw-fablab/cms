@@ -37,7 +37,9 @@ class Sponsor(Orderable):
 
     logo_alt_en = models.CharField(max_length=255, null=True, blank=True)
 
-    page = ParentalKey("GlobalSettings", on_delete=models.CASCADE, related_name="sponsor")
+    page = ParentalKey(
+        "GlobalSettings", on_delete=models.CASCADE, related_name="sponsor"
+    )
 
     panels = [
         ImageChooserPanel("logo"),
@@ -51,7 +53,9 @@ class Social(Orderable):
     title = models.CharField(max_length=255, null=True, blank=True)
     url = models.URLField(null=True, blank=True)
 
-    page = ParentalKey("GlobalSettings", on_delete=models.CASCADE, related_name="social")
+    page = ParentalKey(
+        "GlobalSettings", on_delete=models.CASCADE, related_name="social"
+    )
 
     panels = [
         FieldPanel("title"),

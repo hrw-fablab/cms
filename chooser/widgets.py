@@ -8,7 +8,6 @@ from organisation.models.category import DeviceCategory
 from organisation.models.organisation import Organisation
 
 
-
 class PersonChooser(AdminChooser):
     choose_one_text = _("Choose a person")
     choose_another_text = _("Choose another person")
@@ -16,7 +15,6 @@ class PersonChooser(AdminChooser):
     model = models.Person
     edit_item_url_name = "organisation_person_modeladmin_edit"
     choose_modal_url_name = "person_chooser:choose"
-
 
 
 class ProjectChooser(AdminChooser):

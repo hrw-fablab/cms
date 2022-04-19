@@ -20,7 +20,11 @@ class ProjectMembers(blocks.StructBlock):
 
     members = ProjectChooserBlock(required=True, label="Projektmitglieder")
 
-    filter = OrganisationChooserBlock(required=False, label="Filter", help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation")
+    filter = OrganisationChooserBlock(
+        required=False,
+        label="Filter",
+        help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation",
+    )
 
     class Meta:
         group = "Content Grabber"

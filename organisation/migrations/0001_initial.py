@@ -10,109 +10,251 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=254, verbose_name='Name der Kategorie')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=254, verbose_name="Name der Kategorie"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Organisation',
+            name="Organisation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(blank=True, max_length=254, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(blank=True, max_length=254, null=True)),
             ],
             options={
-                'verbose_name': 'Organisation',
-                'verbose_name_plural': 'Organisationen',
+                "verbose_name": "Organisation",
+                "verbose_name_plural": "Organisationen",
             },
         ),
         migrations.CreateModel(
-            name='Project',
+            name="Project",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(blank=True, max_length=254, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(blank=True, max_length=254, null=True)),
             ],
             options={
-                'verbose_name': 'Projekt',
-                'verbose_name_plural': 'Projekte',
+                "verbose_name": "Projekt",
+                "verbose_name_plural": "Projekte",
             },
         ),
         migrations.CreateModel(
-            name='DeviceCategory',
+            name="DeviceCategory",
             fields=[
-                ('category_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='organisation.category')),
+                (
+                    "category_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="organisation.category",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Gerätekategorie',
-                'verbose_name_plural': 'Gerätekategorien',
+                "verbose_name": "Gerätekategorie",
+                "verbose_name_plural": "Gerätekategorien",
             },
-            bases=('organisation.category',),
+            bases=("organisation.category",),
         ),
         migrations.CreateModel(
-            name='ProjectCategory',
+            name="ProjectCategory",
             fields=[
-                ('category_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='organisation.category')),
+                (
+                    "category_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="organisation.category",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Projektkategorie',
-                'verbose_name_plural': 'Projektkategorien',
+                "verbose_name": "Projektkategorie",
+                "verbose_name_plural": "Projektkategorien",
             },
-            bases=('organisation.category',),
+            bases=("organisation.category",),
         ),
         migrations.CreateModel(
-            name='Person',
+            name="Person",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=254, verbose_name='First Name')),
-                ('last_name', models.CharField(max_length=254, verbose_name='Last Name')),
-                ('employment', models.CharField(blank=True, max_length=254, null=True)),
-                ('link', models.URLField(blank=True, max_length=254, null=True)),
-                ('since', models.DateField(blank=True, null=True)),
-                ('career', models.CharField(blank=True, max_length=254, null=True)),
-                ('responsibility', models.CharField(blank=True, max_length=254, null=True)),
-                ('expert', models.CharField(blank=True, max_length=254, null=True)),
-                ('description', models.TextField(blank=True, max_length=254, null=True)),
-                ('en_employment', models.CharField(blank=True, max_length=254, null=True)),
-                ('en_career', models.CharField(blank=True, max_length=254, null=True)),
-                ('en_responsibility', models.CharField(blank=True, max_length=254, null=True)),
-                ('en_expert', models.CharField(blank=True, max_length=254, null=True)),
-                ('en_description', models.TextField(blank=True, max_length=254, null=True)),
-                ('image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='core.fablabimage')),
-                ('organisation', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='organisation.organisation')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "first_name",
+                    models.CharField(max_length=254, verbose_name="First Name"),
+                ),
+                (
+                    "last_name",
+                    models.CharField(max_length=254, verbose_name="Last Name"),
+                ),
+                ("employment", models.CharField(blank=True, max_length=254, null=True)),
+                ("link", models.URLField(blank=True, max_length=254, null=True)),
+                ("since", models.DateField(blank=True, null=True)),
+                ("career", models.CharField(blank=True, max_length=254, null=True)),
+                (
+                    "responsibility",
+                    models.CharField(blank=True, max_length=254, null=True),
+                ),
+                ("expert", models.CharField(blank=True, max_length=254, null=True)),
+                (
+                    "description",
+                    models.TextField(blank=True, max_length=254, null=True),
+                ),
+                (
+                    "en_employment",
+                    models.CharField(blank=True, max_length=254, null=True),
+                ),
+                ("en_career", models.CharField(blank=True, max_length=254, null=True)),
+                (
+                    "en_responsibility",
+                    models.CharField(blank=True, max_length=254, null=True),
+                ),
+                ("en_expert", models.CharField(blank=True, max_length=254, null=True)),
+                (
+                    "en_description",
+                    models.TextField(blank=True, max_length=254, null=True),
+                ),
+                (
+                    "image",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="core.fablabimage",
+                    ),
+                ),
+                (
+                    "organisation",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="organisation.organisation",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Person',
-                'verbose_name_plural': 'Personen',
+                "verbose_name": "Person",
+                "verbose_name_plural": "Personen",
             },
         ),
         migrations.CreateModel(
-            name='Member',
+            name="Member",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('link', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='related_member', to='organisation.project')),
-                ('person', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='organisation.person')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "link",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="related_member",
+                        to="organisation.project",
+                    ),
+                ),
+                (
+                    "person",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="organisation.person",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Mitglied',
-                'verbose_name_plural': 'Mitglieder',
+                "verbose_name": "Mitglied",
+                "verbose_name_plural": "Mitglieder",
             },
         ),
         migrations.CreateModel(
-            name='Area',
+            name="Area",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('link', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='related_projects', to='organisation.organisation')),
-                ('project', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='organisation.project')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "link",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="related_projects",
+                        to="organisation.organisation",
+                    ),
+                ),
+                (
+                    "project",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="organisation.project",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Projekt',
-                'verbose_name_plural': 'Projekte',
+                "verbose_name": "Projekt",
+                "verbose_name_plural": "Projekte",
             },
         ),
     ]

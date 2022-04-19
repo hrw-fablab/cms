@@ -29,11 +29,11 @@ class Person(ClusterableModel, models.Model):
     )
 
     organisation = models.ForeignKey(
-        "organisation.Organisation", 
+        "organisation.Organisation",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name="+"
+        related_name="+",
     )
 
     employment = models.CharField(max_length=254, null=True, blank=True)

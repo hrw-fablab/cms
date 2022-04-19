@@ -11,7 +11,7 @@ class Organisation(ClusterableModel, models.Model):
 
     def __str__(self):
         return "{}".format(self.name)
-    
+
     panels = [
         FieldPanel("name", heading="Organisation"),
         InlinePanel("related_projects", heading="Projekte"),

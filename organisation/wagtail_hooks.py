@@ -15,7 +15,14 @@ class PersonAdmin(ModelAdmin):
     exclude_from_explorer = False
     list_display = ("name", "last_name", "organisation", "employment", "thumb_image")
     list_filter = ("organisation", "since")
-    search_fields = ("first_name", "last_name", "organisation__name", "employment", "title")
+    search_fields = (
+        "first_name",
+        "last_name",
+        "organisation__name",
+        "employment",
+        "title",
+    )
+
 
 class ProjectAdmin(ModelAdmin):
     model = Project

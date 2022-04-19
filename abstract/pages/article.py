@@ -8,6 +8,7 @@ from chooser.widgets import PersonChooser
 from core.models import FablabBasePage
 from wagtail.core.models import Page
 
+
 class AbstractArticlePage(FablabBasePage):
     image = models.ForeignKey(
         "core.FablabImage",
@@ -52,10 +53,13 @@ class AbstractArticlePage(FablabBasePage):
 
     content_panels = FablabBasePage.content_panels + [
         ImageChooserPanel("image"),
-        MultiFieldPanel([
-            FieldPanel("date"),
-            FieldPanel("author", widget=PersonChooser),
-        ], heading="Informationen"),
+        MultiFieldPanel(
+            [
+                FieldPanel("date"),
+                FieldPanel("author", widget=PersonChooser),
+            ],
+            heading="Informationen",
+        ),
         FieldPanel("introduction"),
         FieldPanel("body"),
     ]

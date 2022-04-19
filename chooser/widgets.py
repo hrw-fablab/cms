@@ -1,6 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 
-from generic_chooser.widgets import AdminChooser, LinkedFieldMixin
+from generic_chooser.widgets import AdminChooser
 
 from organisation import models
 
@@ -9,7 +9,7 @@ from organisation.models.organisation import Organisation
 
 
 
-class PersonChooser(LinkedFieldMixin, AdminChooser):
+class PersonChooser(AdminChooser):
     choose_one_text = _("Choose a person")
     choose_another_text = _("Choose another person")
     link_to_chosen_text = _("Edit this person")
@@ -34,6 +34,7 @@ class DeviceCategoryChooser(AdminChooser):
     link_to_chosen_text = _("Edit this Device Category")
     model = DeviceCategory
     choose_modal_url_name = "devicecategory_chooser:choose"
+
 
 class OrganisationChooser(AdminChooser):
     choose_one_text = _("Choose a Organisation")

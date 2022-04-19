@@ -38,7 +38,9 @@
                     <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w, {{ image_1440.url }} 1440w, {{ image_1920.url }} 1920w,"
                             sizes=" (min-width: 1920px) 1920px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
                             type="image/jpg">
-                    <img src="{{ image_480.url }}" alt="{{ value.image.alt }}" decoding="async">
+                    <img src="{{ image_480.url }}"
+                         alt="{{ value.image.alt }}"
+                         decoding="async">
                 </picture>
                 <figcaption>
                     {{ value.image.credit }}

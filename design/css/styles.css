@@ -61,6 +61,13 @@
 .fl-accent a:hover {
     color: var(--surface-2) !important;
   }
+.fl-color {
+  background-color: var(--brand);
+  color: var(--surface-1)
+}
+.fl-color :where(button, select) {
+    color: var(--surface-1);
+  }
 .fl-glass {
   background-color: var(--brand);
   color: var(--surface-1)
@@ -412,6 +419,7 @@ a:hover {
   color: var(--brand);
 }
 button {
+	line-height: 1.7;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -534,6 +542,12 @@ select {
 .fl-flex-column > a {
 	width: 100%;
 }
+.fl-flex-wrap {
+	flex-wrap: wrap;
+}
+.fl-flex-wrap-reverse {
+	flex-wrap: wrap-reverse;
+}
 @media (max-width: 768px) {
     .fl-card {
       display: inline-block;
@@ -624,7 +638,6 @@ select {
 
     .fl-menu li {
       padding-block: var(--size-3);
-      border-bottom: solid thin #ddd;
     }
 
     .fl-menu li > a {
@@ -634,6 +647,11 @@ select {
     .fl-menu li button {
       display: flex;
       justify-content: space-between;
+    }
+  }
+@media (max-width: 1024px) {
+    .underline li {
+      border-bottom: solid thin #ddd;
     }
   }
 .fl-submenu {
@@ -821,7 +839,6 @@ div:nth-child(odd) .fl-split > :first-child {
 }
 .fl-banner h2 {
     font-size: var(--font-size-7);
-    color: var(--surface-1);
   }
 .fl-banner > * {
     grid-area: container;
@@ -832,10 +849,9 @@ div:nth-child(odd) .fl-split > :first-child {
 .fl-banner > :first-child {
     z-index: 1;
   }
-.fl-banner :where(.fl-background, .fl-illustration) {
+.fl-banner .fl-color {
     height: 500px;
     width: 100%;
-    background-color: var(--brand);
   }
 .fl-banner .fl-illustration {
     background-size: 40%;
@@ -846,37 +862,23 @@ div:nth-child(odd) .fl-split > :first-child {
     .fl-banner {
       place-items: inherit;
     }
+
     .fl-banner .fl-content {
       width: 100%;
     }
-    .fl-banner :where(picture, img, figure, .fl-background) {
+
+    .fl-banner :where(picture, img, figure) {
       height: 100%;
     }
+
+    .fl-banner .fl-color {
+      height: 300px;
+    }
+
     .fl-banner h2 {
       font-size: var(--font-size-6);
     }
   }
-.fl-footer-content {
-	display: grid;
-	grid-template-columns: 0.5fr 1fr 1fr;
-	gap: var(--size-fluid-5);
-}
-.fl-footer-content div {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center
-	}
-.fl-footer-content div div {
-			text-align: start;
-			align-items: start;
-		}
-.fl-footer-nav ul {
-		display: flex;
-		flex-wrap: wrap;
-		list-style: none;
-		gap: var(--size-4);
-	}
 .fl-skip {
 	left: 50%;
   	position: absolute;

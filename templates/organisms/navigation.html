@@ -14,7 +14,7 @@
 
 		<button id="menu-button" class="fl-button">Menu</button>
 		<nav aria-label="Main Menu">
-			<ul class="fl-menu">
+			<ul class="fl-menu underline">
 				{% for element in menuitems %}
 				<li>
 					{% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage"%}

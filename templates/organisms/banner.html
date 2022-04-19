@@ -32,7 +32,7 @@
 
 	{% if value.illustration %}
 	{% image value.image height-700 format-webp as illustration%}
-	<div class="fl-background fl-illustration" style="background-image: url({{illustration.url}})"></div>
+	<div class="fl-color fl-illustration" style="background-image: url({{illustration.url}})"></div>
 	{% elif value.image %}
 	<figure>
 		<picture>
@@ -75,7 +75,7 @@
 		</figcaption>
 	</figure>
 	{% else %}
-	<div class="fl-background"></div>
+	<div class="fl-color"></div>
 	{% endif %}
 </section>
 {% endblock content %}

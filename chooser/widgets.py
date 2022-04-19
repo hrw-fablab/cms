@@ -14,7 +14,9 @@ class PersonChooser(LinkedFieldMixin, AdminChooser):
     choose_another_text = _("Choose another person")
     link_to_chosen_text = _("Edit this person")
     model = models.Person
+    edit_item_url_name = "organisation_person_modeladmin_edit"
     choose_modal_url_name = "person_chooser:choose"
+
 
 
 class ProjectChooser(AdminChooser):
@@ -22,6 +24,7 @@ class ProjectChooser(AdminChooser):
     choose_another_text = _("Choose another Project")
     link_to_chosen_text = _("Edit this Project")
     model = models.Project
+    edit_item_url_name = "organisation_project_modeladmin_edit"
     choose_modal_url_name = "project_chooser:choose"
 
 

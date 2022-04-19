@@ -1,3 +1,4 @@
+from msilib.schema import SelfReg
 from wagtail.contrib.modeladmin.options import (
     ModelAdmin,
     ModelAdminGroup,
@@ -16,7 +17,6 @@ class PersonAdmin(ModelAdmin):
     list_display = ("name", "last_name", "organisation", "employment", "thumb_image")
     list_filter = ("organisation", "since")
     search_fields = ("first_name", "last_name", "organisation__name", "employment", "title")
-
 
 class ProjectAdmin(ModelAdmin):
     model = Project

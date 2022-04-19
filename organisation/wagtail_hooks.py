@@ -1,4 +1,3 @@
-from msilib.schema import SelfReg
 from wagtail.contrib.modeladmin.options import (
     ModelAdmin,
     ModelAdminGroup,

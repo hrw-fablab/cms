@@ -1,25 +1,18 @@
 {% block content %}
-<div class="
-fl-content 
-{% if value.cards.0.block_type == 'person' and value.cards|length <= 2%}
-medium
-{% else %}
-large
-{% endif %}
-margin-block-end-large">
-    {% if value.title %}
-    {% include "atoms/heading.html" with value=value%}
-    {% endif %}
-    <div class="fl-grid-{{value.layout}} gap-medium">
-        {% for element in value.members.related_member.all%}
-        {% if value.filter %}
-        {% if element.person.organisation == value.filter%}
-            {% include "molecules/person.html" with value=element.person%}
+    <div class=" fl-content {% if value.cards.0.block_type == 'person' and value.cards|length <= 2 %} medium {% else %} large {% endif %} margin-block-end-large">
+        {% if value.title %}
+            {% include "atoms/heading.html" with value=value %}
         {% endif %}
-        {% else %}
-        {% include "molecules/person.html" with value=element.person%}
-        {% endif %}
-        {% endfor %}
+        <div class="fl-grid-{{ value.layout }} gap-medium">
+            {% for element in value.members.related_member.all %}
+                {% if value.filter %}
+                    {% if element.person.organisation == value.filter %}
+                        {% include "molecules/person.html" with value=element.person %}
+                    {% endif %}
+                {% else %}
+                    {% include "molecules/person.html" with value=element.person %}
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
-</div>
 {% endblock content %}

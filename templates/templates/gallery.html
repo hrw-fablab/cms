@@ -1,49 +1,34 @@
-{% load wagtailimages_tags%}
+{% load wagtailimages_tags %}
 {% block content %}
-<div class="
-fl-content
-{% if value.cards|length <= 2%}
-medium
-{% else %}
-large
-{% endif %}
-margin-block-end-large">
-	{% if value.title %}
-		{% include "atoms/heading.html" with value=value%}
-	{% endif %}
-	<div class="fl-grid-{{value.layout}} gap-medium">
-		{% for element in value.cards%}
-		{% if element.block_type == "image"%}
-			{% load wagtailimages_tags %}
-				<picture>
-					{% image element.value width-768 format-webp as image_768 %}
-					{% image element.value width-480 format-webp as image_480 %}
-					<source
-					srcset="
-					{{image_480.url}} 480w,
-					{{image_768.url}} 768w,"
-					sizes="
-					(min-width: 768px) 768px,
-					(min-width: 480px) 480px"
-					type="image/webp"
-					>
-					{% image element.value width-768 format-jpeg as image_768 %}
-					{% image element.value width-480 format-jpeg as image_480 %}
-					<source
-					srcset="
-					{{image_480.url}} 480w,
-					{{image_768.url}} 768w,"
-					sizes="
-					(min-width: 768px) 768px,
-					(min-width: 480px) 480px"
-					type="image/jpg"
-					>
-					<img class="{% if value.contain %}contain{% else %}cover{% endif %} aspect-widescreen" src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="lazy">
-				</picture>
-		{% else %}
-			{{element}}
-		{% endif %}
-		{% endfor %}
-	</div>
-</div>
+    <div class=" fl-content {% if value.cards|length <= 2 %} medium {% else %} large {% endif %} margin-block-end-large">
+        {% if value.title %}
+            {% include "atoms/heading.html" with value=value %}
+        {% endif %}
+        <div class="fl-grid-{{ value.layout }} gap-medium">
+            {% for element in value.cards %}
+                {% if element.block_type == "image" %}
+                    {% load wagtailimages_tags %}
+                    <picture>
+                        {% image element.value width-768 format-webp as image_768 %}
+                        {% image element.value width-480 format-webp as image_480 %}
+                        <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
+                                sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                                type="image/webp">
+                        {% image element.value width-768 format-jpeg as image_768 %}
+                        {% image element.value width-480 format-jpeg as image_480 %}
+                        <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
+                                sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                                type="image/jpg">
+                        <img class="{% if value.contain %}contain{% else %}cover{% endif %} aspect-widescreen"
+                             src="{{ image_480.url }}"
+                             alt="image_480.alt"
+                             decoding="async"
+                             loading="lazy">
+                    </picture>
+                {% else %}
+                    {{ element }}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock content %}

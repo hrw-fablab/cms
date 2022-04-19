@@ -1,17 +1,14 @@
 {% if value.street or value.email %}
-<div>
-    <h3>Kontakt</h3>
-    <address>
-        {{value.street}}
-        {{value.housenumber}}
-        <br>
-        {{value.city}}
-        {{value.plz}}
-        <br>
-        {% if value.email%}
-        <a href="mailto:{{value.email}}">{{value.email}}
-        </a>
-        {% endif %}
-    </address>
-</div>
+    <div>
+        <h3>Kontakt</h3>
+        <address>
+            {{ value.street }}
+            {{ value.housenumber }}
+            <br>
+            {{ value.city }}
+            {{ value.plz }}
+            <br>
+            {% if value.email %}<a href="mailto:{{ value.email }}">{{ value.email }}</a>{% endif %}
+        </address>
+    </div>
 {% endif %}

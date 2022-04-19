@@ -1,20 +1,17 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
-
 {% block content %}
-<main class="fl-main padding-top" id="main">
-	{% regroup children.specific by category as category_list %}
-	{% for category in category_list %}
-	<div class="fl-content large margin-block-start-medium">
-		{% if category.grouper != None %}
-		<h2 class="margin-block-end-small">{{category.grouper}}</h2>
-		{% endif %}
-		<div class="fl-grid-large gap-medium">
-			{% for page in category.list %}
-			{% include "molecules/card.html" with value=page class="aspect-widescreen"%}
-			{% endfor %}
-		</div>
-	</div>
-	{% endfor %}
-</main>
+    <main class="fl-main padding-top" id="main">
+        {% regroup children.specific by category as category_list %}
+        {% for category in category_list %}
+            <div class="fl-content large margin-block-start-medium">
+                {% if category.grouper != None %}<h2 class="margin-block-end-small">{{ category.grouper }}</h2>{% endif %}
+                <div class="fl-grid-large gap-medium">
+                    {% for page in category.list %}
+                        {% include "molecules/card.html" with value=page class="aspect-widescreen" %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </main>
 {% endblock content %}

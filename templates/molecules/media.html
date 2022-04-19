@@ -1,51 +1,39 @@
 {% block content %}
-<div class="fl-content medium centered fl-media margin-block-end-large">
-	{% if value.title %}
-	<h2 class="text-centered margin-block-end-small">{{value.title}}</h2>
-	{% endif %}
-	{% if value.image %}
-		{% load wagtailimages_tags %}
-		<figure>
-			<picture>
-				{% image value.image fill-1024x700 format-webp webpquality-60 as image_1024 %}
-				{% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
-				{% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
-				<source
-				srcset="
-				{{image_480.url}} 480w,
-				{{image_768.url}} 768w,
-				{{image_1024.url}} 1024w,"
-				sizes="
-				(min-width: 1024px) 1024px,
-				(min-width: 768px) 768px,
-				(min-width: 480px) 480px"
-				type="image/webp"
-				>
-				{% image value.image fill-1024x700 format-jpeg as image_1024 %}
-				{% image value.image fill-768x576 format-jpeg as image_768 %}
-				{% image value.image fill-480x360 format-jpeg as image_480 %}
-				<source
-				srcset="
-				{{image_480.url}} 480w,
-				{{image_768.url}} 768w,
-				{{image_1024.url}} 1024w,"
-				sizes="
-				(min-width: 1024px) 1024px,
-				(min-width: 768px) 768px,
-				(min-width: 480px) 480px"
-				type="image/jpg"
-				>
-				<img src="{{image_480.url}}" alt="image_480.alt" decoding="async" loading="eager" rel="preload" class="aspect-widescreen">
-			</picture>
-			<figcaption>
-				{{value.image.credit}}
-			</figcaption>
-		</figure>
-	{% elif value.video %}
-		<video src="{{ value.video.url }}" controls></video>
-	{% elif value.embed %}
-		{% load wagtailembeds_tags %}
-		{% embed value.embed.url%}
-	{% endif %}
-</div>
+    <div class="fl-content medium centered fl-media margin-block-end-large">
+        {% if value.title %}<h2 class="text-centered margin-block-end-small">{{ value.title }}</h2>{% endif %}
+        {% if value.image %}
+            {% load wagtailimages_tags %}
+            <figure>
+                <picture>
+                    {% image value.image fill-1024x700 format-webp webpquality-60 as image_1024 %}
+                    {% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
+                    {% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
+                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w,"
+                            sizes=" (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+                            type="image/webp">
+                    {% image value.image fill-1024x700 format-jpeg as image_1024 %}
+                    {% image value.image fill-768x576 format-jpeg as image_768 %}
+                    {% image value.image fill-480x360 format-jpeg as image_480 %}
+                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w,"
+                            sizes=" (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+                            type="image/jpg">
+                    <img src="{{ image_480.url }}"
+                         alt="image_480.alt"
+                         decoding="async"
+                         loading="eager"
+                         rel="preload"
+                         class="aspect-widescreen">
+                </picture>
+                <figcaption>
+                    {{ value.image.credit }}
+                </figcaption>
+            </figure>
+        {% elif value.video %}
+            <video src="{{ value.video.url }}" controls>
+            </video>
+        {% elif value.embed %}
+            {% load wagtailembeds_tags %}
+            {% embed value.embed.url %}
+        {% endif %}
+    </div>
 {% endblock %}

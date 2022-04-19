@@ -1,73 +1,65 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
-
 {% block content %}
-<main class="fl-main" id="main">
-	<article class="fl-content medium margin-block-start-medium aspect-widescreen">
-		{% if page.image %}
-		{% load wagtailimages_tags %}
-		<figure>
-			<picture>
-				{% image page.image fill-1024x588-c70 format-webp webpquality-60 as image_1024 %}
-				{% image page.image fill-768x576-c70 format-webp webpquality-60 as image_768 %}
-				{% image page.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
-				<source
-				srcset="
-				{{image_480.url}} 480w,
-				{{image_768.url}} 768w,
-				{{image_1024.url}} 1024w,"
-				sizes="
-				(min-width: 1024px) 1024px,
-				(min-width: 768px) 768px,
-				(min-width: 480px) 480px"
-				type="image/webp"
-				>
-				{% image page.image fill-1024x700-c70 format-jpeg as image_1024 %}
-				{% image page.image fill-768x576-c70 format-jpeg as image_768 %}
-				{% image page.image fill-480x360-c70 format-jpeg as image_480 %}
-				<source
-				srcset="
-				{{image_480.url}} 480w,
-				{{image_768.url}} 768w,
-				{{image_1024.url}} 1024w,"
-				sizes="
-				(min-width: 1024px) 1024px,
-				(min-width: 768px) 768px,
-				(min-width: 480px) 480px"
-				type="image/jpg"
-				>
-				<img src="{{image_480.url}}" alt="{{image_480.alt}}" decoding="async" loading="eager" rel="preload" class="aspect-widescreen">
-			</picture>
-			<figcaption>
-				{{page.image.credit}}
-			</figcaption>
-		</figure>
-		{% endif %}
-		<header class="fl-flex column margin-block-start-small margin-block-end-medium">
-			{% if page.tag %}
-			<p>{{page.tag}}</p>
-			{% endif %}
-			<h1 class="margin-block-end-small">{{page.title}}</h1>
-			<div class="fl-flex-row gap-medium">
-				{% if page.author %}
-				<p class="fl-flex-row align-center gap-small fl-profile">
-					{% image page.author.image fill-120x120 as author_image %}
-					<img src="{{ author_image.url }}" alt="{{ author_image.alt }}">
-					{{page.author.first_name}}
-					{{page.author.last_name}}
-				</p>
-				{% endif %}
-				<time class="fl-flex-row align-center gap-small">
-					<svg viewBox="0 0 24 24" width="1.5rem" height="1.5rem"><path d="M20 20h-4v-4h4v4zm-6-10h-4v4h4v-4zm6 0h-4v4h4v-4zM8 16H4v4h4v-4zm6 0h-4v4h4v-4zm-6-6H4v4h4v-4zm16-8v22H0V2h3v1a2 2 0 0 0 4 0V2h10v1a2 2 0 0 0 4 0V2h3zm-2 6H2v14h20V8zm-2-7a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V1zM6 3a1 1 0 1 1-2 0V1a1 1 0 1 1 2 0v2z"/></svg>
-					{{page.date}}
-				</time>
-			</div>
-		</header>
-		<section class="fl-content small fl-richtext">
-			<p>
-				{{ page.body|richtext }}
-			</p>
-		</section>
-	</article>
-</main>
+    <main class="fl-main" id="main">
+        <article class="fl-content medium margin-block-start-medium aspect-widescreen">
+            {% if page.image %}
+                {% load wagtailimages_tags %}
+                <figure>
+                    <picture>
+                        {% image page.image fill-1024x588-c70 format-webp webpquality-60 as image_1024 %}
+                        {% image page.image fill-768x576-c70 format-webp webpquality-60 as image_768 %}
+                        {% image page.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
+                        <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w,"
+                                sizes=" (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+                                type="image/webp">
+                        {% image page.image fill-1024x700-c70 format-jpeg as image_1024 %}
+                        {% image page.image fill-768x576-c70 format-jpeg as image_768 %}
+                        {% image page.image fill-480x360-c70 format-jpeg as image_480 %}
+                        <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w,"
+                                sizes=" (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+                                type="image/jpg">
+                        <img src="{{ image_480.url }}"
+                             alt="{{ image_480.alt }}"
+                             decoding="async"
+                             loading="eager"
+                             rel="preload"
+                             class="aspect-widescreen">
+                    </picture>
+                    <figcaption>
+                        {{ page.image.credit }}
+                    </figcaption>
+                </figure>
+            {% endif %}
+            <header class="fl-flex column margin-block-start-small margin-block-end-medium">
+                {% if page.tag %}
+                    <p>
+                        {{ page.tag }}
+                    </p>
+                {% endif %}
+                <h1 class="margin-block-end-small">{{ page.title }}</h1>
+                <div class="fl-flex-row gap-medium">
+                    {% if page.author %}
+                        <p class="fl-flex-row align-center gap-small fl-profile">
+                            {% image page.author.image fill-120x120 as author_image %}
+                            <img src="{{ author_image.url }}" alt="{{ author_image.alt }}">
+                            {{ page.author.first_name }}
+                            {{ page.author.last_name }}
+                        </p>
+                    {% endif %}
+                    <time class="fl-flex-row align-center gap-small">
+                        <svg viewBox="0 0 24 24" width="1.5rem" height="1.5rem">
+                            <path d="M20 20h-4v-4h4v4zm-6-10h-4v4h4v-4zm6 0h-4v4h4v-4zM8 16H4v4h4v-4zm6 0h-4v4h4v-4zm-6-6H4v4h4v-4zm16-8v22H0V2h3v1a2 2 0 0 0 4 0V2h10v1a2 2 0 0 0 4 0V2h3zm-2 6H2v14h20V8zm-2-7a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V1zM6 3a1 1 0 1 1-2 0V1a1 1 0 1 1 2 0v2z"/>
+                        </svg>
+                        {{ page.date }}
+                    </time>
+                </div>
+            </header>
+            <section class="fl-content small fl-richtext">
+                <p>
+                    {{ page.body|richtext }}
+                </p>
+            </section>
+        </article>
+    </main>
 {% endblock content %}

@@ -1,14 +1,14 @@
 {% block content %}
-<div class="fl-content large margin-block-end-large">
-	{% if value.title %}
-		{% include "atoms/heading.html" with value=value%}
-	{% endif %}
-	<div class="fl-grid-{{value.layout}} gap-medium">
-		{% for pages in value.pages%}
-		{% for page in pages.get_children.specific|slice:value.amount%}
-		{% include "molecules/card.html" with value=page class="aspect-widescreen"%}
-		{% endfor %}
-		{% endfor%}
-	</div>
-</div>
+    <div class="fl-content large margin-block-end-large">
+        {% if value.title %}
+            {% include "atoms/heading.html" with value=value %}
+        {% endif %}
+        <div class="fl-grid-{{ value.layout }} gap-medium">
+            {% for pages in value.pages %}
+                {% for page in pages.get_children.specific|slice:value.amount %}
+                    {% include "molecules/card.html" with value=page class="aspect-widescreen" %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock content %}

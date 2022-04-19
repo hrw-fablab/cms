@@ -1,57 +1,57 @@
 {% load wagtailcore_tags i18n wagtailsettings_tags %}
-{% wagtail_site as current_site%}
+{% wagtail_site as current_site %}
 {% block content %}
-<footer class="fl-color margin-block-start-medium padding-block-medium">
-	<div class="fl-content fl-flex-column gap-small">
-		{% include "atoms/sponsors.html" with value=settings.global.GlobalSettings%}
-		<div class="fl-flex-row gap-large">
-			{% include "atoms/adress.html" with value=settings.global.GlobalSettings%}
-			{% include "atoms/social.html" with value=settings.global.GlobalSettings%}
-		</div>
-		<div class="fl-flex-row fl-flex-wrap gap-medium">
-			<nav>
-				<ul class="fl-menu">
-					<li>
-						<a href="{{settings.global.GlobalSettings.contact.localized.url}}">
-							{% if LANGUAGE_CODE == "en"%}
-							Contact
-							{% else %}
-							Kontakt
-							{% endif %}
-						</a>
-					</li>
-					<li>
-						<a href="{{settings.global.GlobalSettings.impressum.localized.url}}">
-							{% if LANGUAGE_CODE == "en"%}
-							Imprint
-							{% else %}
-							Impressum
-							{% endif %}
-						</a>
-					</li>
-					<li>
-						<a href="{{settings.global.GlobalSettings.data_protection.localized.url}}">
-							{% if LANGUAGE_CODE == "en"%}
-							Data Privacy
-							{% else %}
-							Datenschutzerklärung
-							{% endif %}
-						</a>
-					</li>
-					<li>
-						<a href="{{settings.global.GlobalSettings.intern_website.url}}"
-							style="margin-inline-start: auto;">
-							{% if LANGUAGE_CODE == "en"%}
-							Internal
-							{% else %}
-							Intern
-							{% endif %}
-						</a>
-					</li>
-				</ul>
-			</nav>
-			{% include "molecules/language.html"%}
-		</div>
-	</div>
-</footer>
+    <footer class="fl-color margin-block-start-medium padding-block-medium">
+        <div class="fl-content fl-flex-column gap-small">
+            {% include "atoms/sponsors.html" with value=settings.global.GlobalSettings %}
+            <div class="fl-flex-row gap-large">
+                {% include "atoms/adress.html" with value=settings.global.GlobalSettings %}
+                {% include "atoms/social.html" with value=settings.global.GlobalSettings %}
+            </div>
+            <div class="fl-flex-row fl-flex-wrap gap-medium">
+                <nav>
+                    <ul class="fl-menu">
+                        <li>
+                            <a href="{{ settings.global.GlobalSettings.contact.localized.url }}">
+                                {% if LANGUAGE_CODE == "en" %}
+                                    Contact
+                                {% else %}
+                                    Kontakt
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ settings.global.GlobalSettings.impressum.localized.url }}">
+                                {% if LANGUAGE_CODE == "en" %}
+                                    Imprint
+                                {% else %}
+                                    Impressum
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ settings.global.GlobalSettings.data_protection.localized.url }}">
+                                {% if LANGUAGE_CODE == "en" %}
+                                    Data Privacy
+                                {% else %}
+                                    Datenschutzerkl�rung
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ settings.global.GlobalSettings.intern_website.url }}"
+                               style="margin-inline-start: auto;">
+                                {% if LANGUAGE_CODE == "en" %}
+                                    Internal
+                                {% else %}
+                                    Intern
+                                {% endif %}
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                {% include "molecules/language.html" %}
+            </div>
+        </div>
+    </footer>
 {% endblock content %}

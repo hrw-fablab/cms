@@ -36,18 +36,11 @@ class Person(ClusterableModel, models.Model):
         related_name="+",
     )
 
-    employment = models.CharField(max_length=254, null=True, blank=True)
     link = models.URLField(max_length=254, null=True, blank=True)
-    since = models.DateField(null=True, blank=True)
-    career = models.CharField(max_length=254, null=True, blank=True)
     responsibility = models.CharField(max_length=254, null=True, blank=True)
-    expert = models.CharField(max_length=254, null=True, blank=True)
     description = models.TextField(max_length=254, null=True, blank=True)
 
-    en_employment = models.CharField(max_length=254, null=True, blank=True)
-    en_career = models.CharField(max_length=254, null=True, blank=True)
     en_responsibility = models.CharField(max_length=254, null=True, blank=True)
-    en_expert = models.CharField(max_length=254, null=True, blank=True)
     en_description = models.TextField(max_length=254, null=True, blank=True)
 
     german = [
@@ -63,29 +56,21 @@ class Person(ClusterableModel, models.Model):
         ImageChooserPanel("image", heading="Bild"),
         MultiFieldPanel(
             [
-                FieldPanel("employment", heading="Anstellungsart"),
-                FieldPanel("link", heading="Link"),
-                FieldPanel("since", heading="Seit"),
-                FieldPanel("career", heading="Lebenslauf"),
                 FieldPanel("responsibility", heading="Aufgabenbereiche"),
-                FieldPanel("expert", heading="Experte*in für"),
+                FieldPanel("description", heading="Beschreibung"),
             ],
             heading="Informationen",
         ),
-        FieldPanel("description", heading="Beschreibung"),
     ]
 
     english = [
         MultiFieldPanel(
             [
-                FieldPanel("en_employment", heading="Anstellungsart"),
-                FieldPanel("en_career", heading="Lebenslauf"),
                 FieldPanel("en_responsibility", heading="Aufgabenbereiche"),
-                FieldPanel("en_expert", heading="Experte*in für"),
+                FieldPanel("en_description", heading="Beschreibung"),
             ],
             heading="Informationen",
         ),
-        FieldPanel("en_description", heading="Beschreibung"),
     ]
 
     edit_handler = TabbedInterface(

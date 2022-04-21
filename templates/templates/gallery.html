@@ -1,10 +1,11 @@
 {% load wagtailimages_tags %}
 {% block content %}
-    <div class=" fl-content {% if value.cards|length <= 2 %} medium {% else %} large {% endif %} margin-block-end-large">
+    <div class="fl-content margin-block-end-large"
+         data-width="{% if value.cards|length <= 2 %}medium{% else %}large{% endif %}">
         {% if value.title %}
             {% include "atoms/heading.html" with value=value %}
         {% endif %}
-        <div class="fl-grid-{{ value.layout }} gap-medium">
+        <div class="fl-grid gap-medium" data-size="{{ value.layout }}">
             {% for element in value.cards %}
                 {% if element.block_type == "image" %}
                     {% load wagtailimages_tags %}

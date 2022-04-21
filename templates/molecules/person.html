@@ -37,9 +37,9 @@
                     {% endif %}
                 </header>
                 {% if value.since or value.career or value.responsibility or value.expert or value.projects %}
-                    <dl class="fl-flex-column gap-small">
+                    <dl class="fl-flex gap-small" data-direction="column">
                         {% if value.since %}
-                            <div class="fl-flex-row gap-tiny">
+                            <div class="fl-flex gap-tiny">
                                 <dt>
                                     <strong>Im Labor seit:</strong>
                                 </dt>
@@ -49,7 +49,7 @@
                             </div>
                         {% endif %}
                         {% if value.career %}
-                            <div class="fl-flex-column">
+                            <div class="fl-flex" data-direction="column">
                                 <dt>
                                     <strong>Lebenslauf:</strong>
                                 </dt>
@@ -71,7 +71,7 @@
                         {% if value.expert %}
                             <div class="fl-flex-column">
                                 <dt>
-                                    <strong>Experte f�r:</strong>
+                                    <strong>Experte fuer:</strong>
                                 </dt>
                                 <dd>
                                     {{ value.expert }}

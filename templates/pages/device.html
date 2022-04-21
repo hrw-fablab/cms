@@ -9,7 +9,7 @@
                 {% image page.image original %}
             {% endif %}
         </div>
-        <article class="fl-article fl-content medium">
+        <article class="fl-article fl-content" data-width="medium">
             <header class="fl-article-header margin-bottom">
                 <a href="{{ parent.url }}?tag={{ page.tag }}">{{ page.tag }}</a>
                 <h1>{{ page.title }}</h1>
@@ -18,7 +18,7 @@
                     {% for link in page.page_link.all %}<a href="{{ link.link_url }}">{{ link.link_title }}</a>{% endfor %}
                 </div>
             </header>
-            <section class="fl-content medium fl-richtext">
+            <section class="fl-content fl-richtext" data-width="medium">
                 <p>
                     {{ page.body|richtext }}
                 </p>

@@ -2,11 +2,12 @@
 {% load wagtailcore_tags %}
 {% block content %}
     <main class="fl-main" id="main">
-        <div class="fl-content small margin-block-start-medium">
+        <div class="fl-content margin-block-start-medium" data-width="small">
             {% if results %}
-                <ul class="fl-flex-column align-start justify-center fl-result">
+                <ul class="fl-flex align-start justify-center fl-result"
+                    data-direction="column">
                     {% for result in results %}
-                        <li class="fl-flex-column">
+                        <li class="fl-flex" data-direction="column">
                             <p class="fl-info">
                                 {{ result.get_verbose_name }}
                             </p>

@@ -2,7 +2,8 @@
 {% load wagtailcore_tags %}
 {% block content %}
     <main class="fl-main" id="main">
-        <article class="fl-content medium margin-block-start-medium aspect-widescreen">
+        <article class="fl-content margin-block-start-medium aspect-widescreen"
+                 data-width="medium">
             {% if page.image %}
                 {% load wagtailimages_tags %}
                 <figure>
@@ -31,23 +32,24 @@
                     </figcaption>
                 </figure>
             {% endif %}
-            <header class="fl-flex column margin-block-start-small margin-block-end-medium">
+            <header class="fl-flex margin-block-start-small margin-block-end-medium"
+                    data-direction="column">
                 {% if page.tag %}
                     <p>
                         {{ page.tag }}
                     </p>
                 {% endif %}
                 <h1 class="margin-block-end-small">{{ page.title }}</h1>
-                <div class="fl-flex-row gap-medium">
+                <div class="fl-flex gap-medium">
                     {% if page.author %}
-                        <p class="fl-flex-row align-center gap-small fl-profile">
+                        <p class="fl-flex align-center gap-small fl-profile">
                             {% image page.author.image fill-120x120 as author_image %}
                             <img src="{{ author_image.url }}" alt="{{ author_image.alt }}">
                             {{ page.author.first_name }}
                             {{ page.author.last_name }}
                         </p>
                     {% endif %}
-                    <time class="fl-flex-row align-center gap-small">
+                    <time class="fl-flex align-center gap-small">
                         <svg viewBox="0 0 24 24" width="1.5rem" height="1.5rem">
                             <path d="M20 20h-4v-4h4v4zm-6-10h-4v4h4v-4zm6 0h-4v4h4v-4zM8 16H4v4h4v-4zm6 0h-4v4h4v-4zm-6-6H4v4h4v-4zm16-8v22H0V2h3v1a2 2 0 0 0 4 0V2h10v1a2 2 0 0 0 4 0V2h3zm-2 6H2v14h20V8zm-2-7a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V1zM6 3a1 1 0 1 1-2 0V1a1 1 0 1 1 2 0v2z"/>
                         </svg>
@@ -55,7 +57,7 @@
                     </time>
                 </div>
             </header>
-            <section class="fl-content small fl-richtext">
+            <section class="fl-content fl-richtext" data-width="small">
                 <p>
                     {{ page.body|richtext }}
                 </p>

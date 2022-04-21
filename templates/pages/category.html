@@ -6,7 +6,7 @@
         {% for category in category_list %}
             <div class="fl-content large margin-block-start-medium">
                 {% if category.grouper != None %}<h2 class="margin-block-end-small">{{ category.grouper }}</h2>{% endif %}
-                <div class="fl-grid-large gap-medium">
+                <div class="fl-grid gap-medium" data-size="large">
                     {% for page in category.list %}
                         {% include "molecules/card.html" with value=page class="aspect-widescreen" %}
                     {% endfor %}

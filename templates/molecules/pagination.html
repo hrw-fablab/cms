@@ -1,7 +1,7 @@
 {% load index_tag %}
 {% block content %}
     {% if children.paginator.num_pages > 1 %}
-        <div class="fl-content small margin-block-medium">
+        <div class="fl-content margin-block-medium" data-width="small">
             <nav class="fl-menu centered" aria-label="pagination">
                 <ul class="fl-menu justify-center">
                     {% if children.has_previous %}

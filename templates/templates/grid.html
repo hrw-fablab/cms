@@ -1,6 +1,6 @@
 {% block content %}
     <div class="fl-content margin-block-end-large"
-         data-type="{% if value.cards.0.block_type == 'person' and value.cards|length <= 2 %} medium {% else %} large {% endif %}">
+         data-width="{% if value.cards|length <= 2 %}medium{% else %}large{% endif %}">
         {% if value.title %}
             {% include "atoms/heading.html" with value=value %}
         {% endif %}

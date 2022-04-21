@@ -4,6 +4,21 @@ from wagtail.admin.edit_handlers import InlinePanel
 
 from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core.models import Orderable
+from modelcluster.fields import ParentalKey
+
+
+class Role(Orderable):
+    name = models.CharField(max_length=254, null=True, blank=True)
+
+    link = ParentalKey(
+        "organisation.Project",
+        on_delete=models.CASCADE,
+        related_name="related_roles",
+    )
+
+    def __str__(self):
+        return "{}".format(self.name)
 
 
 class Project(ClusterableModel, models.Model):
@@ -11,12 +26,27 @@ class Project(ClusterableModel, models.Model):
 
     panels = [
         FieldPanel("name", heading="Projektname"),
+        InlinePanel("related_roles", heading="Projektrollen"),
         InlinePanel("related_member", heading="Mitglieder"),
     ]
 
     @property
     def Personenanzahl(self):
         return self.related_member.count()
+
+    @property
+    def members_ordered(self):
+        ordered_list = []
+        for role in self.related_roles.all():
+            for member in self.related_member.all():
+                if member.role == role:
+                    ordered_list.append(member)
+
+        for member in self.related_member.all():
+            if member.role == None:
+                ordered_list.append(member)
+
+        return ordered_list
 
     def __str__(self):
         return "{}".format(self.name)

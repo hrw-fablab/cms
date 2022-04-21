@@ -1,19 +1,20 @@
 {% block content %}
-    <div class="fl-content margin-block-end-large"
-         data-width="{% if value.cards|length <= 2 %}medium{% else %}large{% endif %}">
+    <div class="fl-content margin-block-end-large" data-width="large">
         {% if value.title %}
-            {% include "atoms/heading.html" with value=value %}
+            {% include "atoms/heading.html" with value=value.title %}
         {% endif %}
-        <div class="fl-grid gap-medium" data-size="{{ value.layout }}">
-            {% for element in value.members.related_member.all %}
-                {% if value.filter %}
-                    {% if element.person.organisation == value.filter %}
-                        {% include "molecules/person.html" with value=element.person %}
-                    {% endif %}
-                {% else %}
-                    {% include "molecules/person.html" with value=element.person %}
+        {% regroup value.members.members_ordered by role as role_list %}
+        {% for role in role_list %}
+            <div class="margin-block-large">
+                {% if role.grouper != None %}
+                    {% include "atoms/heading.html" with value=role.grouper %}
                 {% endif %}
-            {% endfor %}
-        </div>
+                <div class="fl-grid gap-medium" data-size="medium">
+                    {% for element in role.list %}
+                        {% include "molecules/person.html" with value=element.person %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock content %}

@@ -16,7 +16,18 @@ class Member(ClusterableModel, models.Model):
         on_delete=models.SET_NULL,
     )
 
-    panels = [FieldPanel("person", widget=PersonChooser, heading="Mitglied")]
+    role = models.ForeignKey(
+        "organisation.Role",
+        related_name="+",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
+    panels = [
+        FieldPanel("person", widget=PersonChooser, heading="Mitglied"),
+        FieldPanel("role"),
+    ]
 
     link = ParentalKey(
         "organisation.Project",

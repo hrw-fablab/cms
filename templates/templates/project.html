@@ -14,7 +14,7 @@
                 {% endif %}
                 <div class="fl-grid gap" data-size="medium" data-gap="medium">
                     {% for element in role.list %}
-                        {% include "molecules/person.html" with value=element.person %}
+                        {% include "molecules/person.html" with value=element.person role=role.grouper %}
                     {% endfor %}
                 </div>
             </div>

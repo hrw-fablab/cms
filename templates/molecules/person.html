@@ -27,9 +27,9 @@
                 <header class="margin"
                         data-margin-direction="block-end"
                         data-margin-size="small">
-                    {% if value.employment %}
+                    {% if role %}
                         <p>
-                            {{ value.employment }}
+                            {{ role }}
                         </p>
                     {% endif %}
                     {% if value.link %}
@@ -40,63 +40,9 @@
                         <h4>{{ value }}</h4>
                     {% endif %}
                 </header>
-                {% if value.since or value.career or value.responsibility or value.expert or value.projects %}
-                    <dl class="fl-flex gap" data-direction="column" data-gap="small">
-                        {% if value.since %}
-                            <div class="fl-flex gap" data-gap="tiny">
-                                <dt>
-                                    <strong>Im Labor seit:</strong>
-                                </dt>
-                                <dd>
-                                    {{ value.since }}
-                                </dd>
-                            </div>
-                        {% endif %}
-                        {% if value.career %}
-                            <div class="fl-flex" data-direction="column">
-                                <dt>
-                                    <strong>Lebenslauf:</strong>
-                                </dt>
-                                <dd>
-                                    {{ value.career }}
-                                </dd>
-                            </div>
-                        {% endif %}
-                        {% if value.responsibility %}
-                            <div class="fl-flex-column">
-                                <dt>
-                                    <strong>Aufgabenbereiche:</strong>
-                                </dt>
-                                <dd>
-                                    {{ value.responsibility }}
-                                </dd>
-                            </div>
-                        {% endif %}
-                        {% if value.expert %}
-                            <div class="fl-flex-column">
-                                <dt>
-                                    <strong>Experte fuer:</strong>
-                                </dt>
-                                <dd>
-                                    {{ value.expert }}
-                                </dd>
-                            </div>
-                        {% endif %}
-                        {% if value.projects %}
-                            <div class="fl-flex-column">
-                                <dt>
-                                    <strong>Projekte:</strong>
-                                </dt>
-                                <dd>
-                                    {{ value.projects }}
-                                </dd>
-                            </div>
-                        {% endif %}
-                    </dl>
-                {% endif %}
-                {% if value.description %}
+                {% if value.responsibility %}
                     <p>
-                        {{ value.description }}
+                        {{ value.responsibility }}
                     </p>
                 {% endif %}
             </div>

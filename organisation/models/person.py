@@ -38,10 +38,8 @@ class Person(ClusterableModel, models.Model):
 
     link = models.URLField(max_length=254, null=True, blank=True)
     responsibility = models.CharField(max_length=254, null=True, blank=True)
-    description = models.TextField(max_length=254, null=True, blank=True)
 
     en_responsibility = models.CharField(max_length=254, null=True, blank=True)
-    en_description = models.TextField(max_length=254, null=True, blank=True)
 
     german = [
         MultiFieldPanel(
@@ -56,8 +54,8 @@ class Person(ClusterableModel, models.Model):
         ImageChooserPanel("image", heading="Bild"),
         MultiFieldPanel(
             [
+                FieldPanel("link", heading="Link"),
                 FieldPanel("responsibility", heading="Aufgabenbereiche"),
-                FieldPanel("description", heading="Beschreibung"),
             ],
             heading="Informationen",
         ),
@@ -67,9 +65,8 @@ class Person(ClusterableModel, models.Model):
         MultiFieldPanel(
             [
                 FieldPanel("en_responsibility", heading="Aufgabenbereiche"),
-                FieldPanel("en_description", heading="Beschreibung"),
             ],
-            heading="Informationen",
+            heading="Information",
         ),
     ]
 

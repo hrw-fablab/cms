@@ -1,5 +1,8 @@
 {% block content %}
-    <div class="fl-content margin-block-end-medium" data-width="tiny">
+    <div class="fl-content margin"
+         data-width="tiny"
+         data-margin-direction="block-end"
+         data-margin-size="medium">
         {% include "molecules/person.html" with value=value.person %}
     </div>
 {% endblock content %}

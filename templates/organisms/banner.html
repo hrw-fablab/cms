@@ -1,8 +1,12 @@
 {% load wagtailimages_tags %}
 {% block content %}
-    <section class="fl-banner margin-block-end-medium">
+    <section class="fl-banner margin"
+             data-margin-direction="block-end"
+             data-margin-size="medium">
         {% if value.title or value.text %}
-            <div class="fl-content fl-flex justify-center {% if centered != False %} text-centered align-center{% endif %} align-start {% if not value.illustration %} fl-glass{% endif %} padding-medium"
+            <div class="fl-content fl-flex justify-center {% if centered != False %} text-centered align-center{% endif %} align-start {% if not value.illustration %} fl-glass{% endif %} padding"
+                 data-padding-direction="all"
+                 data-padding-size="medium"
                  data-direction="column"
                  data-width="medium">
                 {% if value.date %}<time>Startdatum: {{ page.date }}</time>{% endif %}
@@ -12,7 +16,7 @@
                     </p>
                 {% endif %}
                 {% if value.title %}<h2>{{ value.title }}</h2>{% endif %}
-                <div class="fl-flex gap-small">
+                <div class="fl-flex gap" data-gap="small">
                     {% for link in page.project_links.all %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
                 </div>
             </div>

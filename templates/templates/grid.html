@@ -1,10 +1,12 @@
 {% block content %}
-    <div class="fl-content margin-block-end-large"
-         data-width="{% if value.cards|length <= 2 %}medium{% else %}large{% endif %}">
+    <div class="fl-content margin"
+         data-width="{% if value.cards|length <= 2 %}medium{% else %}large{% endif %}"
+         data-margin-direction="block-end"
+         data-margin-size="large">
         {% if value.title %}
             {% include "atoms/heading.html" with value=value %}
         {% endif %}
-        <div class="fl-grid gap-medium" data-size="{{ value.layout }}">
+        <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
             {% for element in value.cards %}
                 {% if element.block_type == "card" %}
                     {% include "molecules/card.html" with value=element.value class="aspect-widescreen" %}

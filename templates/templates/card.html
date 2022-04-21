@@ -1,5 +1,7 @@
 {% block content %}
-    <div class="fl-content tiny margin-block-end-medium">
+    <div class="fl-content tiny margin"
+         data-margin-direction="block-end"
+         data-margin-size="medium">
         {% include "molecules/card.html" with element=element class="aspect-widescreen" %}
     </div>
 {% endblock content %}

@@ -2,9 +2,12 @@
 {% wagtail_site as current_site %}
 {% block content %}
     <a class="fl-skip" href="#main">Skip to content</a>
-    <header class="fl-navigation padding-small">
+    <header class="fl-navigation padding"
+            data-padding-direction="all"
+            data-padding-size="small">
         <div class="fl-content">
-            <a class="fl-flex align-center justify-start gap-small fl-logo"
+            <a class="fl-flex align-center justify-start gap fl-logo"
+               data-gap="small"
                href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
                 {% if settings.global.GlobalSettings.logo %}
                     {% image settings.global.GlobalSettings.logo original as logo_image %}
@@ -27,7 +30,7 @@
                                     </svg>
                                 </button>
                                 {% if element.get_children.count != 0 %}
-                                    <ul class="fl-submenu gap-small hidden">
+                                    <ul class="fl-submenu gap hidden" data-gap="small">
                                         {% for subelement in element.get_children.specific %}
                                             <li>
                                                 <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>

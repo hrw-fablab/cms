@@ -25,9 +25,13 @@
                 </figcaption>
             </figure>
         {% endif %}
-        <div class="padding-inline-tiny">
+        <div class="padding"
+             data-padding-direction="inline"
+             data-padding-size="tiny">
             {% if value.title %}
-                <header class="margin-block-end-small margin-block-start-tiny">
+                <header class="margin"
+                        data-margin-direction="block-end"
+                        data-margin-size="small">
                     {% if value.date %}<time>{{ value.date }}</time>{% endif %}
                     {% if value.url %}
                         <a href="{{ value.localized.url }}">

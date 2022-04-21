@@ -1,7 +1,13 @@
 {% block content %}
-    <div class=" {% if value.accent %}fl-accent{% endif %} margin-block-end-large padding-block-medium ">
-        <section class="fl-content fl-split gap-medium" data-width="large">
-            <div class="fl-flex justify-center gap-tiny" data-direction="column">
+    <div class="{% if value.accent %}fl-accent{% endif %} margin padding"
+         data-margin-direction="block"
+         data-margin-size="large"
+         data-padding-direction="block"
+         data-padding-size="medium">
+        <section class="fl-content fl-split gap" data-width="large" data-gap="medium">
+            <div class="fl-flex justify-center gap"
+                 data-direction="column"
+                 data-gap="tiny">
                 {% if value.title %}
                     {% if value.page %}
                         <a href="{{ value.page.localized.url }}">

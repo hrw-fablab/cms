@@ -1,7 +1,13 @@
 {% block content %}
-    <div class="fl-content centered fl-media margin-block-end-large"
-         data-width="medium">
-        {% if value.title %}<h2 class="text-centered margin-block-end-small">{{ value.title }}</h2>{% endif %}
+    <div class="fl-content centered fl-media margin"
+         data-width="medium"
+         data-margin-direction="block"
+         data-margin-size="large">
+        {% if value.title %}
+            <h2 class="text-centered margin"
+                data-margin-direction="block-end"
+                data-margin-size="small">{{ value.title }}</h2>
+        {% endif %}
         {% if value.image %}
             {% load wagtailimages_tags %}
             <figure>

@@ -1,9 +1,13 @@
 {% block content %}
-    <div class="fl-content margin-block-end-large" data-width="large">
+    <div class="fl-content margin"
+         data-width="large"
+         data-margin-direction="block-end"
+         data-margin-size="large">
         {% if value.title %}
-            {% include "atoms/heading.html" with value=value %}
+            {% include "atoms/heading.html" with value=value.title %}
         {% endif %}
-        <div class="fl-grid gap-medium"
+        <div class="fl-grid gap"
+             data-gap="medium"
              data-size="{% if value.layout == 'magazine' %}small{% else %}medium{% endif %}"
              data-layout="{{ value.layout }}">
             {% for pages in value.pages %}

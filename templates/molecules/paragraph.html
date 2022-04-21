@@ -1,8 +1,10 @@
 {% block content %}
-    <div class="fl-content fl-richtext margin-block-end-large"
-         data-width="small">
+    <div class="fl-content fl-richtext margin"
+         data-width="small"
+         data-margin-direction="block"
+         data-margin-size="large">
         {% if value.title %}
-            <h2 style="scroll-margin-top: 300px;" class="fl-flex align-center justify-center gap-small margin-block-end-small" id={{ value.title|cut:" " }}>
+            <h2 style="scroll-margin-top: 300px;" class="fl-flex align-center justify-center gap margin" data-gap="small" data-margin-direction="block" data-margin-size="small" id={{ value.title|cut:" " }}>
                 <a class=" fl-flex align-end"
                    id=" {{ value.title|cut:" " }}"
                    href="#{{ value.title|cut:" " }}">

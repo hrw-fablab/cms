@@ -2,7 +2,10 @@
 {% load wagtailcore_tags %}
 {% block content %}
     <main class="fl-main" id="main">
-        <div class="fl-content margin-block-start-medium" data-width="small">
+        <div class="fl-content margin"
+             data-width="small"
+             data-margin-direction="block-start"
+             data-margin-size="medium">
             {% if results %}
                 <ul class="fl-flex align-start justify-center fl-result"
                     data-direction="column">

@@ -553,9 +553,14 @@ select {
       aspect-ratio: var(--aspect-widescreen) !important;
     }
   }
-.fl-person img {
+.fl-card[data-type="person"] {
+  text-align: center
+}
+.fl-card[data-type="person"] img {
+    width: 50%;
     height: auto;
     aspect-ratio: var(--aspect-box) !important;
+    border-radius: 50%;
   }
 .fl-navigation {
   box-shadow: var(--shadow-1);
@@ -838,13 +843,13 @@ div:nth-child(odd) .fl-split > :first-child {
     grid-area: container;
   }
 .fl-banner :where(picture, img, figure) {
-    height: 500px;
+    height: 450px;
   }
 .fl-banner > :first-child {
     z-index: 1;
   }
 .fl-banner .fl-color {
-    height: 500px;
+    height: 450px;
     width: 100%;
   }
 .fl-banner .fl-illustration {

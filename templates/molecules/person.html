@@ -2,7 +2,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block content %}
     {% if LANGUAGE_CODE == "de" %}
-        <section class="fl-card fl-person">
+        <section class="fl-card" data-type="person">
             {% load wagtailimages_tags %}
             <picture>
                 {% image value.image fill-500x500 format-webp as image_768 %}
@@ -30,10 +30,10 @@
                     {% endif %}
                     {% if value.link %}
                         <a href="{{ value.link }}">
-                            <h3>{{ value }}</h3>
+                            <h4>{{ value }}</h4>
                         </a>
                     {% else %}
-                        <h3>{{ value }}</h3>
+                        <h4>{{ value }}</h4>
                     {% endif %}
                 </header>
                 {% if value.since or value.career or value.responsibility or value.expert or value.projects %}
@@ -98,7 +98,7 @@
             </div>
         </section>
     {% else %}
-        <section class="fl-card fl-person">
+        <section class="fl-card" data-type="person">
             {% load wagtailimages_tags %}
             <picture>
                 {% image value.image fill-500x500 format-webp as image_768 %}

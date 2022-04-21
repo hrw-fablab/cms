@@ -89,43 +89,44 @@
 .margin {
   --size: 0;
 
-  --block-start: 0;
-  --block-end: 0;
-  --inline-start: 0;
-  --inline-end: 0;
-  margin: var(--block-start) var(--inline-end) var(--block-end) var(--inline-start);
+  --margin-block-start: 0;
+  --margin-block-end: 0;
+  --margin-inline-start: 0;
+  --margin-inline-end: 0;
+  margin: var(--margin-block-start) var(--margin-inline-end) var(--margin-block-end)
+    var(--margin-inline-start);
 }
-.margin[data-margin-direction="inline"] {
-  --inline-start: var(--size);
-  --inline-end: var(--size);
+.margin[data-margin="inline"] {
+  --margin-inline-start: var(--margin-size);
+  --margin-inline-end: var(--margin-size);
 }
-.margin[data-margin-direction="inline-start"] {
-  --inline-start: var(--size);
+.margin[data-margin="inline-start"] {
+  --margin-inline-start: var(--margin-size);
 }
-.margin[data-margin-direction="inline-end"] {
-  --inline-end: var(--size);
+.margin[data-margin="inline-end"] {
+  --margin-inline-end: var(--margin-size);
 }
-.margin[data-margin-direction="block"] {
-  --block-start: var(--size);
-  --block-end: var(--size);
+.margin[data-margin="block"] {
+  --margin-block-start: var(--margin-size);
+  --margin-block-end: var(--margin-size);
 }
-.margin[data-margin-direction="block-start"] {
-  --block-start: var(--size);
+.margin[data-margin="block-start"] {
+  --margin-block-start: var(--margin-size);
 }
-.margin[data-margin-direction="block-end"] {
-  --block-end: var(--size);
+.margin[data-margin="block-end"] {
+  --margin-block-end: var(--margin-size);
 }
 .margin[data-margin-size="large"] {
-  --size: var(--size-fluid-6);
+  --margin-size: var(--size-fluid-6);
 }
 .margin[data-margin-size="medium"] {
-  --size: var(--size-fluid-4);
+  --margin-size: var(--size-fluid-4);
 }
 .margin[data-margin-size="small"] {
-  --size: var(--size-fluid-1);
+  --margin-size: var(--size-fluid-1);
 }
 .margin[data-margin-size="tiny"] {
-  --size: var(--size-2);
+  --margin-size: var(--size-2);
 }
 .gap {
   --gap: var(--size-fluid-8);
@@ -192,51 +193,52 @@
 	justify-content: space-evenly;
 }
 .padding {
-  --size: 0;
+  --padding-size: 0;
 
-  --block-start: 0;
-  --block-end: 0;
-  --inline-start: 0;
-  --inline-end: 0;
-  padding: var(--block-start) var(--inline-end) var(--block-end) var(--inline-start);
+  --padding-block-start: 0;
+  --padding-block-end: 0;
+  --padding-inline-start: 0;
+  --padding-inline-end: 0;
+  padding: var(--padding-block-start) var(--padding-inline-end) var(--padding-block-end)
+    var(--padding-inline-start);
 }
-.padding[data-padding-direction="all"] {
-  --inline-start: var(--size);
-  --inline-end: var(--size);
-  --block-start: var(--size);
-  --block-end: var(--size);
+.padding[data-padding="all"] {
+  --padding-inline-start: var(--padding-size);
+  --padding-inline-end: var(--padding-size);
+  --padding-block-start: var(--padding-size);
+  --padding-block-end: var(--padding-size);
 }
-.padding[data-padding-direction="inline"] {
-  --inline-start: var(--size);
-  --inline-end: var(--size);
+.padding[data-padding="inline"] {
+  --padding-inline-start: var(--padding-size);
+  --padding-inline-end: var(--padding-size);
 }
-.padding[data-padding-direction="inline-start"] {
-  --inline-start: var(--size);
+.padding[data-padding="inline-start"] {
+  --padding-inline-start: var(--padding-size);
 }
-.padding[data-padding-direction="inline-end"] {
-  --inline-end: var(--size);
+.padding[data-padding="inline-end"] {
+  --padding-inline-end: var(--padding-size);
 }
-.padding[data-padding-direction="block"] {
-  --block-start: var(--size);
-  --block-end: var(--size);
+.padding[data-padding="block"] {
+  --padding-block-start: var(--padding-size);
+  --padding-block-end: var(--padding-size);
 }
-.padding[data-padding-direction="block-start"] {
-  --block-start: var(--size);
+.padding[data-padding="block-start"] {
+  --padding-block-start: var(--padding-size);
 }
-.padding[data-padding-direction="block-end"] {
-  --block-end: var(--size);
+.padding[data-padding="block-end"] {
+  --padding-block-end: var(--padding-size);
 }
 .padding[data-padding-size="large"] {
-  --size: var(--size-fluid-6);
+  --padding-size: var(--size-fluid-6);
 }
 .padding[data-padding-size="medium"] {
-  --size: var(--size-fluid-4);
+  --padding-size: var(--size-fluid-4);
 }
 .padding[data-padding-size="small"] {
-  --size: var(--size-fluid-1);
+  --padding-size: var(--size-fluid-1);
 }
 .padding[data-padding-size="tiny"] {
-  --size: var(--size-2);
+  --padding-size: var(--size-2);
 }
 .text-start {
 	text-align: start;

@@ -5,12 +5,10 @@
         {% regroup children.specific by category as category_list %}
         {% for category in category_list %}
             <div class="fl-content large margin"
-                 data-margin-direction="block-start"
+                 data-margin="block-start"
                  data-margin-size="medium">
                 {% if category.grouper != None %}
-                    <h2 class="margin"
-                        data-margin-direction="block-end"
-                        data-margin-size="small">{{ category.grouper }}</h2>
+                    <h2 class="margin" data-margin="block-end" data-margin-size="small">{{ category.grouper }}</h2>
                 {% endif %}
                 <div class="fl-grid gap" data-size="large" data-gap="medium">
                     {% for page in category.list %}

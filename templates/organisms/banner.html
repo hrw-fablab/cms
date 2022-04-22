@@ -1,11 +1,11 @@
 {% load wagtailimages_tags %}
 {% block content %}
     <section class="fl-banner margin"
-             data-margin-direction="block-end"
+             data-margin="block-end"
              data-margin-size="medium">
         {% if value.title or value.text %}
             <div class="fl-content fl-flex justify-center {% if centered != False %} text-centered align-center{% endif %} align-start {% if not value.illustration %} fl-glass{% endif %} padding"
-                 data-padding-direction="all"
+                 data-padding="all"
                  data-padding-size="medium"
                  data-direction="column"
                  data-width="medium">

@@ -2,7 +2,7 @@
     {% if value.filter %}
         <div class="fl-content margin"
              data-width="large"
-             data-margin-direction="block-end"
+             data-margin="block-end"
              data-margin-size="large">
             {% if value.title %}
                 {% include "atoms/heading.html" with value=value.title %}
@@ -18,20 +18,20 @@
     {% else %}
         <div class="fl-content margin"
              data-width="large"
-             data-margin-direction="block-end"
+             data-margin="block-end"
              data-margin-size="large">
             {% if value.title %}
                 {% include "atoms/heading.html" with value=value.title %}
             {% endif %}
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}
-                <div class="margin" data-margin-direction="block" data-margin-size="large">
+                <div class="margin" data-margin="block" data-margin-size="large">
                     {% if role.grouper != None %}
                         {% include "atoms/heading.html" with value=role.grouper %}
                     {% endif %}
                     <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
                         {% for element in role.list %}
-                                {% include "molecules/person.html" with value=element.person role=role.grouper %}
+                            {% include "molecules/person.html" with value=element.person role=role.grouper %}
                         {% endfor %}
                     </div>
                 </div>

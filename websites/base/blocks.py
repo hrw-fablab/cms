@@ -18,6 +18,7 @@ from abstract.blocks import (
     EmbedBlock,
     CardBlock,
     ProjectMembers,
+    TableBlock,
 )
 
 
@@ -48,6 +49,7 @@ class HomeBlock(blocks.StreamBlock):
     html = HTMLBlock(label="HTML")
     banner = BannerBlock(label="Banner")
     project = ProjectMembers(label="Projekt Mitglieder")
+    table = TableBlock(label="Tabelle")
 
 
 class FlexBlock(blocks.StreamBlock):
@@ -67,6 +69,7 @@ class FlexBlock(blocks.StreamBlock):
     html = HTMLBlock(label="HTML")
     banner = BannerBlock(label="Banner")
     project = ProjectMembers(label="Projekt Mitglieder")
+    table = TableBlock(label="Tabelle")
 
 
 class ProjectBlock(blocks.StreamBlock):
@@ -84,3 +87,4 @@ class ProjectBlock(blocks.StreamBlock):
     html = HTMLBlock(label="HTML")
     banner = BannerBlock(label="Banner")
     project = ProjectMembers(label="Projekt Mitglieder")
+    table = TableBlock(label="Tabelle")

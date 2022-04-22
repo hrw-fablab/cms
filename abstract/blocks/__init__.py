@@ -16,3 +16,4 @@ from .person import PersonBlock
 from .spacer import SpacerBlock
 from .split import SplitBlock
 from .video import VideoBlock
+from .table import TableBlock

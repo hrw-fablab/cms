@@ -31,9 +31,7 @@
                     {% endif %}
                     <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
                         {% for element in role.list %}
-                            {% if element.person.organisation == value.filter %}
                                 {% include "molecules/person.html" with value=element.person role=role.grouper %}
-                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>

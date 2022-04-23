@@ -1,5 +1,4 @@
 from django.db import models
-import requests
 from wagtail.admin.edit_handlers import FieldPanel
 
 from modelcluster.fields import ParentalKey
@@ -8,16 +7,12 @@ from chooser.widgets import PersonChooser
 from modelcluster.models import ClusterableModel
 
 from organisation.models import Role
-from organisation.models import Project
-
 
 class FilteredPanel(FieldPanel):
     def on_form_bound(self):
         try:
-            list = self.request.path_info.split("/")
-            id = int(list[len(list) - 2])
-            roles = Role.objects.filter(link_id = id)
-            self.form.fields["role"].queryset = roles
+            filtered = Role.objects.filter(link_id = self.instance.link_id)
+            self.form.fields["role"].queryset = filtered
         except:
             self.form[self.field_name]
         finally:

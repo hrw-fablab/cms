@@ -26,6 +26,12 @@ class ProjectMembers(blocks.StructBlock):
         help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation",
     )
 
+    headings = blocks.BooleanBlock(
+        required=False,
+        label="Projektrollen Überschriften",
+        help_text="Trenne Projektrollen durch Überschriften",
+    )
+
     class Meta:
         group = "Content Grabber"
         icon = "group"

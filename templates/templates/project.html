@@ -1,28 +1,36 @@
 {% block content %}
-    {% if value.filter %}
-        <div class="fl-content margin"
-             data-width="large"
-             data-margin="block-end"
-             data-margin-size="large">
-            {% if value.title %}
-                {% include "atoms/heading.html" with value=value.title %}
-            {% endif %}
+    <div class="fl-content margin"
+         data-width="large"
+         data-margin="block-end"
+         data-margin-size="large">
+        {% if value.title %}
+            {% include "atoms/heading.html" with value=value.title %}
+        {% endif %}
+        {% if value.filter and value.headings %}
+            {% regroup value.members.members_ordered by role as role_list %}
+            {% for role in role_list %}
+                <div class="margin" data-margin="block" data-margin-size="large">
+                    {% if role.grouper != None %}
+                        {% include "atoms/heading.html" with value=role.grouper %}
+                    {% endif %}
+                    <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
+                        {% for element in role.list %}
+                            {% if element.person.organisation == value.filter %}
+                                {% include "molecules/person.html" with value=element.person role=role.grouper %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% elif value.filter %}
             <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
                 {% for element in value.members.members_ordered %}
                     {% if element.person.organisation == value.filter %}
-                        {% include "molecules/person.html" with value=element.person %}
+                        {% include "molecules/person.html" with value=element.person role=element.role %}
                     {% endif %}
                 {% endfor %}
             </div>
-        </div>
-    {% else %}
-        <div class="fl-content margin"
-             data-width="large"
-             data-margin="block-end"
-             data-margin-size="large">
-            {% if value.title %}
-                {% include "atoms/heading.html" with value=value.title %}
-            {% endif %}
+        {% elif value.headings %}
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}
                 <div class="margin" data-margin="block" data-margin-size="large">
@@ -36,6 +44,12 @@
                     </div>
                 </div>
             {% endfor %}
-        </div>
-    {% endif %}
+        {% else %}
+            <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
+                {% for element in value.members.members_ordered %}
+                    {% include "molecules/person.html" with value=element.person role=element.role %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock content %}

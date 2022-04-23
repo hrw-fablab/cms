@@ -10,6 +10,7 @@ class SplitBlock(blocks.StructBlock):
             "bold",
             "italic",
             "ul",
+            "document-link",
             "link",
         ],
     )

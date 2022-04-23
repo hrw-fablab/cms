@@ -22,7 +22,7 @@ class ProjectMembers(blocks.StructBlock):
 
     filter = OrganisationChooserBlock(
         required=False,
-        label="Filter",
+        label="Projektmitglieder Filter",
         help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation",
     )
 

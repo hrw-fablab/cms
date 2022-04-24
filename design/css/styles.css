@@ -504,15 +504,9 @@ select {
     text-decoration: underline;
     fill: var(--brand);
   }
-.fl-navigation > div {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
 .fl-navigation nav {
-    flex: 2 1 40rem;
+    margin-inline-end: auto;
+    width: max-content;
   }
 .fl-navigation #menu-button {
     display: none;
@@ -536,6 +530,7 @@ select {
     }
 
     .fl-navigation nav {
+      flex: 1 1 40rem;
       display: none;
     }
   }

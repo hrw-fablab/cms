@@ -3,17 +3,7 @@
          data-width="large"
          data-margin="block-end"
          data-margin-size="large">
-        {% if value.title %}
-            {% include "atoms/heading.html" with value=value.title anchor=True %}
-        {% endif %}
-        <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
-            {% for element in value.cards %}
-                {% if element.block_type == "card" %}
-                    {% include "molecules/card.html" with value=element.value class="aspect-widescreen" %}
-                {% elif element.block_type == "person" %}
-                    {% include "molecules/person.html" with value=element.value.person %}
-                {% endif %}
-            {% endfor %}
-        </div>
+        {% include "atoms/heading.html" with value=value.title anchor=True %}
+        {% include "organisms/grid.html" with value=value.cards %}
     </div>
 {% endblock content %}

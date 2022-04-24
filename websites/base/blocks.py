@@ -88,3 +88,17 @@ class ProjectBlock(blocks.StreamBlock):
     banner = BannerBlock(label="Banner")
     project = ProjectMembers(label="Projekt Mitglieder")
     table = TableBlock(label="Tabelle")
+
+
+class DeviceBlock(blocks.StreamBlock):
+    heading = HeadingBlock(label="Überschrift")
+    paragraph = ParagraphBlock(label="Absatz")
+    split = SplitBlock(label="Split")
+    grid = GridBlock(label="Grid")
+    gallery = GalleryBlock(label="Galerie")
+    spacer = SpacerBlock(label="Spacer")
+    video = VideoBlock(label="Video")
+    image = ImageBlock(label="Bild")
+    embed = EmbedBlock(label="Website einbetten")
+    html = HTMLBlock(label="HTML")
+    table = TableBlock(label="Tabelle")

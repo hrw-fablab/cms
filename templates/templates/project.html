@@ -3,9 +3,7 @@
          data-width="large"
          data-margin="block-end"
          data-margin-size="large">
-        {% if value.title %}
-            {% include "atoms/heading.html" with value=value.title anchor=True %}
-        {% endif %}
+        {% include "atoms/heading.html" with value=value.title anchor=True %}
         {% if value.filter and value.headings %}
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}

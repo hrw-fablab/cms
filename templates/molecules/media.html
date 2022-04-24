@@ -3,9 +3,7 @@
          data-width="medium"
          data-margin="block"
          data-margin-size="large">
-        {% if value.title %}
-            {% include "atoms/heading.html" with value=value.title anchor=True %}
-        {% endif %}
+        {% include "atoms/heading.html" with value=value.title anchor=True %}
         {% if value.image %}
             {% load wagtailimages_tags %}
             <figure>

@@ -3,9 +3,7 @@
          data-width="large"
          data-margin="block-end"
          data-margin-size="large">
-        {% if value.title %}
-            {% include "atoms/heading.html" with value=value.title anchor=True %}
-        {% endif %}
+        {% include "atoms/heading.html" with value=value.title anchor=True %}
         <div class="fl-grid gap"
              data-gap="medium"
              data-size="{% if value.layout == 'magazine' %}small{% else %}medium{% endif %}"

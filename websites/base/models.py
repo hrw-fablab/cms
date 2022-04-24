@@ -19,11 +19,11 @@ from abstract.pages.base import AbstractBasePage
 
 from abstract.models.links import Link, ExpireLink, PageLink
 
-from websites.base.blocks import HomeBlock, FlexBlock, ProjectBlock
+from websites.base.blocks import HomeBlock, FlexBlock, ProjectBlock, DeviceBlock
 
 
 class HomePage(AbstractHomePage):
-    template = "pages/home.html"
+    template = "pages/flex.html"
     body = StreamField(HomeBlock(), blank=True)
 
     content_panels = AbstractHomePage.content_panels + [
@@ -128,7 +128,7 @@ class DevicePage(AbstractDevicePage):
     parent_page_types = ["DeviceIndexPage"]
     subpage_type = []
 
-    body = StreamField(ProjectBlock(), blank=True)
+    body = StreamField(DeviceBlock(), blank=True)
 
     content_panels = AbstractDevicePage.content_panels + [
         StreamFieldPanel("body"),

@@ -23,7 +23,7 @@ class HomePage(AbstractHomePage):
         on_delete=models.CASCADE,
     )
 
-    template = "pages/home.html"
+    template = "pages/flex.html"
 
     body = StreamField(HomeBlock(), blank=True)
 

@@ -29,6 +29,7 @@
             {% if value.title %}
                 <header class="margin" data-margin="block-end" data-margin-size="small">
                     {% if value.date %}<time>{{ value.date }}</time>{% endif %}
+                    {% if value.number %}Anzahl: {{ value.number }}{% endif %}
                     {% if value.url %}
                         <a href="{{ value.localized.url }}">
                             <h3>{{ value.localized.title }}</h3>
@@ -39,11 +40,6 @@
                         </a>
                     {% else %}
                         <h3>{{ value.title }}</h3>
-                    {% endif %}
-                    {% if value.number %}
-                        <p>
-                            Anzahl: {{ value.number }}
-                        </p>
                     {% endif %}
                 </header>
             {% endif %}

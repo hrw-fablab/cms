@@ -316,11 +316,9 @@ body :where(h1, h2, h3, h4) {
   font-family: "Manrope VF", sans-serif;
   font-weight: bold;
   line-height: 1.5;
-  color: black;
 }
 h1 {
   font-size: var(--font-size-6);
-  color: black;
 }
 h2 {
   font-size: var(--font-size-6);

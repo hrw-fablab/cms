@@ -4,7 +4,7 @@
          data-margin="block-end"
          data-margin-size="large">
         {% if value.title %}
-            {% include "atoms/heading.html" with value=value %}
+            {% include "atoms/heading.html" with value=value.title anchor=True %}
         {% endif %}
         <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
             {% for element in value.cards %}

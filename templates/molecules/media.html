@@ -4,9 +4,7 @@
          data-margin="block"
          data-margin-size="large">
         {% if value.title %}
-            <h2 class="text-centered margin"
-                data-margin="block-end"
-                data-margin-size="small">{{ value.title }}</h2>
+            {% include "atoms/heading.html" with value=value.title anchor=True %}
         {% endif %}
         {% if value.image %}
             {% load wagtailimages_tags %}

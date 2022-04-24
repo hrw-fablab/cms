@@ -4,7 +4,8 @@
     <main class="fl-main" id="main">
         {% regroup children.specific by category as category_list %}
         {% for category in category_list %}
-            <div class="fl-content large margin"
+            <div class="fl-content margin"
+                 data-width="large"
                  data-margin="block-start"
                  data-margin-size="medium">
                 {% if category.grouper != None %}
@@ -16,6 +17,7 @@
                     {% endfor %}
                 </div>
             </div>
+            a
         {% endfor %}
     </main>
 {% endblock content %}

@@ -17,11 +17,7 @@
                         <h3>{{ value.title }}</h3>
                     {% endif %}
                 {% endif %}
-                {% if value.text %}
-                    <p>
-                        {{ value.text }}
-                    </p>
-                {% endif %}
+                {% if value.text %}{{ value.text }}{% endif %}
             </div>
             <div class="align-self-center aspect-widescreen">
                 {% if value.video %}

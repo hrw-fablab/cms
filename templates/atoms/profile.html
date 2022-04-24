@@ -1,0 +1,11 @@
+{% load wagtailimages_tags %}
+{% if value %}
+    <p class="fl-flex align-center gap fl-profile"
+       data-gap="small"
+       data-wrap="wrap">
+        {% image value.image fill-120x120 as author_image %}
+        <img src="{{ author_image.url }}" alt="{{ author_image.alt }}">
+        {{ value.first_name }}
+        {{ value.last_name }}
+    </p>
+{% endif %}

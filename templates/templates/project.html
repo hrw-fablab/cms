@@ -35,9 +35,9 @@
             {% for role in role_list %}
                 <div class="margin" data-margin="block" data-margin-size="large">
                     {% if role.grouper != None %}
-                        {% include "atoms/heading.html" with value=role.grouper %}
+                        {% include "atoms/heading.html" with value=role.grouper anchor=True %}
                     {% else %}
-                        {% include "atoms/heading.html" with value="Mitglieder" %}
+                        {% include "atoms/heading.html" with value="Mitglieder" anchor=True %}
                     {% endif %}
                     <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
                         {% for element in role.list %}

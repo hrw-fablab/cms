@@ -781,6 +781,7 @@ div:nth-child(odd) .fl-split > :first-child {
 
     .fl-banner .fl-content {
       margin-inline: 0;
+      width: 100vw;
     }
 
     .fl-banner :where(picture, img, figure) {

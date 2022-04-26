@@ -1,3 +1,4 @@
+{% load filter_tag %}
 {% block content %}
     <div class="fl-content margin"
          data-width="large"
@@ -11,35 +12,43 @@
                     {% if role.grouper != None %}
                         {% include "atoms/heading.html" with value=value.title anchor=True %}
                     {% else %}
-                        {% include "atoms/heading.html" with value=value.title anchor=True %}
+                        {% include "atoms/heading.html" with value="Mitglieder" anchor=True %}
                     {% endif %}
-                    <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
-                        {% for element in role.list %}
-                            {% if element.person.organisation == value.filter %}
-                                {% include "molecules/person.html" with value=element.person role=role.grouper %}
-                            {% endif %}
+                    <div class="fl-content fl-grid gap"
+                         data-width="{% if role.list|filter_organisation:value.filter|length <= 2 %}small{% endif %}"
+                         data-size="{{ value.layout }}"
+                         data-gap="medium">
+                        {% for element in role.list|filter_organisation:value.filter %}
+                            {% include "molecules/person.html" with value=element.person role=element.role %}
                         {% endfor %}
                     </div>
                 </div>
             {% endfor %}
         {% elif value.filter %}
-            <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
-                {% for element in value.members.members_ordered %}
-                    {% if element.person.organisation == value.filter %}
-                        {% include "molecules/person.html" with value=element.person role=element.role %}
-                    {% endif %}
+            <div class="fl-content fl-grid gap"
+                 data-width="{% if value.members.members_ordered|filter_organisation:value.filter|length <= 2 %}small{% endif %}"
+                 data-size="{{ value.layout }}"
+                 data-gap="medium">
+                {% for element in value.members.members_ordered|filter_organisation:value.filter %}
+                    {% include "molecules/person.html" with value=element.person role=element.role %}
                 {% endfor %}
             </div>
         {% elif value.headings %}
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}
-                <div class="margin" data-margin="block" data-margin-size="large">
+                <div class="fl-content margin"
+                     data-size="small"
+                     data-margin="block"
+                     data-margin-size="large">
                     {% if role.grouper != None %}
                         {% include "atoms/heading.html" with value=role.grouper anchor=True %}
                     {% else %}
                         {% include "atoms/heading.html" with value="Mitglieder" anchor=True %}
                     {% endif %}
-                    <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
+                    <div class="fl-content fl-grid gap"
+                         data-width="{% if role.list|length <= 2 %}small{% endif %}"
+                         data-size="{{ value.layout }}"
+                         data-gap="medium">
                         {% for element in role.list %}
                             {% include "molecules/person.html" with value=element.person role=role.grouper %}
                         {% endfor %}
@@ -47,7 +56,10 @@
                 </div>
             {% endfor %}
         {% else %}
-            <div class="fl-grid gap" data-size="{{ value.layout }}" data-gap="medium">
+            <div class="fl-content fl-grid gap"
+                 data-width="{% if value.members.members_ordered|length <= 2 %}small{% endif %}"
+                 data-size="{{ value.layout }}"
+                 data-gap="medium">
                 {% for element in value.members.members_ordered %}
                     {% include "molecules/person.html" with value=element.person role=element.role %}
                 {% endfor %}

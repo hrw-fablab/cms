@@ -617,6 +617,9 @@ li {
   display: grid;
   grid-template-columns: 1fr 0.9fr
 }
+.fl-split h3 {
+    font-size: var(--font-size-5);
+  }
 .fl-split a {
     width: 100%;
   }
@@ -781,7 +784,6 @@ div:nth-child(odd) .fl-split > :first-child {
 
     .fl-banner .fl-content {
       margin-inline: 0;
-      width: 100vw;
     }
 
     .fl-banner :where(picture, img, figure) {

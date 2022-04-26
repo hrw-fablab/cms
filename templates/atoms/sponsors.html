@@ -7,13 +7,17 @@
                 <img style="width: inherit; height: inherit"
                      class="contain"
                      src="{{ sp_image.url }}"
-                     alt="{{ element.logo_alt }}">
+                     alt="{{ element.logo_alt }}"
+                     loading="lazy"
+                     decoding="async">
             {% else %}
                 {% image element.logo width-200 format-webp webpquality-60 as sp_image %}
                 <img style="width: inherit; height: inherit"
                      class="contain"
                      src="{{ sp_image.url }}"
-                     alt="{{ element.logo_alt }}">
+                     alt="{{ element.logo_alt }}"
+                     loading="lazy"
+                     decoding="async">
             {% endif %}
         {% endfor %}
     </div>

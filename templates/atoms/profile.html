@@ -4,7 +4,10 @@
        data-gap="small"
        data-wrap="wrap">
         {% image value.image fill-120x120 as author_image %}
-        <img src="{{ author_image.url }}" alt="{{ author_image.alt }}">
+        <img src="{{ author_image.url }}"
+             alt="{{ author_image.alt }}"
+             loading="lazy"
+             decoding="async">
         {{ value.first_name }}
         {{ value.last_name }}
     </p>

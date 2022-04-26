@@ -15,7 +15,9 @@
                     {% image settings.global.GlobalSettings.logo original as logo_image %}
                     <img class="{% if settings.global.GlobalSettings.logo_title %} full{% endif %}"
                          src="{{ logo_image.url }}"
-                         alt="">
+                         alt="Logo"
+                         loading="eager"
+                         decoding="sync">
                 {% endif %}
                 {{ settings.global.GlobalSettings.logo_title|default:'' }}
             </a>

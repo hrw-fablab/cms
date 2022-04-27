@@ -183,10 +183,8 @@ class CollectionPage(AbstractBasePage, ClusterableModel):
     class Meta:
         verbose_name = "Link Sammlung"
 
-
 class FormField(AbstractFormField):
     page = ParentalKey("FormPage", on_delete=models.CASCADE, related_name="form_fields")
-
 
 class FormPage(FabLabCaptchaEmailForm):
     parent_page_types = ["HomePage", "FolderPage", "FlexPage"]
@@ -211,3 +209,49 @@ class FormPage(FabLabCaptchaEmailForm):
 
     class Meta:
         verbose_name = "Form Seite"
+
+
+from organisation.models import Event
+from datetime import datetime
+
+from calendar import HTMLCalendar
+
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
+
+
+class CalendarPage(RoutablePageMixin, AbstractBasePage):
+    parent_page_types = ["HomePage"]
+    subpage_type = []
+
+    template = "pages/calendar.html"
+
+    @route(r"^$")
+    def routeDefault(self, request, year=None):
+        return self.render(request, context_overrides={"title": "Current"})
+
+    @route(r"^past/$")
+    def routePast(self, request, year=None):
+        return self.render(request, context_overrides={"title": "Year and Month"})
+
+    @route(r"^(\d+)/(\d+)/$")
+    def routePastSpecific(self, request, year=None, month=None):
+        events = []
+
+        print(year)
+
+        print(month)
+
+        time = datetime()
+
+        print(Event.objects.all()[1].visible(datetime.now()))
+
+        for element in Event.objects.all():
+            if element.year == int(year):
+                events.append(element)
+
+        return self.render(
+            request, context_overrides={"title": "Specific", "events": events}
+        )
+
+    class Meta:
+        verbose_name = "Kalendar"

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "wagtailmedia",
     "wagtail_localize",
     "wagtail_localize.locales",
+    "wagtail.contrib.routable_page",
     "wagtail.contrib.table_block",
     "wagtail.contrib.modeladmin",
     "wagtail.contrib.settings",

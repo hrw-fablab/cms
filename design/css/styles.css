@@ -825,15 +825,31 @@ div:nth-child(odd) .fl-split > :first-child {
 .fl-calendar ul {
     list-style: none;
   }
-.fl-calendar header {
+.fl-calendar > header {
     background-color: rgb(240 240 240);
+  }
+.fl-calendar .fl-info {
+  background-color: purple;
+}
+.fl-calendar .fl-date {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.fl-calendar > header ul {
+  grid-auto-rows: 4rem
+}
+.fl-calendar > header ul li {
+    display: flex;
+    align-items: center;
+    padding: var(--size-fluid-1);
   }
 .fl-calendar ul {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-auto-rows: 1fr;
+  grid-auto-rows: 9rem;
 }
 .fl-calendar li {
-  padding: 1rem;
+  position: relative;
   border-top: 1px solid #dfdfdf;
 }

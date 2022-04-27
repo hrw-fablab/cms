@@ -3,6 +3,32 @@
 {% block content %}
     <main class="fl-main" id="main">
         {{ title }}
-        {{ events }}
+        <div class="fl-calendar">
+            <header>
+                <ul>
+                    <li>Montag</li>
+                    <li>Dienstag</li>
+                    <li>Mittwoch</li>
+                    <li>Donnerstag</li>
+                    <li>Freitag</li>
+                    <li>Samstag</li>
+                    <li>Sonntag</li>
+                </ul>
+            </header>
+            <ul>
+                {% for day in days %}
+                    <li>
+                        {% for event in events %}
+                            {% if event.end.day >= day|add:1 and day|add:1 >= event.start.day  %}
+                                <p>
+                                    {{ event.title }}
+                                </p>
+                            {% endif %}
+                        {% endfor %}
+                        {{ forloop.counter }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </main>
 {% endblock content %}

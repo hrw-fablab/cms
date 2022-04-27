@@ -47,12 +47,23 @@ class Event(ClusterableModel, models.Model):
         return int(self.start.strftime("%m"))
 
     def visible(self, date):
-        if (
-            self.start.replace(tzinfo=None) <= date
-            and self.end.replace(tzinfo=None) >= date
-        ):
-            return True
-        return False
+        if self.end.replace(tzinfo=None).year < date.year:
+            print("gone 1")
+            return False
+
+        if self.start.replace(tzinfo=None).year > date.year:
+            print("gone 2")
+            return False
+
+        if self.start.replace(tzinfo=None).month < date.month:
+            print("month gone 1")
+            return False
+
+        if self.start.replace(tzinfo=None).month > date.month:
+            print("month gone 2")
+            return False
+
+        return True
 
     class Meta:
         verbose_name = "Termin"

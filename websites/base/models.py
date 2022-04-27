@@ -214,7 +214,7 @@ class FormPage(FabLabCaptchaEmailForm):
 from organisation.models import Event
 from datetime import datetime
 
-from calendar import HTMLCalendar
+from calendar import monthrange
 
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 
@@ -226,7 +226,7 @@ class CalendarPage(RoutablePageMixin, AbstractBasePage):
     template = "pages/calendar.html"
 
     @route(r"^$")
-    def routeDefault(self, request, year=None):
+    def routeDefault(self, request):
         return self.render(request, context_overrides={"title": "Current"})
 
     @route(r"^past/$")
@@ -236,21 +236,25 @@ class CalendarPage(RoutablePageMixin, AbstractBasePage):
     @route(r"^(\d+)/(\d+)/$")
     def routePastSpecific(self, request, year=None, month=None):
         events = []
+        time = datetime(int(year), int(month), 1)
 
-        print(year)
-
-        print(month)
-
-        time = datetime()
-
-        print(Event.objects.all()[1].visible(datetime.now()))
+        days = monthrange(int(year), int(month))[1]
 
         for element in Event.objects.all():
-            if element.year == int(year):
+            print("yep")
+            if element.visible(time):
+                print("yep")
                 events.append(element)
 
         return self.render(
-            request, context_overrides={"title": "Specific", "events": events}
+            request,
+            context_overrides={
+                "title": "Specific",
+                "year": year,
+                "month": month,
+                "days": range(days),
+                "events": events,
+            },
         )
 
     class Meta:

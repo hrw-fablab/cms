@@ -214,7 +214,7 @@ class FormPage(FabLabCaptchaEmailForm):
 from organisation.models import Event
 from datetime import datetime
 
-from calendar import monthrange
+from calendar import calendar, monthrange, month_name
 
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 
@@ -253,6 +253,7 @@ class CalendarPage(RoutablePageMixin, AbstractBasePage):
                 "year": year,
                 "month": int(month),
                 "days": range(days),
+                "month_name": month_name[int(month)],
                 "events": events,
             },
         )

@@ -825,6 +825,9 @@ div:nth-child(odd) .fl-split > :first-child {
 .fl-calendar ul {
     list-style: none;
   }
+.fl-calendar header {
+    background-color: rgb(240 240 240);
+  }
 .fl-calendar ul {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

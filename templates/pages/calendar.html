@@ -2,45 +2,73 @@
 {% load wagtailcore_tags wagtailroutablepage_tags  %}
 {% block content %}
     <main class="fl-main" id="main">
-        {{ title }}
-        <h1>{{ year }}</h1>
-        <h1>{{ month }}</h1>
-        {% if month == 1 %}
-            <a href="{% routablepageurl page "routePastSpecific" year|add:-1 12 %}">Backward</a>
-        {% else %}
-            <a href="{% routablepageurl page "routePastSpecific" year month|add:-1 %}">Backward</a>
-        {% endif %}
-        {% if month == 12 %}
-            <a href="{% routablepageurl page "routePastSpecific" year|add:1 1 %}">Forward</a>
-        {% else %}
-            <a href="{% routablepageurl page "routePastSpecific" year month|add:1 %}">Forward</a>
-        {% endif %}
-        <div class="fl-calendar">
-            <header>
-                <ul>
-                    <li>Montag</li>
-                    <li>Dienstag</li>
-                    <li>Mittwoch</li>
-                    <li>Donnerstag</li>
-                    <li>Freitag</li>
-                    <li>Samstag</li>
-                    <li>Sonntag</li>
-                </ul>
+        <div class="fl-content">
+            <header class="fl-flex gap margin align-center justify-center"
+                    data-margin="block"
+                    data-margin-size="small"
+                    data-gap="small">
+                {% if month == 1 %}
+                    <a class="fl-flex align-center"
+                       href="{% routablepageurl page "routePastSpecific" year|add:-1 12 %}">
+                        <svg width="1rem" viewBox="0 0 102 60" transform="rotate(90)">
+                            <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
+                        </svg>
+                    </a>
+                {% else %}
+                    <a class="fl-flex align-center"
+                       href="{% routablepageurl page "routePastSpecific" year month|add:-1 %}">
+                        <svg width="1rem" viewBox="0 0 102 60" transform="rotate(90)">
+                            <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
+                        </svg>
+                    </a>
+                {% endif %}
+                <h3>
+                    {{ month_name }}
+                    {{ year }}
+                </h3>
+                {% if month == 12 %}
+                    <a class="fl-flex align-center"
+                       href="{% routablepageurl page "routePastSpecific" year|add:1 1 %}">
+                        <svg width="1rem" viewBox="0 0 102 60" transform="rotate(-90)">
+                            <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
+                        </svg>
+                    </a>
+                {% else %}
+                    <a class="fl-flex align-center"
+                       href="{% routablepageurl page "routePastSpecific" year month|add:1 %}">
+                        <svg width="1rem" viewBox="0 0 102 60" transform="rotate(-90)">
+                            <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
+                        </svg>
+                    </a>
+                {% endif %}
             </header>
-            <ul>
-                {% for day in days %}
-                    <li>
-                        {% for event in events %}
-                            {% if event.end.day >= day|add:1 and day|add:1 >= event.start.day  %}
-                                <p>
-                                    {{ event.title }}
-                                </p>
-                            {% endif %}
-                        {% endfor %}
-                        {{ forloop.counter }}
-                    </li>
-                {% endfor %}
-            </ul>
+            <div class="fl-calendar">
+                <header>
+                    <ul>
+                        <li>Montag</li>
+                        <li>Dienstag</li>
+                        <li>Mittwoch</li>
+                        <li>Donnerstag</li>
+                        <li>Freitag</li>
+                        <li>Samstag</li>
+                        <li>Sonntag</li>
+                    </ul>
+                </header>
+                <ul>
+                    {% for day in days %}
+                        <li>
+                            {% for event in events %}
+                                {% if event.end.day >= day|add:1 and day|add:1 >= event.start.day  %}
+                                    <p>
+                                        {{ event.title }}
+                                    </p>
+                                {% endif %}
+                            {% endfor %}
+                            {{ forloop.counter }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </main>
 {% endblock content %}

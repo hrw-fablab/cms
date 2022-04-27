@@ -6,36 +6,36 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organisation', '0006_alter_role_link'),
+        ("organisation", "0006_alter_role_link"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='person',
-            name='career',
+            model_name="person",
+            name="career",
         ),
         migrations.RemoveField(
-            model_name='person',
-            name='employment',
+            model_name="person",
+            name="employment",
         ),
         migrations.RemoveField(
-            model_name='person',
-            name='en_career',
+            model_name="person",
+            name="en_career",
         ),
         migrations.RemoveField(
-            model_name='person',
-            name='en_employment',
+            model_name="person",
+            name="en_employment",
         ),
         migrations.RemoveField(
-            model_name='person',
-            name='en_expert',
+            model_name="person",
+            name="en_expert",
         ),
         migrations.RemoveField(
-            model_name='person',
-            name='expert',
+            model_name="person",
+            name="expert",
         ),
         migrations.RemoveField(
-            model_name='person',
-            name='since',
+            model_name="person",
+            name="since",
         ),
     ]

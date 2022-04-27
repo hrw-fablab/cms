@@ -8,15 +8,16 @@ from modelcluster.models import ClusterableModel
 
 from organisation.models import Role
 
+
 class FilteredPanel(FieldPanel):
     def on_form_bound(self):
         try:
             if self.instance.link_id == None:
                 list = self.request.path_info.split("/")
                 id = int(list[len(list) - 2])
-                filtered = Role.objects.filter(link_id = id)
+                filtered = Role.objects.filter(link_id=id)
             else:
-                filtered = Role.objects.filter(link_id = self.instance.link_id)
+                filtered = Role.objects.filter(link_id=self.instance.link_id)
         except:
             self.form[self.field_name]
         finally:

@@ -31,7 +31,7 @@ class ProjectAdmin(ModelAdmin):
     add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ("name", "Personenanzahl")
-    list_filter = ("name", )
+    list_filter = ("name",)
     search_fields = ("name",)
 
 

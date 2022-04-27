@@ -8,13 +8,17 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organisation', '0005_alter_role_link'),
+        ("organisation", "0005_alter_role_link"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='role',
-            name='link',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='related_roles', to='organisation.project'),
+            model_name="role",
+            name="link",
+            field=modelcluster.fields.ParentalKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="related_roles",
+                to="organisation.project",
+            ),
         ),
     ]

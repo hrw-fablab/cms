@@ -178,7 +178,7 @@ MEDIA_URL = "/media/"
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "qufablab"
+WAGTAIL_SITE_NAME = "hrwfablab"
 
 # Search
 # https://docs.wagtail.io/en/stable/topics/search/backends.html
@@ -190,7 +190,7 @@ WAGTAILSEARCH_BACKENDS = {
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-WAGTAILADMIN_BASE_URL = "https://www.qufablab.de"
+WAGTAILADMIN_BASE_URL = "https://www.hrw-fablab.de"
 
 # Use Custom User Model
 AUTH_USER_MODEL = "user.FablabUser"

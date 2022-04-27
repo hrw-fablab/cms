@@ -8,26 +8,50 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organisation', '0003_rename_titel_person_title'),
+        ("organisation", "0003_rename_titel_person_title"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Role',
+            name="Role",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('name', models.CharField(blank=True, max_length=254, null=True)),
-                ('link', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='related_roles', to='organisation.project')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                ("name", models.CharField(blank=True, max_length=254, null=True)),
+                (
+                    "link",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="related_roles",
+                        to="organisation.project",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['sort_order'],
-                'abstract': False,
+                "ordering": ["sort_order"],
+                "abstract": False,
             },
         ),
         migrations.AddField(
-            model_name='member',
-            name='role',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='organisation.role'),
+            model_name="member",
+            name="role",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="organisation.role",
+            ),
         ),
     ]

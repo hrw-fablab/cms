@@ -251,7 +251,7 @@ class CalendarPage(RoutablePageMixin, AbstractBasePage):
             context_overrides={
                 "title": "Specific",
                 "year": year,
-                "month": month,
+                "month": int(month),
                 "days": range(days),
                 "events": events,
             },

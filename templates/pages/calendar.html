@@ -1,8 +1,20 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailroutablepage_tags  %}
 {% block content %}
     <main class="fl-main" id="main">
         {{ title }}
+        <h1>{{ year }}</h1>
+        <h1>{{ month }}</h1>
+        {% if month == 1 %}
+            <a href="{% routablepageurl page "routePastSpecific" year|add:-1 12 %}">Backward</a>
+        {% else %}
+            <a href="{% routablepageurl page "routePastSpecific" year month|add:-1 %}">Backward</a>
+        {% endif %}
+        {% if month == 12 %}
+            <a href="{% routablepageurl page "routePastSpecific" year|add:1 1 %}">Forward</a>
+        {% else %}
+            <a href="{% routablepageurl page "routePastSpecific" year month|add:1 %}">Forward</a>
+        {% endif %}
         <div class="fl-calendar">
             <header>
                 <ul>

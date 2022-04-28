@@ -379,6 +379,20 @@ select {
   border: solid 0.1rem var(--surface-1);
   padding-inline: var(--size-3);
 }
+details summary {
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--size-4);
+  padding-inline: var(--size-3);
+  cursor: pointer;
+}
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
 /* purgecss start ignore */
 .fl-grid {
   display: grid;
@@ -829,10 +843,9 @@ div:nth-child(odd) .fl-split > :first-child {
     grid-auto-rows: 9rem;
   }
 .fl-calendar li {
-    overflow-y: auto;
     border-bottom: solid thin black
   }
-.fl-calendar li header {
+.fl-calendar li > header {
       position: sticky;
       top: 0;
       background-color: var(--surface-1);
@@ -853,10 +866,32 @@ div:nth-child(odd) .fl-split > :first-child {
 .fl-events li:nth-child(odd) {
     background-color: rgb(240 240 240)
   }
-.fl-events li:nth-child(odd) header {
+.fl-events li:nth-child(odd) > header {
       background-color: rgb(240 240 240);
     }
 .fl-event {
+  position: relative;
   background-color: var(--brand);
   margin-bottom: 0.2rem;
+}
+.fl-event[open] div {
+  animation: sweep 0.1s ease-in;
+  opacity: 1;
+  padding: 0.5rem;
+  position: absolute;
+  transform: translateY(100%);
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  box-shadow: var(--shadow-1);
+  background-color: white;
+  min-width: 20rem;
+}
+@keyframes sweep {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

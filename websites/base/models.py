@@ -255,9 +255,7 @@ class CalendarPage(RoutablePageMixin, AbstractBasePage):
         days = monthrange(int(year), int(month))[1]
 
         for element in Event.objects.all():
-            print("yep")
             if element.visible(time):
-                print("yep")
                 events.append(element)
 
         return self.render(

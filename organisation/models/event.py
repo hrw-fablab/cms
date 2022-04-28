@@ -9,8 +9,9 @@ from wagtail.admin.edit_handlers import FieldPanel
 
 
 class Event(ClusterableModel, models.Model):
-    title = models.CharField("Titel", max_length=100, null=True, blank=True)
-    adress = models.CharField("Adresse", max_length=250, null=True, blank=True)
+    title = models.CharField("Titel", max_length=30, null=True, blank=True)
+    adress = models.CharField("Adresse", max_length=60, null=True, blank=True)
+    description = models.CharField("Beschreibung", max_length=90, null=True, blank=True)
 
     start = models.DateTimeField()
     end = models.DateTimeField()
@@ -20,6 +21,7 @@ class Event(ClusterableModel, models.Model):
     panels = [
         FieldPanel("title"),
         FieldPanel("adress"),
+        FieldPanel("description"),
         MultiFieldPanel(
             [
                 FieldPanel("start"),

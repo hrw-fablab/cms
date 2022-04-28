@@ -227,11 +227,25 @@ class CalendarPage(RoutablePageMixin, AbstractBasePage):
 
     @route(r"^$")
     def routeDefault(self, request):
-        return self.render(request, context_overrides={"title": "Current"})
+        events = []
+        time = datetime.now()
 
-    @route(r"^past/$")
-    def routePast(self, request, year=None):
-        return self.render(request, context_overrides={"title": "Year and Month"})
+        days = monthrange(datetime.now().year, datetime.now().month)[1]
+
+        for element in Event.objects.all():
+            if element.visible(time):
+                events.append(element)
+
+        return self.render(
+            request,
+            context_overrides={
+                "year": datetime.now().year,
+                "month": datetime.now().month,
+                "days": range(days),
+                "month_name": month_name[int(datetime.now().month)],
+                "events": events,
+            },
+        )
 
     @route(r"^(\d+)/(\d+)/$")
     def routePastSpecific(self, request, year=None, month=None):
@@ -249,7 +263,6 @@ class CalendarPage(RoutablePageMixin, AbstractBasePage):
         return self.render(
             request,
             context_overrides={
-                "title": "Specific",
                 "year": year,
                 "month": int(month),
                 "days": range(days),

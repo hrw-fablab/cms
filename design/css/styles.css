@@ -824,32 +824,39 @@ div:nth-child(odd) .fl-split > :first-child {
 }
 .fl-calendar ul {
     list-style: none;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 9rem;
   }
-.fl-calendar > header {
-    background-color: rgb(240 240 240);
-  }
-.fl-calendar .fl-info {
-  background-color: purple;
-}
-.fl-calendar .fl-date {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.fl-calendar > header ul {
-  grid-auto-rows: 4rem
-}
-.fl-calendar > header ul li {
-    display: flex;
-    align-items: center;
-    padding: var(--size-fluid-1);
-  }
-.fl-calendar ul {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-auto-rows: 9rem;
-}
 .fl-calendar li {
-  position: relative;
-  border-top: 1px solid #dfdfdf;
+    overflow-y: auto;
+    border-bottom: solid thin black
+  }
+.fl-calendar li header {
+      position: sticky;
+      top: 0;
+      background-color: var(--surface-1);
+      color: var(--brand);
+    }
+.fl-calendar > header {
+    background-color: var(--surface-2)
+  }
+.fl-calendar > header ul {
+      border: none;
+      grid-auto-rows: 3rem;
+      align-items: center;
+    }
+.fl-calendar > header li {
+      border: none;
+      text-align: center;
+    }
+.fl-events li:nth-child(odd) {
+    background-color: rgb(240 240 240)
+  }
+.fl-events li:nth-child(odd) header {
+      background-color: rgb(240 240 240);
+    }
+.fl-event {
+  background-color: var(--brand);
+  margin-bottom: 0.2rem;
 }

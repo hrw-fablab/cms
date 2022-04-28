@@ -1,15 +1,11 @@
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, FieldRowPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 
 from modelcluster.models import ClusterableModel
 from wagtail.admin.edit_handlers import FieldPanel
 
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel
-
-from datetime import datetime, tzinfo
-
-from pytz import utc
 
 
 class Event(ClusterableModel, models.Model):
@@ -39,6 +35,13 @@ class Event(ClusterableModel, models.Model):
         return "{}".format(self.title)
 
     @property
+    def length(self):
+        time = self.end - self.start
+        if time.days <= 1:
+            return 1
+        return int(time.days)
+
+    @property
     def year(self):
         return int(self.start.strftime("%Y"))
 
@@ -47,20 +50,16 @@ class Event(ClusterableModel, models.Model):
         return int(self.start.strftime("%m"))
 
     def visible(self, date):
-        if self.end.replace(tzinfo=None).year < date.year:
-            print("gone 1")
+        if (
+            self.end.replace(tzinfo=None).year < date.year
+            or self.start.replace(tzinfo=None).year > date.year
+        ):
             return False
 
-        if self.start.replace(tzinfo=None).year > date.year:
-            print("gone 2")
-            return False
-
-        if self.start.replace(tzinfo=None).month < date.month:
-            print("month gone 1")
-            return False
-
-        if self.start.replace(tzinfo=None).month > date.month:
-            print("month gone 2")
+        if (
+            self.start.replace(tzinfo=None).month < date.month
+            or self.start.replace(tzinfo=None).month > date.month
+        ):
             return False
 
         return True

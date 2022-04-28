@@ -54,18 +54,15 @@
                         <li>Sonntag</li>
                     </ul>
                 </header>
-                <ul>
+                <ul class="fl-events">
                     {% for day in days %}
-                        <li class="fl-flex padding"
-                            data-direction="column"
-                            data-padding="block"
-                            data-padding-size="tiny">
+                        <li class="fl-flex" data-direction="column">
                             <header class="padding" data-padding="inline" data-padding-size="small">
                                 {{ forloop.counter }}
                             </header>
-                            {% for event in events %}
+                            {% for event in events|dictsortreversed:"length" %}
                                 {% if event.end.day >= day|add:1 and day|add:1 >= event.start.day  %}
-                                    <div class="fl-info padding"
+                                    <div class="fl-event padding"
                                          data-padding="inline"
                                          data-padding-size="tiny">{{ event.title }}</div>
                                 {% endif %}

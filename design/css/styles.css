@@ -876,16 +876,15 @@ div:nth-child(odd) .fl-split > :first-child {
 }
 .fl-event[open] div {
   animation: sweep 0.1s ease-in;
-  opacity: 1;
   padding: 0.5rem;
   position: absolute;
   transform: translateY(100%);
   bottom: 0;
   left: 0;
-  z-index: 10;
+  z-index: 1;
   box-shadow: var(--shadow-1);
   background-color: white;
-  min-width: 20rem;
+  width: 100%;
 }
 @keyframes sweep {
   0% {

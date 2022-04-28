@@ -2,6 +2,9 @@
 {% load wagtailcore_tags %}
 {% block content %}
     <main id="main" data-margin-block-start="medium">
+        <h1 class="text-centered margin"
+            data-margin="block"
+            data-margin-size="medium">{{ page.heading }}</h1>
         {% regroup children.specific by category as category_list %}
         {% for category in category_list %}
             {% if category.grouper != None %}

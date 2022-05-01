@@ -1,92 +1,40 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailroutablepage_tags  %}
+{% load wagtailcore_tags wagtailroutablepage_tags %}
 {% block content %}
     <main class="fl-main" id="main">
-        <div class="fl-content">
-            <header class="fl-flex gap margin align-center justify-center"
-                    data-margin="block"
-                    data-margin-size="small"
-                    data-gap="small">
-                {% if month == 1 %}
-                    <a class="fl-flex align-center"
-                       href="{% routablepageurl page "routePastSpecific" year|add:-1 12 %}">
-                        <svg width="1rem" viewBox="0 0 102 60" transform="rotate(90)">
-                            <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
-                        </svg>
-                    </a>
-                {% else %}
-                    <a class="fl-flex align-center"
-                       href="{% routablepageurl page "routePastSpecific" year month|add:-1 %}">
-                        <svg width="1rem" viewBox="0 0 102 60" transform="rotate(90)">
-                            <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
-                        </svg>
-                    </a>
-                {% endif %}
-                <h3>
-                    {{ month_name }}
-                    {{ year }}
-                </h3>
-                {% if month == 12 %}
-                    <a class="fl-flex align-center"
-                       href="{% routablepageurl page "routePastSpecific" year|add:1 1 %}">
-                        <svg width="1rem" viewBox="0 0 102 60" transform="rotate(-90)">
-                            <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
-                        </svg>
-                    </a>
-                {% else %}
-                    <a class="fl-flex align-center"
-                       href="{% routablepageurl page "routePastSpecific" year month|add:1 %}">
-                        <svg width="1rem" viewBox="0 0 102 60" transform="rotate(-90)">
-                            <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
-                        </svg>
-                    </a>
-                {% endif %}
-            </header>
-            <div class="fl-calendar">
-                <header>
-                    <ul>
-                        <li>Montag</li>
-                        <li>Dienstag</li>
-                        <li>Mittwoch</li>
-                        <li>Donnerstag</li>
-                        <li>Freitag</li>
-                        <li>Samstag</li>
-                        <li>Sonntag</li>
-                    </ul>
-                </header>
-                <ul class="fl-events">
-                    {% for day in days %}
-                        <li class="fl-flex" data-direction="column">
-                            <header class="padding" data-padding="inline" data-padding-size="small">
-                                {{ forloop.counter }}
-                            </header>
-                            {% for event in events|dictsortreversed:"length" %}
-                                {% if event.end.day >= day|add:1 and day|add:1 >= event.start.day  %}
-                                    <details class="fl-event">
-                                        <summary>
-                                            {{ event.title }}
-                                        </summary>
-                                        <div class="fl-flex gap" data-direction="column" data-gap="tiny">
-                                            <time class="fl-flex align-center gap" data-gap="tiny">
-                                                <svg width="24" height="24">
-                                                    <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 12v-6h-2v8h7v-2h-5z"/>
-                                                </svg>
-                                                14:00 - 16:30
-                                            </time>
-                                            <address class="fl-flex align-center gap" data-gap="tiny">
-                                                <svg width="24" height="24">
-                                                    <path d="M12 10c-1.104 0-2-.896-2-2s.896-2 2-2 2 .896 2 2-.896 2-2 2m0-5c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3m-7 2.602c0-3.517 3.271-6.602 7-6.602s7 3.085 7 6.602c0 3.455-2.563 7.543-7 14.527-4.489-7.073-7-11.072-7-14.527m7-7.602c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602"/>
-                                                </svg>
-                                                {{ event.adress }}
-                                            </address>
-                                        </div>
-                                    </details>
-                                {% endif %}
-                            {% endfor %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+        <div id="calendar"></div>
     </main>
+    <script>
+        const calendar = document.getElementById("calendar");
+
+    const convertCookie = () => {
+        let str = document.cookie
+        str = str.split('; ');
+        const result = {};
+        for (let i in str) {
+            const cur = str[i].split('=');
+            result[cur[0]] = cur[1];
+        }
+        return result
+    }
+    const getData = async () => {
+        const tokens = convertCookie()
+        const data = await fetch("{% url 'get_more_tables' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                'X-CSRFToken': tokens.csrftoken
+            },
+            body: JSON.stringify({
+                year: new Date().getFullYear(),
+                month: new Date().getMonth() +1,
+            }),
+        });
+        const json = await data.json();
+        const events = JSON.parse(json)
+        console.log(events)
+    }
+
+    window.addEventListener("load", getData)
+    </script>
 {% endblock content %}

@@ -3,19 +3,21 @@ from django.urls import include, path
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 
+from django.conf.urls import url
+
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from django.views.decorators.csrf import csrf_exempt
 from django.views.i18n import set_language
 
-from core.sitemaps import sitemap
-
-from core.sitemaps import FablabSiteMap
+from core.sitemaps import FablabSiteMap, sitemap
 
 sitemaps = {
     "fablab": FablabSiteMap,
 }
+
+from core.views import get_more_tables
 
 
 urlpatterns = [
@@ -29,6 +31,7 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="wagtail.contrib.sitemaps.views.sitemap",
     ),
+    url("get_more_tables/", get_more_tables, name="get_more_tables"),
 ]
 
 

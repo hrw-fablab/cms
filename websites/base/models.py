@@ -225,49 +225,5 @@ class CalendarPage(RoutablePageMixin, AbstractBasePage):
 
     template = "pages/calendar.html"
 
-    @route(r"^$")
-    def routeDefault(self, request):
-        events = []
-        time = datetime.now()
-
-        days = monthrange(datetime.now().year, datetime.now().month)[1]
-
-        for element in Event.objects.all():
-            if element.visible(time):
-                events.append(element)
-
-        return self.render(
-            request,
-            context_overrides={
-                "year": datetime.now().year,
-                "month": datetime.now().month,
-                "days": range(days),
-                "month_name": month_name[int(datetime.now().month)],
-                "events": events,
-            },
-        )
-
-    @route(r"^(\d+)/(\d+)/$")
-    def routePastSpecific(self, request, year=None, month=None):
-        events = []
-        time = datetime(int(year), int(month), 1)
-
-        days = monthrange(int(year), int(month))[1]
-
-        for element in Event.objects.all():
-            if element.visible(time):
-                events.append(element)
-
-        return self.render(
-            request,
-            context_overrides={
-                "year": year,
-                "month": int(month),
-                "days": range(days),
-                "month_name": month_name[int(month)],
-                "events": events,
-            },
-        )
-
     class Meta:
         verbose_name = "Kalendar"

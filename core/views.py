@@ -1,12 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 import json
 
 import datetime
 
-from calendar import calendar, monthrange, month_name
-
-from django.core import serializers
+from calendar import monthrange
 
 from organisation.models import Event
 

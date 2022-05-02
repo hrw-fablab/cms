@@ -23,6 +23,16 @@ from websites.base.blocks import HomeBlock, FlexBlock, ProjectBlock, DeviceBlock
 
 
 class HomePage(AbstractHomePage):
+    subpage_type = [
+        "FolderPgae",
+        "FlexPage",
+        "IndexPage",
+        "DeviceIndexPage",
+        "ProjectIndexPage",
+        "SearchPage",
+        "CollectionPage",
+    ]
+
     template = "pages/flex.html"
     body = StreamField(HomeBlock(), blank=True)
 
@@ -33,7 +43,7 @@ class HomePage(AbstractHomePage):
 
 class FolderPage(AbstractFolderPage):
     parent_page_types = ["HomePage"]
-    subpage_type = ["FlexPage", "IndexPage"]
+    subpage_type = ["FlexPage", "IndexPage", "DeviceIndexPage", "ProjectIndexPage"]
 
 
 class FlexPage(AbstractFlexPage):

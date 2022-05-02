@@ -3,7 +3,6 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.edit_handlers import InlinePanel
 
 from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Orderable
 from modelcluster.fields import ParentalKey
 
@@ -21,7 +20,7 @@ class Role(Orderable):
         return "{}".format(self.name)
 
 
-class Project(ClusterableModel, models.Model):
+class Project(ClusterableModel):
     name = models.CharField(max_length=254, null=True, blank=True)
 
     panels = [

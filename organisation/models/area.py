@@ -1,21 +1,11 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.admin.edit_handlers import InlinePanel
-
-from modelcluster.models import ClusterableModel
-from wagtail.admin.edit_handlers import FieldPanel
-
 from chooser.widgets import ProjectChooser
-
-from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel
-
 from modelcluster.fields import ParentalKey
-
 from modelcluster.models import ClusterableModel
 
 
-class Area(ClusterableModel, models.Model):
+class Area(ClusterableModel):
     project = models.ForeignKey(
         "organisation.Project",
         related_name="+",

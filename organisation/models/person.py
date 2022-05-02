@@ -1,10 +1,8 @@
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.models import ClusterableModel
 
-from django.db import models
 from wagtail.admin.edit_handlers import (
     MultiFieldPanel,
     FieldPanel,
@@ -12,10 +10,8 @@ from wagtail.admin.edit_handlers import (
     ObjectList,
 )
 
-from modelcluster.models import ClusterableModel
 
-
-class Person(ClusterableModel, models.Model):
+class Person(ClusterableModel):
     title = models.CharField("First Name", max_length=100, null=True, blank=True)
     first_name = models.CharField("First Name", max_length=254)
     last_name = models.CharField("Last Name", max_length=254)

@@ -5,7 +5,7 @@ from modelcluster.models import ClusterableModel
 from organisation.models import Person
 
 
-class Organisation(ClusterableModel, models.Model):
+class Organisation(ClusterableModel):
     name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):

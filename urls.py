@@ -9,11 +9,26 @@ from wagtail.documents import urls as wagtaildocs_urls
 from django.views.decorators.csrf import csrf_exempt
 from django.views.i18n import set_language
 
+from core.sitemaps import sitemap
+
+from core.sitemaps import FablabSiteMap
+
+sitemaps = {
+    "fablab": FablabSiteMap,
+}
+
+
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("i18n/setlang/", csrf_exempt(set_language), name="set_language"),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="wagtail.contrib.sitemaps.views.sitemap",
+    ),
 ]
 
 

@@ -1,11 +1,28 @@
-{% extends "base.html" %}
 {% load wagtailcore_tags wagtailroutablepage_tags %}
 {% block content %}
-    <main class="fl-main" id="main">
-        <div id="calendar"></div>
-    </main>
+    <div id="calendar">
+        <header>
+            <ul>
+                <li>Montag</li>
+                <li>Dienstag</li>
+                <li>Mittwoch</li>
+                <li>Donnerstag</li>
+                <li>Freitag</li>
+                <li>Samstag</li>
+                <li>Sonntag</li>
+            </ul>
+        </header>
+        <ul id="days">
+        </ul>
+    </div>
     <script>
-        const calendar = document.getElementById("calendar");
+    const calendar = document.getElementById("calendar");
+
+    const days = document.getElementById("days");
+
+    function daysInMonth(month, year) {
+        return new Date(year, month, 0).getDate();
+    }
 
     const convertCookie = () => {
         let str = document.cookie
@@ -27,12 +44,22 @@
             },
             body: JSON.stringify({
                 year: new Date().getFullYear(),
-                month: new Date().getMonth() +1,
+                month: new Date().getMonth() + 1,
             }),
         });
         const json = await data.json();
         const events = JSON.parse(json)
         console.log(events)
+        appendData()
+    }
+
+    const appendData = () => {
+        number = daysInMonth(new Date().getFullYear(), new Date().getMonth() + 1)
+        for (i=0; i<number; i++) {
+            let li = document.createElement("li")
+        li.appendChild(document.createTextNode("Element"))
+        days.appendChild(li)
+        }
     }
 
     window.addEventListener("load", getData)

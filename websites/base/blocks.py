@@ -1,3 +1,4 @@
+from cProfile import label
 from wagtail.core import blocks
 
 from abstract.blocks import (
@@ -19,6 +20,7 @@ from abstract.blocks import (
     CardBlock,
     ProjectMembers,
     TableBlock,
+    CalendarBlock,
 )
 
 
@@ -50,6 +52,7 @@ class HomeBlock(blocks.StreamBlock):
     banner = BannerBlock(label="Banner")
     project = ProjectMembers(label="Projekt Mitglieder")
     table = TableBlock(label="Tabelle")
+    calendar = CalendarBlock(label="Kalendar")
 
 
 class FlexBlock(blocks.StreamBlock):
@@ -70,6 +73,7 @@ class FlexBlock(blocks.StreamBlock):
     banner = BannerBlock(label="Banner")
     project = ProjectMembers(label="Projekt Mitglieder")
     table = TableBlock(label="Tabelle")
+    calendar = CalendarBlock(label="Kalendar")
 
 
 class ProjectBlock(blocks.StreamBlock):

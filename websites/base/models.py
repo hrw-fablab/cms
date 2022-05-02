@@ -227,3 +227,4 @@ class CalendarPage(RoutablePageMixin, AbstractBasePage):
 
     class Meta:
         verbose_name = "Kalendar"
+        verbose_name = "Link Sammlung"

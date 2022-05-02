@@ -51,6 +51,10 @@ class Event(ClusterableModel, models.Model):
     def month(self):
         return int(self.start.strftime("%m"))
 
+    @property
+    def day(self):
+        return int(self.start.strftime("%d"))
+
     def visible(self, date):
         if (
             self.end.replace(tzinfo=None).year < date.year

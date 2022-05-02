@@ -1,27 +1,63 @@
 {% load wagtailcore_tags wagtailroutablepage_tags %}
 {% block content %}
-    <div id="calendar">
+    <div class="fl-content fl-calendar" id="calendar">
         <header>
-            <ul>
-                <li>Montag</li>
-                <li>Dienstag</li>
-                <li>Mittwoch</li>
-                <li>Donnerstag</li>
-                <li>Freitag</li>
-                <li>Samstag</li>
-                <li>Sonntag</li>
-            </ul>
+            <button id="backward">Back</button>
+            <time id="date"></time>
+            <button id="forward">Forward</button>
         </header>
-        <ul id="days">
+        <ul>
+            <li>Mo.</li>
+            <li>Di.</li>
+            <li>Mi.</li>
+            <li>Do.</li>
+            <li>Fr.</li>
+            <li>Sa.</li>
+            <li>So.</li>
+        </ul>
+        <ul class="fl-events" id="days">
         </ul>
     </div>
     <script>
     const calendar = document.getElementById("calendar");
-
+    const date = document.getElementById("date");
     const days = document.getElementById("days");
+
+    const backward = document.getElementById("backward");
+    const forward = document.getElementById("forward");
+
+    const months = ["Januar", "Februar", "Maerz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
+
+    let events = [];
+
+    let year = new Date().getFullYear();
+    let month_number = new Date().getMonth() + 1;
+    let month_string = months[month_number]
 
     function daysInMonth(month, year) {
         return new Date(year, month, 0).getDate();
+    }
+
+    const handleChange = (event) => {
+        if (event.target.id == "forward") {
+            month_number++;
+        }
+        else {
+            month_number--;
+        }
+
+        if (month_number == 12) {
+            year++;
+            month_number = 0
+        }
+
+        if (month_number == -1) {
+            year--;
+            month_number = 11
+        }
+
+        month_string = months[month_number];
+        changeDate()
     }
 
     const convertCookie = () => {
@@ -34,6 +70,7 @@
         }
         return result
     }
+
     const getData = async () => {
         const tokens = convertCookie()
         const data = await fetch("{% url 'get_more_tables' %}", {
@@ -43,25 +80,38 @@
                 'X-CSRFToken': tokens.csrftoken
             },
             body: JSON.stringify({
-                year: new Date().getFullYear(),
-                month: new Date().getMonth() + 1,
+                year: year,
+                month: month_number,
             }),
         });
         const json = await data.json();
-        const events = JSON.parse(json)
+        events = JSON.parse(json)
         console.log(events)
+        console.log(events[0].fields.start)
+        console.log(Date.parse(events[0].fields.start))
         appendData()
+        changeDate()
     }
 
     const appendData = () => {
+        let fragment = new DocumentFragment();
         number = daysInMonth(new Date().getFullYear(), new Date().getMonth() + 1)
-        for (i=0; i<number; i++) {
+        for (i = 0; i < number; i++) {
             let li = document.createElement("li")
-        li.appendChild(document.createTextNode("Element"))
-        days.appendChild(li)
+
+            li.appendChild(document.createTextNode("Element"))
+            fragment.appendChild(li)
         }
+        days.appendChild(fragment)
+    }
+
+    const changeDate = () => {
+        date.innerHTML = month_string + " " + year
     }
 
     window.addEventListener("load", getData)
+
+    forward.addEventListener("click", handleChange)
+    backward.addEventListener("click", handleChange)
     </script>
 {% endblock content %}

@@ -836,33 +836,17 @@ div:nth-child(odd) .fl-split > :first-child {
 .fl-spacer {
     height: var(--size-fluid-4);
 }
-.fl-calendar ul {
-    list-style: none;
+.fl-calendar > ul {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-auto-rows: 9rem;
+    list-style: none;
   }
-.fl-calendar li {
-    border-bottom: solid thin black
-  }
-.fl-calendar li > header {
-      position: sticky;
-      top: 0;
-      background-color: var(--surface-1);
-      color: var(--brand);
-    }
 .fl-calendar > header {
-    background-color: var(--surface-2)
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
   }
-.fl-calendar > header ul {
-      border: none;
-      grid-auto-rows: 3rem;
-      align-items: center;
-    }
-.fl-calendar > header li {
-      border: none;
-      text-align: center;
-    }
 .fl-events li:nth-child(odd) {
     background-color: rgb(240 240 240)
   }

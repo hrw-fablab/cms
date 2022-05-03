@@ -896,6 +896,16 @@ div:nth-child(odd) .fl-split > :first-child {
     padding-block: 0.2rem;
     padding-inline: 0.7rem;
   }
+.fl-event {
+  font-size: var(--font-size-2);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block
+}
+@media (max-width: 1024px) {
+.fl-event {
+}
+  }
 .fl-event summary div {
     height: 0.8rem;
     width: 0.8rem;

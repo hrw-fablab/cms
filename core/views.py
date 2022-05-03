@@ -15,6 +15,8 @@ def get_more_tables(request):
     date = datetime.date(body["year"], body["month"], 1)
     days_count = monthrange(body["year"], body["month"])[1]
 
+    print(date)
+
     for element in Event.objects.all().order_by("start"):
         if element.visible(date) == True:
             events.append(element)
@@ -23,8 +25,16 @@ def get_more_tables(request):
         days.append([])
         for element in events:
             if element.day + 1 == day:
-                days[day].append({"title": element.title})
+                days[day].append(
+                    {
+                        "title": element.title,
+                        "adress": element.adress,
+                        "length": element.length,
+                    }
+                )
 
     data = json.dumps(days)
+
+    print(data)
 
     return JsonResponse(data, safe=False)

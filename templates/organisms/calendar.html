@@ -1,12 +1,22 @@
 {% load wagtailcore_tags wagtailroutablepage_tags %}
 {% block content %}
-    <div class="fl-content fl-calendar" id="calendar">
-        <header>
-            <button id="backward">Back</button>
+    <div class="fl-content fl-calendar" id="calendar" data-width="large">
+        <header class="margin" data-margin="block-end" data-margin-size="tiny">
             <time id="date"></time>
-            <button id="forward">Forward</button>
+            <div class="fl-flex gap" data-gap="small">
+                <button id="backward">
+                    <svg width="24" height="24" viewBox="0 0 24 24" transform="rotate(90)">
+                        <path d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"/>
+                    </svg>
+                </button>
+                <button id="forward">
+                    <svg width="24" height="24" viewBox="0 0 24 24" transform="rotate(-90)">
+                        <path d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"/>
+                    </svg>
+                </button>
+            </div>
         </header>
-        <ul>
+        <ul class="fl-days">
             <li>Mo.</li>
             <li>Di.</li>
             <li>Mi.</li>
@@ -31,36 +41,35 @@
     let events = [];
 
     let year = new Date().getFullYear();
-    let month_number = new Date().getMonth() + 1;
+    let month_number = new Date().getMonth();
     let month_string = months[month_number]
 
-    function daysInMonth(month, year) {
+    function daysInMonth(year, month) {
         return new Date(year, month, 0).getDate();
     }
 
     const handleChange = (event) => {
         if (event.target.id == "forward") {
-            month_number++;
+            month_number += 1;
         }
         else {
-            month_number--;
+            month_number -= 1;
         }
 
         if (month_number == 12) {
-            year++;
+            year += 1;
             month_number = 0
         }
 
         if (month_number == -1) {
-            year--;
+            year -= 1;
             month_number = 11
         }
-
         month_string = months[month_number];
-        changeDate()
+        createCalendar()
     }
 
-    const convertCookie = () => {
+    const getCSRF = () => {
         let str = document.cookie
         str = str.split('; ');
         const result = {};
@@ -68,48 +77,86 @@
             const cur = str[i].split('=');
             result[cur[0]] = cur[1];
         }
-        return result
+        return result.csrftoken
     }
 
     const getData = async () => {
-        const tokens = convertCookie()
-        const data = await fetch("{% url 'get_more_tables' %}", {
+        const config = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                'X-CSRFToken': tokens.csrftoken
+                'X-CSRFToken': getCSRF()
             },
             body: JSON.stringify({
                 year: year,
-                month: month_number,
+                month: month_number + 1,
             }),
-        });
-        const json = await data.json();
-        events = JSON.parse(json)
-        console.log(events)
-        console.log(events[0].fields.start)
-        console.log(Date.parse(events[0].fields.start))
-        appendData()
-        changeDate()
+        }
+        try {
+            const data = await fetch("{% url 'get_more_tables' %}", config);
+            const json = await data.json();
+            return JSON.parse(json)
+        } catch (error) {
+            return []
+        }
     }
 
-    const appendData = () => {
-        let fragment = new DocumentFragment();
-        number = daysInMonth(new Date().getFullYear(), new Date().getMonth() + 1)
+    const createEvent = (events) => {
+        let dailyEvents = new DocumentFragment();
+        for (x = 0; x < events.length; x++) {
+            let details = document.createElement("details");
+
+            let summary = document.createElement("summary");
+            let div = document.createElement("div");
+            let title = document.createTextNode(events[x].title);
+            summary.appendChild(div);
+            summary.appendChild(title);
+
+            let content = document.createElement("div");
+
+            let adress = document.createElement("address");
+            let adress_content = document.createTextNode(events[x].adress)
+            adress.appendChild(adress_content)
+
+            content.appendChild(adress)
+
+            
+            details.appendChild(summary);
+            details.appendChild(content)
+
+            details.classList.add("fl-event")
+            dailyEvents.appendChild(details);
+        }
+        return dailyEvents;
+    }
+
+    const createCalendar = async () => {
+        events = await getData()
+        days.innerHTML = ""
+        let number = daysInMonth(year, month_number + 1)
+        let days_fragment = new DocumentFragment();
+
         for (i = 0; i < number; i++) {
             let li = document.createElement("li")
+            let count = document.createElement("header");
+            count.appendChild(document.createTextNode(i + 1))
+            li.appendChild(count)
+            days_fragment.appendChild(li)
 
-            li.appendChild(document.createTextNode("Element"))
-            fragment.appendChild(li)
+            if (events[i].length != 0) {
+                li.appendChild(createEvent(events[i]))
+            }
         }
-        days.appendChild(fragment)
+
+        days.appendChild(days_fragment)
+        updateDate()
     }
 
-    const changeDate = () => {
+    const updateDate = () => {
         date.innerHTML = month_string + " " + year
     }
 
-    window.addEventListener("load", getData)
+    window.addEventListener("load", createCalendar)
 
     forward.addEventListener("click", handleChange)
     backward.addEventListener("click", handleChange)

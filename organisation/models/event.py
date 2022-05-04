@@ -20,7 +20,6 @@ class Event(ClusterableModel, models.Model):
     panels = [
         FieldPanel("title"),
         FieldPanel("adress"),
-        FieldPanel("description"),
         MultiFieldPanel(
             [
                 FieldPanel("start"),

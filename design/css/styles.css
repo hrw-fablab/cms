@@ -904,6 +904,16 @@ div:nth-child(odd) .fl-split > :first-child {
     background-color: var(--brand);
     border-radius: 50%;
   }
+.fl-events {
+  counter-reset: section;
+}
+.fl-events li::before {
+  counter-increment: section;
+  content: counter(section);
+  display: flex;
+  justify-content: end;
+  padding-inline: 0.5rem;
+}
 @media (max-width: 1024px) {
   .fl-calendar li {
     align-items: center;

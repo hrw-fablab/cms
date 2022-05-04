@@ -26,6 +26,25 @@
             <li>So</li>
         </ul>
         <ul class="fl-events" id="days">
+            <li>
+                <details class="fl-day">
+                    <summary class="fl-flex align-start" data-direction="column">
+                        <span>1</span>
+                        <span class="fl-flex align-center gap" data-gap="tiny">
+                            <svg width="13" height="13" viewBox="0 0 24 24">
+                                <circle cx="11.998" cy="11.998" fill-rule="nonzero" r="9.998"/>
+                            </svg>
+                            Offener Abend
+                        </span>
+                        <span class="fl-flex align-center">
+                            <svg width="13" height="13" viewBox="0 0 24 24">
+                                <circle cx="11.998" cy="11.998" fill-rule="nonzero" r="9.998"/>
+                            </svg>
+                            Offener Abend
+                        </span>
+                    </summary>
+                </details>
+            </li>
         </ul>
     </div>
     <script>
@@ -138,9 +157,6 @@
 
         for (i = 0; i < number; i++) {
             let li = document.createElement("li")
-            let count = document.createElement("header");
-            count.appendChild(document.createTextNode(i + 1))
-            li.appendChild(count)
             days_fragment.appendChild(li)
 
             if (events[i].length != 0) {

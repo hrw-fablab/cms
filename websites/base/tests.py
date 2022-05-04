@@ -1,6 +1,6 @@
 from wagtail.tests.utils import WagtailPageTests
-
-from wagtail.core.models import Page
+from wagtail.tests.utils.form_data import nested_form_data, streamfield
+from wagtail.core.models import Page, Site
 
 from websites.base.models import (
     CollectionPage,
@@ -15,8 +15,11 @@ from websites.base.models import (
 
 
 class HomePageTest(WagtailPageTests):
-    def test_can_create(self):
-        self.assertCanCreateAt(Page, HomePage)
+    def test_parentpage_types(self):
+        self.assertAllowedParentPageTypes(
+            HomePage,
+            {Page},
+        )
 
     def test_subpage_types(self):
         self.assertAllowedSubpageTypes(
@@ -33,16 +36,48 @@ class HomePageTest(WagtailPageTests):
             },
         )
 
-    def test_parentpage_types(self):
-        self.assertAllowedParentPageTypes(
+    def test_can_create(self):
+        self.assertCanCreateAt(Page, HomePage)
+
+    def test_can_create_title(self):
+        root_page = Page.objects.get(pk=1)
+        self.assertCanCreate(
+            root_page,
             HomePage,
-            {Page},
+            nested_form_data(
+                {
+                    "title": "HomePage",
+                    "og_type": "website",
+                    "tw_size": "summary",
+                    "index": "index",
+                    "body": streamfield([]),
+                },
+            ),
+        )
+
+    def test_can_create_streamfield(self):
+        root_page = Page.objects.get(pk=1)
+        self.assertCanCreate(
+            root_page,
+            HomePage,
+            nested_form_data(
+                {
+                    "title": "HomePage",
+                    "og_type": "website",
+                    "tw_size": "summary",
+                    "index": "index",
+                    "body": streamfield([("heading", "Test Heading")]),
+                },
+            ),
         )
 
 
 class FolderPageTest(WagtailPageTests):
-    def test_can_create(self):
-        self.assertCanCreateAt(HomePage, FolderPage)
+    def test_parentpage_types(self):
+        self.assertAllowedParentPageTypes(
+            FolderPage,
+            {HomePage},
+        )
 
     def test_subpage_types(self):
         self.assertAllowedSubpageTypes(
@@ -50,27 +85,5 @@ class FolderPageTest(WagtailPageTests):
             {Page, FlexPage, IndexPage, DeviceIndexPage, ProjectIndexPage},
         )
 
-    def test_parentpage_types(self):
-        self.assertAllowedParentPageTypes(
-            FolderPage,
-            {HomePage},
-        )
-
-
-class FlexPageTest(WagtailPageTests):
     def test_can_create(self):
-        self.assertCanCreateAt(HomePage, FlexPage)
-
-    def test_subpage_types(self):
-        self.assertAllowedSubpageTypes(
-            FlexPage,
-            {
-                Page,
-            },
-        )
-
-    def test_parentpage_types(self):
-        self.assertAllowedParentPageTypes(
-            FlexPage,
-            {HomePage, FolderPage},
-        )
+        self.assertCanCreateAt(HomePage, FolderPage)

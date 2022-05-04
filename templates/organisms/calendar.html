@@ -26,25 +26,6 @@
             <li>So</li>
         </ul>
         <ul class="fl-events" id="days">
-            <li>
-                <details class="fl-day">
-                    <summary class="fl-flex align-start" data-direction="column">
-                        <span>1</span>
-                        <span class="fl-flex align-center gap" data-gap="tiny">
-                            <svg width="13" height="13" viewBox="0 0 24 24">
-                                <circle cx="11.998" cy="11.998" fill-rule="nonzero" r="9.998"/>
-                            </svg>
-                            Offener Abend
-                        </span>
-                        <span class="fl-flex align-center">
-                            <svg width="13" height="13" viewBox="0 0 24 24">
-                                <circle cx="11.998" cy="11.998" fill-rule="nonzero" r="9.998"/>
-                            </svg>
-                            Offener Abend
-                        </span>
-                    </summary>
-                </details>
-            </li>
         </ul>
     </div>
     <script>
@@ -121,32 +102,16 @@
     }
 
     const createEvent = (events) => {
-        let dailyEvents = new DocumentFragment();
+        let details = document.createElement("details");
+        let summary = document.createElement("summary");
         for (x = 0; x < events.length; x++) {
-            let details = document.createElement("details");
-
-            let summary = document.createElement("summary");
-            let div = document.createElement("div");
-            let title = document.createTextNode(events[x].title);
-            summary.appendChild(div);
-            summary.appendChild(title);
-
-            let content = document.createElement("div");
-
-            let adress = document.createElement("address");
-            let adress_content = document.createTextNode(events[x].adress)
-            adress.appendChild(adress_content)
-
-            content.appendChild(adress)
-
-            
-            details.appendChild(summary);
-            details.appendChild(content)
-
-            details.classList.add("fl-event")
-            dailyEvents.appendChild(details);
+            let span = document.createElement("span");
+            let span_text = document.createTextNode(events[x].title)
+            span.appendChild(span_text);
+            summary.appendChild(span);
         }
-        return dailyEvents;
+        details.appendChild(summary);
+        return details;
     }
 
     const createCalendar = async () => {
@@ -163,7 +128,6 @@
                 li.appendChild(createEvent(events[i]))
             }
         }
-
         days.appendChild(days_fragment)
         updateDate()
     }

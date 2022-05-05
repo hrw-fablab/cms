@@ -1,21 +1,24 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
 {% block content %}
-    <main class="fl-main" id="main">
+    <main class="fl-main margin"
+          id="main"
+          data-margin="block-start"
+          data-margin-size="medium">
         {% regroup children.specific by category as category_list %}
         {% for category in category_list %}
-            <div class="fl-content margin"
+            {% if category.grouper != None %}
+                {% include "atoms/heading.html" with value=category.grouper anchor=True %}
+            {% endif %}
+            <div class="fl-content fl-grid margin gap"
                  data-width="large"
-                 data-margin="block-start"
-                 data-margin-size="medium">
-                {% if category.grouper != None %}
-                    {% include "atoms/heading.html" with value=category.grouper anchor=True %}
-                {% endif %}
-                <div class="fl-grid gap" data-size="large" data-gap="medium">
-                    {% for page in category.list %}
-                        {% include "molecules/card.html" with value=page class="aspect-widescreen" %}
-                    {% endfor %}
-                </div>
+                 data-size="large"
+                 data-gap="medium"
+                 data-margin="block-end"
+                 data-margin-size="large">
+                {% for page in category.list %}
+                    {% include "molecules/card.html" with value=page class="aspect-widescreen" %}
+                {% endfor %}
             </div>
         {% endfor %}
     </main>

@@ -97,7 +97,9 @@ class ProjectIndexPage(AbstractIndexPage):
 
     def get_context(self, request):
         context = super().get_context(request)
-        all_children = self.get_children().live().specific()
+        all_children = (
+            self.get_children().live().specific().order_by("-projectpage__category")
+        )
         context["children"] = all_children
         return context
 

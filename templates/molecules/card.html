@@ -1,22 +1,22 @@
+{% load wagtailimages_tags %}
 {% block content %}
-    <section class="fl-card {{ class }}">
+    <article class="fl-card {{ class }}">
         {% if value.image %}
-            {% load wagtailimages_tags %}
             <figure>
                 <picture>
                     {% image value.image fill-854x480-c70 format-webp webpquality-80 as image_768 %}
                     {% image value.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
-                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
+                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
                             sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
                             type="image/webp">
                     {% image value.image fill-854x480 format-jpeg as image_768 %}
                     {% image value.image fill-480x360 format-jpeg as image_480 %}
-                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
+                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
                             sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
                             type="image/jpg">
                     <img class="aspect-widescreen"
                          src="{{ image_480.url }}"
-                         alt="image_480.alt"
+                         alt="{{ image_480.alt }}"
                          decoding="async"
                          loading="lazy">
                 </picture>
@@ -28,7 +28,7 @@
         <div class="padding" data-padding="inline" data-padding-size="tiny">
             {% if value.title %}
                 <header class="margin" data-margin="block-end" data-margin-size="small">
-                    {% if value.date %}<time>{{ value.date }}</time>{% endif %}
+                    {% if value.date %}<time datetime="{{ value.date }}">{{ value.date }}</time>{% endif %}
                     {% if value.number %}Anzahl: {{ value.number }}{% endif %}
                     {% if value.url %}
                         <a href="{{ value.localized.url }}">
@@ -54,5 +54,5 @@
                 </p>
             {% endif %}
         </div>
-    </section>
+    </article>
 {% endblock content %}

@@ -1,10 +1,11 @@
+{% load wagtailimages_tags %}
 {% block content %}
     <div class="{% if value.accent %}fl-accent{% endif %} margin padding"
          data-margin="block-end"
          data-margin-size="large"
          data-padding="block"
          data-padding-size="medium">
-        <section class="fl-content fl-split gap" data-width="large" data-gap="medium">
+        <article class="fl-content fl-split gap" data-width="large" data-gap="medium">
             <div class="fl-flex justify-center gap"
                  data-direction="column"
                  data-gap="tiny">
@@ -19,36 +20,33 @@
                 {% endif %}
                 {% if value.text %}{{ value.text }}{% endif %}
             </div>
-            <div class="align-self-center aspect-widescreen">
-                {% if value.video %}
-                    <video class="aspect-widescreen cover" src="{{ value.video.url }}" controls>
-                    </video>
-                {% elif value.image %}
-                    {% load wagtailimages_tags %}
-                    <figure>
-                        <picture>
-                            {% image value.image fill-854x480 format-webp webpquality-80 as image_768 %}
-                            {% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
-                            <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w,"
-                                    sizes="(max-width: 520px) 480px,(max-width: 768px) 768px"
-                                    type="image/webp">
-                            {% image value.image fill-854x480 format-jpeg as image_768 %}
-                            {% image value.image fill-480x360 format-jpeg as image_480 %}
-                            <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w,"
-                                    sizes="(max-width: 520px) 480px,(max-width: 768px) 768px,(min-width: 1024px) 480px"
-                                    type="image/jpg">
-                            <img class="aspect-widescreen"
-                                 src="{{ image_600.url }}"
-                                 alt="{{ image_600.alt }}"
-                                 decoding="async"
-                                 loading="lazy">
-                        </picture>
-                        <figcaption>
-                            {{ value.image.credit }}
-                        </figcaption>
-                    </figure>
-                {% endif %}
-            </div>
-        </section>
+            {% if value.video %}
+                <video class="aspect-widescreen cover" src="{{ value.video.url }}" controls>
+                </video>
+            {% elif value.image %}
+                <figure>
+                    <picture>
+                        {% image value.image fill-854x480 format-webp webpquality-80 as image_768 %} {%
+                        image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
+                        <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w"
+                                sizes="(max-width: 520px) 480px,(max-width: 768px) 768px"
+                                type="image/webp"/>
+                        {% image value.image fill-854x480 format-jpeg as image_768 %} {% image value.image
+                        fill-480x360 format-jpeg as image_480 %}
+                        <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w"
+                                sizes="(max-width: 520px) 480px,(max-width: 768px) 768px,(min-width: 1024px) 480px"
+                                type="image/jpg"/>
+                        <img class="aspect-widescreen"
+                             src="{{ image_480.url }}"
+                             alt="{{ image_480.alt }}"
+                             decoding="async"
+                             loading="lazy"/>
+                    </picture>
+                    <figcaption>
+                        {{ value.image.credit }}
+                    </figcaption>
+                </figure>
+            {% endif %}
+        </article>
     </div>
 {% endblock content %}

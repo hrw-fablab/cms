@@ -1,5 +1,5 @@
 {% block content %}
-    <div class="fl-grid gap" data-size="{{ layout }}" data-gap="medium">
+    <section class="fl-grid gap" data-size="{{ layout }}" data-gap="medium">
         {% for element in value %}
             {% if element.block_type == "card" %}
                 {% include "molecules/card.html" with value=element.value class="aspect-widescreen" %}
@@ -11,5 +11,5 @@
                 {{ element }}
             {% endif %}
         {% endfor %}
-    </div>
+    </section>
 {% endblock content %}

@@ -18,7 +18,7 @@
                         <h3>{{ value.title }}</h3>
                     {% endif %}
                 {% endif %}
-                {% if value.text %}{{ value.text }}{% endif %}
+                {{ value.text }}
             </div>
             {% if value.video %}
                 <video class="aspect-widescreen cover" src="{{ value.video.url }}" controls>
@@ -26,13 +26,13 @@
             {% elif value.image %}
                 <figure>
                     <picture>
-                        {% image value.image fill-854x480 format-webp webpquality-80 as image_768 %} {%
-                        image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
+                        {% image value.image fill-854x480 format-webp webpquality-80 as image_768 %}
+                        {% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
                         <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w"
                                 sizes="(max-width: 520px) 480px,(max-width: 768px) 768px"
                                 type="image/webp"/>
-                        {% image value.image fill-854x480 format-jpeg as image_768 %} {% image value.image
-                        fill-480x360 format-jpeg as image_480 %}
+                        {% image value.image fill-854x480 format-jpeg as image_768 %}
+                        {% image value.image fill-480x360 format-jpeg as image_480 %}
                         <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w"
                                 sizes="(max-width: 520px) 480px,(max-width: 768px) 768px,(min-width: 1024px) 480px"
                                 type="image/jpg"/>

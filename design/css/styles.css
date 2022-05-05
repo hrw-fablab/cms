@@ -305,6 +305,7 @@ footer {
 body {
   font-family: sans-serif;
   font-size: var(--font-size-3);
+  font-variant-numeric: tabular-nums;
   line-height: 1.7;
 }
 @supports (font-variation-settings: normal) {
@@ -316,6 +317,7 @@ body :where(h1, h2, h3, h4) {
   font-family: "Manrope VF", sans-serif;
   font-weight: bold;
   line-height: 1.2;
+  font-variant-numeric: tabular-nums;
 }
 h1 {
   font-size: var(--font-size-6);
@@ -332,6 +334,7 @@ h4 {
 body :where(input, button, textarea, select) {
   font-size: var(--font-size-3);
   font-family: "Inter var", sans-serif;
+  font-variant-numeric: tabular-nums;
 }
 body {
   background-color: var(--surface-1);
@@ -378,6 +381,37 @@ select {
   padding: var(--size-2);
   border: solid 0.1rem var(--surface-1);
   padding-inline: var(--size-3);
+}
+details {
+  transition: background-color 0.3s ease;
+  padding-block: 0.2rem;
+  padding-inline: 0.7rem;
+}
+details summary {
+  user-select: none;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: var(--size-3);
+  cursor: pointer;
+}
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+details[open] {
+  animation: sweep 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+@keyframes sweep {
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: var(--shadow-1);
+  }
 }
 /* purgecss start ignore */
 .fl-grid {
@@ -436,7 +470,7 @@ select {
 /* purgecss end ignore */
 .fl-content {
   --desktop: 100rem;
-  margin-inline: max((100% - var(--desktop)) /2, 2rem);
+  margin-inline: max((100% - var(--desktop)) /2, 1rem);
 }
 .fl-content[data-width="large"] {
   --desktop: 90rem;
@@ -821,4 +855,72 @@ div:nth-child(odd) .fl-split > :first-child {
 }
 .fl-spacer {
     height: var(--size-fluid-4);
+}
+.fl-calendar > ul {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    list-style: none;
+  }
+.fl-calendar > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--font-size-4);
+  }
+.fl-days {
+  border-block: solid 0.15rem rgb(245 245 245);
+  border-inline-start: solid 0.15rem rgb(245 245 245)
+}
+.fl-days li {
+    border-inline-end: solid 0.15rem rgb(245 245 245);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 0.5rem;
+  }
+.fl-events {
+  border-inline-start: solid 0.15rem rgb(245 245 245)
+}
+.fl-events li {
+    border-block-end: solid 0.15rem rgb(245 245 245);
+    border-inline-end: solid 0.15rem rgb(245 245 245);
+    aspect-ratio: 5 / 3;
+  }
+.fl-events {
+  counter-reset: section;
+}
+.fl-events details {
+  height: 100%;
+  width: 100%;
+}
+.fl-events details summary {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+  font-size: var(--font-size-2);
+}
+.fl-events li::before {
+  position: absolute;
+  counter-increment: section;
+  content: counter(section);
+  right: 0;
+  padding-inline: 0.5rem;
+  font-size: var(--font-size-3);
+  pointer-events: none;
+}
+.fl-events li details:hover {
+  background-color: var(--surface-2);
+}
+@media (max-width: 1024px) {
+  .fl-events li details summary span {
+    display: none;
+  }
+  .fl-events li::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

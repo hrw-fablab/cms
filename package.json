@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "watch-cms": "postcss design/css/styles.css -o design/css/styles.min.css --watch"
+    "watch": "postcss design/css/styles.css -o design/css/styles.min.css --watch"
   },
   "repository": {
     "type": "git",

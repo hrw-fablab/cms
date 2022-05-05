@@ -384,8 +384,7 @@ select {
 }
 details {
   transition: background-color 0.3s ease;
-  padding-block: 0.2rem;
-  padding-inline: 0.7rem;
+  position: relative;
 }
 details summary {
   user-select: none;
@@ -404,6 +403,14 @@ summary::-webkit-details-marker {
 details[open] {
   animation: sweep 0.3s ease-in-out;
   animation-fill-mode: forwards;
+}
+details[open] > div {
+  width: 100%;
+  position: absolute;
+  background-color: red;
+}
+.deactive {
+  background-color: red;
 }
 @keyframes sweep {
   0% {
@@ -470,7 +477,7 @@ details[open] {
 /* purgecss end ignore */
 .fl-content {
   --desktop: 100rem;
-  margin-inline: max((100% - var(--desktop)) /2, 2rem);
+  margin-inline: max((100% - var(--desktop)) /2, 1rem);
 }
 .fl-content[data-width="large"] {
   --desktop: 90rem;
@@ -902,7 +909,7 @@ div:nth-child(odd) .fl-split > :first-child {
   justify-content: end;
   font-size: var(--font-size-2);
 }
-.fl-events li::before {
+.fl-events .active::before {
   position: absolute;
   counter-increment: section;
   content: counter(section);

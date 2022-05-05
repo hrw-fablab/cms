@@ -15,8 +15,6 @@ def get_more_tables(request):
     date = datetime.date(body["year"], body["month"], 1)
     days_count = monthrange(body["year"], body["month"])[1]
 
-    print(date)
-
     for element in Event.objects.all().order_by("start"):
         if element.visible(date) == True:
             events.append(element)
@@ -30,6 +28,8 @@ def get_more_tables(request):
                         "title": element.title,
                         "adress": element.adress,
                         "length": element.length,
+                        "timeStart": element.timeStart,
+                        "timeEnd": element.timeEnd,
                     }
                 )
 

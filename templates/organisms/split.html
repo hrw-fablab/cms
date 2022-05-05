@@ -1,6 +1,6 @@
 {% load wagtailimages_tags %}
 {% block content %}
-    <div class="{% if value.accent %}fl-accent{% endif %} margin padding"
+    <div class="{% if value.accent %}fl-color{% endif %} margin padding"
          data-margin="block-end"
          data-margin-size="large"
          data-padding="block"
@@ -8,7 +8,7 @@
         <article class="fl-content fl-split gap" data-width="large" data-gap="medium">
             <div class="fl-flex justify-center gap"
                  data-direction="column"
-                 data-gap="tiny">
+                 data-gap="small">
                 {% if value.title %}
                     {% if value.page %}
                         <a href="{{ value.page.localized.url }}">

@@ -1,47 +1,50 @@
 /* purgecss start ignore */
 :where(html) {
-	--size-1: 0.1rem;
-	--size-2: 0.3rem;
-	--size-3: 0.5rem;
-	--size-4: 1rem;
-	--size-5: 2rem;
-	--size-6: 3rem;
-	--size-7: 5rem;
-	--size-8: 7rem;
-	--size-9: 10rem;
+  --size-1: 0.1rem;
+  --size-2: 0.3rem;
+  --size-3: 0.5rem;
+  --size-4: 1rem;
+  --size-5: 2rem;
+  --size-6: 3rem;
+  --size-7: 5rem;
+  --size-8: 7rem;
+  --size-9: 10rem;
 
-	--size-fluid-1: clamp(.5rem, 1vw, 1rem);
-	--size-fluid-2: clamp(1rem, 2vw, 1.5rem);
-	--size-fluid-3: clamp(1.5rem, 3vw, 2rem);
-	--size-fluid-4: clamp(2rem, 4vw, 3rem);
-	--size-fluid-5: clamp(4rem, 5vw, 5rem);
-	--size-fluid-6: clamp(5rem, 7vw, 7.5rem);
-	--size-fluid-7: clamp(7.5rem, 10vw, 10rem);
-	--size-fluid-8: clamp(10rem, 20vw, 15rem);
-	--size-fluid-9: clamp(15rem, 30vw, 20rem);
+  --size-fluid-1: clamp(0.5rem, 1vw, 1rem);
+  --size-fluid-2: clamp(1rem, 2vw, 1.5rem);
+  --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
+  --size-fluid-4: clamp(2rem, 4vw, 3rem);
+  --size-fluid-5: clamp(4rem, 5vw, 5rem);
+  --size-fluid-6: clamp(5rem, 7vw, 7.5rem);
+  --size-fluid-7: clamp(7.5rem, 10vw, 10rem);
+  --size-fluid-8: clamp(10rem, 20vw, 15rem);
+  --size-fluid-9: clamp(15rem, 30vw, 20rem);
 }
 :where(html) {
-	--font-size-1: clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem);
-	--font-size-2: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
-	--font-size-3: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
-	--font-size-4: clamp(1.37rem, 1.21rem + 0.8vw, 1.78rem);
-	--font-size-5: clamp(1.71rem, 1.45rem + 1.29vw, 2.37rem);
-	--font-size-6: clamp(2.14rem, 1.74rem + 1.99vw, 3.16rem);
-	--font-size-7: clamp(2.67rem, 2.07rem + 3vw, 4.21rem);
-	--font-size-8: clamp(3.34rem, 2.45rem + 4.43vw, 5.61rem);
+  --font-size-1: clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem);
+  --font-size-2: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
+  --font-size-3: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+  --font-size-4: clamp(1.37rem, 1.21rem + 0.8vw, 1.78rem);
+  --font-size-5: clamp(1.71rem, 1.45rem + 1.29vw, 2.37rem);
+  --font-size-6: clamp(2.14rem, 1.74rem + 1.99vw, 3.16rem);
+  --font-size-7: clamp(2.67rem, 2.07rem + 3vw, 4.21rem);
+  --font-size-8: clamp(3.34rem, 2.45rem + 4.43vw, 5.61rem);
 }
 :where(html) {
-	--shadow-color: 220 3% 15%;
-	--shadow-strength: 1%;
-	--shadow-1: 
-	  0 3px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
-	  0 7px 14px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%));
+  --shadow-color: 0deg 0% 78%;
+  --shadow-elevation-low: 0.3px 0.5px 0.9px hsl(var(--shadow-color) / 0),
+    0.8px 1.6px 2.7px hsl(var(--shadow-color) / 0.28);
+  --shadow-elevation-medium: 0.3px 0.5px 0.9px hsl(var(--shadow-color) / 0),
+    3.9px 7.8px 13.1px hsl(var(--shadow-color) / 0.39);
+  --shadow-elevation-high: 0.3px 0.5px 0.9px hsl(var(--shadow-color) / 0),
+    4.5px 9.1px 15.2px hsl(var(--shadow-color) / 0.33),
+    14px 28px 47px hsl(var(--shadow-color) / 0.65);
 }
 :where(html) {
-	--aspect-box: 1;
-	--aspect-landscape: 4/3;
-	--aspect-portrait: 3/4;
-	--aspect-widescreen: 16/9;
+  --aspect-box: 1;
+  --aspect-landscape: 4/3;
+  --aspect-portrait: 3/4;
+  --aspect-widescreen: 16/9;
 }
 /* purgecss end ignore */
 /* purgecss start ignore */
@@ -274,8 +277,12 @@ iframe,
 figure,
 canvas {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+}
+img {
+  border-radius: 0.7rem;
+  box-shadow: var(--shadow-elevation-medium);
 }
 input,
 button,
@@ -323,7 +330,7 @@ h1 {
   font-size: var(--font-size-6);
 }
 h2 {
-  font-size: var(--font-size-6);
+  font-size: var(--font-size-5);
 }
 h3 {
   font-size: var(--font-size-4);
@@ -358,19 +365,18 @@ svg {
 	pointer-events: none;
 }
 figure {
-    position: relative;
-    display: grid;
-    height: 100%;
+  position: relative;
+  height: 100%;
 }
 figcaption {
-    position: absolute;
-    background-color: black;
-    color: var(--surface-2);
-    right: 0;
-    top: 0;
-    padding-inline: 0.2rem;
-    z-index: 3;
-    font-size: 0.8rem;
+  position: absolute;
+  background-color: black;
+  color: var(--surface-2);
+  right: 0;
+  top: 0;
+  padding-inline: 0.2rem;
+  z-index: 3;
+  font-size: 0.8rem;
 }
 input {
   padding: var(--size-2);
@@ -417,7 +423,7 @@ details[open] > div {
     box-shadow: none;
   }
   100% {
-    box-shadow: var(--shadow-1);
+    box-shadow: var(--shadow-elevation-medium);
   }
 }
 /* purgecss start ignore */
@@ -433,8 +439,8 @@ details[open] > div {
 .fl-grid[data-size="extrem"] > * {
     aspect-ratio: inherit;
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
-    gap: var(--size-fluid-3);
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--size-fluid-5);
     place-items: center start;
   }
 .fl-grid[data-size="large"] {
@@ -483,7 +489,7 @@ details[open] > div {
   --desktop: 90rem;
 }
 .fl-content[data-width="medium"] {
-  --desktop: 60rem;
+  --desktop: 70rem;
 }
 .fl-content[data-width="small"] {
   --desktop: 55rem;
@@ -528,7 +534,7 @@ details[open] > div {
     border-radius: 50%;
   }
 .fl-navigation {
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-elevation-medium);
   background-color: var(--surface-1);
   position: sticky;
   top: 0;
@@ -623,7 +629,7 @@ details[open] > div {
   align-items: start;
   position: absolute;
   background-color: var(--surface-2);
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-elevation-medium);
   width: max-content
 }
 @media (max-width: 1024px) {
@@ -647,6 +653,7 @@ li {
 .fl-logo img {
     width: auto;
     max-height: var(--size-fluid-2);
+    box-shadow: none;
   }
 .fl-logo svg {
     fill: var(--brand);
@@ -658,9 +665,6 @@ li {
   display: grid;
   grid-template-columns: 1fr 0.9fr
 }
-.fl-split h3 {
-    font-size: var(--font-size-5);
-  }
 .fl-split a {
     width: 100%;
   }
@@ -787,9 +791,9 @@ div:nth-child(odd) .fl-split > :first-child {
 		content: close-quote;
 		color: var(--brand);
 	}
-.fl-media > :where(img,video,iframe) {
-		aspect-ratio: var(--aspect-widescreen);
-	}
+.fl-media :where(img, video, iframe) {
+    aspect-ratio: var(--aspect-widescreen);
+  }
 .fl-banner {
   display: grid;
   grid-template: "container";
@@ -797,7 +801,7 @@ div:nth-child(odd) .fl-split > :first-child {
   color: var(--surface-1)
 }
 .fl-banner h2 {
-    font-size: var(--font-size-7);
+    font-size: var(--font-size-6);
     color: var(--surface-1);
   }
 .fl-banner > * {

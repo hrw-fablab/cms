@@ -25,11 +25,9 @@
                 </figcaption>
             </figure>
         {% endif %}
-        <div class="padding" data-padding="inline" data-padding-size="tiny">
+        <div>
             {% if value.title %}
-                <header class="margin" data-margin="block-end" data-margin-size="small">
-                    {% if value.date %}<time datetime="{{ value.date }}">{{ value.date }}</time>{% endif %}
-                    {% if value.number %}Anzahl: {{ value.number }}{% endif %}
+                <header class="margin" data-margin="block" data-margin-size="small">
                     {% if value.url %}
                         <a href="{{ value.localized.url }}">
                             <h3>{{ value.localized.title }}</h3>

@@ -1,3 +1,4 @@
+{% load wagtailimages_tags %}
 {% block content %}
     <section class="fl-content centered fl-media margin"
              data-width="medium"
@@ -5,7 +6,6 @@
              data-margin-size="large">
         {% include "atoms/heading.html" with value=value.title anchor=True %}
         {% if value.image %}
-            {% load wagtailimages_tags %}
             <figure>
                 <picture>
                     {% image value.image fill-1024x576 format-webp webpquality-60 as image_1024 %}

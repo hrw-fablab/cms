@@ -10,7 +10,7 @@
   --size-8: 7rem;
   --size-9: 10rem;
 
-  --size-fluid-1: clamp(0.5rem, 1vw, 1rem);
+  --size-fluid-1: clamp(0.8rem, 1vw, 1rem);
   --size-fluid-2: clamp(1rem, 2vw, 1.5rem);
   --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
   --size-fluid-4: clamp(2rem, 4vw, 3rem);
@@ -24,7 +24,7 @@
   --font-size-1: clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem);
   --font-size-2: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
   --font-size-3: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
-  --font-size-4: clamp(1.37rem, 1.21rem + 0.8vw, 1.78rem);
+  --font-size-4: clamp(1.5rem, 1.21rem + 0.8vw, 1.78rem);
   --font-size-5: clamp(1.71rem, 1.45rem + 1.29vw, 2.37rem);
   --font-size-6: clamp(2.14rem, 1.74rem + 1.99vw, 3.16rem);
   --font-size-7: clamp(2.67rem, 2.07rem + 3vw, 4.21rem);
@@ -280,7 +280,10 @@ canvas {
   height: 100%;
   object-fit: cover;
 }
-img {
+img,
+video,
+iframe,
+canvas {
   border-radius: 0.7rem;
   box-shadow: var(--shadow-elevation-medium);
 }
@@ -483,7 +486,7 @@ details[open] > div {
 /* purgecss end ignore */
 .fl-content {
   --desktop: 100rem;
-  margin-inline: max((100% - var(--desktop)) /2, 1rem);
+  margin-inline: max((100% - var(--desktop)) /2, 1.2rem);
 }
 .fl-content[data-width="large"] {
   --desktop: 90rem;

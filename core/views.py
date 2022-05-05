@@ -35,6 +35,4 @@ def get_more_tables(request):
 
     data = json.dumps(days)
 
-    print(data)
-
     return JsonResponse(data, safe=False)

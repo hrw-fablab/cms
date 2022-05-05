@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
     <main class="fl-main" id="main">
         <article class="fl-content margin aspect-widescreen"
@@ -7,7 +7,6 @@
                  data-margin="block-start"
                  data-margin-size="medium">
             {% if page.image %}
-                {% load wagtailimages_tags %}
                 <figure>
                     <picture>
                         {% image page.image fill-1024x588-c70 format-webp webpquality-60 as image_1024 %}

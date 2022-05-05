@@ -384,8 +384,7 @@ select {
 }
 details {
   transition: background-color 0.3s ease;
-  padding-block: 0.2rem;
-  padding-inline: 0.7rem;
+  position: relative;
 }
 details summary {
   user-select: none;
@@ -404,6 +403,14 @@ summary::-webkit-details-marker {
 details[open] {
   animation: sweep 0.3s ease-in-out;
   animation-fill-mode: forwards;
+}
+details[open] > div {
+  width: 100%;
+  position: absolute;
+  background-color: red;
+}
+.deactive {
+  background-color: red;
 }
 @keyframes sweep {
   0% {
@@ -846,12 +853,13 @@ div:nth-child(odd) .fl-split > :first-child {
 	transform: translateY(0%);
 }
 .fl-result {
-  gap: var(--size-5);
-  list-style: none;
-  width: 100%;
+  list-style: none
 }
+.fl-result p {
+    font-size: var(--font-size-2);
+  }
 .fl-info {
-  color: lightgray
+  color: lightgray;
 }
 .fl-spacer {
     height: var(--size-fluid-4);
@@ -902,7 +910,7 @@ div:nth-child(odd) .fl-split > :first-child {
   justify-content: end;
   font-size: var(--font-size-2);
 }
-.fl-events li::before {
+.fl-events .active::before {
   position: absolute;
   counter-increment: section;
   content: counter(section);

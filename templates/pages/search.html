@@ -1,36 +1,32 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
 {% block content %}
-    <main class="fl-main" id="main">
-        <div class="fl-content margin"
-             data-width="small"
-             data-margin="block-start"
-             data-margin-size="medium">
-            {% if results %}
-                <ul class="fl-flex align-start justify-center fl-result"
-                    data-direction="column">
-                    {% for result in results %}
-                        <li class="fl-flex" data-direction="column">
-                            <p class="fl-info">
-                                {{ result.get_verbose_name }}
-                            </p>
-                            <a href="{% pageurl result %}">
-                                <p>
-                                    {{ result.title }}
-                                </p>
-                            </a>
-                            <p>
-                                {{ result.introduction }}
-                            </p>
-                        </li>
-                    {% endfor %}
-                </ul>
-                {% include "molecules/pagination.html" with children=results %}
-            {% else %}
-                <p class="text-centered">
-                    Nichts gefunden
-                </p>
-            {% endif %}
-        </div>
+    <main class="fl-main margin"
+          id="main"
+          data-margin="block-start"
+          data-margin-size="medium">
+        {% if results %}
+            <ul class="fl-content fl-result fl-flex gap"
+                style="--gap: var(--size-fluid-3)"
+                data-direction="column"
+                data-width="medium">
+                {% for result in results %}
+                    <li>
+                        <p class="fl-info">
+                            {{ result.get_verbose_name }}
+                        </p>
+                        <a href="{% pageurl result %}">{{ result.title }}</a>
+                        <p>
+                            {{ result.introduction }}
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% include "molecules/pagination.html" with children=results %}
+        {% else %}
+            <p class="text-centered">
+                Nichts gefunden
+            </p>
+        {% endif %}
     </main>
 {% endblock %}

@@ -1,14 +1,18 @@
 {% load filter_tag %}
 {% block content %}
-    <div class="fl-content margin"
-         data-width="large"
-         data-margin="block-end"
-         data-margin-size="large">
+    <section class="fl-content margin"
+             role="region"
+             data-width="large"
+             data-margin="block-end"
+             data-margin-size="large">
         {% include "atoms/heading.html" with value=value.title anchor=True %}
         {% if value.filter and value.headings %}
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}
-                <div class="margin" data-margin="block" data-margin-size="large">
+                <div role="region"
+                     class="margin"
+                     data-margin="block"
+                     data-margin-size="large">
                     {% if role.grouper != None %}
                         {% include "atoms/heading.html" with value=value.title anchor=True %}
                     {% else %}
@@ -25,7 +29,8 @@
                 </div>
             {% endfor %}
         {% elif value.filter %}
-            <div class="fl-content fl-grid gap"
+            <div role="region"
+                 class="fl-content fl-grid gap"
                  data-width="{% if value.members.members_ordered|filter_organisation:value.filter|length <= 2 %}small{% endif %}"
                  data-size="{{ value.layout }}"
                  data-gap="medium">
@@ -36,7 +41,8 @@
         {% elif value.headings %}
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}
-                <div class="fl-content margin"
+                <div role="region"
+                     class="fl-content margin"
                      data-size="small"
                      data-margin="block"
                      data-margin-size="large">
@@ -56,7 +62,8 @@
                 </div>
             {% endfor %}
         {% else %}
-            <div class="fl-content fl-grid gap"
+            <div role="region"
+                 class="fl-content fl-grid gap"
                  data-width="{% if value.members.members_ordered|length <= 2 %}small{% endif %}"
                  data-size="{{ value.layout }}"
                  data-gap="medium">
@@ -65,5 +72,5 @@
                 {% endfor %}
             </div>
         {% endif %}
-    </div>
+    </section>
 {% endblock content %}

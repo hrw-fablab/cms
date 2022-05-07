@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "chooser",
     "organisation",
     "global",
+    "forms",
     "generic_chooser",
     "websites.base",
     "websites.qufablab",

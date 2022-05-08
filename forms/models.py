@@ -1,30 +1,17 @@
-from django.db import models
-from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import (
-    FieldPanel,
-    InlinePanel,
-    MultiFieldPanel,
-)
-from wagtail.core.fields import RichTextField
-from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.contrib.forms.models import AbstractEmailForm
+from core.models import FablabBasePage
+
+from forms.forms import FabLabCaptchaFormBuilder, remove_captcha_field
 
 
-class FormField(AbstractFormField):
-    page = ParentalKey("FormPage", on_delete=models.CASCADE, related_name="form_fields")
+class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
+    """Pages implementing a captcha form with email notification should inhert from this"""
 
+    form_builder = FabLabCaptchaFormBuilder
 
-class FormPage(AbstractEmailForm):
-    thank_you_text = RichTextField(blank=True)
+    def process_form_submission(self, form):
+        remove_captcha_field(form)
+        return super(FabLabCaptchaEmailForm, self).process_form_submission(form)
 
-    content_panels = AbstractEmailForm.content_panels + [
-        InlinePanel("form_fields", label="Form fields"),
-        FieldPanel("thank_you_text"),
-        MultiFieldPanel(
-            [
-                FieldPanel("from_address"),
-                FieldPanel("to_address"),
-                FieldPanel("subject"),
-            ],
-            "Email",
-        ),
-    ]
+    class Meta:
+        abstract = True

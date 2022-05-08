@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "organisation",
     "global",
     "forms",
+    "captcha",
     "generic_chooser",
     "websites.base",
     "websites.qufablab",
@@ -226,3 +227,8 @@ EMAIL_PORT = os.environ.get("EMAIL_PORT")
 EMAIL_HOST_USER = os.environ.get("EMAIL_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_ADDRESS")
+
+
+SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
+RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY")

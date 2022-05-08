@@ -17,7 +17,13 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit">
-            </form>
+                <div class="fl-captcha">
+                    This site is protected by reCAPTCHA and the Google
+                    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
         </div>
-    </main>
+    </div>
+</form>
+</div>
+</main>
 {% endblock %}

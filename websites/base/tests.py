@@ -7,6 +7,7 @@ from websites.base.models import (
     DeviceIndexPage,
     FlexPage,
     FolderPage,
+    FormPage,
     HomePage,
     IndexPage,
     ProjectIndexPage,
@@ -33,6 +34,7 @@ class HomePageTest(WagtailPageTests):
                 ProjectIndexPage,
                 SearchPage,
                 CollectionPage,
+                FormPage,
             },
         )
 
@@ -82,7 +84,7 @@ class FolderPageTest(WagtailPageTests):
     def test_subpage_types(self):
         self.assertAllowedSubpageTypes(
             FolderPage,
-            {Page, FlexPage, IndexPage, DeviceIndexPage, ProjectIndexPage},
+            {Page, FlexPage, IndexPage, DeviceIndexPage, ProjectIndexPage, FormPage},
         )
 
     def test_can_create(self):

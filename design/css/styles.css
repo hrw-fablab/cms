@@ -303,6 +303,9 @@ a {
   color: inherit;
   width: max-content;
 }
+.grecaptcha-badge {
+  visibility: hidden;
+}
 /* purgecss end ignore */
 body {
   font-family: sans-serif;
@@ -386,16 +389,6 @@ figcaption {
   z-index: 3;
   font-size: 0.8rem;
 }
-input {
-  padding: var(--size-2);
-  border: solid 0.1rem var(--brand);
-  padding-inline: var(--size-3);
-}
-select {
-  padding: var(--size-2);
-  border: solid 0.1rem var(--surface-1);
-  padding-inline: var(--size-3);
-}
 details {
   transition: background-color 0.3s ease;
   position: relative;
@@ -433,6 +426,20 @@ details[open] > div {
   100% {
     box-shadow: var(--shadow-2);
   }
+}
+form p {
+    display: flex;
+    flex-direction: column;
+  }
+html :where(button, input, textarea, select) {
+  padding: var(--size-2);
+  padding-inline: var(--size-3);
+}
+html :where(input, textarea, select) {
+  border: solid 0.1rem var(--brand);
+}
+.fl-captcha {
+  font-size: var(--font-size-2);
 }
 /* purgecss start ignore */
 .fl-grid {

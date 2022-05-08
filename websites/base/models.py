@@ -1,7 +1,12 @@
 from wagtail.core.models import Orderable
 from django.db import models
 
-from wagtail.admin.edit_handlers import StreamFieldPanel, InlinePanel
+from wagtail.admin.edit_handlers import (
+    StreamFieldPanel,
+    InlinePanel,
+    FieldPanel,
+    MultiFieldPanel,
+)
 from wagtail.core.fields import StreamField
 
 from modelcluster.fields import ParentalKey
@@ -18,8 +23,12 @@ from abstract.pages.project import AbstractProjectPage
 from abstract.pages.base import AbstractBasePage
 
 from abstract.models.links import Link, ExpireLink, PageLink
+from forms.models import FabLabCaptchaEmailForm
 
 from websites.base.blocks import HomeBlock, FlexBlock, ProjectBlock, DeviceBlock
+
+from wagtail.core.fields import RichTextField
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 
 
 class HomePage(AbstractHomePage):
@@ -31,6 +40,7 @@ class HomePage(AbstractHomePage):
         "ProjectIndexPage",
         "SearchPage",
         "CollectionPage",
+        "FormPage",
     ]
 
     template = "pages/flex.html"
@@ -172,3 +182,32 @@ class CollectionPage(AbstractBasePage, ClusterableModel):
 
     class Meta:
         verbose_name = "Link Sammlung"
+
+
+class FormField(AbstractFormField):
+    page = ParentalKey("FormPage", on_delete=models.CASCADE, related_name="form_fields")
+
+
+class FormPage(FabLabCaptchaEmailForm):
+    parent_page_types = ["HomePage", "FolderPage", "FlexPage"]
+    subpage_type = []
+
+    thank_you_text = RichTextField(blank=True)
+
+    content_panels = AbstractEmailForm.content_panels + [
+        InlinePanel("form_fields", label="Form Elemente"),
+        FieldPanel("thank_you_text", heading="Bestätigung"),
+        MultiFieldPanel(
+            [
+                FieldPanel("from_address"),
+                FieldPanel("to_address"),
+                FieldPanel("subject"),
+            ],
+            "Email",
+        ),
+    ]
+
+    template = "forms/form_page.html"
+
+    class Meta:
+        verbose_name = "Form Seite"

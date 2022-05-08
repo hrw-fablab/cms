@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% block content %}
+    <main class="fl-main margin"
+          id="main"
+          data-margin="block-start"
+          data-margin-size="medium">
+        <div class="fl-content" data-width="small">
+            <h1 class="text-centered margin"
+                data-margin="block-end"
+                data-margin-size="small">{{ page.title }}</h1>
+            <form class="fl-flex gap"
+                  data-gap="small"
+                  data-direction="column"
+                  action="{% pageurl page %}"
+                  method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit">
+                <div class="fl-captcha">
+                    This site is protected by reCAPTCHA and the Google
+                    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+        </div>
+    </div>
+</form>
+</div>
+</main>
+{% endblock %}

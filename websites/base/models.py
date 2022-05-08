@@ -191,8 +191,8 @@ class FormPage(FabLabCaptchaEmailForm):
     thank_you_text = RichTextField(blank=True)
 
     content_panels = AbstractEmailForm.content_panels + [
-        InlinePanel("form_fields", label="Form fields"),
-        FieldPanel("thank_you_text"),
+        InlinePanel("form_fields", label="Form Elemente"),
+        FieldPanel("thank_you_text", heading="Bestätigung"),
         MultiFieldPanel(
             [
                 FieldPanel("from_address"),
@@ -204,3 +204,6 @@ class FormPage(FabLabCaptchaEmailForm):
     ]
 
     template = "forms/form_page.html"
+
+    class Meta:
+        verbose_name = "Form Seite"

@@ -54,24 +54,16 @@
   align-items: center;
   justify-content: center;
 }
-.fl-accent {
+*[data-style="color"] {
   background-color: var(--brand);
-  color: var(--surface-1)
+  color: var(--surface-1);
+  box-shadow: var(--shadow-2)
 }
-.fl-accent img {
+*[data-style="color"] img {
     filter: none;
   }
-.fl-accent a:hover {
-    color: var(--surface-2) !important;
-  }
-.fl-color {
-  background-color: var(--brand);
-  color: var(--surface-1)
-}
-.fl-color img {
-    filter: none;
-  }
-.fl-color :where(button, select) {
+*[data-style="color"] :where(button, select) {
+    border-color: var(--surface-1);
     color: var(--surface-1);
   }
 .fl-glass {
@@ -576,6 +568,10 @@ html :where(input, textarea, select) {
       display: flex;
     }
 
+    .fl-navigation button {
+      padding: inherit;
+    }
+
     .fl-navigation form {
       width: 100%;
       display: none
@@ -822,7 +818,7 @@ div:nth-child(odd) .fl-split > :first-child {
 .fl-banner > :first-child {
     z-index: 1;
   }
-.fl-banner .fl-color {
+.fl-banner *[data-style="color"] {
     height: 500px;
     width: 100%;
   }
@@ -844,7 +840,7 @@ div:nth-child(odd) .fl-split > :first-child {
       height: 100%;
     }
 
-    .fl-banner .fl-color {
+    .fl-banner *[data-style="color"] {
       height: 300px;
     }
 

@@ -1,9 +1,6 @@
 {% load table_block_tags %}
-
 <table class="fl-table">
-    {% if value.table.table_caption %}
-        <caption>{{ value.table.table_caption }}</caption>
-    {% endif %}
+    {% if value.table.table_caption %}<caption>{{ value.table.table_caption }}</caption>{% endif %}
     {% if value.table.table_header %}
         <thead>
             <tr>

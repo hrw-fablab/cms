@@ -40,6 +40,7 @@ class HomePage(AbstractHomePage):
         "ProjectIndexPage",
         "SearchPage",
         "CollectionPage",
+        "FormPage",
     ]
 
     template = "pages/flex.html"
@@ -188,6 +189,9 @@ class FormField(AbstractFormField):
 
 
 class FormPage(FabLabCaptchaEmailForm):
+    parent_page_types = ["HomePage", "FolderPage", "FlexPage"]
+    subpage_type = []
+
     thank_you_text = RichTextField(blank=True)
 
     content_panels = AbstractEmailForm.content_panels + [

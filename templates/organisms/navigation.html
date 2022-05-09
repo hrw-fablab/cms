@@ -1,72 +1,70 @@
 {% load wagtailcore_tags i18n wagtailimages_tags %}
 {% wagtail_site as current_site %}
 {% block content %}
-    <a class="fl-skip" href="#main">Skip to content</a>
-    <header class="fl-navigation padding"
+    <a class="fl-skip" data-style="color" data-border="round" href="#main">Skip to content</a>
+    <header class="fl-content fl-navigation fl-flex gap align-center justify-between padding"
+            data-gap="small"
+            data-wrap="wrap"
             data-padding="all"
             data-padding-size="small">
-        <div class="fl-content fl-flex gap align-center justify-between"
-             data-gap="small"
-             data-wrap="wrap">
-            <a class="fl-flex align-center justify-start gap fl-logo"
-               data-gap="small"
-               href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
-                {% if settings.global.GlobalSettings.logo %}
-                    {% image settings.global.GlobalSettings.logo original as logo_image %}
-                    <img class="{% if settings.global.GlobalSettings.logo_title %} full{% endif %}"
-                         src="{{ logo_image.url }}"
-                         alt="Logo"
-                         loading="eager"
-                         decoding="sync">
-                {% endif %}
-                {{ settings.global.GlobalSettings.logo_title|default:'' }}
-            </a>
-            <button id="menu-button" class="fl-button">Menu</button>
-            <nav>
-                <ul class="fl-menu underline">
-                    {% for element in menuitems %}
-                        <li>
-                            {% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage" %}
-                                <button>
-                                    {{ element.localized }}
-                                    <svg width="0.8rem"
-                                         viewBox="0 0 102 60"
-                                         aria-hidden="true"
-                                         focusable="false">
-                                        <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
-                                    </svg>
-                                </button>
-                                {% if element.get_children.count != 0 %}
-                                    <ul class="fl-submenu gap hidden" data-gap="small">
-                                        {% for subelement in element.get_children.specific %}
-                                            <li>
-                                                <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                {% endif %}
-                            {% else %}
-                                <a href="{{ element.localized.url }}">{{ element.localized }}</a>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </nav>
-            {% if settings.global.GlobalSettings.search %}
-                <form id="search"
-                      role="search"
-                      class="fl-search"
-                      action="{{ settings.global.GlobalSettings.search.localized.url }}"
-                      method="get"
-                      autocomplete="off">
-                    <input type="search"
-                           aria-label="search text"
-                           name="query"
-                           placeholder="Suche ...">
-                    <input type="text" name="locale" value={{ LANGUAGE_CODE }} style="display: none;">
-                    <input type="submit" style="display: none;">
-                </form>
+        <a class="fl-flex align-center justify-start gap fl-logo"
+           data-gap="small"
+           href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
+            {% if settings.global.GlobalSettings.logo %}
+                {% image settings.global.GlobalSettings.logo original as logo_image %}
+                <img class="{% if settings.global.GlobalSettings.logo_title %} full{% endif %}"
+                     src="{{ logo_image.url }}"
+                     alt="Logo"
+                     loading="eager"
+                     decoding="sync">
             {% endif %}
-        </div>
+            {{ settings.global.GlobalSettings.logo_title|default:'' }}
+        </a>
+        <button id="menu-button" class="fl-button">Menu</button>
+        <nav>
+            <ul class="fl-menu underline">
+                {% for element in menuitems %}
+                    <li>
+                        {% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage" %}
+                            <button>
+                                {{ element.localized }}
+                                <svg width="0.8rem"
+                                     viewBox="0 0 102 60"
+                                     aria-hidden="true"
+                                     focusable="false">
+                                    <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
+                                </svg>
+                            </button>
+                            {% if element.get_children.count != 0 %}
+                                <ul class="fl-submenu gap hidden" data-gap="small">
+                                    {% for subelement in element.get_children.specific %}
+                                        <li>
+                                            <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% else %}
+                            <a href="{{ element.localized.url }}">{{ element.localized }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+        {% if settings.global.GlobalSettings.search %}
+            <form id="search"
+                  role="search"
+                  class="fl-search"
+                  action="{{ settings.global.GlobalSettings.search.localized.url }}"
+                  method="get"
+                  autocomplete="off">
+                <input type="search"
+                       aria-label="search text"
+                       name="query"
+                       placeholder="Suche ...">
+                <input type="text" name="locale" value={{ LANGUAGE_CODE }} style="display: none;">
+                <input type="submit" style="display: none;">
+            </form>
+        {% endif %}
     </header>
 {% endblock content %}

@@ -13,6 +13,7 @@ class GridBlock(blocks.StructBlock):
         default="medium",
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",
     )
+    accent = blocks.BooleanBlock(required=False)
 
     class Meta:
         group = "Cointainer"

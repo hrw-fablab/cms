@@ -1,6 +1,9 @@
 {% load wagtailimages_tags %}
 {% block content %}
-    <section class="fl-content margin"
+    <section class="fl-content margin padding"
+             data-style="{% if value.accent %}color{% endif %}"
+             data-padding="{% if value.accent %}block{% endif %}"
+             data-padding-size="medium"
              data-width="large"
              data-margin="block-end"
              data-margin-size="large">

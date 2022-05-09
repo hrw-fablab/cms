@@ -66,6 +66,9 @@
     border-color: var(--surface-1);
     color: var(--surface-1);
   }
+*[data-border="round"] {
+  border-radius: 0.7rem;
+}
 .fl-glass {
   background-color: var(--brand);
   color: var(--surface-1)
@@ -358,11 +361,14 @@ footer {
   top: 100vh;
 }
 button {
-	line-height: 1.7;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: var(--size-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-2);
+}
+button:focus svg {
+  transition: 0.4s transform ease;
+  transform: rotate(-180deg);
 }
 svg {
 	pointer-events: none;
@@ -382,15 +388,17 @@ figcaption {
   font-size: 0.8rem;
 }
 details {
-  transition: background-color 0.3s ease;
   position: relative;
+  border: solid var(--surface-2) 0.15rem;
+  border-radius: 0.3rem;
+  padding: var(--size-3);
+  padding-inline: var(--size-4);
 }
 details summary {
   user-select: none;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
-  gap: var(--size-3);
   cursor: pointer;
 }
 summary {
@@ -399,39 +407,43 @@ summary {
 summary::-webkit-details-marker {
   display: none;
 }
-details[open] {
-  animation: sweep 0.3s ease-in-out;
-  animation-fill-mode: forwards;
+details[open] summary svg {
+  transition: 0.4s transform ease;
+  transform: rotate(-180deg);
 }
-details[open] > div {
-  width: 100%;
-  position: absolute;
-  background-color: red;
-}
-.deactive {
-  background-color: red;
-}
-@keyframes sweep {
-  0% {
-    box-shadow: none;
-  }
-  100% {
-    box-shadow: var(--shadow-2);
-  }
+details summary svg {
+  transition: 0.4s transform ease;
+  transform: rotate(0deg);
 }
 form p {
     display: flex;
     flex-direction: column;
   }
 html :where(button, input, textarea, select) {
-  padding: var(--size-2);
-  padding-inline: var(--size-3);
+  border-radius: 0.3rem;
+  padding: var(--size-3);
+  padding-inline: var(--size-4);
 }
 html :where(input, textarea, select) {
-  border: solid 0.1rem var(--brand);
+  border: solid var(--surface-2) 0.15rem;
 }
 .fl-captcha {
   font-size: var(--font-size-2);
+}
+select {
+  background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='18px'%0Afill='white' viewBox='0 0 102 60' aria-hidden='true' focusable='false'%3E%3Cpath d='M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z' /%3E%3C/svg%3E");
+  background-position: calc(100% - 0.75rem) center;
+  background-repeat: no-repeat;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 2.5rem;
+}
+input[type="search"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z'/%3E%3C/svg%3E");
+  background-position: calc(100% - 0.75rem) center;
+  background-repeat: no-repeat;
+  padding-right: 3rem;
 }
 /* purgecss start ignore */
 .fl-grid {
@@ -490,7 +502,7 @@ html :where(input, textarea, select) {
 /* purgecss end ignore */
 .fl-content {
   --desktop: 100rem;
-  margin-inline: max((100% - var(--desktop)) /2, 1.2rem);
+  padding-inline: max((100% - var(--desktop)) /2, 1.2rem);
 }
 .fl-content[data-width="large"] {
   --desktop: 90rem;
@@ -630,7 +642,7 @@ html :where(input, textarea, select) {
     }
   }
 .fl-submenu {
-  transform: translateY(2.2rem);
+  transform: translateY(3rem);
   top: 0;
   padding: var(--size-4);
   padding-inline-end: var(--size-6);
@@ -850,17 +862,15 @@ div:nth-child(odd) .fl-split > :first-child {
     }
   }
 .fl-skip {
-	left: 50%;
-  	position: absolute;
-  	transform: translateY(-200%);
-	transition: transform 0.3s;
-	background-color: var(--brand);
-	color: var(--surface-1);
-	z-index: 20;
-	padding: 1rem;
+  left: 50%;
+  position: absolute;
+  transform: translateY(-400%);
+  transition: transform 0.3s;
+  z-index: 20;
+  padding: 1rem;
 }
 .fl-skip:focus {
-	transform: translateY(0%);
+  transform: translateY(0%);
 }
 .fl-result {
   list-style: none
@@ -940,5 +950,46 @@ div:nth-child(odd) .fl-split > :first-child {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+.fl-calendar details {
+    transition: background-color 0.3s ease;
+    position: relative;
+  }
+.fl-calendar details summary {
+    user-select: none;
+    display: flex;
+    justify-content: space;
+    align-items: center;
+    gap: var(--size-3);
+    cursor: pointer;
+  }
+.fl-calendar summary {
+    list-style: none;
+  }
+.fl-calendar summary::-webkit-details-marker {
+    display: none;
+  }
+.fl-calendar details[open] {
+    animation: sweep 0.3s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+.fl-calendar details[open] > div {
+    width: 100%;
+    position: absolute;
+    background-color: red;
+  }
+.fl-calendar .deactive {
+    background-color: red;
+  }
+.fl-calendar {
+
+  @keyframes sweep {
+    0% {
+      box-shadow: none;
+    }
+    100% {
+      box-shadow: var(--shadow-2);
+    }
   }
 }

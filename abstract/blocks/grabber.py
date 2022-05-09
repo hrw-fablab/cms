@@ -14,6 +14,7 @@ class GrabberBlock(blocks.StructBlock):
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",
     )
     amount = blocks.IntegerBlock(default=5)
+    accent = blocks.BooleanBlock(required=False)
     pages = blocks.ListBlock(blocks.PageChooserBlock())
 
     class Meta:

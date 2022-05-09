@@ -1,64 +1,62 @@
 {% load wagtailcore_tags i18n wagtailsettings_tags %}
 {% wagtail_site as current_site %}
 {% block content %}
-    <footer class="margin padding"
+    <footer class="fl-content fl-flex gap margin padding"
+            data-direction="column"
+            data-gap="small"
             data-style="color"
             data-margin="block-start"
             data-margin-size="medium"
             data-padding="block"
             data-padding-size="medium">
-        <div class="fl-content fl-flex gap"
-             data-direction="column"
-             data-gap="small">
-            {% include "atoms/sponsors.html" with value=settings.global.GlobalSettings %}
-            <div class="fl-flex gap" data-gap="large">
-                {% include "atoms/adress.html" with value=settings.global.GlobalSettings %}
-                {% include "atoms/social.html" with value=settings.global.GlobalSettings %}
-            </div>
-            <div class="fl-flex gap" data-wrap="wrap" data-gap="medium">
-                <nav>
-                    <ul class="fl-menu">
-                        <li>
-                            <a href="{{ settings.global.GlobalSettings.contact.localized.url }}">
-                                {% if LANGUAGE_CODE == "en" %}
-                                    Contact
-                                {% else %}
-                                    Kontakt
-                                {% endif %}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ settings.global.GlobalSettings.impressum.localized.url }}">
-                                {% if LANGUAGE_CODE == "en" %}
-                                    Imprint
-                                {% else %}
-                                    Impressum
-                                {% endif %}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ settings.global.GlobalSettings.data_protection.localized.url }}">
-                                {% if LANGUAGE_CODE == "en" %}
-                                    Data Privacy
-                                {% else %}
-                                    Datenschutzerklaerung
-                                {% endif %}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ settings.global.GlobalSettings.intern_website.url }}"
-                               style="margin-inline-start: auto;">
-                                {% if LANGUAGE_CODE == "en" %}
-                                    Internal
-                                {% else %}
-                                    Intern
-                                {% endif %}
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                {% include "molecules/language.html" %}
-            </div>
+        {% include "atoms/sponsors.html" with value=settings.global.GlobalSettings %}
+        <div class="fl-flex gap" data-gap="large">
+            {% include "atoms/adress.html" with value=settings.global.GlobalSettings %}
+            {% include "atoms/social.html" with value=settings.global.GlobalSettings %}
+        </div>
+        <div class="fl-flex align-center gap" data-wrap="wrap" data-gap="medium">
+            <nav>
+                <ul class="fl-menu">
+                    <li>
+                        <a href="{{ settings.global.GlobalSettings.contact.localized.url }}">
+                            {% if LANGUAGE_CODE == "en" %}
+                                Contact
+                            {% else %}
+                                Kontakt
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ settings.global.GlobalSettings.impressum.localized.url }}">
+                            {% if LANGUAGE_CODE == "en" %}
+                                Imprint
+                            {% else %}
+                                Impressum
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ settings.global.GlobalSettings.data_protection.localized.url }}">
+                            {% if LANGUAGE_CODE == "en" %}
+                                Data Privacy
+                            {% else %}
+                                Datenschutzerklaerung
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ settings.global.GlobalSettings.intern_website.url }}"
+                           style="margin-inline-start: auto;">
+                            {% if LANGUAGE_CODE == "en" %}
+                                Internal
+                            {% else %}
+                                Intern
+                            {% endif %}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            {% include "molecules/language.html" %}
         </div>
     </footer>
 {% endblock content %}

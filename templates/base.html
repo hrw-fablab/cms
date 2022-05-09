@@ -66,6 +66,7 @@
         <link rel="canonical" href="{{ page.full_url }}">
     </head>
     <body class="fl-body">
+        {% block banner %}{% endblock %}
         {% block svg %}{% endblock %}
         {% wagtailuserbar %}
         {% include "organisms/navigation.html" %}

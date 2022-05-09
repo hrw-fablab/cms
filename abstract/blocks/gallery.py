@@ -28,6 +28,7 @@ class GalleryBlock(blocks.StructBlock):
         default="medium",
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",
     )
+    accent = blocks.BooleanBlock(required=False)
     cards = GalleryCards()
 
     class Meta:

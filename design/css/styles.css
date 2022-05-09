@@ -66,6 +66,9 @@
     border-color: var(--surface-1);
     color: var(--surface-1);
   }
+*[data-border="round"] {
+  border-radius: 0.7rem;
+}
 .fl-glass {
   background-color: var(--brand);
   color: var(--surface-1)
@@ -490,7 +493,7 @@ html :where(input, textarea, select) {
 /* purgecss end ignore */
 .fl-content {
   --desktop: 100rem;
-  margin-inline: max((100% - var(--desktop)) /2, 1.2rem);
+  padding-inline: max((100% - var(--desktop)) /2, 1.2rem);
 }
 .fl-content[data-width="large"] {
   --desktop: 90rem;
@@ -850,17 +853,15 @@ div:nth-child(odd) .fl-split > :first-child {
     }
   }
 .fl-skip {
-	left: 50%;
-  	position: absolute;
-  	transform: translateY(-200%);
-	transition: transform 0.3s;
-	background-color: var(--brand);
-	color: var(--surface-1);
-	z-index: 20;
-	padding: 1rem;
+  left: 50%;
+  position: absolute;
+  transform: translateY(-400%);
+  transition: transform 0.3s;
+  z-index: 20;
+  padding: 1rem;
 }
 .fl-skip:focus {
-	transform: translateY(0%);
+  transform: translateY(0%);
 }
 .fl-result {
   list-style: none

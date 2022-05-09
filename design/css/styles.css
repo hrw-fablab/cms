@@ -766,7 +766,7 @@ div:nth-child(odd) .fl-split > :first-child {
     .fl-hero .fl-content {
       width: 100%;
       height: 100%;
-      margin-inline: 0;
+      padding-inline: 0;
     }
   }
 .fl-hero-content {
@@ -848,7 +848,7 @@ div:nth-child(odd) .fl-split > :first-child {
     }
 
     .fl-banner .fl-content {
-      margin-inline: 0;
+      padding-inline: 0;
     }
 
     .fl-banner :where(picture, img, figure) {

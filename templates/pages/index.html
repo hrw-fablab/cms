@@ -2,10 +2,15 @@
 {% load wagtailcore_tags %}
 {% block content %}
     <main class="fl-main" id="main">
-        <h1 class="text-centered margin"
-            data-margin="block-end"
-            data-margin-size="medium">{{ page.heading }}</h1>
-        <div class="fl-grid gap" data-size="large" data-gap="medium">
+        {% if page.heading %}
+            <h1 class="text-centered margin"
+                data-margin="block-end"
+                data-margin-size="medium">{{ page.heading }}</h1>
+        {% endif %}
+        <div class="fl-content fl-grid gap"
+             data-width="large"
+             data-size="large"
+             data-gap="medium">
             {% for page in children %}
                 {% include "molecules/card.html" with value=page class="aspect-widescreen" %}
             {% endfor %}

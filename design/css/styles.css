@@ -421,10 +421,11 @@ form p {
   }
 html :where(button, input, textarea, select) {
   border-radius: 0.3rem;
-  padding: var(--size-3);
-  padding-inline: var(--size-4);
+  color: var(--text-1)
 }
 html :where(input, textarea, select) {
+  padding: var(--size-3);
+  padding-inline: var(--size-4);
   border: solid var(--surface-2) 0.15rem;
 }
 .fl-captcha {
@@ -606,7 +607,7 @@ input[type="search"] {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 2rem
+  gap: 2.5rem
 }
 @media (max-width: 1024px) {
     .fl-menu {
@@ -642,7 +643,7 @@ input[type="search"] {
     }
   }
 .fl-submenu {
-  transform: translateY(3rem);
+  transform: translateY(2.3rem);
   top: 0;
   padding: var(--size-4);
   padding-inline-end: var(--size-6);

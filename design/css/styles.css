@@ -361,11 +361,14 @@ footer {
   top: 100vh;
 }
 button {
-	line-height: 1.7;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: var(--size-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-2);
+}
+button:focus svg {
+  transition: 0.4s transform ease;
+  transform: rotate(-180deg);
 }
 svg {
 	pointer-events: none;
@@ -639,7 +642,7 @@ input[type="search"] {
     }
   }
 .fl-submenu {
-  transform: translateY(2.2rem);
+  transform: translateY(3rem);
   top: 0;
   padding: var(--size-4);
   padding-inline-end: var(--size-6);

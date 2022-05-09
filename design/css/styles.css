@@ -814,6 +814,7 @@ div:nth-child(odd) .fl-split > :first-child {
   }
 .fl-banner :where(picture, img, figure) {
     height: 500px;
+    border-radius: 0;
   }
 .fl-banner > :first-child {
     z-index: 1;

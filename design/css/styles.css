@@ -677,7 +677,8 @@ li {
 .fl-logo img {
     width: auto;
     max-height: var(--size-fluid-2);
-    box-shadow: none;
+    filter: none;
+    border-radius: none;
   }
 .fl-logo svg {
     fill: var(--brand);

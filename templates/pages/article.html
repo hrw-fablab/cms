@@ -3,7 +3,7 @@
 {% block content %}
     <main class="fl-main" id="main">
         <article class="fl-content margin aspect-widescreen"
-                 data-width="medium"
+                 data-width="small"
                  data-margin="block-start"
                  data-margin-size="medium">
             {% if page.image %}
@@ -48,7 +48,7 @@
                     {% include "atoms/time.html" with value=page.date %}
                 </div>
             </header>
-            <section class="fl-content fl-richtext" data-width="small">
+            <section class="fl-richtext">
                 {{ page.body|richtext }}
             </section>
         </article>

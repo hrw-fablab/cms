@@ -575,6 +575,8 @@ input[type="search"] {
   }
 .fl-navigation #menu-button {
     display: none;
+    padding: var(--size-3);
+    border: solid var(--surface-2) 0.15rem;
   }
 @media (max-width: 1024px) {
     .fl-navigation #menu-button {
@@ -686,6 +688,11 @@ li {
   }
 .fl-logo .full {
     max-height: var(--size-fluid-4);
+  }
+@media (max-width: 1024px) {
+.fl-logo {
+    margin-inline-end: inherit
+}
   }
 .fl-split {
   display: grid;

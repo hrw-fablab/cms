@@ -242,13 +242,13 @@
   --padding-size: var(--size-2);
 }
 .text-start {
-	text-align: start;
+  text-align: start;
 }
 .text-centered {
-	text-align: center;
+  text-align: center;
 }
 .text-end {
-	text-align: end;
+  text-align: end;
 }
 /* purgecss start ignore */
 *,
@@ -296,7 +296,6 @@ h6 {
 }
 a {
   color: inherit;
-  width: max-content;
 }
 .grecaptcha-badge {
   visibility: hidden;
@@ -318,6 +317,7 @@ body :where(h1, h2, h3, h4) {
   font-weight: bold;
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
+  scroll-margin-top: 300px;
 }
 h1 {
   font-size: var(--font-size-6);
@@ -691,9 +691,6 @@ li {
   display: grid;
   grid-template-columns: 1fr 1fr
 }
-.fl-split a {
-    width: 100%;
-  }
 @media (max-width: 1024px) {
     .fl-split {
       grid-template-columns: 1fr !important;
@@ -843,16 +840,17 @@ div:nth-child(odd) .fl-split > :first-child {
     background-position: right bottom;
   }
 @media (max-width: 768px) {
-    .fl-banner {
-      place-items: inherit;
-    }
-
-    .fl-banner .fl-content {
-      padding-inline: 0;
-    }
-
     .fl-banner :where(picture, img, figure) {
       height: 100%;
+    }
+
+    .fl-banner > div {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
     }
 
     .fl-banner *[data-style="color"] {

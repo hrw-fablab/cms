@@ -9,14 +9,13 @@
                    aria-label="Link zu dieser Ueberschrift"
                    aria-describedby="{{ value|cut:" " }}"
                    href="#{{ value|cut:" " }}">#</a>
-                <h2 id="{{ value|cut:" " }}"  style="scroll-margin-top: 300px;">{{ value }}</h2>
+                <h2 id="{{ value|cut:" " }}">{{ value }}</h2>
             </div>
         {% else %}
             <h2 class="fl-flex align-center justify-center margin"
                 id="{{ value|cut:" " }}"
                 data-margin="block-end"
-                data-margin-size="medium"
-                style="scroll-margin-top: 300px;">
+                data-margin-size="medium">
                 {{ value }}
             </h2>
         {% endif %}

@@ -693,21 +693,17 @@ li {
 }
 @media (max-width: 1024px) {
     .fl-split {
-      grid-template-columns: 1fr !important;
+      grid-template-columns: 1fr;
       gap: var(--size-4);
     }
 
     .fl-split > :first-child {
       order: 0 !important;
     }
-
-    .fl-split img {
-      aspect-ratio: var(--aspect-widescreen) !important;
-    }
   }
-div:nth-child(odd) .fl-split > :first-child {
-    order: 1;
-  }
+.fl-split:nth-child(odd) > :first-child {
+  order: 1;
+}
 .fl-profile img {
 		width: var(--size-6);
 		height: var(--size-6);

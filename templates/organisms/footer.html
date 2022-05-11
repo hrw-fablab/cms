@@ -13,8 +13,8 @@
             {% include "atoms/social.html" with value=settings.global.GlobalSettings %}
         </div>
         <div class="flex align-center gap" data-wrap="wrap" data-gap="medium">
-            <nav>
-                <ul class="menu">
+            <nav class="menu">
+                <ul>
                     <li>
                         <a href="{{ settings.global.GlobalSettings.contact.localized.url }}">
                             {% if LANGUAGE_CODE == "en" %}

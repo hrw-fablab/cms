@@ -20,8 +20,8 @@
             {{ settings.global.GlobalSettings.logo_title|default:'' }}
         </a>
         <button id="menu-button" class="button">Menu</button>
-        <nav>
-            <ul class="menu underline">
+        <nav class="menu">
+            <ul class="underline gap" style="--gap: 2.5rem">
                 {% for element in menuitems %}
                     <li>
                         {% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage" %}
@@ -35,7 +35,7 @@
                                 </svg>
                             </button>
                             {% if element.get_children.count != 0 %}
-                                <ul class="submenu gap hidden" data-gap="small">
+                                <ul class="submenu gap hidden" data-gap="small" data-padding="small">
                                     {% for subelement in element.get_children.specific %}
                                         <li>
                                             <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>

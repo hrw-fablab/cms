@@ -1,9 +1,8 @@
 {% block content %}
     {% if value %}
         {% if anchor %}
-            <div class="fl-flex align-center justify-center gap margin"
-                 data-margin="block-end"
-                 data-margin-size="medium"
+            <div class="fl-flex align-center justify-center gap "
+                 data-margin-block-end="medium"
                  data-gap="small">
                 <a style="text-decoration: none;"
                    aria-label="Link zu dieser Ueberschrift"
@@ -12,10 +11,9 @@
                 <h2 id="{{ value|cut:" " }}">{{ value }}</h2>
             </div>
         {% else %}
-            <h2 class="fl-flex align-center justify-center margin"
+            <h2 class="fl-flex align-center justify-center"
                 id="{{ value|cut:" " }}"
-                data-margin="block-end"
-                data-margin-size="medium">
+                data-margin-block-end="medium">
                 {{ value }}
             </h2>
         {% endif %}

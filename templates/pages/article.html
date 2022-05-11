@@ -1,11 +1,8 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
-    <main class="fl-main" id="main">
-        <article class="fl-content margin aspect-widescreen"
-                 data-width="small"
-                 data-margin="block-start"
-                 data-margin-size="medium">
+    <main class="fl-main" id="main" data-margin-block-start="medium">
+        <article class="fl-content aspect-widescreen" data-width="small">
             {% if page.image %}
                 <figure>
                     <picture>
@@ -33,16 +30,15 @@
                     </figcaption>
                 </figure>
             {% endif %}
-            <header class="fl-flex margin"
+            <header class="fl-flex"
                     data-direction="column"
-                    data-margin="block-end"
-                    data-margin-size="medium">
+                    data-margin-block-end="medium">
                 {% if page.tag %}
                     <p>
                         {{ page.tag }}
                     </p>
                 {% endif %}
-                <h1 class="margin" data-margin="block" data-margin-size="small">{{ page.title }}</h1>
+                <h1 data-margin-block="small">{{ page.title }}</h1>
                 <div class="fl-flex gap" data-gap="medium">
                     {% include "atoms/profile.html" with value=page.author %}
                     {% include "atoms/time.html" with value=page.date %}

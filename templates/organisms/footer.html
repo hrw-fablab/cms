@@ -1,12 +1,11 @@
 {% load wagtailcore_tags i18n wagtailsettings_tags %}
 {% wagtail_site as current_site %}
 {% block content %}
-    <footer class="fl-content fl-flex gap margin padding"
+    <footer class="fl-content fl-flex gap padding"
             data-direction="column"
             data-gap="small"
             data-style="color"
-            data-margin="block-start"
-            data-margin-size="medium"
+            data-margin-block-start="medium"
             data-padding="block"
             data-padding-size="medium">
         {% include "atoms/sponsors.html" with value=settings.global.GlobalSettings %}

@@ -1,17 +1,11 @@
 {% load filter_tag %}
 {% block content %}
-    <section class="fl-content margin"
-             data-width="large"
-             data-margin="block-end"
-             data-margin-size="large">
+    <section class="fl-content" data-width="large" data-margin-block-end="large">
         {% include "atoms/heading.html" with value=value.title anchor=True %}
         {% if value.filter and value.headings %}
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}
-                <div role="region"
-                     class="margin"
-                     data-margin="block"
-                     data-margin-size="large">
+                <div role="region" data-margin-block-end="large">
                     {% if role.grouper != None %}
                         {% include "atoms/heading.html" with value=value.title anchor=True %}
                     {% else %}
@@ -41,10 +35,9 @@
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}
                 <div role="region"
-                     class="fl-content margin"
+                     class="fl-content"
                      data-size="small"
-                     data-margin="block"
-                     data-margin-size="large">
+                     data-margin-block-end="large">
                     {% if role.grouper != None %}
                         {% include "atoms/heading.html" with value=role.grouper anchor=True %}
                     {% else %}

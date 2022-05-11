@@ -1,15 +1,8 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
 {% block content %}
-    <main class="fl-main margin"
-          id="main"
-          data-margin="block-start"
-          data-margin-size="medium">
-        {% if page.heading %}
-            <h1 class="text-centered margin"
-                data-margin="block-end"
-                data-margin-size="medium">{{ page.heading }}</h1>
-        {% endif %}
+    <main class="fl-main" id="main"  data-margin-block-start="medium">
+        {% if page.heading %}<h1 class="text-centered" data-margin-block-end="medium">{{ page.heading }}</h1>{% endif %}
         <div class="fl-content fl-grid gap"
              data-width="large"
              data-size="large"

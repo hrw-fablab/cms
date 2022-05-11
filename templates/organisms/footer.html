@@ -1,7 +1,7 @@
 {% load wagtailcore_tags i18n wagtailsettings_tags %}
 {% wagtail_site as current_site %}
 {% block content %}
-    <footer class="fl-content fl-flex gap padding"
+    <footer class="content flex gap padding"
             data-direction="column"
             data-gap="small"
             data-style="color"
@@ -9,13 +9,13 @@
             data-padding="block"
             data-padding-size="medium">
         {% include "atoms/sponsors.html" with value=settings.global.GlobalSettings %}
-        <div class="fl-flex gap" data-gap="large">
+        <div class="flex gap" data-gap="large">
             {% include "atoms/adress.html" with value=settings.global.GlobalSettings %}
             {% include "atoms/social.html" with value=settings.global.GlobalSettings %}
         </div>
-        <div class="fl-flex align-center gap" data-wrap="wrap" data-gap="medium">
+        <div class="flex align-center gap" data-wrap="wrap" data-gap="medium">
             <nav>
-                <ul class="fl-menu">
+                <ul class="menu">
                     <li>
                         <a href="{{ settings.global.GlobalSettings.contact.localized.url }}">
                             {% if LANGUAGE_CODE == "en" %}

@@ -1,12 +1,12 @@
 {% block content %}
-    <section class="fl-content padding"
+    <section class="content padding"
              data-style="{% if value.accent %}color{% endif %}"
              data-padding="{% if value.accent %}block{% endif %}"
              data-padding-size="medium"
              data-width="large"
              data-margin-block-end="large">
         {% include "atoms/heading.html" with value=value.title anchor=True %}
-        <div class="fl-grid gap"
+        <div class="grid gap"
              data-gap="medium"
              data-size="{% if value.layout == 'magazine' %}small{% else %}medium{% endif %}"
              data-layout="{{ value.layout }}">

@@ -1,13 +1,13 @@
 {% load wagtailcore_tags i18n wagtailimages_tags %}
 {% wagtail_site as current_site %}
 {% block content %}
-    <a class="fl-skip" data-style="color" data-border="round" href="#main">Skip to content</a>
-    <header class="fl-content fl-navigation fl-flex gap align-center justify-between padding"
+    <a class="skip" data-style="color" data-border="round" href="#main">Skip to content</a>
+    <header class="content navigation flex gap align-center justify-between padding"
             data-gap="small"
             data-wrap="wrap"
             data-padding="all"
             data-padding-size="small">
-        <a class="fl-flex align-center justify-start gap fl-logo"
+        <a class="flex align-center justify-start gap logo"
            data-gap="small"
            href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
             {% if settings.global.GlobalSettings.logo %}
@@ -20,9 +20,9 @@
             {% endif %}
             {{ settings.global.GlobalSettings.logo_title|default:'' }}
         </a>
-        <button id="menu-button" class="fl-button">Menu</button>
+        <button id="menu-button" class="button">Menu</button>
         <nav>
-            <ul class="fl-menu underline">
+            <ul class="menu underline">
                 {% for element in menuitems %}
                     <li>
                         {% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage" %}
@@ -36,7 +36,7 @@
                                 </svg>
                             </button>
                             {% if element.get_children.count != 0 %}
-                                <ul class="fl-submenu gap hidden" data-gap="small">
+                                <ul class="submenu gap hidden" data-gap="small">
                                     {% for subelement in element.get_children.specific %}
                                         <li>
                                             <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>
@@ -54,7 +54,7 @@
         {% if settings.global.GlobalSettings.search %}
             <form id="search"
                   role="search"
-                  class="fl-search"
+                  class="search"
                   action="{{ settings.global.GlobalSettings.search.localized.url }}"
                   method="get"
                   autocomplete="off">

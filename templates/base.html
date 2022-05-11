@@ -42,7 +42,7 @@
             --surface-2: {{settings.global.GlobalSettings.surface_color_two}};
         }
 
-        .fl-accent {
+        .accent {
             background-size: cover;
             background-image: url("{%static 'svg/background.svg'%}");
             background-attachment: fixed;
@@ -65,7 +65,7 @@
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
         <link rel="canonical" href="{{ page.full_url }}">
     </head>
-    <body class="fl-body">
+    <body class="body">
         {% block banner %}{% endblock %}
         {% block svg %}{% endblock %}
         {% wagtailuserbar %}

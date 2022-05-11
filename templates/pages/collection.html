@@ -67,11 +67,11 @@
 			box-shadow: inherit;
 		}
 
-		.fl-collection {
+		.collection {
 			flex-direction: column;
 		}
 
-		.fl-collection li {
+		.collection li {
 			width: 100%;
 		}
 
@@ -108,7 +108,7 @@
             <h1>HRW-FabLab</h1>
         </header>
         <main>
-            <ul class="fl-collection">
+            <ul class="collection">
                 {% for element in page.collection_links.all %}
                     {% if element.expire %}
                         {% if element.is_visible == False %}
@@ -132,7 +132,7 @@
             </ul>
         </main>
         <footer>
-            <ul class="fl-social">
+            <ul class="social">
                 <li>
                     <a href="https://www.instagram.com/fablab_hrwbottrop/">
                         <svg viewBox="0 0 24 24">

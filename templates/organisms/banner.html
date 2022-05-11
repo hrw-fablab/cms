@@ -1,10 +1,8 @@
 {% load wagtailimages_tags %}
 {% block content %}
-    <section class="fl-banner" data-margin-block-end="medium">
+    <section class="banner" data-margin-block-end="medium">
         {% if value.title or value.text %}
-            <div class="fl-glass padding"
-                 data-padding="all"
-                 data-padding-size="medium">
+            <div class="glass padding" data-padding="all" data-padding-size="medium">
                 {% if value.date %}<time>Startdatum: {{ value.date }}</time>{% endif %}
                 {% if value.number %}
                     <p>
@@ -12,14 +10,14 @@
                     </p>
                 {% endif %}
                 {% if value.title %}<h2>{{ value.title }}</h2>{% endif %}
-                <div class="fl-flex gap" data-gap="small">
+                <div class="flex gap" data-gap="small">
                     {% for link in page.project_links.all %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
                 </div>
             </div>
         {% endif %}
         {% if value.illustration %}
             {% image value.image height-700 format-webp as illustration %}
-            <div class="fl-illustration"
+            <div class="illustration"
                  data-style="color"
                  style="background-image: url('{{ illustration.url }}')"></div>
         {% elif value.image %}
@@ -51,7 +49,7 @@
                 </figcaption>
             </figure>
         {% else %}
-            <div class="fl-accent" data-style="color"></div>
+            <div class="accent" data-style="color"></div>
         {% endif %}
     </section>
 {% endblock content %}

@@ -2,7 +2,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block content %}
     {% if LANGUAGE_CODE == "de" %}
-        <article class="fl-card" data-type="person">
+        <article class="card" data-type="person">
             {% load wagtailimages_tags %}
             <picture>
                 {% image value.image fill-500x500 format-webp as image_768 %}
@@ -44,7 +44,7 @@
             </div>
         </article>
     {% else %}
-        <section class="fl-card" data-type="person">
+        <section class="card" data-type="person">
             {% load wagtailimages_tags %}
             <picture>
                 {% image value.image fill-500x500 format-webp as image_768 %}

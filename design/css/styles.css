@@ -271,6 +271,9 @@
 *[data-padding="tiny"] {
   --padding: var(--size-2);
 }
+*[data-padding-block] {
+  padding-block: var(--padding-block);
+}
 *[data-padding-block="large"] {
   --padding-block: var(--size-fluid-6);
 }

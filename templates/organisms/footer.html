@@ -1,13 +1,12 @@
 {% load wagtailcore_tags i18n wagtailsettings_tags %}
 {% wagtail_site as current_site %}
 {% block content %}
-    <footer class="content flex gap padding"
+    <footer class="content flex gap"
             data-direction="column"
             data-gap="small"
             data-style="color"
             data-margin-block-start="medium"
-            data-padding="block"
-            data-padding-size="medium">
+            data-padding-block="medium">
         {% include "atoms/sponsors.html" with value=settings.global.GlobalSettings %}
         <div class="flex gap" data-gap="large">
             {% include "atoms/adress.html" with value=settings.global.GlobalSettings %}

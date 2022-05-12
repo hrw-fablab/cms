@@ -68,8 +68,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "wagtailcache.cache.UpdateCacheMiddleware",
     "django.middleware.gzip.GZipMiddleware",
+    "wagtailcache.cache.UpdateCacheMiddleware",
     "htmlmin.middleware.HtmlMinifyMiddleware",
     "htmlmin.middleware.MarkRequestMiddleware",
     "django.middleware.security.SecurityMiddleware",

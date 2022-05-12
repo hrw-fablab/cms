@@ -40,7 +40,6 @@ select {
 }
 
 input[type="checkbox"] {
-  background-color: red;
   width: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
   height: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
 }

@@ -111,6 +111,18 @@ form p {
   width: 100%;
   border-radius: 0.7rem;
   padding: 1rem;
+  font-size: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
+}
+
+.error {
+  text-align: center;
+  margin-bottom: 3rem;
+  background-color: red;
+  color: white;
+  width: 100%;
+  border-radius: 0.7rem;
+  padding: 1rem;
+  font-size: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
 }
 
 @media (max-width: 1440px) {

@@ -3,6 +3,11 @@
 {% block title %}HRW-FabLab Einloggen{% endblock %}
 {% block content %}
     <main>
+        {% if form.errors %}
+            <div class="error">
+                {% blocktrans trimmed %}Your {{ username_field }} and password didn't match. Please try again.{% endblocktrans %}
+            </div>
+        {% endif %}
         {% if messages %}
             <div class="messages">
                 <ul>

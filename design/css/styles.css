@@ -956,13 +956,13 @@ cite {
       height: 100%;
     }
 
-    .banner > div {
+    .banner > .glass {
       width: 100%;
       height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      justify-content: center;
+    }
+
+    .banner > .illustration {
+      background-image: none !important;
     }
 
     .banner *[data-style="color"] {

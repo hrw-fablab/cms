@@ -3,7 +3,7 @@
 {% load wagtailimages_tags %}
 {% block content %}
     <main class="main" id="main">
-        {% include "organisms/banner.html" with value=page centered=False %}
+        {% include "organisms/banner.html" with value=page start=True %}
         {% for block in page.body %}
             {% include_block block %}
         {% endfor %}

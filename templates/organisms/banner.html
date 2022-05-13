@@ -2,7 +2,9 @@
 {% block content %}
     <section class="banner" data-margin-block-end="medium">
         {% if value.title or value.text %}
-            <div class="glass" data-padding="medium">
+            <div class="flex {% if start %}align-start{% else %}align-center {% endif %} justify-center glass"
+                 data-direction="column"
+                 data-padding="medium">
                 {% if value.date %}<time>Startdatum: {{ value.date }}</time>{% endif %}
                 {% if value.number %}
                     <p>

@@ -474,7 +474,8 @@ body {
   background-size: 20%;
 }
 a {
-  text-decoration-thickness: 0.1em;
+  text-decoration-thickness: 0.1rem;
+  transition: color 200ms ease-in-out;
 }
 a:hover {
   color: var(--brand);
@@ -501,6 +502,10 @@ button {
 button:focus svg {
   transition: 0.4s transform ease;
   transform: rotate(-180deg);
+}
+button:not(:focus) svg {
+  transition: 0.4s transform ease;
+  transform: rotate(0deg);
 }
 svg {
 	pointer-events: none;
@@ -710,13 +715,13 @@ cite {
   top: 0;
   z-index: 10
 }
-.navigation a {
-    text-decoration: none;
-    text-decoration-thickness: 0.1em;
+.navigation :where(a, button) {
+    text-decoration: underline 0.1rem transparent;
+    transition: text-decoration-color 250ms ease-in, fill 200ms ease-in;
   }
 .navigation :hover:where(button, a) {
     color: var(--brand);
-    text-decoration: underline;
+    text-decoration-color: var(--brand);
     fill: var(--brand);
   }
 .navigation nav {

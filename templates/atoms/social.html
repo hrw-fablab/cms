@@ -4,7 +4,7 @@
         <ul>
             {% for element in value.social.all %}
                 <li>
-                    <a href="element.url">{{ element.title }}</a>
+                    <a href="{{ element.url }}">{{ element.title }}</a>
                 </li>
             {% endfor %}
         </ul>

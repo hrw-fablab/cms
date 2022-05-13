@@ -906,9 +906,7 @@ cite {
 @media (max-width: 768px) {
 .hero-content {
     width: inherit;
-    height: inherit;
-    padding-block-start: var(--size-fluid-7);
-    padding-block-end: var(--size-fluid-5)
+    height: inherit
 }
 
     .hero-content h1 {

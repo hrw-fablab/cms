@@ -596,10 +596,12 @@ blockquote {
 blockquote p::before {
     content: open-quote;
     color: var(--brand);
+    padding: var(--size-3);
   }
 blockquote p::after {
     content: close-quote;
     color: var(--brand);
+    padding: var(--size-3);
   }
 cite {
   font-size: var(--font-size-3);

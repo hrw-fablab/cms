@@ -588,6 +588,18 @@ input[type="search"] {
   background-repeat: no-repeat;
   padding-right: 3rem;
 }
+@media (max-width: 1024px) {
+footer {
+    flex-direction: column
+}
+
+    footer div {
+      flex-direction: column;
+      gap: var(--size-6) !important;
+      margin-inline-start: inherit !important;
+      align-items: start !important;
+    }
+  }
 blockquote {
   text-align: center;
   quotes: "“" "“" "“" "“";
@@ -747,6 +759,10 @@ cite {
       padding: inherit;
     }
 
+    .navigation ul li:not(:last-child) {
+      border-block-end: solid #ddd 0.15rem;
+    }
+
     .navigation form {
       width: 100%;
       display: none
@@ -790,10 +806,6 @@ cite {
       align-items: start;
       gap: inherit;
       flex: 1;
-    }
-
-    .menu ul li:not(:last-child) {
-      border-block-end: solid #ddd 0.15rem;
     }
 
     .menu li {

@@ -1,22 +1,25 @@
 {% if value.sponsor.all|length != 0 %}
-    <div class="flex gap" data-gap="small" style="margin-inline-start: auto">
-        {% for element in value.sponsor.all %}
-            {% load wagtailimages_tags %}
-            {% if LANGUAGE_CODE == "en" %}
-                {% image element.logo_en width-200 format-webp webpquality-60 as sp_image %}
-                <img class="contain"
-                     src="{{ sp_image.url }}"
-                     alt="{{ element.logo_alt }}"
-                     loading="lazy"
-                     decoding="async">
-            {% else %}
-                {% image element.logo width-200 format-webp webpquality-60 as sp_image %}
-                <img class="contain"
-                     src="{{ sp_image.url }}"
-                     alt="{{ element.logo_alt }}"
-                     loading="lazy"
-                     decoding="async">
-            {% endif %}
-        {% endfor %}
+    <div style="margin-inline-start: auto">
+        <h3 data-margin-block-end="small">Sponsoren</h3>
+        <div class="flex gap" data-gap="small" style="margin-inline-start: auto">
+            {% for element in value.sponsor.all %}
+                {% load wagtailimages_tags %}
+                {% if LANGUAGE_CODE == "en" %}
+                    {% image element.logo_en width-200 format-webp webpquality-60 as sp_image %}
+                    <img class="contain"
+                         src="{{ sp_image.url }}"
+                         alt="{{ element.logo_alt }}"
+                         loading="lazy"
+                         decoding="async">
+                {% else %}
+                    {% image element.logo width-200 format-webp webpquality-60 as sp_image %}
+                    <img class="contain"
+                         src="{{ sp_image.url }}"
+                         alt="{{ element.logo_alt }}"
+                         loading="lazy"
+                         decoding="async">
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 {% endif %}

@@ -1,18 +1,21 @@
 {% load wagtailcore_tags i18n wagtailsettings_tags %}
 {% wagtail_site as current_site %}
-<footer class="content flex gap"
+<footer style="background-color: var(--text-1)"
+        class="flex gap"
         data-direction="column"
-        data-gap="medium"
-        data-style="color"
-        data-margin-block-start="medium"
-        data-padding-block="medium">
-    <div class="flex gap" data-gap="large">
+        data-gap="small"
+        data-style="color">
+    <div class="content flex align-start gap"
+         data-padding-block="medium"
+         data-wrap="wrap"
+         data-gap="large">
         {% include "atoms/adress.html" with value=settings.global.GlobalSettings %}
         {% include "atoms/social.html" with value=settings.global.GlobalSettings %}
         {% include "atoms/sponsors.html" with value=settings.global.GlobalSettings %}
     </div>
-    <div class="flex align-center gap"
-         data-padding-block-start="small"
+    <div style="background-color: black"
+         class="content flex align-center gap"
+         data-padding-block="medium"
          data-wrap="wrap"
          data-gap="medium">
         <nav class="menu">

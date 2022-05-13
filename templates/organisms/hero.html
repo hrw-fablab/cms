@@ -1,53 +1,51 @@
 {% load wagtailimages_tags %}
-{% block content %}
-    <section class="hero large" data-margin-block-end="medium">
-        {% if value.title or value.text %}
-            <div class="content">
-                <div class="hero-content flex justify-center glass gap"
-                     data-gap="small"
-                     data-padding="medium"
-                     data-direction="column">
-                    {% if value.title %}<h1>{{ value.title }}</h1>{% endif %}
-                    {% if value.text %}
-                        <p>
-                            {{ value.text }}
-                        </p>
-                    {% endif %}
-                </div>
+<section class="hero large" data-margin-block-end="medium">
+    {% if value.title or value.text %}
+        <div class="content">
+            <div class="hero-content flex justify-center glass gap"
+                 data-gap="small"
+                 data-padding="medium"
+                 data-direction="column">
+                {% if value.title %}<h1>{{ value.title }}</h1>{% endif %}
+                {% if value.text %}
+                    <p>
+                        {{ value.text }}
+                    </p>
+                {% endif %}
             </div>
-        {% endif %}
-        {% if value.video %}
-            <video src="{{ value.video.url }}" muted autoplay loop>
-            </video>
-        {% elif value.image %}
-            <figure>
-                <picture>
-                    {% image value.image fill-1920x700 format-webp webpquality-80 as image_1920 %}
-                    {% image value.image fill-1440x700 format-webp webpquality-60 as image_1440 %}
-                    {% image value.image fill-1024x700 format-webp webpquality-60 as image_1024 %}
-                    {% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
-                    {% image value.image fill-260x200 format-webp webpquality-60 as image_480 %}
-                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w, {{ image_1440.url }} 1440w, {{ image_1920.url }} 1920w"
-                            sizes=" (min-width: 1800px) 1920px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
-                            type="image/webp">
-                    {% image value.image fill-1920x700 format-jpeg as image_1920 %}
-                    {% image value.image fill-1440x700 format-jpeg as image_1440 %}
-                    {% image value.image fill-1024x700 format-jpeg as image_1024 %}
-                    {% image value.image fill-768x576 format-jpeg as image_768 %}
-                    {% image value.image fill-260x200 format-jpeg as image_480 %}
-                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w, {{ image_1440.url }} 1440w, {{ image_1920.url }} 1920w"
-                            sizes=" (min-width: 1800px) 1920px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
-                            type="image/jpg">
-                    <img src="{{ image_480.url }}"
-                         alt="{{ image_480.alt }}"
-                         decoding="sync"
-                         loading="eager"
-                         rel="preload">
-                </picture>
-                <figcaption>
-                    {{ value.image.credit }}
-                </figcaption>
-            </figure>
-        {% endif %}
-    </section>
-{% endblock content %}
+        </div>
+    {% endif %}
+    {% if value.video %}
+        <video src="{{ value.video.url }}" muted autoplay loop>
+        </video>
+    {% elif value.image %}
+        <figure>
+            <picture>
+                {% image value.image fill-1920x700 format-webp webpquality-80 as image_1920 %}
+                {% image value.image fill-1440x700 format-webp webpquality-60 as image_1440 %}
+                {% image value.image fill-1024x700 format-webp webpquality-60 as image_1024 %}
+                {% image value.image fill-768x576 format-webp webpquality-60 as image_768 %}
+                {% image value.image fill-260x200 format-webp webpquality-60 as image_480 %}
+                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w, {{ image_1440.url }} 1440w, {{ image_1920.url }} 1920w"
+                        sizes=" (min-width: 1800px) 1920px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+                        type="image/webp">
+                {% image value.image fill-1920x700 format-jpeg as image_1920 %}
+                {% image value.image fill-1440x700 format-jpeg as image_1440 %}
+                {% image value.image fill-1024x700 format-jpeg as image_1024 %}
+                {% image value.image fill-768x576 format-jpeg as image_768 %}
+                {% image value.image fill-260x200 format-jpeg as image_480 %}
+                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w, {{ image_1440.url }} 1440w, {{ image_1920.url }} 1920w"
+                        sizes=" (min-width: 1800px) 1920px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+                        type="image/jpg">
+                <img src="{{ image_480.url }}"
+                     alt="{{ image_480.alt }}"
+                     decoding="sync"
+                     loading="eager"
+                     rel="preload">
+            </picture>
+            <figcaption>
+                {{ value.image.credit }}
+            </figcaption>
+        </figure>
+    {% endif %}
+</section>

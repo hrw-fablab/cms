@@ -1,56 +1,54 @@
 {% load wagtailimages_tags %}
-{% block content %}
-    <article class="card {{ class }}">
-        {% if value.image %}
-            <figure>
-                <picture>
-                    {% image value.image fill-854x480-c70 format-webp webpquality-80 as image_768 %}
-                    {% image value.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
-                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-                            sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                            type="image/webp">
-                    {% image value.image fill-854x480 format-jpeg as image_768 %}
-                    {% image value.image fill-480x360 format-jpeg as image_480 %}
-                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-                            sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                            type="image/jpg">
-                    <img class="aspect-widescreen"
-                         src="{{ image_480.url }}"
-                         alt="{{ image_480.alt }}"
-                         decoding="async"
-                         loading="lazy">
-                </picture>
-                <figcaption>
-                    {{ value.image.credit }}
-                </figcaption>
-            </figure>
-        {% endif %}
-        <div>
-            {% if value.title %}
-                <header data-margin-block="small">
-                    {% if value.url %}
-                        <a href="{{ value.localized.url }}">
-                            <h3>{{ value.localized.title }}</h3>
-                        </a>
-                    {% elif value.page %}
-                        <a href="{{ value.page.localized.url }}">
-                            <h3>{{ value.title }}</h3>
-                        </a>
-                    {% else %}
+<article class="card {{ class }}">
+    {% if value.image %}
+        <figure>
+            <picture>
+                {% image value.image fill-854x480-c70 format-webp webpquality-80 as image_768 %}
+                {% image value.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
+                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
+                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                        type="image/webp">
+                {% image value.image fill-854x480 format-jpeg as image_768 %}
+                {% image value.image fill-480x360 format-jpeg as image_480 %}
+                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
+                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                        type="image/jpg">
+                <img class="aspect-widescreen"
+                     src="{{ image_480.url }}"
+                     alt="{{ image_480.alt }}"
+                     decoding="async"
+                     loading="lazy">
+            </picture>
+            <figcaption>
+                {{ value.image.credit }}
+            </figcaption>
+        </figure>
+    {% endif %}
+    <div>
+        {% if value.title %}
+            <header data-margin-block="small">
+                {% if value.url %}
+                    <a href="{{ value.localized.url }}">
+                        <h3>{{ value.localized.title }}</h3>
+                    </a>
+                {% elif value.page %}
+                    <a href="{{ value.page.localized.url }}">
                         <h3>{{ value.title }}</h3>
-                    {% endif %}
-                </header>
-            {% endif %}
-            {% if value.text %}
-                <p>
-                    {{ value.text }}
-                </p>
-            {% endif %}
-            {% if value.introduction %}
-                <p>
-                    {{ value.localized.introduction }}
-                </p>
-            {% endif %}
-        </div>
-    </article>
-{% endblock content %}
+                    </a>
+                {% else %}
+                    <h3>{{ value.title }}</h3>
+                {% endif %}
+            </header>
+        {% endif %}
+        {% if value.text %}
+            <p>
+                {{ value.text }}
+            </p>
+        {% endif %}
+        {% if value.introduction %}
+            <p>
+                {{ value.localized.introduction }}
+            </p>
+        {% endif %}
+    </div>
+</article>

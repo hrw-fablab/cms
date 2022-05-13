@@ -1,14 +1,12 @@
 {% if value.social.all|length != 0 %}
     <div>
-        <div>
-            <h3>Social Media</h3>
-            <ul>
-                {% for element in value.social.all %}
-                    <li>
-                        <a href="element.url">{{ element.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+        <h3>Social Media</h3>
+        <ul>
+            {% for element in value.social.all %}
+                <li>
+                    <a href="element.url">{{ element.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 {% endif %}

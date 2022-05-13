@@ -1,89 +1,87 @@
 {% load wagtailimages_tags i18n %}
 {% get_current_language as LANGUAGE_CODE %}
-{% block content %}
-    {% if LANGUAGE_CODE == "de" %}
-        <article class="card" data-type="person">
-            {% load wagtailimages_tags %}
-            <picture>
-                {% image value.image fill-500x500 format-webp as image_768 %}
-                {% image value.image fill-300x300 format-webp as image_480 %}
-                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                        type="image/webp">
-                {% image value.image fill-500x500 format-jpeg as image_768 %}
-                {% image value.image fill-300x300 format-jpeg as image_480 %}
-                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                        type="image/jpg">
-                <img class="aspect-box"
-                     src="{{ image_480.url }}"
-                     alt="{{ value.image.alt }}"
-                     decoding="async"
-                     loading="lazy">
-            </picture>
-            <div data-padding-inline="tiny">
-                <header data-margin-block-end="small">
-                    {% if role %}
-                        <p style="color: rgb(50 50 50)">
-                            {{ role }}
-                        </p>
-                    {% endif %}
-                    {% if value.link %}
-                        <a href="{{ value.link }}">
-                            <h4>{{ value }}</h4>
-                        </a>
-                    {% else %}
-                        <h4>{{ value }}</h4>
-                    {% endif %}
-                </header>
-                {% if value.responsibility %}
-                    <p>
-                        {{ value.responsibility }}
+{% if LANGUAGE_CODE == "de" %}
+    <article class="card" data-type="person">
+        {% load wagtailimages_tags %}
+        <picture>
+            {% image value.image fill-500x500 format-webp as image_768 %}
+            {% image value.image fill-300x300 format-webp as image_480 %}
+            <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
+                    sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                    type="image/webp">
+            {% image value.image fill-500x500 format-jpeg as image_768 %}
+            {% image value.image fill-300x300 format-jpeg as image_480 %}
+            <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
+                    sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                    type="image/jpg">
+            <img class="aspect-box"
+                 src="{{ image_480.url }}"
+                 alt="{{ value.image.alt }}"
+                 decoding="async"
+                 loading="lazy">
+        </picture>
+        <div data-padding-inline="tiny">
+            <header data-margin-block-end="small">
+                {% if role %}
+                    <p style="color: rgb(50 50 50)">
+                        {{ role }}
                     </p>
                 {% endif %}
-            </div>
-        </article>
-    {% else %}
-        <section class="card" data-type="person">
-            {% load wagtailimages_tags %}
-            <picture>
-                {% image value.image fill-500x500 format-webp as image_768 %}
-                {% image value.image fill-300x300 format-webp as image_480 %}
-                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
-                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                        type="image/webp">
-                {% image value.image fill-500x500 format-jpeg as image_768 %}
-                {% image value.image fill-300x300 format-jpeg as image_480 %}
-                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
-                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                        type="image/jpg">
-                <img class="aspect-box"
-                     src="{{ image_480.url }}"
-                     alt="{{ value.image.alt }}"
-                     decoding="async"
-                     loading="lazy">
-            </picture>
-            <div data-padding-inline="tiny">
-                <header data-margin-block-end="small">
-                    {% if role %}
-                        <p style="color: rgb(50 50 50)">
-                            {{ role }}
-                        </p>
-                    {% endif %}
-                    {% if value.link %}
-                        <a href="{{ value.link }}">
-                            <h4>{{ value }}</h4>
-                        </a>
-                    {% else %}
+                {% if value.link %}
+                    <a href="{{ value.link }}">
                         <h4>{{ value }}</h4>
-                    {% endif %}
-                </header>
-                {% if value.responsibility %}
-                    <p>
-                        {{ value.responsibility }}
+                    </a>
+                {% else %}
+                    <h4>{{ value }}</h4>
+                {% endif %}
+            </header>
+            {% if value.responsibility %}
+                <p>
+                    {{ value.responsibility }}
+                </p>
+            {% endif %}
+        </div>
+    </article>
+{% else %}
+    <section class="card" data-type="person">
+        {% load wagtailimages_tags %}
+        <picture>
+            {% image value.image fill-500x500 format-webp as image_768 %}
+            {% image value.image fill-300x300 format-webp as image_480 %}
+            <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
+                    sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                    type="image/webp">
+            {% image value.image fill-500x500 format-jpeg as image_768 %}
+            {% image value.image fill-300x300 format-jpeg as image_480 %}
+            <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
+                    sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                    type="image/jpg">
+            <img class="aspect-box"
+                 src="{{ image_480.url }}"
+                 alt="{{ value.image.alt }}"
+                 decoding="async"
+                 loading="lazy">
+        </picture>
+        <div data-padding-inline="tiny">
+            <header data-margin-block-end="small">
+                {% if role %}
+                    <p style="color: rgb(50 50 50)">
+                        {{ role }}
                     </p>
                 {% endif %}
-            </div>
-        </section>
-    {% endif %}
-{% endblock content %}
+                {% if value.link %}
+                    <a href="{{ value.link }}">
+                        <h4>{{ value }}</h4>
+                    </a>
+                {% else %}
+                    <h4>{{ value }}</h4>
+                {% endif %}
+            </header>
+            {% if value.responsibility %}
+                <p>
+                    {{ value.responsibility }}
+                </p>
+            {% endif %}
+        </div>
+    </section>
+{% endif %}

@@ -1,51 +1,49 @@
 {% load wagtailimages_tags %}
-{% block content %}
-    <article class="content split gap"
-             data-style="{% if value.accent %}color{% endif %}"
-             data-margin-block-end="large"
-             data-padding-block="medium"
-             data-width="large"
-             data-gap="medium">
-        <div class="flex justify-center gap"
-             data-direction="column"
-             data-gap="small">
-            {% if value.title %}
-                {% if value.page %}
-                    <a href="{{ value.page.localized.url }}">
-                        <h3>{{ value.title }}</h3>
-                    </a>
-                {% else %}
+<article class="content split gap"
+         data-style="{% if value.accent %}color{% endif %}"
+         data-margin-block-end="large"
+         data-padding-block="medium"
+         data-width="large"
+         data-gap="medium">
+    <div class="flex justify-center gap"
+         data-direction="column"
+         data-gap="small">
+        {% if value.title %}
+            {% if value.page %}
+                <a href="{{ value.page.localized.url }}">
                     <h3>{{ value.title }}</h3>
-                {% endif %}
+                </a>
+            {% else %}
+                <h3>{{ value.title }}</h3>
             {% endif %}
-            {{ value.text }}
-        </div>
-        {% if value.video %}
-            <video class="aspect-widescreen cover" src="{{ value.video.url }}" controls>
-            </video>
-        {% elif value.image %}
-            <figure>
-                <picture>
-                    {% image value.image fill-854x480 format-webp webpquality-80 as image_768 %}
-                    {% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
-                    <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w"
-                            sizes="(max-width: 520px) 480px,(max-width: 768px) 768px"
-                            type="image/webp"/>
-                    {% image value.image fill-854x480 format-jpeg as image_768 %}
-                    {% image value.image fill-480x360 format-jpeg as image_480 %}
-                    <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w"
-                            sizes="(max-width: 520px) 480px,(max-width: 768px) 768px,(min-width: 1024px) 480px"
-                            type="image/jpg"/>
-                    <img class="aspect-widescreen"
-                         src="{{ image_480.url }}"
-                         alt="{{ image_480.alt }}"
-                         decoding="async"
-                         loading="lazy"/>
-                </picture>
-                <figcaption>
-                    {{ value.image.credit }}
-                </figcaption>
-            </figure>
         {% endif %}
-    </article>
-{% endblock content %}
+        {{ value.text }}
+    </div>
+    {% if value.video %}
+        <video class="aspect-widescreen cover" src="{{ value.video.url }}" controls>
+        </video>
+    {% elif value.image %}
+        <figure>
+            <picture>
+                {% image value.image fill-854x480 format-webp webpquality-80 as image_768 %}
+                {% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
+                <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w"
+                        sizes="(max-width: 520px) 480px,(max-width: 768px) 768px"
+                        type="image/webp"/>
+                {% image value.image fill-854x480 format-jpeg as image_768 %}
+                {% image value.image fill-480x360 format-jpeg as image_480 %}
+                <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w"
+                        sizes="(max-width: 520px) 480px,(max-width: 768px) 768px,(min-width: 1024px) 480px"
+                        type="image/jpg"/>
+                <img class="aspect-widescreen"
+                     src="{{ image_480.url }}"
+                     alt="{{ image_480.alt }}"
+                     decoding="async"
+                     loading="lazy"/>
+            </picture>
+            <figcaption>
+                {{ value.image.credit }}
+            </figcaption>
+        </figure>
+    {% endif %}
+</article>

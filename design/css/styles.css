@@ -62,6 +62,12 @@
 *[data-style="color"] img {
     filter: none;
   }
+*[data-style="color"] a:hover {
+    color: var(--surface-2);
+  }
+*[data-style="color"] select {
+    color: var(--text-1);
+  }
 *[data-style="color"] :where(button, select) {
     border-color: var(--surface-1);
     color: var(--surface-1);
@@ -73,6 +79,9 @@
   background-color: var(--brand);
   color: var(--surface-1)
 }
+.glass a:hover {
+    color: var(--surface-2);
+  }
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     .glass {
       background-color: inherit;
@@ -420,6 +429,9 @@ a {
 .grecaptcha-badge {
   visibility: hidden;
 }
+ul {
+  list-style: none;
+}
 /* purgecss end ignore */
 body {
   font-family: sans-serif;
@@ -552,13 +564,15 @@ html :where(input, textarea, select) {
   font-size: var(--font-size-2);
 }
 select {
-  background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='18px'%0Afill='white' viewBox='0 0 102 60' aria-hidden='true' focusable='false'%3E%3Cpath d='M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z' /%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='17px'%0Afill='black' viewBox='0 0 102 60' aria-hidden='true' focusable='false'%3E%3Cpath d='M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z' /%3E%3C/svg%3E");
   background-position: calc(100% - 0.75rem) center;
   background-repeat: no-repeat;
+  background-color: var(--surface-1);
+  color: var(--text-1);
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  padding-right: 2.5rem;
+  padding-right: 2.2rem;
 }
 input[type="search"] {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z'/%3E%3C/svg%3E");
@@ -852,6 +866,7 @@ cite {
   }
 .richtext ul {
     padding: revert;
+    list-style: circle;
   }
 .richtext .richtext-image.left {
     align-self: start;

@@ -477,7 +477,7 @@ body {
   background-size: 20%;
 }
 a {
-  text-decoration-thickness: 0.1rem;
+  text-decoration-thickness: 0.1em;
   transition: color 200ms ease-in-out;
 }
 a:hover {
@@ -719,7 +719,7 @@ cite {
   z-index: 10
 }
 .navigation :where(a, button) {
-    text-decoration: underline 0.1rem transparent;
+    text-decoration: underline 0.1em transparent;
     transition: text-decoration-color 250ms ease-in, fill 200ms ease-in;
   }
 .navigation :hover:where(button, a) {

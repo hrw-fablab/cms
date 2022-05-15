@@ -1,4 +1,3 @@
-from email.policy import default
 from wagtail.core import blocks
 
 
@@ -8,7 +7,7 @@ class GrabberBlock(blocks.StructBlock):
         choices=[
             ("newspaper", "Zeitungslayout mit einem Hauptelement"),
             ("magazine", "Zeitungslayout mit zwei Hauptelementen"),
-            ("line", "3 Element pro Reihe"),
+            ("medium", "3 Element pro Reihe"),
         ],
         default="newspaper",
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",

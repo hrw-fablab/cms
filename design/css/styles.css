@@ -555,6 +555,11 @@ details summary svg {
   transition: 0.4s transform ease;
   transform: rotate(0deg);
 }
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-fluid-1)
+}
 form p {
     display: flex;
     flex-direction: column;
@@ -588,18 +593,6 @@ input[type="search"] {
   background-repeat: no-repeat;
   padding-right: 3rem;
 }
-@media (max-width: 1024px) {
-footer {
-    flex-direction: column
-}
-
-    footer div {
-      flex-direction: column;
-      gap: var(--size-6) !important;
-      margin-inline-start: inherit !important;
-      align-items: start !important;
-    }
-  }
 blockquote {
   text-align: center;
   quotes: "“" "“" "“" "“";
@@ -621,6 +614,29 @@ cite {
 header {
   padding-block: var(--size-fluid-1);
 }
+footer {
+  display: flex;
+  flex-direction: column;
+  background-color: black
+}
+footer > :first-child {
+    background-color: var(--text-1);
+  }
+footer > :nth-child(2) {
+    background-color: green;
+  }
+@media (max-width: 1024px) {
+footer {
+    flex-direction: column
+}
+
+    footer div {
+      flex-direction: column;
+      gap: var(--size-6) !important;
+      margin-inline-start: inherit !important;
+      align-items: start !important;
+    }
+  }
 /* purgecss start ignore */
 .grid {
   display: grid;
@@ -879,7 +895,7 @@ header {
   grid-template-columns: 1fr 1fr;
   place-items: center
 }
-.split :first-child {
+.split > div {
     display: flex;
     flex-direction: column;
     gap: var(--size-fluid-1);
@@ -1180,14 +1196,3 @@ header {
   justify-content: center;
   gap: var(--size-fluid-1);
 }
-footer {
-  display: flex;
-  flex-direction: column;
-  background-color: black
-}
-footer > :first-child {
-    background-color: var(--text-1);
-  }
-footer > :nth-child(2) {
-    background-color: green;
-  }

@@ -956,6 +956,9 @@ footer {
 .hero > * {
     grid-area: container;
   }
+.hero :where(img, figure, picture) {
+    height: 100%;
+  }
 .hero img {
     max-height: 70vh;
     aspect-ratio: 16 / 9;

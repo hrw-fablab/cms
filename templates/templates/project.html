@@ -13,7 +13,7 @@
                     {% endif %}
                     <div class="content grid gap"
                          data-width="{% if role.list|filter_organisation:value.filter|length <= 2 %}small{% endif %}"
-                         data-size="{{ value.layout }}"
+                         data-layout="{{ value.layout }}"
                          data-gap="medium">
                         {% for element in role.list|filter_organisation:value.filter %}
                             {% include "molecules/person.html" with value=element.person role=element.role %}
@@ -25,7 +25,7 @@
             <div role="region"
                  class="content grid gap"
                  data-width="{% if value.members.members_ordered|filter_organisation:value.filter|length <= 2 %}small{% endif %}"
-                 data-size="{{ value.layout }}"
+                 data-layout="{{ value.layout }}"
                  data-gap="medium">
                 {% for element in value.members.members_ordered|filter_organisation:value.filter %}
                     {% include "molecules/person.html" with value=element.person role=element.role %}
@@ -36,7 +36,7 @@
             {% for role in role_list %}
                 <div role="region"
                      class="content"
-                     data-size="small"
+                     data-layout="small"
                      data-margin-block-end="large">
                     {% if role.grouper != None %}
                         {% include "atoms/heading.html" with value=role.grouper anchor=True %}
@@ -45,7 +45,7 @@
                     {% endif %}
                     <div class="content grid gap"
                          data-width="{% if role.list|length <= 2 %}small{% endif %}"
-                         data-size="{{ value.layout }}"
+                         data-layout="{{ value.layout }}"
                          data-gap="medium">
                         {% for element in role.list %}
                             {% include "molecules/person.html" with value=element.person role=role.grouper %}
@@ -57,7 +57,7 @@
             <div role="region"
                  class="content grid gap"
                  data-width="{% if value.members.members_ordered|length <= 2 %}small{% endif %}"
-                 data-size="{{ value.layout }}"
+                 data-layout="{{ value.layout }}"
                  data-gap="medium">
                 {% for element in value.members.members_ordered %}
                     {% include "molecules/person.html" with value=element.person role=element.role %}

@@ -1,4 +1,4 @@
-<section class="grid gap" data-size="{{ layout }}" data-gap="medium">
+<section class="grid gap" data-layout="{{ layout }}" data-gap="medium">
     {% for element in value %}
         {% if element.block_type == "card" %}
             {% include "molecules/card.html" with value=element.value class="aspect-widescreen" %}

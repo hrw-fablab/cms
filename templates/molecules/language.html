@@ -1,7 +1,5 @@
 {% load i18n %}
-<form class="flex gap"
-      data-gap="small"
-      style="margin-inline-start: auto;"
+<form style="margin-inline-start: auto;"
       action="{% url 'set_language' %}"
       method="post">
     {% csrf_token %}

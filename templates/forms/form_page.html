@@ -4,11 +4,7 @@
     <main id="main" data-margin-block-start="medium">
         <div class="content" data-width="small">
             <h1 class="text-centered" data-margin-block-end="small">{{ page.title }}</h1>
-            <form class="flex gap"
-                  data-gap="small"
-                  data-direction="column"
-                  action="{% pageurl page %}"
-                  method="POST">
+            <form action="{% pageurl page %}" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit">

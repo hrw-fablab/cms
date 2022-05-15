@@ -1,13 +1,8 @@
 {% load wagtailcore_tags i18n wagtailimages_tags %}
 {% wagtail_site as current_site %}
-<a class="skip" data-style="color" data-border="round" href="#main">Skip to content</a>
-<header class="content navigation flex gap align-center justify-between"
-        data-gap="small"
-        data-wrap="wrap"
-        data-padding="small">
-    <a class="flex align-center justify-start gap logo"
-       data-gap="small"
-       href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
+<a class="skip" href="#main">Skip to content</a>
+<header class="content navigation">
+    <a class="logo" href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
         {% if settings.global.GlobalSettings.logo %}
             {% image settings.global.GlobalSettings.logo original as logo_image %}
             <img class="{% if settings.global.GlobalSettings.logo_title %} full{% endif %}"
@@ -20,7 +15,7 @@
     </a>
     <button id="menu-button" class="button">Menu</button>
     <nav class="menu">
-        <ul class="underline gap" style="--gap: 2.5rem">
+        <ul>
             {% for element in menuitems %}
                 <li>
                     {% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage" %}
@@ -34,7 +29,7 @@
                             </svg>
                         </button>
                         {% if element.get_children.count != 0 %}
-                            <ul class="submenu gap hidden" data-gap="small" data-padding="small">
+                            <ul class="submenu hidden" data-padding="small">
                                 {% for subelement in element.get_children.specific %}
                                     <li>
                                         <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>

@@ -1,5 +1,5 @@
 {% load wagtailimages_tags %}
-<article class="card {{ class }}">
+<article class="card">
     {% if value.image %}
         <figure>
             <picture>
@@ -13,8 +13,7 @@
                 <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
                         sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
                         type="image/jpg">
-                <img class="aspect-widescreen"
-                     src="{{ image_480.url }}"
+                <img src="{{ image_480.url }}"
                      alt="{{ image_480.alt }}"
                      decoding="async"
                      loading="lazy">
@@ -26,7 +25,7 @@
     {% endif %}
     <div>
         {% if value.title %}
-            <header data-margin-block="small">
+            <header>
                 {% if value.url %}
                     <a href="{{ value.localized.url }}">
                         <h3>{{ value.localized.title }}</h3>

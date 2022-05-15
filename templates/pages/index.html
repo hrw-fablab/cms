@@ -5,7 +5,7 @@
         {% if page.heading %}<h1 class="text-centered" data-margin-block-end="medium">{{ page.heading }}</h1>{% endif %}
         <div class="content grid gap"
              data-width="large"
-             data-size="large"
+             data-layout="large"
              data-gap="medium">
             {% for page in children %}
                 {% include "molecules/card.html" with value=page class="aspect-widescreen" %}

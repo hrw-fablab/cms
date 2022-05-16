@@ -1,28 +1,17 @@
 from django.db import models
 from wagtail.admin.panels import FieldPanel
-
 from modelcluster.fields import ParentalKey
 from chooser.widgets import PersonChooser
-
 from modelcluster.models import ClusterableModel
-
 from organisation.models import Role
 
 
 class FilteredPanel(FieldPanel):
-    def on_form_bound(self):
-        try:
-            if self.instance.link_id == None:
-                list = self.request.path_info.split("/")
-                id = int(list[len(list) - 2])
-                filtered = Role.objects.filter(link_id=id)
-            else:
-                filtered = Role.objects.filter(link_id=self.instance.link_id)
-        except:
-            self.form[self.field_name]
-        finally:
+    class BoundPanel(FieldPanel.BoundPanel):
+        def __init__(self, **kwargs):
+            super().__init__(**kwargs)
+            filtered = Role.objects.filter(link_id=self.instance.link_id)
             self.form.fields["role"].queryset = filtered
-            super().on_form_bound()
 
 
 class Member(ClusterableModel):

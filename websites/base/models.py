@@ -1,13 +1,13 @@
-from wagtail.core.models import Orderable
+from wagtail.models import Orderable
 from django.db import models
 
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     StreamFieldPanel,
     InlinePanel,
     FieldPanel,
     MultiFieldPanel,
 )
-from wagtail.core.fields import StreamField
+from wagtail.fields import StreamField
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -27,7 +27,7 @@ from forms.models import FabLabCaptchaEmailForm
 
 from websites.base.blocks import HomeBlock, FlexBlock, ProjectBlock, DeviceBlock
 
-from wagtail.core.fields import RichTextField
+from wagtail.fields import RichTextField
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 
 

@@ -57,7 +57,6 @@
 body {
   -webkit-font-smoothing: antialiased;
   height: 100%;
-  overflow: auto;
 }
 main {
   min-height: 100vh;
@@ -87,9 +86,6 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
-a {
-  color: inherit;
-}
 .grecaptcha-badge {
   visibility: hidden;
 }
@@ -98,15 +94,10 @@ ul {
 }
 /* purgecss end ignore */
 body {
-  font-family: sans-serif;
+  font-family: "Inter var", sans-serif;
   font-size: var(--font-size-3);
   font-variant-numeric: tabular-nums;
   line-height: 1.7;
-}
-@supports (font-variation-settings: normal) {
-  body {
-    font-family: "Inter var", sans-serif;
-  }
 }
 body :where(h1, h2, h3, h4) {
   font-family: "Manrope VF", sans-serif;
@@ -135,9 +126,9 @@ body :where(input, button, textarea, select) {
 body {
   background-color: var(--surface-1);
   color: var(--text-1);
-  background-size: 20%;
 }
 a {
+  color: inherit;
   text-decoration-thickness: 0.1em;
   transition: color 200ms ease-in-out;
 }
@@ -152,6 +143,7 @@ canvas {
   --shadow-color: 0deg 0% 20%;
   filter: drop-shadow(0px 2px 8px hsl(var(--shadow-color) / 0.2))
     drop-shadow(0px 0px 2px hsl(var(--shadow-color) / 0.2));
+  aspect-ratio: var(--aspect-widescreen);
 }
 footer {
   position: sticky;
@@ -246,13 +238,13 @@ select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  padding-right: 2.2rem;
+  padding-right: var(--size-5);
 }
 input[type="search"] {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z'/%3E%3C/svg%3E");
   background-position: calc(100% - 0.75rem) center;
   background-repeat: no-repeat;
-  padding-right: 3rem;
+  padding-right: var(--size-6);
 }
 blockquote {
   text-align: center;
@@ -721,6 +713,15 @@ footer {
       font-size: var(--font-size-6);
     }
   }
+.banner {
+  position: relative
+}
+.banner svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 154px;
+  }
 .skip {
   left: 50%;
   position: absolute;
@@ -735,14 +736,9 @@ footer {
 .skip:focus {
   transform: translateY(0%);
 }
-.result {
-  list-style: none
-}
-.result p {
-    font-size: var(--font-size-2);
-  }
 .info {
-  color: lightgray;
+  color: var(--surface-2);
+  font-size: var(--font-size-2);
 }
 .spacer {
   height: var(--size-fluid-4);

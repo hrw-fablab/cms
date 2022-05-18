@@ -271,13 +271,10 @@ footer {
   display: flex;
   flex-direction: column;
   background-color: black;
-  color: white
+  color: var(--surface-1)
 }
 footer > :first-child {
     background-color: var(--text-1);
-  }
-footer > :nth-child(2) {
-    background-color: green;
   }
 @media (max-width: 1024px) {
 footer {

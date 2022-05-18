@@ -19,7 +19,6 @@ class PersonAdmin(ModelAdmin):
         "first_name",
         "last_name",
         "organisation__name",
-        "employment",
         "title",
     )
 

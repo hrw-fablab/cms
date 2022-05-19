@@ -1,0 +1,200 @@
+{% load wagtailcore_tags %}
+{% block content %}
+    <div class="content calendar" id="calendar" data-width="large">
+        <header class="margin" data-margin="block-end" data-margin-size="tiny">
+            <time id="date"></time>
+            <div class="flex gap" data-gap="small">
+                <button id="backward">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"/>
+                    </svg>
+                </button>
+                <button id="forward">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        <ul class="days">
+            <li>Mo</li>
+            <li>Di</li>
+            <li>Mi</li>
+            <li>Do</li>
+            <li>Fr</li>
+            <li>Sa</li>
+            <li>So</li>
+        </ul>
+        <ul class="events" id="days">
+        </ul>
+    </div>
+    <script>
+  const calendar = document.getElementById("calendar");
+  const date = document.getElementById("date");
+  const days = document.getElementById("days");
+
+  const backward = document.getElementById("backward");
+  const forward = document.getElementById("forward");
+
+  const months = [
+    "Januar",
+    "Februar",
+    "Maerz",
+    "April",
+    "Mai",
+    "Juni",
+    "Juli",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Dezember",
+  ];
+
+  const weekdays = [
+    "Sonntag",
+    "Montag",
+    "Dienstag",
+    "Mittwoch",
+    "Donnerstag",
+    "Freitag",
+    "Samstag",
+  ];
+
+  let events = [];
+
+  let year = new Date().getFullYear();
+  let month_number = new Date().getMonth();
+  let month_string = months[month_number];
+
+  function daysInMonth(year, month) {
+    return new Date(year, month, 0).getDate();
+  }
+
+  const firstDayInMonthIndex = (monthIndex, year) => {
+    const index = new Date(`${year}-${monthIndex + 1}-01`).getDay();
+    if (index == 0) {
+      return 6;
+    }
+    return index - 1;
+  };
+
+  const handleChange = (event) => {
+    if (event.target.id == "forward") {
+      month_number += 1;
+    } else {
+      month_number -= 1;
+    }
+
+    if (month_number == 12) {
+      year += 1;
+      month_number = 0;
+    }
+
+    if (month_number == -1) {
+      year -= 1;
+      month_number = 11;
+    }
+    month_string = months[month_number];
+    createCalendar();
+  };
+
+  const getCSRF = () => {
+    let str = document.cookie;
+    str = str.split("; ");
+    const result = {};
+    for (let i in str) {
+      const cur = str[i].split("=");
+      result[cur[0]] = cur[1];
+    }
+    return result.csrftoken;
+  };
+
+  const getData = async () => {
+    const config = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCSRF(),
+      },
+      body: JSON.stringify({
+        year: year,
+        month: month_number + 1,
+      }),
+    };
+    try {
+      const data = await fetch("{% url 'get_events' %}", config);
+      const json = await data.json();
+      return JSON.parse(json);
+    } catch (error) {
+      return [];
+    }
+  };
+
+  const createEvent = (events) => {
+    let events_fragment = new DocumentFragment();
+    for (x = 0; x < events.length; x++) {
+      let details = document.createElement("details");
+
+      let summary = document.createElement("summary");
+      summary.appendChild(document.createTextNode(events[x].title))
+
+      let div = document.createElement("div");
+  
+      div.appendChild(document.createTextNode(events[x].title))
+
+      let time = document.createElement("div");
+      time.appendChild(document.createTextNode(events[x].timeStart))
+      time.appendChild(document.createTextNode(events[x].timeEnd))
+      div.appendChild(time)
+
+      let description = document.createElement("p");
+      description.appendChild(document.createTextNode(events[x].description))
+      div.appendChild(description)
+
+      details.appendChild(summary)
+      details.appendChild(div)
+
+
+      events_fragment.appendChild(details)
+    }
+
+    return events_fragment
+  };
+
+  const createCalendar = async () => {
+    events = await getData();
+    days.innerHTML = "";
+    let number = daysInMonth(year, month_number + 1);
+    let test = firstDayInMonthIndex(month_number, year);
+    let days_fragment = new DocumentFragment();
+
+    for (i = 0; i < test; i++) {
+      let li = document.createElement("li");
+      li.classList.add("deactive");
+      days_fragment.appendChild(li);
+    }
+
+    for (i = 0; i < number; i++) {
+      let li = document.createElement("li");
+      li.classList.add("active");
+      days_fragment.appendChild(li);
+
+      if (events[i].length != 0) {
+        li.appendChild(createEvent(events[i]));
+      }
+    }
+    days.appendChild(days_fragment);
+    updateDate();
+  };
+
+  const updateDate = () => {
+    date.innerHTML = month_string + " " + year;
+  };
+
+  window.addEventListener("load", createCalendar);
+
+  forward.addEventListener("click", handleChange);
+  backward.addEventListener("click", handleChange);
+    </script>
+{% endblock content %}

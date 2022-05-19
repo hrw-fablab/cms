@@ -736,6 +736,9 @@ time {
     grid-template-columns: repeat(7, 1fr);
     list-style: none;
   }
+.calendar li {
+    position: relative;
+  }
 .calendar > header {
     display: flex;
     align-items: center;
@@ -754,91 +757,45 @@ time {
     padding-block: 0.5rem;
   }
 .events {
+  counter-reset: section;
   border-inline-start: solid 0.15rem var(--surface-2)
 }
 .events li {
     border-block-end: solid 0.15rem var(--surface-2);
     border-inline-end: solid 0.15rem var(--surface-2);
     aspect-ratio: 5 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
   }
-.events {
-  counter-reset: section;
+details {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  width: 100%
 }
-.events details {
-  height: 100%;
-  width: 100%;
-}
-.events details summary {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: end;
-  font-size: var(--font-size-2);
-}
+details summary {
+    padding-inline: 0.5rem;
+    background-color: aquamarine;
+    font-size: var(--font-size-2);
+  }
+details[open] > div {
+    position: absolute;
+    transform: translateX(100%);
+    background-color: red;
+    z-index: 2;
+  }
 .events .active::before {
   position: absolute;
   counter-increment: section;
   content: counter(section);
   right: 0;
+  top: 0;
   padding-inline: 0.5rem;
   font-size: var(--font-size-3);
   pointer-events: none;
-}
-.events li details:hover {
-  background-color: var(--surface-2);
-}
-@media (max-width: 1024px) {
-  .events li details summary span {
-    display: none;
-  }
-  .events li::before {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-.calendar details {
-    transition: background-color 0.3s ease;
-    position: relative;
-  }
-.calendar details summary {
-    user-select: none;
-    display: flex;
-    justify-content: space;
-    align-items: center;
-    gap: var(--size-3);
-    cursor: pointer;
-  }
-.calendar summary {
-    list-style: none;
-  }
-.calendar summary::-webkit-details-marker {
-    display: none;
-  }
-.calendar details[open] {
-    animation: sweep 0.3s ease-in-out;
-    animation-fill-mode: forwards;
-  }
-.calendar details[open] > div {
-    width: 100%;
-    position: absolute;
-    background-color: red;
-  }
-.calendar .deactive {
-    background-color: red;
-  }
-.calendar {
-
-  @keyframes sweep {
-    0% {
-      box-shadow: none;
-    }
-    100% {
-      box-shadow: var(--shadow);
-    }
-  }
+  z-index: 1;
 }
 .heading {
   display: flex;

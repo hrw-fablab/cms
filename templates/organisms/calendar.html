@@ -140,12 +140,18 @@
       summary.appendChild(document.createTextNode(events[x].title))
 
       let div = document.createElement("div");
+      div.className = "detail"
   
-      div.appendChild(document.createTextNode(events[x].title))
-
       let time = document.createElement("div");
-      time.appendChild(document.createTextNode(events[x].timeStart))
-      time.appendChild(document.createTextNode(events[x].timeEnd))
+      let timeStart = document.createElement("time");
+      timeStart.appendChild(document.createTextNode(events[x].timeStart));
+
+      let timeEnd = document.createElement("time");
+      timeEnd.appendChild(document.createTextNode(events[x].timeEnd));
+
+      time.appendChild(timeStart)
+      time.appendChild(timeEnd)
+      
       div.appendChild(time)
 
       let description = document.createElement("p");

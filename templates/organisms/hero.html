@@ -1,18 +1,13 @@
 {% load wagtailimages_tags %}
 <section class="hero" data-margin-block-end="large">
     {% if value.title or value.text %}
-        <div class="content">
-            <div class="hero-content flex justify-center glass gap"
-                 data-gap="small"
-                 data-padding="medium"
-                 data-direction="column">
-                {% if value.title %}<h1>{{ value.title }}</h1>{% endif %}
-                {% if value.text %}
-                    <p>
-                        {{ value.text }}
-                    </p>
-                {% endif %}
-            </div>
+        <div data-style="glass">
+            {% if value.title %}<h1>{{ value.title }}</h1>{% endif %}
+            {% if value.text %}
+                <p>
+                    {{ value.text }}
+                </p>
+            {% endif %}
         </div>
     {% endif %}
     {% if value.video %}

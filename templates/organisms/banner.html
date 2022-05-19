@@ -1,7 +1,8 @@
 {% load wagtailimages_tags %}
 <section class="banner" data-margin-block-end="medium">
     {% if value.title or value.text %}
-        <div class="flex {% if start %}align-start{% else %}align-center {% endif %} justify-center glass"
+        <div class="flex {% if start %}align-start{% else %}align-center {% endif %} justify-center"
+             data-style="glass"
              data-direction="column"
              data-padding="medium">
             {% if value.date %}<time>Startdatum: {{ value.date }}</time>{% endif %}

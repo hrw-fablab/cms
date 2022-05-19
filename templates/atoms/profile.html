@@ -1,8 +1,6 @@
 {% load wagtailimages_tags %}
 {% if value %}
-    <p class="flex align-center gap profile"
-       data-gap="small"
-       data-wrap="wrap">
+    <p class="profile">
         {% image value.image fill-120x120 format-webp webpquality-60 as author_image %}
         <img src="{{ author_image.url }}"
              alt="{{ author_image.alt }}"

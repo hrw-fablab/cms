@@ -2,7 +2,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
     <main id="main" data-margin-block-start="medium">
-        <article class="content aspect-widescreen" data-width="small">
+        <article class="content" data-width="small">
             {% if page.image %}
                 <figure>
                     <picture>
@@ -22,8 +22,7 @@
                              alt="{{ image_480.alt }}"
                              decoding="async"
                              loading="eager"
-                             rel="preload"
-                             class="aspect-widescreen">
+                             rel="preload">
                     </picture>
                     <figcaption>
                         {{ page.image.credit }}
@@ -36,7 +35,7 @@
                         {{ page.tag }}
                     </p>
                 {% endif %}
-                <h1 data-margin-block="small">{{ page.title }}</h1>
+                <h1>{{ page.title }}</h1>
                 <div class="flex gap" data-gap="medium">
                     {% include "atoms/profile.html" with value=page.author %}
                     {% include "atoms/time.html" with value=page.date %}

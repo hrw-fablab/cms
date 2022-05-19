@@ -19,6 +19,20 @@ def get_events(request):
     for day in range(days_count):
         days.append([])
         for element in events:
+            if element.repeat == 1:
+                weekday = element.start.weekday()
+                current_date = datetime.date(body["year"], body["month"], day + 1)
+                if weekday == current_date.weekday():
+                    days[day].append(
+                        {
+                            "title": element.title,
+                            "adress": element.adress,
+                            "length": element.length,
+                            "timeStart": element.timeStart,
+                            "timeEnd": element.timeEnd,
+                            "description": element.description,
+                        }
+                    )
             if element.day + 1 == day:
                 days[day].append(
                     {

@@ -15,6 +15,8 @@ class Event(ClusterableModel):
     end = models.DateTimeField()
 
     repeat = models.IntegerField("Wiederholen", null=True, blank=True)
+    repeatStart = models.DateField("Von", null=True, blank=True)
+    repeatEnd = models.DateField("Bis", null=True, blank=True)
 
     panels = [
         MultiFieldPanel(
@@ -30,9 +32,16 @@ class Event(ClusterableModel):
             [
                 FieldPanel("start"),
                 FieldPanel("end"),
-                FieldPanel("repeat"),
             ],
             heading="Zeit",
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("repeat"),
+                FieldPanel("repeatStart"),
+                FieldPanel("repeatEnd"),
+            ],
+            heading="Wiederholung",
         ),
     ]
 
@@ -68,19 +77,27 @@ class Event(ClusterableModel):
         return self.end.strftime("%H:%M:%S")
 
     def visible(self, date):
-        if (
-            self.end.replace(tzinfo=None).year < date.year
-            or self.start.replace(tzinfo=None).year > date.year
-        ):
-            return False
+        if self.repeat == None:
+            if (
+                self.end.replace(tzinfo=None).year < date.year
+                or self.start.replace(tzinfo=None).year > date.year
+            ):
+                return False
 
-        if (
-            self.start.replace(tzinfo=None).month < date.month
-            or self.start.replace(tzinfo=None).month > date.month
-        ):
-            return False
+            if (
+                self.start.replace(tzinfo=None).month < date.month
+                or self.end.replace(tzinfo=None).month > date.month
+            ):
+                return False
 
-        return True
+            return True
+        else:
+            if self.repeatEnd.year < date.year or self.repeatStart.year > date.year:
+                return False
+
+            if self.repeatStart.month > date.month or self.repeatEnd.month < date.month:
+                return False
+            return True
 
     class Meta:
         verbose_name = "Termin"

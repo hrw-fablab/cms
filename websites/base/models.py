@@ -2,7 +2,6 @@ from wagtail.models import Orderable
 from django.db import models
 
 from wagtail.admin.panels import (
-    StreamFieldPanel,
     InlinePanel,
     FieldPanel,
     MultiFieldPanel,
@@ -47,7 +46,7 @@ class HomePage(AbstractHomePage):
     body = StreamField(HomeBlock(), blank=True)
 
     content_panels = AbstractHomePage.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
@@ -65,7 +64,7 @@ class FlexPage(AbstractFlexPage):
     body = StreamField(FlexBlock(), blank=True)
 
     content_panels = AbstractHomePage.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
@@ -140,7 +139,7 @@ class ProjectPage(AbstractProjectPage):
 
     content_panels = AbstractProjectPage.content_panels + [
         InlinePanel("project_links", label="Project Links"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
@@ -153,7 +152,7 @@ class DevicePage(AbstractDevicePage):
     body = StreamField(DeviceBlock(), blank=True)
 
     content_panels = AbstractDevicePage.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 

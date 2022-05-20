@@ -2,7 +2,6 @@ from django.db import models
 from wagtail.fields import RichTextField
 
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
 from chooser.widgets import PersonChooser
 
 from core.models import FablabBasePage
@@ -52,7 +51,7 @@ class AbstractArticlePage(FablabBasePage):
     )
 
     content_panels = FablabBasePage.content_panels + [
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
         MultiFieldPanel(
             [
                 FieldPanel("date"),

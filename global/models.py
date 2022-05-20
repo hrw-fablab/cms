@@ -1,5 +1,4 @@
 from django.db import models
-from wagtail.admin.panels import PageChooserPanel
 from wagtail.admin.panels import (
     MultiFieldPanel,
     FieldPanel,
@@ -8,7 +7,6 @@ from wagtail.admin.panels import (
     ObjectList,
 )
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.models import ClusterableModel
 
@@ -42,9 +40,9 @@ class Sponsor(Orderable):
     )
 
     panels = [
-        ImageChooserPanel("logo"),
+        FieldPanel("logo"),
         FieldPanel("logo_alt"),
-        ImageChooserPanel("logo_en"),
+        FieldPanel("logo_en"),
         FieldPanel("logo_alt_en"),
     ]
 
@@ -136,7 +134,7 @@ class GlobalSettings(BaseSetting, ClusterableModel):
     design_panels = [
         MultiFieldPanel(
             [
-                ImageChooserPanel("logo"),
+                FieldPanel("logo"),
                 FieldPanel("logo_title"),
             ],
             heading="Logo",
@@ -171,14 +169,14 @@ class GlobalSettings(BaseSetting, ClusterableModel):
     link_panels = [
         MultiFieldPanel(
             [
-                PageChooserPanel("contact"),
-                PageChooserPanel("impressum"),
-                PageChooserPanel("data_protection"),
-                PageChooserPanel("search"),
+                FieldPanel("contact"),
+                FieldPanel("impressum"),
+                FieldPanel("data_protection"),
+                FieldPanel("search"),
             ],
             heading="Service",
         ),
-        PageChooserPanel("intern_website"),
+        FieldPanel("intern_website"),
     ]
 
     edit_handler = TabbedInterface(

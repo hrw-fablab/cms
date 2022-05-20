@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models.fields import IntegerField
 
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
 
 from core.models import FablabBasePage
 from chooser.widgets import DeviceCategoryChooser
@@ -32,7 +31,7 @@ class AbstractDevicePage(FablabBasePage):
     content_panels = FablabBasePage.content_panels + [
         MultiFieldPanel(
             [
-                ImageChooserPanel("image"),
+                FieldPanel("image"),
                 FieldPanel("number"),
                 FieldPanel("category", widget=DeviceCategoryChooser),
             ],

@@ -15,7 +15,6 @@ class PersonChooserViewSet(ModelChooserViewSet):
     page_title = _("Choose a person")
     per_page = 10
     order_by = "first_name"
-    fields = ["first_name", "last_name", "organisation"]
 
 
 class ProjectChooserViewSet(ModelChooserViewSet):

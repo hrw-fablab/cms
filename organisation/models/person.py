@@ -3,7 +3,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.models import ClusterableModel
 
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     MultiFieldPanel,
     FieldPanel,
     TabbedInterface,

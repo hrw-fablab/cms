@@ -1,12 +1,12 @@
 from django.db import models
-from wagtail.core.fields import RichTextField
+from wagtail.fields import RichTextField
 
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from chooser.widgets import PersonChooser
 
 from core.models import FablabBasePage
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 
 class AbstractArticlePage(FablabBasePage):

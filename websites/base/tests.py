@@ -1,6 +1,6 @@
-from wagtail.tests.utils import WagtailPageTests
-from wagtail.tests.utils.form_data import nested_form_data, streamfield
-from wagtail.core.models import Page, Site
+from wagtail.test.utils import WagtailPageTests
+from wagtail.test.utils.form_data import nested_form_data, streamfield
+from wagtail.models import Page, Site
 
 from websites.base.models import (
     CollectionPage,

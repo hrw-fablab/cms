@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.fields import IntegerField
 
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from core.models import FablabBasePage

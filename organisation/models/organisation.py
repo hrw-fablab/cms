@@ -1,5 +1,5 @@
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.admin.panels import FieldPanel, InlinePanel
 from modelcluster.models import ClusterableModel
 
 from organisation.models import Person

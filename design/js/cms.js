@@ -2,7 +2,7 @@
 document.addEventListener(
   "click",
   (event) => {
-    if (event.dataset.type == "menu" && event.target.id != "menu-button") {
+    if (event.target.dataset.type == "menu" && event.target.id != "menu-button") {
       if (getComputedStyle(event.target.nextElementSibling).display === "none") {
         for (element of document.getElementsByClassName("submenu")) {
           element.classList.add("hidden");

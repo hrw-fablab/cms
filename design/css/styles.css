@@ -770,18 +770,34 @@ time {
     align-items: end;
     gap: 0.5rem;
   }
-details {
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  width: 100%
-}
-details summary {
-    padding-inline: 0.5rem;
-    background-color: aquamarine;
-    font-size: var(--font-size-2);
+.events details {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    width: 100%;
   }
-details[open] > div {
+.events summary {
+    border-inline-start: solid var(--brand) 0.2rem;
+    background-color: rgb(240 240 240);
+    padding: 0.5rem;
+    font-size: var(--font-size-2);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: start;
+    line-height: 1.5;
+    font-weight: bold;
+  }
+.events span {
+    display: flex;
+    font-weight: normal;
+  }
+.events time {
+    display: inline-block;
+  }
+.events span :first-child::after {
+    content: "-";
+  }
+.events details[open] > div {
     width: 20rem;
     padding: 0.5rem;
     position: absolute;
@@ -792,10 +808,19 @@ details[open] > div {
     flex-direction: column;
     gap: 1rem;
   }
-.detail > div {
-  display: flex;
-  gap: 1rem;
-}
+@media (max-width: 768px) {
+    .events li {
+      aspect-ratio: inherit;
+      height: 5rem;
+    }
+    .events details summary {
+      padding: 0.1rem;
+      font-size: var(--font-size-1);
+    }
+    .events details[open] > div {
+      width: 15rem;
+    }
+  }
 .events .active::before {
   position: absolute;
   counter-increment: section;

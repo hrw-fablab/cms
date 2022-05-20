@@ -137,23 +137,22 @@
       let details = document.createElement("details");
 
       let summary = document.createElement("summary");
+
+      let span = document.createElement("span");
+      let timeStart = document.createElement("time");
+      timeStart.appendChild(document.createTextNode(events[x].timeStart));
+      let timeEnd = document.createElement("time");
+      timeEnd.appendChild(document.createTextNode(events[x].timeEnd));
+
+      span.appendChild(timeStart);
+      span.appendChild(timeEnd)
+
       summary.appendChild(document.createTextNode(events[x].title))
+      summary.appendChild(span)
 
       let div = document.createElement("div");
       div.className = "detail"
   
-      let time = document.createElement("div");
-      let timeStart = document.createElement("time");
-      timeStart.appendChild(document.createTextNode(events[x].timeStart));
-
-      let timeEnd = document.createElement("time");
-      timeEnd.appendChild(document.createTextNode(events[x].timeEnd));
-
-      time.appendChild(timeStart)
-      time.appendChild(timeEnd)
-      
-      div.appendChild(time)
-
       let description = document.createElement("p");
       description.appendChild(document.createTextNode(events[x].description))
       div.appendChild(description)
@@ -187,6 +186,7 @@
       days_fragment.appendChild(li);
 
       if (events[i].length != 0) {
+        li.classList.add("elements");
         li.appendChild(createEvent(events[i]));
       }
     }

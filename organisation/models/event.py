@@ -3,6 +3,12 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from modelcluster.models import ClusterableModel
 
 
+REAPEATCHOICES = (
+    ("0", "none"),
+    ("1", "weekly"),
+)
+
+
 class Event(ClusterableModel):
     title = models.CharField("Titel", max_length=30, null=True, blank=True)
     adress = models.CharField("Adresse", max_length=60, null=True, blank=True)
@@ -14,7 +20,7 @@ class Event(ClusterableModel):
     start = models.DateTimeField()
     end = models.DateTimeField()
 
-    repeat = models.IntegerField("Wiederholen", null=True, blank=True)
+    repeat = models.CharField(max_length=255, choices=REAPEATCHOICES, default="none")
     repeatStart = models.DateField("Von", null=True, blank=True)
     repeatEnd = models.DateField("Bis", null=True, blank=True)
 
@@ -70,14 +76,14 @@ class Event(ClusterableModel):
 
     @property
     def timeStart(self):
-        return self.start.strftime("%H:%M:%S")
+        return self.start.strftime("%H:%M")
 
     @property
     def timeEnd(self):
-        return self.end.strftime("%H:%M:%S")
+        return self.end.strftime("%H:%M")
 
     def visible(self, date):
-        if self.repeat == None:
+        if self.repeat == "0":
             if (
                 self.end.replace(tzinfo=None).year < date.year
                 or self.start.replace(tzinfo=None).year > date.year

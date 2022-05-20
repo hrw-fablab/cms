@@ -5,12 +5,12 @@
             <time id="date"></time>
             <div class="flex gap" data-gap="small">
                 <button id="backward">
-                    <svg width="20" height="20" viewBox="0 0 24 24">
+                    <svg width="18" height="18" viewBox="0 0 24 24" transform="rotate(90)">
                         <path d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"/>
                     </svg>
                 </button>
                 <button id="forward">
-                    <svg width="20" height="20" viewBox="0 0 24 24">
+                    <svg width="18" height="18" viewBox="0 0 24 24" transform="rotate(-90)">
                         <path d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"/>
                     </svg>
                 </button>
@@ -138,17 +138,30 @@
 
       let summary = document.createElement("summary");
 
-      let span = document.createElement("span");
+      let day = document.createElement("span");
+      day.className = "day"
+      day.appendChild(document.createTextNode(events[x].day))
+
+      let info = document.createElement("span");
+      info.className = "cl-info"
+
+      let time = document.createElement("span");
+      time.className = "info"
+
       let timeStart = document.createElement("time");
       timeStart.appendChild(document.createTextNode(events[x].timeStart));
+
       let timeEnd = document.createElement("time");
       timeEnd.appendChild(document.createTextNode(events[x].timeEnd));
 
-      span.appendChild(timeStart);
-      span.appendChild(timeEnd)
+      time.appendChild(timeStart)
+      time.appendChild(timeEnd)
 
-      summary.appendChild(document.createTextNode(events[x].title))
-      summary.appendChild(span)
+      info.appendChild(time)
+      info.appendChild(document.createTextNode(events[x].title))
+
+      summary.appendChild(day)
+      summary.appendChild(info)
 
       let div = document.createElement("div");
       div.className = "detail"

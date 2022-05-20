@@ -731,7 +731,7 @@ time {
 .spacer {
   height: var(--size-fluid-4);
 }
-.calendar > ul {
+.calendar > ol {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     list-style: none;
@@ -746,7 +746,7 @@ time {
     font-size: var(--font-size-4);
   }
 @media (max-width: 1024px) {
-    .calendar > ul {
+    .calendar > ol {
       grid-template-columns: 1fr;
       gap: var(--size-fluid-4);
     }

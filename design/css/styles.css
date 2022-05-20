@@ -740,10 +740,10 @@ time {
     position: relative;
   }
 .calendar > header {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
+    display: flex;
     font-size: var(--font-size-4);
+    justify-content: space-between;
   }
 @media (max-width: 1024px) {
     .calendar > ol {
@@ -764,71 +764,25 @@ time {
   border-inline-start: solid 0.15rem var(--surface-2)
 }
 .days li {
+    align-items: center;
     border-inline-end: solid 0.15rem var(--surface-2);
     display: flex;
-    align-items: center;
     justify-content: center;
     padding-block: 0.5rem;
   }
 .events {
-  counter-reset: section;
-  border-inline-start: solid 0.15rem var(--surface-2)
+  border-inline-start: solid 0.15rem var(--surface-2);
+  counter-reset: section
 }
 .events li {
+    align-items: end;
+    aspect-ratio: 5 / 3;
     border-block-end: solid 0.15rem var(--surface-2);
     border-inline-end: solid 0.15rem var(--surface-2);
-    aspect-ratio: 5 / 3;
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    align-items: end;
     gap: 0.5rem;
-  }
-.events details {
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    width: 100%;
-  }
-.events summary {
-    border-inline-start: solid var(--brand) 0.2rem;
-    background-color: rgb(240 240 240);
-    padding-inline: 0.2rem;
-    font-size: var(--font-size-2);
-    display: grid;
-    line-height: 1.5;
-    font-weight: normal;
-  }
-.events .day {
-    display: none;
-  }
-.events .info {
-    display: flex;
-    gap: 0.2rem;
-  }
-.events .cl-info {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-.events .info :first-child::after {
-    content: "-";
-    padding-inline-start: 0.2rem;
-  }
-.events time {
-    gap: 0;
-  }
-.events details[open] > div {
-    border-inline-start: solid var(--brand) 0.2rem;
-    width: 20rem;
-    padding: 0.5rem;
-    position: absolute;
-    background-color: rgb(240 240 240);
-    box-shadow: var(--shadow);
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: end;
   }
 @media (max-width: 1440px) {
     .events li {
@@ -840,61 +794,118 @@ time {
       border: none;
     }
 
-    .events .day {
-      background-color: var(--brand);
-      width: 5rem;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
     .events li {
       border: none;
       aspect-ratio: inherit;
     }
-
-    .events details summary {
-      border: none;
-      min-height: 6rem;
-      padding: 0;
-      font-size: var(--font-size-3);
+  }
+.cl-details {
+  border-radius: 0;
+  border: 0;
+  padding: 0;
+  width: 100%
+}
+.cl-details summary {
+    background-color: rgb(240 240 240);
+    border-inline-start: solid var(--brand) 0.2rem;
+    display: grid;
+    font-size: var(--font-size-2);
+    font-weight: normal;
+    line-height: 1.5;
+    padding-inline: 0.2rem;
+  }
+.cl-details .day {
+    align-items: center;
+    background-color: var(--brand);
+    border-radius: 0.7rem 0 0 0.7rem;
+    color: var(--surface-1);
+    display: none;
+    font-weight: bold;
+    height: 100%;
+    justify-content: center;
+    width: 5rem;
+  }
+.cl-details .info {
+    display: flex;
+    gap: var(--size-1);
+  }
+.cl-details .cl-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+.cl-details .info :first-child::after {
+    content: "-";
+    padding-inline-start: var(--size-1);
+  }
+.cl-details time {
+    gap: 0;
+  }
+.cl-details[open] .detail {
+    background-color: rgb(240 240 240);
+    border-inline-start: solid var(--brand) 0.2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-3);
+    padding: var(--size-1);
+    position: absolute;
+    width: 20rem;
+    z-index: 2;
+  }
+@media (max-width: 1024px) {
+    .cl-details summary {
       background-color: var(--surface-1);
+      border-radius: 0.7rem;
+      border: none;
       box-shadow: var(--shadow);
       display: grid;
-      grid-template-columns: auto 1fr;
-      place-items: center start;
+      font-size: var(--font-size-3);
       gap: 1rem;
+      grid-template-columns: auto 1fr;
+      min-height: 6rem;
+      padding: 0;
+      place-items: center start;
     }
 
-    .events .cl-info {
-      display: flex;
-      flex-direction: column;
-      padding: var(--size-fluid-2);
+    .cl-details .cl-info {
       gap: var(--size-1);
+      padding: var(--size-fluid-2);
     }
 
-    .events details[open] {
-      position: relative;
-    }
-
-    .events details[open] > div {
-      position: relative;
+    .cl-details[open] .detail {
       background-color: var(--surface-1);
-      width: 100%;
+      border-radius: 0 0 0.7rem 0.7rem;
       border: 0;
+      box-shadow: var(--shadow);
+      padding: var(--size-fluid-1);
+      position: relative;
+      width: 100%;
+    }
+
+    .cl-details[open] .day {
+      border-radius: 0.7rem 0 0 0;
+    }
+
+    .cl-details[open] summary {
+      border-radius: 0 0.7rem 0 0;
+    }
+
+    .cl-details .day {
+      display: flex;
     }
   }
 .events .active::before {
-  position: absolute;
-  counter-increment: section;
   content: counter(section);
+  counter-increment: section;
+  font-size: var(--font-size-3);
+  padding-inline: var(--size-3);
+  pointer-events: none;
+  position: absolute;
   right: 0;
   top: 0;
-  padding-inline: 0.5rem;
-  font-size: var(--font-size-3);
-  pointer-events: none;
   z-index: 1
 }
 @media (max-width: 1024px) {

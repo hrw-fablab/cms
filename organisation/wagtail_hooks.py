@@ -4,7 +4,14 @@ from wagtail.contrib.modeladmin.options import (
     modeladmin_register,
 )
 
-from .models import Person, Project, DeviceCategory, ProjectCategory, Organisation
+from .models import (
+    Person,
+    Project,
+    DeviceCategory,
+    ProjectCategory,
+    Organisation,
+    Event,
+)
 
 
 class PersonAdmin(ModelAdmin):
@@ -79,3 +86,17 @@ class CategoryGroup(ModelAdminGroup):
 
 
 modeladmin_register(CategoryGroup)
+
+
+class EventAdmin(ModelAdmin):
+    model = Event
+    menu_icon = "date"
+    menu_order = 200
+    add_to_settings_menu = False
+    exclude_from_explorer = False
+    list_display = ("title", "adress", "start", "end")
+    list_filter = ("start",)
+    search_fields = ("title",)
+
+
+modeladmin_register(EventAdmin)

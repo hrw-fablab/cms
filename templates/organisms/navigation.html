@@ -19,7 +19,7 @@
             {% for element in menuitems %}
                 <li>
                     {% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage" %}
-                        <button>
+                        <button data-type="menu">
                             {{ element.localized }}
                             <svg width="0.8rem"
                                  viewBox="0 0 102 60"

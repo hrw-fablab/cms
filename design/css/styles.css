@@ -798,10 +798,11 @@ time {
     content: "-";
   }
 .events details[open] > div {
+    border-inline-start: solid var(--brand) 0.2rem;
     width: 20rem;
     padding: 0.5rem;
     position: absolute;
-    background-color: var(--surface-1);
+    background-color: rgb(240 240 240);
     box-shadow: var(--shadow);
     z-index: 2;
     display: flex;

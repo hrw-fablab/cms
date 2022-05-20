@@ -16,6 +16,8 @@ def get_events(request):
         if element.visible(date) == True:
             events.append(element)
 
+    print(events)
+
     for day in range(days_count):
         days.append([])
         for element in events:
@@ -33,7 +35,7 @@ def get_events(request):
                             "description": element.description,
                         }
                     )
-            if element.day + 1 == day:
+            if element.day + 1 == day and element.repeat != 1:
                 days[day].append(
                     {
                         "title": element.title,

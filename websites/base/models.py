@@ -43,7 +43,7 @@ class HomePage(AbstractHomePage):
     ]
 
     template = "pages/flex.html"
-    body = StreamField(HomeBlock(), blank=True)
+    body = StreamField(HomeBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractHomePage.content_panels + [
         FieldPanel("body"),
@@ -61,7 +61,7 @@ class FlexPage(AbstractFlexPage):
 
     template = "pages/flex.html"
 
-    body = StreamField(FlexBlock(), blank=True)
+    body = StreamField(FlexBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractHomePage.content_panels + [
         FieldPanel("body"),
@@ -135,7 +135,7 @@ class ProjectPage(AbstractProjectPage):
     parent_page_types = ["ProjectIndexPage"]
     subpage_type = []
 
-    body = StreamField(ProjectBlock(), blank=True)
+    body = StreamField(ProjectBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractProjectPage.content_panels + [
         InlinePanel("project_links", label="Project Links"),
@@ -149,7 +149,7 @@ class DevicePage(AbstractDevicePage):
     parent_page_types = ["DeviceIndexPage"]
     subpage_type = []
 
-    body = StreamField(DeviceBlock(), blank=True)
+    body = StreamField(DeviceBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractDevicePage.content_panels + [
         FieldPanel("body"),

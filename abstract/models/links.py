@@ -1,5 +1,5 @@
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
+from wagtail.admin.panels import FieldPanel
 from datetime import date
 
 
@@ -45,7 +45,7 @@ class PageLink(models.Model):
     amount = models.IntegerField()
 
     panels = [
-        PageChooserPanel("grabber"),
+        FieldPanel("grabber"),
         FieldPanel("title"),
         FieldPanel("amount"),
     ]

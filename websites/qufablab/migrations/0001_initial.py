@@ -4,8 +4,8 @@ import abstract.blocks.chooser
 import abstract.blocks.spacer
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.embeds.blocks
 import wagtail.images.blocks
 import wagtailcache.cache
@@ -213,15 +213,15 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 "heading",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         )
@@ -231,17 +231,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "paragraph",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "text",
-                                            wagtail.core.blocks.RichTextBlock(
+                                            wagtail.blocks.RichTextBlock(
                                                 features=[
                                                     "bold",
                                                     "italic",
@@ -260,17 +260,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "hero",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "text",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 max_length=255, required=False
                                             ),
                                         ),
@@ -292,17 +292,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "split",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "text",
-                                            wagtail.core.blocks.RichTextBlock(
+                                            wagtail.blocks.RichTextBlock(
                                                 features=[
                                                     "bold",
                                                     "italic",
@@ -314,7 +314,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "page",
-                                            wagtail.core.blocks.PageChooserBlock(
+                                            wagtail.blocks.PageChooserBlock(
                                                 required=False
                                             ),
                                         ),
@@ -326,7 +326,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "accent",
-                                            wagtail.core.blocks.BooleanBlock(
+                                            wagtail.blocks.BooleanBlock(
                                                 required=False
                                             ),
                                         ),
@@ -336,17 +336,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "grid",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "layout",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("extrem", "1 x N"),
                                                     ("large", "2 x N"),
@@ -358,15 +358,15 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cards",
-                                            wagtail.core.blocks.StreamBlock(
+                                            wagtail.blocks.StreamBlock(
                                                 [
                                                     (
                                                         "card",
-                                                        wagtail.core.blocks.StructBlock(
+                                                        wagtail.blocks.StructBlock(
                                                             [
                                                                 (
                                                                     "title",
-                                                                    wagtail.core.blocks.CharBlock(
+                                                                    wagtail.blocks.CharBlock(
                                                                         required=False
                                                                     ),
                                                                 ),
@@ -378,13 +378,13 @@ class Migration(migrations.Migration):
                                                                 ),
                                                                 (
                                                                     "text",
-                                                                    wagtail.core.blocks.TextBlock(
+                                                                    wagtail.blocks.TextBlock(
                                                                         required=False
                                                                     ),
                                                                 ),
                                                                 (
                                                                     "page",
-                                                                    wagtail.core.blocks.PageChooserBlock(
+                                                                    wagtail.blocks.PageChooserBlock(
                                                                         required=False
                                                                     ),
                                                                 ),
@@ -394,7 +394,7 @@ class Migration(migrations.Migration):
                                                     ),
                                                     (
                                                         "person",
-                                                        wagtail.core.blocks.StructBlock(
+                                                        wagtail.blocks.StructBlock(
                                                             [
                                                                 (
                                                                     "person",
@@ -416,17 +416,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "grabber",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "layout",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     (
                                                         "news-large",
@@ -446,12 +446,12 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "amount",
-                                            wagtail.core.blocks.IntegerBlock(default=5),
+                                            wagtail.blocks.IntegerBlock(default=5),
                                         ),
                                         (
                                             "pages",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.PageChooserBlock()
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.PageChooserBlock()
                                             ),
                                         ),
                                     ],
@@ -460,17 +460,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "gallery",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "contain",
-                                            wagtail.core.blocks.BooleanBlock(
+                                            wagtail.blocks.BooleanBlock(
                                                 help_text="Wenn z.B. von Logos das Seitenverhältnis beibehalten bleiben soll, sodass das Logo nicht abgeschnitten wird.",
                                                 label="Cointain Aspect Ratio",
                                                 required=False,
@@ -478,7 +478,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "layout",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("extrem", "1 x N"),
                                                     ("large", "2 x N"),
@@ -491,7 +491,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cards",
-                                            wagtail.core.blocks.StreamBlock(
+                                            wagtail.blocks.StreamBlock(
                                                 [
                                                     (
                                                         "image",
@@ -514,11 +514,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "blockquote",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "text",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=False
                                             ),
                                         ),
@@ -530,7 +530,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cite",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -544,11 +544,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "video",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -564,11 +564,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "image",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -584,11 +584,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "embed",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -604,11 +604,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "card",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -620,13 +620,13 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "text",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "page",
-                                            wagtail.core.blocks.PageChooserBlock(
+                                            wagtail.blocks.PageChooserBlock(
                                                 required=False
                                             ),
                                         ),
@@ -636,7 +636,7 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "person",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "person",
@@ -650,11 +650,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "html",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "code",
-                                            wagtail.core.blocks.RawHTMLBlock(
+                                            wagtail.blocks.RawHTMLBlock(
                                                 required=False
                                             ),
                                         )
@@ -664,11 +664,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "banner",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=False
                                             ),
                                         ),
@@ -680,7 +680,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "illustration",
-                                            wagtail.core.blocks.BooleanBlock(
+                                            wagtail.blocks.BooleanBlock(
                                                 required=False
                                             ),
                                         ),
@@ -690,17 +690,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "project",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "layout",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("extrem", "1 x N"),
                                                     ("large", "2 x N"),
@@ -722,17 +722,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "organisation",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "layout",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("extrem", "1 x N"),
                                                     ("large", "2 x N"),
@@ -893,15 +893,15 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 "heading",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         )
@@ -911,17 +911,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "paragraph",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "text",
-                                            wagtail.core.blocks.RichTextBlock(
+                                            wagtail.blocks.RichTextBlock(
                                                 features=[
                                                     "bold",
                                                     "italic",
@@ -940,17 +940,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "split",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "text",
-                                            wagtail.core.blocks.RichTextBlock(
+                                            wagtail.blocks.RichTextBlock(
                                                 features=[
                                                     "bold",
                                                     "italic",
@@ -962,7 +962,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "page",
-                                            wagtail.core.blocks.PageChooserBlock(
+                                            wagtail.blocks.PageChooserBlock(
                                                 required=False
                                             ),
                                         ),
@@ -974,7 +974,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "accent",
-                                            wagtail.core.blocks.BooleanBlock(
+                                            wagtail.blocks.BooleanBlock(
                                                 required=False
                                             ),
                                         ),
@@ -984,17 +984,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "grid",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "layout",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("extrem", "1 x N"),
                                                     ("large", "2 x N"),
@@ -1006,15 +1006,15 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cards",
-                                            wagtail.core.blocks.StreamBlock(
+                                            wagtail.blocks.StreamBlock(
                                                 [
                                                     (
                                                         "card",
-                                                        wagtail.core.blocks.StructBlock(
+                                                        wagtail.blocks.StructBlock(
                                                             [
                                                                 (
                                                                     "title",
-                                                                    wagtail.core.blocks.CharBlock(
+                                                                    wagtail.blocks.CharBlock(
                                                                         required=False
                                                                     ),
                                                                 ),
@@ -1026,13 +1026,13 @@ class Migration(migrations.Migration):
                                                                 ),
                                                                 (
                                                                     "text",
-                                                                    wagtail.core.blocks.TextBlock(
+                                                                    wagtail.blocks.TextBlock(
                                                                         required=False
                                                                     ),
                                                                 ),
                                                                 (
                                                                     "page",
-                                                                    wagtail.core.blocks.PageChooserBlock(
+                                                                    wagtail.blocks.PageChooserBlock(
                                                                         required=False
                                                                     ),
                                                                 ),
@@ -1042,7 +1042,7 @@ class Migration(migrations.Migration):
                                                     ),
                                                     (
                                                         "person",
-                                                        wagtail.core.blocks.StructBlock(
+                                                        wagtail.blocks.StructBlock(
                                                             [
                                                                 (
                                                                     "person",
@@ -1064,17 +1064,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "grabber",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "layout",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     (
                                                         "news-large",
@@ -1094,12 +1094,12 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "amount",
-                                            wagtail.core.blocks.IntegerBlock(default=5),
+                                            wagtail.blocks.IntegerBlock(default=5),
                                         ),
                                         (
                                             "pages",
-                                            wagtail.core.blocks.ListBlock(
-                                                wagtail.core.blocks.PageChooserBlock()
+                                            wagtail.blocks.ListBlock(
+                                                wagtail.blocks.PageChooserBlock()
                                             ),
                                         ),
                                     ],
@@ -1108,17 +1108,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "gallery",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "contain",
-                                            wagtail.core.blocks.BooleanBlock(
+                                            wagtail.blocks.BooleanBlock(
                                                 help_text="Wenn z.B. von Logos das Seitenverhältnis beibehalten bleiben soll, sodass das Logo nicht abgeschnitten wird.",
                                                 label="Cointain Aspect Ratio",
                                                 required=False,
@@ -1126,7 +1126,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "layout",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("extrem", "1 x N"),
                                                     ("large", "2 x N"),
@@ -1139,7 +1139,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cards",
-                                            wagtail.core.blocks.StreamBlock(
+                                            wagtail.blocks.StreamBlock(
                                                 [
                                                     (
                                                         "image",
@@ -1162,11 +1162,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "blockquote",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "text",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=False
                                             ),
                                         ),
@@ -1178,7 +1178,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cite",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -1192,11 +1192,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "video",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -1212,11 +1212,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "image",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -1232,11 +1232,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "embed",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -1252,11 +1252,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "card",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
@@ -1268,13 +1268,13 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "text",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "page",
-                                            wagtail.core.blocks.PageChooserBlock(
+                                            wagtail.blocks.PageChooserBlock(
                                                 required=False
                                             ),
                                         ),
@@ -1284,7 +1284,7 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "person",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "person",
@@ -1298,11 +1298,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "html",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "code",
-                                            wagtail.core.blocks.RawHTMLBlock(
+                                            wagtail.blocks.RawHTMLBlock(
                                                 required=False
                                             ),
                                         )
@@ -1312,11 +1312,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "banner",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=False
                                             ),
                                         ),
@@ -1328,7 +1328,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "illustration",
-                                            wagtail.core.blocks.BooleanBlock(
+                                            wagtail.blocks.BooleanBlock(
                                                 required=False
                                             ),
                                         ),
@@ -1338,17 +1338,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "project",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "layout",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("extrem", "1 x N"),
                                                     ("large", "2 x N"),
@@ -1370,17 +1370,17 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "organisation",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             "title",
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 required=False
                                             ),
                                         ),
                                         (
                                             "layout",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("extrem", "1 x N"),
                                                     ("large", "2 x N"),
@@ -1474,7 +1474,7 @@ class Migration(migrations.Migration):
                 ),
                 ("date", models.DateField()),
                 ("introduction", models.CharField(max_length=150)),
-                ("body", wagtail.core.fields.RichTextField()),
+                ("body", wagtail.fields.RichTextField()),
                 (
                     "author",
                     models.ForeignKey(

@@ -1,13 +1,12 @@
-from wagtail.core.models import Orderable
+from wagtail.models import Orderable
 from django.db import models
 
-from wagtail.admin.edit_handlers import (
-    StreamFieldPanel,
+from wagtail.admin.panels import (
     InlinePanel,
     FieldPanel,
     MultiFieldPanel,
 )
-from wagtail.core.fields import StreamField
+from wagtail.fields import StreamField
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -27,7 +26,7 @@ from forms.models import FabLabCaptchaEmailForm
 
 from websites.base.blocks import HomeBlock, FlexBlock, ProjectBlock, DeviceBlock
 
-from wagtail.core.fields import RichTextField
+from wagtail.fields import RichTextField
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 
 
@@ -44,10 +43,10 @@ class HomePage(AbstractHomePage):
     ]
 
     template = "pages/flex.html"
-    body = StreamField(HomeBlock(), blank=True)
+    body = StreamField(HomeBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractHomePage.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
@@ -62,10 +61,10 @@ class FlexPage(AbstractFlexPage):
 
     template = "pages/flex.html"
 
-    body = StreamField(FlexBlock(), blank=True)
+    body = StreamField(FlexBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractHomePage.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
@@ -136,11 +135,11 @@ class ProjectPage(AbstractProjectPage):
     parent_page_types = ["ProjectIndexPage"]
     subpage_type = []
 
-    body = StreamField(ProjectBlock(), blank=True)
+    body = StreamField(ProjectBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractProjectPage.content_panels + [
         InlinePanel("project_links", label="Project Links"),
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 
@@ -150,10 +149,10 @@ class DevicePage(AbstractDevicePage):
     parent_page_types = ["DeviceIndexPage"]
     subpage_type = []
 
-    body = StreamField(DeviceBlock(), blank=True)
+    body = StreamField(DeviceBlock(), blank=True, use_json_field=True)
 
     content_panels = AbstractDevicePage.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 

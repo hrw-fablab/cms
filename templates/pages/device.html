@@ -2,7 +2,7 @@
 {% load wagtailcore_tags %}
 {% block content %}
     <main id="main">
-        {% include "organisms/banner.html" with value=page start=True %}
+        {% include "organisms/banner.html" with value=page %}
         {% for block in page.body %}
             {% include_block block %}
         {% endfor %}

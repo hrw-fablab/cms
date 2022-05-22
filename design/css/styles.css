@@ -524,6 +524,9 @@ cite {
   place-items: center;
   padding-block: var(--size-fluid-4)
 }
+.split h2 {
+    font-size: var(--font-size-5);
+  }
 .split > div {
     display: flex;
     flex-direction: column;
@@ -638,14 +641,14 @@ cite {
     grid-area: container;
   }
 .banner :where(picture, img, figure) {
-    height: 450px;
+    height: 400px;
     border-radius: 0;
   }
 .banner > :first-child {
     z-index: 1;
   }
 .banner :where([data-style="accent"], [data-style="illustration"]) {
-    height: 450px;
+    height: 400px;
     width: 100%;
   }
 @media (max-width: 768px) {
@@ -665,7 +668,7 @@ cite {
     }
 
     .banner :is([data-style="color"], [data-style="illustration"]) {
-      height: 300px;
+      height: 200px;
     }
   }
 .skip {

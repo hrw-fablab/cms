@@ -8,10 +8,10 @@
         {% if value.title %}
             {% if value.page %}
                 <a href="{{ value.page.localized.url }}">
-                    <h3>{{ value.title }}</h3>
+                    <h2>{{ value.title }}</h2>
                 </a>
             {% else %}
-                <h3>{{ value.title }}</h3>
+                <h2>{{ value.title }}</h2>
             {% endif %}
         {% endif %}
         {{ value.text }}

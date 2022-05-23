@@ -1,7 +1,3 @@
 module.exports = {
-  plugins: [
-    require("postcss-dropunusedvars"),
-    //require("@fullhuman/postcss-purgecss")({ content: ["templates/*/*.html"] }),
-    require("cssnano")({ preset: "default" }),
-  ],
+  plugins: [require("postcss-dropunusedvars"), require("cssnano")({ preset: "default" })],
 };

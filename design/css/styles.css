@@ -76,7 +76,6 @@ main {
 ul {
   list-style: none;
 }
-/* purgecss end ignore */
 body {
   font-family: "Inter var", sans-serif;
   font-size: var(--font-size-3);
@@ -114,7 +113,7 @@ body {
   color: var(--text-1);
 }
 a {
-  color: inherit;
+  color: var(--text-1);
   text-decoration-thickness: 0.1em;
   transition: color 200ms ease-in-out;
 }
@@ -132,6 +131,7 @@ footer {
   position: sticky;
   top: 100vh;
 }
+/* purgecss end ignore */
 :where(button) {
   display: flex;
   align-items: center;

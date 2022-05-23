@@ -247,11 +247,17 @@ cite {
   color: var(--surface-1);
   margin-block-start: var(--size-fluid-6)
 }
+:where(footer) a {
+    color: var(--surface-1);
+  }
 :where(footer) img {
     aspect-ratio: inherit;
   }
 :where(footer) > :first-child {
     background-color: var(--text-1);
+  }
+:where(footer) > div {
+    padding-block: var(--size-fluid-4);
   }
 @media (max-width: 1024px) {
 :where(footer) {
@@ -370,6 +376,10 @@ cite {
 .card[data-type="person"] {
     text-align: center
   }
+.card[data-type="person"] picture {
+      display: flex;
+      justify-content: center;
+    }
 .card[data-type="person"] img {
       width: 50%;
       height: auto;
@@ -451,6 +461,7 @@ cite {
     border-radius: 0.7rem;
     width: max-content;
     gap: var(--size-fluid-1);
+    padding: var(--size-fluid-1);
   }
 @media (max-width: 1024px) {
     .menu ul {
@@ -646,6 +657,7 @@ cite {
   }
 .banner > :first-child {
     z-index: 1;
+    padding: var(--size-fluid-4);
   }
 .banner :where([data-style="accent"], [data-style="illustration"]) {
     height: 400px;
@@ -895,6 +907,9 @@ cite {
 :where([data-style="color"]) img {
     filter: none;
   }
+:where([data-style="color"]) a {
+    color: var(--surface-1);
+  }
 :where([data-style="color"]) a:hover {
     color: var(--surface-2);
   }
@@ -1131,117 +1146,6 @@ html .banner:not(:first-of-type) {
 :where(.justify-evenly) {
   justify-content: space-evenly;
 }
-:where([data-padding]) {
-  padding: var(--padding);
-}
-:where([data-padding="large"]) {
-  --padding: var(--size-fluid-6);
-}
-:where([data-padding="medium"]) {
-  --padding: var(--size-fluid-4);
-}
-:where([data-padding="small"]) {
-  --padding: var(--size-fluid-1);
-}
-:where([data-padding="tiny"]) {
-  --padding: var(--size-2);
-}
-:where([data-padding-block]) {
-  padding-block: var(--padding-block);
-}
-:where([data-padding-block="large"]) {
-  --padding-block: var(--size-fluid-6);
-}
-:where([data-padding-block="medium"]) {
-  --padding-block: var(--size-fluid-4);
-}
-:where([data-padding-block="small"]) {
-  --padding-block: var(--size-fluid-1);
-}
-:where([data-padding-block="tiny"]) {
-  --padding-block: var(--size-2);
-}
-:where([data-padding-block-end]) {
-  padding-block-end: var(--padding-block-end);
-}
-:where([data-padding-block-end="large"]) {
-  --padding-block-end: var(--size-fluid-6);
-}
-:where([data-padding-block-end="medium"]) {
-  --padding-block-end: var(--size-fluid-4);
-}
-:where([data-padding-block-end="small"]) {
-  --padding-block-end: var(--size-fluid-1);
-}
-:where([data-padding-block-end="tiny"]) {
-  --padding-block-end: var(--size-2);
-}
-:where([data-padding-block-start]) {
-  padding-block-start: var(--padding-block-start);
-}
-:where([data-padding-block-start="large"]) {
-  --padding-block-start: var(--size-fluid-6);
-}
-:where([data-padding-block-start="medium"]) {
-  --padding-block-start: var(--size-fluid-4);
-}
-:where([data-padding-block-start="small"]) {
-  --padding-block-start: var(--size-fluid-1);
-}
-:where([data-padding-block-start="tiny"]) {
-  --padding-block-start: var(--size-2);
-}
-:where([data-padding-inline]) {
-  padding-inline: var(--padding-inline);
-}
-:where([data-padding-inlinet="large"]) {
-  --padding-inline: var(--size-fluid-6);
-}
-:where([data-padding-inline="medium"]) {
-  --padding-inline: var(--size-fluid-4);
-}
-:where([data-padding-inline="small"]) {
-  --padding-inline: var(--size-fluid-1);
-}
-:where([data-padding-inline="tiny"]) {
-  --padding-inline: var(--size-2);
-}
-:where([data-padding-inline-start]) {
-  padding-inline-start: var(--padding-inline-start);
-}
-:where([data-padding-inlinet-start="large"]) {
-  --padding-inline-start: var(--size-fluid-6);
-}
-:where([data-padding-inline-start="medium"]) {
-  --padding-inline-start: var(--size-fluid-4);
-}
-:where([data-padding-inline-start="small"]) {
-  --padding-inline-start: var(--size-fluid-1);
-}
-:where([data-padding-inline-start="tiny"]) {
-  --padding-inline-start: var(--size-2);
-}
-:where([data-padding-inline-end]) {
-  padding-inline-end: var(--padding-inline-end);
-}
-:where([data-padding-inlinet-end="large"]) {
-  --padding-inline-end: var(--size-fluid-6);
-}
-:where([data-padding-inline-end="medium"]) {
-  --padding-inline-end: var(--size-fluid-4);
-}
-:where([data-padding-inline-end="small"]) {
-  --padding-inline-end: var(--size-fluid-1);
-}
-:where([data-padding-inline-end="tiny"]) {
-  --padding-inline-end: var(--size-2);
-}
-:where(.text-start) {
-  text-align: start;
-}
 :where(.text-centered) {
   text-align: center;
-}
-:where(.text-end) {
-  text-align: end;
 }

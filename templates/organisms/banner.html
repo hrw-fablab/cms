@@ -1,9 +1,7 @@
 {% load wagtailimages_tags %}
 <section class="banner" data-margin-block-end="medium">
     {% if value.title or value.text %}
-        <div class="flex align-center justify-center"
-             data-direction="column"
-             data-style="glass">
+        <div data-style="glass">
             {% if value.date %}<time>Startdatum: {{ value.date }}</time>{% endif %}
             {% if value.number %}<p>Anzahl: {{ page.number }}</p>{% endif %}
             {% if value.title %}<h2>{{ value.title }}</h2>{% endif %}

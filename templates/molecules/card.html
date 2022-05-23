@@ -23,23 +23,17 @@
             </figcaption>
         </figure>
     {% endif %}
-    <div>
-        {% if value.title %}
-            <header>
-                {% if value.url %}
-                    <a href="{{ value.localized.url }}">
-                        <h3>{{ value.localized.title }}</h3>
-                    </a>
-                {% elif value.page %}
-                    <a href="{{ value.page.localized.url }}">
-                        <h3>{{ value.title }}</h3>
-                    </a>
-                {% else %}
+    {% if value.title %}
+        <header>
+            {% if value.page %}
+                <a href="{{ value.page.localized.url }}">
                     <h3>{{ value.title }}</h3>
-                {% endif %}
-            </header>
-        {% endif %}
-        {% if value.text %}<p>{{ value.text }}</p>{% endif %}
-        {% if value.introduction %}<p>{{ value.localized.introduction }}</p>{% endif %}
-    </div>
+                </a>
+            {% else %}
+                <h3>{{ value.title }}</h3>
+            {% endif %}
+        </header>
+    {% endif %}
+    {% if value.text %}<p>{{ value.text }}</p>{% endif %}
+    {% if value.introduction %}<p>{{ value.localized.introduction }}</p>{% endif %}
 </article>

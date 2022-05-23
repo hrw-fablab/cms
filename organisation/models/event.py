@@ -97,6 +97,8 @@ class Event(ClusterableModel):
                 return False
 
             return True
+        elif self.repeatStart == None or self.repeatEnd == None:
+            return True
         else:
             if self.repeatEnd.year < date.year or self.repeatStart.year > date.year:
                 return False

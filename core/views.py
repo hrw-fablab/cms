@@ -12,6 +12,8 @@ def get_events(request):
     days_count = monthrange(body["year"], body["month"])[1]
     days = [[] for x in range(days_count)]
 
+    print(Event.objects.all())
+
     for element in Event.objects.all().order_by("start"):
         if element.visible(date) == True:
             events.append(element)

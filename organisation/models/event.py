@@ -12,7 +12,7 @@ REAPEATCHOICES = (
 class Event(ClusterableModel):
     title = models.CharField("Titel", max_length=30, null=True, blank=True)
     adress = models.CharField("Adresse", max_length=60, null=True, blank=True)
-    description = models.CharField(
+    description = models.TextField(
         "Beschreibung", max_length=140, null=True, blank=True
     )
     link = models.URLField("Link", blank=True, null=True)
@@ -106,6 +106,9 @@ class Event(ClusterableModel):
             if self.repeatStart.month > date.month or self.repeatEnd.month < date.month:
                 return False
             return True
+
+    def __str__(self):
+        return "{}".format(self.title)
 
     class Meta:
         verbose_name = "Termin"

@@ -18,6 +18,15 @@
         </title>
         <meta name="description" content="{{ page.search_description }}" />
         <style>
+		@font-face {
+			font-family: 'Inter var';
+			font-weight: 100 900;
+			font-display: swap;
+			font-style: normal;
+			font-named-instance: 'Regular';
+			src: url("{% static 'fonts/inter.woff2' %}") format("woff2");
+		}
+
 		* {
 			margin: 0;
 			padding: 0;
@@ -26,7 +35,7 @@
 
 		body {
 			font-weight: 600;
-			font-family: sans-serif;
+			font-family: 'Inter var', sans-serif;
 			text-align: center;
 			display: flex;
 			flex-direction: column;
@@ -91,6 +100,7 @@
 		footer a:hover svg {
 			fill: hsl(202, 100%, 30%);
 		}
+	
         </style>
         <meta property="og:title"
               content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}">

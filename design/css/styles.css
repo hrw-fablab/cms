@@ -593,13 +593,13 @@ cite {
     padding: revert;
     list-style: circle;
   }
-.richtext img .left {
+.richtext .left {
     align-self: start;
     aspect-ratio: inherit;
     max-width: 100%;
     width: unset;
   }
-.richtext img .centered {
+.richtext .centered {
     aspect-ratio: inherit;
     align-self: center;
     max-width: 100%;

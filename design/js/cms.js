@@ -2,7 +2,14 @@
 document.addEventListener(
   "click",
   (event) => {
-    if (event.target.dataset.type == "menu" && event.target.id != "menu-button") {
+    if (
+      event.target.dataset.type == "menu" &&
+      event.target.id != "menu-button" &&
+      event.target.nextElementSibling.classList.contains("hidden")
+    ) {
+      for (element of document.querySelectorAll('[data-menu="submenu"]')) {
+        element.classList.add("hidden");
+      }
       return event.target.nextElementSibling.classList.toggle("hidden");
     }
     for (element of document.querySelectorAll('[data-menu="submenu"]')) {

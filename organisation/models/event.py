@@ -8,6 +8,16 @@ REAPEATCHOICES = (
     ("1", "weekly"),
 )
 
+CATEGORYCHOICES = (
+    ("0", "none"),
+    ("1", "Lehre"),
+    ("2", "Offenes Angebot"),
+    ("3", "Schülerkurse"),
+    ("4", "Workshop"),
+    ("5", "Extern"),
+
+)
+
 
 class Event(ClusterableModel):
     title = models.CharField("Titel", max_length=30, null=True, blank=True)

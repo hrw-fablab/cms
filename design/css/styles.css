@@ -969,6 +969,26 @@ cite {
 .heading a {
     display: flex;
   }
+.call {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-5);
+  align-items: center
+}
+.call a {
+    all: unset;
+    padding: var(--size-3);
+    padding-inline: var(--size-4);
+    background-color: var(--brand);
+    border-radius: 0.7rem;
+    color: var(--surface-1);
+    font-weight: normal;
+    user-select: none;
+  }
+.call a:hover {
+    background-color: var(--surface-2);
+  }
 /* purgecss start ignore */
 .hidden {
   display: none;

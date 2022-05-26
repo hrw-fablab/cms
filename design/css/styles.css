@@ -282,8 +282,11 @@ cite {
     }
   }
 :where(article) {
-  aspect-ratio: var(--aspect-widescreen);
+  aspect-ratio: var(--aspect-widescreen)
 }
+:where(article) h1 {
+    margin-block-end: var(--size-4);
+  }
 :where(time) {
   display: flex;
   align-items: center;

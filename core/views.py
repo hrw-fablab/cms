@@ -18,7 +18,6 @@ def get_events(request):
 
     for element in events:
         if element.repeat == "0":
-            print(element.category)
             days[element.day - 1].append(
                 {
                     "title": element.title,
@@ -45,7 +44,7 @@ def get_events(request):
                             "length": element.length,
                             "timeStart": element.timeStart,
                             "timeEnd": element.timeEnd,
-                            "day": day,
+                            "day": day + 1,
                             "description": element.description,
                             "category": element.category,
                             "repeat": 1,

@@ -22,6 +22,7 @@ from abstract.blocks import (
     TableBlock,
 )
 from abstract.blocks.calender import CalendarBlock
+from abstract.blocks.call import CallBlock
 
 
 class GridBlockElements(blocks.StreamBlock):
@@ -53,6 +54,7 @@ class HomeBlock(blocks.StreamBlock):
     project = ProjectMembers(label="Projekt Mitglieder")
     table = TableBlock(label="Tabelle")
     calendar = CalendarBlock(label="Kalendar")
+    call = CallBlock(label="Call to Action")
 
 
 class FlexBlock(blocks.StreamBlock):
@@ -74,6 +76,7 @@ class FlexBlock(blocks.StreamBlock):
     project = ProjectMembers(label="Projekt Mitglieder")
     table = TableBlock(label="Tabelle")
     calendar = CalendarBlock(label="Kalendar")
+    call = CallBlock(label="Call to Action")
 
 
 class ProjectBlock(blocks.StreamBlock):

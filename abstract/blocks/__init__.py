@@ -18,3 +18,4 @@ from .split import SplitBlock
 from .video import VideoBlock
 from .table import TableBlock
 from .calender import CalendarBlock
+from .call import CallBlock

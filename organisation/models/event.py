@@ -15,7 +15,6 @@ CATEGORYCHOICES = (
     ("3", "Schülerkurse"),
     ("4", "Workshop"),
     ("5", "Extern"),
-
 )
 
 
@@ -26,6 +25,7 @@ class Event(ClusterableModel):
         "Beschreibung", max_length=140, null=True, blank=True
     )
     link = models.URLField("Link", blank=True, null=True)
+    category = models.CharField(max_length=255, choices=CATEGORYCHOICES, default="none")
 
     start = models.DateTimeField()
     end = models.DateTimeField()
@@ -41,6 +41,7 @@ class Event(ClusterableModel):
                 FieldPanel("adress"),
                 FieldPanel("description"),
                 FieldPanel("link"),
+                FieldPanel("category"),
             ],
             heading="Informationen",
         ),

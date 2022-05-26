@@ -120,6 +120,9 @@ a {
 a:hover {
   color: var(--brand);
 }
+a:hover svg {
+  fill: var(--brand);
+}
 :where(img, video, iframe, canvas) {
   border-radius: 0.7rem;
   --shadow-color: 0deg 0% 20%;
@@ -908,8 +911,11 @@ cite {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--size-fluid-1);
+  gap: var(--size-fluid-1)
 }
+.heading a {
+    display: flex;
+  }
 /* purgecss start ignore */
 .hidden {
   display: none;
@@ -924,11 +930,15 @@ cite {
 :where([data-style="color"]) img {
     filter: none;
   }
-:where([data-style="color"]) a {
+:where([data-style="color"]) :is(a, svg, button, select) {
     color: var(--surface-1);
+    fill: var(--surface-1);
   }
 :where([data-style="color"]) a:hover {
     color: var(--surface-2);
+  }
+:where([data-style="color"]) a:hover svg {
+    fill: var(--surface-2);
   }
 :where([data-style="color"]) :focus-visible {
     outline: 2px solid var(--surface-1);
@@ -938,7 +948,6 @@ cite {
   }
 :where([data-style="color"]) :where(button, select) {
     border-color: var(--surface-1);
-    color: var(--surface-1);
   }
 :where([data-style="color"]):where(.content, .media) {
     padding-block: var(--size-fluid-6);

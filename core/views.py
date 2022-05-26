@@ -12,23 +12,24 @@ def get_events(request):
     days_count = monthrange(body["year"], body["month"])[1]
     days = [[] for x in range(days_count)]
 
-    print(Event.objects.all())
-
     for element in Event.objects.all().order_by("start"):
         if element.visible(date) == True:
             events.append(element)
 
     for element in events:
         if element.repeat == "0":
+            print(element.category)
             days[element.day - 1].append(
                 {
                     "title": element.title,
                     "adress": element.adress,
+                    "link": element.link,
                     "length": element.length,
                     "timeStart": element.timeStart,
                     "timeEnd": element.timeEnd,
                     "day": element.day,
                     "description": element.description,
+                    "category": element.category,
                 }
             )
         else:
@@ -40,11 +41,14 @@ def get_events(request):
                         {
                             "title": element.title,
                             "adress": element.adress,
+                            "link": element.link,
                             "length": element.length,
                             "timeStart": element.timeStart,
                             "timeEnd": element.timeEnd,
                             "day": day,
                             "description": element.description,
+                            "category": element.category,
+                            "repeat": 1,
                         }
                     )
 

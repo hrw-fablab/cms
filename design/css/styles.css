@@ -797,11 +797,12 @@ cite {
   border-radius: 0;
   border: 0;
   padding: 0;
-  width: 100%
+  width: 100%;
+  background-color: var(--surface-1);
+  box-shadow: var(--shadow)
 }
 .cl-details summary {
-    background-color: rgb(240 240 240);
-    border-inline-start: solid var(--brand) 0.2rem;
+    border-inline-start: solid var(--brand) 0.3rem;
     display: grid;
     font-size: var(--font-size-2);
     font-weight: normal;
@@ -838,18 +839,24 @@ cite {
     gap: 0;
   }
 .cl-details[open] .detail {
-    background-color: rgb(240 240 240);
-    border-inline-start: solid var(--brand) 0.2rem;
+    background-color: var(--surface-1);
+    box-shadow: var(--shadow);
+    border-inline-start: solid var(--brand) 0.3rem;
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
     gap: var(--size-3);
-    padding: var(--size-1);
+    padding: var(--size-2);
+    padding-block: var(--size-3);
     position: absolute;
     width: 20rem;
     z-index: 2;
   }
 @media (max-width: 1024px) {
+    .cl-details {
+      box-shadow: inherit;
+    }
+
     .cl-details summary {
       background-color: var(--surface-1);
       border-radius: 0.7rem;
@@ -906,6 +913,42 @@ cite {
     .events .active::before {
       display: none;
     }
+  }
+.cl-details[data-repeat="repeat"] summary {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='darkgray' %3E%3Cpath d='M2 12a4 4 0 0 0 1 2.6l-1.1.7-.6.4A6 6 0 0 1 6 6h9V3l6 4-6 4V8H6a4 4 0 0 0-4 4zm20.7-3.7-.6.4-1 .7A4 4 0 0 1 22 12a4 4 0 0 1-4 4H9v-3l-6 4 6 4v-3h9a6 6 0 0 0 4.7-9.7z'/%3E%3C/svg%3E");
+      background-position: calc(100% - 0.75rem) center;
+      background-repeat: no-repeat;
+      padding-right: var(--size-5);
+    }
+.cl-details:hover summary {
+  background-color: var(--surface-2);
+}
+.cl-details {
+  --color: var(--brand)
+}
+.cl-details summary {
+    border-color: var(--color);
+  }
+.cl-details[open] .detail {
+    border-color: var(--color);
+  }
+.cl-details .info {
+    color: var(--color);
+  }
+.cl-details[data-type="teach"] {
+    --color: #9775fa;
+  }
+.cl-details[data-type="open"] {
+    --color: #4dabf7;
+  }
+.cl-details[data-type="student"] {
+    --color: #ffd43b;
+  }
+.cl-details[data-type="workshop"] {
+    --color: #f76707;
+  }
+.cl-details[data-type="external"] {
+    --color: #94d82d;
   }
 .heading {
   display: flex;

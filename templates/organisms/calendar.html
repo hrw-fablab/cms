@@ -61,6 +61,15 @@
     "Samstag",
   ];
 
+  const categorys = [
+    "none",
+    "teach",
+    "open",
+    "student",
+    "workshop",
+    "external"
+  ]
+
   let events = [];
 
   let year = new Date().getFullYear();
@@ -136,6 +145,11 @@
     for (x = 0; x < events.length; x++) {
       let details = document.createElement("details");
       details.className = "cl-details"
+      details.dataset.type = categorys[events[x].category]
+
+      if (events[x].repeat) {
+        details.dataset.repeat = "repeat"
+      }
 
       let summary = document.createElement("summary");
 
@@ -166,10 +180,19 @@
 
       let div = document.createElement("div");
       div.className = "detail"
-  
-      let description = document.createElement("p");
-      description.appendChild(document.createTextNode(events[x].description))
-      div.appendChild(description)
+
+      if(events[x].description) {
+        let description = document.createElement("p");
+        description.appendChild(document.createTextNode(events[x].description))
+        div.appendChild(description)
+      }
+
+      if(events[x].link) {
+        let link = document.createElement("a");
+        link.appendChild(document.createTextNode("Anmeldung"))
+        link.href = events[x].link
+        div.appendChild(link)
+      }
 
       details.appendChild(summary)
       details.appendChild(div)

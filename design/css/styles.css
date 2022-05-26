@@ -222,6 +222,13 @@ input[type="search"] {
   background-repeat: no-repeat;
   padding-right: var(--size-6);
 }
+input[type="submit"] {
+  background-color: var(--brand);
+  color: var(--surface-1);
+}
+input[type="submit"]:hover {
+  background-color: var(--surface-2);
+}
 :where(blockquote) {
   text-align: center;
   quotes: "“" "“" "“" "“";

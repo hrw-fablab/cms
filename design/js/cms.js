@@ -33,3 +33,23 @@ document.getElementById("menu-button").addEventListener(
   },
   { passive: true }
 );
+
+const callback = (entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("fade-in");
+      observer.unobserve(entry.target);
+    }
+  });
+};
+
+const cardObserver = new IntersectionObserver(callback, {});
+const mediaObserver = new IntersectionObserver(callback, {});
+
+const cardsElements = document
+  .querySelectorAll(".card")
+  .forEach((x) => cardObserver.observe(x));
+
+const iframeElements = document
+  .querySelectorAll("iframe")
+  .forEach((x) => mediaObserver.observe(x));

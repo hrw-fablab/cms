@@ -1248,3 +1248,31 @@ html .banner:not(:first-of-type) {
 :where(.text-centered) {
   text-align: center;
 }
+@media screen and (prefers-reduced-motion: reduce) {
+  .fade-in {
+    all: unset;
+  }
+
+  .card {
+    opacity: unset;
+    scale: unset;
+  }
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+    :where([data-style="color"]) .card {
+      opacity: 0;
+      scale: 0.9;
+      transition: opacity 500ms ease-in-out, scale 500ms ease-in-out;
+    }
+
+  iframe {
+    opacity: 0;
+    scale: 0.9;
+    transition: opacity 250ms ease-in-out, scale 500ms ease-in-out;
+  }
+
+  .fade-in {
+    opacity: 1;
+    scale: 1;
+  }
+}

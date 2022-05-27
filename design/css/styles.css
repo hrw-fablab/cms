@@ -1285,7 +1285,7 @@ html .banner:not(:first-of-type) {
     .card:not([data-type="person"]):hover {
       color: var(--brand);
       transform: scale(1.01);
-      transition: transform 100ms ease-out;
+      transition: transform 200ms ease-in;
     }
 
   .fade-in {

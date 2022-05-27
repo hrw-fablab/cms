@@ -1277,6 +1277,11 @@ html .banner:not(:first-of-type) {
     .card:not([data-type="person"]) a {
       text-decoration: none;
     }
+
+    .card:not([data-type="person"]) header {
+      text-decoration: underline;
+    }
+
     .card:not([data-type="person"]):hover {
       color: var(--brand);
       transform: scale(1.01);

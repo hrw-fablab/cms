@@ -35,10 +35,12 @@ document.getElementById("menu-button").addEventListener(
 );
 
 const callback = (entries, observer) => {
-  entries.forEach((entry) => {
+  entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add("fade-in");
-      observer.unobserve(entry.target);
+      setTimeout(() => {
+        entry.target.classList.add("fade-in");
+        observer.unobserve(entry.target);
+      }, index * 100);
     }
   });
 };

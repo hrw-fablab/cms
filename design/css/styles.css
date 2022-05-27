@@ -1250,10 +1250,11 @@ html .banner:not(:first-of-type) {
 }
 @media screen and (prefers-reduced-motion: reduce) {
   .fade-in {
-    all: unset;
+    opacity: 1;
+    scale: 1;
   }
 
-  .card {
+  :where(.card, iframe) {
     opacity: unset;
     scale: unset;
   }

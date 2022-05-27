@@ -1022,7 +1022,7 @@ cite {
 :where([data-style="color"]) :where(button, select) {
     border-color: var(--surface-1);
   }
-:where([data-style="color"]):where(.content, .media) {
+:where([data-style="color"]):is(.content, .media) {
     padding-block: var(--size-fluid-6);
     clip-path: polygon(0 calc(0% + 3vw), 100% 0, 100% calc(100% - 3vw), 0 100%);
   }
@@ -1260,20 +1260,32 @@ html .banner:not(:first-of-type) {
   }
 }
 @media screen and (prefers-reduced-motion: no-preference) {
-    :where([data-style="color"]) .card {
-      opacity: 0;
-      scale: 0.9;
-      transition: opacity 500ms ease-in-out, scale 500ms ease-in-out;
-    }
+  & :where([data-color="accent"]) .card {
+    opacity: 0;
+    transform: scale(0.9);
+  }
 
   iframe {
     opacity: 0;
-    scale: 0.9;
-    transition: opacity 250ms ease-in-out, scale 500ms ease-in-out;
+    transform: scale(0.9);
   }
+
+  iframe:hover {
+    transform: scale(1.01);
+    transition: transform 100ms ease-in;
+  }
+    .card:not([data-type="person"]) a {
+      text-decoration: none;
+    }
+    .card:not([data-type="person"]):hover {
+      color: var(--brand);
+      transform: scale(1.01);
+      transition: transform 100ms ease-out;
+    }
 
   .fade-in {
     opacity: 1;
-    scale: 1;
+    transform: scale(1);
+    transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
   }
 }

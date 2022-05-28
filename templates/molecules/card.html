@@ -1,35 +1,40 @@
 {% load wagtailimages_tags %}
-<article class="card">
-    <a href="{% if value.url %}{{ value.localized.url }}{% else %}{{ value.page.localized.url }} {% endif %}">
-        {% if value.image %}
-            <figure>
-                <picture>
-                    {% image value.image fill-854x480-c70 format-webp webpquality-80 as image_768 %}
-                    {% image value.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
-                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-                            sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                            type="image/webp">
-                    {% image value.image fill-854x480 format-jpeg as image_768 %}
-                    {% image value.image fill-480x360 format-jpeg as image_480 %}
-                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-                            sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                            type="image/jpg">
-                    <img src="{{ image_480.url }}"
-                         alt="{{ image_480.alt }}"
-                         decoding="async"
-                         loading="lazy">
-                </picture>
-                <figcaption>
-                    {{ value.image.credit }}
-                </figcaption>
-            </figure>
-        {% endif %}
-        {% if value.title %}
-            <header>
+<article class="card"
+         data-type="{% if value.url or value.page %}link{% endif %}">
+    {% if value.image %}
+        <figure>
+            <picture>
+                {% image value.image fill-854x480-c70 format-webp webpquality-80 as image_768 %}
+                {% image value.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
+                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
+                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                        type="image/webp">
+                {% image value.image fill-854x480 format-jpeg as image_768 %}
+                {% image value.image fill-480x360 format-jpeg as image_480 %}
+                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
+                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                        type="image/jpg">
+                <img src="{{ image_480.url }}"
+                     alt="{{ image_480.alt }}"
+                     decoding="async"
+                     loading="lazy">
+            </picture>
+            <figcaption>
+                {{ value.image.credit }}
+            </figcaption>
+        </figure>
+    {% endif %}
+    {% if value.title %}
+        <header>
+            {% if value.url or value.page %}
+                <a href="{% if value.url %}{{ value.localized.url }}{% else %}{{ value.page.localized.url }} {% endif %}">
+                    <h3>{{ value.title }}</h3>
+                </a>
+            {% else %}
                 <h3>{{ value.title }}</h3>
-            </header>
-        {% endif %}
-        {% if value.text %}<p>{{ value.text }}</p>{% endif %}
-        {% if value.introduction %}<p>{{ value.localized.introduction }}</p>{% endif %}
-    </a>
+            {% endif %}
+        </header>
+    {% endif %}
+    {% if value.text %}<p>{{ value.text }}</p>{% endif %}
+    {% if value.introduction %}<p>{{ value.localized.introduction }}</p>{% endif %}
 </article>

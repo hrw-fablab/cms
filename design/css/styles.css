@@ -116,6 +116,7 @@ a {
   color: var(--text-1);
   text-decoration-thickness: 0.1em;
   transition: color 200ms ease-in-out;
+  cursor: pointer;
 }
 a:hover {
   color: var(--brand);
@@ -398,6 +399,17 @@ cite {
 [data-direction="reverse"]:where(.flex) {
     flex-wrap: wrap-reverse;
   }
+.card {
+  position: relative
+}
+.card a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+.card:not([data-type="person"]):is([data-type="link"]):hover {
+      color: var(--brand);
+    }
 .card[data-type="person"] {
     text-align: center
   }
@@ -977,7 +989,7 @@ cite {
   align-items: center
 }
 .call a {
-    all: unset;
+    text-decoration: none;
     padding: var(--size-3);
     padding-inline: var(--size-4);
     background-color: var(--brand);
@@ -987,7 +999,8 @@ cite {
     user-select: none;
   }
 .call a:hover {
-    background-color: var(--surface-2);
+    box-shadow: var(--shadow);
+    filter: saturate(1.2);
   }
 /* purgecss start ignore */
 .hidden {
@@ -1253,11 +1266,6 @@ html .banner:not(:first-of-type) {
     opacity: 1;
     scale: 1;
   }
-
-  :where(.card, iframe) {
-    opacity: unset;
-    scale: unset;
-  }
 }
 @media screen and (prefers-reduced-motion: no-preference) {
   & :where([data-color="accent"]) .card {
@@ -1274,17 +1282,8 @@ html .banner:not(:first-of-type) {
     transform: scale(1.01);
     transition: transform 100ms ease-in;
   }
-    .card:not([data-type="person"]) a {
-      text-decoration: none;
-    }
-
-    .card:not([data-type="person"]) header {
-      text-decoration: underline;
-    }
-
-    .card:not([data-type="person"]):hover {
-      color: var(--brand);
-      transform: scale(1.01);
+    .card:not([data-type="person"]):is([data-type="link"]):hover {
+      transform: scale(1.01) translateY(-0.7%);
       transition: transform 200ms ease-in;
     }
 
@@ -1293,4 +1292,7 @@ html .banner:not(:first-of-type) {
     transform: scale(1);
     transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
   }
+}
+.card > header > :is(a) {
+  background-color: red;
 }

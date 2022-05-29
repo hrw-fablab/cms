@@ -1,20 +1,24 @@
 {% load wagtailimages_tags %}
-<section class="banner" data-margin-block-end="medium">
+{% if value.illustration %}
+    {% image value.image height-700 format-webp as illustration %}
+{% endif %}
+<section class="banner"
+         data-margin-block-end="medium"
+         data-style="{% if value.illustration %}illustration{% elif value.image %}{% else %}accent{% endif %}"
+         {% if value.illustration %}style="background-image: url('{{ illustration.url }}')"{% endif %}>
     {% if value.title or value.text %}
         <div data-style="glass">
             {% if value.date %}<time>Startdatum: {{ value.date }}</time>{% endif %}
             {% if value.number %}<p>Anzahl: {{ page.number }}</p>{% endif %}
             {% if value.title %}<h2>{{ value.title }}</h2>{% endif %}
-            <div class="flex gap" data-gap="small">
-                {% for link in page.project_links.all %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
-            </div>
+            {% if page.project_links %}
+                <div class="flex gap" data-gap="small">
+                    {% for link in page.project_links.all %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+                </div>
+            {% endif %}
         </div>
     {% endif %}
-    {% if value.illustration %}
-        {% image value.image height-700 format-webp as illustration %}
-        <div data-style="illustration"
-             style="background-image: url('{{ illustration.url }}')"></div>
-    {% elif value.image %}
+    {% if value.image and not value.illustration %}
         <figure>
             <picture>
                 {% image value.image fill-1920x500-c70 format-webp webpquality-60 as image_1920 %}
@@ -42,7 +46,5 @@
                 {{ value.image.credit }}
             </figcaption>
         </figure>
-    {% else %}
-        <div data-style="accent"></div>
     {% endif %}
 </section>

@@ -684,13 +684,16 @@ cite {
   display: grid;
   grid-template: "container";
   place-items: center center;
-  color: var(--surface-1)
+  color: var(--surface-1);
+  height: 25rem
 }
+.banner img {
+    height: 25rem;
+  }
 .banner > * {
     grid-area: container;
   }
-.banner :where(picture, img, figure) {
-    height: 400px;
+.banner :where(img) {
     border-radius: 0;
   }
 .banner > :first-child {
@@ -701,13 +704,13 @@ cite {
     align-items: center;
     justify-content: center;
   }
-.banner :where([data-style="accent"], [data-style="illustration"]) {
-    height: 400px;
-    width: 100%;
-  }
 @media (max-width: 768px) {
-    .banner :where(picture, img, figure) {
-      height: 100%;
+    .banner {
+      height: 15rem;
+    }
+
+    .banner img {
+      height: 15rem;
     }
 
     .banner > div {
@@ -715,14 +718,6 @@ cite {
       height: 100%;
       padding-inline: 1.2rem;
       border-radius: inherit;
-    }
-
-    .banner > .illustration {
-      background-image: none;
-    }
-
-    .banner :is([data-style="color"], [data-style="illustration"]) {
-      height: 200px;
     }
   }
 .skip {
@@ -1052,6 +1047,9 @@ html .banner:not(:first-of-type) {
   background-color: var(--brand);
   color: var(--surface-1)
 }
+:where([data-style="glass"]) a {
+    color: var(--surface-1);
+  }
 :where([data-style="glass"]) a:hover {
     color: var(--surface-2);
   }
@@ -1060,6 +1058,10 @@ html .banner:not(:first-of-type) {
       background-color: inherit;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
+    }
+
+    :where([data-style="glass"]) a:hover {
+      color: var(--brand);
     }
   }
 :where([data-style="accent"]) {

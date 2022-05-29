@@ -1,5 +1,6 @@
 {% load wagtailimages_tags %}
 <section class="content centered"
+         data-style="{% if value.accent %}color{% endif %}"
          data-width="medium"
          data-margin-block="large">
     {% include "atoms/heading.html" with value=value.title anchor=True %}

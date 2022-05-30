@@ -407,9 +407,9 @@ cite {
     position: absolute;
     inset: 0;
   }
-.card:not([data-type="person"]):is([data-type="link"]):hover {
-      color: var(--brand);
-    }
+.card[data-type="link"]:hover {
+    color: var(--brand);
+  }
 .card[data-type="person"] {
     text-align: center
   }
@@ -997,7 +997,6 @@ cite {
     box-shadow: var(--shadow);
     filter: saturate(1.2);
   }
-/* purgecss start ignore */
 .hidden {
   display: none;
 }
@@ -1015,9 +1014,6 @@ cite {
     color: var(--surface-1);
     fill: var(--surface-1);
   }
-:where([data-style="color"]) a:hover {
-    color: var(--surface-2);
-  }
 :where([data-style="color"]) a:hover svg {
     fill: var(--surface-2);
   }
@@ -1030,6 +1026,12 @@ cite {
 :where([data-style="color"]) :where(button, select) {
     border-color: var(--surface-1);
   }
+:where([data-style="color"]) .card[data-type="link"]:hover {
+      color: var(--surface-2);
+    }
+:where([data-style="color"]) .card[data-type="link"] a:hover {
+      color: inherit;
+    }
 :where([data-style="color"]):is(.content, .media) {
     padding-block: var(--size-fluid-6);
     clip-path: polygon(0 calc(0% + 3vw), 100% 0, 100% calc(100% - 3vw), 0 100%);
@@ -1090,7 +1092,6 @@ html .banner:not(:first-of-type) {
 :where(.cover) {
   object-fit: cover;
 }
-/* purgecss end ignore */
 :where([data-margin]) {
   margin: var(--margin);
 }
@@ -1270,7 +1271,7 @@ html .banner:not(:first-of-type) {
   }
 }
 @media screen and (prefers-reduced-motion: no-preference) {
-  & :where([data-color="accent"]) .card {
+  :where([data-style="color"]) .card {
     opacity: 0;
     transform: scale(0.9);
   }
@@ -1294,7 +1295,4 @@ html .banner:not(:first-of-type) {
     transform: scale(1);
     transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
   }
-}
-.card > header > :is(a) {
-  background-color: red;
 }

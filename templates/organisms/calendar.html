@@ -154,14 +154,15 @@
       let summary = document.createElement("summary");
 
       let day = document.createElement("span");
-      day.className = "day"
-      day.appendChild(document.createTextNode(events[x].day))
+      day.className = "day";
+      day.appendChild(document.createTextNode(events[x].day));
+      day.appendChild(document.createTextNode(" " + months[month_number]));
 
       let info = document.createElement("span");
-      info.className = "cl-info"
+      info.className = "cl-info";
 
       let time = document.createElement("span");
-      time.className = "info"
+      time.className = "info";
 
       let timeStart = document.createElement("time");
       timeStart.appendChild(document.createTextNode(events[x].timeStart));

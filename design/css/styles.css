@@ -108,6 +108,9 @@ h4 {
   font-family: "Inter var", sans-serif;
   font-variant-numeric: tabular-nums;
 }
+:where(label) {
+  font-size: var(--font-size-2);
+}
 body {
   background-color: var(--surface-1);
   color: var(--text-1);
@@ -199,9 +202,12 @@ html :where(button, input, textarea, select) {
   color: var(--text-1);
 }
 html :where(input, textarea, select) {
-  padding: var(--size-3);
+  padding: var(--size-1);
   padding-inline: var(--size-4);
   border: solid var(--surface-2) 0.15rem;
+}
+html :where(label) {
+  font-size: var(--font-size-2);
 }
 .captcha {
   font-size: var(--font-size-2);
@@ -224,11 +230,19 @@ input[type="search"] {
   padding-right: var(--size-6);
 }
 input[type="submit"] {
+  padding: var(--size-3);
+  padding-inline: var(--size-4);
   background-color: var(--brand);
+  border-radius: 0.3rem;
   color: var(--surface-1);
+  border: none;
+}
+:where(input, textarea):hover {
+  border-color: var(--brand);
 }
 input[type="submit"]:hover {
-  background-color: var(--surface-2);
+  box-shadow: var(--shadow);
+  filter: saturate(1.2);
 }
 :where(blockquote) {
   text-align: center;

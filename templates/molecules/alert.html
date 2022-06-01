@@ -1,0 +1,6 @@
+{% load wagtailimages_tags %}
+<div class="content alert">
+    {% image value.image fill-500x500 format-webp as alert_image %}
+    <img src="{{ alert_image.url }}" alt="{{alert_image.alt}}">
+     <a href="{{value.link.url}}">{{value.text}}</a>
+</div>

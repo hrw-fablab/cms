@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "global",
     "forms",
     "captcha",
+    "slippers",
     "generic_chooser",
     "websites.base",
     "websites.qufablab",
@@ -102,6 +103,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "wagtail.contrib.settings.context_processors.settings",
             ],
+            "builtins": ["slippers.templatetags.slippers"],
         },
     },
 ]

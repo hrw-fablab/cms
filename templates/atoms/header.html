@@ -1,0 +1,30 @@
+<header>
+    {% if role %}<p class="info">{{ role }}</p>{% endif %}
+    {% if url %}
+        <a href="{{ url }}">
+            {% if level == "h1" %}
+                <h1>{{ title }}</h1>
+            {% elif level == "h2" %}
+                <h2>{{ title }}</h2>
+            {% elif level == "h3" %}
+                <h3>{{ title }}</h3>
+            {% elif level == "h4" %}
+                <h4>{{ title }}</h4>
+            {% endif %}
+        </a>
+    {% else %}
+        {% if level == "h1" %}
+            <h1>{{ title }}</h1>
+        {% elif level == "h2" %}
+            <h2>{{ title }}</h2>
+        {% elif level == "h3" %}
+            <h3>{{ title }}</h3>
+        {% elif level == "h4" %}
+            <h4>{{ title }}</h4>
+        {% endif %}
+    {% endif %}
+    {% if text %}<p>{{ text }}</p>{% endif %}
+    {% if introduction %}<p>{{ introduction }}</p>{% endif %}
+
+    {{children}}
+</header>

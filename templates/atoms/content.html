@@ -1,0 +1,22 @@
+{% if type == "section" %}
+    <section class="content {{ class }}"
+             data-width="{{ width }}"
+             data-style="{{ style|match:"1:color" }}"
+             data-margin-block="{{ margin }}">
+        {{ children }}
+    </section>
+{% elif type == "article" %}
+    <article class="content {{ class }}"
+             data-width="{{ width }}"
+             data-style="{{ style|match:"1:color" }}"
+             data-margin-block="{{ margin }}">
+        {{ children }}
+    </article>
+{% else %}
+    <div class="content {{ class }}"
+         data-width="{{ width }}"
+         data-style="{{ style|match:"1:color" }}"
+         data-margin-block="{{ margin }}">
+        {{ children }}
+    </div>
+{% endif %}

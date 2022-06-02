@@ -1,0 +1,5 @@
+components:
+  content: "atoms/content.html"
+  header: "atoms/header.html"
+  image: "atoms/image.html"
+  card: "atoms/card.html"

@@ -1,18 +1,12 @@
 {% load wagtailimages_tags %}
-<picture>
-    {% image element.value width-768 format-webp as image_768 %}
-    {% image element.value width-480 format-webp as image_480 %}
-    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-            sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-            type="image/webp">
-    {% image element.value width-768 format-jpeg as image_768 %}
-    {% image element.value width-480 format-jpeg as image_480 %}
-    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-            sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-            type="image/jpg">
-    <img class="{% if contain %}contain{% else %}cover{% endif %} aspect-widescreen"
-         src="{{ image_480.url }}"
-         alt="image_480.alt"
-         decoding="async"
-         loading="lazy">
-</picture>
+{{test}}
+<figure>
+        {% image image fill-854x480-c70 format-webp webpquality-80 as image_768 %}
+        {% image image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
+        <picture>
+                <source srcset="{{srcset}}" sizes="{{sizes}}" type="image/webp">
+                <source srcset="" sizes="" type="image/jpg">
+                <img src="{{image_480.url}}" alt="" decoding="async" loading="lazy">
+        </picture>
+        <figcaption>{{credit}}</figcaption>
+</figure>

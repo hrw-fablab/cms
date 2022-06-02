@@ -1,6 +1,6 @@
 {% load index_tag %}
 {% if children.paginator.num_pages > 1 %}
-    <section class="content" data-width="small" data-margin-block="medium">
+    {% #content width="small" margin="medium"%}
         <nav class="menu centered" aria-label="pagination">
             <ul class="justify-center">
                 {% if children.has_previous %}
@@ -20,5 +20,5 @@
                 {% endif %}
             </ul>
         </nav>
-    </section>
+    {% /content %}
 {% endif %}

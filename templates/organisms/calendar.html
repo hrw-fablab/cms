@@ -35,6 +35,7 @@
 
   const backward = document.getElementById("backward");
   const forward = document.getElementById("forward");
+  let elements = document.getElementsByTagName("details")
 
   const months = [
     "Januar",
@@ -236,7 +237,13 @@
     date.innerHTML = month_string + " " + year;
   };
 
+  const checkDetails = (event) => {
+    Array.from(elements).forEach(x => {x.removeAttribute("open")})
+  }
+
   window.addEventListener("load", createCalendar);
+
+  document.addEventListener("click", checkDetails);
 
   forward.addEventListener("click", handleChange);
   backward.addEventListener("click", handleChange);

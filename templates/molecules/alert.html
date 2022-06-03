@@ -1,6 +1,35 @@
 {% load wagtailimages_tags %}
-<div class="content alert">
-    {% image value.image fill-500x500 format-webp as alert_image %}
-    <img src="{{ alert_image.url }}" alt="{{alert_image.alt}}">
-     <a href="{{value.link.url}}">{{value.text}}</a>
+<div class="alert">
+    <a href="https://www.hochschule-ruhr-west.de/pride-month-2022/">
+        Die HRW und das HRW-FabLab bekennen Farbe
+    </a>
 </div>
+
+<style>
+    .alert {
+        background-image: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 10s ease infinite;
+        text-align: center;
+        padding-block: var(--size-4);
+    }
+
+    .alert a {
+        font-weight: bold;
+        color: var(--surface-1)
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+</style>

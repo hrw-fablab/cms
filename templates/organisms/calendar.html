@@ -240,10 +240,8 @@
   const checkDetails = (event) => {
     tagName = event.target.parentNode.tagName
     if (tagName == "DETAILS" || tagName == "SUMMARY" || tagName == "SPAN" || tagName == "DIV") {
-      console.log("test")
       return
     }
-    console.log(event.target.parentNode.tagName)
     Array.from(elements).forEach(x => {x.removeAttribute("open")})
   }
 

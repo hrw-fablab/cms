@@ -1,41 +1,5 @@
-{% load wagtailimages_tags %}
 <div class="alert">
     <a href="https://www.hochschule-ruhr-west.de/pride-month-2022/">
         Die HRW und das HRW-FabLab bekennen Farbe
     </a>
 </div>
-
-<style>
-    .alert {
-        background-image: linear-gradient(to left, violet, indigo, blue, green, rgb(201, 201, 0), orange, red);
-        background-size: 400% 400%;
-        text-align: center;
-        padding-block: var(--size-4);
-    }
-
-    .alert a {
-            font-weight: bold;
-            color: var(--surface-1)
-        }
-
-    @media screen and (prefers-reduced-motion: no-preference) {
-        .alert {
-            animation: gradient 40s ease infinite;
-        }
-    }
-
-
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-
-        50% {
-            background-position: 100% 50%;
-        }
-
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-</style>

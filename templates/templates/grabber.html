@@ -7,7 +7,7 @@
         <div class="grid gap" data-gap="medium" data-layout="{{ value.layout }}">
             {% for pages in value.pages %}
                 {% for page in pages.get_children.specific|slice:value.amount %}
-                    {% include "molecules/card.html" with value=page class="aspect-widescreen" %}
+                    {% include "molecules/card.html" with value=page %}
                 {% endfor %}
             {% endfor %}
         </div>

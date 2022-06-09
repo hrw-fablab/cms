@@ -14,19 +14,14 @@
             <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
                     sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
                     type="image/jpg">
-            <img class="aspect-box"
-                 src="{{ image_480.url }}"
+            <img src="{{ image_480.url }}"
                  alt="{{ value.image.alt }}"
                  decoding="async"
                  loading="lazy">
         </picture>
         <div>
             <header>
-                {% if role %}
-                    <p class="info">
-                        {{ role }}
-                    </p>
-                {% endif %}
+                {% if role %}<p class="info">{{ role }}</p>{% endif %}
                 {% if value.link %}
                     <a href="{{ value.link }}">
                         <h4>{{ value }}</h4>
@@ -35,11 +30,7 @@
                     <h4>{{ value }}</h4>
                 {% endif %}
             </header>
-            {% if value.responsibility %}
-                <p>
-                    {{ value.responsibility }}
-                </p>
-            {% endif %}
+            {% if value.responsibility %}<p>{{ value.responsibility }}</p>{% endif %}
         </div>
     </article>
 {% else %}
@@ -56,19 +47,14 @@
             <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
                     sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
                     type="image/jpg">
-            <img class="aspect-box"
-                 src="{{ image_480.url }}"
+            <img src="{{ image_480.url }}"
                  alt="{{ value.image.alt }}"
                  decoding="async"
                  loading="lazy">
         </picture>
         <div>
             <header>
-                {% if role %}
-                    <p class="info">
-                        {{ role }}
-                    </p>
-                {% endif %}
+                {% if role %}<p class="info">{{ role }}</p>{% endif %}
                 {% if value.link %}
                     <a href="{{ value.link }}">
                         <h4>{{ value }}</h4>
@@ -77,11 +63,7 @@
                     <h4>{{ value }}</h4>
                 {% endif %}
             </header>
-            {% if value.responsibility %}
-                <p>
-                    {{ value.responsibility }}
-                </p>
-            {% endif %}
+            {% if value.responsibility %}<p>{{ value.responsibility }}</p>{% endif %}
         </div>
     </section>
 {% endif %}

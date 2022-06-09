@@ -13,7 +13,7 @@
                  data-gap="medium"
                  data-margin-block-end="large">
                 {% for page in category.list %}
-                    {% include "molecules/card.html" with value=page class="aspect-widescreen" %}
+                    {% include "molecules/card.html" with value=page %}
                 {% endfor %}
             </div>
         {% endfor %}

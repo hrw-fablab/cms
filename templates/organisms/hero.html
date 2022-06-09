@@ -3,11 +3,7 @@
     {% if value.title or value.text %}
         <div data-style="glass">
             {% if value.title %}<h1>{{ value.title }}</h1>{% endif %}
-            {% if value.text %}
-                <p>
-                    {{ value.text }}
-                </p>
-            {% endif %}
+            {% if value.text %}<p>{{ value.text }}</p>{% endif %}
         </div>
     {% endif %}
     {% if value.video %}

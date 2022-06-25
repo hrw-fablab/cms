@@ -2,7 +2,7 @@ black==22.3.0
 Brotli==1.0.9
 Django==3.2.13
 python-dotenv==0.20.0
-wagtail==3.0
+wagtail==3.0.1
 wagtail-cache==2.0.0
 wagtail-generic-chooser==0.3.1
 wagtail-localize==1.2.1

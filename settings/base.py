@@ -35,11 +35,14 @@ INSTALLED_APPS = [
     "global",
     "forms",
     "captcha",
+    "newsletter",
     "generic_chooser",
     "websites.base",
     "websites.qufablab",
     "wagtailcache",
     "wagtailmedia",
+    "mjml",
+    "birdsong",
     "wagtail_localize",
     "wagtail_localize.locales",
     "wagtail.contrib.table_block",
@@ -244,3 +247,6 @@ WAGTAILEMBEDS_FINDERS = [
         "class": "wagtail.embeds.finders.oembed",
     },
 ]
+
+MJML_BACKEND_MODE = "cmd"
+MJML_EXEC_CMD = os.path.join(PROJECT_DIR, "node_modules", ".bin", "mjml.cmd")

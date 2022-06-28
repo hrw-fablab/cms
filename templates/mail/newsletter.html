@@ -1,0 +1,16 @@
+# templates/mail/newsletter.html
+
+{% extends "mail/base.html" %}
+
+{% load wagtailimages_tags %}
+
+{% block email_body %}
+    <mj-section css-class="richtext">
+        <mj-column>
+            <mj-text font-size="18px">Hello {{ contact.email }}!</mj-text>
+            {% for b in self.body %}
+                {{ b }}
+            {% endfor %}
+        </mj-column>
+    </mj-section>
+{% endblock email_body %}

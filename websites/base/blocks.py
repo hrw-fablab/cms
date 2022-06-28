@@ -20,6 +20,7 @@ from abstract.blocks import (
     CardBlock,
     ProjectMembers,
     TableBlock,
+    NewsletterBlock
 )
 from abstract.blocks.calender import CalendarBlock
 from abstract.blocks.call import CallBlock
@@ -55,6 +56,7 @@ class HomeBlock(blocks.StreamBlock):
     table = TableBlock(label="Tabelle")
     calendar = CalendarBlock(label="Kalendar")
     call = CallBlock(label="Call to Action")
+    newsletter = NewsletterBlock(label="Newsletter")
 
 
 class FlexBlock(blocks.StreamBlock):
@@ -77,6 +79,7 @@ class FlexBlock(blocks.StreamBlock):
     table = TableBlock(label="Tabelle")
     calendar = CalendarBlock(label="Kalendar")
     call = CallBlock(label="Call to Action")
+    newsletter = NewsletterBlock(label="Newsletter")
 
 
 class ProjectBlock(blocks.StreamBlock):

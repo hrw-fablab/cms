@@ -1,0 +1,56 @@
+{% load static wagtailcore_tags %}
+<section class="content split" data-width="large">
+    <picture>
+        <img src=" {% static 'images/illu_newsletter.png' %}"
+             alt=""
+             decoding="async"
+             loading="lazy"/>
+    </picture>
+    <form class="newsletter" action="{% url 'newsletter' %}" id="newsletter" method="POST">
+        <h2>Bleib Über uns Informiert</h2>
+        <p>Melde dich jetzt für unseren Newsletter an und verpasse keine Neugigkeiten mehr</p>
+        <div>
+            <label for="email" >Email</label>
+            <input type="email" id="email">
+        </div>
+        <button type="submit">Jetzt abonnieren</button>
+    </form>
+</section>
+
+<script>
+    document.getElementById("newsletter").addEventListener("submit", async (event) => {
+        event.preventDefault()
+        if (event.target.elements[0].value === "") return;
+
+        const data = await fetch(event.target.action, {
+            method: event.target.method,
+            body: JSON.stringify({email: event.target.elements[0].value})
+        });
+
+        const result = await data.json()
+
+        if (result.success) {
+            event.target.innerHTML=""
+            console.log("success")
+        }
+    })
+</script>
+
+<style>
+    .newsletter input {
+        width: 100%;
+    }
+
+    .newsletter button {
+        padding: var(--size-3);
+        padding-inline: var(--size-4);
+        background-color: var(--brand);
+        color: var(--surface-1);
+        -webkit-user-select: none;
+        user-select: none;
+        border-radius: .7rem;
+        font-weight: 400;
+        text-decoration: none;
+        border: none;
+    }
+</style>

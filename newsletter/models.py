@@ -1,7 +1,7 @@
 from django.db import models
 
 from birdsong.blocks import DefaultBlocks
-from birdsong.models import Campaign
+from birdsong.models import Campaign, Contact
 
 from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
 from wagtail.core.fields import StreamField
@@ -20,3 +20,6 @@ class Newsletter(Campaign):
         FieldPanel("headline"),
         StreamFieldPanel("body"),
     ]
+
+class Contact(Contact):
+    pass

@@ -5,8 +5,6 @@ from birdsong.models import Campaign, Contact
 
 from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
 from wagtail.core.fields import StreamField
-from wagtail.images.edit_handlers import ImageChooserPanel 
-
 
 class Newsletter(Campaign):
     headline = models.CharField(

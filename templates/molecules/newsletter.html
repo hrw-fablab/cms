@@ -1,5 +1,5 @@
 {% load static wagtailcore_tags %}
-<section class="content split" data-width="large">
+<section class="content split" data-width="large" data-style="color">
     <picture>
         <img src=" {% static 'images/illu_newsletter.png' %}"
              alt=""
@@ -7,10 +7,10 @@
              loading="lazy"/>
     </picture>
     <form class="newsletter" action="{% url 'newsletter' %}" id="newsletter" method="POST">
-        <h2>Bleib Über uns Informiert</h2>
-        <p>Melde dich jetzt für unseren Newsletter an und verpasse keine Neugigkeiten mehr</p>
+        <h2>How to know (almost) anything</h2>
+        <p>Melde dich jetzt an und verpasse keine Neuigkeiten und Veranstaltungen mehr</p>
         <div>
-            <label for="email" >Email</label>
+            <label for="email" >E-Mail Adresse</label>
             <input type="email" id="email">
         </div>
         <button type="submit">Jetzt abonnieren</button>
@@ -44,8 +44,8 @@
     .newsletter button {
         padding: var(--size-3);
         padding-inline: var(--size-4);
-        background-color: var(--brand);
-        color: var(--surface-1);
+        background-color: var(--surface-1);
+        color: var(--brand);
         -webkit-user-select: none;
         user-select: none;
         border-radius: .7rem;

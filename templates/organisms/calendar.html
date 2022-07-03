@@ -176,12 +176,12 @@
 
     if (id) {
       details.setAttribute("id", id);
-      details.dataset.position = "first"
+      details.dataset.position = "first";
     }
 
     details.innerHTML = `
       <summary>
-        <span class="date">${element.day} ${months[month_number]}</span>
+        <span class="date">${element.day} <br> ${months[month_number]}</span>
         ${element.timeStart} ${element.title}
       </summary>
       <div class="description">
@@ -197,7 +197,7 @@
           <div>${element.timeStart} bis ${element.timeEnd}</div>
         </header>
         <p>${element.description}</p>
-        <a href="${element.link}">${element.link_text}</>
+        <a href="${element.link || ""}">${element.link_text || ""}</>
       </div>
     `;
 
@@ -208,17 +208,18 @@
     let button = document.createElement("button");
     button.innerHTML = `<span>${element.title}</span>`;
     button.value = id;
+    button.dataset.type = categorys[element.category];
 
     if (last) {
-      button.dataset.position = "last"
+      button.dataset.position = "last";
     } else {
-      button.dataset.position = "middle"
+      button.dataset.position = "middle";
     }
     return button;
   };
 
   document.addEventListener("click", () => {
-    if (event.target.classList.contains("follow")) {
+    if (event.target.dataset.position) {
       let detail = document.getElementById(id);
       detail.toggleAttribute("open");
       console.log(detail);
@@ -232,10 +233,14 @@
     let start_day = firstDayInMonthIndex(month_number, year);
 
     Array.from(events.children).forEach((element, i) => {
-      let className = "active";
-      if (i < start_day) className = "deactive";
-      element.classList.add(className);
       element.innerHTML = "";
+      element.classList.remove("active", "deactive", "full");
+
+      if (i < start_day) {
+        element.classList.add("deactive");
+      } else {
+        element.classList.add("active");
+      }
     });
 
     data.forEach((element) => {

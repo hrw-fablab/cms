@@ -1,4 +1,3 @@
-from operator import mod
 from django.db import models
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from modelcluster.models import ClusterableModel
@@ -26,7 +25,6 @@ class Event(ClusterableModel):
         "Beschreibung", max_length=140, null=True, blank=True
     )
     link = models.URLField("Link", blank=True, null=True)
-    link_text = models.CharField(max_length=20, null=True, blank=True)
     category = models.CharField(max_length=255, choices=CATEGORYCHOICES, default="none")
 
     start = models.DateTimeField()
@@ -42,10 +40,7 @@ class Event(ClusterableModel):
                 FieldPanel("title"),
                 FieldPanel("adress"),
                 FieldPanel("description"),
-                MultiFieldPanel([
-                    FieldPanel("link"),
-                    FieldPanel("link_text"),
-                ], heading="Link"),
+                FieldPanel("link"),
                 FieldPanel("category"),
             ],
             heading="Informationen",

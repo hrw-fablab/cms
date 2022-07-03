@@ -1,41 +1,43 @@
-{% load wagtailcore_tags %}
-{% block content %}
-  <div class="content calendar" id="calendar" data-width="large">
-    <header class="margin" data-margin="block-end" data-margin-size="tiny">
-      <time id="date"></time>
-      <div class="flex gap" data-gap="small">
-        <button id="backward">
-          <svg width="18" height="18" viewBox="0 0 24 24" transform="rotate(90)">
-            <path d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"/>
-          </svg>
-        </button>
-        <button id="forward">
-          <svg width="18" height="18" viewBox="0 0 24 24" transform="rotate(-90)">
-            <path d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"/>
-          </svg>
-        </button>
-      </div>
-    </header>
-    <ol class="days">
-      <li>Mo</li>
-      <li>Di</li>
-      <li>Mi</li>
-      <li>Do</li>
-      <li>Fr</li>
-      <li>Sa</li>
-      <li>So</li>
-    </ol>
-    <ol class="events" id="days">
-    </ol>
-  </div>
-  <script>
+{% load wagtailcore_tags %} {% block content %}
+<div class="content calendar" id="calendar" data-width="large">
+  <header class="margin" data-margin="block-end" data-margin-size="tiny">
+    <time id="date"></time>
+    <div class="flex gap" data-gap="small">
+      <button id="backward">
+        <svg width="18" height="18" viewBox="0 0 24 24" transform="rotate(90)">
+          <path
+            d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"
+          />
+        </svg>
+      </button>
+      <button id="forward">
+        <svg width="18" height="18" viewBox="0 0 24 24" transform="rotate(-90)">
+          <path
+            d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"
+          />
+        </svg>
+      </button>
+    </div>
+  </header>
+  <ol class="days">
+    <li>Mo</li>
+    <li>Di</li>
+    <li>Mi</li>
+    <li>Do</li>
+    <li>Fr</li>
+    <li>Sa</li>
+    <li>So</li>
+  </ol>
+  <ol class="events" id="events"> </ol>
+</div>
+<script>
   const calendar = document.getElementById("calendar");
   const date = document.getElementById("date");
-  const days = document.getElementById("days");
+  const events = document.getElementById("events");
 
   const backward = document.getElementById("backward");
   const forward = document.getElementById("forward");
-  let elements = document.getElementsByTagName("details")
+  let elements = document.getElementsByTagName("details");
 
   const months = [
     "Januar",
@@ -62,16 +64,7 @@
     "Samstag",
   ];
 
-  const categorys = [
-    "none",
-    "teach",
-    "open",
-    "student",
-    "workshop",
-    "external"
-  ]
-
-  let events = [];
+  const categorys = ["none", "teach", "open", "student", "workshop", "external"];
 
   let year = new Date().getFullYear();
   let month_number = new Date().getMonth();
@@ -145,13 +138,13 @@
     let events_fragment = new DocumentFragment();
     for (x = 0; x < events.length; x++) {
       let details = document.createElement("details");
-      details.className = "cl-details"
-      details.dataset.type = categorys[events[x].category]
+      details.className = "cl-details";
+      details.dataset.type = categorys[events[x].category];
 
       details.innerHTML = `
       <summary>
         <span class="date">${events[x].day} ${months[month_number]}</span>
-        <span>
+        <span class="overview">
           <span class="time">
             <time>${events[x].timeStart}</time>
             <time>${events[x].timeEnd}</time>
@@ -163,38 +156,41 @@
         <p>${events[x].description}</p>
         <a href="${events[x].link}">${events[x].link_text}</>
       </div>
-      `
+      `;
 
-      events_fragment.appendChild(details)
+      events_fragment.appendChild(details);
     }
 
-    return events_fragment
+    return events_fragment;
   };
 
   const createCalendar = async () => {
-    events = await getData();
-    days.innerHTML = "";
+    data = await getData();
+    events.innerHTML = "";
     let number = daysInMonth(year, month_number + 1);
     let test = firstDayInMonthIndex(month_number, year);
     let days_fragment = new DocumentFragment();
-    
+
     for (i = 0; i < test; i++) {
       let li = document.createElement("li");
+      li.setAttribute("id", i);
       li.classList.add("deactive");
       days_fragment.appendChild(li);
     }
 
     for (i = 0; i < number; i++) {
       let li = document.createElement("li");
+      li.setAttribute("id", i + test);
       li.classList.add("active");
-      days_fragment.appendChild(li);
 
-      if (events[i].length != 0) {
-        li.classList.add("elements");
-        li.appendChild(createEvent(events[i]));
+      if (data[i].length != 0) {
+        li.classList.add("full");
+        li.appendChild(createEvent(data[i]));
       }
+
+      days_fragment.appendChild(li);
     }
-    days.appendChild(days_fragment);
+    events.appendChild(days_fragment);
     updateDate();
   };
 
@@ -202,19 +198,16 @@
     date.innerHTML = month_string + " " + year;
   };
 
-  const checkDetails = (event) => {
-    tagName = event.target.parentNode.tagName
-    if (tagName == "DETAILS" || tagName == "SUMMARY" || tagName == "SPAN" || tagName == "DIV") {
-      return
-    }
-    Array.from(elements).forEach(x => {x.removeAttribute("open")})
-  }
+  let old_target = null;
+
+  const details = document.getElementsByTagName("details");
+  document.addEventListener("click", () => {
+    Array.from(details).forEach((element) => element.removeAttribute("open"));
+  });
 
   window.addEventListener("load", createCalendar);
 
-  document.addEventListener("click", checkDetails);
-
   forward.addEventListener("click", handleChange);
   backward.addEventListener("click", handleChange);
-  </script>
+</script>
 {% endblock content %}

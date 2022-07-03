@@ -152,7 +152,7 @@
           ${events[x].title}
         </span>
       </summary>
-      <div>
+      <div class="description">
         <p>${events[x].description}</p>
         <a href="${events[x].link}">${events[x].link_text}</>
       </div>
@@ -202,9 +202,12 @@
     date.innerHTML = month_string + " " + year;
   };
 
-  const details = document.getElementsByTagName("details");
-  document.addEventListener("click", () => {
-    Array.from(details).forEach((element) => element.removeAttribute("open"));
+  document.addEventListener("click", (event) => {
+    tagName = event.target.parentNode.tagName
+    if (tagName == "DETAILS" || tagName == "SUMMARY" || tagName == "SPAN" || tagName == "DIV") {
+      return
+    }
+    Array.from(elements).forEach(element => {element.removeAttribute("open")})
   });
 
   window.addEventListener("load", createCalendar);

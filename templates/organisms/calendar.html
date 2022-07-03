@@ -28,7 +28,43 @@
     <li>Sa</li>
     <li>So</li>
   </ol>
-  <ol class="events" id="events"> </ol>
+  <ol class="events" id="events">
+    <li id="1"></li>
+    <li id="2"></li>
+    <li id="3"></li>
+    <li id="4"></li>
+    <li id="5"></li>
+    <li id="6"></li>
+    <li id="7"></li>
+    <li id="8"></li>
+    <li id="9"></li>
+    <li id="10"></li>
+    <li id="11"></li>
+    <li id="12"></li>
+    <li id="13"></li>
+    <li id="14"></li>
+    <li id="15"></li>
+    <li id="16"></li>
+    <li id="17"></li>
+    <li id="18"></li>
+    <li id="19"></li>
+    <li id="20"></li>
+    <li id="21"></li>
+    <li id="22"></li>
+    <li id="23"></li>
+    <li id="24"></li>
+    <li id="25"></li>
+    <li id="26"></li>
+    <li id="27"></li>
+    <li id="28"></li>
+    <li id="29"></li>
+    <li id="30"></li>
+    <li id="31"></li>
+    <li id="32"></li>
+    <li id="33"></li>
+    <li id="34"></li>
+    <li id="35"></li>
+  </ol>
 </div>
 <script>
   const calendar = document.getElementById("calendar");
@@ -134,67 +170,50 @@
     }
   };
 
-  const createEvent = (events) => {
-    let events_fragment = new DocumentFragment();
-    for (x = 0; x < events.length; x++) {
-      let details = document.createElement("details");
-      details.className = "cl-details";
-      details.dataset.type = categorys[events[x].category];
+  const createEvent = (element) => {
+    let details = document.createElement("details");
+    details.dataset.type = categorys[element.category];
 
-      details.innerHTML = `
+    details.innerHTML = `
       <summary>
-        <span class="date">${events[x].day} ${months[month_number]}</span>
+        <span class="date">${element.day} ${months[month_number]}</span>
         <span class="overview">
           <span class="time">
-            <time>${events[x].timeStart}</time>
-            <time>${events[x].timeEnd}</time>
+            <time>${element.timeStart}</time>
+            <time>${element.timeEnd}</time>
           </span>
-          ${events[x].title}
+          ${element.title}
         </span>
       </summary>
-      <div>
-        <p>${events[x].description}</p>
-        <a href="${events[x].link}">${events[x].link_text}</>
+      <div class="description">
+        <p>${element.description}</p>
+        <a href="${element.link}">${element.link_text}</>
       </div>
       `;
 
-      events_fragment.appendChild(details);
-    }
-
-    return events_fragment;
+    return details;
   };
 
   const createCalendar = async () => {
     data = await getData();
-    events.innerHTML = "";
-    const today = new Date();
+
     let number = daysInMonth(year, month_number + 1);
-    let test = firstDayInMonthIndex(month_number, year);
-    let days_fragment = new DocumentFragment();
+    let start_day = firstDayInMonthIndex(month_number, year);
 
-    for (i = 0; i < test; i++) {
-      let li = document.createElement("li");
-      li.classList.add("deactive");
-      days_fragment.appendChild(li);
-    }
+    Array.from(events.children).forEach((element, i) => {
+      let className = "active";
+      if (i < start_day) className = "deactive";
+      element.classList.add(className);
+      element.innerHTML = "";
+    });
 
-    for (i = 0; i < number; i++) {
-      let li = document.createElement("li");
-      li.setAttribute("id", i + 1);
-      li.classList.add("active");
+    data.forEach((element) => {
+      let li = document.getElementById(element.day + start_day);
 
-      if (i + 1 == today.getDate()) {
-        li.classList.add("today");
-      }
+      li.appendChild(createEvent(element));
+      li.classList.add("full");
+    });
 
-      if (data[i].length != 0) {
-        li.classList.add("full");
-        li.appendChild(createEvent(data[i]));
-      }
-
-      days_fragment.appendChild(li);
-    }
-    events.appendChild(days_fragment);
     updateDate();
   };
 
@@ -202,9 +221,19 @@
     date.innerHTML = month_string + " " + year;
   };
 
-  const details = document.getElementsByTagName("details");
-  document.addEventListener("click", () => {
-    Array.from(details).forEach((element) => element.removeAttribute("open"));
+  document.addEventListener("click", (event) => {
+    tagName = event.target.parentNode.tagName;
+    if (
+      tagName == "DETAILS" ||
+      tagName == "SUMMARY" ||
+      tagName == "SPAN" ||
+      tagName == "DIV"
+    ) {
+      return;
+    }
+    Array.from(elements).forEach((element) => {
+      element.removeAttribute("open");
+    });
   });
 
   window.addEventListener("load", createCalendar);

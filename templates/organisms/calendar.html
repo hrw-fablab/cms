@@ -244,6 +244,15 @@
     });
 
     data.forEach((element) => {
+      if (element.length == 1) {
+        let li = document.getElementById(element.day + start_day);
+
+        li.appendChild(createEvent(element));
+        li.classList.add("full");
+      }
+    });
+
+    data.forEach((element) => {
       if (element.length != 1) {
         for (i = 0; i < element.length; i++) {
           let li = document.getElementById(element.day + i + start_day);
@@ -257,11 +266,6 @@
             li.classList.add("full");
           }
         }
-      } else {
-        let li = document.getElementById(element.day + start_day);
-
-        li.appendChild(createEvent(element));
-        li.classList.add("full");
       }
     });
 

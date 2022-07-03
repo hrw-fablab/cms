@@ -62,10 +62,6 @@
     <body class="body">
         {% block svg %}{% endblock %}
         {% wagtailuserbar %}
-        {% wagtail_site as current_site %}
-        {% if request.get_host == "hrw-fablab.de"%}
-        {% include "molecules/alert.html" %}
-        {% endif %}
         {% include "organisms/navigation.html" %}
         {% block content %}{% endblock %}
         {% include "organisms/footer.html" %}

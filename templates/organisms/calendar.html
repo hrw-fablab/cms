@@ -202,8 +202,6 @@
     date.innerHTML = month_string + " " + year;
   };
 
-  let old_target = null;
-
   const details = document.getElementsByTagName("details");
   document.addEventListener("click", () => {
     Array.from(details).forEach((element) => element.removeAttribute("open"));

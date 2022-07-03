@@ -1,5 +1,5 @@
 {% load wagtailcore_tags %} {% block content %}
-<div class="content calendar" id="calendar" data-width="large">
+<div class="content calendar" id="calendar">
   <header class="margin" data-margin="block-end" data-margin-size="tiny">
     <time id="date"></time>
     <div class="flex gap" data-gap="small">
@@ -48,22 +48,22 @@
     <li id="17"></li>
     <li id="18"></li>
     <li id="19"></li>
-    <li id="20"></li>
-    <li id="21"></li>
-    <li id="22"></li>
-    <li id="23"></li>
-    <li id="24"></li>
-    <li id="25"></li>
-    <li id="26"></li>
-    <li id="27"></li>
-    <li id="28"></li>
-    <li id="29"></li>
-    <li id="30"></li>
-    <li id="31"></li>
-    <li id="32"></li>
-    <li id="33"></li>
-    <li id="34"></li>
-    <li id="35"></li>
+    <li id="20"> </li>
+    <li id="21"> </li>
+    <li id="22"> </li>
+    <li id="23"> </li>
+    <li id="24"> </li>
+    <li id="25"> </li>
+    <li id="26"> </li>
+    <li id="27"> </li>
+    <li id="28"> </li>
+    <li id="29"> </li>
+    <li id="30"> </li>
+    <li id="31"> </li>
+    <li id="32"> </li>
+    <li id="33"> </li>
+    <li id="34"> </li>
+    <li id="35"> </li>
   </ol>
 </div>
 <script>
@@ -170,29 +170,61 @@
     }
   };
 
-  const createEvent = (element) => {
+  const createEvent = (element, id) => {
     let details = document.createElement("details");
     details.dataset.type = categorys[element.category];
 
+    if (id) {
+      details.setAttribute("id", id);
+      details.dataset.position = "first";
+    }
+
     details.innerHTML = `
       <summary>
-        <span class="date">${element.day} ${months[month_number]}</span>
-        <span class="overview">
-          <span class="time">
-            <time>${element.timeStart}</time>
-            <time>${element.timeEnd}</time>
-          </span>
-          ${element.title}
-        </span>
+        <span class="date">${element.day} <br> ${months[month_number]}</span>
+        ${element.timeStart} ${element.title}
       </summary>
       <div class="description">
+        <header>
+          <div>
+            <h3>${element.title}</h3>
+            <button class="close">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"/>
+              </svg>
+            </button>
+          </div>
+          <div>${element.timeStart} bis ${element.timeEnd}</div>
+        </header>
         <p>${element.description}</p>
-        <a href="${element.link}">${element.link_text}</>
+        <a href="${element.link || ""}">${element.link_text || ""}</>
       </div>
-      `;
+    `;
 
     return details;
   };
+
+  const createFollower = (element, id, last) => {
+    let button = document.createElement("button");
+    button.innerHTML = `<span>${element.title}</span>`;
+    button.value = id;
+    button.dataset.type = categorys[element.category];
+
+    if (last) {
+      button.dataset.position = "last";
+    } else {
+      button.dataset.position = "middle";
+    }
+    return button;
+  };
+
+  document.addEventListener("click", () => {
+    if (event.target.dataset.position) {
+      let detail = document.getElementById(id);
+      detail.toggleAttribute("open");
+      console.log(detail);
+    }
+  });
 
   const createCalendar = async () => {
     data = await getData();
@@ -201,17 +233,36 @@
     let start_day = firstDayInMonthIndex(month_number, year);
 
     Array.from(events.children).forEach((element, i) => {
-      let className = "active";
-      if (i < start_day) className = "deactive";
-      element.classList.add(className);
       element.innerHTML = "";
+      element.classList.remove("active", "deactive", "full");
+
+      if (i < start_day) {
+        element.classList.add("deactive");
+      } else {
+        element.classList.add("active");
+      }
     });
 
     data.forEach((element) => {
-      let li = document.getElementById(element.day + start_day);
+      if (element.length != 1) {
+        for (i = 0; i < element.length; i++) {
+          let li = document.getElementById(element.day + i + start_day);
+          id = "asdf";
+          if (i == element.length - 1) {
+            li.appendChild(createFollower(element, id, true));
+          } else if (i != 0) {
+            li.appendChild(createFollower(element, id));
+          } else {
+            li.appendChild(createEvent(element, id));
+            li.classList.add("full");
+          }
+        }
+      } else {
+        let li = document.getElementById(element.day + start_day);
 
-      li.appendChild(createEvent(element));
-      li.classList.add("full");
+        li.appendChild(createEvent(element));
+        li.classList.add("full");
+      }
     });
 
     updateDate();
@@ -221,19 +272,10 @@
     date.innerHTML = month_string + " " + year;
   };
 
-  document.addEventListener("click", (event) => {
-    tagName = event.target.parentNode.tagName;
-    if (
-      tagName == "DETAILS" ||
-      tagName == "SUMMARY" ||
-      tagName == "SPAN" ||
-      tagName == "DIV"
-    ) {
-      return;
+  document.addEventListener("click", () => {
+    if (event.target.className == "close") {
+      event.target.parentNode.parentNode.parentNode.parentNode.toggleAttribute("open");
     }
-    Array.from(elements).forEach((element) => {
-      element.removeAttribute("open");
-    });
   });
 
   window.addEventListener("load", createCalendar);

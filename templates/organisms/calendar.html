@@ -225,7 +225,6 @@
     if (event.target.dataset.position) {
       let detail = document.getElementById(id);
       detail.toggleAttribute("open");
-      console.log(detail);
     }
   });
 
@@ -235,17 +234,13 @@
     let number = daysInMonth(year, month_number + 1);
     let start_day = firstDayInMonthIndex(month_number, year);
 
-    console.log(number);
-
     for (i = 0; i < 38; i++) {
       events.children[i].innerHTML = "";
       events.children[i].classList.remove("active", "deactive", "full");
 
       if (i < start_day) {
-        console.log("start")
         events.children[i].classList.add("deactive");
       } else if (i > number + start_day - 1) {
-        console.log("end")
         events.children[i].classList.add("deactive");
       } else {
         events.children[i].classList.add("active");
@@ -263,10 +258,10 @@
 
     data.forEach((element) => {
       if (element.length != 1) {
-        for (i = 0; i < element.length; i++) {
+        for (i = 0; i < element.length + 1; i++) {
           let li = document.getElementById(element.day + i + start_day);
           id = "asdf";
-          if (i == element.length - 1) {
+          if (i == element.length) {
             li.appendChild(createFollower(element, id, true));
           } else if (i != 0) {
             li.appendChild(createFollower(element, id));

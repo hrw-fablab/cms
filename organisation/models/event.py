@@ -1,6 +1,6 @@
 from operator import mod
 from django.db import models
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from modelcluster.models import ClusterableModel
 
 
@@ -17,6 +17,29 @@ CATEGORYCHOICES = (
     ("4", "Workshop"),
     ("5", "Extern"),
 )
+
+from django.db import models
+from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import InlinePanel
+
+from modelcluster.models import ClusterableModel
+from modelcluster.fields import ParentalKey
+
+
+class Expection(ClusterableModel):
+    start = models.DateField()
+    end = models.DateField()
+
+    link = ParentalKey(
+        "organisation.Event",
+        on_delete=models.CASCADE,
+        related_name="related_expection",
+    )
+
+    panels = [
+        FieldPanel("start"),
+        FieldPanel("end"),
+    ]
 
 
 class Event(ClusterableModel):
@@ -42,10 +65,13 @@ class Event(ClusterableModel):
                 FieldPanel("title"),
                 FieldPanel("adress"),
                 FieldPanel("description"),
-                MultiFieldPanel([
-                    FieldPanel("link"),
-                    FieldPanel("link_text"),
-                ], heading="Link"),
+                MultiFieldPanel(
+                    [
+                        FieldPanel("link"),
+                        FieldPanel("link_text"),
+                    ],
+                    heading="Link",
+                ),
                 FieldPanel("category"),
             ],
             heading="Informationen",
@@ -65,6 +91,7 @@ class Event(ClusterableModel):
             ],
             heading="Wiederholung",
         ),
+        InlinePanel("related_expection", heading="Expections"),
     ]
 
     @property
@@ -116,11 +143,13 @@ class Event(ClusterableModel):
         elif self.repeatStart == None or self.repeatEnd == None:
             return True
         else:
-            if self.repeatEnd.year < date.year or self.repeatStart.year > date.year:
+            if (
+                self.repeatEnd.year < date.year or self.repeatStart.year > date.year
+            ) and (
+                self.repeatStart.month > date.month or self.repeatEnd.month < date.month
+            ):
                 return False
 
-            if self.repeatStart.month > date.month or self.repeatEnd.month < date.month:
-                return False
             return True
 
     def __str__(self):

@@ -4,6 +4,86 @@ import datetime
 from calendar import monthrange
 from organisation.models import Event
 
+
+def single_append(element):
+    return {
+        "title": element.title,
+        "adress": element.adress,
+        "link": element.link,
+        "link_text": element.link_text,
+        "length": element.length,
+        "timeStart": element.timeStart,
+        "timeEnd": element.timeEnd,
+        "day": element.day,
+        "description": element.description,
+        "category": element.category,
+    }
+
+
+def repeat_append(element, count, year, month):
+    results = []
+    for day in range(count):
+        switch = True
+        weekday = element.start.weekday()
+        current_date = datetime.date(year, month, day + 1)
+
+        for exception in element.related_expection.all():
+            print(current_date)
+            print(exception.start)
+            print(exception.end)
+            if (current_date >= exception.start and current_date <= exception.end):
+                print("yep")
+                switch = False
+
+        if weekday == current_date.weekday() and switch == True:
+            results.append(
+                {
+                    "title": element.title,
+                    "adress": element.adress,
+                    "link": element.link,
+                    "link_text": element.link_text,
+                    "length": element.length,
+                    "timeStart": element.timeStart,
+                    "timeEnd": element.timeEnd,
+                    "day": day + 1,
+                    "description": element.description,
+                    "category": element.category,
+                    "repeat": 1,
+                }
+            )
+    return results
+
+
+def repeat_append_filter(element, count, year, month):
+    results = []
+    for day in range(count):
+        switch = True
+        weekday = element.start.weekday()
+        current_date = datetime.date(year, month, day + 1)
+
+        for exception in element.related_expection.all():
+            if (current_date >= exception.start and current_date <= exception.end):
+                switch = False
+
+        if weekday == current_date.weekday() and day <= element.repeatEnd.day and switch == True:
+            results.append(
+                {
+                    "title": element.title,
+                    "adress": element.adress,
+                    "link": element.link,
+                    "link_text": element.link_text,
+                    "length": element.length,
+                    "timeStart": element.timeStart,
+                    "timeEnd": element.timeEnd,
+                    "day": day + 1,
+                    "description": element.description,
+                    "category": element.category,
+                    "repeat": 1,
+                }
+            )
+    return results
+
+
 def get_events(request):
     body = json.loads(request.body)
     events = []
@@ -17,64 +97,16 @@ def get_events(request):
 
     for element in events:
         if element.repeat == "0":
-            days.append(
-                {
-                    "title": element.title,
-                    "adress": element.adress,
-                    "link": element.link,
-                    "link_text": element.link_text,
-                    "length": element.length,
-                    "timeStart": element.timeStart,
-                    "timeEnd": element.timeEnd,
-                    "day": element.day,
-                    "description": element.description,
-                    "category": element.category,
-                }
-            )
+            days.append(single_append(element))
         elif (
             element.repeatEnd.month == date.month
             and element.repeatEnd.year == date.year
         ):
-            for day in range(days_count):
-                weekday = element.start.weekday()
-                current_date = datetime.date(body["year"], body["month"], day + 1)
-                if weekday == current_date.weekday() and day <= element.repeatEnd.day:
-                    days.append(
-                        {
-                            "title": element.title,
-                            "adress": element.adress,
-                            "link": element.link,
-                            "link_text": element.link_text,
-                            "length": element.length,
-                            "timeStart": element.timeStart,
-                            "timeEnd": element.timeEnd,
-                            "day": day + 1,
-                            "description": element.description,
-                            "category": element.category,
-                            "repeat": 1,
-                        }
-                    )
+            days.extend(
+                repeat_append_filter(element, days_count, date.year, date.month)
+            )
         else:
-            for day in range(days_count):
-                weekday = element.start.weekday()
-                current_date = datetime.date(body["year"], body["month"], day + 1)
-                if weekday == current_date.weekday():
-
-                    days.append(
-                        {
-                            "title": element.title,
-                            "adress": element.adress,
-                            "link": element.link,
-                            "link_text": element.link_text,
-                            "length": element.length,
-                            "timeStart": element.timeStart,
-                            "timeEnd": element.timeEnd,
-                            "day": day + 1,
-                            "description": element.description,
-                            "category": element.category,
-                            "repeat": 1,
-                        }
-                    )
+            days.extend(repeat_append(element, days_count, date.year, date.month))
 
     data = json.dumps(days)
 

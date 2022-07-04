@@ -28,11 +28,7 @@ def repeat_append(element, count, year, month):
         current_date = datetime.date(year, month, day + 1)
 
         for exception in element.related_expection.all():
-            print(current_date)
-            print(exception.start)
-            print(exception.end)
             if (current_date >= exception.start and current_date <= exception.end):
-                print("yep")
                 switch = False
 
         if weekday == current_date.weekday() and switch == True:

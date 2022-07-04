@@ -13,8 +13,6 @@ class MatterportFinder(EmbedFinder):
 
         This should not have any side effects (no requests to external servers)
         """
-
-        print(bool("matterport.com" in url))
         return bool("matterport.com" in url)
 
     def find_embed(self, url, max_width=None):

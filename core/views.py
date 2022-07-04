@@ -4,7 +4,6 @@ import datetime
 from calendar import monthrange
 from organisation.models import Event
 
-
 def get_events(request):
     body = json.loads(request.body)
     events = []
@@ -15,8 +14,6 @@ def get_events(request):
     for element in Event.objects.all().order_by("start"):
         if element.visible(date) == True:
             events.append(element)
-
-    print(events)
 
     for element in events:
         if element.repeat == "0":
@@ -34,11 +31,35 @@ def get_events(request):
                     "category": element.category,
                 }
             )
+        elif (
+            element.repeatEnd.month == date.month
+            and element.repeatEnd.year == date.year
+        ):
+            for day in range(days_count):
+                weekday = element.start.weekday()
+                current_date = datetime.date(body["year"], body["month"], day + 1)
+                if weekday == current_date.weekday() and day <= element.repeatEnd.day:
+                    days.append(
+                        {
+                            "title": element.title,
+                            "adress": element.adress,
+                            "link": element.link,
+                            "link_text": element.link_text,
+                            "length": element.length,
+                            "timeStart": element.timeStart,
+                            "timeEnd": element.timeEnd,
+                            "day": day + 1,
+                            "description": element.description,
+                            "category": element.category,
+                            "repeat": 1,
+                        }
+                    )
         else:
             for day in range(days_count):
                 weekday = element.start.weekday()
                 current_date = datetime.date(body["year"], body["month"], day + 1)
                 if weekday == current_date.weekday():
+
                     days.append(
                         {
                             "title": element.title,

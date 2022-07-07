@@ -6,7 +6,7 @@
         {% include "atoms/heading.html" with value=value.title anchor=True %}
         <div class="grid gap" data-gap="medium" data-layout="{{ value.layout }}">
             {% for pages in value.pages %}
-                {% for page in pages.get_children.specific|slice:value.amount|dictsortreversed:'date' %}
+                {% for page in pages.get_children.specific|dictsortreversed:'date'|slice:value.amount %}
                     {% include "molecules/card.html" with value=page %}
                 {% endfor %}
             {% endfor %}

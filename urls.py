@@ -9,6 +9,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 from django.views.decorators.csrf import csrf_exempt
 from django.views.i18n import set_language
 
+from newsletter import views as newsletter_views
 from core.sitemaps import sitemap, FablabSiteMap
 from core.views import get_events
 
@@ -29,6 +30,7 @@ urlpatterns = [
         name="wagtail.contrib.sitemaps.views.sitemap",
     ),
     path("get_events", get_events, name="get_events"),
+    path("newsletter", newsletter_views.signup, name="newsletter"),
 ]
 
 

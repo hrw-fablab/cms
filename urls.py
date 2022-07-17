@@ -28,7 +28,7 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="wagtail.contrib.sitemaps.views.sitemap",
     ),
-    path("get_events", get_events, name="get_events"),
+    path("events", get_events, name="events"),
 ]
 
 

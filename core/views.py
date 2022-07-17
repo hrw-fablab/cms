@@ -104,6 +104,14 @@ def get_events(request):
         else:
             days.extend(repeat_append(element, days_count, date.year, date.month))
 
-    data = json.dumps(days)
+    result = {
+        "year": body["year"],
+        "month": body["month"],
+        "days": days_count,
+        "index": date.weekday(),
+        "events": days
+    }
+
+    data = json.dumps(result)
 
     return JsonResponse(data, safe=False)

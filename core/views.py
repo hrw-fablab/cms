@@ -104,6 +104,8 @@ def get_events(request):
         else:
             days.extend(repeat_append(element, days_count, date.year, date.month))
 
+    days.sort(key = lambda x: x['length'])
+
     result = {
         "year": body["year"],
         "month": body["month"],

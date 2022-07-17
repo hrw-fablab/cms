@@ -58,7 +58,7 @@ const getCSRF = () => {
   return result.csrftoken;
 };
 
-const getData = async () => {
+const getData = async (url) => {
   const config = {
     method: "POST",
     headers: {
@@ -71,7 +71,7 @@ const getData = async () => {
     }),
   };
   try {
-    const data = await fetch("http://127.0.0.1:8000/events", config);
+    const data = await fetch(`${window.location.origin}/events`, config);
     const json = await data.json();
     return JSON.parse(json);
   } catch (error) {
@@ -79,11 +79,12 @@ const getData = async () => {
   }
 };
 
-const createEvent = (element, id, category) => {
+const createEvent = (element, id, category, position) => {
   let details = document.createElement("details");
   details.dataset.type = category;
 
   details.setAttribute("id", id);
+  details.dataset.position = position
 
   details.innerHTML = `
       <summary>
@@ -110,12 +111,13 @@ const createEvent = (element, id, category) => {
   return details;
 };
 
-const createRedirect = (id, category) => {
+const createRedirect = (id, category, position) => {
   let button = document.createElement("button");
   button.innerHTML = `<span>.</span>`;
   button.value = id;
-  button.dataset.redirect = ""
-  button.dataset.type = category
+  button.dataset.position = position
+  button.dataset.redirect = "";
+  button.dataset.type = category;
 
   return button;
 };
@@ -137,19 +139,19 @@ const clearCalendar = () => {
   });
 };
 
-const addEvent = (li, element, id, category) => {
+const addEvent = (li, element, id, category, position) => {
   li.classList.add("full");
-  li.appendChild(createEvent(element, id, category));
+  li.appendChild(createEvent(element, id, category, position));
 };
 
-const addRedirect = (li, id, category) => {
-  li.appendChild(createRedirect(id, category));
+const addRedirect = (li, id, category, position) => {
+  li.appendChild(createRedirect(id, category, position));
 };
 
 const createCalendar = async () => {
   clearCalendar();
 
-  const data = await getData();
+  const data = await getData(`${window.location.hostname}/events`);
 
   for (let i = data.index; i < data.index + data.days; i++) {
     events.children[i].classList.add("active");
@@ -159,13 +161,19 @@ const createCalendar = async () => {
     let li = document.getElementById(element.day + data.index);
     let id = `event${i}`;
     let category = categorys[element.category];
-    addEvent(li, element, id, category);
     if (element.length != 1) {
-      for (i = 0; i < element.length + 1; i++) {
-        let redirect = document.getElementById(element.day + i + data.index);
+      addEvent(li, element, id, category, "first");
+      for (i = 0; i < element.length; i++) {
+        let redirect = document.getElementById(element.day + i + data.index + 1);
+        if (i == element.length - 1) {
+            addRedirect(redirect, id, category, "last");
+            return;
+        }
         addRedirect(redirect, id, category);
       }
+      return;
     }
+    addEvent(li, element, id, category);
   });
 
   updateDate();

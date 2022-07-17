@@ -126,7 +126,7 @@ class Event(ClusterableModel):
         return self.end.strftime("%H:%M")
 
     def visible(self, date):
-        if self.repeatStart == None or self.repeatEnd == None:
+        if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
             return True
 
         if self.repeat == "0":

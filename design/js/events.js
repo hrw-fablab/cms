@@ -70,7 +70,8 @@ const createEvent = (element, category) => {
 const createCalendar = async () => {
   let month = 1;
   let date = new Date();
-  while (events.children.length <= 3) {
+  let current_date = new Date();
+  while (events.children.length != 3) {
     const data = await getData(
       `${window.location.origin}/events`,
       date.getFullYear(),
@@ -79,16 +80,15 @@ const createCalendar = async () => {
 
     for (const element of data.events) {
       if (
-        element.day <= date.getDate() &&
-        element.month == new Date().getMonth() + 1
+        element.day <= current_date.getDate() &&
+        element.month == current_date.getMonth() + 1
       ) {
-        break;
+        continue;
       }
-      if (events.children.length >= 3) {
-        break;
-      }
-      events.appendChild(createEvent(element, categorys[element.category]))
+      if (events.children.length == 3) break;
+      events.appendChild(createEvent(element, categorys[element.category]));
     }
+
     month++;
   }
 };

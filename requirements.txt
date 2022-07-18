@@ -2,7 +2,7 @@ Brotli==1.0.9
 Django==3.2.14
 python-dotenv==0.20.0
 wagtail==3.0.1
-wagtail-cache==2.0.0
+wagtail-cache==2.1.0
 wagtail-generic-chooser==0.4.1
 wagtail-localize==1.2.1
 wagtailmedia==0.10.1

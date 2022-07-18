@@ -52,12 +52,11 @@ const getData = async (url, year, month) => {
 
 const createEvent = (element, category) => {
   let section = document.createElement("section");
-  section.dataset.type = category;
 
   section.innerHTML = `
-      <time>${element.day} ${months[element.month - 1]}</time>
+      <time data-type="${category}">${element.day} ${months[element.month - 1]}</time>
       <header>
-      <h3>${element.title}</h3>
+      <a href="${element.link}"><h3>${element.title}</h3></a>
       <time>${element.timeStart} bis ${element.timeEnd}</time>
       </header>
       <div>
@@ -69,8 +68,6 @@ const createEvent = (element, category) => {
 };
 
 const createCalendar = async () => {
-  let current_date = new Date();
-
   let month = 1;
   let date = new Date();
   while (events.children.length <= 3) {
@@ -83,7 +80,7 @@ const createCalendar = async () => {
     for (const element of data.events) {
       if (
         element.day <= date.getDate() &&
-        element.month == current_date.getMonth() + 1
+        element.month == new Date().getMonth() + 1
       ) {
         break;
       }

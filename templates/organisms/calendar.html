@@ -1,6 +1,15 @@
-{% load wagtailcore_tags static %} 
-{% block content %}
-<div class="content calendar" id="calendar" data-width="large">
+{% load wagtailcore_tags static %}
+<div
+  class="content calendar"
+  id="calendar"
+  data-width="large"
+  data-style="{%if value.events%}scroll{%endif%}"
+  data-margin-block-end="large"
+>
+  {% include "atoms/heading.html" with value=value.title anchor=True %} {% if value.events %}
+  <div id="events" class="events"></div>
+  <script src="{% static 'js/events.js' %}"></script>
+  {% else %}
   <header>
     <time id="date"></time>
     <div class="flex gap" data-gap="small">
@@ -69,6 +78,6 @@
     <li id="37"> </li>
     <li id="38"> </li>
   </ol>
+  <script src="{% static 'js/calendar.js' %}"></script>
+  {% endif %}
 </div>
-<script src="{% static 'js/calendar.js' %}"></script>
-{% endblock content %}

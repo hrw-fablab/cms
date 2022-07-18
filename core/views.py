@@ -5,7 +5,7 @@ from calendar import monthrange
 from organisation.models import Event
 
 
-def single_append(element):
+def single_append(element, year, month):
     return {
         "title": element.title,
         "adress": element.adress,
@@ -15,6 +15,8 @@ def single_append(element):
         "timeStart": element.timeStart,
         "timeEnd": element.timeEnd,
         "day": element.day,
+        "month": month,
+        "year": year,
         "description": element.description,
         "category": element.category,
     }
@@ -42,6 +44,8 @@ def repeat_append(element, count, year, month):
                     "timeStart": element.timeStart,
                     "timeEnd": element.timeEnd,
                     "day": day + 1,
+                    "month": month,
+                    "year": year,
                     "description": element.description,
                     "category": element.category,
                     "repeat": 1,
@@ -72,6 +76,8 @@ def repeat_append_filter(element, count, year, month):
                     "timeStart": element.timeStart,
                     "timeEnd": element.timeEnd,
                     "day": day + 1,
+                    "month": month,
+                    "year": year,
                     "description": element.description,
                     "category": element.category,
                     "repeat": 1,
@@ -93,7 +99,7 @@ def get_events(request):
 
     for element in events:
         if element.repeat == "0":
-            days.append(single_append(element))
+            days.append(single_append(element, date.year, date.month))
         elif (
             element.repeatEnd.month == date.month
             and element.repeatEnd.year == date.year

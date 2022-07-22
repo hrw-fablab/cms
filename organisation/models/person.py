@@ -1,9 +1,8 @@
 from django.db import models
-from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.models import ClusterableModel
 
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     MultiFieldPanel,
     FieldPanel,
     TabbedInterface,
@@ -47,7 +46,7 @@ class Person(ClusterableModel):
             heading="Name",
         ),
         FieldPanel("organisation", heading="Organisation"),
-        ImageChooserPanel("image", heading="Bild"),
+        FieldPanel("image", heading="Bild"),
         MultiFieldPanel(
             [
                 FieldPanel("link", heading="Link"),

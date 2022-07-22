@@ -2,16 +2,17 @@
 document.addEventListener(
   "click",
   (event) => {
-    if (event.dataset.type == "menu" && event.target.id != "menu-button") {
-      if (getComputedStyle(event.target.nextElementSibling).display === "none") {
-        for (element of document.getElementsByClassName("submenu")) {
-          element.classList.add("hidden");
-        }
-        return event.target.nextElementSibling.classList.remove("hidden");
+    if (
+      event.target.dataset.type == "menu" &&
+      event.target.id != "menu-button" &&
+      event.target.nextElementSibling.classList.contains("hidden")
+    ) {
+      for (element of document.querySelectorAll('[data-menu="submenu"]')) {
+        element.classList.add("hidden");
       }
-      return event.target.nextElementSibling.classList.add("hidden");
+      return event.target.nextElementSibling.classList.toggle("hidden");
     }
-    for (element of document.getElementsByClassName("submenu")) {
+    for (element of document.querySelectorAll('[data-menu="submenu"]')) {
       element.classList.add("hidden");
     }
   },
@@ -32,3 +33,25 @@ document.getElementById("menu-button").addEventListener(
   },
   { passive: true }
 );
+
+const callback = (entries, observer) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add("fade-in");
+        observer.unobserve(entry.target);
+      }, index * 100);
+    }
+  });
+};
+
+const cardObserver = new IntersectionObserver(callback, {});
+const mediaObserver = new IntersectionObserver(callback, {});
+
+const cardsElements = document
+  .querySelectorAll(".card")
+  .forEach((x) => cardObserver.observe(x));
+
+const iframeElements = document
+  .querySelectorAll("iframe")
+  .forEach((x) => mediaObserver.observe(x));

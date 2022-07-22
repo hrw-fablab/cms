@@ -1,5 +1,6 @@
+from operator import mod
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from modelcluster.models import ClusterableModel
 
 
@@ -8,14 +9,48 @@ REAPEATCHOICES = (
     ("1", "weekly"),
 )
 
+CATEGORYCHOICES = (
+    ("0", "none"),
+    ("1", "Lehre"),
+    ("2", "Offenes Angebot"),
+    ("3", "Schülerkurse"),
+    ("4", "Workshop"),
+    ("5", "Extern"),
+)
+
+from django.db import models
+from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import InlinePanel
+
+from modelcluster.models import ClusterableModel
+from modelcluster.fields import ParentalKey
+
+
+class Expection(ClusterableModel):
+    start = models.DateField()
+    end = models.DateField()
+
+    link = ParentalKey(
+        "organisation.Event",
+        on_delete=models.CASCADE,
+        related_name="related_expection",
+    )
+
+    panels = [
+        FieldPanel("start"),
+        FieldPanel("end"),
+    ]
+
 
 class Event(ClusterableModel):
     title = models.CharField("Titel", max_length=30, null=True, blank=True)
     adress = models.CharField("Adresse", max_length=60, null=True, blank=True)
-    description = models.CharField(
+    description = models.TextField(
         "Beschreibung", max_length=140, null=True, blank=True
     )
     link = models.URLField("Link", blank=True, null=True)
+    link_text = models.CharField(max_length=20, null=True, blank=True)
+    category = models.CharField(max_length=255, choices=CATEGORYCHOICES, default="none")
 
     start = models.DateTimeField()
     end = models.DateTimeField()
@@ -30,7 +65,14 @@ class Event(ClusterableModel):
                 FieldPanel("title"),
                 FieldPanel("adress"),
                 FieldPanel("description"),
-                FieldPanel("link"),
+                MultiFieldPanel(
+                    [
+                        FieldPanel("link"),
+                        FieldPanel("link_text"),
+                    ],
+                    heading="Link",
+                ),
+                FieldPanel("category"),
             ],
             heading="Informationen",
         ),
@@ -49,6 +91,7 @@ class Event(ClusterableModel):
             ],
             heading="Wiederholung",
         ),
+        InlinePanel("related_expection", heading="Expections"),
     ]
 
     @property
@@ -83,10 +126,13 @@ class Event(ClusterableModel):
         return self.end.strftime("%H:%M")
 
     def visible(self, date):
+        if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
+            return True
+
         if self.repeat == "0":
             if (
-                self.end.replace(tzinfo=None).year < date.year
-                or self.start.replace(tzinfo=None).year > date.year
+                self.start.replace(tzinfo=None).year < date.year
+                or self.end.replace(tzinfo=None).year > date.year
             ):
                 return False
 
@@ -98,12 +144,16 @@ class Event(ClusterableModel):
 
             return True
         else:
-            if self.repeatEnd.year < date.year or self.repeatStart.year > date.year:
+            if self.repeatStart.year < date.year or self.repeatEnd.year > date.year:
                 return False
-
+            
             if self.repeatStart.month > date.month or self.repeatEnd.month < date.month:
                 return False
+
             return True
+
+    def __str__(self):
+        return "{}".format(self.title)
 
     class Meta:
         verbose_name = "Termin"

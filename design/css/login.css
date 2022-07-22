@@ -1,0 +1,133 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  overflow: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+  background-color: var(--surface-1);
+}
+
+main {
+  min-height: 100vh;
+}
+
+input,
+button,
+textarea,
+select {
+  font-size: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+  padding: 0.7rem;
+  background-color: transparent;
+  border-radius: 0.3rem;
+  border: none;
+}
+
+input,
+textarea,
+select {
+  border: solid lightgray 0.15rem;
+}
+
+input[type="checkbox"] {
+  width: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+  height: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+}
+
+button {
+  background-color: var(--brand);
+  color: var(--surface-1);
+}
+
+button:hover {
+  background-color: var(--surface-2);
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
+}
+
+a {
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-inline: max((100% - 40rem) /2, 1rem);
+}
+
+form {
+  padding: 2rem;
+  padding-block: 3.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2rem;
+  border-radius: 0.7rem;
+  box-shadow: 0px 8px 30px rgb(238 238 238), 0px 4px 8px rgba(66, 71, 76, 0.32),
+    0px 0px 1px rgba(66, 71, 76, 0.2);
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form p {
+  align-self: center;
+  position: absolute;
+  bottom: 0;
+  margin: 2rem;
+}
+
+.messages {
+  text-align: center;
+  margin-bottom: 3rem;
+  background-color: green;
+  color: var(--surface-1);
+  width: 100%;
+  border-radius: 0.7rem;
+  padding: 1rem;
+  font-size: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
+}
+
+.error {
+  text-align: center;
+  margin-bottom: 3rem;
+  background-color: red;
+  color: var(--surface-1);
+  width: 100%;
+  border-radius: 0.7rem;
+  padding: 1rem;
+  font-size: clamp(0.88rem, 0.83rem + 0.24vw, 1rem);
+}
+
+@media (max-width: 1440px) {
+  form {
+    padding: 0;
+    box-shadow: inherit;
+  }
+}

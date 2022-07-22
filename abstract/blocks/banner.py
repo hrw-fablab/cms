@@ -1,4 +1,4 @@
-from wagtail.core import blocks
+from wagtail import blocks
 from django.contrib.sites.shortcuts import get_current_site
 from wagtail.images.blocks import ImageChooserBlock
 

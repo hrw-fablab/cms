@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 
 from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.core import urls as wagtail_urls
+from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from django.views.decorators.csrf import csrf_exempt
 from django.views.i18n import set_language
@@ -28,7 +28,7 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="wagtail.contrib.sitemaps.views.sitemap",
     ),
-    path("get_events", get_events, name="get_events"),
+    path("events", get_events, name="events"),
 ]
 
 

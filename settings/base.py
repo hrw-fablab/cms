@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
-    "wagtail.core",
+    "wagtail",
     "modelcluster",
     "taggit",
     "django.contrib.sitemaps",
@@ -70,8 +70,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.gzip.GZipMiddleware",
     "wagtailcache.cache.UpdateCacheMiddleware",
-    "htmlmin.middleware.HtmlMinifyMiddleware",
-    "htmlmin.middleware.MarkRequestMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -235,3 +233,12 @@ DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_ADDRESS")
 RECAPTCHA_REQUIRED_SCORE = 0.5
 RECAPTCHA_PUBLIC_KEY = str(os.environ.get("RECAPTCHA_PUBLIC_KEY"))
 RECAPTCHA_PRIVATE_KEY = str(os.environ.get("RECAPTCHA_PRIVATE_KEY"))
+
+WAGTAILEMBEDS_FINDERS = [
+    {
+        "class": "embeds.models.MatterportFinder",
+    },
+    {
+        "class": "wagtail.embeds.finders.oembed",
+    },
+]

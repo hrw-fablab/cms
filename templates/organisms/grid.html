@@ -1,7 +1,7 @@
 <section class="grid gap" data-layout="{{ layout }}" data-gap="medium">
     {% for element in value %}
         {% if element.block_type == "card" %}
-            {% include "molecules/card.html" with value=element.value class="aspect-widescreen" %}
+            {% include "molecules/card.html" with value=element.value %}
         {% elif element.block_type == "person" %}
             {% include "molecules/person.html" with value=element.value.person %}
         {% elif element.block_type == "image" %}

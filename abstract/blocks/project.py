@@ -1,5 +1,5 @@
 from abstract.blocks.chooser import OrganisationChooserBlock
-from wagtail.core import blocks
+from wagtail import blocks
 
 from abstract.blocks import ProjectChooserBlock
 

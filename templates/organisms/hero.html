@@ -1,13 +1,9 @@
 {% load wagtailimages_tags %}
-<section class="hero" data-margin-block-end="large">
+<section class="hero" data-margin-block-end="medium">
     {% if value.title or value.text %}
         <div data-style="glass">
             {% if value.title %}<h1>{{ value.title }}</h1>{% endif %}
-            {% if value.text %}
-                <p>
-                    {{ value.text }}
-                </p>
-            {% endif %}
+            {% if value.text %}<p>{{ value.text }}</p>{% endif %}
         </div>
     {% endif %}
     {% if value.video %}

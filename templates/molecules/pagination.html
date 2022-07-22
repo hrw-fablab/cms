@@ -1,8 +1,8 @@
 {% load index_tag %}
 {% if children.paginator.num_pages > 1 %}
     <section class="content" data-width="small" data-margin-block="medium">
-        <nav class="menu centered" aria-label="pagination">
-            <ul class="justify-center">
+        <nav class="menu" aria-label="pagination">
+            <ul>
                 {% if children.has_previous %}
                     <li>
                         <a href="{% url_replace request page=children.previous_page_number %}">Newer</a>

@@ -29,7 +29,7 @@
                             </svg>
                         </button>
                         {% if element.get_children.count != 0 %}
-                            <ul class="submenu hidden" data-padding="small">
+                            <ul class="menu hidden" data-menu="submenu">
                                 {% for subelement in element.get_children.specific %}
                                     <li>
                                         <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>

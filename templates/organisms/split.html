@@ -1,17 +1,16 @@
 {% load wagtailimages_tags %}
-<section class="content split gap"
+<section class="content split"
          data-style="{% if value.accent %}color{% endif %}"
          data-margin-block-end="large"
-         data-width="large"
-         data-gap="medium">
+         data-width="large">
     <div>
         {% if value.title %}
             {% if value.page %}
                 <a href="{{ value.page.localized.url }}">
-                    <h3>{{ value.title }}</h3>
+                    <h2>{{ value.title }}</h2>
                 </a>
             {% else %}
-                <h3>{{ value.title }}</h3>
+                <h2>{{ value.title }}</h2>
             {% endif %}
         {% endif %}
         {{ value.text }}

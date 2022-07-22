@@ -1,8 +1,8 @@
 from django.db import models
-from wagtail.core.models import Page
+from wagtail.models import Page
 
-from wagtail.admin.edit_handlers import StreamFieldPanel
-from wagtail.core.fields import StreamField
+from wagtail.admin.panels import FieldPanel
+from wagtail.fields import StreamField
 
 from abstract.pages.home import AbstractHomePage
 from abstract.pages.folder import AbstractFolderPage
@@ -28,7 +28,7 @@ class HomePage(AbstractHomePage):
     body = StreamField(HomeBlock(), blank=True)
 
     content_panels = AbstractHomePage.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
     class Meta:
@@ -64,7 +64,7 @@ class FlexPage(AbstractFlexPage):
     body = StreamField(FlexBlock(), blank=True)
 
     content_panels = AbstractHomePage.content_panels + [
-        StreamFieldPanel("body"),
+        FieldPanel("body"),
     ]
 
 

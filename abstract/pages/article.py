@@ -1,12 +1,11 @@
 from django.db import models
-from wagtail.core.fields import RichTextField
+from wagtail.fields import RichTextField
 
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from chooser.widgets import PersonChooser
 
 from core.models import FablabBasePage
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 
 class AbstractArticlePage(FablabBasePage):
@@ -52,7 +51,7 @@ class AbstractArticlePage(FablabBasePage):
     )
 
     content_panels = FablabBasePage.content_panels + [
-        ImageChooserPanel("image"),
+        FieldPanel("image"),
         MultiFieldPanel(
             [
                 FieldPanel("date"),
@@ -63,12 +62,6 @@ class AbstractArticlePage(FablabBasePage):
         FieldPanel("introduction"),
         FieldPanel("body"),
     ]
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        parent = Page.get_parent(self)
-        context["parent"] = parent
-        return context
 
     class Meta:
         verbose_name = "Artikel"

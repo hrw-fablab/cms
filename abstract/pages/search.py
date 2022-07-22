@@ -1,7 +1,7 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from core.models import FablabBasePage
 
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 
 class AbstractSearchPage(FablabBasePage):

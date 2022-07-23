@@ -45,6 +45,7 @@ def get_event(element, year, month, day):
         "expections": get_expections(element),
     }
 
+
 def get_repeated_event(element, year, month, day):
     repeated = []
     count = monthrange(year, month)[1]
@@ -55,12 +56,12 @@ def get_repeated_event(element, year, month, day):
         current_date = datetime.date(year, month, days + 1)
 
         for exception in element.related_expection.all():
-            if (current_date >= exception.start and current_date <= exception.end):
+            if current_date >= exception.start and current_date <= exception.end:
                 switch = False
 
-        if (weekday == current_date.weekday() and switch and current_date.day > day):
+        if weekday == current_date.weekday() and switch and current_date.day > day:
             repeated.append(get_event(element, year, month, current_date.day))
-    
+
     return repeated
 
 
@@ -70,20 +71,26 @@ def get_events(request):
 
     events = []
 
-    while(len(events) < 3):
+    while len(events) < 3:
         for element in Event.objects.all().order_by("start"):
-            if element.visible_year(date) and element.visible_month(date) and element.visible_day(date):
-                if (element.repeat != "0"):
-                    events.extend(get_repeated_event(element, date.year, date.month, date.day))
+            if (
+                element.visible_year(date)
+                and element.visible_month(date)
+                and element.visible_day(date)
+            ):
+                if element.repeat != "0":
+                    events.extend(
+                        get_repeated_event(element, date.year, date.month, date.day)
+                    )
                 else:
-                    events.append(get_event(element, date.year, date.month, element.day))
-            if (len(events) < 3):
+                    events.append(
+                        get_event(element, date.year, date.month, element.day)
+                    )
+            if len(events) < 3:
                 date = datetime.date(body["year"], body["month"] + 1, 1)
                 break
-    
-    result = {
-        "events": events[0:3]
-    }
+
+    result = {"events": events[0:3]}
 
     data = json.dumps(result)
     return JsonResponse(data, safe=False)

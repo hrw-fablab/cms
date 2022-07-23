@@ -160,15 +160,13 @@ class Event(ClusterableModel):
                 return False
 
             return True
-    
+
     def visible_day(self, date):
         if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
             return True
 
         if self.repeat == "0":
-            if (
-                self.start.replace(tzinfo=None).day < date.day
-            ):
+            if self.start.replace(tzinfo=None).day < date.day:
                 return False
 
             return True
@@ -177,7 +175,6 @@ class Event(ClusterableModel):
                 return False
 
             return True
-
 
     def __str__(self):
         return "{}".format(self.title)

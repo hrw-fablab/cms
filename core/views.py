@@ -12,7 +12,7 @@ def get_events(request):
     days = []
 
     for element in Event.objects.all().order_by("start"):
-        if element.visible(date) == True:
+        if element.visible_year(date) and element.visible_month(date):
             events.append(element)
 
     for element in events:

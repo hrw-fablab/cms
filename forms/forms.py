@@ -4,7 +4,6 @@ from wagtail.contrib.forms.forms import FormBuilder
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV3
 
-
 class FabLabCaptchaFormBuilder(FormBuilder):
     CAPTCHA_FIELD_NAME = "wagtailcaptcha"
 

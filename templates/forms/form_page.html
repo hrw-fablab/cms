@@ -4,17 +4,45 @@
     <main id="main" data-margin-block-start="medium">
         <div class="content" data-width="small">
             <h1 class="text-centered" data-margin-block-end="medium">{{ page.title }}</h1>
-            <form action="{% pageurl page %}" method="POST">
+            <form action="{% pageurl page %}" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit">
+                {% for field in form.visible_fields %}
+                    <div>
+                        {{ field.errors }}
+                        <label for="{{ field.name }}">{{ field.label_tag }}</label>
+                        {% if field.field.widget.input_type == "text" or field.field.widget.input_type == "email" %}
+                            <input type="{{ field.field.widget.input_type }}"
+                                   name="{{ field.name }}"
+                                   id="{{ field.id_for_label }}"
+                                   {% if field.field.required %}required="required"{% endif %}/>
+                        {% elif field.field.widget.input_type == "select" %}
+                            <select name="{{ field.name }}"
+                                    id="{{ field.id_for_label }}"
+                                    {% if field.field.required %}required="required"{% endif %}>
+                                {{ field.field.widget.choices }}
+                                {% for element in field.field.widget.choices %}
+                                    <option {% if element.1 == date %} selected="" {% endif %}>
+                                        {{ element.1 }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        {% elif field.html_name == "wagtailcaptcha" %}
+                            {{ field }}
+                        {% else %}
+                            <textarea name="{{ field.name }}"
+                                      id="{{ field.id_for_label }}"
+                                      {% if field.field.required %}required="required"{% endif %}></textarea>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <input type="submit" />
                 <div class="captcha">
                     This site is protected by reCAPTCHA and the Google
                     <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-        </div>
+                    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                </div>
+            </div>
+        </form>
     </div>
-</form>
-</div>
 </main>
 {% endblock %}

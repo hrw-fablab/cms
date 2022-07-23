@@ -208,5 +208,10 @@ class FormPage(FabLabCaptchaEmailForm):
 
     template = "forms/form_page.html"
 
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["date"] = request.GET.get("date")
+        return context
+
     class Meta:
         verbose_name = "Form Seite"

@@ -82,7 +82,6 @@ const createCalendar = async () => {
     events.appendChild(createEvent(event, categorys[event.category]))
   )
 
-  console.log(data)
 }
 
 window.addEventListener('load', createCalendar)

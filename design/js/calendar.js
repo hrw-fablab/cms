@@ -171,8 +171,6 @@ const createCalendar = async () => {
 
   const data = await getData(`${window.location.hostname}/calendar`)
 
-  console.log(data)
-
   for (let i = data.index; i < data.index + data.days; i++) {
     events.children[i].classList.add('active')
   }

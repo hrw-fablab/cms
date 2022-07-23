@@ -1,8 +1,9 @@
+from __future__ import absolute_import, unicode_literals
+
 from wagtail.contrib.forms.models import AbstractEmailForm
 from core.models import FablabBasePage
 
 from forms.forms import FabLabCaptchaFormBuilder, remove_captcha_field
-
 
 class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
     """Pages implementing a captcha form with email notification should inhert from this"""

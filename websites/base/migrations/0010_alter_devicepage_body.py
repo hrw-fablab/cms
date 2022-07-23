@@ -80,9 +80,7 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "page",
-                                    wagtail.blocks.PageChooserBlock(
-                                        required=False
-                                    ),
+                                    wagtail.blocks.PageChooserBlock(required=False),
                                 ),
                                 (
                                     "image",

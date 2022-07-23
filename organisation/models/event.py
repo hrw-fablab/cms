@@ -125,7 +125,7 @@ class Event(ClusterableModel):
     def timeEnd(self):
         return self.end.strftime("%H:%M")
 
-    def visible(self, date):
+    def visible_year(self, date):
         if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
             return True
 
@@ -136,6 +136,18 @@ class Event(ClusterableModel):
             ):
                 return False
 
+            return True
+        else:
+            if self.repeatStart.year < date.year or self.repeatEnd.year > date.year:
+                return False
+
+            return True
+
+    def visible_month(self, date):
+        if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
+            return True
+
+        if self.repeat == "0":
             if (
                 self.start.replace(tzinfo=None).month < date.month
                 or self.end.replace(tzinfo=None).month > date.month
@@ -144,10 +156,22 @@ class Event(ClusterableModel):
 
             return True
         else:
-            if self.repeatStart.year < date.year or self.repeatEnd.year > date.year:
-                return False
-            
             if self.repeatStart.month > date.month or self.repeatEnd.month < date.month:
+                return False
+
+            return True
+
+    def visible_day(self, date):
+        if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
+            return True
+
+        if self.repeat == "0":
+            if self.start.replace(tzinfo=None).day < date.day:
+                return False
+
+            return True
+        else:
+            if self.repeatStart.day > date.day or self.repeatEnd.day < date.day:
                 return False
 
             return True

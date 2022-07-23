@@ -6,13 +6,24 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organisation', '0013_alter_event_description'),
+        ("organisation", "0013_alter_event_description"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='event',
-            name='category',
-            field=models.CharField(choices=[('0', 'none'), ('1', 'Lehre'), ('2', 'Offenes Angebot'), ('3', 'Schülerkurse'), ('4', 'Workshop'), ('5', 'Extern')], default='none', max_length=255),
+            model_name="event",
+            name="category",
+            field=models.CharField(
+                choices=[
+                    ("0", "none"),
+                    ("1", "Lehre"),
+                    ("2", "Offenes Angebot"),
+                    ("3", "Schülerkurse"),
+                    ("4", "Workshop"),
+                    ("5", "Extern"),
+                ],
+                default="none",
+                max_length=255,
+            ),
         ),
     ]

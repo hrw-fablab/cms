@@ -71,7 +71,7 @@ const getData = async (url) => {
     })
   }
   try {
-    const data = await fetch(`${window.location.origin}/events`, config)
+    const data = await fetch(`${window.location.origin}/calendar`, config)
     const json = await data.json()
     return JSON.parse(json)
   } catch (error) {
@@ -169,7 +169,9 @@ const checkExpection = (expections, check) => {
 const createCalendar = async () => {
   clearCalendar()
 
-  const data = await getData(`${window.location.hostname}/events`)
+  const data = await getData(`${window.location.hostname}/calendar`)
+
+  console.log(data)
 
   for (let i = data.index; i < data.index + data.days; i++) {
     events.children[i].classList.add('active')

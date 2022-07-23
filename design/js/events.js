@@ -1,57 +1,58 @@
-const calendar = document.getElementById("calendar");
-const events = document.getElementById("events");
+const calendar = document.getElementById('calendar')
+const events = document.getElementById('events')
 
 const months = [
-  "Januar",
-  "Februar",
-  "Maerz",
-  "April",
-  "Mai",
-  "Juni",
-  "Juli",
-  "August",
-  "September",
-  "Oktober",
-  "November",
-  "Dezember",
-];
+  'Januar',
+  'Februar',
+  'Maerz',
+  'April',
+  'Mai',
+  'Juni',
+  'Juli',
+  'August',
+  'September',
+  'Oktober',
+  'November',
+  'Dezember'
+]
 
-const categorys = ["none", "teach", "open", "student", "workshop", "external"];
+const categorys = ['none', 'teach', 'open', 'student', 'workshop', 'external']
 
 const getCSRF = () => {
-  let str = document.cookie;
-  str = str.split("; ");
-  const result = {};
+  let str = document.cookie
+  str = str.split('; ')
+  const result = {}
   for (let i in str) {
-    const cur = str[i].split("=");
-    result[cur[0]] = cur[1];
+    const cur = str[i].split('=')
+    result[cur[0]] = cur[1]
   }
-  return result.csrftoken;
-};
+  return result.csrftoken
+}
 
-const getData = async (url, year, month) => {
+const getData = async (url, year, month, day) => {
   const config = {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      "X-CSRFToken": getCSRF(),
+      'Content-Type': 'application/json',
+      'X-CSRFToken': getCSRF()
     },
     body: JSON.stringify({
       year: year,
       month: month,
-    }),
-  };
-  try {
-    const data = await fetch(url, config);
-    const json = await data.json();
-    return JSON.parse(json);
-  } catch (error) {
-    return [];
+      day: day
+    })
   }
-};
+  try {
+    const data = await fetch(url, config)
+    const json = await data.json()
+    return JSON.parse(json)
+  } catch (error) {
+    return []
+  }
+}
 
 const createEvent = (element, category) => {
-  let section = document.createElement("section");
+  let section = document.createElement('section')
 
   section.innerHTML = `
       <time data-type="${category}">${element.day} ${months[element.month - 1]}</time>
@@ -62,35 +63,26 @@ const createEvent = (element, category) => {
       <div>
         <p>${element.description}</p>
       </div>
-    `;
+    `
 
-  return section;
-};
+  return section
+}
 
 const createCalendar = async () => {
-  let month = 1;
-  let date = new Date();
-  let current_date = new Date();
-  while (events.children.length != 3) {
-    const data = await getData(
-      `${window.location.origin}/events`,
-      date.getFullYear(),
-      date.getMonth() + month
-    );
+  let month = 1
+  let date = new Date()
+  const data = await getData(
+    `${window.location.origin}/events`,
+    date.getFullYear(),
+    date.getMonth() + month,
+    date.getDate()
+  )
 
-    for (const element of data.events) {
-      if (
-        element.day <= current_date.getDate() &&
-        element.month == current_date.getMonth() + 1
-      ) {
-        continue;
-      }
-      if (events.children.length == 3) break;
-      events.appendChild(createEvent(element, categorys[element.category]));
-    }
+  data.events.map((event) =>
+    events.appendChild(createEvent(event, categorys[event.category]))
+  )
 
-    month++;
-  }
-};
+  console.log(data)
+}
 
-window.addEventListener("load", createCalendar);
+window.addEventListener('load', createCalendar)

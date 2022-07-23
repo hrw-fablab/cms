@@ -84,4 +84,4 @@ const createCalendar = async () => {
 
 }
 
-window.addEventListener('load', createCalendar)
+document.addEventListener("DOMContentLoaded", createCalendar);

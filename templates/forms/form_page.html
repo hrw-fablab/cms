@@ -18,7 +18,7 @@
               data-width="small">
             {% csrf_token %}
             {% for field in form.visible_fields %}
-                {% if field.label == "Datum" %}
+                {% if field.value == "date" %}
                     <input class="hidden"
                            value="{{ date }}"
                            name="{{ field.name }}"

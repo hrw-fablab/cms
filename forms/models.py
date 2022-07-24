@@ -5,6 +5,7 @@ from core.models import FablabBasePage
 
 from forms.forms import FabLabCaptchaFormBuilder, remove_captcha_field
 
+
 class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
     """Pages implementing a captcha form with email notification should inhert from this"""
 

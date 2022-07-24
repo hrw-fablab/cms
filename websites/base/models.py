@@ -197,14 +197,12 @@ from wagtail.contrib.forms.models import (
 
 
 class FormField(AbstractFormField):
-    CHOICES = FORM_FIELD_CHOICES + (("hiddenDate", "Hidden Date"),)
+    CHOICES = FORM_FIELD_CHOICES + (("pageParam", "Page Parameter"),)
 
     page = ParentalKey("FormPage", related_name="form_fields")
-    # override the field_type field with extended choices
     field_type = models.CharField(
         verbose_name="field type",
         max_length=16,
-        # use the choices tuple defined above
         choices=CHOICES,
     )
 

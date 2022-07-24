@@ -24,7 +24,13 @@ from abstract.pages.base import AbstractBasePage
 from abstract.models.links import Link, ExpireLink, PageLink
 from forms.models import FabLabCaptchaEmailForm
 
-from websites.base.blocks import HomeBlock, FlexBlock, ProjectBlock, DeviceBlock
+from websites.base.blocks import (
+    HomeBlock,
+    FlexBlock,
+    ProjectBlock,
+    DeviceBlock,
+    FormBlock,
+)
 
 from wagtail.fields import RichTextField
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
@@ -183,17 +189,42 @@ class CollectionPage(AbstractBasePage, ClusterableModel):
         verbose_name = "Link Sammlung"
 
 
+from wagtail.contrib.forms.models import (
+    AbstractEmailForm,
+    AbstractFormField,
+    FORM_FIELD_CHOICES,
+)
+
+
 class FormField(AbstractFormField):
-    page = ParentalKey("FormPage", on_delete=models.CASCADE, related_name="form_fields")
+    CHOICES = FORM_FIELD_CHOICES + (("pageParam", "Page Parameter"),)
+
+    page = ParentalKey("FormPage", related_name="form_fields")
+    field_type = models.CharField(
+        verbose_name="field type",
+        max_length=16,
+        choices=CHOICES,
+    )
 
 
 class FormPage(FabLabCaptchaEmailForm):
     parent_page_types = ["HomePage", "FolderPage", "FlexPage"]
     subpage_type = []
 
+    body = RichTextField(
+        blank=True,
+        features=[
+            "bold",
+            "italic",
+            "link",
+            "document-link",
+        ],
+    )
+
     thank_you_text = RichTextField(blank=True)
 
     content_panels = AbstractEmailForm.content_panels + [
+        FieldPanel("body"),
         InlinePanel("form_fields", label="Form Elemente"),
         FieldPanel("thank_you_text", heading="Bestätigung"),
         MultiFieldPanel(
@@ -207,6 +238,11 @@ class FormPage(FabLabCaptchaEmailForm):
     ]
 
     template = "forms/form_page.html"
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["params"] = request.GET
+        return context
 
     class Meta:
         verbose_name = "Form Seite"

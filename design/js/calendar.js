@@ -86,6 +86,7 @@ const createEvent = (element, id, category, position) => {
   details.setAttribute('id', id)
   details.dataset.position = position
 
+  console.log(element.day)
   details.innerHTML = `
       <summary>
         <span class="date">${element.day} <br> ${months[month_number]}</span>
@@ -104,7 +105,7 @@ const createEvent = (element, id, category, position) => {
           <div>${element.timeStart} bis ${element.timeEnd}</div>
         </header>
         <p>${element.description}</p>
-        <a href="${element.link || ''}">${element.link_text || ''}</>
+        <a href="${element.link || ''}?date=${element.day}. ${months[element.month - 1]}">${element.link_text || ''}</>
       </div>
     `
 
@@ -186,6 +187,7 @@ const createCalendar = async () => {
           repeat_date.getDay() === element.start &&
           !checkExpection(element.expections, new Date(data.year, data.month - 1, d + 1))
         ) {
+          element.day = d + 1;
           addEvent(events.children[i], element, id, category)
         }
       }

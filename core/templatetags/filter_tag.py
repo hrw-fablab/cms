@@ -10,3 +10,7 @@ def filter_organisation(self, value):
         if element.person.organisation == value:
             result.append(element)
     return result
+
+@register.filter(name='lookup')
+def lookup(value, arg):
+    return value[arg]

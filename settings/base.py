@@ -242,3 +242,7 @@ WAGTAILEMBEDS_FINDERS = [
         "class": "wagtail.embeds.finders.oembed",
     },
 ]
+
+PASSWORD_REQUIRED_TEMPLATE = 'password_required.html'
+
+WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'wagtailadmin/login.html'

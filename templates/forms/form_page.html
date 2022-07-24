@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags filter_tag %}
 {% block content %}
     <main id="main"
           data-margin-block-start="medium"
@@ -8,7 +8,7 @@
         <section>
             <h1>
                 {{ page.title }}
-                {% if date %} am <span>{{ date }}</span>{% endif %}
+                {% if date %}am <span>{{ date }}</span>{% endif %}
             </h1>
             {{ page.body|richtext }}
         </section>
@@ -18,9 +18,9 @@
               data-width="small">
             {% csrf_token %}
             {% for field in form.visible_fields %}
-                {% if field.value == "date" %}
+                {% if field.value in params %}
                     <input class="hidden"
-                           value="{{ date }}"
+                           value="{{ params|lookup:field.value }}"
                            name="{{ field.name }}"
                            id="{{ field.id_for_label }}"/>
                 {% else %}

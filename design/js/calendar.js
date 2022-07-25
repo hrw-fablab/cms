@@ -86,7 +86,6 @@ const createEvent = (element, id, category, position) => {
   details.setAttribute('id', id)
   details.dataset.position = position
 
-  console.log(element.day)
   details.innerHTML = `
       <summary>
         <span class="date">${element.day} <br> ${months[month_number]}</span>

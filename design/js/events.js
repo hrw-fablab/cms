@@ -57,7 +57,7 @@ const createEvent = (element, category) => {
   section.innerHTML = `
       <time data-type="${category}">${element.day} ${months[element.month - 1]}</time>
       <header>
-      <a href="${element.link}"><h3>${element.title}</h3></a>
+      <a href="${element.link}?date=${element.day}. ${months[element.month - 1]}"><h3>${element.title}</h3></a>
       <time>${element.timeStart} bis ${element.timeEnd}</time>
       </header>
       <div>

@@ -1,20 +1,41 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags filter_tag %}
 {% block content %}
-    <main id="main" data-margin-block-start="medium">
-        <div class="content" data-width="small">
-            <h1 class="text-centered" data-margin-block-end="medium">{{ page.title }}</h1>
-            <form action="{% pageurl page %}" method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit">
-                <div class="captcha">
-                    This site is protected by reCAPTCHA and the Google
-                    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+    <main id="main"
+          data-margin-block-start="medium"
+          class="form content"
+          data-width="small">
+        <section>
+            <h1>
+                {{ page.title }}
+                {% if date %}am <span>{{ date }}</span>{% endif %}
+            </h1>
+            {{ page.body|richtext }}
+        </section>
+        <form action="{% pageurl page %}"
+              method="post"
+              class="content"
+              data-width="small">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                {% if field.value in params %}
+                    <input class="hidden"
+                           value="{{ params|lookup:field.value }}"
+                           name="{{ field.name }}"
+                           id="{{ field.id_for_label }}"/>
+                {% else %}
+                    <div>
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <input type="submit" />
+            <div class="captcha">
+                This site is protected by reCAPTCHA and the Google
+                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
                 <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-        </div>
-    </div>
-</form>
-</div>
-</main>
+            </div>
+        </form>
+    </main>
 {% endblock %}

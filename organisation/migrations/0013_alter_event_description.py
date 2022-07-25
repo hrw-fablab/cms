@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organisation', '0012_alter_event_repeat'),
+        ("organisation", "0012_alter_event_repeat"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='event',
-            name='description',
-            field=models.TextField(blank=True, max_length=140, null=True, verbose_name='Beschreibung'),
+            model_name="event",
+            name="description",
+            field=models.TextField(
+                blank=True, max_length=140, null=True, verbose_name="Beschreibung"
+            ),
         ),
     ]

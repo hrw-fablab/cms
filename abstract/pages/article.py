@@ -63,12 +63,6 @@ class AbstractArticlePage(FablabBasePage):
         FieldPanel("body"),
     ]
 
-    def get_context(self, request):
-        context = super().get_context(request)
-        parent = Page.get_parent(self)
-        context["parent"] = parent
-        return context
-
     class Meta:
         verbose_name = "Artikel"
         abstract = True

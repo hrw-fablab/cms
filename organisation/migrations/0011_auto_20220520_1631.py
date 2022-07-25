@@ -6,23 +6,25 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organisation', '0010_auto_20220519_2301'),
+        ("organisation", "0010_auto_20220519_2301"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='event',
-            name='repeat',
-            field=models.CharField(choices=[('weekly', '1')], default='weekly', max_length=255),
+            model_name="event",
+            name="repeat",
+            field=models.CharField(
+                choices=[("weekly", "1")], default="weekly", max_length=255
+            ),
         ),
         migrations.AlterField(
-            model_name='event',
-            name='repeatEnd',
-            field=models.DateField(blank=True, null=True, verbose_name='Bis'),
+            model_name="event",
+            name="repeatEnd",
+            field=models.DateField(blank=True, null=True, verbose_name="Bis"),
         ),
         migrations.AlterField(
-            model_name='event',
-            name='repeatStart',
-            field=models.DateField(blank=True, null=True, verbose_name='Von'),
+            model_name="event",
+            name="repeatStart",
+            field=models.DateField(blank=True, null=True, verbose_name="Von"),
         ),
     ]

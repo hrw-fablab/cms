@@ -1,5 +1,6 @@
+from operator import mod
 from django.db import models
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from modelcluster.models import ClusterableModel
 
 
@@ -17,6 +18,29 @@ CATEGORYCHOICES = (
     ("5", "Extern"),
 )
 
+from django.db import models
+from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import InlinePanel
+
+from modelcluster.models import ClusterableModel
+from modelcluster.fields import ParentalKey
+
+
+class Expection(ClusterableModel):
+    start = models.DateField()
+    end = models.DateField()
+
+    link = ParentalKey(
+        "organisation.Event",
+        on_delete=models.CASCADE,
+        related_name="related_expection",
+    )
+
+    panels = [
+        FieldPanel("start"),
+        FieldPanel("end"),
+    ]
+
 
 class Event(ClusterableModel):
     title = models.CharField("Titel", max_length=30, null=True, blank=True)
@@ -25,6 +49,7 @@ class Event(ClusterableModel):
         "Beschreibung", max_length=140, null=True, blank=True
     )
     link = models.URLField("Link", blank=True, null=True)
+    link_text = models.CharField(max_length=20, null=True, blank=True)
     category = models.CharField(max_length=255, choices=CATEGORYCHOICES, default="none")
 
     start = models.DateTimeField()
@@ -40,7 +65,13 @@ class Event(ClusterableModel):
                 FieldPanel("title"),
                 FieldPanel("adress"),
                 FieldPanel("description"),
-                FieldPanel("link"),
+                MultiFieldPanel(
+                    [
+                        FieldPanel("link"),
+                        FieldPanel("link_text"),
+                    ],
+                    heading="Link",
+                ),
                 FieldPanel("category"),
             ],
             heading="Informationen",
@@ -60,6 +91,7 @@ class Event(ClusterableModel):
             ],
             heading="Wiederholung",
         ),
+        InlinePanel("related_expection", heading="Expections"),
     ]
 
     @property
@@ -93,14 +125,29 @@ class Event(ClusterableModel):
     def timeEnd(self):
         return self.end.strftime("%H:%M")
 
-    def visible(self, date):
+    def visible_year(self, date):
+        if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
+            return True
+
         if self.repeat == "0":
             if (
-                self.end.replace(tzinfo=None).year < date.year
-                or self.start.replace(tzinfo=None).year > date.year
+                self.start.replace(tzinfo=None).year < date.year
+                or self.end.replace(tzinfo=None).year > date.year
             ):
                 return False
 
+            return True
+        else:
+            if self.repeatStart.year < date.year or self.repeatEnd.year > date.year:
+                return False
+
+            return True
+
+    def visible_month(self, date):
+        if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
+            return True
+
+        if self.repeat == "0":
             if (
                 self.start.replace(tzinfo=None).month < date.month
                 or self.end.replace(tzinfo=None).month > date.month
@@ -108,14 +155,25 @@ class Event(ClusterableModel):
                 return False
 
             return True
-        elif self.repeatStart == None or self.repeatEnd == None:
-            return True
         else:
-            if self.repeatEnd.year < date.year or self.repeatStart.year > date.year:
-                return False
-
             if self.repeatStart.month > date.month or self.repeatEnd.month < date.month:
                 return False
+
+            return True
+
+    def visible_day(self, date):
+        if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
+            return True
+
+        if self.repeat == "0":
+            if self.start.replace(tzinfo=None).day < date.day:
+                return False
+
+            return True
+        else:
+            if self.repeatStart.day > date.day or self.repeatEnd.day < date.day:
+                return False
+
             return True
 
     def __str__(self):

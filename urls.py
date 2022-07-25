@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.i18n import set_language
 
 from core.sitemaps import sitemap, FablabSiteMap
-from core.views import get_events
+from core.views import get_calendar, get_events
 
 sitemaps = {
     "fablab": FablabSiteMap,
@@ -28,7 +28,8 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="wagtail.contrib.sitemaps.views.sitemap",
     ),
-    path("get_events", get_events, name="get_events"),
+    path("calendar", get_calendar, name="calendar"),
+    path("events", get_events, name="events"),
 ]
 
 

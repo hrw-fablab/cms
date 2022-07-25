@@ -5,7 +5,7 @@
     <head>
         {% if page.index == "noindex" %}<meta name="robots" content="noindex" />{% endif %}
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
             {% block title %}
                 {% if page.seo_title %}
@@ -45,30 +45,30 @@
         <link rel="stylesheet"
               type="text/css"
               media="screen"
-              href="{% static 'css/styles.min.css' %}">
+              href="{% static 'css/styles.min.css' %}"/>
         <script defer src="{% static 'js/cms.js' %}"></script>
         <meta property="og:title"
-              content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}">
-        <meta property="og:description" content="{{ page.search_description }}">
+              content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}"/>
+        <meta property="og:description" content="{{ page.search_description }}" />
         {% image page.og_image original as og_image %}
-        <meta property="og:image" content="{{ og_image.full_url }}">
-        <meta property="og:image:alt" content="{{ page.og_image_alt }}">
-        <meta property="og:locale" content="de">
-        <meta property="og:type" content="{{ page.og_type }}">
-        <meta property="og:url" content="{{ page.full_url }}">
-        <meta name="twitter:card" content="{{ page.tw_size }}">
-        <link rel="icon" href="{% static 'svg/favicon.svg' %}" type="image/svg+xml">
+        <meta property="og:image" content="{{ og_image.full_url }}" />
+        <meta property="og:image:alt" content="{{ page.og_image_alt }}" />
+        <meta property="og:locale" content="de" />
+        <meta property="og:type" content="{{ page.og_type }}" />
+        <meta property="og:url" content="{{ page.full_url }}" />
+        <meta name="twitter:card" content="{{ page.tw_size }}" />
+        <link rel="icon" href="{% static 'svg/favicon.svg' %}" type="image/svg+xml" />
     </head>
     <body class="body">
         {% block svg %}{% endblock %}
         {% wagtailuserbar %}
         {% wagtail_site as current_site %}
-        {% if request.get_host == "hrw-fablab.de"%}
-        {% include "molecules/alert.html" %}
+        {% if request.get_host == "hrw-fablab.de" %}
+            {% include "molecules/alert.html" %}
         {% endif %}
         {% include "organisms/navigation.html" %}
         {% block content %}{% endblock %}
         {% include "organisms/footer.html" %}
         {% block extra_js %}{# Override this in templates to add extra javascript #}{% endblock %}
-</body>
+    </body>
 </html>

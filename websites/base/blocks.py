@@ -109,3 +109,8 @@ class DeviceBlock(blocks.StreamBlock):
     embed = EmbedBlock(label="Website einbetten")
     html = HTMLBlock(label="HTML")
     table = TableBlock(label="Tabelle")
+
+
+class FormBlock(blocks.StreamBlock):
+    heading = HeadingBlock(label="Überschrift")
+    paragraph = ParagraphBlock(label="Absatz")

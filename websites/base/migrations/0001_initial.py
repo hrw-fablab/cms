@@ -309,9 +309,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         )
                                     ],
                                     label="Überschrift",
@@ -323,9 +321,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "text",
@@ -352,9 +348,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "text",
@@ -382,9 +376,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "accent",
-                                            wagtail.blocks.BooleanBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.BooleanBlock(required=False),
                                         ),
                                     ],
                                     label="Split",
@@ -396,9 +388,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -476,9 +466,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "contain",
@@ -530,9 +518,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "text",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -542,9 +528,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cite",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                     ],
                                     label="Zitat",
@@ -560,9 +544,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "video",
@@ -580,9 +562,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -600,9 +580,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "embed",
@@ -620,9 +598,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -632,9 +608,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "text",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "page",
@@ -652,9 +626,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "code",
-                                            wagtail.blocks.RawHTMLBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.RawHTMLBlock(required=False),
                                         )
                                     ],
                                     label="HTML",
@@ -666,9 +638,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -678,9 +648,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "illustration",
-                                            wagtail.blocks.BooleanBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.BooleanBlock(required=False),
                                         ),
                                     ],
                                     label="Banner",
@@ -692,9 +660,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -789,9 +755,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         )
                                     ],
                                     label="Überschrift",
@@ -803,9 +767,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "text",
@@ -832,9 +794,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "text",
@@ -862,9 +822,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "accent",
-                                            wagtail.blocks.BooleanBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.BooleanBlock(required=False),
                                         ),
                                     ],
                                     label="Split",
@@ -876,9 +834,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -956,9 +912,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -1000,9 +954,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "contain",
@@ -1054,9 +1006,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "text",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -1066,9 +1016,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cite",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                     ],
                                     label="Zitat",
@@ -1084,9 +1032,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "video",
@@ -1104,9 +1050,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -1124,9 +1068,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "embed",
@@ -1144,9 +1086,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -1156,9 +1096,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "text",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "page",
@@ -1190,9 +1128,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "code",
-                                            wagtail.blocks.RawHTMLBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.RawHTMLBlock(required=False),
                                         )
                                     ],
                                     label="HTML",
@@ -1204,9 +1140,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -1216,9 +1150,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "illustration",
-                                            wagtail.blocks.BooleanBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.BooleanBlock(required=False),
                                         ),
                                     ],
                                     label="Banner",
@@ -1230,9 +1162,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -1262,9 +1192,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -1416,9 +1344,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         )
                                     ],
                                     label="Überschrift",
@@ -1430,9 +1356,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "text",
@@ -1459,9 +1383,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "text",
@@ -1491,9 +1413,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "text",
@@ -1521,9 +1441,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "accent",
-                                            wagtail.blocks.BooleanBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.BooleanBlock(required=False),
                                         ),
                                     ],
                                     label="Split",
@@ -1535,9 +1453,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -1615,9 +1531,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -1659,9 +1573,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "contain",
@@ -1713,9 +1625,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "text",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -1725,9 +1635,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cite",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                     ],
                                     label="Zitat",
@@ -1743,9 +1651,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "video",
@@ -1763,9 +1669,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -1783,9 +1687,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "embed",
@@ -1803,9 +1705,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -1815,9 +1715,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "text",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "page",
@@ -1849,9 +1747,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "code",
-                                            wagtail.blocks.RawHTMLBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.RawHTMLBlock(required=False),
                                         )
                                     ],
                                     label="HTML",
@@ -1863,9 +1759,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -1875,9 +1769,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "illustration",
-                                            wagtail.blocks.BooleanBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.BooleanBlock(required=False),
                                         ),
                                     ],
                                     label="Banner",
@@ -1889,9 +1781,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -1921,9 +1811,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -2135,9 +2023,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         )
                                     ],
                                     label="Überschrift",
@@ -2149,9 +2035,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "text",
@@ -2178,9 +2062,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "text",
@@ -2208,9 +2090,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "accent",
-                                            wagtail.blocks.BooleanBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.BooleanBlock(required=False),
                                         ),
                                     ],
                                     label="Split",
@@ -2222,9 +2102,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",
@@ -2302,9 +2180,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "contain",
@@ -2356,9 +2232,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "text",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -2368,9 +2242,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "cite",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                     ],
                                     label="Zitat",
@@ -2386,9 +2258,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "video",
@@ -2406,9 +2276,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -2426,9 +2294,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "embed",
@@ -2446,9 +2312,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -2458,9 +2322,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "text",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "page",
@@ -2478,9 +2340,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "code",
-                                            wagtail.blocks.RawHTMLBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.RawHTMLBlock(required=False),
                                         )
                                     ],
                                     label="HTML",
@@ -2492,9 +2352,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.TextBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.TextBlock(required=False),
                                         ),
                                         (
                                             "image",
@@ -2504,9 +2362,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "illustration",
-                                            wagtail.blocks.BooleanBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.BooleanBlock(required=False),
                                         ),
                                     ],
                                     label="Banner",
@@ -2518,9 +2374,7 @@ class Migration(migrations.Migration):
                                     [
                                         (
                                             "title",
-                                            wagtail.blocks.CharBlock(
-                                                required=False
-                                            ),
+                                            wagtail.blocks.CharBlock(required=False),
                                         ),
                                         (
                                             "layout",

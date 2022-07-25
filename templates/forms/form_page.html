@@ -8,7 +8,9 @@
         <section>
             <h1>
                 {{ page.title }}
-                {% if date %}am <span>{{ date }}</span>{% endif %}
+                {% if "date" in params %}
+                am <span>{{ params|lookup:"date" }}</span>
+                {% endif %}
             </h1>
             {{ page.body|richtext }}
         </section>

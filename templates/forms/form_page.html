@@ -9,7 +9,8 @@
             <h1>
                 {{ page.title }}
                 {% if "date" in params %}
-                am <span>{{ params|lookup:"date" }}</span>
+                    am
+                    <span>{{ params|lookup:"date" }}</span>
                 {% endif %}
             </h1>
             {{ page.body|richtext }}
@@ -26,10 +27,7 @@
                            name="{{ field.name }}"
                            id="{{ field.id_for_label }}"/>
                 {% else %}
-                    <div>
-                        {{ field.label_tag }}
-                        {{ field }}
-                    </div>
+                    <div>{{ field.label_tag }} {{ field }}</div>
                 {% endif %}
             {% endfor %}
             <input type="submit" />

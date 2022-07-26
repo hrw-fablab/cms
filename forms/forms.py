@@ -27,7 +27,7 @@ def get_repeated_event(element, year, month, day):
                 switch = False
 
         if weekday == current_date.weekday() and switch and current_date.day > day:
-            repeated.append(("1", current_date))
+            repeated.append((current_date, current_date))
 
     return repeated
 

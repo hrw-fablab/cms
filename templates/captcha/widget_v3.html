@@ -3,7 +3,6 @@
     grecaptcha.ready(function () {
         document.getElementById('form').addEventListener('submit', function (event) {
             event.preventDefault()
-
             grecaptcha.execute('{{ field.public_key }}', { action: 'form' }).then(function (token) {
                 var element = document.querySelector('.g-recaptcha[data-widget-uuid="{{ widget.uuid }}"]')
                 element.value = token

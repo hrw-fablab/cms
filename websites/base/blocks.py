@@ -114,3 +114,10 @@ class DeviceBlock(blocks.StreamBlock):
 class FormBlock(blocks.StreamBlock):
     heading = HeadingBlock(label="Überschrift")
     paragraph = ParagraphBlock(label="Absatz")
+    split = SplitBlock(label="Split")
+    grid = GridBlock(label="Grid")
+    gallery = GalleryBlock(label="Galerie")
+    banner = BannerBlock(label="Banner")
+    video = VideoBlock(label="Video")
+    image = ImageBlock(label="Bild")
+    embed = EmbedBlock(label="Website einbetten")

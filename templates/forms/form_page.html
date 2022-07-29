@@ -1,25 +1,18 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags filter_tag %}
 {% block content %}
-    <main id="main"
-          data-margin-block-start="medium"
-          class="form content"
-          data-width="small">
-        <section>
-            <h1>
-                {{ page.title }}
-                {% if "date" in params %}
-                    am
-                    <span>{{ params|lookup:"date" }}</span>
-                {% endif %}
-            </h1>
-            {{ page.body|richtext }}
-        </section>
+    <main id="main">
+        {{page.event}}
+        {% for block in page.content %}
+            {% include_block block %}
+        {% endfor %}
         <form action="{% pageurl page %}"
               method="post"
               class="content"
               data-width="small">
+            <h1>{{ page.title }}</h1>
             {% csrf_token %}
+            <input type="text" name="this_test" value="this_is_a_test">
             {% for field in form.visible_fields %}
                 {% if field.value in params %}
                     <input class="hidden"

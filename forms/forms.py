@@ -45,7 +45,6 @@ def get_events(element, year, month):
 
     return events
 
-
 class FabLabCaptchaFormBuilder(FormBuilder):
     CAPTCHA_FIELD_NAME = "wagtailcaptcha"
 

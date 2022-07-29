@@ -294,7 +294,6 @@ class FormPage(FabLabCaptchaEmailForm):
 
     def get_context(self, request):
         context = super().get_context(request)
-        print(context)
         context["params"] = request.GET
         return context
 

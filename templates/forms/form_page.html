@@ -2,23 +2,20 @@
 {% load wagtailcore_tags filter_tag %}
 {% block content %}
     <main id="main">
-        {{page.event}}
         {% for block in page.content %}
             {% include_block block %}
         {% endfor %}
-        <form action="{% pageurl page %}"
+        <form id="form"
+              action="{% pageurl page %}"
               method="post"
               class="content"
               data-width="small">
             <h1>{{ page.title }}</h1>
             {% csrf_token %}
-            <input type="text" name="this_test" value="this_is_a_test">
+            {{ page.public_key }}
             {% for field in form.visible_fields %}
-                {% if field.value in params %}
-                    <input class="hidden"
-                           value="{{ params|lookup:field.value }}"
-                           name="{{ field.name }}"
-                           id="{{ field.id_for_label }}"/>
+                {% if field.id_for_label == "id_wagtailcaptcha" %}
+                    {% include "captcha/widget_v3.html" with field=field.field widget=field.field.widget %}
                 {% else %}
                     <div>{{ field.label_tag }} {{ field }}</div>
                 {% endif %}

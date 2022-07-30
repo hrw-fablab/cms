@@ -207,9 +207,11 @@ class FormField(AbstractFormField):
         choices=CHOICES,
     )
 
+
 from organisation.models import Event
 import datetime
 from calendar import monthrange
+
 
 def get_repeated_event(element, year, month, day):
     repeated = []
@@ -230,8 +232,10 @@ def get_repeated_event(element, year, month, day):
     return repeated
 
 
-def get_events(element, year, month):
-    date = datetime.date(year, month + 1, 1)
+def get_events(element, year, month, day):
+    if element.repeat == "0":
+        return ""
+    date = datetime.date(year, month, day)
     events = []
 
     while len(events) < 3:
@@ -241,8 +245,10 @@ def get_events(element, year, month):
             and element.visible_day(date)
         ):
             events.extend(get_repeated_event(element, date.year, date.month, date.day))
+        date = datetime.date(date.year, date.month + 1, 1)
 
-    return ', '.join(events)
+    return ", ".join(events)
+
 
 class FormPage(FabLabCaptchaEmailForm):
     parent_page_types = ["HomePage", "FolderPage", "FlexPage"]
@@ -279,14 +285,16 @@ class FormPage(FabLabCaptchaEmailForm):
 
     def get_form_fields(self):
         date = datetime.date.today()
-        element = Event.objects.get(title="Offener Abend")
+        element = Event.objects.get(title=self.event)
         fields = list(super().get_form_fields())
+        events = get_events(element, date.year, date.month, date.day)
         fields.insert(
             0,
             FormField(
                 label="date",
+                clean_name="date",
                 field_type="dropdown",
-                choices=get_events(element, date.year, date.month),
+                choices=events,
                 required=False,
             ),
         )

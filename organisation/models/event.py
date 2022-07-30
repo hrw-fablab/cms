@@ -171,7 +171,7 @@ class Event(ClusterableModel):
 
             return True
         else:
-            if self.repeatStart.day > date.day or self.repeatEnd.day < date.day:
+            if self.repeatStart.day < date.day or self.repeatEnd.day < date.day:
                 return False
 
             return True

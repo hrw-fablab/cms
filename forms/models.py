@@ -18,10 +18,13 @@ class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
 
     def process_form_submission(self, form):
         data = form.cleaned_data
+        date = None
+        if ('date' in data):
+            date = data['date']
         submission = self.get_submission_class().objects.create(
             form_data=form.cleaned_data,
             page=self,
-            date=data['date']
+            date=date
         )
         if self.to_address:
             self.send_mail(form)
@@ -33,7 +36,7 @@ class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormSubmission
 
 class CustomFormSubmission(AbstractFormSubmission):
-    date = models.CharField(max_length=100, blank=True)
+    date = models.CharField(max_length=100, blank=True, null=True)
 
     def get_data(self):
         form_data = super().get_data()

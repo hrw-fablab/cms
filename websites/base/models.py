@@ -227,14 +227,14 @@ def get_repeated_event(element, year, month, day):
                 switch = False
 
         if weekday == current_date.weekday() and switch and current_date.day > day:
-            repeated.append(current_date.strftime("%m/%d/%Y"))
+            repeated.append(current_date.strftime("%d.%m.%Y"))
 
     return repeated
 
 
 def get_events(element, year, month, day):
     if element.repeat == "0":
-        return ""
+        return
     date = datetime.date(year, month, day)
     events = []
 
@@ -288,16 +288,17 @@ class FormPage(FabLabCaptchaEmailForm):
         element = Event.objects.get(title=self.event)
         fields = list(super().get_form_fields())
         events = get_events(element, date.year, date.month, date.day)
-        fields.insert(
-            0,
-            FormField(
-                label="date",
-                clean_name="date",
-                field_type="dropdown",
-                choices=events,
-                required=False,
-            ),
-        )
+        if (events != None):
+            fields.insert(
+                0,
+                FormField(
+                    label="date",
+                    clean_name="date",
+                    field_type="dropdown",
+                    choices=events,
+                    required=False,
+                ),
+            )
         return fields
 
     def get_context(self, request):

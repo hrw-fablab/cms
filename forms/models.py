@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from wagtail.contrib.forms.models import AbstractEmailForm
 from core.models import FablabBasePage
 
-from forms.forms import FabLabCaptchaFormBuilder
+from forms.forms import FabLabCaptchaFormBuilder, remove_captcha_field
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -17,6 +17,7 @@ class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
         return CustomFormSubmission
 
     def process_form_submission(self, form):
+        remove_captcha_field(form)
         data = form.cleaned_data
         date = None
         if ('date' in data):

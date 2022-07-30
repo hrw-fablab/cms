@@ -284,15 +284,17 @@ class FormPage(FabLabCaptchaEmailForm):
     template = "forms/form_page.html"
 
     def get_form_fields(self):
+        fields = list(super().get_form_fields())
+        if (self.event == None):
+            return fields
         date = datetime.date.today()
         element = Event.objects.get(title=self.event)
-        fields = list(super().get_form_fields())
         events = get_events(element, date.year, date.month, date.day)
         if (events != None):
             fields.insert(
                 0,
                 FormField(
-                    label="date",
+                    label="Datum",
                     clean_name="date",
                     field_type="dropdown",
                     choices=events,
@@ -300,11 +302,6 @@ class FormPage(FabLabCaptchaEmailForm):
                 ),
             )
         return fields
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        context["params"] = request.GET
-        return context
 
     class Meta:
         verbose_name = "Form Seite"

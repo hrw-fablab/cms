@@ -47,6 +47,8 @@
       }
     }
 
+    const zeroPad = (num, places) => String(num).padStart(places, '0')
+
     const createEvent = (element, category) => {
       let section = document.createElement('section')
 
@@ -54,7 +56,7 @@
       <time data-type="${category}">${element.day}. ${months[element.month - 1]}</time>
       <div>
       <header>
-      <a href="${element.link}?date=${element.day}. ${months[element.month - 1]}"><h3>${element.title}</h3></a>
+      <a href="${element.link}?date=${zeroPad(element.day, 2)}.${zeroPad(element.month, 2)}.${element.year}"><h3>${element.title}</h3></a>
       <time>${element.timeStart} bis ${element.timeEnd}</time>
       </header>
       <p>${element.description}</p>

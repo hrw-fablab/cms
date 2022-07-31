@@ -1,8 +1,8 @@
 {% block content %}
     <section class="content"
-             data-style="{% if value.accent %}color{% endif %}"
-             data-width="large"
-             data-margin-block-end="large">
+        data-style="{% if value.accent %}color{% endif %}"
+        data-width="large"
+        data-margin-block-end="large">
         {% include "atoms/heading.html" with value=value.title anchor=True %}
         <div class="grid gap" data-gap="medium" data-layout="{{ value.layout }}">
             {% for pages in value.pages %}

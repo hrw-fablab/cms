@@ -1,31 +1,19 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags filter_tag %}
 {% block content %}
-    <main id="main"
-          data-margin-block-start="medium"
-          class="form content"
-          data-width="small">
-        <section>
-            <h1>
-                {{ page.title }}
-                {% if "date" in params %}
-                    am
-                    <span>{{ params|lookup:"date" }}</span>
-                {% endif %}
-            </h1>
-            {{ page.body|richtext }}
-        </section>
-        <form action="{% pageurl page %}"
-              method="post"
-              class="content"
-              data-width="small">
+    <main id="main">
+        {% for block in page.content %}
+            {% include_block block %}
+        {% endfor %}
+        <form id="form"
+            action="{% pageurl page %}"
+            method="post"
+            class="content"
+            data-width="small">
             {% csrf_token %}
             {% for field in form.visible_fields %}
-                {% if field.value in params %}
-                    <input class="hidden"
-                           value="{{ params|lookup:field.value }}"
-                           name="{{ field.name }}"
-                           id="{{ field.id_for_label }}"/>
+                {% if field.id_for_label == "id_wagtailcaptcha" %}
+                    {% include "captcha/widget_v3.html" with field=field.field widget=field.field.widget %}
                 {% else %}
                     <div>{{ field.label_tag }} {{ field }}</div>
                 {% endif %}
@@ -37,5 +25,18 @@
                 <a href="https://policies.google.com/terms">Terms of Service</a> apply.
             </div>
         </form>
+        <script>
+            window.addEventListener("load", () => {
+                try {
+                    const element = document.getElementById('id_date')
+                    const url = new URL(window.location.href)
+                    if ([...element.options].find(o => o.value == url.searchParams.get('date'))) {
+                        element.value = url.searchParams.get('date')
+                    }
+                } catch (err) {
+                    return
+                }
+            })
+        </script>
     </main>
 {% endblock %}

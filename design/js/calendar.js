@@ -1,90 +1,92 @@
-const calendar = document.getElementById('calendar')
-const date = document.getElementById('date')
-const events = document.getElementById('events')
+const calendar = document.getElementById("calendar");
+const date = document.getElementById("date");
+const events = document.getElementById("events");
 
-const backward = document.getElementById('backward')
-const forward = document.getElementById('forward')
-let elements = document.getElementsByTagName('details')
+const backward = document.getElementById("backward");
+const forward = document.getElementById("forward");
+let elements = document.getElementsByTagName("details");
 
 const months = [
-  'Januar',
-  'Februar',
-  'Maerz',
-  'April',
-  'Mai',
-  'Juni',
-  'Juli',
-  'August',
-  'September',
-  'Oktober',
-  'November',
-  'Dezember'
-]
+  "Januar",
+  "Februar",
+  "Maerz",
+  "April",
+  "Mai",
+  "Juni",
+  "Juli",
+  "August",
+  "September",
+  "Oktober",
+  "November",
+  "Dezember",
+];
 
-const categorys = ['none', 'teach', 'open', 'student', 'workshop', 'external']
+const categorys = ["none", "teach", "open", "student", "workshop", "external"];
 
-let year = new Date().getFullYear()
-let month_number = new Date().getMonth()
-let month_string = months[month_number]
+let year = new Date().getFullYear();
+let month_number = new Date().getMonth();
+let month_string = months[month_number];
 
 const handleChange = (event) => {
-  if (event.target.id == 'forward') {
-    month_number += 1
+  if (event.target.id == "forward") {
+    month_number += 1;
   } else {
-    month_number -= 1
+    month_number -= 1;
   }
 
   if (month_number == 12) {
-    year += 1
-    month_number = 0
+    year += 1;
+    month_number = 0;
   }
 
   if (month_number == -1) {
-    year -= 1
-    month_number = 11
+    year -= 1;
+    month_number = 11;
   }
-  month_string = months[month_number]
-  createCalendar()
-}
+  month_string = months[month_number];
+  createCalendar();
+};
 
 const getCSRF = () => {
-  let str = document.cookie
-  str = str.split('; ')
-  const result = {}
+  let str = document.cookie;
+  str = str.split("; ");
+  const result = {};
   for (let i in str) {
-    const cur = str[i].split('=')
-    result[cur[0]] = cur[1]
+    const cur = str[i].split("=");
+    result[cur[0]] = cur[1];
   }
-  return result.csrftoken
-}
+  return result.csrftoken;
+};
 
 const getData = async (url) => {
   const config = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      'X-CSRFToken': getCSRF()
+      "Content-Type": "application/json",
+      "X-CSRFToken": getCSRF(),
     },
     body: JSON.stringify({
       year: year,
-      month: month_number + 1
-    })
-  }
+      month: month_number + 1,
+    }),
+  };
   try {
-    const data = await fetch(`${window.location.origin}/calendar`, config)
-    const json = await data.json()
-    return JSON.parse(json)
+    const data = await fetch(`${window.location.origin}/calendar`, config);
+    const json = await data.json();
+    return JSON.parse(json);
   } catch (error) {
-    return []
+    return [];
   }
-}
+};
+
+const zeroPad = (num, places) => String(num).padStart(places, "0");
 
 const createEvent = (element, id, category, position) => {
-  let details = document.createElement('details')
-  details.dataset.type = category
+  let details = document.createElement("details");
+  details.dataset.type = category;
 
-  details.setAttribute('id', id)
-  details.dataset.position = position
+  details.setAttribute("id", id);
+  details.dataset.position = position;
 
   details.innerHTML = `
       <summary>
@@ -104,121 +106,126 @@ const createEvent = (element, id, category, position) => {
           <div>${element.timeStart} bis ${element.timeEnd}</div>
         </header>
         <p>${element.description}</p>
-        <a href="${element.link || ''}?date=${element.day}. ${months[element.month - 1]}">${element.link_text || ''}</>
+        <a href="${element.link || ""}?date=${zeroPad(
+    element.day,
+    2
+  )}.${zeroPad(element.month, 2)}.${zeroPad(element.year, 2)}">${
+    element.link_text || ""
+  }</>
       </div>
-    `
+    `;
 
-  return details
-}
+  return details;
+};
 
 const createRedirect = (id, category, position) => {
-  let button = document.createElement('button')
-  button.innerHTML = `<span>.</span>`
-  button.value = id
-  button.dataset.position = position
-  button.dataset.redirect = ''
-  button.dataset.type = category
+  let button = document.createElement("button");
+  button.innerHTML = `<span>.</span>`;
+  button.value = id;
+  button.dataset.position = position;
+  button.dataset.redirect = "";
+  button.dataset.type = category;
 
-  return button
-}
+  return button;
+};
 
-document.addEventListener('click', (event) => {
-  if ('redirect' in event.target.dataset) {
-    document.getElementById(event.target.value).toggleAttribute('open')
+document.addEventListener("click", (event) => {
+  if ("redirect" in event.target.dataset) {
+    document.getElementById(event.target.value).toggleAttribute("open");
   }
 
-  if ('close' in event.target.dataset) {
-    event.target.parentNode.parentNode.parentNode.parentNode.toggleAttribute('open')
+  if ("close" in event.target.dataset) {
+    event.target.parentNode.parentNode.parentNode.parentNode.toggleAttribute(
+      "open"
+    );
   }
-})
+});
 
 const clearCalendar = () => {
-  ;[...events.children].map((x) => {
-    x.innerHTML = ''
-    x.classList.remove('active')
-  })
-}
+  [...events.children].map((x) => {
+    x.innerHTML = "";
+    x.classList.remove("active");
+  });
+};
 
 const addEvent = (li, element, id, category, position) => {
-  li.classList.add('full')
-  li.appendChild(createEvent(element, id, category, position))
-}
+  li.classList.add("full");
+  li.appendChild(createEvent(element, id, category, position));
+};
 
 const addRedirect = (li, id, category, position) => {
-  li.appendChild(createRedirect(id, category, position))
-}
+  li.appendChild(createRedirect(id, category, position));
+};
 
 const checkExpection = (expections, check) => {
-  let result = false
+  let result = false;
   expections.map((expection) => {
     let start = new Date(
       expection.start.year,
       expection.start.month - 1,
       expection.start.day
-    )
-    let end = new Date(expection.end.year, expection.end.month - 1, expection.end.day)
+    );
+    let end = new Date(
+      expection.end.year,
+      expection.end.month - 1,
+      expection.end.day
+    );
 
     if (check >= start && check <= end) {
-      result = true
+      result = true;
     }
-  })
+  });
 
-  return result
-}
+  return result;
+};
 
 const createCalendar = async () => {
-  clearCalendar()
+  clearCalendar();
 
-  const data = await getData(`${window.location.hostname}/calendar`)
+  const data = await getData(`${window.location.hostname}/calendar`);
 
   for (let i = data.index; i < data.index + data.days; i++) {
-    events.children[i].classList.add('active')
+    events.children[i].classList.add("active");
   }
 
   data.events.forEach((element, i) => {
-    let li = document.getElementById(element.day + data.index)
-    let id = `event${i}`
-    let category = categorys[element.category]
-    if (element.repeat != '0') {
-      for (i = data.index, d = 0; i < data.index + data.days; i++, d++) {
-        let repeat_date = new Date(data.year, data.month - 1, d)
-        if (
-          repeat_date.getDay() === element.start &&
-          !checkExpection(element.expections, new Date(data.year, data.month - 1, d + 1))
-        ) {
-          element.day = d + 1;
-          addEvent(events.children[i], element, id, category)
-        }
-      }
-
-      return
+    let li = document.getElementById(element.day + data.index);
+    let id = `event${i}`;
+    let category = categorys[element.category];
+    if (element.repeat) {
+      element.repeat.map((item) =>
+        addEvent(events.children[item], element, id, category)
+      );
+      return;
     }
 
     if (element.length != 1) {
-      addEvent(li, element, id, category, 'first')
+      addEvent(li, element, id, category, "first");
       for (i = 0; i < element.length; i++) {
-        let redirect = document.getElementById(element.day + i + data.index + 1)
+        let redirect = document.getElementById(
+          element.day + i + data.index + 1
+        );
         if (i == element.length - 1) {
-          addRedirect(redirect, id, category, 'last')
-          return
+          addRedirect(redirect, id, category, "last");
+          return;
         }
-        addRedirect(redirect, id, category)
+        addRedirect(redirect, id, category);
       }
 
-      return
+      return;
     }
 
-    addEvent(li, element, id, category)
-  })
+    addEvent(li, element, id, category);
+  });
 
-  updateDate()
-}
+  updateDate();
+};
 
 const updateDate = () => {
-  date.innerHTML = month_string + ' ' + year
-}
+  date.innerHTML = month_string + " " + year;
+};
 
-window.addEventListener('load', createCalendar)
+window.addEventListener("load", createCalendar);
 
-forward.addEventListener('click', handleChange)
-backward.addEventListener('click', handleChange)
+forward.addEventListener("click", handleChange);
+backward.addEventListener("click", handleChange);

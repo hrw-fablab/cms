@@ -1,3 +1,4 @@
+from dateutil.relativedelta import relativedelta
 from wagtail.models import Orderable
 from django.db import models
 
@@ -207,24 +208,65 @@ class FormField(AbstractFormField):
     )
 
 
+from organisation.models import Event
+import datetime
+from calendar import monthrange
+
+
+def get_repeated_event(element, year, month, day):
+    repeated = []
+    count = monthrange(year, month)[1]
+
+    for days in range(count):
+        switch = True
+        weekday = element.start.weekday()
+        current_date = datetime.date(year, month, days + 1)
+
+        for exception in element.related_expection.all():
+            if current_date >= exception.start and current_date <= exception.end:
+                switch = False
+
+        if weekday == current_date.weekday() and switch and current_date.day > day:
+            repeated.append(current_date.strftime("%d.%m.%Y"))
+
+    return repeated
+
+
+def get_events(element, year, month, day):
+    if element.repeat == "0":
+        return
+    date = datetime.date(year, month, day)
+    events = []
+
+    while len(events) < 3:
+        if element.visible_events(date):
+            events.extend(get_repeated_event(element, date.year, date.month, date.day))
+        date = datetime.date(date.year, date.month, 1) + relativedelta(months=+1)
+        if date > element.repeatEnd:
+            break
+
+    return ", ".join(events)
+
+
 class FormPage(FabLabCaptchaEmailForm):
     parent_page_types = ["HomePage", "FolderPage", "FlexPage"]
     subpage_type = []
 
-    body = RichTextField(
+    content = StreamField(FormBlock(), blank=True, use_json_field=True)
+
+    event = models.ForeignKey(
+        "organisation.event",
+        null=True,
         blank=True,
-        features=[
-            "bold",
-            "italic",
-            "link",
-            "document-link",
-        ],
+        on_delete=models.SET_NULL,
+        related_name="+",
     )
 
     thank_you_text = RichTextField(blank=True)
 
     content_panels = AbstractEmailForm.content_panels + [
-        FieldPanel("body"),
+        FieldPanel("event"),
+        FieldPanel("content"),
         InlinePanel("form_fields", label="Form Elemente"),
         FieldPanel("thank_you_text", heading="Bestätigung"),
         MultiFieldPanel(
@@ -239,10 +281,25 @@ class FormPage(FabLabCaptchaEmailForm):
 
     template = "forms/form_page.html"
 
-    def get_context(self, request):
-        context = super().get_context(request)
-        context["params"] = request.GET
-        return context
+    def get_form_fields(self):
+        fields = list(super().get_form_fields())
+        if self.event == None:
+            return fields
+        date = datetime.date.today()
+        element = Event.objects.get(title=self.event)
+        events = get_events(element, date.year, date.month, date.day)
+        if events != None:
+            fields.insert(
+                0,
+                FormField(
+                    label="Datum",
+                    clean_name="date",
+                    field_type="dropdown",
+                    choices=events,
+                    required=True,
+                ),
+            )
+        return fields
 
     class Meta:
         verbose_name = "Form Seite"

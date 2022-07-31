@@ -9,136 +9,136 @@
         <link rel="icon" href="{% static 'svg/favicon.svg' %}" type="image/svg+xml" />
         <title>HRW-FabLab Login</title>
         <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+            * {
+                margin: 0;
+                padding: 0;
+            }
 
-        @font-face {
-            font-family: 'Inter var';
-            font-weight: 100 900;
-            font-display: swap;
-            font-style: normal;
-            font-named-instance: 'Regular';
-            src: url("{% static 'fonts/inter.woff2' %}") format('woff2');
-        }
+            @font-face {
+                font-family: 'Inter var';
+                font-weight: 100 900;
+                font-display: swap;
+                font-style: normal;
+                font-named-instance: 'Regular';
+                src: url("{% static 'fonts/inter.woff2' %}") format('woff2');
+            }
 
-        body {
-            font-family: 'Inter var';
-            font-size: 120%;
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(100% 300.28% at 100% 0%,
+            body {
+                font-family: 'Inter var';
+                font-size: 120%;
+                width: 100vw;
+                height: 100vh;
+                background: radial-gradient(100% 300.28% at 100% 0%,
                     #007d7e 0%,
                     #2e1f5e 32.94%,
                     #2e1f5e 49.9%,
                     #2e1f5e 50.2%,
                     #007d7e 100%);
-            display: grid;
-            place-content: center center;
-            gap: 2rem;
-        }
+                display: grid;
+                place-content: center center;
+                gap: 2rem;
+            }
 
-        .box {
-            background-color: white;
-            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.25);
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            border-radius: 0.7rem;
-            padding: 3rem;
-            width: 30rem;
-        }
+            .box {
+                background-color: white;
+                box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.25);
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+                border-radius: 0.7rem;
+                padding: 3rem;
+                width: 30rem;
+            }
 
-        .error {
-            text-align: center;
-            background-color: #CD4444;
-            padding-block: 1.5rem;
-            padding-inline: 3rem;
-            color: white;
-        }
+            .error {
+                text-align: center;
+                background-color: #CD4444;
+                padding-block: 1.5rem;
+                padding-inline: 3rem;
+                color: white;
+            }
 
-        .messages {
-            background-color: #1B8666;
-            text-align: center;
-            padding-block: 1.5rem;
-            padding-inline: 3rem;
-            color: white;
-        }
+            .messages {
+                background-color: #1B8666;
+                text-align: center;
+                padding-block: 1.5rem;
+                padding-inline: 3rem;
+                color: white;
+            }
 
-        ul {
-            list-style: none;
-        }
+            ul {
+                list-style: none;
+            }
 
-        input {
-            padding-block: 0.8rem;
-            padding-inline: 1rem;
-            border-radius: 0.3rem;
-            border: thin solid gray;
-        }
+            input {
+                padding-block: 0.8rem;
+                padding-inline: 1rem;
+                border-radius: 0.3rem;
+                border: thin solid gray;
+            }
 
-        label {
-            font-size: 80%;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #2E1F5E;
-        }
+            label {
+                font-size: 80%;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: #2E1F5E;
+            }
 
-        button {
-            background: #007d7e;
-            padding-block: 0.8rem;
-            padding-inline: 1rem;
-            border-radius: 0.3rem;
-            border: none;
-            font-weight: bold;
-            color: white;
-            font-size: 90%;
-        }
+            button {
+                background: #007d7e;
+                padding-block: 0.8rem;
+                padding-inline: 1rem;
+                border-radius: 0.3rem;
+                border: none;
+                font-weight: bold;
+                color: white;
+                font-size: 90%;
+            }
 
-        form div {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .settings {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        input[type="checkbox"] {
-            width: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
-            height: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
-        }
-
-        h1 {
-            text-align: center;
-            color: #2E1F5E;
-        }
-
-        a {
-            margin-block-start: 2rem;
-            text-align: center;
-            color: #2E1F5E;
-        }
-
-        @media (max-width: 40rem) {
-            body {
-                background: white;
-                place-content: center stretch;
+            form div {
+                display: flex;
+                flex-direction: column;
                 gap: 0.5rem;
             }
 
-            .box, .error, .messages {
-                box-shadow: inherit;
-                padding: 1rem;
-                margin-inline: 2rem;
-                width: unset;
+            .settings {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 2rem;
             }
-        }
+
+            input[type="checkbox"] {
+                width: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+                height: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+            }
+
+            h1 {
+                text-align: center;
+                color: #2E1F5E;
+            }
+
+            a {
+                margin-block-start: 2rem;
+                text-align: center;
+                color: #2E1F5E;
+            }
+
+            @media (max-width: 40rem) {
+                body {
+                    background: white;
+                    place-content: center stretch;
+                    gap: 0.5rem;
+                }
+
+                .box, .error, .messages {
+                    box-shadow: inherit;
+                    padding: 1rem;
+                    margin-inline: 2rem;
+                    width: unset;
+                }
+            }
         </style>
     </head>
     <body>
@@ -155,10 +155,10 @@
             </div>
         {% endif %}
         <form class="form box"
-              action="{% url 'wagtailadmin_login' %}"
-              method="post"
-              autocomplete="off"
-              novalidate>
+            action="{% url 'wagtailadmin_login' %}"
+            method="post"
+            autocomplete="off"
+            novalidate>
             <h1>HRW-FabLab</h1>
             {% block login_form %}
                 {% csrf_token %} {% url 'wagtailadmin_home' as home_url %}
@@ -181,8 +181,8 @@
                     <button type="submit" data-clicked-text="{% trans 'Signing in' %}">{% trans 'Sign in' %}</button>
                 </div>
                 <a href="{% url 'wagtailadmin_password_reset' %}"
-                   aria-label="{% trans 'Reset your password' %}">Passwort
-                zurücksetzen</a>
+                    aria-label="{% trans 'Reset your password' %}">Passwort
+                    zurücksetzen</a>
             {% endblock %}
         </form>
     </body>

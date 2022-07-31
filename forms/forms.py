@@ -10,7 +10,6 @@ import json
 import datetime
 from calendar import monthrange
 from organisation.models import Event
-from organisation.models.event import Event
 
 
 def get_repeated_event(element, year, month, day):
@@ -50,11 +49,9 @@ def get_events(element, year, month):
 class FabLabCaptchaFormBuilder(FormBuilder):
     CAPTCHA_FIELD_NAME = "wagtailcaptcha"
 
-    def create_pageParam_field(self, field, options):
-        date = datetime.date.today()
-        element = Event.objects.get(title="Offener Abend")
-        options["choices"] = get_events(element, date.year, date.month)
-        return forms.ChoiceField(**options)
+    def create_multiline_field(self, field, options):
+        attrs = {"cols": "40", "rows": "5"}
+        return forms.CharField(widget=forms.Textarea(attrs=attrs), **options)
 
     @property
     def formfields(self):

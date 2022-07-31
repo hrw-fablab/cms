@@ -11,6 +11,7 @@ def filter_organisation(self, value):
             result.append(element)
     return result
 
-@register.filter(name='lookup')
+
+@register.filter(name="lookup")
 def lookup(value, arg):
     return value[arg]

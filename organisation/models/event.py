@@ -1,3 +1,4 @@
+import datetime
 from operator import mod
 from django.db import models
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
@@ -125,56 +126,35 @@ class Event(ClusterableModel):
     def timeEnd(self):
         return self.end.strftime("%H:%M")
 
-    def visible_year(self, date):
-        if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
-            return True
-
+    def visible_calendar(self, date):
         if self.repeat == "0":
-            if (
-                self.start.replace(tzinfo=None).year < date.year
-                or self.end.replace(tzinfo=None).year > date.year
-            ):
-                return False
-
-            return True
+            start = datetime.date(self.start.year, self.start.month, 1)
+            end = datetime.date(self.end.year, self.end.month, 2)
+            if start <= date <= end:
+                return True
         else:
-            if self.repeatStart.year < date.year or self.repeatEnd.year > date.year:
-                return False
+            start = datetime.date(self.repeatStart.year, self.repeatStart.month, 1)
+            end = datetime.date(self.repeatEnd.year, self.repeatEnd.month, 2)
+            if start <= date <= end:
+                return True
+        return False
 
-            return True
-
-    def visible_month(self, date):
-        if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
-            return True
-
+    def visible_events(self, date):
         if self.repeat == "0":
-            if (
-                self.start.replace(tzinfo=None).month < date.month
-                or self.end.replace(tzinfo=None).month > date.month
-            ):
-                return False
-
-            return True
+            start = datetime.date(self.start.year, self.start.month, self.start.day)
+            end = datetime.date(self.end.year, self.end.month, self.end.day)
+            if start <= date <= end:
+                return True
         else:
-            if self.repeatStart.month > date.month or self.repeatEnd.month < date.month:
-                return False
-
-            return True
-
-    def visible_day(self, date):
-        if (self.repeatStart == None or self.repeatEnd == None) and self.repeat != "0":
-            return True
-
-        if self.repeat == "0":
-            if self.start.replace(tzinfo=None).day < date.day:
-                return False
-
-            return True
-        else:
-            if self.repeatStart.day < date.day or self.repeatEnd.day < date.day:
-                return False
-
-            return True
+            start = datetime.date(
+                self.repeatStart.year, self.repeatStart.month, self.repeatStart.day
+            )
+            end = datetime.date(
+                self.repeatEnd.year, self.repeatEnd.month, self.repeatEnd.day
+            )
+            if start <= date <= end:
+                return True
+        return False
 
     def __str__(self):
         return "{}".format(self.title)

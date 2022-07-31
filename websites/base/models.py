@@ -1,4 +1,4 @@
-from random import choices
+from dateutil.relativedelta import relativedelta
 from wagtail.models import Orderable
 from django.db import models
 
@@ -231,7 +231,6 @@ def get_repeated_event(element, year, month, day):
 
     return repeated
 
-
 def get_events(element, year, month, day):
     if element.repeat == "0":
         return
@@ -239,13 +238,11 @@ def get_events(element, year, month, day):
     events = []
 
     while len(events) < 3:
-        if (
-            element.visible_year(date)
-            and element.visible_month(date)
-            and element.visible_day(date)
-        ):
+        if element.visible_events(date):
             events.extend(get_repeated_event(element, date.year, date.month, date.day))
-        date = datetime.date(date.year, date.month + 1, 1)
+        date = datetime.date(date.year, date.month, 1) + relativedelta(months=+1)
+        if (date > element.repeatEnd):
+            break
 
     return ", ".join(events)
 
@@ -285,12 +282,12 @@ class FormPage(FabLabCaptchaEmailForm):
 
     def get_form_fields(self):
         fields = list(super().get_form_fields())
-        if (self.event == None):
+        if self.event == None:
             return fields
         date = datetime.date.today()
         element = Event.objects.get(title=self.event)
         events = get_events(element, date.year, date.month, date.day)
-        if (events != None):
+        if events != None:
             fields.insert(
                 0,
                 FormField(

@@ -75,6 +75,8 @@
         date.getDate()
       )
 
+      console.log(data)
+
       data.events.map((event) =>
         document.getElementById('events').appendChild(createEvent(event, categorys[event.category]))
       )

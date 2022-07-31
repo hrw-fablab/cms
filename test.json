@@ -1,0 +1,109 @@
+{
+    "events": [
+        {
+            "title": "Test",
+            "adress": null,
+            "link": null,
+            "link_text": null,
+            "length": 1,
+            "timeStart": "11:56",
+            "timeEnd": "14:00",
+            "day": 31,
+            "month": 8,
+            "year": 2022,
+            "start": 6,
+            "description": "",
+            "category": "0",
+            "expections": [
+                {
+                    "start": {
+                        "year": "2022",
+                        "month": "08",
+                        "day": "02"
+                    },
+                    "end": {
+                        "year": "2022",
+                        "month": "08",
+                        "day": "20"
+                    }
+                }
+            ],
+            "repeat": [
+                20,
+                27
+            ],
+            "repeatStart": 31,
+            "repeatEnd": 28
+        },
+        {
+            "title": "Test",
+            "adress": null,
+            "link": null,
+            "link_text": null,
+            "length": 1,
+            "timeStart": "11:56",
+            "timeEnd": "14:00",
+            "day": 31,
+            "month": 8,
+            "year": 2022,
+            "start": 6,
+            "description": "",
+            "category": "0",
+            "expections": [
+                {
+                    "start": {
+                        "year": "2022",
+                        "month": "08",
+                        "day": "02"
+                    },
+                    "end": {
+                        "year": "2022",
+                        "month": "08",
+                        "day": "20"
+                    }
+                }
+            ],
+            "repeat": [
+                20,
+                27
+            ],
+            "repeatStart": 31,
+            "repeatEnd": 28
+        },
+        {
+            "title": "Test",
+            "adress": null,
+            "link": null,
+            "link_text": null,
+            "length": 1,
+            "timeStart": "11:56",
+            "timeEnd": "14:00",
+            "day": 31,
+            "month": 8,
+            "year": 2022,
+            "start": 6,
+            "description": "",
+            "category": "0",
+            "expections": [
+                {
+                    "start": {
+                        "year": "2022",
+                        "month": "08",
+                        "day": "02"
+                    },
+                    "end": {
+                        "year": "2022",
+                        "month": "08",
+                        "day": "20"
+                    }
+                }
+            ],
+            "repeat": [
+                20,
+                27
+            ],
+            "repeatStart": 31,
+            "repeatEnd": 28
+        }
+    ]
+}

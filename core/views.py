@@ -26,8 +26,45 @@ def get_expections(element):
     return expections
 
 
+def get_test(element, year, month, day):
+    repeated = []
+    count = monthrange(year, month)[1]
+    weekday = element.start.weekday()
+
+    if element.repeatStart.month == month:
+        for days in range(count):
+            switch = True
+            current_date = datetime.date(year, month, days + 1)
+
+            for exception in element.related_expection.all():
+                if current_date >= exception.start and current_date <= exception.end:
+                    switch = False
+
+            if (
+                weekday == current_date.weekday()
+                and switch
+                and current_date.day > element.repeatStart.day
+            ):
+                repeated.append(days)
+
+        return repeated
+
+    for days in range(count):
+        switch = True
+        current_date = datetime.date(year, month, days + 1)
+
+        for exception in element.related_expection.all():
+            if current_date >= exception.start and current_date <= exception.end:
+                switch = False
+
+        if weekday == current_date.weekday() and switch:
+            repeated.append(days)
+
+    return repeated
+
+
 def get_event(element, year, month, day):
-    return {
+    result = {
         "title": element.title,
         "adress": element.adress,
         "link": element.link,
@@ -39,27 +76,37 @@ def get_event(element, year, month, day):
         "month": month,
         "year": year,
         "start": element.start.weekday(),
-        "repeat": element.repeat,
         "description": element.description,
         "category": element.category,
         "expections": get_expections(element),
     }
 
+    if element.repeat != "0":
+        result["repeat"] = get_test(element, year, month, day)
+
+    if element.repeatStart:
+        result["repeatStart"] = int(element.repeatStart.strftime("%d"))
+
+    if element.repeatEnd:
+        result["repeatEnd"] = int(element.repeatEnd.strftime("%d"))
+
+    return result
+
 
 def get_repeated_event(element, year, month, day):
     repeated = []
     count = monthrange(year, month)[1]
+    weekday = element.start.weekday()
 
     for days in range(count):
         switch = True
-        weekday = element.start.weekday()
         current_date = datetime.date(year, month, days + 1)
 
         for exception in element.related_expection.all():
             if current_date >= exception.start and current_date <= exception.end:
                 switch = False
 
-        if weekday == current_date.weekday() and switch and current_date.day > day:
+        if weekday == current_date.weekday() and switch:
             repeated.append(get_event(element, year, month, current_date.day))
 
     return repeated
@@ -68,7 +115,6 @@ def get_repeated_event(element, year, month, day):
 def get_events(request):
     body = json.loads(request.body)
     date = datetime.date(body["year"], body["month"], body["day"])
-
     events = []
 
     while len(events) < 3:
@@ -86,9 +132,7 @@ def get_events(request):
                     events.append(
                         get_event(element, date.year, date.month, element.day)
                     )
-            if len(events) < 3:
-                date = datetime.date(body["year"], body["month"] + 1, 1)
-                break
+        date = datetime.date(date.year, date.month + 1, 1)
 
     result = {"events": events[0:3]}
 

@@ -10,7 +10,6 @@
               method="post"
               class="content"
               data-width="small">
-            <h2 class="text-centered">{{ page.title }}</h2>
             {% csrf_token %}
             {% for field in form.visible_fields %}
                 {% if field.id_for_label == "id_wagtailcaptcha" %}
@@ -29,8 +28,11 @@
         <script>
         window.addEventListener("load", () => {
             try {
+                const element = document.getElementById('id_date')
                 const url = new URL(window.location.href)
-                document.getElementById('id_date').value = url.searchParams.get('date')
+                if ([...element.options].find(o => o.value == url.searchParams.get('date'))) {
+                    element.value = url.searchParams.get('date')
+                }
             } catch (err) {
                 return
             }

@@ -298,7 +298,7 @@ class FormPage(FabLabCaptchaEmailForm):
                     clean_name="date",
                     field_type="dropdown",
                     choices=events,
-                    required=False,
+                    required=True,
                 ),
             )
         return fields

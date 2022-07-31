@@ -79,6 +79,8 @@ const getData = async (url) => {
   }
 }
 
+const zeroPad = (num, places) => String(num).padStart(places, '0')
+
 const createEvent = (element, id, category, position) => {
   let details = document.createElement('details')
   details.dataset.type = category
@@ -104,7 +106,10 @@ const createEvent = (element, id, category, position) => {
           <div>${element.timeStart} bis ${element.timeEnd}</div>
         </header>
         <p>${element.description}</p>
-        <a href="${element.link || ''}?date=${element.day}. ${months[element.month - 1]}">${element.link_text || ''}</>
+        <a href="${element.link || ''}?date=${zeroPad(element.day, 2)}.${zeroPad(element.month, 2)}.${zeroPad(
+    element.year,
+    2
+  )}">${element.link_text || ''}</>
       </div>
     `
 
@@ -151,11 +156,7 @@ const addRedirect = (li, id, category, position) => {
 const checkExpection = (expections, check) => {
   let result = false
   expections.map((expection) => {
-    let start = new Date(
-      expection.start.year,
-      expection.start.month - 1,
-      expection.start.day
-    )
+    let start = new Date(expection.start.year, expection.start.month - 1, expection.start.day)
     let end = new Date(expection.end.year, expection.end.month - 1, expection.end.day)
 
     if (check >= start && check <= end) {
@@ -179,18 +180,8 @@ const createCalendar = async () => {
     let li = document.getElementById(element.day + data.index)
     let id = `event${i}`
     let category = categorys[element.category]
-    if (element.repeat != '0') {
-      for (i = data.index, d = 0; i < data.index + data.days; i++, d++) {
-        let repeat_date = new Date(data.year, data.month - 1, d)
-        if (
-          repeat_date.getDay() === element.start &&
-          !checkExpection(element.expections, new Date(data.year, data.month - 1, d + 1))
-        ) {
-          element.day = d + 1;
-          addEvent(events.children[i], element, id, category)
-        }
-      }
-
+    if (element.repeat) {
+      element.repeat.map(item => addEvent(events.children[item], element, id, category))
       return
     }
 

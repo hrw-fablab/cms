@@ -18,4 +18,4 @@
     data-widget-uuid="{{ widget.uuid }}"
     data-callback="onSubmit_{{ widget.uuid }}"
     {% for name, value in widget.attrs.items %}{% if value is not False %} {{ name }}{% if value is not True %}="{{ value|stringformat:'s' }}"{% endif %}{% endif %}{% endfor %}
->
+/>

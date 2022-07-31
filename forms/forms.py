@@ -47,7 +47,7 @@ def get_events(element, year, month):
 
 class FabLabCaptchaFormBuilder(FormBuilder):
     CAPTCHA_FIELD_NAME = "wagtailcaptcha"
-    
+
     def create_multiline_field(self, field, options):
         attrs = {'cols': '40', 'rows': '5'}
         return forms.CharField(widget=forms.Textarea(attrs=attrs), **options)

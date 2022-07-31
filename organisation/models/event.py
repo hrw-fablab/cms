@@ -1,5 +1,4 @@
 import datetime
-from operator import mod
 from django.db import models
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from modelcluster.models import ClusterableModel

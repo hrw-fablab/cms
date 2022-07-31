@@ -194,7 +194,7 @@ const createCalendar = async () => {
     let category = categorys[element.category];
     if (element.repeat) {
       element.repeat.map((item) =>
-        addEvent(events.children[item], element, id, category)
+        addEvent(events.children[item + data.index], element, id, category)
       );
       return;
     }

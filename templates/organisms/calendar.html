@@ -1,58 +1,58 @@
 {% load wagtailcore_tags static %}
 <div class="content calendar"
-     id="calendar"
-     data-width="large"
-     data-style="{% if value.events %}scroll{% endif %}"
-     data-margin-block-end="large">
-  {% include "atoms/heading.html" with value=value.title anchor=True %}
-  {% if value.events %}
-    <div id="events" class="events"></div>
-    <script>
-    const months = [
-      'Januar',
-      'Februar',
-      'Maerz',
-      'April',
-      'Mai',
-      'Juni',
-      'Juli',
-      'August',
-      'September',
-      'Oktober',
-      'November',
-      'Dezember'
-    ]
+    id="calendar"
+    data-width="large"
+    data-style="{% if value.events %}scroll{% endif %}"
+    data-margin-block-end="large">
+    {% include "atoms/heading.html" with value=value.title anchor=True %}
+    {% if value.events %}
+        <div id="events" class="events"></div>
+        <script>
+            const months = [
+                'Januar',
+                'Februar',
+                'Maerz',
+                'April',
+                'Mai',
+                'Juni',
+                'Juli',
+                'August',
+                'September',
+                'Oktober',
+                'November',
+                'Dezember'
+            ]
 
-    const categorys = ['none', 'teach', 'open', 'student', 'workshop', 'external']
+            const categorys = ['none', 'teach', 'open', 'student', 'workshop', 'external']
 
-    const getData = async (url, year, month, day) => {
-      const config = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': '{{ csrf_token }}'
-        },
-        body: JSON.stringify({
-          year: year,
-          month: month,
-          day: day
-        })
-      }
-      try {
-        const data = await fetch(url, config)
-        const json = await data.json()
-        return JSON.parse(json)
-      } catch (error) {
-        return []
-      }
-    }
+            const getData = async (url, year, month, day) => {
+                const config = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({
+                        year: year,
+                        month: month,
+                        day: day
+                    })
+                }
+                try {
+                    const data = await fetch(url, config)
+                    const json = await data.json()
+                    return JSON.parse(json)
+                } catch (error) {
+                    return []
+                }
+            }
 
-    const zeroPad = (num, places) => String(num).padStart(places, '0')
+            const zeroPad = (num, places) => String(num).padStart(places, '0')
 
-    const createEvent = (element, category) => {
-      let section = document.createElement('section')
+            const createEvent = (element, category) => {
+                let section = document.createElement('section')
 
-      section.innerHTML = `
+                section.innerHTML = `
       <time data-type="${category}">${element.day}. ${months[element.month - 1]}</time>
       <div>
       <header>
@@ -63,116 +63,116 @@
       </div>
       `
 
-      return section
-    }
+                return section
+            }
 
-    const createCalendar = async () => {
-      let date = new Date()
-      const data = await getData(
-        `${window.location.origin}/events`,
-        date.getFullYear(),
-        date.getMonth() + 1,
-        date.getDate()
-      )
+            const createCalendar = async () => {
+                let date = new Date()
+                const data = await getData(
+                    `${window.location.origin}/events`,
+                    date.getFullYear(),
+                    date.getMonth() + 1,
+                    date.getDate()
+                )
 
-      data.events.map((event) =>
-        document.getElementById('events').appendChild(createEvent(event, categorys[event.category]))
-      )
-    }
+                data.events.map((event) =>
+                    document.getElementById('events').appendChild(createEvent(event, categorys[event.category]))
+                )
+            }
 
-    createCalendar()
-    </script>
-  {% else %}
-    <header>
-      <time id="date"></time>
-      <div class="flex gap" data-gap="small">
-        <button id="backward">
-          <svg width="18" height="18" viewBox="0 0 24 24" transform="rotate(90)">
-            <path
-            d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"
-            />
-          </svg>
-        </button>
-        <button id="forward">
-          <svg width="18" height="18" viewBox="0 0 24 24" transform="rotate(-90)">
-            <path
-            d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"
-            />
-          </svg>
-        </button>
-      </div>
-    </header>
-    <ol class="days">
-      <li>Mo</li>
-      <li>Di</li>
-      <li>Mi</li>
-      <li>Do</li>
-      <li>Fr</li>
-      <li>Sa</li>
-      <li>So</li>
-    </ol>
-    <ol class="events" id="events">
-      <li id="1"></li>
-      <li id="2"></li>
-      <li id="3"></li>
-      <li id="4"></li>
-      <li id="5"></li>
-      <li id="6"></li>
-      <li id="7"></li>
-      <li id="8"></li>
-      <li id="9"></li>
-      <li id="10"></li>
-      <li id="11"></li>
-      <li id="12"></li>
-      <li id="13"></li>
-      <li id="14"></li>
-      <li id="15"></li>
-      <li id="16"></li>
-      <li id="17">
-      </li>
-      <li id="18">
-      </li>
-      <li id="19">
-      </li>
-      <li id="20">
-      </li>
-      <li id="21">
-      </li>
-      <li id="22">
-      </li>
-      <li id="23">
-      </li>
-      <li id="24">
-      </li>
-      <li id="25">
-      </li>
-      <li id="26">
-      </li>
-      <li id="27">
-      </li>
-      <li id="28">
-      </li>
-      <li id="29">
-      </li>
-      <li id="30">
-      </li>
-      <li id="31">
-      </li>
-      <li id="32">
-      </li>
-      <li id="33">
-      </li>
-      <li id="34">
-      </li>
-      <li id="35">
-      </li>
-      <li id="36">
-      </li>
-      <li id="37">
-      </li>
-      <li id="38">
-      </li>
-    </ol>
-    <script src="{% static 'js/calendar.js' %}"></script>
-  {% endif %}
+            createCalendar()
+        </script>
+    {% else %}
+        <header>
+            <time id="date"></time>
+            <div class="flex gap" data-gap="small">
+                <button id="backward">
+                    <svg width="18" height="18" viewBox="0 0 24 24" transform="rotate(90)">
+                        <path
+                            d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"
+                        />
+                    </svg>
+                </button>
+                <button id="forward">
+                    <svg width="18" height="18" viewBox="0 0 24 24" transform="rotate(-90)">
+                        <path
+                            d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"
+                        />
+                    </svg>
+                </button>
+            </div>
+        </header>
+        <ol class="days">
+            <li>Mo</li>
+            <li>Di</li>
+            <li>Mi</li>
+            <li>Do</li>
+            <li>Fr</li>
+            <li>Sa</li>
+            <li>So</li>
+        </ol>
+        <ol class="events" id="events">
+            <li id="1"></li>
+            <li id="2"></li>
+            <li id="3"></li>
+            <li id="4"></li>
+            <li id="5"></li>
+            <li id="6"></li>
+            <li id="7"></li>
+            <li id="8"></li>
+            <li id="9"></li>
+            <li id="10"></li>
+            <li id="11"></li>
+            <li id="12"></li>
+            <li id="13"></li>
+            <li id="14"></li>
+            <li id="15"></li>
+            <li id="16"></li>
+            <li id="17">
+            </li>
+            <li id="18">
+            </li>
+            <li id="19">
+            </li>
+            <li id="20">
+            </li>
+            <li id="21">
+            </li>
+            <li id="22">
+            </li>
+            <li id="23">
+            </li>
+            <li id="24">
+            </li>
+            <li id="25">
+            </li>
+            <li id="26">
+            </li>
+            <li id="27">
+            </li>
+            <li id="28">
+            </li>
+            <li id="29">
+            </li>
+            <li id="30">
+            </li>
+            <li id="31">
+            </li>
+            <li id="32">
+            </li>
+            <li id="33">
+            </li>
+            <li id="34">
+            </li>
+            <li id="35">
+            </li>
+            <li id="36">
+            </li>
+            <li id="37">
+            </li>
+            <li id="38">
+            </li>
+        </ol>
+        <script src="{% static 'js/calendar.js' %}"></script>
+    {% endif %}
 </div>

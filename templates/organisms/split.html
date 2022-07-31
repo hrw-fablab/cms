@@ -1,8 +1,8 @@
 {% load wagtailimages_tags %}
 <section class="content split"
-         data-style="{% if value.accent %}color{% endif %}"
-         data-margin-block-end="large"
-         data-width="large">
+    data-style="{% if value.accent %}color{% endif %}"
+    data-margin-block-end="large"
+    data-width="large">
     <div>
         {% if value.title %}
             {% if value.page %}
@@ -24,17 +24,17 @@
                 {% image value.image fill-854x480 format-webp webpquality-80 as image_768 %}
                 {% image value.image fill-480x360 format-webp webpquality-60 as image_480 %}
                 <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w"
-                        sizes="(max-width: 520px) 480px,(max-width: 768px) 768px"
-                        type="image/webp"/>
+                    sizes="(max-width: 520px) 480px,(max-width: 768px) 768px"
+                    type="image/webp"/>
                 {% image value.image fill-854x480 format-jpeg as image_768 %}
                 {% image value.image fill-480x360 format-jpeg as image_480 %}
                 <source srcset="{{ image_768.url }} 768w,{{ image_480.url }} 480w"
-                        sizes="(max-width: 520px) 480px,(max-width: 768px) 768px,(min-width: 1024px) 480px"
-                        type="image/jpg"/>
+                    sizes="(max-width: 520px) 480px,(max-width: 768px) 768px,(min-width: 1024px) 480px"
+                    type="image/jpg"/>
                 <img src="{{ image_480.url }}"
-                     alt="{{ image_480.alt }}"
-                     decoding="async"
-                     loading="lazy"/>
+                    alt="{{ image_480.alt }}"
+                    decoding="async"
+                    loading="lazy"/>
             </picture>
             <figcaption>
                 {{ value.image.credit }}

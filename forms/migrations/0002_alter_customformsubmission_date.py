@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('forms', '0001_initial'),
+        ("forms", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='customformsubmission',
-            name='date',
+            model_name="customformsubmission",
+            name="date",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
     ]

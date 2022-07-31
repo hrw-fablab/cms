@@ -6,10 +6,10 @@
             {% include_block block %}
         {% endfor %}
         <form id="form"
-              action="{% pageurl page %}"
-              method="post"
-              class="content"
-              data-width="small">
+            action="{% pageurl page %}"
+            method="post"
+            class="content"
+            data-width="small">
             {% csrf_token %}
             {% for field in form.visible_fields %}
                 {% if field.id_for_label == "id_wagtailcaptcha" %}
@@ -26,17 +26,17 @@
             </div>
         </form>
         <script>
-        window.addEventListener("load", () => {
-            try {
-                const element = document.getElementById('id_date')
-                const url = new URL(window.location.href)
-                if ([...element.options].find(o => o.value == url.searchParams.get('date'))) {
-                    element.value = url.searchParams.get('date')
+            window.addEventListener("load", () => {
+                try {
+                    const element = document.getElementById('id_date')
+                    const url = new URL(window.location.href)
+                    if ([...element.options].find(o => o.value == url.searchParams.get('date'))) {
+                        element.value = url.searchParams.get('date')
+                    }
+                } catch (err) {
+                    return
                 }
-            } catch (err) {
-                return
-            }
-        })
+            })
         </script>
     </main>
 {% endblock %}

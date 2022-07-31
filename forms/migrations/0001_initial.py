@@ -10,23 +10,45 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('wagtailcore', '0069_log_entry_jsonfield'),
+        ("wagtailcore", "0069_log_entry_jsonfield"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CustomFormSubmission',
+            name="CustomFormSubmission",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('form_data', models.JSONField(encoder=django.core.serializers.json.DjangoJSONEncoder)),
-                ('submit_time', models.DateTimeField(auto_now_add=True, verbose_name='submit time')),
-                ('date', models.CharField(blank=True, max_length=100)),
-                ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.page')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "form_data",
+                    models.JSONField(
+                        encoder=django.core.serializers.json.DjangoJSONEncoder
+                    ),
+                ),
+                (
+                    "submit_time",
+                    models.DateTimeField(auto_now_add=True, verbose_name="submit time"),
+                ),
+                ("date", models.CharField(blank=True, max_length=100)),
+                (
+                    "page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="wagtailcore.page",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'form submission',
-                'verbose_name_plural': 'form submissions',
-                'abstract': False,
+                "verbose_name": "form submission",
+                "verbose_name_plural": "form submissions",
+                "abstract": False,
             },
         ),
     ]

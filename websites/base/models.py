@@ -231,6 +231,7 @@ def get_repeated_event(element, year, month, day):
 
     return repeated
 
+
 def get_events(element, year, month, day):
     if element.repeat == "0":
         return
@@ -241,7 +242,7 @@ def get_events(element, year, month, day):
         if element.visible_events(date):
             events.extend(get_repeated_event(element, date.year, date.month, date.day))
         date = datetime.date(date.year, date.month, 1) + relativedelta(months=+1)
-        if (date > element.repeatEnd):
+        if date > element.repeatEnd:
             break
 
     return ", ".join(events)

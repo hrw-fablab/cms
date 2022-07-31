@@ -243,6 +243,6 @@ WAGTAILEMBEDS_FINDERS = [
     },
 ]
 
-PASSWORD_REQUIRED_TEMPLATE = 'password_required.html'
+PASSWORD_REQUIRED_TEMPLATE = "password_required.html"
 
-WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'wagtailadmin/login.html'
+WAGTAIL_FRONTEND_LOGIN_TEMPLATE = "wagtailadmin/login.html"

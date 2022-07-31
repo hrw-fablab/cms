@@ -7,14 +7,20 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organisation', '0016_auto_20220704_2115'),
-        ('base', '0022_auto_20220729_2059'),
+        ("organisation", "0016_auto_20220704_2115"),
+        ("base", "0022_auto_20220729_2059"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='formpage',
-            name='event',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='organisation.event'),
+            model_name="formpage",
+            name="event",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="organisation.event",
+            ),
         ),
     ]

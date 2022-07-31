@@ -8,6 +8,7 @@ from forms.forms import FabLabCaptchaFormBuilder, remove_captcha_field
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+
 class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
     """Pages implementing a captcha form with email notification should inhert from this"""
 
@@ -20,12 +21,10 @@ class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
         remove_captcha_field(form)
         data = form.cleaned_data
         date = None
-        if ('date' in data):
-            date = data['date']
+        if "date" in data:
+            date = data["date"]
         submission = self.get_submission_class().objects.create(
-            form_data=form.cleaned_data,
-            page=self,
-            date=date
+            form_data=form.cleaned_data, page=self, date=date
         )
         if self.to_address:
             self.send_mail(form)
@@ -34,15 +33,15 @@ class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
     class Meta:
         abstract = True
 
+
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormSubmission
+
 
 class CustomFormSubmission(AbstractFormSubmission):
     date = models.CharField(max_length=100, blank=True, null=True)
 
     def get_data(self):
         form_data = super().get_data()
-        form_data.update({
-            'date': self.date
-        })
+        form_data.update({"date": self.date})
 
         return form_data

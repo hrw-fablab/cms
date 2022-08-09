@@ -1,12 +1,12 @@
 {% load wagtailcore_tags i18n wagtailsettings_tags %}
 {% wagtail_site as current_site %}
 <footer>
-    <div class="content">
+    <div class="content" data-width="large">
         {% include "atoms/adress.html" with value=settings.global.GlobalSettings %}
         {% include "atoms/social.html" with value=settings.global.GlobalSettings %}
         {% include "atoms/sponsors.html" with value=settings.global.GlobalSettings %}
     </div>
-    <div style="background-color: black" class="content">
+    <div style="background-color: black" class="content" data-width="large">
         <nav class="menu">
             <ul class="gap" data-gap="small">
                 <li>

@@ -4,8 +4,8 @@
 {% endif %}
 <section class="banner"
     data-margin-block-end="medium"
-    data-style="{% if value.illustration %}illustration{% elif value.image %}{% else %}accent{% endif %}"
-    {% if value.illustration %}style="background-image: url('{{ illustration.url }}')"{% endif %}>
+    data-style="{% if value.illustration %}illustration{% else %}color{% endif %}"
+    {% if value.illustration %}style="background-image: url('{{ illustration.url }}'), linear-gradient(52deg, var(--variation) 26%, var(--brand) 100%);"{% endif %}>
     {% if value.title or value.text %}
         <div data-style="glass">
             {% if value.date %}<time>Startdatum: {{ value.date }}</time>{% endif %}

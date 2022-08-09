@@ -118,6 +118,7 @@ class GlobalSettings(BaseSetting, ClusterableModel):
     logo_title = models.CharField(max_length=30, null=True, blank=True)
 
     brand_color = models.CharField(max_length=30, null=True, blank=True)
+    variation_color = models.CharField(max_length=30, null=True, blank=True)
     text_color = models.CharField(max_length=30, null=True, blank=True)
 
     surface_color_one = models.CharField(max_length=30, null=True, blank=True)
@@ -143,6 +144,7 @@ class GlobalSettings(BaseSetting, ClusterableModel):
         MultiFieldPanel(
             [
                 FieldPanel("brand_color"),
+                FieldPanel("variation_color"),
                 FieldPanel("text_color"),
                 FieldPanel("surface_color_one"),
                 FieldPanel("surface_color_two"),

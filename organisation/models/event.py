@@ -16,6 +16,7 @@ CATEGORYCHOICES = (
     ("3", "Schülerkurse"),
     ("4", "Workshop"),
     ("5", "Extern"),
+    ("6", "FabLab Event"),
 )
 
 from django.db import models
@@ -43,7 +44,7 @@ class Expection(ClusterableModel):
 
 
 class Event(ClusterableModel):
-    title = models.CharField("Titel", max_length=30, null=True, blank=True)
+    title = models.CharField("Titel", max_length=60, null=True, blank=True)
     adress = models.CharField("Adresse", max_length=60, null=True, blank=True)
     description = models.TextField(
         "Beschreibung", max_length=140, null=True, blank=True

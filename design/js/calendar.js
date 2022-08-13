@@ -93,7 +93,7 @@ const createEvent = (element, id, category, position, day) => {
       <summary>
         <span class="date">${day}.</span>
         <span class="content">
-        <span> ${element.timeStart} - ${element.timeEnd}</span>
+        <span class="time"> ${element.timeStart} - ${element.timeEnd}</span>
         <span class="title"> ${element.title}</span>
         </span>
       </summary>
@@ -149,11 +149,11 @@ const clearCalendar = () => {
   [...events.children].map((x) => {
     x.innerHTML = "";
     x.classList.remove("active");
+    x.classList.remove("full");
   });
 };
 
 const addEvent = (li, element, id, category, position, day) => {
-  console.log(day);
   li.classList.add("full");
   li.appendChild(createEvent(element, id, category, position, day));
 };

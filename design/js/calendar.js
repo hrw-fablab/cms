@@ -188,6 +188,8 @@ const createCalendar = async () => {
     events.children[i].classList.add("active");
   }
 
+  console.log(data.events);
+
   data.events.forEach((element, i) => {
     let li = document.getElementById(element.day + data.index);
     let id = `event${i}`;
@@ -199,7 +201,7 @@ const createCalendar = async () => {
       return;
     }
 
-    if (element.length != 1) {
+    if (element.length >= 1) {
       addEvent(li, element, id, category, "first");
       for (i = 0; i < element.length; i++) {
         let redirect = document.getElementById(

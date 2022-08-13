@@ -81,7 +81,8 @@ const getData = async (url) => {
 
 const zeroPad = (num, places) => String(num).padStart(places, "0");
 
-const createEvent = (element, id, category, position) => {
+const createEvent = (element, id, category, position, day) => {
+  console.log(day);
   let details = document.createElement("details");
   details.dataset.type = category;
 
@@ -90,8 +91,11 @@ const createEvent = (element, id, category, position) => {
 
   details.innerHTML = `
       <summary>
-        <span class="date">${element.day} <br> ${months[month_number]}</span>
-        ${element.timeStart} ${element.title}
+        <span class="date">${day}.</span>
+        <span class="content">
+        <span> ${element.timeStart} - ${element.timeEnd}</span>
+        <span class="title"> ${element.title}</span>
+        </span>
       </summary>
       <div class="description">
         <header>
@@ -148,9 +152,10 @@ const clearCalendar = () => {
   });
 };
 
-const addEvent = (li, element, id, category, position) => {
+const addEvent = (li, element, id, category, position, day) => {
+  console.log(day);
   li.classList.add("full");
-  li.appendChild(createEvent(element, id, category, position));
+  li.appendChild(createEvent(element, id, category, position, day));
 };
 
 const addRedirect = (li, id, category, position) => {
@@ -188,21 +193,26 @@ const createCalendar = async () => {
     events.children[i].classList.add("active");
   }
 
-  console.log(data.events);
-
   data.events.forEach((element, i) => {
     let li = document.getElementById(element.day + data.index);
     let id = `event${i}`;
     let category = categorys[element.category];
     if (element.repeat) {
       element.repeat.map((item) =>
-        addEvent(events.children[item + data.index], element, id, category)
+        addEvent(
+          events.children[item + data.index],
+          element,
+          id,
+          category,
+          undefined,
+          item + 1
+        )
       );
       return;
     }
 
     if (element.length >= 1) {
-      addEvent(li, element, id, category, "first");
+      addEvent(li, element, id, category, "first", element.day);
       for (i = 0; i < element.length; i++) {
         let redirect = document.getElementById(
           element.day + i + data.index + 1
@@ -217,7 +227,7 @@ const createCalendar = async () => {
       return;
     }
 
-    addEvent(li, element, id, category);
+    addEvent(li, element, id, category, undefined, element.day);
   });
 
   updateDate();

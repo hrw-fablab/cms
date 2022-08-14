@@ -82,20 +82,34 @@ const getData = async (url) => {
 const zeroPad = (num, places) => String(num).padStart(places, "0");
 
 const createEvent = (element, id, category, position, day) => {
-  console.log(day);
   let details = document.createElement("details");
   details.dataset.type = category;
 
   details.setAttribute("id", id);
   details.dataset.position = position;
 
+  let start = element.timeStart;
+  let end = element.timeEnd;
+
+  if (element.length >= 1) {
+    start = `${day}. ${months[element.month - 1]} ${element.timeStart}`;
+    end = `${day + element.length}. ${months[element.month - 1]} ${
+      element.timeEnd
+    }`;
+  }
+
   details.innerHTML = `
       <summary>
         <span class="date">${day}.</span>
         <span class="content">
-        <span class="time"> ${element.timeStart} - ${element.timeEnd}</span>
+        <span class="time"> ${start} - ${end}</span>
         <span class="title"> ${element.title}</span>
         </span>
+        <svg width="15" height="15" viewBox="0 0 24 24" transform="rotate(-90)">
+        <path
+            d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"
+        />
+    </svg>
       </summary>
       <div class="description">
         <header>
@@ -107,7 +121,7 @@ const createEvent = (element, id, category, position, day) => {
               </svg>
             </button>
           </div>
-          <div>${element.timeStart} bis ${element.timeEnd}</div>
+          <div>${start} - ${end}</div>
         </header>
         <p>${element.description}</p>
         <a href="${element.link || ""}?date=${zeroPad(

@@ -81,17 +81,35 @@ const getData = async (url) => {
 
 const zeroPad = (num, places) => String(num).padStart(places, "0");
 
-const createEvent = (element, id, category, position) => {
+const createEvent = (element, id, category, position, day) => {
   let details = document.createElement("details");
   details.dataset.type = category;
 
   details.setAttribute("id", id);
   details.dataset.position = position;
 
+  let start = element.timeStart;
+  let end = element.timeEnd;
+
+  if (element.length >= 1) {
+    start = `${day}. ${months[element.month - 1]} ${element.timeStart}`;
+    end = `${day + element.length}. ${months[element.month - 1]} ${
+      element.timeEnd
+    }`;
+  }
+
   details.innerHTML = `
       <summary>
-        <span class="date">${element.day} <br> ${months[month_number]}</span>
-        ${element.timeStart} ${element.title}
+        <span class="date">${day}.</span>
+        <span class="content">
+        <span class="time"> ${start} - ${end}</span>
+        <span class="title"> ${element.title}</span>
+        </span>
+        <svg width="15" height="15" viewBox="0 0 24 24" transform="rotate(-90)">
+        <path
+            d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"
+        />
+    </svg>
       </summary>
       <div class="description">
         <header>
@@ -103,7 +121,7 @@ const createEvent = (element, id, category, position) => {
               </svg>
             </button>
           </div>
-          <div>${element.timeStart} bis ${element.timeEnd}</div>
+          <div>${start} - ${end}</div>
         </header>
         <p>${element.description}</p>
         <a href="${element.link || ""}?date=${zeroPad(
@@ -145,12 +163,13 @@ const clearCalendar = () => {
   [...events.children].map((x) => {
     x.innerHTML = "";
     x.classList.remove("active");
+    x.classList.remove("full");
   });
 };
 
-const addEvent = (li, element, id, category, position) => {
+const addEvent = (li, element, id, category, position, day) => {
   li.classList.add("full");
-  li.appendChild(createEvent(element, id, category, position));
+  li.appendChild(createEvent(element, id, category, position, day));
 };
 
 const addRedirect = (li, id, category, position) => {
@@ -194,13 +213,20 @@ const createCalendar = async () => {
     let category = categorys[element.category];
     if (element.repeat) {
       element.repeat.map((item) =>
-        addEvent(events.children[item + data.index], element, id, category)
+        addEvent(
+          events.children[item + data.index],
+          element,
+          id,
+          category,
+          undefined,
+          item + 1
+        )
       );
       return;
     }
 
-    if (element.length != 1) {
-      addEvent(li, element, id, category, "first");
+    if (element.length >= 1) {
+      addEvent(li, element, id, category, "first", element.day);
       for (i = 0; i < element.length; i++) {
         let redirect = document.getElementById(
           element.day + i + data.index + 1
@@ -215,7 +241,7 @@ const createCalendar = async () => {
       return;
     }
 
-    addEvent(li, element, id, category);
+    addEvent(li, element, id, category, undefined, element.day);
   });
 
   updateDate();

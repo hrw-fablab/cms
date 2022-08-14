@@ -101,10 +101,7 @@ class Event(ClusterableModel):
 
     @property
     def length(self):
-        time = self.end - self.start
-        if time.days <= 1:
-            return 1
-        return int(time.days)
+        return int(self.end.day - self.start.day)
 
     @property
     def year(self):

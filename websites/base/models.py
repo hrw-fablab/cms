@@ -226,7 +226,7 @@ def get_repeated_event(element, year, month, day):
             if current_date >= exception.start and current_date <= exception.end:
                 switch = False
 
-        if weekday == current_date.weekday() and switch and current_date.day > day:
+        if weekday == current_date.weekday() and switch and current_date.day >= day:
             repeated.append(current_date.strftime("%d.%m.%Y"))
 
     return repeated

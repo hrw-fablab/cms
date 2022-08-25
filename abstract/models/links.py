@@ -1,15 +1,27 @@
+from operator import mod
 from django.db import models
 from wagtail.admin.panels import FieldPanel
 from datetime import date
 
+CATEGORYCHOICES = (
+    ("none", "none"),
+    ("teach", "Lehre"),
+    ("open", "Offenes Angebot"),
+    ("school", "Schülerkurse"),
+    ("workshop", "Workshop"),
+    ("extern", "Extern"),
+    ("event", "FabLab Event"),
+)
 
 class Link(models.Model):
     url = models.URLField()
     title = models.CharField(max_length=255)
+    category = models.CharField(choices=CATEGORYCHOICES, default="none", max_length=255)
 
     panels = [
         FieldPanel("url"),
         FieldPanel("title"),
+        FieldPanel("category")
     ]
 
     class Meta:
@@ -26,6 +38,7 @@ class ExpireLink(Link):
     panels = [
         FieldPanel("url"),
         FieldPanel("title"),
+        FieldPanel("category"),
         FieldPanel("expire"),
     ]
 

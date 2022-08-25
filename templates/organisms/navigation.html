@@ -55,7 +55,7 @@
                 aria-label="search text"
                 name="query"
                 placeholder="Suche ...">
-            <input type="text" name="locale" value={{ LANGUAGE_CODE }} style="display: none;">
+            <input type="hidden" name="locale" value={{ LANGUAGE_CODE }}>
             <input type="submit" style="display: none;">
         </form>
     {% endif %}

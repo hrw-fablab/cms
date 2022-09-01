@@ -1,4 +1,4 @@
-{% load wagtailcore_tags static %}
+{% load wagtailcore_tags static events_tag %}
 <div class="content calendar"
     id="calendar"
     data-width="large"
@@ -6,82 +6,21 @@
     data-margin-block-end="large">
     {% include "atoms/heading.html" with value=value.title anchor=True %}
     {% if value.events %}
-        <div id="events" class="events"></div>
-        <script>
-            const months = [
-                'Januar',
-                'Februar',
-                'Maerz',
-                'April',
-                'Mai',
-                'Juni',
-                'Juli',
-                'August',
-                'September',
-                'Oktober',
-                'November',
-                'Dezember'
-            ]
-
-            const categorys = ['none', 'teach', 'open', 'student', 'workshop', 'external']
-
-            const getData = async (url, year, month, day) => {
-                const config = {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': '{{ csrf_token }}'
-                    },
-                    body: JSON.stringify({
-                        year: year,
-                        month: month,
-                        day: day
-                    })
-                }
-                try {
-                    const data = await fetch(url, config)
-                    const json = await data.json()
-                    return JSON.parse(json)
-                } catch (error) {
-                    return []
-                }
-            }
-
-            const zeroPad = (num, places) => String(num).padStart(places, '0')
-
-            const createEvent = (element, category) => {
-                let section = document.createElement('section')
-
-                section.innerHTML = `
-      <time data-type="${category}">${element.day}. ${months[element.month - 1]}</time>
-      <div>
-      <header>
-      <a href="${element.link}?date=${zeroPad(element.day, 2)}.${zeroPad(element.month, 2)}.${element.year}"><h3>${element.title}</h3></a>
-      <time>${element.timeStart} bis ${element.timeEnd}</time>
-      </header>
-      <p>${element.description}</p>
-      </div>
-      `
-
-                return section
-            }
-
-            const createCalendar = async () => {
-                let date = new Date()
-                const data = await getData(
-                    `${window.location.origin}/events`,
-                    date.getFullYear(),
-                    date.getMonth() + 1,
-                    date.getDate()
-                )
-
-                data.events.map((event) =>
-                    document.getElementById('events').appendChild(createEvent(event, categorys[event.category]))
-                )
-            }
-
-            createCalendar()
-        </script>
+        <div id="events" class="events">
+            {% get_events as events %}
+            {% for element in events %}
+                <section>
+                    <time data-type="{{element.category}}">{{element.day}}. {{element.month}}</time>
+                    <div>
+                        <header>
+                            <a href="{{element.link}}"><h3>{{element.title}}</h3></a>
+                            <time>{{element.start}} bis {{element.end}}</time>
+                        </header>
+                        <p>{{element.description}}</p>
+                    </div>
+                </section>
+            {% endfor %}
+        </div>
     {% else %}
         <header>
             <time id="date"></time>

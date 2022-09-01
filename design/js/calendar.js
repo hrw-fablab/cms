@@ -21,8 +21,6 @@ const months = [
   "Dezember",
 ];
 
-const categorys = ["none", "teach", "open", "student", "workshop", "external"];
-
 let year = new Date().getFullYear();
 let month_number = new Date().getMonth();
 let month_string = months[month_number];
@@ -210,14 +208,13 @@ const createCalendar = async () => {
   data.events.forEach((element, i) => {
     let li = document.getElementById(element.day + data.index);
     let id = `event${i}`;
-    let category = categorys[element.category];
     if (element.repeat) {
       element.repeat.map((item) =>
         addEvent(
           events.children[item + data.index],
           element,
           id,
-          category,
+          element.category,
           undefined,
           item + 1
         )
@@ -226,22 +223,22 @@ const createCalendar = async () => {
     }
 
     if (element.length >= 1) {
-      addEvent(li, element, id, category, "first", element.day);
+      addEvent(li, element, id, element.category, "first", element.day);
       for (i = 0; i < element.length; i++) {
         let redirect = document.getElementById(
           element.day + i + data.index + 1
         );
         if (i == element.length - 1) {
-          addRedirect(redirect, id, category, "last");
+          addRedirect(redirect, id, element.category, "last");
           return;
         }
-        addRedirect(redirect, id, category);
+        addRedirect(redirect, id, element.category);
       }
 
       return;
     }
 
-    addEvent(li, element, id, category, undefined, element.day);
+    addEvent(li, element, id, element.category, undefined, element.day);
   });
 
   updateDate();

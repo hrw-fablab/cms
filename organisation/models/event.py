@@ -10,12 +10,12 @@ REAPEATCHOICES = (
 )
 
 CATEGORYCHOICES = (
-    ("0", "none"),
-    ("1", "Lehre"),
-    ("2", "Offenes Angebot"),
-    ("3", "Schülerkurse"),
-    ("4", "Workshop"),
-    ("5", "Extern"),
+    ("none", "none"),
+    ("teach", "Lehre"),
+    ("open", "Offenes Angebot"),
+    ("student", "Schülerkurse"),
+    ("workshop", "Workshop"),
+    ("external", "Extern"),
     ("6", "FabLab Event"),
 )
 

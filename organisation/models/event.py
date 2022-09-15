@@ -2,7 +2,7 @@ import datetime
 from django.db import models
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from modelcluster.models import ClusterableModel
-
+import calendar
 
 REAPEATCHOICES = (
     ("0", "none"),
@@ -139,8 +139,12 @@ class Event(ClusterableModel):
     def visible_events(self, date):
         if self.repeat == "0":
             start = datetime.date(self.start.year, self.start.month, self.start.day)
-            end = datetime.date(self.end.year, self.end.month, self.end.day)
-            if start <= date <= end:
+            end = datetime.date(
+                self.end.year,
+                self.end.month,
+                calendar.monthrange(self.end.year, self.end.month)[1],
+            )
+            if start >= date <= end:
                 return True
         else:
             start = datetime.date(

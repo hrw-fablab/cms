@@ -91,36 +91,6 @@ def get_repeated_event(element, year, month, day):
     return repeated
 
 
-def get_events(request):
-    body = json.loads(request.body)
-    date = datetime.date(body["year"], body["month"], body["day"])
-    events = []
-
-    switch = False
-
-    while switch == False:
-        for element in Event.objects.all().order_by("start"):
-            if element.visible_calendar(date):
-                if element.repeat != "0":
-                    events.extend(
-                        get_repeated_event(element, date.year, date.month, element.day)
-                    )
-                else:
-                    events.append(
-                        get_event(element, date.year, date.month, element.day)
-                    )
-        if len(events) >= 3:
-            switch = True
-        date = datetime.date(date.year, date.month, 1) + relativedelta(months=+1)
-
-    events.sort(key=lambda x: x["day"])
-
-    result = {"events": events[0:3]}
-
-    data = json.dumps(result)
-    return JsonResponse(data, safe=False)
-
-
 def get_calendar(request):
     body = json.loads(request.body)
     date = datetime.date(body["year"], body["month"], 1)

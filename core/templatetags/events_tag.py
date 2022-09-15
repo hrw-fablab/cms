@@ -1,4 +1,3 @@
-from sre_parse import CATEGORIES
 from django import template
 
 register = template.Library()
@@ -80,22 +79,25 @@ def get_events():
     events = []
 
     switch = False
+    iteration = 0
 
     while switch == False:
-        for element in Event.objects.all().order_by("start"):
-            if element.visible_calendar(date):
+        for element in Event.objects.all():
+            if element.visible_events(date):
                 if element.repeat != "0":
                     events.extend(
                         get_repeated_event(element, date.year, date.month, date.day)
                     )
                 else:
                     events.append(
-                        get_event(element, date.year, date.month, element.day)
+                        get_event(element, date.year, element.month, element.day)
                     )
-        if len(events) >= 3:
+        if len(events) >= 5 or iteration >= 5:
             switch = True
+        iteration = iteration + 1
         date = datetime.date(date.year, date.month, 1) + relativedelta(months=+1)
 
     events.sort(key=lambda x: x["day"])
+    events.sort(key=lambda x: x["month"], reverse=True)
 
     return events[0:3]

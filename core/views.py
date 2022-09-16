@@ -5,6 +5,10 @@ from calendar import monthrange
 from organisation.models import Event
 from dateutil.relativedelta import relativedelta
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 def get_repeated_event_days(element, year, month, day):
     repeated = []

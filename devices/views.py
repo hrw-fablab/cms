@@ -17,7 +17,12 @@ def load(request):
     data = load_data()
     for item in data:
         devices.append(
-            Device(title=item["title"], model=item["model"], area=item["area"])
+            Device(
+                title=item["title"],
+                model=item["model"],
+                area=item["area"],
+                manufacturer=item["manufacturer"],
+            )
         )
     Device.objects.bulk_create(devices)
     return HttpResponseRedirect(reverse("devices_admin:index"))

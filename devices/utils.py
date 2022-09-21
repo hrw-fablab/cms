@@ -18,11 +18,13 @@ def load_data():
     result = []
     items = target_list.items.get().execute_query()
     for item in items:
+        print(item.properties)
         result.append(
             {
                 "title": item.properties["AssetType"],
                 "model": item.properties["Model"],
                 "area": item.properties["Bereich"],
+                "manufacturer": item.properties["Manufacturer"],
             }
         )
-    return result.sort()
+    return result

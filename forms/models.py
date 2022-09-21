@@ -8,6 +8,8 @@ from forms.forms import FabLabCaptchaFormBuilder, remove_captcha_field
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from django.core.mail import send_mail
+
 
 class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
     """Pages implementing a captcha form with email notification should inhert from this"""
@@ -18,6 +20,12 @@ class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
         return CustomFormSubmission
 
     def process_form_submission(self, form):
+        send_mail(
+            "Test",
+            "Message",
+            self.from_address,
+            ["max@graw-online.de"],
+        )
         remove_captcha_field(form)
         data = form.cleaned_data
         date = None

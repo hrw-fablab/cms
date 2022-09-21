@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% block content %}
+    <main id="main" data-margin-block-start="medium">
+        {% regroup devices|dictsort:'area' by area as area_list %}
+        {% for area in area_list %}
+            <div>
+                <h2>{{area.grouper}}</h2>
+                <div class="content grid gap"
+                    data-width="large"
+                    data-layout="small"
+                    data-gap="medium">
+                    {% for device in area.list %}
+                        <section>
+                            <img src="" alt="">
+                            <h3>{{device.title}}</h3>
+                            <p>{{device.model}}</p>
+                        </section>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </main>
+{% endblock content %}

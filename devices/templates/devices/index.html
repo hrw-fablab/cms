@@ -1,1 +1,16 @@
-<h1>Devices</h1>
+{% extends "wagtailadmin/base.html" %}
+{% block titletag %}{{ current_year }} calendar{% endblock %}
+
+{% block content %}
+    {% include "wagtailadmin/shared/header.html" with title="Devices" icon="date" %}
+
+    <div class="nice-padding">
+        <a href="{% url 'devices_admin:load' %}" class="button">
+            Load Device Data
+        </a>
+
+        <a href="{% url 'devices_admin:load' %}" class="button">
+            Delete Device Data
+        </a>
+    </div>
+{% endblock %}

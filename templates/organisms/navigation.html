@@ -44,20 +44,7 @@
             {% endfor %}
         </ul>
     </nav>
-    {% include "molecules/search.html" %}
     {% if settings.global.GlobalSettings.search %}
-        <form id="search"
-            role="search"
-            class="search"
-            action="{{ settings.global.GlobalSettings.search.localized.url }}"
-            method="get"
-            autocomplete="off">
-            <input type="search"
-                aria-label="search text"
-                name="query"
-                placeholder="Suche ...">
-            <input type="hidden" name="locale" value={{ LANGUAGE_CODE }}>
-            <input type="submit" style="display: none;">
-        </form>
+        {% include "molecules/search.html" %}
     {% endif %}
 </header>

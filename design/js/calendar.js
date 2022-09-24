@@ -99,15 +99,7 @@ const createEvent = (element, id, category, position, day) => {
   details.innerHTML = `
       <summary>
         <span class="date">${day}.</span>
-        <span class="content">
-        <span class="time"> ${start} - ${end}</span>
         <span class="title"> ${element.title}</span>
-        </span>
-        <svg width="15" height="15" viewBox="0 0 24 24" transform="rotate(-90)">
-        <path
-            d="M2.6 5.1.1 7.6 9.5 17l2.5 2.5 2.5-2.5 9.4-9.4-2.5-2.5-9.4 9.4-9.4-9.4z"
-        />
-    </svg>
       </summary>
       <div class="description">
         <header>

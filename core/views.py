@@ -3,7 +3,6 @@ import json
 import datetime
 from calendar import monthrange
 from organisation.models import Event
-from dateutil.relativedelta import relativedelta
 
 from dotenv import load_dotenv
 

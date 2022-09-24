@@ -19,6 +19,30 @@ import tempfile
 c_id = Collection.objects.get(name="HRW FabLab")
 
 
+def get_image(data):
+    try:
+        image = json.loads(data["DevicePhoto"])
+        return image["fileName"]
+    except:
+        return False
+
+
+def enhance_data(data):
+    result = []
+    for element in data:
+        item = element.to_json()
+        result.append(
+            {
+                "title": item["AssetType"] or False,
+                "model": item["Model"] or False,
+                "area": item["Bereich"] or False,
+                "manufacturer": item["Manufacturer"] or False,
+                "image": get_image(item),
+            }
+        )
+    return result
+
+
 def load_data():
     site_url = "https://hrwfablab.sharepoint.com/sites/HRWFablab"
     ctx = ClientContext(site_url).with_credentials(
@@ -27,42 +51,28 @@ def load_data():
         )
     )
 
-    download_folder = tempfile.mkdtemp()
-
     target_list = ctx.web.lists.get_by_title("Inventurliste").get().execute_query()
-    result = []
     items = target_list.items.get().execute_query()
-    for item in items:
-        try:
-            json_item = item.to_json()
-            result.append(
-                {
-                    "title": json_item["AssetType"] or False,
-                    "model": json_item["Model"] or False,
-                    "area": json_item["Bereich"] or False,
-                    "manufacturer": json_item["Manufacturer"] or False,
-                }
-            )
-        except:
+
+    enhanced_items = enhance_data(items)
+
+    for item in enhanced_items:
+        if item["image"] == False:
             continue
 
-        try:
-            file = json.loads(json_item["DevicePhoto"])
-            file_url = (
-                "/sites/HRWFablab/SiteAssets/Lists/557ea859-2788-41e5-abc9-fc01112bf884/"
-                + file["fileName"]
-            )
-        except:
-            continue
+        file_url = (
+            "/sites/HRWFablab/SiteAssets/Lists/557ea859-2788-41e5-abc9-fc01112bf884/"
+            + item["image"]
+        )
+        FablabImage.objects.all().filter(title=item["image"]).delete()
 
-        download_path = os.path.join(download_folder, os.path.basename(file_url))
-        with open(download_path, "wb") as local_file:
-            title = file["fileName"]
+        with tempfile.TemporaryFile() as local_file:
             ctx.web.get_file_by_server_relative_path(file_url).download(
                 local_file
             ).execute_query()
-            image_file = ImageFile(open(download_path, "rb"), name=title)
-            image = FablabImage(title=title, file=image_file, collection=c_id)
+
+            image_file = ImageFile(local_file, name=item["image"])
+            image = FablabImage(title=item["image"], file=image_file, collection=c_id)
             image.save()
 
-    return result
+    return enhanced_items

@@ -1,17 +1,37 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
     <main id="main" data-margin-block-start="medium">
+        {% include "atoms/heading.html" with value="Diese Liste Befindet sich noch im Aufbau"%}
         {% regroup devices|dictsort:'area' by area as area_list %}
         {% for area in area_list %}
             <div class="content" data-width="large" data-margin-block-end="large">
                 {% include "atoms/heading.html" with value=area.grouper anchor=True %}
                 <div class="grid gap"
-                    data-layout="small"
+                    data-layout="medium"
                     data-gap="medium">
                     {% for device in area.list %}
-                        <section class="card">
-                            <img src="https://picsum.photos/500/300" alt="">
+                        <section class="device">
+                            {% if device.image %}
+                                <picture>
+                                    {% image device.image fill-800x800-c70 format-webp webpquality-80 as image_768 %}
+                                    {% image device.image fill-400x400-c70 format-webp webpquality-60 as image_480 %}
+                                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
+                                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                                        type="image/webp">
+                                    {% image device.image fill-800x800 format-jpeg as image_768 %}
+                                    {% image device.image fill-400x400 format-jpeg as image_480 %}
+                                    <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
+                                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                                        type="image/jpg">
+                                    <img src="{{ image_480.url }}"
+                                        alt="{{ image_480.alt }}"
+                                        decoding="async"
+                                        loading="lazy">
+                                </picture>
+                            {% else %}
+                                <div></div>
+                            {% endif %}
                             <h3>{{device.title}}</h3>
                             <p>Model: {{device.model}}</p>
                             <p>Hersteller: {{device.manufacturer}}</p>

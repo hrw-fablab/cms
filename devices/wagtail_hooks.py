@@ -20,4 +20,6 @@ def register_admin_urls():
 
 @hooks.register("register_settings_menu_item")
 def register_devices_menu():
-    return DeviceMenuItem(_("Device"), reverse("devices_admin:index"))
+    return DeviceMenuItem(
+        _("Geräte"), reverse("devices_admin:index"), icon_name="list-ul"
+    )

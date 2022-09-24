@@ -8,12 +8,10 @@ from office365.sharepoint.client_context import ClientContext
 
 from core.models import FablabImage
 
-from wagtail.images.models import Image
 from wagtail.core.models import Collection
 from django.core.files.images import ImageFile
 import json
 
-import os
 import tempfile
 
 c_id = Collection.objects.get(name="HRW FabLab")

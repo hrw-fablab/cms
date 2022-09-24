@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "global",
     "forms",
     "captcha",
+    "search",
     "generic_chooser",
     "websites.base",
     "websites.qufablab",

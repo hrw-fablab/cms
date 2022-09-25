@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -11,11 +10,10 @@ from .utils import load_data
 
 
 def index(request):
-    print(FablabImage.objects.filter(title="photo_2022-04-20_10-02-24.jpg").first())
     return render(request, "devices/index.html")
 
 
-def load(request):
+def load():
     Device.objects.all().delete()
     devices = []
     data = load_data()

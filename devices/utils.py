@@ -14,7 +14,15 @@ import json
 
 import tempfile
 
-c_id = Collection.objects.get(name="HRW FabLab")
+
+def get_collection():
+    try:
+        Collection.objects.get(name="devices")
+    except:
+        root_coll = Collection.get_first_root_node()
+        root_coll.add_child(name="devices")
+    finally:
+        return Collection.objects.get(name="devices")
 
 
 def get_image(data):
@@ -49,6 +57,7 @@ def load_data():
         )
     )
 
+    collection = get_collection()
     target_list = ctx.web.lists.get_by_title("Inventurliste").get().execute_query()
     items = target_list.items.get().execute_query()
 
@@ -70,7 +79,9 @@ def load_data():
             ).execute_query()
 
             image_file = ImageFile(local_file, name=item["image"])
-            image = FablabImage(title=item["image"], file=image_file, collection=c_id)
+            image = FablabImage(
+                title=item["image"], file=image_file, collection=collection
+            )
             image.save()
 
     return enhanced_items

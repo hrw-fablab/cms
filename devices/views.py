@@ -13,7 +13,7 @@ def index(request):
     return render(request, "devices/index.html")
 
 
-def load():
+def load(request):
     Device.objects.all().delete()
     devices = []
     data = load_data()

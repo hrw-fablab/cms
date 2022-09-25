@@ -1,5 +1,3 @@
-from statistics import mode
-from tkinter.tix import Balloon
 from django.db import models
 
 

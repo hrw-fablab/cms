@@ -1,5 +1,5 @@
 ﻿Brotli==1.0.9
-Django==3.2.15
+Django==4.1.1
 python-dotenv==0.21.0
 wagtail==4.0.2
 wagtail-localize==1.3a4

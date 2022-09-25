@@ -11,7 +11,6 @@ from wagtail.fields import StreamField
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
-from abstract.pages.device import AbstractDevicePage
 
 from abstract.pages.home import AbstractHomePage
 from abstract.pages.folder import AbstractFolderPage
@@ -29,7 +28,6 @@ from websites.base.blocks import (
     HomeBlock,
     FlexBlock,
     ProjectBlock,
-    DeviceBlock,
     FormBlock,
 )
 

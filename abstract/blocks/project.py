@@ -1,7 +1,6 @@
-from abstract.blocks.chooser import OrganisationChooserBlock
 from wagtail import blocks
 
-from abstract.blocks import ProjectChooserBlock
+from abstract.blocks.chooser import ProjectChooserBlock, OrganizationChooserBlock
 
 
 class ProjectMembers(blocks.StructBlock):
@@ -20,7 +19,7 @@ class ProjectMembers(blocks.StructBlock):
 
     members = ProjectChooserBlock(required=True, label="Projektmitglieder")
 
-    filter = OrganisationChooserBlock(
+    filter = OrganizationChooserBlock(
         required=False,
         label="Projektmitglieder Filter",
         help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation",

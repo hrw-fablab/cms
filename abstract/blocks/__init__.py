@@ -1,7 +1,7 @@
 from .banner import BannerBlock
 from .blockquote import BlockquoteBlock
+from .chooser import ProjectChooserBlock, OrganizationChooserBlock, PersonChooserBlock
 from .card import CardBlock
-from .chooser import PersonChooserBlock, ProjectChooserBlock, OrganisationChooserBlock
 from .embed import EmbedBlock
 from .gallery import GalleryBlock
 from .grabber import GrabberBlock

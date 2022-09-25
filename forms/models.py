@@ -32,12 +32,15 @@ class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
         if self.to_address:
             self.send_mail(form)
         if self.response_switch == True:
-            send_mail(
-                self.response_subject,
-                self.response_message,
-                "",
-                [data["e_mail"]],
-            )
+            try:
+                send_mail(
+                    self.response_subject,
+                    self.response_message,
+                    "",
+                    [data["e_mail"]],
+                )
+            except:
+                pass
         return submission
 
     class Meta:

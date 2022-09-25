@@ -40,8 +40,8 @@ class Person(ClusterableModel):
         MultiFieldPanel(
             [
                 FieldPanel("title", heading="Titel"),
-                FieldPanel("first_name", heading="Vornahme"),
-                FieldPanel("last_name", heading="Nachnahme"),
+                FieldPanel("first_name", heading="Vorname"),
+                FieldPanel("last_name", heading="Nachname"),
             ],
             heading="Name",
         ),

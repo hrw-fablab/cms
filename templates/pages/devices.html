@@ -2,7 +2,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
     <main id="main" data-margin-block-start="medium">
-        {% include "atoms/heading.html" with value="Diese Liste Befindet sich noch im Aufbau"%}
         {% regroup devices|dictsort:'area' by area as area_list %}
         {% for area in area_list %}
             <div class="content" data-width="large" data-margin-block-end="large">

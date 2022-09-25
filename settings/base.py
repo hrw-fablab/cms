@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "global",
     "forms",
     "captcha",
+    "devices",
     "search",
     "generic_chooser",
     "websites.base",

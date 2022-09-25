@@ -456,7 +456,7 @@ class Migration(migrations.Migration):
                     ),
                 ],
                 blank=True,
-                use_json_field=None,
+                use_json_field=True,
             ),
         ),
         migrations.AlterField(
@@ -924,7 +924,7 @@ class Migration(migrations.Migration):
                     ),
                 ],
                 blank=True,
-                use_json_field=None,
+                use_json_field=True,
             ),
         ),
     ]

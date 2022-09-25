@@ -2,7 +2,6 @@ from django.db import models
 from wagtail.admin.panels import FieldPanel
 
 from modelcluster.fields import ParentalKey
-from chooser.widgets import PersonChooser
 
 from modelcluster.models import ClusterableModel
 
@@ -41,7 +40,7 @@ class Member(ClusterableModel):
     )
 
     panels = [
-        FieldPanel("person", widget=PersonChooser, heading="Mitglied"),
+        FieldPanel("person"),
         FilteredPanel("role"),
     ]
 

@@ -7,8 +7,11 @@ register = template.Library()
 def filter_organisation(self, value):
     result = []
     for element in self:
-        if element.person.organisation == value:
-            result.append(element)
+        try:
+            if element.person.organisation == value:
+                result.append(element)
+        except:
+            continue
     return result
 
 

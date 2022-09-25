@@ -395,7 +395,7 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "filter",
-                                    abstract.blocks.chooser.OrganisationChooserBlock(
+                                    abstract.blocks.chooser.OrganizationChooserBlock(
                                         help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation",
                                         label="Projektmitglieder Filter",
                                         required=False,
@@ -456,7 +456,7 @@ class Migration(migrations.Migration):
                     ),
                 ],
                 blank=True,
-                use_json_field=None,
+                use_json_field=True,
             ),
         ),
         migrations.AlterField(
@@ -863,7 +863,7 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "filter",
-                                    abstract.blocks.chooser.OrganisationChooserBlock(
+                                    abstract.blocks.chooser.OrganizationChooserBlock(
                                         help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation",
                                         label="Projektmitglieder Filter",
                                         required=False,
@@ -924,7 +924,7 @@ class Migration(migrations.Migration):
                     ),
                 ],
                 blank=True,
-                use_json_field=None,
+                use_json_field=True,
             ),
         ),
     ]

@@ -1208,7 +1208,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "members",
-                                            abstract.blocks.chooser.OrganisationChooserBlock(
+                                            abstract.blocks.chooser.OrganizationChooserBlock(
                                                 required=False
                                             ),
                                         ),
@@ -1827,7 +1827,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "members",
-                                            abstract.blocks.chooser.OrganisationChooserBlock(
+                                            abstract.blocks.chooser.OrganizationChooserBlock(
                                                 required=False
                                             ),
                                         ),

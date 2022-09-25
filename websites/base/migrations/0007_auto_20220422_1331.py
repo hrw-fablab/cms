@@ -374,7 +374,7 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "filter",
-                                    abstract.blocks.chooser.OrganisationChooserBlock(
+                                    abstract.blocks.chooser.OrganizationChooserBlock(
                                         help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation",
                                         label="Filter",
                                         required=False,
@@ -808,7 +808,7 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "filter",
-                                    abstract.blocks.chooser.OrganisationChooserBlock(
+                                    abstract.blocks.chooser.OrganizationChooserBlock(
                                         help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation",
                                         label="Filter",
                                         required=False,
@@ -1272,7 +1272,7 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "filter",
-                                    abstract.blocks.chooser.OrganisationChooserBlock(
+                                    abstract.blocks.chooser.OrganizationChooserBlock(
                                         help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation",
                                         label="Filter",
                                         required=False,
@@ -1656,7 +1656,7 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "filter",
-                                    abstract.blocks.chooser.OrganisationChooserBlock(
+                                    abstract.blocks.chooser.OrganizationChooserBlock(
                                         help_text="Filtert die Projektmitglieder durch die ausgewählte Organisation",
                                         label="Filter",
                                         required=False,

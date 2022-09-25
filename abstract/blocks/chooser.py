@@ -1,52 +1,17 @@
-from wagtail import blocks
+from organisation.wagtail_hooks import (
+    person_chooser_viewset,
+    project_chooser_viewset,
+    organisation_chooser_viewset,
+)
 
+PersonChooserBlock = person_chooser_viewset.get_block_class(
+    name="PersonChooserBlock", module_path="abstract.blocks"
+)
 
-class ProjectChooserBlock(blocks.ChooserBlock):
-    @property
-    def target_model(self):
-        from organisation.models import Project
+ProjectChooserBlock = project_chooser_viewset.get_block_class(
+    name="ProjectChooserBlock", module_path="abstract.blocks"
+)
 
-        return Project
-
-    @property
-    def widget(self):
-        from chooser.widgets import ProjectChooser
-
-        return ProjectChooser()
-
-    def get_form_state(self, value):
-        return self.widget.get_value_data(value)
-
-
-class PersonChooserBlock(blocks.ChooserBlock):
-    @property
-    def target_model(self):
-        from organisation.models import Person
-
-        return Person
-
-    @property
-    def widget(self):
-        from chooser.widgets import PersonChooser
-
-        return PersonChooser()
-
-    def get_form_state(self, value):
-        return self.widget.get_value_data(value)
-
-
-class OrganisationChooserBlock(blocks.ChooserBlock):
-    @property
-    def target_model(self):
-        from organisation.models import Organisation
-
-        return Organisation
-
-    @property
-    def widget(self):
-        from chooser.widgets import OrganisationChooser
-
-        return OrganisationChooser()
-
-    def get_form_state(self, value):
-        return self.widget.get_value_data(value)
+OrganizationChooserBlock = organisation_chooser_viewset.get_block_class(
+    name="OrganizationChooserBlock", module_path="abstract.blocks"
+)

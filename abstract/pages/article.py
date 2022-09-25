@@ -2,7 +2,6 @@ from django.db import models
 from wagtail.fields import RichTextField
 
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
-from chooser.widgets import PersonChooser
 
 from core.models import FablabBasePage
 from wagtail.models import Page
@@ -55,7 +54,7 @@ class AbstractArticlePage(FablabBasePage):
         MultiFieldPanel(
             [
                 FieldPanel("date"),
-                FieldPanel("author", widget=PersonChooser),
+                FieldPanel("author"),
             ],
             heading="Informationen",
         ),

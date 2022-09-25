@@ -1,3 +1,7 @@
 .sidebar-custom-branding {
   margin: 0 auto;
 }
+
+.chooser__actions {
+  opacity: 1;
+}

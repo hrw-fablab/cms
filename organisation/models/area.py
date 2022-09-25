@@ -1,6 +1,5 @@
 from django.db import models
 from wagtail.admin.panels import FieldPanel
-from chooser.widgets import ProjectChooser
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
@@ -14,7 +13,7 @@ class Area(ClusterableModel):
         on_delete=models.SET_NULL,
     )
 
-    panels = [FieldPanel("project", widget=ProjectChooser, heading="Projekt")]
+    panels = [FieldPanel("project", heading="Projekt")]
 
     link = ParentalKey(
         "organisation.Organisation",

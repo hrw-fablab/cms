@@ -33,6 +33,8 @@ from websites.base.blocks import (
     FormBlock,
 )
 
+from devices.models import Device
+
 from wagtail.fields import RichTextField
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 
@@ -89,22 +91,6 @@ class IndexPage(AbstractIndexPage):
     template = "pages/index.html"
 
 
-class DeviceIndexPage(AbstractIndexPage):
-    parent_page_types = ["FolderPage", "HomePage"]
-    subpage_type = ["DevicePage"]
-
-    template = "pages/category.html"
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        all_children = self.get_children().live().specific()
-        context["children"] = all_children
-        return context
-
-    class Meta:
-        verbose_name = "Geräte"
-
-
 class ProjectIndexPage(AbstractIndexPage):
     parent_page_types = ["FolderPage", "HomePage"]
     subpage_type = ["ProjectPage"]
@@ -150,17 +136,20 @@ class ProjectPage(AbstractProjectPage):
     ]
 
 
-class DevicePage(AbstractDevicePage):
-    template = "pages/project.html"
+class DeviceIndexPage(AbstractIndexPage):
+    parent_page_types = ["FolderPage", "HomePage"]
+    subpage_type = [""]
 
-    parent_page_types = ["DeviceIndexPage"]
-    subpage_type = []
+    template = "pages/devices.html"
 
-    body = StreamField(DeviceBlock(), blank=True, use_json_field=True)
+    def get_context(self, request):
+        context = super().get_context(request)
+        devices = Device.objects.all()
+        context["devices"] = devices
+        return context
 
-    content_panels = AbstractDevicePage.content_panels + [
-        FieldPanel("body"),
-    ]
+    class Meta:
+        verbose_name = "Geräte"
 
 
 class CollectionPagePage(Orderable, PageLink):

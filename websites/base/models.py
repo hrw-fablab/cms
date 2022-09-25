@@ -251,6 +251,10 @@ class FormPage(FabLabCaptchaEmailForm):
         related_name="+",
     )
 
+    response_switch = models.BooleanField(blank=True, null=True)
+    response_subject = models.TextField(blank=True, null=True)
+    response_message = models.TextField(blank=True, null=True)
+
     thank_you_text = RichTextField(blank=True)
 
     content_panels = AbstractEmailForm.content_panels + [
@@ -258,6 +262,14 @@ class FormPage(FabLabCaptchaEmailForm):
         FieldPanel("content"),
         InlinePanel("form_fields", label="Form Elemente"),
         FieldPanel("thank_you_text", heading="Bestätigung"),
+        MultiFieldPanel(
+            [
+                FieldPanel("response_switch", heading="Switch"),
+                FieldPanel("response_subject", heading="Subject"),
+                FieldPanel("response_message", heading="Message"),
+            ],
+            "Email Antwort",
+        ),
         MultiFieldPanel(
             [
                 FieldPanel("from_address"),

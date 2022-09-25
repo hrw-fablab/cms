@@ -7,6 +7,7 @@ from forms.forms import FabLabCaptchaFormBuilder, remove_captcha_field
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.mail import send_mail
 
 from django.core.mail import send_mail
 
@@ -30,6 +31,16 @@ class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
         )
         if self.to_address:
             self.send_mail(form)
+        if self.response_switch == True:
+            try:
+                send_mail(
+                    self.response_subject,
+                    self.response_message,
+                    "",
+                    [data["e_mail"]],
+                )
+            except:
+                pass
         return submission
 
     class Meta:

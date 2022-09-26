@@ -83,7 +83,7 @@ class FablabBasePage(WagtailCacheMixin, Page):
         MultiFieldPanel(
             [
                 FieldPanel("og_image", heading="Image"),
-                FieldPanel("og_image_alt", heading="Image Alt Text"),
+                FieldPanel("og_image_alt", heading="Image alt text"),
                 FieldPanel("og_type", heading="Page Type"),
             ],
             heading="Open Graph",

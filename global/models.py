@@ -6,7 +6,7 @@ from wagtail.admin.panels import (
     TabbedInterface,
     ObjectList,
 )
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
 from modelcluster.models import ClusterableModel
 
@@ -62,7 +62,7 @@ class Social(Orderable):
 
 
 @register_setting
-class GlobalSettings(BaseSetting, ClusterableModel):
+class GlobalSettings(BaseSiteSetting, ClusterableModel):
     street = models.CharField(max_length=255, null=True, blank=True)
     housenumber = models.CharField(max_length=20, null=True, blank=True)
     city = models.CharField(max_length=255, null=True, blank=True)

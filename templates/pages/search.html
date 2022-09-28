@@ -1,5 +1,10 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load static wagtailcore_tags %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/search.min.css' %}"/>
+{% endblock css%}
+
 {% block content %}
     <main id="main" data-margin-block-start="medium">
         {% if results %}

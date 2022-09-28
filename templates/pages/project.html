@@ -2,15 +2,35 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
     <main id="main" class="project">
-        <div class="test" data-margin-block-end="large">
+        <div class="hero" data-margin-block-end="large">
             <div data-style="glass">
                 <h1>{{page.title}}</h1>
-                <p>                {{page.introduction}}
+                <p>
+                    {{page.introduction}}
                 </p>
+                {% if page.project_links %}
+                <div class="flex gap" data-gap="small">
+                    {% for link in page.project_links.all %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+                </div>
+                {% endif %}
             </div>
             {% image page.image fill-1920x700 format-webp webpquality-80 as image_1024 %}
             <img src="{{image_1024.url}}" alt="">
         </div>
+
+        <style>
+            a {
+                border: solid var(--surface-1) 0.15rem;
+                border-radius: 0.7rem;
+                padding: 0.5rem;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: inherit;
+                border-color: var(--brand);
+            }
+        </style>
 
         {% for block in page.body %}
             {% include_block block %}

@@ -70,7 +70,7 @@ const results = document.getElementById("results");
 
 const input = async (event) => {
   resetResults();
-  if (event.target.value.length <= 1) {
+  if (event.target.value.length <= 2) {
     results.style.display = "none";
     return;
   }

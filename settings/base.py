@@ -237,6 +237,7 @@ RECAPTCHA_PRIVATE_KEY = str(os.environ.get("RECAPTCHA_PRIVATE_KEY"))
 WAGTAILEMBEDS_FINDERS = [
     {
         "class": "embeds.models.MatterportFinder",
+        "class": "embeds.models.GoogleMapsFinder",
     },
     {
         "class": "wagtail.embeds.finders.oembed",

@@ -19,24 +19,24 @@
             {% for element in menuitems %}
                 <li>
                     {% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage" %}
-                        <button data-type="menu">
-                            {{ element.localized }}
-                            <svg width="0.8rem"
-                                viewBox="0 0 102 60"
-                                aria-hidden="true"
-                                focusable="false">
-                                <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
-                            </svg>
-                        </button>
-                        {% if element.get_children.count != 0 %}
-                            <ul class="menu hidden" data-menu="submenu">
+                        <details>
+                            <summary>
+                                {{ element.localized }}
+                                <svg width="0.8rem"
+                                    viewBox="0 0 102 60"
+                                    aria-hidden="true"
+                                    focusable="false">
+                                    <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
+                                </svg>
+                            </summary>
+                            <ul class="submenu">
                                 {% for subelement in element.get_children.specific %}
                                     <li>
                                         <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>
-                        {% endif %}
+                        </details>
                     {% else %}
                         <a href="{{ element.localized.url }}">{{ element.localized }}</a>
                     {% endif %}

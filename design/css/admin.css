@@ -2,14 +2,14 @@
   margin: 0 auto;
 }
 
-.chooser__actions {
-  opacity: 1;
-}
-
 div[data-streamfield-stream-container] > div {
   margin-block: 1rem
 }
 
 .c-sf-add-button {
   margin-block: 0.5rem
+}
+
+:is(.w-field--model_choice_field):is(:hover, :focus-within) .chooser__actions {
+  opacity: 1;
 }

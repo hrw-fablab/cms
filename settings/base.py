@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "search",
     "websites.base",
     "websites.qufablab",
+    "django_components",
     "wagtailcache",
     "wagtailmedia",
     "wagtail_localize",
@@ -91,7 +92,6 @@ TEMPLATES = [
         "DIRS": [
             os.path.join(PROJECT_DIR, "templates"),
         ],
-        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -99,6 +99,19 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "wagtail.contrib.settings.context_processors.settings",
+            ],
+            "builtins": [
+                "django_components.templatetags.component_tags",
+            ],
+            "loaders": [
+                (
+                    "django.template.loaders.cached.Loader",
+                    [
+                        "django.template.loaders.filesystem.Loader",
+                        "django.template.loaders.app_directories.Loader",
+                        "django_components.template_loader.Loader",
+                    ],
+                )
             ],
         },
     },
@@ -166,6 +179,7 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "design"),
+    os.path.join(PROJECT_DIR, "components"),
 ]
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated

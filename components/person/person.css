@@ -1,0 +1,10 @@
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-fluid-1);
+}
+
+.heading a {
+  display: flex;
+}

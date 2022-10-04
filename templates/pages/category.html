@@ -5,7 +5,7 @@
         {% regroup children.specific by category as category_list %}
         {% for category in category_list %}
             {% if category.grouper != None %}
-                {% include "atoms/heading.html" with value=category.grouper anchor=True %}
+                {% component "heading" value=category.grouper anchor=True %}
             {% endif %}
             <div class="content grid gap"
                 data-width="large"

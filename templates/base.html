@@ -48,6 +48,7 @@
             media="screen"
             href="{% static 'css/styles.min.css' %}"/>
         {% block css %}{% endblock %}
+        {% component_css_dependencies %}
         <script defer src="{% static 'js/cms.js' %}"></script>
         <meta property="og:title"
             content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}"/>

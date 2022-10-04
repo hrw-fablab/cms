@@ -1,0 +1,287 @@
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+.calendar :where(ol) {
+  grid-template-columns: repeat(7, 1fr);
+  list-style: none;
+  display: grid;
+}
+.calendar li {
+  position: relative;
+}
+.calendar button {
+  border: none;
+}
+.calendar button:hover {
+  fill: var(--brand);
+}
+.calendar > header {
+  font-size: var(--font-size-4);
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+@media (max-width: 1024px) {
+  .calendar > ol {
+    gap: var(--size-fluid-4);
+    grid-template-columns: 1fr;
+  }
+}
+.days {
+  border-block: solid 0.15rem var(--surface-2);
+  border-inline-start: solid 0.15rem var(--surface-2);
+}
+.days li {
+  border-inline-end: solid 0.15rem var(--surface-2);
+  padding-block: var(--size-3);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+@media (max-width: 1024px) {
+  .days {
+    display: none;
+  }
+}
+.calendar .events {
+  border-inline-start: solid 0.15rem var(--surface-2);
+  counter-reset: section;
+}
+.calendar .events li {
+  border-block-end: solid 0.15rem var(--surface-2);
+  border-inline-end: solid 0.15rem var(--surface-2);
+  gap: var(--size-3);
+  min-width: 0;
+  aspect-ratio: 5/3;
+  flex-direction: column;
+  justify-content: end;
+  display: flex;
+}
+@media (max-width: 1024px) {
+  .calendar .events {
+    border: none;
+  }
+  .calendar .events li {
+    aspect-ratio: inherit;
+    gap: var(--size-fluid-4);
+    border: none;
+  }
+  .calendar .events button {
+    display: none;
+  }
+  .calendar .events li:where(:not(.full)) {
+    display: none;
+  }
+}
+.events details {
+  border-radius: 0 0.7rem 0.7rem 0;
+  margin-inline-end: 0.5rem;
+}
+.events details:where([data-position='first']) {
+  border-radius: inherit;
+  margin-inline-end: inherit;
+}
+.events details summary {
+  font-size: var(--font-size-2);
+  -webkit-user-select: none;
+  user-select: none;
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-block-start: 0.2rem;
+  padding-block-end: 0.2rem;
+  padding-inline-start: 0.4rem;
+  padding-inline-end: 0.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow: hidden;
+}
+.events details .date {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .events details {
+    box-shadow: var(--shadow);
+    border-radius: 0.7rem;
+  }
+  .events details .date {
+    text-align: center;
+    color: var(--surface-1);
+    background-color: var(--color);
+    padding: var(--size-fluid-4);
+    border-radius: 0.7rem 0 0 0.7rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    display: flex;
+  }
+  .events details summary {
+    align-items: center;
+    gap: var(--size-fluid-2);
+    font-size: var(--font-size-3);
+    background-color: var(--surface-1);
+    color: var(--text-1);
+    border-radius: 0.7rem;
+    grid-template-columns: 25% auto;
+    padding: 0;
+    display: grid;
+  }
+  .events details[open] .date {
+    border-radius: 0.7rem 0 0;
+  }
+  .events details[open] summary {
+    border-radius: 0 0.7rem 0 0;
+  }
+}
+.events button {
+  font-size: var(--font-size-2);
+  border-radius: inherit;
+  padding-block-start: 0.2rem;
+  padding-block-end: 0.2rem;
+  padding-inline-start: 0.4rem;
+  padding-inline-end: 0.4rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.events button[data-position='last'] {
+  transform: inherit;
+  border-radius: 0 0.7rem 0.7rem 0;
+  margin-inline-end: 0.5rem;
+}
+.events button span {
+  visibility: hidden;
+}
+.events .description {
+  background-color: var(--surface-1);
+  box-shadow: var(--shadow);
+  gap: var(--size-3);
+  padding: var(--size-4);
+  width: 30rem;
+  z-index: 2;
+  color: var(--text-1);
+  border-radius: 0.7rem;
+  flex-direction: column;
+  display: flex;
+  position: absolute;
+  transform: translateY(5%);
+}
+.events .description header {
+  padding: 0;
+}
+.events .description header div {
+  justify-content: space-between;
+  display: flex;
+}
+.events .description button {
+  background-color: inherit;
+}
+@media (max-width: 1024px) {
+  .events .description {
+    width: 100%;
+    transform: inherit;
+    border-radius: 0 0 0.7rem 0.7rem;
+    position: relative;
+  }
+}
+.events .active:before {
+  content: counter(section);
+  counter-increment: section;
+  font-size: var(--font-size-3);
+  padding-inline: var(--size-3);
+  pointer-events: none;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+@media (max-width: 1024px) {
+  .events .active:before {
+    display: none;
+  }
+}
+.calendar[data-style='scroll'] .events {
+  gap: var(--size-fluid-3);
+  border: none;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
+  display: grid;
+}
+.calendar[data-style='scroll'] .events section > :where(header, div) {
+  padding-inline: var(--size-fluid-1);
+}
+.calendar[data-style='scroll'] .events section > time {
+  width: 100%;
+  aspect-ratio: 4/1;
+  font-size: var(--font-size-4);
+  color: var(--surface-1);
+  text-align: center;
+  border-radius: 0.7rem 0.7rem 0 0;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  display: flex;
+}
+.calendar[data-style='scroll'] .events section {
+  font-size: var(--font-size-3);
+  box-shadow: var(--shadow);
+  border-radius: 0.7rem;
+  padding-block-end: var(--size-fluid-1);
+}
+.calendar[data-style='scroll'] .events header {
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  display: flex;
+}
+.calendar[data-style='scroll'] .events header time {
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .calendar[data-style='scroll'] .events section time {
+    font-size: var(--font-size-3);
+    aspect-ratio: 6/1;
+  }
+}
+.calendar .events details,
+.calendar .events > section > time,
+.calendar .events li > button {
+  --color: var(--brand);
+  background-color: var(--color);
+  color: var(--surface-1);
+}
+:is(.calendar .events details, .calendar .events > section > time, .calendar .events li > button) .date {
+  background-color: var(--color);
+}
+:is(.calendar .events details, .calendar .events > section > time, .calendar
+    .events
+    li
+    > button)[data-type='teach'] {
+  --color: #9675fa;
+}
+:is(.calendar .events details, .calendar .events > section > time, .calendar
+    .events
+    li
+    > button)[data-type='open'] {
+  --color: #2497f5;
+}
+:is(.calendar .events details, .calendar .events > section > time, .calendar
+    .events
+    li
+    > button)[data-type='student'] {
+  --color: #ffd53d;
+}
+:is(.calendar .events details, .calendar .events > section > time, .calendar
+    .events
+    li
+    > button)[data-type='workshop'] {
+  --color: #f76808;
+}
+:is(.calendar .events details, .calendar .events > section > time, .calendar
+    .events
+    li
+    > button)[data-type='external'] {
+  --color: #93d82c;
+}

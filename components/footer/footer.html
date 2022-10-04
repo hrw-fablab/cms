@@ -1,6 +1,6 @@
 {% load wagtailcore_tags i18n wagtailsettings_tags %}
 {% wagtail_site as current_site %}
-<footer>
+<footer class="footer">
     <div class="content" data-width="large">
         {% include "atoms/adress.html" with value=settings.global.GlobalSettings %}
         {% include "atoms/social.html" with value=settings.global.GlobalSettings %}

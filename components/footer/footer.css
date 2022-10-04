@@ -1,0 +1,39 @@
+.footer {
+  display: flex;
+  gap: var(--size-fluid-1);
+  flex-direction: column;
+  background-color: black;
+  color: var(--surface-1);
+}
+.footer img {
+  aspect-ratio: inherit;
+}
+
+.footer > :first-child {
+  background-color: var(--text-1);
+}
+
+.footer a {
+  color: var(--surface-1);
+}
+
+.footer > div {
+  padding-block: var(--size-fluid-4);
+  display: flex;
+  align-items: start;
+  gap: var(--size-fluid-5);
+  flex-wrap: wrap;
+}
+
+@media (--lg-n-below) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer div {
+    flex-direction: column;
+    gap: var(--size-6);
+    margin-inline-start: inherit;
+    align-items: start;
+  }
+}

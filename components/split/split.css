@@ -1,0 +1,32 @@
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  padding-block: var(--size-fluid-4);
+  gap: var(--size-fluid-5);
+}
+.split h2 {
+  font-size: var(--font-size-5);
+  line-height: 1.5;
+}
+
+.split > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-fluid-2);
+}
+
+@media (--lg-n-below) {
+  .split {
+    gap: var(--size-fluid-4);
+    grid-template-columns: 1fr;
+  }
+
+  .split > div {
+    order: 0;
+  }
+}
+
+:where(.split:nth-child(odd)) > :first-child {
+  order: 1;
+}

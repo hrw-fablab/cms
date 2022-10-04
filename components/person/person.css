@@ -1,10 +1,15 @@
-.heading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--size-fluid-1);
+.person {
+  text-align: center;
 }
 
-.heading a {
+.person img {
+  width: 50%;
+  height: auto;
+  aspect-ratio: var(--aspect-box);
+  border-radius: 50%;
+}
+
+.person picture {
   display: flex;
+  justify-content: center;
 }

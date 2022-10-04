@@ -1,7 +1,7 @@
 {% load wagtailcore_tags i18n wagtailimages_tags %}
 {% wagtail_site as current_site %}
 <a class="skip" href="#main">Skip to content</a>
-<header class="content navigation">
+<header class="content header">
     <a class="logo" href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
         {% if settings.global.GlobalSettings.logo %}
             {% image settings.global.GlobalSettings.logo original as logo_image %}

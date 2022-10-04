@@ -82,6 +82,7 @@ MIDDLEWARE = [
     "django.middleware.locale.LocaleMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
     "wagtailcache.cache.FetchFromCacheMiddleware",
+    "django_components.middleware.ComponentDependencyMiddleware",
 ]
 
 ROOT_URLCONF = "urls"
@@ -261,3 +262,5 @@ WAGTAILEMBEDS_FINDERS = [
 PASSWORD_REQUIRED_TEMPLATE = "password_required.html"
 
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE = "wagtailadmin/login.html"
+
+COMPONENTS = {"RENDER_DEPENDENCIES": True}

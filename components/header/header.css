@@ -1,0 +1,61 @@
+.header {
+  box-shadow: var(--shadow);
+  background-color: var(--surface-1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.header :where(details:focus) svg {
+  transition: 0.4s transform ease;
+  transform: rotate(-180deg);
+}
+
+.header :where(details:not(:focus)) svg {
+  transition: 0.4s transform ease;
+  transform: rotate(0deg);
+}
+
+.header :where(a, summary) {
+  text-decoration: underline 0.1em transparent;
+  transition: text-decoration-color 250ms ease-in, fill 200ms ease-in;
+  border: none;
+  padding-inline: inherit;
+}
+
+.header :where(a, summary):hover {
+  color: var(--brand);
+  text-decoration-color: var(--brand);
+  fill: var(--brand);
+}
+
+.header nav {
+  margin-inline-end: var(--size-5);
+  flex-shrink: 0;
+}
+
+.header #menu-button {
+  display: none;
+  padding: var(--size-3);
+  border: solid var(--surface-2) 0.15rem;
+  line-height: 1.5;
+}
+
+@media (--lg-n-below) {
+  .header {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .header #menu-button {
+    display: flex;
+  }
+
+  .header :where(nav) {
+    width: 100%;
+    display: none;
+  }
+}

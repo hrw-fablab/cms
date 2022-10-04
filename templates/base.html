@@ -65,7 +65,7 @@
     <body>
         {% block svg %}{% endblock %}
         {% wagtailuserbar %}
-        {% include "organisms/navigation.html" %}
+        {% component "header" %}
         {% block content %}{% endblock %}
         {% component "footer" %}
         {% block extra_js %}{# Override this in templates to add extra javascript #}{% endblock %}

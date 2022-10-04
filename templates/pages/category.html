@@ -7,15 +7,13 @@
             {% if category.grouper != None %}
                 {% component "heading" value=category.grouper anchor=True %}
             {% endif %}
-            <div class="content grid gap"
-                data-width="large"
-                data-layout="large"
-                data-gap="medium"
-                data-margin-block-end="large">
-                {% for page in category.list %}
-                    {% include "molecules/card.html" with value=page %}
-                {% endfor %}
-            </div>
+            {% component_block "grid" width="large" layout="large" gap="medium" %}
+                {% slot "items" %}
+                    {% for page in category.list %}
+                        {% include "molecules/card.html" with value=page %}
+                    {% endfor %}
+                {% endslot %}
+            {% endcomponent_block %}
         {% endfor %}
     </main>
 {% endblock content %}

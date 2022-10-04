@@ -4,12 +4,15 @@
         data-width="large"
         data-margin-block-end="large">
         {% component "heading" value=value.title anchor=True %}
-        <div class="grid gap" data-gap="medium" data-layout="{{ value.layout }}">
-            {% for pages in value.pages %}
-                {% for page in pages.get_children.specific|dictsortreversed:'date'|slice:value.amount %}
-                    {% include "molecules/card.html" with value=page %}
+        {% component_block "grid" layout=value.layout gap="medium" %}
+            {% slot "items" %}
+                {% for pages in value.pages %}
+                    {% for page in pages.get_children.specific|dictsortreversed:'date'|slice:value.amount %}
+                        {% include "molecules/card.html" with value=page %}
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
-        </div>
+            {% endslot %}
+        {% endcomponent_block %}
+        {% include "molecules/pagination.html" with element=page %}
     </section>
 {% endblock content %}

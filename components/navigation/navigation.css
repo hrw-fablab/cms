@@ -1,0 +1,15 @@
+.person {
+  text-align: center;
+}
+
+.person img {
+  width: 50%;
+  height: auto;
+  aspect-ratio: var(--aspect-box);
+  border-radius: 50%;
+}
+
+.person picture {
+  display: flex;
+  justify-content: center;
+}

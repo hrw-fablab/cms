@@ -9,24 +9,26 @@
   justify-content: start;
 }
 
-.header :where(details:focus) svg {
+.header details:focus svg {
   transition: 0.4s transform ease;
   transform: rotate(-180deg);
 }
 
-.header :where(details:not(:focus)) svg {
+.header details:not(:focus) svg {
   transition: 0.4s transform ease;
   transform: rotate(0deg);
 }
 
-.header :where(a, summary) {
+.header a,
+summary {
   text-decoration: underline 0.1em transparent;
   transition: text-decoration-color 250ms ease-in, fill 200ms ease-in;
   border: none;
   padding-inline: inherit;
 }
 
-.header :where(a, summary):hover {
+.header a,
+summary:hover {
   color: var(--brand);
   text-decoration-color: var(--brand);
   fill: var(--brand);
@@ -54,8 +56,109 @@
     display: flex;
   }
 
-  .header :where(nav) {
+  .header nav {
     width: 100%;
     display: none;
+  }
+}
+
+.menu :where(ul) {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  display: flex;
+}
+.menu li {
+  position: relative;
+}
+.menu summary {
+  align-items: center;
+  gap: var(--size-2);
+  display: flex;
+}
+@media (max-width: 1024px) {
+  .menu ul {
+    align-items: start;
+    gap: inherit;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .menu li:not(:last-child) {
+    border-block-end: solid var(--surface-2) 0.15rem;
+  }
+  .menu li {
+    padding-block: var(--size-3);
+  }
+  .menu li > a {
+    display: inline-block;
+  }
+  .menu :where(a, button) {
+    width: 100%;
+  }
+  .menu button {
+    justify-content: space-between;
+    display: flex;
+  }
+}
+.submenu {
+  background-color: var(--surface-1);
+  box-shadow: var(--shadow);
+  width: max-content;
+  align-items: start;
+  gap: var(--size-fluid-1);
+  padding: var(--size-fluid-1);
+  border-radius: 0.7rem;
+  flex-direction: column;
+  position: absolute;
+  transform: translateY(0.5rem);
+}
+@media (max-width: 1024px) {
+  .submenu {
+    background-color: inherit;
+    border-radius: inherit;
+    box-shadow: inherit;
+    transform: inherit;
+    width: 100%;
+    align-items: stretch;
+    gap: inherit;
+    position: relative;
+  }
+}
+
+.logo {
+  justify-content: start;
+  align-items: center;
+  gap: var(--size-3);
+  font-size: var(--font-size-4);
+  color: #c50d3e;
+  margin-inline-end: var(--size-6);
+  padding: 0;
+  font-weight: 500;
+  display: flex;
+}
+.logo img {
+  width: auto;
+  max-height: var(--size-fluid-2);
+  filter: none;
+  border-radius: inherit;
+  aspect-ratio: inherit;
+}
+.logo svg {
+  fill: var(--brand);
+}
+.logo .full {
+  max-height: var(--size-fluid-4);
+}
+@media (max-width: 1440px) {
+  .logo {
+    margin-inline-end: 0;
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .logo {
+    display: flex;
   }
 }

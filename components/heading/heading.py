@@ -6,7 +6,6 @@ class Heading(component.Component):
     template_name = "heading/heading.html"
 
     def get_context_data(self, value, anchor):
-        print(value)
         return {
             "value": value,
             "url": value.replace(" ", ""),

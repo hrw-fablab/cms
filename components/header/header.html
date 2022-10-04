@@ -14,36 +14,38 @@
         {{ settings.global.GlobalSettings.logo_title|default:'' }}
     </a>
     <button id="menu-button" class="button">Menu</button>
-    <nav class="menu">
-        <ul>
-            {% for element in menuitems %}
-                <li>
-                    {% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage" %}
-                        <details>
-                            <summary>
-                                {{ element.localized }}
-                                <svg width="0.8rem"
-                                    viewBox="0 0 102 60"
-                                    aria-hidden="true"
-                                    focusable="false">
-                                    <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
-                                </svg>
-                            </summary>
-                            <ul class="submenu">
-                                {% for subelement in element.get_children.specific %}
-                                    <li>
-                                        <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </details>
-                    {% else %}
-                        <a href="{{ element.localized.url }}">{{ element.localized }}</a>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-    </nav>
+    {% component_block "navigation" %}
+        {% slot "list" %}
+            <ul>
+                {% for element in menuitems %}
+                    <li>
+                        {% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage" %}
+                            <details>
+                                <summary>
+                                    {{ element.localized }}
+                                    <svg width="0.8rem"
+                                        viewBox="0 0 102 60"
+                                        aria-hidden="true"
+                                        focusable="false">
+                                        <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
+                                    </svg>
+                                </summary>
+                                <ul class="submenu">
+                                    {% for subelement in element.get_children.specific %}
+                                        <li>
+                                            <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </details>
+                        {% else %}
+                            <a href="{{ element.localized.url }}">{{ element.localized }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endslot %}
+    {% endcomponent_block %}
     {% if settings.global.GlobalSettings.search %}
         {% include "molecules/search.html" %}
     {% endif %}

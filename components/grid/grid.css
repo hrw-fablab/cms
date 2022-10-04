@@ -1,0 +1,69 @@
+.grid {
+  --fill: auto-fill;
+  --card-size: 30rem;
+  grid-template-columns: repeat(var(--fill), minmax(min(100%, var(--card-size)), 1fr));
+  display: grid;
+}
+.grid[data-layout='extrem'] {
+  grid-template-columns: 1fr;
+}
+.grid[data-layout='extrem'] > * {
+  aspect-ratio: inherit;
+  column-gap: var(--size-fluid-5);
+  grid-template-columns: 1.3fr 1fr;
+  place-items: center start;
+  display: grid;
+}
+.grid[data-layout='extrem'] figure {
+  grid-row: 1/3;
+}
+.grid[data-layout='extrem'] header {
+  place-self: end start;
+}
+.grid[data-layout='extrem'] p {
+  place-self: start;
+}
+.grid[data-layout='large'] {
+  --card-size: 30rem;
+}
+.grid[data-layout='medium'] {
+  --card-size: 22rem;
+}
+.grid[data-layout='small'] {
+  --card-size: 16rem;
+}
+.grid[data-layout='tiny'] {
+  --card-size: 14rem;
+}
+.grid[data-layout='newspaper'] {
+  --card-size: 22rem;
+}
+.grid[data-layout='newspaper']>(:first-child) {
+  grid-column: 1/3;
+}
+.grid[data-layout='newspaper']>(:nth-child(2)) img {
+  aspect-ratio: var(--aspect-box);
+}
+.grid[data-layout='magazine'] {
+  --card-size: 16rem;
+}
+.grid[data-layout='magazine']>(:first-child) {
+  grid-column: 1/3;
+}
+.grid[data-layout='magazine']>(:nth-child(2)) {
+  grid-column: 3/5;
+}
+@media (max-width: 1440px) {
+  .grid > .card {
+    grid-column: inherit;
+    display: initial;
+  }
+  .grid > .card img {
+    aspect-ratio: var(--aspect-widescreen);
+  }
+}
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

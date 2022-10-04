@@ -1,15 +1,64 @@
-.person {
-  text-align: center;
-}
-
-.person img {
-  width: 50%;
-  height: auto;
-  aspect-ratio: var(--aspect-box);
-  border-radius: 50%;
-}
-
-.person picture {
-  display: flex;
+.navigation :where(ul) {
+  width: 100%;
   justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  display: flex;
+}
+.navigation li {
+  position: relative;
+}
+.navigation summary {
+  align-items: center;
+  gap: var(--size-2);
+  display: flex;
+}
+@media (max-width: 1024px) {
+  .navigation ul {
+    align-items: start;
+    gap: inherit;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .navigation li:not(:last-child) {
+    border-block-end: solid var(--surface-2) 0.15rem;
+  }
+  .navigation li {
+    padding-block: var(--size-3);
+  }
+  .navigation li > a {
+    display: inline-block;
+  }
+  .navigation :where(a, button) {
+    width: 100%;
+  }
+  .navigation button {
+    justify-content: space-between;
+    display: flex;
+  }
+}
+.submenu {
+  background-color: var(--surface-1);
+  box-shadow: var(--shadow);
+  width: max-content;
+  align-items: start;
+  gap: var(--size-fluid-1);
+  padding: var(--size-fluid-1);
+  border-radius: 0.7rem;
+  flex-direction: column;
+  position: absolute;
+  transform: translateY(0.5rem);
+}
+@media (max-width: 1024px) {
+  .submenu {
+    background-color: inherit;
+    border-radius: inherit;
+    box-shadow: inherit;
+    transform: inherit;
+    width: 100%;
+    align-items: stretch;
+    gap: inherit;
+    position: relative;
+  }
 }

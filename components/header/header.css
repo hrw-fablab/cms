@@ -9,29 +9,12 @@
   justify-content: start;
 }
 
-.header details:focus svg {
-  transition: 0.4s transform ease;
-  transform: rotate(-180deg);
-}
-
-.header details:not(:focus) svg {
-  transition: 0.4s transform ease;
-  transform: rotate(0deg);
-}
-
 .header a,
 summary {
   text-decoration: underline 0.1em transparent;
   transition: text-decoration-color 250ms ease-in, fill 200ms ease-in;
   border: none;
   padding-inline: inherit;
-}
-
-.header a,
-summary:hover {
-  color: var(--brand);
-  text-decoration-color: var(--brand);
-  fill: var(--brand);
 }
 
 .header nav {
@@ -46,7 +29,7 @@ summary:hover {
   line-height: 1.5;
 }
 
-@media (--lg-n-below) {
+@media (max-width: 1024px) {
   .header {
     justify-content: space-between;
     flex-wrap: wrap;
@@ -59,71 +42,6 @@ summary:hover {
   .header nav {
     width: 100%;
     display: none;
-  }
-}
-
-.menu :where(ul) {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  list-style: none;
-  display: flex;
-}
-.menu li {
-  position: relative;
-}
-.menu summary {
-  align-items: center;
-  gap: var(--size-2);
-  display: flex;
-}
-@media (max-width: 1024px) {
-  .menu ul {
-    align-items: start;
-    gap: inherit;
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .menu li:not(:last-child) {
-    border-block-end: solid var(--surface-2) 0.15rem;
-  }
-  .menu li {
-    padding-block: var(--size-3);
-  }
-  .menu li > a {
-    display: inline-block;
-  }
-  .menu :where(a, button) {
-    width: 100%;
-  }
-  .menu button {
-    justify-content: space-between;
-    display: flex;
-  }
-}
-.submenu {
-  background-color: var(--surface-1);
-  box-shadow: var(--shadow);
-  width: max-content;
-  align-items: start;
-  gap: var(--size-fluid-1);
-  padding: var(--size-fluid-1);
-  border-radius: 0.7rem;
-  flex-direction: column;
-  position: absolute;
-  transform: translateY(0.5rem);
-}
-@media (max-width: 1024px) {
-  .submenu {
-    background-color: inherit;
-    border-radius: inherit;
-    box-shadow: inherit;
-    transform: inherit;
-    width: 100%;
-    align-items: stretch;
-    gap: inherit;
-    position: relative;
   }
 }
 

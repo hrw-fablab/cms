@@ -1,18 +1,10 @@
 from django_components import component
 
 
-@component.register("person")
-class Person(component.Component):
-    template_name = "person/person.html"
-
-    def get_context_data(self, image, name, role, responsibility):
-        return {
-            "image": image,
-            "name": name,
-            "role": role,
-            "responsibility": responsibility,
-        }
+@component.register("navigation")
+class Navigation(component.Component):
+    template_name = "navigation/navigation.html"
 
     class Media:
-        css = "person/person.css"
+        css = "navigation/navigation.css"
         js = ""

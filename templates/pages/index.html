@@ -2,16 +2,13 @@
 {% load wagtailcore_tags %}
 {% block content %}
     <main id="main"  data-margin-block-start="medium">
-        <div class="content grid gap"
-            data-width="large"
-            data-layout="large"
-            data-gap="medium"
-            data-margin-block-end="large"
-        >
-            {% for page in children %}
-                {% include "molecules/card.html" with value=page %}
-            {% endfor %}
-        </div>
+        {% component_block "grid" width="large" layout="large" gap="medium" %}
+            {% slot "items" %}
+                {% for page in children %}
+                    {% include "molecules/card.html" with value=page %}
+                {% endfor %}
+            {% endslot %}
+        {% endcomponent_block %}
         {% include "molecules/pagination.html" with element=page %}
     </main>
 {% endblock content %}

@@ -1,0 +1,13 @@
+.card {
+  position: relative;
+}
+
+.card a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.card[data-type='link']:hover {
+  color: var(--brand);
+}

@@ -5,7 +5,7 @@
         {% component_block "grid" width="large" layout="large" gap="medium" %}
             {% slot "items" %}
                 {% for page in children %}
-                    {% include "molecules/card.html" with value=page %}
+                    {% component "card" %}
                 {% endfor %}
             {% endslot %}
         {% endcomponent_block %}

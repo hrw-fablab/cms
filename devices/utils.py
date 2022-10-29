@@ -83,5 +83,28 @@ def load_data():
                 title=item["image"], file=image_file, collection=collection
             )
             image.save()
-
     return enhanced_items
+
+
+def get_index(data, model):
+    for i, item in enumerate(data):
+        if item["model"] == model:
+            return i
+
+
+def reduce_data(data):
+    reduced = []
+    models = []
+    for item in data:
+        item["amount"] = 1
+        model = item["model"]
+
+        if model in models:
+            index = get_index(reduced, model)
+            reduced[index]["amount"] += 1
+            continue
+
+        models.append(model)
+        reduced.append(item)
+
+    return reduced

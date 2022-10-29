@@ -6,7 +6,7 @@ from core.models import FablabImage
 
 from .models import Device
 
-from .utils import load_data, reduce_data
+from .utils import enhance_data, filter_data, load_data, load_images, reduce_data
 
 
 def index(request):
@@ -38,9 +38,15 @@ def create_devices(data):
 def load(request):
     Device.objects.all().delete()
     devices = []
+
     data = load_data()
-    reduced = reduce_data(data)
-    devices = create_devices(reduced)
+    enhanced = enhance_data(data)
+    reduced = reduce_data(enhanced)
+    filtered = filter_data(reduced)
+
+    images = load_images(filtered)
+
+    devices = create_devices(filtered)
 
     Device.objects.bulk_create(devices)
     return HttpResponseRedirect(reverse("devices_admin:index"))

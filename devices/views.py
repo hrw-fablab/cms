@@ -6,30 +6,47 @@ from core.models import FablabImage
 
 from .models import Device
 
-from .utils import load_data
+from .utils import enhance_data, filter_data, load_data, load_images, reduce_data
 
 
 def index(request):
     return render(request, "devices/index.html")
 
 
-def load(request):
-    Device.objects.all().delete()
+def link_image(item):
+    if not item:
+        return None
+    return FablabImage.objects.filter(title=item).first()
+
+
+def create_devices(data):
     devices = []
-    data = load_data()
     for item in data:
-        if item["image"] == False:
-            image = None
-        else:
-            image = FablabImage.objects.filter(title=item["image"]).first()
         devices.append(
             Device(
                 title=item["title"],
                 model=item["model"],
                 area=item["area"],
                 manufacturer=item["manufacturer"],
-                image=image,
+                amount=item["amount"],
+                image=link_image(item["image"]),
             )
         )
+    return devices
+
+
+def load(request):
+    Device.objects.all().delete()
+    devices = []
+
+    data = load_data()
+    enhanced = enhance_data(data)
+    reduced = reduce_data(enhanced)
+    filtered = filter_data(reduced)
+
+    images = load_images(filtered)
+
+    devices = create_devices(filtered)
+
     Device.objects.bulk_create(devices)
     return HttpResponseRedirect(reverse("devices_admin:index"))

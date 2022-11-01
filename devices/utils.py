@@ -15,6 +15,12 @@ import json
 import tempfile
 
 
+def get_index(data, model):
+    for i, item in enumerate(data):
+        if item["model"] == model:
+            return i
+
+
 def get_collection():
     try:
         Collection.objects.get(name="devices")
@@ -25,7 +31,21 @@ def get_collection():
         return Collection.objects.get(name="devices")
 
 
-def get_image(data):
+def load_data():
+    site_url = "https://hrwfablab.sharepoint.com/sites/HRWFablab"
+    ctx = ClientContext(site_url).with_credentials(
+        UserCredential(
+            os.environ.get("SHAREPOINT_EMAIL"), os.environ.get("SHAREPOINT_PASSWORD")
+        )
+    )
+
+    target_list = ctx.web.lists.get_by_title("Inventurliste").get().execute_query()
+    items = target_list.items.get().execute_query()
+
+    return items
+
+
+def enhance_image(data):
     try:
         image = json.loads(data["DevicePhoto"])
         return image["fileName"]
@@ -43,13 +63,40 @@ def enhance_data(data):
                 "model": item["Model"] or False,
                 "area": item["Bereich"] or False,
                 "manufacturer": item["Manufacturer"] or False,
-                "image": get_image(item),
+                "image": enhance_image(item),
             }
         )
     return result
 
 
-def load_data():
+def reduce_data(data):
+    reduced = []
+    models = []
+    for item in data:
+        item["amount"] = 1
+        model = item["model"]
+
+        if model in models:
+            index = get_index(reduced, model)
+            reduced[index]["amount"] += 1
+            continue
+
+        models.append(model)
+        reduced.append(item)
+
+    return reduced
+
+
+def filter_data(data):
+    filtered = []
+    for item in data:
+        if item["area"] == "Küche" or item["area"] == "Mitarbeiterbereich":
+            continue
+        filtered.append(item)
+    return filtered
+
+
+def load_images(data):
     site_url = "https://hrwfablab.sharepoint.com/sites/HRWFablab"
     ctx = ClientContext(site_url).with_credentials(
         UserCredential(
@@ -58,12 +105,8 @@ def load_data():
     )
 
     collection = get_collection()
-    target_list = ctx.web.lists.get_by_title("Inventurliste").get().execute_query()
-    items = target_list.items.get().execute_query()
 
-    enhanced_items = enhance_data(items)
-
-    for item in enhanced_items:
+    for item in data:
         if item["image"] == False:
             continue
 
@@ -83,5 +126,3 @@ def load_data():
                 title=item["image"], file=image_file, collection=collection
             )
             image.save()
-
-    return enhanced_items

@@ -1,4 +1,5 @@
 {% load wagtailimages_tags %}
+
 <section class="hero" data-margin-block-end="medium">
     {% if value.title or value.text %}
         <div data-style="glass">
@@ -7,7 +8,8 @@
         </div>
     {% endif %}
     {% if value.video %}
-        <video src="{{value.video.url}}" muted autoplay loop>
+        <video id="hero-video" muted loop controls>
+            <source src="{{value.video.url}}" type="video/mp4">
         </video>
     {% elif value.image %}
         <figure>

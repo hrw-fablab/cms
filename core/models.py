@@ -55,7 +55,7 @@ class FablabDocument(AbstractDocument):
 # Custom Media Model
 # https://github.com/torchbox/wagtailmedia
 class FablabMedia(AbstractMedia):
-    admin_form_fields = Document.admin_form_fields
+    pass
 
 
 # Abstract Base Page Layout

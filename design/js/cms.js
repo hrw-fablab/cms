@@ -1,3 +1,15 @@
+const video = document.getElementById("hero-video");
+const play = document.getElementById("play");
+
+window.onload = addAutoplay();
+
+function addAutoplay() {
+  if (window.innerWidth > 992) {
+    video.removeAttribute("controls", "");
+    video.setAttribute("autoplay", "");
+  }
+}
+
 // Function to handle Display of Menu on Mobile Navigation
 document.getElementById("menu-button").addEventListener(
   "click",

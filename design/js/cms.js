@@ -1,92 +1,88 @@
-const video = document.getElementById("hero-video");
-const play = document.getElementById("play");
-
-window.onload = addAutoplay();
+window.onload = addAutoplay()
 
 function addAutoplay() {
-  if (window.innerWidth > 992) {
-    video.removeAttribute("controls", "");
-    video.setAttribute("autoplay", "");
-  }
+  try {
+    const video = document.getElementById('hero-video')
+    if (window.innerWidth > 992) {
+      video.removeAttribute('controls', '')
+      video.setAttribute('autoplay', '')
+    }
+  } catch (err) {}
 }
 
 // Function to handle Display of Menu on Mobile Navigation
-document.getElementById("menu-button").addEventListener(
-  "click",
+document.getElementById('menu-button').addEventListener(
+  'click',
   (event) => {
-    event.target.nextElementSibling.classList.toggle("visible");
-    document.getElementById("form-search").classList.toggle("visible");
+    event.target.nextElementSibling.classList.toggle('visible')
+    document.getElementById('form-search').classList.toggle('visible')
   },
   { passive: true }
-);
+)
 
 const callback = (entries, observer) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
       setTimeout(() => {
-        entry.target.classList.add("fade-in");
-        observer.unobserve(entry.target);
-      }, index * 100);
+        entry.target.classList.add('fade-in')
+        observer.unobserve(entry.target)
+      }, index * 100)
     }
-  });
-};
+  })
+}
 
-const cardObserver = new IntersectionObserver(callback, {});
-const mediaObserver = new IntersectionObserver(callback, {});
+const cardObserver = new IntersectionObserver(callback, {})
+const mediaObserver = new IntersectionObserver(callback, {})
 
-const cardsElements = document
-  .querySelectorAll(".card")
-  .forEach((x) => cardObserver.observe(x));
+const cardsElements = document.querySelectorAll('.card').forEach((x) => cardObserver.observe(x))
 
-const iframeElements = document
-  .querySelectorAll("iframe")
-  .forEach((x) => mediaObserver.observe(x));
+const iframeElements = document.querySelectorAll('iframe').forEach((x) => mediaObserver.observe(x))
 
 function debounce(func, delay = 250) {
-  let timerId;
+  let timerId
   return (...args) => {
-    clearTimeout(timerId);
+    clearTimeout(timerId)
     timerId = setTimeout(() => {
-      func.apply(this, args);
-    }, delay);
-  };
+      func.apply(this, args)
+    }, delay)
+  }
 }
-const search = document.getElementById("search");
-const results = document.getElementById("results");
+const search = document.getElementById('search')
+const results = document.getElementById('results')
 
 const input = async (event) => {
-  resetResults();
+  resetResults()
   if (event.target.value.length <= 2) {
-    results.style.display = "none";
-    return;
+    results.style.display = 'none'
+    return
   }
-  const query = event.target.value;
+  const query = event.target.value
   const res = await fetch(
     `${window.location.origin}/search_json/?${new URLSearchParams({
-      query,
+      query
     }).toString()}`
-  );
-  const data = await res.json();
+  )
+  const data = await res.json()
   if (data.length != 0) {
-    displayResults(data);
+    displayResults(data)
   } else {
-    results.style.display = "none";
+    results.style.display = 'none'
   }
-};
+}
 
 const displayResults = (data) => {
-  results.style.display = "flex";
+  results.style.display = 'flex'
   data.map((item) => {
-    const li = document.createElement("li");
+    const li = document.createElement('li')
     li.innerHTML = `
       <a href=${item.url}>${item.title}</a>
-      `;
-    results.appendChild(li);
-  });
-};
+      `
+    results.appendChild(li)
+  })
+}
 
 const resetResults = () => {
-  results.innerHTML = "";
-};
+  results.innerHTML = ''
+}
 
-search.addEventListener("input", debounce(input));
+search.addEventListener('input', debounce(input))

@@ -1,6 +1,6 @@
 import datetime
 from django.db import models
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel, FieldRowPanel
 from modelcluster.models import ClusterableModel
 import calendar
 
@@ -66,18 +66,18 @@ class Event(ClusterableModel):
                 FieldPanel("title"),
                 FieldPanel("adress"),
                 FieldPanel("description"),
-                MultiFieldPanel(
-                    [
-                        FieldPanel("link"),
-                        FieldPanel("link_text"),
-                    ],
-                    heading="Link",
-                ),
                 FieldPanel("category"),
             ],
             heading="Informationen",
         ),
-        MultiFieldPanel(
+        FieldRowPanel(
+            [
+                FieldPanel("link", heading="url"),
+                FieldPanel("link_text", heading="text"),
+            ],
+            heading="Link",
+        ),
+        FieldRowPanel(
             [
                 FieldPanel("start"),
                 FieldPanel("end"),
@@ -92,7 +92,7 @@ class Event(ClusterableModel):
             ],
             heading="Wiederholung",
         ),
-        InlinePanel("related_expection", heading="Expections"),
+        InlinePanel("related_expection", heading="Ausnahmen", label="Ausnahme"),
     ]
 
     @property

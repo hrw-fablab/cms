@@ -4,8 +4,10 @@ from modelcluster.models import ClusterableModel
 
 from organisation.models import Person
 
+from wagtail.search.index import Indexed, SearchField
 
-class Organisation(ClusterableModel):
+
+class Organisation(Indexed, ClusterableModel):
     name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
@@ -14,6 +16,10 @@ class Organisation(ClusterableModel):
     panels = [
         FieldPanel("name", heading="Organisation"),
         InlinePanel("related_projects", heading="Projekte"),
+    ]
+
+    search_fields = [
+        SearchField("name", partial_match=True),
     ]
 
     @property

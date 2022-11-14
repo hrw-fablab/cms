@@ -1,7 +1,8 @@
 import datetime
 from django.db import models
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel, FieldRowPanel
 from modelcluster.models import ClusterableModel
+from wagtail.search.index import Indexed, SearchField
 import calendar
 
 REAPEATCHOICES = (
@@ -43,7 +44,7 @@ class Expection(ClusterableModel):
     ]
 
 
-class Event(ClusterableModel):
+class Event(Indexed, ClusterableModel):
     title = models.CharField("Titel", max_length=60, null=True, blank=True)
     adress = models.CharField("Adresse", max_length=60, null=True, blank=True)
     description = models.TextField(
@@ -66,18 +67,18 @@ class Event(ClusterableModel):
                 FieldPanel("title"),
                 FieldPanel("adress"),
                 FieldPanel("description"),
-                MultiFieldPanel(
-                    [
-                        FieldPanel("link"),
-                        FieldPanel("link_text"),
-                    ],
-                    heading="Link",
-                ),
                 FieldPanel("category"),
             ],
             heading="Informationen",
         ),
-        MultiFieldPanel(
+        FieldRowPanel(
+            [
+                FieldPanel("link", heading="url"),
+                FieldPanel("link_text", heading="text"),
+            ],
+            heading="Link",
+        ),
+        FieldRowPanel(
             [
                 FieldPanel("start"),
                 FieldPanel("end"),
@@ -92,7 +93,11 @@ class Event(ClusterableModel):
             ],
             heading="Wiederholung",
         ),
-        InlinePanel("related_expection", heading="Expections"),
+        InlinePanel("related_expection", heading="Ausnahmen", label="Ausnahme"),
+    ]
+
+    search_fields = [
+        SearchField("title", partial_match=True),
     ]
 
     @property

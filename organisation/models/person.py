@@ -2,15 +2,12 @@ from django.db import models
 
 from modelcluster.models import ClusterableModel
 
-from wagtail.admin.panels import (
-    MultiFieldPanel,
-    FieldPanel,
-    TabbedInterface,
-    ObjectList,
-)
+from wagtail.admin.panels import MultiFieldPanel, FieldPanel, FieldRowPanel
+
+from wagtail.search.index import Indexed, SearchField
 
 
-class Person(ClusterableModel):
+class Person(Indexed, ClusterableModel):
     title = models.CharField("First Name", max_length=100, null=True, blank=True)
     first_name = models.CharField("First Name", max_length=254)
     last_name = models.CharField("Last Name", max_length=254)
@@ -34,14 +31,16 @@ class Person(ClusterableModel):
     link = models.URLField(max_length=254, null=True, blank=True)
     responsibility = models.CharField(max_length=254, null=True, blank=True)
 
-    en_responsibility = models.CharField(max_length=254, null=True, blank=True)
-
-    german = [
+    panels = [
         MultiFieldPanel(
             [
                 FieldPanel("title", heading="Titel"),
-                FieldPanel("first_name", heading="Vorname"),
-                FieldPanel("last_name", heading="Nachname"),
+                FieldRowPanel(
+                    [
+                        FieldPanel("first_name", heading="Vorname"),
+                        FieldPanel("last_name", heading="Nachname"),
+                    ]
+                ),
             ],
             heading="Name",
         ),
@@ -56,21 +55,11 @@ class Person(ClusterableModel):
         ),
     ]
 
-    english = [
-        MultiFieldPanel(
-            [
-                FieldPanel("en_responsibility", heading="Aufgabenbereiche"),
-            ],
-            heading="Information",
-        ),
+    search_fields = [
+        SearchField("title", partial_match=True, boost=10),
+        SearchField("first_name", partial_match=True),
+        SearchField("last_name", partial_match=True),
     ]
-
-    edit_handler = TabbedInterface(
-        [
-            ObjectList(german, heading="Deutsch"),
-            ObjectList(english, heading="English"),
-        ]
-    )
 
     @property
     def name(self):

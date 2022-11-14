@@ -2,12 +2,7 @@ from django.db import models
 
 from modelcluster.models import ClusterableModel
 
-from wagtail.admin.panels import (
-    MultiFieldPanel,
-    FieldPanel,
-    TabbedInterface,
-    ObjectList,
-)
+from wagtail.admin.panels import MultiFieldPanel, FieldPanel, FieldRowPanel
 
 from wagtail.search.index import Indexed, SearchField
 
@@ -36,14 +31,16 @@ class Person(Indexed, ClusterableModel):
     link = models.URLField(max_length=254, null=True, blank=True)
     responsibility = models.CharField(max_length=254, null=True, blank=True)
 
-    en_responsibility = models.CharField(max_length=254, null=True, blank=True)
-
-    german = [
+    panels = [
         MultiFieldPanel(
             [
                 FieldPanel("title", heading="Titel"),
-                FieldPanel("first_name", heading="Vorname"),
-                FieldPanel("last_name", heading="Nachname"),
+                FieldRowPanel(
+                    [
+                        FieldPanel("first_name", heading="Vorname"),
+                        FieldPanel("last_name", heading="Nachname"),
+                    ]
+                ),
             ],
             heading="Name",
         ),
@@ -57,22 +54,6 @@ class Person(Indexed, ClusterableModel):
             heading="Informationen",
         ),
     ]
-
-    english = [
-        MultiFieldPanel(
-            [
-                FieldPanel("en_responsibility", heading="Aufgabenbereiche"),
-            ],
-            heading="Information",
-        ),
-    ]
-
-    edit_handler = TabbedInterface(
-        [
-            ObjectList(german, heading="Deutsch"),
-            ObjectList(english, heading="English"),
-        ]
-    )
 
     search_fields = [
         SearchField("title", partial_match=True, boost=10),

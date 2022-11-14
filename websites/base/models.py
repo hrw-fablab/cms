@@ -23,6 +23,7 @@ from abstract.pages.base import AbstractBasePage
 
 from abstract.models.links import Link, ExpireLink, PageLink
 from forms.models import FabLabCaptchaEmailForm
+from wagtail.admin.panels import TabbedInterface, ObjectList
 
 from websites.base.blocks import (
     HomeBlock,
@@ -255,16 +256,19 @@ class FormPage(FabLabCaptchaEmailForm):
 
     thank_you_text = RichTextField(blank=True)
 
-    content_panels = AbstractEmailForm.content_panels + [
+    content_panels = [
         FieldPanel("event"),
         FieldPanel("content"),
         InlinePanel("form_fields", label="Form Elemente"),
         FieldPanel("thank_you_text", heading="Bestätigung"),
+    ]
+
+    email_panels = [
         MultiFieldPanel(
             [
                 FieldPanel("response_switch", heading="Switch"),
-                FieldPanel("response_subject", heading="Subject"),
-                FieldPanel("response_message", heading="Message"),
+                FieldPanel("response_subject", heading="Betreff"),
+                FieldPanel("response_message", heading="Nachricht"),
             ],
             "Email Antwort",
         ),
@@ -277,6 +281,14 @@ class FormPage(FabLabCaptchaEmailForm):
             "Email",
         ),
     ]
+
+    edit_handler = TabbedInterface(
+        [
+            ObjectList(content_panels, "Inhalt"),
+            ObjectList(email_panels, "Email"),
+            ObjectList(AbstractBasePage.promote_panels, "Veröffentlichung"),
+        ]
+    )
 
     template = "forms/form_page.html"
 

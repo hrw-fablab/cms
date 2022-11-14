@@ -13,7 +13,11 @@
                     <time data-type="{{element.category}}">{{element.day}}. {{element.month}}</time>
                     <div>
                         <header>
-                            <a href="{{element.link}}"><h3>{{element.title}}</h3></a>
+                            {% if element.link %}
+                                <a href="{{element.link}}"><h3>{{element.title}}</h3></a>
+                            {% else %}
+                                <h3>{{element.title}}</h3>
+                            {% endif %}
                             <time>{{element.start}} bis {{element.end}}</time>
                         </header>
                         <p>{{element.description}}</p>

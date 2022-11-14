@@ -9,8 +9,10 @@ from wagtail.admin.panels import (
     ObjectList,
 )
 
+from wagtail.search.index import Indexed, SearchField
 
-class Person(ClusterableModel):
+
+class Person(Indexed, ClusterableModel):
     title = models.CharField("First Name", max_length=100, null=True, blank=True)
     first_name = models.CharField("First Name", max_length=254)
     last_name = models.CharField("Last Name", max_length=254)
@@ -71,6 +73,12 @@ class Person(ClusterableModel):
             ObjectList(english, heading="English"),
         ]
     )
+
+    search_fields = [
+        SearchField("title", partial_match=True, boost=10),
+        SearchField("first_name", partial_match=True),
+        SearchField("last_name", partial_match=True),
+    ]
 
     @property
     def name(self):

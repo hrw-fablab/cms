@@ -77,8 +77,6 @@ const getData = async (url) => {
   }
 };
 
-const zeroPad = (num, places) => String(num).padStart(places, "0");
-
 const createEvent = (element, id, category, position, day) => {
   let details = document.createElement("details");
   details.dataset.type = category;
@@ -114,12 +112,11 @@ const createEvent = (element, id, category, position, day) => {
           <div>${start} - ${end}</div>
         </header>
         <p>${element.description}</p>
-        <a href="${element.link || ""}?date=${zeroPad(
-    element.day,
-    2
-  )}.${zeroPad(element.month, 2)}.${zeroPad(element.year, 2)}">${
-    element.link_text || ""
-  }</>
+        ${
+          element.link
+            ? `<a href="${element.link}">${element.link_text}</a>`
+            : ""
+        }
       </div>
     `;
 

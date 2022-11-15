@@ -1,39 +1,3 @@
-window.onload = addAutoplay();
-
-function addAutoplay() {
-  try {
-    const video = document.getElementById("hero-video");
-    const control = document.getElementById("control");
-    const play = document.getElementById("play");
-    const pause = document.getElementById("pause");
-    control.style.opacity = "1";
-    if (window.innerWidth > 992) {
-      pause.style.display = "block";
-      play.style.display = "none";
-      video.removeAttribute("controls", "");
-      video.setAttribute("autoplay", "");
-    }
-  } catch (err) {}
-}
-
-document.getElementById("control").addEventListener("click", () => {
-  const video = document.getElementById("hero-video");
-  const play = document.getElementById("play");
-  const pause = document.getElementById("pause");
-  const control = document.getElementById("control");
-  control.style.opacity = "";
-  if (video.paused) {
-    pause.style.display = "block";
-    play.style.display = "none";
-    video.play();
-    return;
-  }
-
-  pause.style.display = "none";
-  play.style.display = "block";
-  video.pause();
-});
-
 // Function to handle Display of Menu on Mobile Navigation
 document.getElementById("menu-button").addEventListener(
   "click",

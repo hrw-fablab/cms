@@ -39,8 +39,8 @@ def load_data():
         )
     )
 
-    target_list = ctx.web.lists.get_by_title("Inventurliste").get().execute_query()
-    items = target_list.items.get().execute_query()
+    target_list = ctx.web.lists.get_by_title("Inventurliste")
+    items = target_list.items.get_all().execute_query()
 
     return items
 

@@ -9,6 +9,7 @@ from modelcluster.fields import ParentalKey
 
 class Role(Orderable):
     name = models.CharField(max_length=254, null=True, blank=True)
+    visible = models.BooleanField(default=True)
 
     link = ParentalKey(
         "organisation.Project",

@@ -5,22 +5,24 @@
         {% if value.filter and value.headings %}
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}
-                <div role="region" data-margin-block-end="large">
-                    {% if role.grouper != None %}
-                        {% include "atoms/heading.html" with value=value.title anchor=True %}
-                    {% else %}
-                        {% include "atoms/heading.html" with value="Mitglieder" anchor=True %}
-                    {% endif %}
-                    <h2>Test 1</h2>
-                    <div class="content grid gap"
-                        data-width="{% if role.list|filter_organisation:value.filter|length <= 2 %}small{% endif %}"
-                        data-layout="{{ value.layout }}"
-                        data-gap="medium">
-                        {% for element in role.list|filter_organisation:value.filter %}
-                            {% include "molecules/person.html" with value=element.person role=element.role %}
-                        {% endfor %}
+                {% if role.grouper.visible %}
+                    <div role="region" data-margin-block-end="large">
+                        {{role}}
+                        {% if role.grouper != None %}
+                            {% include "atoms/heading.html" with value=value.title anchor=True %}
+                        {% else %}
+                            {% include "atoms/heading.html" with value="Mitglieder" anchor=True %}
+                        {% endif %}
+                        <div class="content grid gap"
+                            data-width="{% if role.list|filter_organisation:value.filter|length <= 2 %}small{% endif %}"
+                            data-layout="{{ value.layout }}"
+                            data-gap="medium">
+                            {% for element in role.list|filter_organisation:value.filter %}
+                                {% include "molecules/person.html" with value=element.person role=element.role %}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         {% elif value.filter %}
             <div role="region"
@@ -35,24 +37,26 @@
         {% elif value.headings %}
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}
-                <div role="region"
-                    class="content"
-                    data-layout="small"
-                    data-margin-block-end="large">
-                    {% if role.grouper != None %}
-                        {% include "atoms/heading.html" with value=role.grouper anchor=True %}
-                    {% else %}
-                        {% include "atoms/heading.html" with value="Mitglieder" anchor=True %}
-                    {% endif %}
-                    <div class="content grid gap"
-                        data-width="{% if role.list|length == 2 %}small{% elif role.list|length <= 1 %}tiny{% endif %}"
-                        data-layout="{{ value.layout }}"
-                        data-gap="medium">
-                        {% for element in role.list %}
-                            {% include "molecules/person.html" with value=element.person role=role.grouper %}
-                        {% endfor %}
+                {% if role.grouper.visible %}
+                    <div role="region"
+                        class="content"
+                        data-layout="small"
+                        data-margin-block-end="large">
+                        {% if role.grouper != None %}
+                            {% include "atoms/heading.html" with value=role.grouper anchor=True %}
+                        {% else %}
+                            {% include "atoms/heading.html" with value="Mitglieder" anchor=True %}
+                        {% endif %}
+                        <div class="content grid gap"
+                            data-width="{% if role.list|length == 2 %}small{% elif role.list|length <= 1 %}tiny{% endif %}"
+                            data-layout="{{ value.layout }}"
+                            data-gap="medium">
+                            {% for element in role.list %}
+                                {% include "molecules/person.html" with value=element.person role=role.grouper %}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         {% else %}
             <div role="region"

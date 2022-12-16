@@ -8,6 +8,15 @@ document.getElementById("menu-button").addEventListener(
   { passive: true }
 );
 
+document.addEventListener("mousemove", (event) => {
+  if (!event.target.classList.contains("card")) return;
+  const rect = event.target.getBoundingClientRect();
+  let x = event.clientX - rect.left;
+  let y = event.clientY - rect.top;
+  event.target.style.setProperty("--mouse-x", `${x}px`);
+  event.target.style.setProperty("--mouse-y", `${y}px`);
+});
+
 const callback = (entries, observer) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {

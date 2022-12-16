@@ -9,10 +9,11 @@ document.getElementById("menu-button").addEventListener(
 );
 
 document.addEventListener("mousemove", (event) => {
-  if (!event.target.classList.contains("card")) return;
+  console.log(event.target);
+  if (event.target.nodeName !== "A") return;
   const rect = event.target.getBoundingClientRect();
   let x = event.clientX - rect.left;
-  let y = event.clientY - rect.top;
+  let y = event.clientY;
   event.target.style.setProperty("--mouse-x", `${x}px`);
   event.target.style.setProperty("--mouse-y", `${y}px`);
 });

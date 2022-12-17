@@ -13,6 +13,13 @@ class GridBlock(blocks.StructBlock):
         default="medium",
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",
     )
+    style = blocks.ChoiceBlock(
+        choices=[
+            ("default", "Default"),
+            ("variation", "Variation"),
+        ],
+        default="default",
+    )
     accent = blocks.BooleanBlock(required=False)
 
     class Meta:

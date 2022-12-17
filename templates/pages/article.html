@@ -29,7 +29,7 @@
                     </figcaption>
                 </figure>
             {% endif %}
-            <header class="flex" data-direction="column" data-margin-block-end="medium">
+            <header class="flex" data-direction="column" data-margin-block-start="small" data-margin-block-end="medium">
                 <time>{{page.date}}</time>
                 <h1>{{ page.title }}</h1>
                 {% include "atoms/profile.html" with value=page.author %}

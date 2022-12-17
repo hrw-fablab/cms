@@ -9,11 +9,10 @@ document.getElementById("menu-button").addEventListener(
 );
 
 document.addEventListener("mousemove", (event) => {
-  console.log(event.target);
   if (event.target.nodeName !== "A") return;
   const rect = event.target.getBoundingClientRect();
   let x = event.clientX - rect.left;
-  let y = event.clientY;
+  let y = event.clientY - rect.top;
   event.target.style.setProperty("--mouse-x", `${x}px`);
   event.target.style.setProperty("--mouse-y", `${y}px`);
 });

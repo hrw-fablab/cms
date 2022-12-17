@@ -12,6 +12,13 @@ class GrabberBlock(blocks.StructBlock):
         default="newspaper",
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",
     )
+    style = blocks.ChoiceBlock(
+        choices=[
+            ("default", "Default"),
+            ("variation", "Variation"),
+        ],
+        default="default",
+    )
     amount = blocks.IntegerBlock(default=5)
     accent = blocks.BooleanBlock(required=False)
     pages = blocks.ListBlock(blocks.PageChooserBlock())

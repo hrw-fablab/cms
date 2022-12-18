@@ -13,13 +13,13 @@
                         <section class="device">
                             {% if device.image %}
                                 <picture>
-                                    {% image device.image fill-800x800-c70 format-webp webpquality-80 as image_768 %}
-                                    {% image device.image fill-400x400-c70 format-webp webpquality-60 as image_480 %}
+                                    {% image device.image fill-854x480-c70 format-webp webpquality-80 as image_768 %}
+                                    {% image device.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
                                     <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
                                         sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
                                         type="image/webp">
-                                    {% image device.image fill-800x800 format-jpeg as image_768 %}
-                                    {% image device.image fill-400x400 format-jpeg as image_480 %}
+                                    {% image device.image fill-854x480 format-jpeg as image_768 %}
+                                    {% image device.image fill-480x360 format-jpeg as image_480 %}
                                     <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
                                         sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
                                         type="image/jpg">
@@ -29,12 +29,14 @@
                                         loading="lazy">
                                 </picture>
                             {% else %}
-                                <div>Dieses Bild fehlt leider noch</div>
+                                <div class="img">Dieses Bild fehlt leider noch</div>
                             {% endif %}
-                            <h3>{{device.title}}</h3>
-                            <p>Anzahl: {{device.amount}}</p>
-                            <p>Model: {{device.model}}</p>
-                            <p>Hersteller: {{device.manufacturer}}</p>
+                            <div>
+                                <h3>{{device.title}}</h3>
+                                <p>Anzahl: {{device.amount}}</p>
+                                <p>Model: {{device.model}}</p>
+                                <p>Hersteller: {{device.manufacturer}}</p>
+                            </div>
                         </section>
                     {% endfor %}
                 </div>

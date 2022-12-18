@@ -78,11 +78,13 @@ const getData = async (url) => {
 };
 
 const createEvent = (element, id, category, position, day) => {
-  let details = document.createElement("details");
-  details.dataset.type = category;
+  let div = document.createElement("div");
 
-  details.setAttribute("id", id);
-  details.dataset.position = position;
+  let desktop = document.createElement("details");
+  let mobile = document.createElement("div");
+
+  div.dataset.type = category;
+  div.dataset.position = position;
 
   let start = element.timeStart;
   let end = element.timeEnd;
@@ -94,9 +96,12 @@ const createEvent = (element, id, category, position, day) => {
     }`;
   }
 
-  details.innerHTML = `
+  desktop.setAttribute("class", "desktop");
+  desktop.setAttribute("id", id);
+  mobile.setAttribute("class", "mobile");
+
+  desktop.innerHTML = `
       <summary>
-        <span class="date">${day}.</span>
         <span class="title"> ${element.title}</span>
       </summary>
       <div class="description">
@@ -120,7 +125,26 @@ const createEvent = (element, id, category, position, day) => {
       </div>
     `;
 
-  return details;
+  mobile.innerHTML = `
+    <section>
+        <time>${day}. ${element.month}</time>
+        <div>
+            <header>
+            ${
+              element.link
+                ? `<a href="${element.link}"><h3>${element.title}</h3></a>`
+                : `<h3>${element.title}</h3>`
+            }
+                <time>${start} bis ${end}</time>
+            </header>
+            <p>${element.description}</p>
+        </div>
+    </section>
+    `;
+
+  div.appendChild(desktop);
+  div.appendChild(mobile);
+  return div;
 };
 
 const createRedirect = (id, category, position) => {

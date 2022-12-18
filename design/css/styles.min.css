@@ -538,19 +538,14 @@
   grid-template-columns: repeat(7, 1fr);
   list-style: none;
   padding: 0;
-}.calendar a {
-  text-decoration: none;
 }.calendar li {
   position: relative;
-}.calendar button {
-  border: none;
-}.calendar button:hover {
-  fill: var(--brand);
 }.calendar > header {
   align-items: center;
   display: flex;
   font-size: var(--font-size-4);
   justify-content: space-between;
+  margin-block-end: var(--size-fluid-1);
 }@media (width < 1024px) {
   .calendar > ol {
     grid-template-columns: 1fr;
@@ -588,112 +583,12 @@
 
   .calendar .events li {
     aspect-ratio: inherit;
-    border: none;
     gap: var(--size-fluid-4);
-  }
-
-  .calendar .events button {
-    display: none;
+    border: none;
   }
 
   .calendar .events li:where(:not(.full)) {
     display: none;
-  }
-}.events details {
-  padding: 0;
-  margin-inline-end: 0.5rem;
-}.events details:where([data-position="first"]) {
-  margin-inline-end: inherit;
-  border-radius: inherit;
-}.events details summary {
-  padding: var(--size-1);
-  font-size: var(--font-size-1);
-  user-select: none;
-  max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border-radius: var(--radius-2);
-}.events details .date {
-  display: none;
-}@media (width < 1024px) {
-  .events details {
-    border-radius: 0.7rem;
-    box-shadow: var(--shadow);
-  }
-
-  .events details .date {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    border-radius: 0.7rem 0 0 0.7rem;
-    color: var(--surface-1);
-    font-weight: bold;
-    flex-direction: column;
-    justify-content: center;
-    background-color: var(--color);
-    padding: var(--size-fluid-4);
-  }
-
-  .events details summary {
-    padding: 0;
-    display: grid;
-    grid-template-columns: 25% auto;
-    align-items: center;
-    gap: var(--size-fluid-2);
-    font-size: var(--font-size-3);
-    background-color: var(--surface-1);
-    color: var(--text-1);
-    border-radius: 0.7rem;
-  }
-
-  .events details[open] .date {
-    border-radius: 0.7rem 0 0 0;
-  }
-
-  .events details[open] summary {
-    border-radius: 0 0.7rem 0 0;
-  }
-}.events button {
-  font-size: var(--font-size-2);
-  font-weight: normal;
-  line-height: 1.5;
-  padding-inline: 0.4rem;
-  padding-block: 0.2rem;
-  border-radius: inherit;
-}.events button[data-position="last"] {
-  margin-inline-end: 0.5rem;
-  transform: inherit;
-  border-radius: 0 0.7rem 0.7rem 0;
-}.events button span {
-  visibility: hidden;
-}.events .description {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-3);
-  position: absolute;
-  width: 30rem;
-  z-index: 2;
-  transform: translateY(5%);
-
-  background-color: var(--surface-1);
-  box-shadow: var(--shadow-2);
-  border-radius: var(--radius-2);
-  padding: var(--size-fluid-1);
-  border: var(--border-size-1) solid var(--surface-2);
-}.events .description header {
-  padding: 0;
-}.events .description header div {
-  display: flex;
-  justify-content: space-between;
-}.events .description button {
-  background-color: inherit;
-}@media (width < 1024px) {
-  .events .description {
-    position: relative;
-    width: 100%;
-    transform: inherit;
-    border-radius: 0 0 0.7rem 0.7rem;
   }
 }.events .active::before {
   content: counter(section);
@@ -750,6 +645,95 @@
   justify-content: center;
   flex-direction: column;
   margin-block-end: var(--size-2);
+}.mobile {
+  display: none;
+}.desktop {
+  padding: 0;
+  border-radius: var(--radius-2);
+  background-color: var(--surface-2);
+  border: var(--border-size-1) solid var(--surface-3);
+  box-shadow: var(--shadow-3);
+}.desktop summary {
+  padding-inline-start: var(--size-1);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}.desktop .description {
+  transform: translateY(5%);
+  border-radius: var(--radius-2);
+  position: absolute;
+  background-color: var(--surface-2);
+  border: var(--border-size-1) solid var(--surface-3);
+  box-shadow: var(--shadow-3);
+  width: 30rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-fluid-1);
+  padding: var(--size-fluid-1);
+}.desktop .description header div {
+  display: flex;
+  gap: var(--size-fluid-1);
+  align-items: start;
+  justify-content: space-between;
+}.events li > button {
+  background-color: var(--surface-2);
+  padding: inherit;
+  border-radius: inherit;
+  border-inline: inherit;
+  box-shadow: var(--shadow-3);
+}.events li > button span {
+  opacity: 0;
+}.events li div[data-position="first"] details {
+  border-inline-end: inherit;
+  border-radius: var(--radius-2) 0 0 var(--radius-2);
+}@media (width < 1024px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
+    position: relative;
+    border-radius: var(--radius-3);
+    border: var(--border-size-1) solid var(--surface-3);
+    box-shadow: var(--shadow-3);
+    font-size: var(--font-size-3);
+    padding: var(--size-fluid-1);
+  }
+
+  .mobile a::before {
+    content: "";
+    inset: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: var(--radius-3);
+    background: radial-gradient(
+      1000px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.06),
+      transparent 40%
+    );
+    z-index: 5;
+  }
+  
+  .mobile:hover {
+    transition: border-color 0.5s ease-in;
+    border-color: var(--surface-4);
+  }
+  
+  .mobile header {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    margin-block-end: var(--size-2);
+  }
 }.heading {
   display: flex;
   align-items: center;
@@ -884,7 +868,6 @@
   display: flex;
   gap: var(--size-2);
   justify-content: center;
-  width: 100%;
   background-color: var(--surface-2);
   border-radius: var(--radius-2);
   border: var(--border-size-1) solid var(--surface-3);
@@ -1117,4 +1100,8 @@ li {
   max-inline-size: inherit;
 }.grecaptcha-badge {
   display: none;
+}svg {
+  pointer-events: none;
+}li {
+  max-inline-size: inherit;
 }@media (prefers-color-scheme: dark){:root{--shadow-color:220 40% 2%;--shadow-strength:25%}}

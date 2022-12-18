@@ -119,10 +119,6 @@ class GlobalSettings(BaseSiteSetting, ClusterableModel):
 
     brand_color = models.CharField(max_length=30, null=True, blank=True)
     variation_color = models.CharField(max_length=30, null=True, blank=True)
-    text_color = models.CharField(max_length=30, null=True, blank=True)
-
-    surface_color_one = models.CharField(max_length=30, null=True, blank=True)
-    surface_color_two = models.CharField(max_length=30, null=True, blank=True)
 
     intern_website = models.ForeignKey(
         "wagtailcore.Page",
@@ -142,13 +138,7 @@ class GlobalSettings(BaseSiteSetting, ClusterableModel):
             classname="collapsible",
         ),
         MultiFieldPanel(
-            [
-                FieldPanel("brand_color"),
-                FieldPanel("variation_color"),
-                FieldPanel("text_color"),
-                FieldPanel("surface_color_one"),
-                FieldPanel("surface_color_two"),
-            ],
+            [FieldPanel("brand_color"), FieldPanel("variation_color")],
             heading="Brand Farben",
         ),
     ]

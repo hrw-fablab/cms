@@ -1,6 +1,6 @@
 {% load wagtailimages_tags %}
 <article class="card"
-    data-type="{% if value.url or value.page %}link{% endif %}">
+    data-style="{{style}}">
     {% if value.image %}
         <figure>
             <picture>
@@ -24,20 +24,22 @@
             </figcaption>
         </figure>
     {% endif %}
-    {% if value.title %}
-        <header>
-            {% if page.author %}
-                <time>{{page.date}}</time>
-            {% endif %}
-            {% if value.url or value.page %}
-                <a href="{% if value.url %}{{ value.localized.url }}{% else %}{{ value.page.localized.url }} {% endif %}">
+    <div>
+        {% if value.title %}
+            <header>
+                {% if page.author %}
+                    <time>{{page.date}}</time>
+                {% endif %}
+                {% if value.url or value.page %}
+                    <a href="{% if value.url %}{{ value.localized.url }}{% else %}{{ value.page.localized.url }} {% endif %}">
+                        <h3>{{ value.title }}</h3>
+                    </a>
+                {% else %}
                     <h3>{{ value.title }}</h3>
-                </a>
-            {% else %}
-                <h3>{{ value.title }}</h3>
-            {% endif %}
-        </header>
-    {% endif %}
-    {% if value.text %}<p>{{ value.text }}</p>{% endif %}
-    {% if value.introduction %}<p>{{ value.localized.introduction }}</p>{% endif %}
+                {% endif %}
+            </header>
+        {% endif %}
+        {% if value.text %}<p>{{ value.text }}</p>{% endif %}
+        {% if value.introduction %}<p>{{ value.localized.introduction }}</p>{% endif %}
+    </div>
 </article>

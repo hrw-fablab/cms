@@ -257,6 +257,7 @@ class FormPage(FabLabCaptchaEmailForm):
     thank_you_text = RichTextField(blank=True)
 
     content_panels = [
+        FieldPanel("title"),
         FieldPanel("event"),
         FieldPanel("content"),
         InlinePanel("form_fields", label="Form Elemente"),

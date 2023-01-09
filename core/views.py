@@ -63,6 +63,8 @@ def get_event(element, year, month, day):
         "category": element.category,
     }
 
+    print(element)
+
     if element.repeat != "0":
         result["repeat"] = get_repeated_event_days(element, year, month, day)
 
@@ -96,11 +98,13 @@ def get_repeated_event(element, year, month, day):
 
 def get_calendar(request):
     body = json.loads(request.body)
+    print(body)
     date = datetime.date(body["year"], body["month"], 1)
     days_count = monthrange(body["year"], body["month"])[1]
     days = []
 
     for element in Event.objects.all().order_by("start"):
+        print("test")
         if element.visible_calendar(date):
             days.append(get_event(element, body["year"], body["month"], element.day))
 

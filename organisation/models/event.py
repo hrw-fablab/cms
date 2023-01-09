@@ -129,7 +129,6 @@ class Event(Indexed, ClusterableModel):
         return self.end.strftime("%H:%M")
 
     def visible_calendar(self, date):
-        print(self.repeatStart)
         if self.repeat == "0":
             start = datetime.date(self.start.year, self.start.month, 1)
             end = datetime.date(self.end.year, self.end.month, 2)

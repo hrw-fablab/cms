@@ -25,20 +25,19 @@
         </figure>
     {% endif %}
     <div>
-        {% if value.title %}
-            <header>
-                {% if page.author %}
-                    <time>{{page.date}}</time>
-                {% endif %}
-                {% if value.url or value.page %}
-                    <a href="{% if value.url %}{{ value.localized.url }}{% else %}{{ value.page.localized.url }} {% endif %}">
-                        <h3>{{ value.title }}</h3>
-                    </a>
-                {% else %}
+        <header>
+            {% if page.author %}
+                <time>{{page.date}}</time>
+            {% endif %}
+            {% if value.link or value.page %}
+                <a href="{% if value.link %}{{ value.link }}{% else %}{{ value.page.localized.url }} {% endif %}"
+                    {% if value.new_tab %}target="_blank"{% endif %}>
                     <h3>{{ value.title }}</h3>
-                {% endif %}
-            </header>
-        {% endif %}
+                </a>
+            {% else %}
+                <h3>{{ value.title }}</h3>
+            {% endif %}
+        </header>
         {% if value.text %}<p>{{ value.text }}</p>{% endif %}
         {% if value.introduction %}<p>{{ value.localized.introduction }}</p>{% endif %}
     </div>

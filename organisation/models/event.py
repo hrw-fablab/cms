@@ -48,7 +48,7 @@ class Event(Indexed, ClusterableModel):
     title = models.CharField("Titel", max_length=60, null=True, blank=True)
     adress = models.CharField("Adresse", max_length=60, null=True, blank=True)
     description = models.TextField(
-        "Beschreibung", max_length=140, null=True, blank=True
+        "Beschreibung", max_length=280, null=True, blank=True
     )
     link = models.URLField("Link", blank=True, null=True)
     link_text = models.CharField(max_length=20, null=True, blank=True)

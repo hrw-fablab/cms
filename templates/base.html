@@ -57,6 +57,8 @@
     <body>
         {% block svg %}{% endblock %}
         {% wagtailuserbar %}
+        {% wagtail_site as current_site %}
+        {% include "molecules/alert.html" %}
         {% include "organisms/navigation.html" %}
         {% block content %}{% endblock %}
         {% include "organisms/footer.html" %}

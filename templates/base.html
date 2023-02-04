@@ -53,6 +53,7 @@
         <meta name="twitter:card" content="{{ page.tw_size }}" />
         <link rel="icon" href="{% static 'svg/favicon.svg' %}" type="image/svg+xml" />
         <meta name="google-site-verification" content="39zPnXBg_tXm80l5iQ8p4pgAXEvnF9NOlWAvn7GZVWg" />
+        {% component_css_dependencies %}
     </head>
     <body>
         {% block svg %}{% endblock %}

@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
 ]
 
@@ -75,6 +76,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "django_components.middleware.ComponentDependencyMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -99,9 +101,6 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "wagtail.contrib.settings.context_processors.settings",
-            ],
-            "builtins": [
-                "django_components.templatetags.component_tags",
             ],
             "loaders": [
                 (
@@ -261,3 +260,5 @@ WAGTAILEMBEDS_FINDERS = [
 PASSWORD_REQUIRED_TEMPLATE = "password_required.html"
 
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE = "wagtailadmin/login.html"
+
+COMPONENTS = {"RENDER_DEPENDENCIES": True}

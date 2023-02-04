@@ -1,4 +1,4 @@
-{% load wagtailimages_tags static %}
+{% load static %}
 
 <section class="hero" data-margin-block-end="medium">
     {% if title or text %}
@@ -9,10 +9,7 @@
     {% endif %}
 
     {% if image %}
-        {% component "picture" image=image caption=image.credit sizes="1920x1080 1080x720 720x480" breakpoints="1920 1080 720" %}
-    {% endif %}
-
-    {% if video %}
-        {% include "hero/video.html" with video=video %}
+        {% component "card" date="2" %}
+        <div>Image</div>
     {% endif %}
 </section>

@@ -17,5 +17,5 @@ class Hero(component.Component):
         }
 
     class Media:
-        css = "hero/hero.css"
-        js = "hero/hero.js"
+        css = {"hero/hero.css"}
+        js = {"hero/hero.js"}

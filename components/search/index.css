@@ -1,5 +1,6 @@
 .search {
     position: relative;
+    flex: 0 1 15rem;
 }
 
 .search input {
@@ -25,9 +26,10 @@
 .search .input {
   display: flex;
   flex-direction: row;
-  background-color: var(--surface-2);
+  background-color: var(--surface-3);
   border-radius: var(--radius-2);
-  padding: var(--size-2);
+  padding-inline: var(--size-2);
+  padding-block: var(--size-1);
 }
 
 .results {

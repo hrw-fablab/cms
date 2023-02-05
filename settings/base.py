@@ -218,7 +218,7 @@ WAGTAILDOCS_DOCUMENT_MODEL = "core.FablabDocument"
 
 WAGTAILMEDIA = {
     "MEDIA_MODEL": "core.FablabMedia",
-    "MEDIA_FORM_BASE": "",
+    "MEDIA_FORM_BASE": "core.forms.FabLabMediaForm",
     "AUDIO_EXTENSIONS": [],
     "VIDEO_EXTENSIONS": [],
 }

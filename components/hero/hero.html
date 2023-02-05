@@ -11,4 +11,8 @@
     {% if image %}
         {% component "picture" image=image caption="Test" sizes="1920x1080" breakpoints="1920" %}
     {% endif %}
+
+    {% if video %}
+        {% include "hero/video.html" %}
+    {% endif %}
 </section>

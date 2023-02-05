@@ -49,6 +49,7 @@
 
 .results li a {
   text-decoration: none;
+  color: inherit;
 }
 
 .results li a:hover {

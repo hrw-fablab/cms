@@ -55,7 +55,21 @@ class FablabDocument(AbstractDocument):
 # Custom Media Model
 # https://github.com/torchbox/wagtailmedia
 class FablabMedia(AbstractMedia):
-    pass
+    preview = models.ForeignKey(
+        FablabImage,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    admin_form_fields = (
+        "title",
+        "file",
+        "collection",
+        "preview",
+        "tags",
+    )
 
 
 # Abstract Base Page Layout

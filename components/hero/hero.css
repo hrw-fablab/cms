@@ -6,6 +6,7 @@
   -webkit-perspective: 3px;
   perspective: 3px;
   color: var(--text-1-dark);
+  transform: translateY(-10%);
 }
 
 .hero > * {
@@ -23,8 +24,6 @@
   width: 60%;
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
   background-color: inherit;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .hero p {

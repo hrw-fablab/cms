@@ -1,0 +1,75 @@
+.navigation {
+  background-color: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding-block: var(--size-2);
+  gap: var(--size-fluid-2);
+}
+
+.blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.navigation details {
+  padding: inherit;
+  background-color: transparent;
+  user-select: none;
+}
+
+.navigation a,
+summary {
+  color: var(--text-1);
+  text-decoration: underline 0.1em transparent;
+  transition: text-decoration-color 250ms ease-in, fill 200ms ease-in;
+  border: none;
+  padding: inherit;
+  margin: inherit;
+  background-color: transparent;
+  font-weight: normal;
+  fill: var(--text-1);
+}
+
+.navigation :where(a, summary):hover {
+  color: var(--brand);
+  text-decoration-color: var(--brand);
+  fill: var(--brand);
+}
+
+.navigation nav {
+  margin-inline-end: var(--size-5);
+  flex-shrink: 0;
+}
+
+.navigation #menu-button {
+  display: none;
+  padding: var(--size-2);
+  border-radius: var(--radius-2);
+  border: solid var(--surface-2) 0.15rem;
+  line-height: 1.5;
+  background-color: transparent;
+}
+
+.navigation .search {
+  margin-inline-start: auto;
+}
+
+@media (--lg-n-below) {
+  .navigation {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .navigation #menu-button {
+    display: flex;
+  }
+
+  .navigation :where(nav) {
+    width: 100%;
+    display: none;
+  }
+}

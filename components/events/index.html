@@ -1,19 +1,22 @@
-<div id="events" class="events">
-    {% get_events as events %}
-    {% for element in events %}
-        <section>
-            <time data-type="{{element.category}}">{{element.day}}. {{element.month}}</time>
-            <div>
-                <header>
-                    {% if element.link %}
-                        <a href="{{element.link}}"><h3>{{element.title}}</h3></a>
-                    {% else %}
-                        <h3>{{element.title}}</h3>
-                    {% endif %}
-                    <time>{{element.start}} bis {{element.end}}</time>
-                </header>
-                <p>{{element.description}}</p>
-            </div>
-        </section>
-    {% endfor %}
+<div class="content" data-width="large" data-margin-block-end="large">
+    <div id="events" class="events">
+        {% for element in events %}
+            <section>
+                <time data-type="{{element.category}}"
+                >{{element.day}}. {{element.month}}</time
+                    >
+                    <div>
+                        <header>
+                            {% if element.link %}
+                                <a href="{{element.link}}"><h3>{{element.title}}</h3></a>
+                            {% else %}
+                                <h3>{{element.title}}</h3>
+                            {% endif %}
+                            <time>{{element.start}} bis {{element.end}}</time>
+                        </header>
+                        <p>{{element.description}}</p>
+                    </div>
+                </section>
+        {% endfor %}
+    </div>
 </div>

@@ -19,3 +19,4 @@ from .video import VideoBlock
 from .table import TableBlock
 from .calender import CalendarBlock
 from .call import CallBlock
+from .events import EventsBlock

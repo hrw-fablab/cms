@@ -5,76 +5,64 @@
   border: none;
 }
 
-.events time {
-  font-size: var(--font-size-1);
-}
-
 .events section {
   position: relative;
   border-radius: var(--radius-3);
-  border: var(--border-size-1) solid var(--surface-3);
-  box-shadow: var(--shadow-3);
   font-size: var(--font-size-3);
   padding: var(--size-fluid-1);
-}
-
-.events a {
-  text-decoration: none;
-}
-
-.events a::before {
-  content: "";
-  inset: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  content: "";
-  border-radius: var(--radius-3);
-  background: radial-gradient(
-    1000px circle at var(--mouse-x) var(--mouse-y),
-    var(--hover-1),
-    transparent 40%
-  );
-  z-index: 5;
-}
-
-.events section:hover {
-  transition: border-color 0.5s ease-in;
-  border-color: var(--surface-4);
-}
-
-.events header {
+  box-shadow: var(--shadow-2);
   display: flex;
-  align-items: start;
-  justify-content: center;
   flex-direction: column;
-  margin-block-end: var(--size-2);
+  gap: var(--size-1);
 }
 
-.events header h3 {
+.events section div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-fluid-1);
+}
+
+.events section h3 {
   font-size: var(--font-size-4);
 }
 
-.events section {
-  background: radial-gradient(circle at -8000px -200px, var(--color), transparent);
+.events section time {
+  font-size: var(--font-size-2);
+}
+
+.events section a:hover {
+  text-decoration: none;
+}
+
+.events section a::after {
+  content: "";
+  inset: 0;
+  position: absolute;
+  border-radius: var(--radius-3);
+  border: var(--border-size-1) solid var(--surface-3);
+  background: radial-gradient(
+    1000px circle at var(--mouse-x, 200px) var(--mouse-y, 200px),
+    var(--color),
+    transparent 40%
+  );
 }
 
 .events section[data-type="student"] {
-  --color: var(--red-7);
+  --color: hsla(0, 86%, 59%, 0.1);
 }
 
-.events section {
-  --color: var(--purple-7);
+.events section[data-type="teach"] {
+  --color: hsla(288, 56%, 51%, 0.1);
 }
 
-.events section {
-  --color: var(--blue-7);
+.events section[data-type="open"] {
+  --color: hsla(208, 77%, 47%, 0.1);
 }
 
-.events section {
-  --color: var(--orange-7);
+.events section[data-type="workshop"] {
+  --color: hsla(24, 94%, 50%, 0.1);
 }
 
-.events section {
-  --color: var(--green-7);
+.events section[data-type="external"] {
+  --color: hsla(131, 53%, 46%, 0.1);
 }

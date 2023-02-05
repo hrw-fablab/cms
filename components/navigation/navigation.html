@@ -14,7 +14,7 @@
         {{ settings.global.GlobalSettings.logo_title|default:'' }}
     </a>
     <button id="menu-button" class="button">Menu</button>
-    <nav class="menu">
+    <nav class="menu" id="menu">
         <ul>
             {% for element in menuitems %}
                 <li>
@@ -22,12 +22,7 @@
                         <details>
                             <summary>
                                 {{ element.localized }}
-                                <svg width="0.8rem"
-                                    viewBox="0 0 102 60"
-                                    aria-hidden="true"
-                                    focusable="false">
-                                    <path d="M9 0 0 9l42 42 9 9 9-9 42-42-8-9-43 42Z" />
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                             </summary>
                             <ul class="submenu">
                                 {% for subelement in element.get_children.specific %}

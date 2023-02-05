@@ -1,6 +1,6 @@
 .navigation {
   background-color: transparent;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 10;
   display: flex;
@@ -8,6 +8,7 @@
   justify-content: start;
   padding-block: var(--size-2);
   gap: var(--size-fluid-2);
+  width: 100%;
 }
 
 .blur {
@@ -21,7 +22,7 @@
   user-select: none;
 }
 
-.navigation a,
+.navigation nav a,
 summary {
   color: var(--text-1);
   text-decoration: underline 0.1em transparent;
@@ -32,6 +33,8 @@ summary {
   background-color: transparent;
   font-weight: normal;
   fill: var(--text-1);
+  display: flex;
+  justify-content: space-between;
 }
 
 .navigation :where(a, summary):hover {
@@ -58,18 +61,33 @@ summary {
   margin-inline-start: auto;
 }
 
-@media (--lg-n-below) {
+.navigation .visible {
+  display: flex;
+}
+
+@media (width < 1024px) {
   .navigation {
+    position: sticky;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: inherit;
   }
 
   .navigation #menu-button {
     display: flex;
   }
 
-  .navigation :where(nav) {
+  .navigation nav {
     width: 100%;
+    margin: inherit;
+    display: none;
+  }
+
+  .navigation nav a {
+    width: 100%;
+  }
+
+  .navigation .search {
     display: none;
   }
 }

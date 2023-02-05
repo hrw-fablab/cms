@@ -6,7 +6,6 @@
   -webkit-perspective: 3px;
   perspective: 3px;
   color: var(--text-1-dark);
-  transform: translateY(-10%);
 }
 
 .hero > * {
@@ -81,10 +80,12 @@
   stroke: var(--surface-1-light);
 }
 
-@media (--lg-n-below) {
+@media (width < 1024px) {
   .hero {
     height: 50vh;
+    transform: inherit;
   }
+
   .hero > div {
     width: inherit;
     clip-path: none;

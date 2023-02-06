@@ -75,6 +75,7 @@ summary {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: inherit;
+    background-color: var(--surface-1);
   }
 
   .navigation #menu-button {

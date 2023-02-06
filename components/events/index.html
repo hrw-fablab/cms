@@ -1,4 +1,5 @@
 <div class="content" data-width="large" data-margin-block-end="large">
+    {% include "atoms/heading.html" with value="Aktuelle Termine" anchor=False %}
     <div id="events" class="events">
         {% for element in events %}
             <section data-type="{{element.category}}">

@@ -1,0 +1,68 @@
+.events {
+  display: grid;
+  gap: var(--size-fluid-3);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  border: none;
+}
+
+.events section {
+  position: relative;
+  border-radius: var(--radius-3);
+  font-size: var(--font-size-3);
+  padding: var(--size-fluid-1);
+  box-shadow: var(--shadow-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+}
+
+.events section div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-fluid-1);
+}
+
+.events section h3 {
+  font-size: var(--font-size-4);
+}
+
+.events section time {
+  font-size: var(--font-size-2);
+}
+
+.events section a:hover {
+  text-decoration: none;
+}
+
+.events section a::after {
+  content: "";
+  inset: 0;
+  position: absolute;
+  border-radius: var(--radius-3);
+  border: var(--border-size-1) solid var(--surface-3);
+  background: radial-gradient(
+    1000px circle at var(--mouse-x, 200px) var(--mouse-y, 200px),
+    var(--color),
+    transparent 40%
+  );
+}
+
+.events section[data-type="student"] {
+  --color: hsla(0, 86%, 59%, 0.1);
+}
+
+.events section[data-type="teach"] {
+  --color: hsla(288, 56%, 51%, 0.1);
+}
+
+.events section[data-type="open"] {
+  --color: hsla(208, 77%, 47%, 0.1);
+}
+
+.events section[data-type="workshop"] {
+  --color: hsla(24, 94%, 50%, 0.1);
+}
+
+.events section[data-type="external"] {
+  --color: hsla(131, 53%, 46%, 0.1);
+}

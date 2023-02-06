@@ -30,6 +30,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     "user",
     "core",
+    "django_components",
     "organisation",
     "global",
     "forms",
@@ -64,6 +65,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
 ]
 
@@ -74,6 +76,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "django_components.middleware.ComponentDependencyMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -91,7 +94,6 @@ TEMPLATES = [
         "DIRS": [
             os.path.join(PROJECT_DIR, "templates"),
         ],
-        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -99,6 +101,16 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "wagtail.contrib.settings.context_processors.settings",
+            ],
+            "loaders": [
+                (
+                    "django.template.loaders.cached.Loader",
+                    [
+                        "django.template.loaders.filesystem.Loader",
+                        "django.template.loaders.app_directories.Loader",
+                        "django_components.template_loader.Loader",
+                    ],
+                )
             ],
         },
     },
@@ -166,6 +178,7 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "design"),
+    os.path.join(PROJECT_DIR, "components"),
 ]
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
@@ -205,7 +218,7 @@ WAGTAILDOCS_DOCUMENT_MODEL = "core.FablabDocument"
 
 WAGTAILMEDIA = {
     "MEDIA_MODEL": "core.FablabMedia",
-    "MEDIA_FORM_BASE": "",
+    "MEDIA_FORM_BASE": "core.forms.FabLabMediaForm",
     "AUDIO_EXTENSIONS": [],
     "VIDEO_EXTENSIONS": [],
 }
@@ -247,3 +260,5 @@ WAGTAILEMBEDS_FINDERS = [
 PASSWORD_REQUIRED_TEMPLATE = "password_required.html"
 
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE = "wagtailadmin/login.html"
+
+COMPONENTS = {"RENDER_DEPENDENCIES": True}

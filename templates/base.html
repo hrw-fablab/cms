@@ -1,11 +1,11 @@
-{% load static wagtailcore_tags wagtailuserbar wagtailimages_tags i18n %}
+{% load static wagtailcore_tags wagtailuserbar wagtailimages_tags i18n component_tags %}
 {% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html class="no-js" lang="{{ LANGUAGE_CODE }}" style="--brand: {{settings.global.GlobalSettings.brand_color}}">
     <head>
         {% if page.index == "noindex" %}<meta name="robots" content="noindex" />{% endif %}
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>
             {% block title %}
                 {% if page.seo_title %}
@@ -53,6 +53,7 @@
         <meta name="twitter:card" content="{{ page.tw_size }}" />
         <link rel="icon" href="{% static 'svg/favicon.svg' %}" type="image/svg+xml" />
         <meta name="google-site-verification" content="39zPnXBg_tXm80l5iQ8p4pgAXEvnF9NOlWAvn7GZVWg" />
+        {% component_css_dependencies %}
     </head>
     <body>
         {% block svg %}{% endblock %}
@@ -61,9 +62,9 @@
         {% if request.get_host == "hrw-fablab.de" %}
             {% include "molecules/alert.html" %}
         {% endif %}
-        {% include "organisms/navigation.html" %}
+        {% component "navigation" %}
         {% block content %}{% endblock %}
         {% include "organisms/footer.html" %}
-        {% block extra_js %}{# Override this in templates to add extra javascript #}{% endblock %}
+        {% component_js_dependencies %}
     </body>
 </html>

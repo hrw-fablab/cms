@@ -1,6 +1,6 @@
 {% if value %}
     {% if anchor %}
-        <div class="heading" data-margin-block-end="medium">
+        <div class="heading" data-margin-block-end="small">
             <a style="text-decoration: none;"
                 aria-label="Link zu dieser Ueberschrift"
                 aria-describedby="{{ value|cut:" " }}"
@@ -13,7 +13,6 @@
         </div>
     {% else %}
         <h2 class="heading"
-            id="{{ value|cut:" " }}"
             data-margin-block-end="medium">{{ value }}</h2>
     {% endif %}
 {% endif %}

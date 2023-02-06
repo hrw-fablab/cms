@@ -17,7 +17,6 @@ def getBreakPoints(breakpoints):
     for index, item in enumerate(breakpoints):
         results.append(f"(min-width: {breakpoints[index]}px) {breakpoints[index]}px")
 
-    print(results)
     return " ,".join(results)
 
 

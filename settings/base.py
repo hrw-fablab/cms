@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "user",
     "core",
     "django_components",
+    "test_components",
     "organisation",
     "global",
     "forms",

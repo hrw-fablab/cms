@@ -1,4 +1,5 @@
 import glob
+import os
 import importlib
 import sys
 from importlib import import_module
@@ -27,6 +28,7 @@ def autodiscover():
         dirs = loader.get_dirs()
         for directory in dirs:
             for path in glob.iglob(str(directory / "**/*.py"), recursive=True):
+                print(path)
                 import_file(path)
 
     for path in app_settings.LIBRARIES:

@@ -62,7 +62,7 @@
         {% if request.get_host == "hrw-fablab.de" %}
             {% include "molecules/alert.html" %}
         {% endif %}
-        {% component "card" date="Hello" %}
+        {% component "card" %}
         {% block content %}{% endblock %}
         {% include "organisms/footer.html" %}
         {% component_js_dependencies %}

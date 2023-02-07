@@ -6,8 +6,10 @@ class Card(component.Component):
     template_name = "card/card.html"
 
     # This component takes one parameter, a date string to show in the template
-    def get_context_data(self):
-        return {}
+    def get_context_data(self, date):
+        return {
+            "date": date,
+        }
 
     class Media:
         css = "card/card.css"

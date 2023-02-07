@@ -10,3 +10,4 @@ django-recaptcha==3.0.0
 python-dateutil==2.8.2
 Office365-REST-Python-Client==2.3.16
 django-components==0.24
+mysqlclient==2.1.1

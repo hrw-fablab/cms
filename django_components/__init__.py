@@ -18,6 +18,8 @@ if django.VERSION < (3, 2):
 def autodiscover():
     from . import app_settings
 
+    print("yes")
+
     if app_settings.AUTODISCOVER:
         # Autodetect a components.py file in each app directory
         autodiscover_modules("components")

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "user",
     "core",
     "django_components",
+    "fablab_components",
     "organisation",
     "global",
     "forms",
@@ -178,7 +179,7 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "design"),
-    os.path.join(PROJECT_DIR, "components"),
+    os.path.join(PROJECT_DIR, "fablab_components/components"),
 ]
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated

@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     "user",
     "core",
     "django_components",
-    "test_components",
     "organisation",
     "global",
     "forms",
@@ -179,7 +178,7 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "design"),
-    os.path.join(PROJECT_DIR, "test_components"),
+    os.path.join(PROJECT_DIR, "components"),
 ]
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated

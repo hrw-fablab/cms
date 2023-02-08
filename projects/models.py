@@ -1,6 +1,6 @@
 from django.db import models
 
-from wagtail.admin.panels import InlinePanel, FieldPanel
+from wagtail.admin.panels import InlinePanel, FieldPanel, MultipleChooserPanel
 
 from modelcluster.models import ClusterableModel
 from wagtail.models import Orderable
@@ -21,13 +21,54 @@ class Role(Orderable):
         return "{}".format(self.name)
 
 
+class FilteredPanel(FieldPanel):
+    class BoundPanel(FieldPanel.BoundPanel):
+        def __init__(self, **kwargs):
+            super().__init__(**kwargs)
+            filtered = Role.objects.filter(link_id=self.instance.link_id)
+            self.form.fields["role"].queryset = filtered
+
+
+class Member(ClusterableModel):
+    person = models.ForeignKey(
+        "persons.Person",
+        related_name="+",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
+    link = ParentalKey(
+        "projects.Project",
+        on_delete=models.CASCADE,
+        related_name="related_member",
+    )
+
+    role = models.ForeignKey(
+        "projects.Role",
+        related_name="+",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
+    panels = [
+        FieldPanel("person"),
+        FilteredPanel("role"),
+    ]
+
+    class Meta:
+        verbose_name = "Mitglied"
+        verbose_name_plural = "Mitglieder"
+
+
 class Project(ClusterableModel):
     name = models.CharField(max_length=254, null=True, blank=True)
 
     panels = [
         FieldPanel("name", heading="Projektname"),
         InlinePanel("related_roles", heading="Projektrollen"),
-        InlinePanel("related_member", heading="Mitglieder"),
+        MultipleChooserPanel("related_member", chooser_field_name="person"),
     ]
 
     @property

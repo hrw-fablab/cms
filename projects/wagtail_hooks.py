@@ -22,7 +22,7 @@ class ProjectChooserViewSet(ChooserViewSet):
     # using a string avoids circular imports when accessing the StreamField block class (see below)
     model = "projects.Project"
 
-    icon = "user"
+    icon = "group"
     choose_one_text = "Choose a project"
     choose_another_text = "Choose another project"
     edit_item_text = "Edit this project"

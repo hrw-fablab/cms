@@ -7,11 +7,10 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
 class ArticleIndexPage(FablabBasePage):
-    heading = models.CharField(max_length=255, blank=True)
+    parent_page_types = ["ArticlePage"]
+    subpage_type = []
 
-    content_panels = FablabBasePage.content_panels + [
-        FieldPanel("heading"),
-    ]
+    template = "pages/index.html"
 
     def get_context(self, request):
         context = super().get_context(request)

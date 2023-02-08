@@ -1,6 +1,8 @@
 from dateutil.relativedelta import relativedelta
 from django.db import models
 
+from core.models import FablabBasePage
+
 from wagtail.admin.panels import (
     InlinePanel,
     FieldPanel,
@@ -10,20 +12,15 @@ from wagtail.fields import StreamField
 
 from modelcluster.fields import ParentalKey
 
-from abstract.pages.base import AbstractBasePage
-
 from forms.models import FabLabCaptchaEmailForm
 from wagtail.admin.panels import TabbedInterface, ObjectList
 
-from websites.base.blocks import (
-    FormBlock,
-)
+from blocks.models import FormBlock
 
 from wagtail.fields import RichTextField
 from wagtail.contrib.forms.models import AbstractFormField
 
 from wagtail.contrib.forms.models import (
-    AbstractEmailForm,
     AbstractFormField,
     FORM_FIELD_CHOICES,
 )
@@ -131,7 +128,7 @@ class FormPage(FabLabCaptchaEmailForm):
         [
             ObjectList(content_panels, "Inhalt"),
             ObjectList(email_panels, "Email"),
-            ObjectList(AbstractBasePage.promote_panels, "Veröffentlichung"),
+            ObjectList(FablabBasePage.promote_panels, "Veröffentlichung"),
         ]
     )
 

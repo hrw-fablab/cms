@@ -8,8 +8,6 @@ from wagtail.admin.panels import (
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
-from abstract.pages.base import AbstractBasePage
-
 from abstract.models.links import ExpireLink, PageLink
 
 from core.models import FablabBasePage
@@ -17,23 +15,23 @@ from core.models import FablabBasePage
 
 class CollectionPagePage(Orderable, PageLink):
     page = ParentalKey(
-        "CollectionPage", on_delete=models.CASCADE, related_name="collection_pages"
+        "LinkPage", on_delete=models.CASCADE, related_name="collection_pages"
     )
 
 
 class CollectionPageLink(Orderable, ExpireLink):
     page = ParentalKey(
-        "CollectionPage", on_delete=models.CASCADE, related_name="collection_links"
+        "LinkPage", on_delete=models.CASCADE, related_name="collection_links"
     )
 
 
-class CollectionPage(FablabBasePage, ClusterableModel):
+class LinkPage(FablabBasePage, ClusterableModel):
     parent_page_types = ["HomePage"]
     subpage_type = []
 
     template = "pages/collection.html"
 
-    content_panels = AbstractBasePage.content_panels + [
+    content_panels = FablabBasePage.content_panels + [
         InlinePanel("collection_links", label="Link", classname="collabsible"),
         InlinePanel("collection_pages", label="Page", classname="collabsible"),
     ]

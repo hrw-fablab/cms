@@ -7,7 +7,7 @@ from core.models import FablabBasePage
 
 
 class ArticlePage(FablabBasePage):
-    parent_page_types = ["IndexPage"]
+    parent_page_types = ["ArticleIndexPage"]
     subpage_type = []
 
     template = "pages/article.html"

@@ -6,7 +6,7 @@ from core.models import FablabBasePage
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
-class IndexPage(FablabBasePage):
+class ArticleIndexPage(FablabBasePage):
     heading = models.CharField(max_length=255, blank=True)
 
     content_panels = FablabBasePage.content_panels + [

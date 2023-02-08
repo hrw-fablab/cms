@@ -17,12 +17,10 @@ class PersonAdmin(ModelAdmin):
     menu_order = 200
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("name", "last_name", "organisation", "thumb_image")
-    list_filter = ("organisation",)
+    list_display = ("name", "last_name", "thumb_image")
     search_fields = (
         "first_name",
         "last_name",
-        "organisation__name",
         "title",
     )
 
@@ -33,7 +31,7 @@ modeladmin_register(PersonAdmin)
 class PersonChooserViewSet(ChooserViewSet):
     # The model can be specified as either the model class or an "app_label.model_name" string;
     # using a string avoids circular imports when accessing the StreamField block class (see below)
-    model = "organisation.Person"
+    model = "persons.Person"
 
     icon = "user"
     choose_one_text = "Choose a person"

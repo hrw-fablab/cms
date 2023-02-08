@@ -33,7 +33,7 @@ class Expection(ClusterableModel):
     end = models.DateField()
 
     link = ParentalKey(
-        "organisation.Event",
+        "events.Event",
         on_delete=models.CASCADE,
         related_name="related_expection",
     )

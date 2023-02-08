@@ -1,7 +1,7 @@
 from calendar import monthrange
 import datetime
 from django_components import component
-from organisation.models import Event
+from events.models import Event
 from django.db.models import Q
 
 MONTHS = [

@@ -20,14 +20,6 @@ class Person(Indexed, ClusterableModel):
         related_name="+",
     )
 
-    organisation = models.ForeignKey(
-        "organisation.Organisation",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
     link = models.URLField(max_length=254, null=True, blank=True)
     responsibility = models.CharField(max_length=254, null=True, blank=True)
 
@@ -44,7 +36,6 @@ class Person(Indexed, ClusterableModel):
             ],
             heading="Name",
         ),
-        FieldPanel("organisation", heading="Organisation"),
         FieldPanel("image", heading="Bild"),
         MultiFieldPanel(
             [

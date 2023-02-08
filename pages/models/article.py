@@ -7,6 +7,11 @@ from core.models import FablabBasePage
 
 
 class ArticlePage(FablabBasePage):
+    parent_page_types = ["IndexPage"]
+    subpage_type = []
+
+    template = "pages/article.html"
+
     image = models.ForeignKey(
         "core.FablabImage",
         null=True,
@@ -17,16 +22,8 @@ class ArticlePage(FablabBasePage):
 
     date = models.DateField()
 
-    organisation = models.ForeignKey(
-        "organisation.Organisation",
-        related_name="+",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-    )
-
     author = models.ForeignKey(
-        "organisation.Person",
+        "persons.Person",
         related_name="+",
         null=True,
         blank=True,

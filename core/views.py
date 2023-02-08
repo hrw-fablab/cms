@@ -2,7 +2,7 @@ from django.http import JsonResponse
 import json
 import datetime
 from calendar import monthrange
-from organisation.models import Event
+from events.models import Event
 
 from dotenv import load_dotenv
 

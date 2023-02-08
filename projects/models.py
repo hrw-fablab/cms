@@ -1,9 +1,6 @@
 from django.db import models
 
-# Create your models here.
-from django.db import models
-from wagtail.admin.panels import FieldPanel
-from wagtail.admin.panels import InlinePanel
+from wagtail.admin.panels import InlinePanel, FieldPanel
 
 from modelcluster.models import ClusterableModel
 from wagtail.models import Orderable
@@ -15,7 +12,7 @@ class Role(Orderable):
     visible = models.BooleanField(default=True)
 
     link = ParentalKey(
-        "organisation.Project",
+        "projects.Project",
         on_delete=models.CASCADE,
         related_name="related_roles",
     )

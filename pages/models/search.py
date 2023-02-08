@@ -5,6 +5,11 @@ from wagtail.models import Page
 
 
 class SearchPage(FablabBasePage):
+    parent_page_types = ["HomePage"]
+    subpage_type = []
+
+    template = "pages/search.html"
+
     def get_context(self, request):
         context = super().get_context(request)
         search_query = request.GET.get("query", None)

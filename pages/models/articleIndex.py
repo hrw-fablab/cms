@@ -7,7 +7,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
 class ArticleIndexPage(FablabBasePage):
-    parent_page_types = ["ArticlePage"]
+    parent_page_types = ["HomePage", "FolderPage"]
     subpage_type = []
 
     template = "pages/index.html"

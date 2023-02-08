@@ -4,7 +4,7 @@ register = template.Library()
 
 import datetime
 from calendar import monthrange
-from organisation.models import Event
+from events.models import Event
 from dateutil.relativedelta import relativedelta
 
 MONTHS = [

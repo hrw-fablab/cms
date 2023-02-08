@@ -2,6 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
+import wagtail.search.index
 
 
 class Migration(migrations.Migration):
@@ -13,7 +14,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Device",
+            name="Person",
             fields=[
                 (
                     "id",
@@ -24,14 +25,25 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("title", models.CharField(blank=True, max_length=250, null=True)),
-                ("model", models.CharField(blank=True, max_length=250, null=True)),
-                ("area", models.CharField(blank=True, max_length=250, null=True)),
                 (
-                    "manufacturer",
-                    models.CharField(blank=True, max_length=250, null=True),
+                    "title",
+                    models.CharField(
+                        blank=True, max_length=100, null=True, verbose_name="First Name"
+                    ),
                 ),
-                ("amount", models.CharField(blank=True, max_length=250, null=True)),
+                (
+                    "first_name",
+                    models.CharField(max_length=254, verbose_name="First Name"),
+                ),
+                (
+                    "last_name",
+                    models.CharField(max_length=254, verbose_name="Last Name"),
+                ),
+                ("link", models.URLField(blank=True, max_length=254, null=True)),
+                (
+                    "responsibility",
+                    models.CharField(blank=True, max_length=254, null=True),
+                ),
                 (
                     "image",
                     models.ForeignKey(
@@ -43,5 +55,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
+            options={
+                "verbose_name": "Person",
+                "verbose_name_plural": "Personen",
+            },
+            bases=(wagtail.search.index.Indexed, models.Model),
         ),
     ]

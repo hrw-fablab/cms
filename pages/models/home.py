@@ -7,13 +7,13 @@ from blocks.models import HomeBlock
 
 class HomePage(FablabBasePage):
     subpage_type = [
-        "FolderPgae",
+        "FolderPage",
         "FlexPage",
-        "IndexPage",
+        "ArticleIndexPage",
         "DeviceIndexPage",
         "ProjectIndexPage",
         "SearchPage",
-        "CollectionPage",
+        "LinkPage",
         "FormPage",
     ]
 

@@ -19,7 +19,6 @@ document.addEventListener("scroll", () => {
 });
 
 button.addEventListener("click", (event) => {
-  console.log("yes");
   menu.classList.toggle("visible");
   document.getElementById("form-search").classList.toggle("visible");
 });

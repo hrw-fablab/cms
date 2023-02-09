@@ -26,7 +26,6 @@
   object-fit: cover;
   aspect-ratio: var(--ratio-widescreen);
   position: relative;
-  z-index: -1;
 }
 
 .hidden {

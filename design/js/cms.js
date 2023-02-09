@@ -8,25 +8,3 @@ document.addEventListener("mousemove", (event) => {
   event.target.style.setProperty("--mouse-x", `${x}px`);
   event.target.style.setProperty("--mouse-y", `${y}px`);
 });
-
-const callback = (entries, observer) => {
-  entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add("fade-in");
-        observer.unobserve(entry.target);
-      }, index * 100);
-    }
-  });
-};
-
-const cardObserver = new IntersectionObserver(callback, {});
-const mediaObserver = new IntersectionObserver(callback, {});
-
-const cardsElements = document
-  .querySelectorAll(".card")
-  .forEach((x) => cardObserver.observe(x));
-
-const iframeElements = document
-  .querySelectorAll("iframe")
-  .forEach((x) => mediaObserver.observe(x));

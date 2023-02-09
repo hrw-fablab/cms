@@ -1,0 +1,204 @@
+.calendar li {
+  position: relative;
+}
+
+.calendar > header {
+  align-items: center;
+  display: flex;
+  font-size: var(--font-size-4);
+  justify-content: space-between;
+  margin-block-end: var(--size-fluid-1);
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  list-style: none;
+  padding: 0;
+  border-block: solid 0.15rem var(--surface-2);
+  border-inline-start: solid 0.15rem var(--surface-2);
+}
+
+.weekdays li {
+  align-items: center;
+  border-inline-end: solid 0.15rem var(--surface-2);
+  display: flex;
+  justify-content: center;
+  padding-block: var(--size-3);
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  list-style: none;
+  padding: 0;
+  border-inline-start: solid 0.15rem var(--surface-2);
+  counter-set: section;
+}
+
+.days li {
+  border-block-end: solid 0.15rem var(--surface-2);
+  border-inline-end: solid 0.15rem var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  justify-content: end;
+  min-width: 0;
+  aspect-ratio: var(--ratio-widescreen);
+}
+
+@media (max-width: 1024px) {
+  .calendar > ol {
+    grid-template-columns: 1fr;
+    gap: var(--size-fluid-4);
+  }
+
+  .weekdays {
+    display: none;
+  }
+
+  .days {
+    border: none;
+  }
+
+  .days li {
+    aspect-ratio: inherit;
+    gap: var(--size-fluid-4);
+    border: none;
+  }
+
+  .days li:where(:not(.full)) {
+    display: none;
+  }
+
+  .days .active::before {
+    display: none;
+  }
+}
+
+.days .active::before {
+  content: counter(section);
+  counter-increment: section;
+  font-size: var(--font-size-3);
+  padding-inline: var(--size-3);
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.mobile {
+  display: none;
+}
+
+.desktop {
+  padding: 0;
+  border-radius: var(--radius-2);
+  background-color: var(--surface-2);
+  box-shadow: var(--shadow-3);
+}
+
+.desktop summary {
+  padding: var(--size-1);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.desktop .description {
+  transform: translateY(5%);
+  border-radius: var(--radius-2);
+  position: absolute;
+  background-color: var(--surface-2);
+  border: var(--border-size-1) solid var(--surface-3);
+  box-shadow: var(--shadow-3);
+  width: 30rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-fluid-1);
+  padding: var(--size-fluid-1);
+}
+
+.desktop .description header div {
+  display: flex;
+  gap: var(--size-fluid-1);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.desktop .description header h3 {
+  font-size: var(--font-size-4);
+}
+
+.events li > button {
+  padding: var(--size-1);
+  border-radius: inherit;
+  border: none;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.events li > button span {
+  opacity: 0;
+}
+
+.events li div[data-position="first"] details {
+  border-inline-end: inherit;
+  border-radius: var(--radius-2) 0 0 var(--radius-2);
+}
+
+@media (max-width: 1024px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
+    position: relative;
+    border-radius: var(--radius-3);
+    border: var(--border-size-1) solid var(--surface-3);
+    box-shadow: var(--shadow-3);
+    font-size: var(--font-size-3);
+    padding: var(--size-fluid-1);
+  }
+
+  .mobile:hover {
+    transition: border-color 0.5s ease-in;
+    border-color: var(--surface-4);
+  }
+
+  .mobile header {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    margin-block-end: var(--size-2);
+  }
+}
+
+*[data-type="student"] .desktop,
+button[data-type="student"] {
+  background-color: var(--red-7);
+}
+
+*[data-type="teach"] .desktop,
+button[data-type="teach"] {
+  background-color: var(--purple-7);
+}
+
+*[data-type="open"] .desktop,
+button[data-type="open"] {
+  background-color: var(--blue-7);
+}
+
+*[data-type="workshop"] .desktop,
+button[data-type="workshop"] {
+  background-color: var(--orange-7);
+}
+
+*[data-type="external"] .desktop,
+button[data-type="external"] {
+  background-color: var(--green-7);
+}

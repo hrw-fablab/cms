@@ -6,9 +6,10 @@ class MatterportFinder(EmbedFinder):
         pass
 
     def accept(self, url):
-        return bool("matterport.com" in url)
+        return bool("my.matterport.com/show/" in url)
 
     def find_embed(self, url, max_width=None):
+        print("yes find")
         html = f'<iframe src="{url}" allowfullscreen loading="lazy" style="border: none"></iframe>'
 
         return {

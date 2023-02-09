@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "events",
     "projects",
     "persons",
+    "embeds",
     "django_components",
     "fablab_components",
     "global",
@@ -253,6 +254,8 @@ RECAPTCHA_PRIVATE_KEY = str(os.environ.get("RECAPTCHA_PRIVATE_KEY"))
 WAGTAILEMBEDS_FINDERS = [
     {
         "class": "embeds.models.MatterportFinder",
+    },
+    {
         "class": "embeds.models.GoogleMapsFinder",
     },
     {

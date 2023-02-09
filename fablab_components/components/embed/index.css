@@ -17,6 +17,7 @@
 .embed h2 {
   font-size: var(--font-size-8);
   overflow-wrap: break-word;
+  color: var(--text-1-dark);
 }
 
 .embed iframe {

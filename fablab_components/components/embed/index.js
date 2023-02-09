@@ -4,5 +4,5 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
-const embed = document.querySelectorAll(".hidden");
-embed.forEach((el) => observer.observe(el));
+//const embed = document.querySelectorAll(".hidden");
+//embed.forEach((el) => observer.observe(el));

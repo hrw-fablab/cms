@@ -1,0 +1,32 @@
+.embed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-fluid-4);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+  text-align: center;
+}
+
+.embed h2 {
+  font-size: var(--font-size-8);
+  overflow-wrap: break-word;
+}
+
+.embed iframe {
+  border-radius: var(--radius-2);
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: var(--ratio-widescreen);
+}
+
+.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 1024px) {
+  .embed h2 {
+    font-size: var(--font-size-5);
+  }
+}

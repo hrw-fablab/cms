@@ -1,7 +1,7 @@
 {% load static wagtailcore_tags wagtailuserbar wagtailimages_tags i18n component_tags %}
 {% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-<html class="no-js" lang="{{ LANGUAGE_CODE }}" style="--brand: {{settings.global.GlobalSettings.brand_color}}">
+<html class="no-js" lang="{{ LANGUAGE_CODE }}" style="--brand: {{settings.global.GlobalSettings.brand_color}}; --brand-gradient: linear-gradient(to bottom right, {{settings.global.GlobalSettings.variation_color}}, {{settings.global.GlobalSettings.brand_color}})">
     <head>
         {% if page.index == "noindex" %}<meta name="robots" content="noindex" />{% endif %}
         <meta charset="utf-8" />

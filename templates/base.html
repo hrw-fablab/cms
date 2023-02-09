@@ -59,9 +59,6 @@
         {% block svg %}{% endblock %}
         {% wagtailuserbar %}
         {% wagtail_site as current_site %}
-        {% if request.get_host == "hrw-fablab.de" %}
-            {% include "molecules/alert.html" %}
-        {% endif %}
         {% component "navigation" %}
         {% block content %}{% endblock %}
         {% include "organisms/footer.html" %}

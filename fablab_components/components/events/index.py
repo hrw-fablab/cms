@@ -1,5 +1,6 @@
 from calendar import monthrange
 import datetime
+from dateutil.relativedelta import relativedelta
 from django_components import component
 from events.models import Event
 from django.db.models import Q
@@ -7,7 +8,7 @@ from django.db.models import Q
 MONTHS = [
     "Januar",
     "Februar",
-    "Maerz",
+    "März",
     "April",
     "Mai",
     "Juni",
@@ -24,16 +25,17 @@ def get_event(element, year, month, day):
     result = {
         "title": element.title,
         "adress": element.adress,
+        "description": element.description,
+        "category": element.category,
         "link": element.link,
         "link_text": element.link_text,
         "length": element.length,
         "start": element.timeStart,
         "end": element.timeEnd,
-        "day": day,
-        "month": MONTHS[int(month) - 1],
         "year": year,
-        "description": element.description,
-        "category": element.category,
+        "month": month,
+        "day": day,
+        "monthString": MONTHS[int(month) - 1],
     }
 
     if element.length >= 1:
@@ -74,23 +76,29 @@ def get_events():
     result = []
     date = datetime.date.today()
 
-    events = Event.objects.filter(
-        (
-            Q(start__year=str(date.year))
-            & Q(start__month=str(date.month))
-            & Q(repeat="0")
-        )
-        | (Q(repeat="1") & Q(repeatStart__lte=date) & Q(repeatEnd__gte=date))
-    )
+    max_iteration = 0
 
-    for element in events:
-        if element.repeat != "0":
-            result.extend(get_repeats(element, date.year, date.month, date.day))
-        else:
-            result.append(get_event(element, date.year, element.month, element.day))
+    while len(result) <= 4 or max_iteration <= 3:
+        events = Event.objects.filter(
+            (
+                Q(start__year=str(date.year))
+                & Q(start__month=str(date.month))
+                & Q(repeat="0")
+            )
+            | (Q(repeat="1") & Q(repeatStart__lte=date) & Q(repeatEnd__gte=date))
+        )
+
+        for element in events:
+            if element.repeat != "0":
+                result.extend(get_repeats(element, date.year, date.month, date.day))
+            else:
+                result.append(get_event(element, date.year, element.month, element.day))
+
+        date = date + relativedelta(months=1)
+        max_iteration += 1
 
     result.sort(key=lambda x: x["day"])
-    result.sort(key=lambda x: x["month"], reverse=True)
+    result.sort(key=lambda x: x["month"])
 
     return result[0:4]
 

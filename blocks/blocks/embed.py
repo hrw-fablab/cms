@@ -8,5 +8,5 @@ class EmbedBlock(blocks.StructBlock):
     accent = blocks.BooleanBlock(required=False)
 
     class Meta:
-        template = "molecules/media.html"
+        template = "blocks/embed.html"
         icon = "media"

@@ -3,7 +3,7 @@
     <div id="events" class="events">
         {% for element in events %}
             <section data-type="{{element.category}}">
-                <time>{{element.day}}. {{element.month}}</time>
+                <time>{{element.day}}. {{element.monthString}}</time>
                 <div>
                     <header>
                         {% if element.link %}

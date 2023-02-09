@@ -1,9 +1,9 @@
-{% load wagtailimages_tags %}
+{% load wagtailimages_tags component_tags %}
 <section class="content centered"
     data-style="{% if value.accent %}color{% endif %}"
-    data-width="medium"
+    data-width="large"
     data-margin-block="large">
-    {% include "atoms/heading.html" with value=value.title anchor=True %}
+    {% include "atoms/heading.html" with value=value.title anchor=False %}
     {% if value.image %}
         <figure>
             <picture>
@@ -32,7 +32,6 @@
         <video src="{{ value.video.url }}" controls>
         </video>
     {% elif value.embed %}
-        {% load wagtailembeds_tags %}
-        {% embed value.embed.url %}
+        {% component "embed" url=value.embed.url %}
     {% endif %}
 </section>

@@ -1,15 +1,22 @@
 .card {
   position: relative;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template: "container";
   gap: var(--size-2);
+  aspect-ratio: var(--ratio-square);
+}
+
+.card > * {
+  grid-area: container;
+}
+
+.card h3 {
+  font-size: var(--font-size-4);
+  color: var(--text-1-dark);
 }
 
 .card figure {
-  position: relative;
-  flex: 1;
-  overflow: hidden;
   border-radius: var(--radius-3);
 }
 
@@ -17,35 +24,33 @@
   height: 100%;
 }
 
-.card img {
-  aspect-ratio: var(--ratio-widescreen);
-}
-
-.card header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-1);
-}
-
-.card h3 {
-  margin-block-end: var(--size-fluid-1);
-}
-
-.card p {
-  margin-block-end: var(--size-fluid-1);
+.card div {
+  place-self: end start;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-3);
+  color: var(--text-1-dark);
+  padding: var(--size-fluid-1);
+  margin: var(--size-fluid-1);
 }
 
 .card a:hover {
-  text-decoration: none;
+  text-decoration: underline 0.1em var(--text-1);
 }
 
-.card a::before {
+.card a::after {
   content: "";
   inset: 0;
+  width: 100%;
+  height: 100%;
   position: absolute;
+  place-self: stretch;
 }
 
-.card:hover {
-  text-decoration: underline 0.1em var(--text-1);
-  transition: text-decoration-color 250ms ease-in, fill 200ms ease-in;
+@media (max-width: 768px) {
+  .card > div {
+    margin: inherit;
+    border-radius: 0 0 var(--radius-3) var(--radius-3);
+    width: 100%;
+  }
 }

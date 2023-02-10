@@ -25,18 +25,15 @@
         </figure>
     {% endif %}
     <div>
-        <header>
-            {% if link or page or url %}
-                <a href="{% if value.link %}{{ value.link }}{% elif value.url%}{{value.localized.url}}{% else %}{{ value.page.localized.url }} {% endif %}"
-                    {% if value.new_tab %}target="_blank"{% endif %}>
-                    {% if title %}
-                        <h3>{{ title }}</h3>
-                    {% endif %}
-                </a>
-            {% else %}
-                <h3>{{ title }}</h3>
-            {% endif %}
-        </header>
-        {% if introduction %}<p>{{ introduction }}</p>{% endif %}
+        {% if link or page or url %}
+            <a href="{% if link %}{{ link }}{% elif url%}{{url}}{% else %}{{ page.url }} {% endif %}"
+                {% if value.new_tab %}target="_blank"{% endif %}>
+                {% if title %}
+                    <h3>{{ title }}</h3>
+                {% endif %}
+            </a>
+        {% else %}
+            <h3>{{ title }}</h3>
+        {% endif %}
     </div>
 </article>

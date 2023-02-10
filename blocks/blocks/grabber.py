@@ -25,5 +25,5 @@ class GrabberBlock(blocks.StructBlock):
 
     class Meta:
         group = "Content Grabber"
-        template = "templates/grabber.html"
+        template = "blocks/grabber.html"
         icon = "grip"

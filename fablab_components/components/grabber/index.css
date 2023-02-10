@@ -1,0 +1,38 @@
+.grabber h2 {
+  text-align: center;
+  margin-block-end: var(--size-fluid-3);
+}
+
+.grabber > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--size-fluid-2);
+}
+
+.grabber > div > :first-child {
+  grid-column: 1 / 3;
+}
+
+.grabber .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.grabber figure {
+  flex: 1;
+}
+
+.grabber picture {
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .grabber div {
+    grid-template-columns: 1fr;
+  }
+  .grabber > div > :first-child {
+    grid-column: inherit;
+  }
+}

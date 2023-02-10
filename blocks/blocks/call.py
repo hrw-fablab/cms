@@ -8,4 +8,4 @@ class CallBlock(blocks.StructBlock):
     page = blocks.PageChooserBlock(required=False)
 
     class Meta:
-        template = "molecules/call.html"
+        template = "blocks/call.html"

@@ -1,0 +1,28 @@
+.call {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-5);
+  align-items: center;
+  background: var(--noise-1);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: var(--size-fluid-5);
+}
+
+.call a {
+  text-decoration: none;
+  padding: var(--size-3);
+  padding-inline: var(--size-4);
+  border-radius: var(--radius-3);
+  color: var(--text-1-light);
+  font-weight: normal;
+  user-select: none;
+  background: var(--gray-3);
+}
+
+.call a:hover {
+  background-color: var(--gray-5);
+}

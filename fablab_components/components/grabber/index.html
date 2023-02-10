@@ -1,13 +1,15 @@
-  <div class="grabber">
+{% load component_tags %}
+
+<div class="grabber">
     {% if title %}
         <h2>{{title}}</h2>
     {% endif %}
     <div>
-    {% for pages in value.pages %} 
-        {% for page in pages.get_children.specific|dictsortreversed:'date'|slice:value.amount %} 
-            {% include "molecules/card.html" with value=page style=value.style %} 
-        {% endfor%} 
-    {% endfor %}
+        {% for pages in value.pages %}
+            {% for page in pages.get_children.specific|dictsortreversed:'date'|slice:value.amount %}
+                {% component "card" title=page.title introduction=page.localized.introduction link="link" image=page.image %}
+            {% endfor%}
+        {% endfor %}
+    </div>
 </div>
-  </div>
 

@@ -6,26 +6,11 @@
 .grabber > div {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--size-fluid-2);
+  gap: var(--size-fluid-3);
 }
 
 .grabber > div > :first-child {
   grid-column: 1 / 3;
-}
-
-.grabber .card {
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  align-items: stretch;
-}
-
-.grabber figure {
-  flex: 1;
-}
-
-.grabber picture {
-  height: 100%;
 }
 
 @media (max-width: 768px) {

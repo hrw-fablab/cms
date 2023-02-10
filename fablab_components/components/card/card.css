@@ -1,3 +1,51 @@
-.card-component {
-    background-color: red;
+.card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+}
+
+.card figure {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  border-radius: var(--radius-3);
+}
+
+.card picture {
+  height: 100%;
+}
+
+.card img {
+  aspect-ratio: var(--ratio-widescreen);
+}
+
+.card header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+}
+
+.card h3 {
+  margin-block-end: var(--size-fluid-1);
+}
+
+.card p {
+  margin-block-end: var(--size-fluid-1);
+}
+
+.card a:hover {
+  text-decoration: none;
+}
+
+.card a::before {
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.card:hover {
+  text-decoration: underline 0.1em var(--text-1);
+  transition: text-decoration-color 250ms ease-in, fill 200ms ease-in;
 }

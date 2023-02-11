@@ -4,7 +4,7 @@
     {% if title %}
         <h2>{{title}}</h2>
     {% endif %}
-    <div>
+    <div class="grabber--grid" data-layout="{{value.layout}}">
         {% for pages in value.pages %}
             {% for page in pages.get_children.specific|dictsortreversed:'date'|slice:value.amount %}
                 {% component "card" title=page.title introduction=page.localized.introduction link=page.localized.url image=page.image %}

@@ -5,9 +5,6 @@
   gap: var(--size-5);
   align-items: center;
   background: var(--noise-1);
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
   padding: var(--size-fluid-5);
 }

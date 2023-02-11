@@ -4,7 +4,7 @@
   display: grid;
   grid-template: "container";
   gap: var(--size-2);
-  aspect-ratio: var(--ratio-square);
+  aspect-ratio: var(--ratio-widescreen);
 }
 
 .card > * {

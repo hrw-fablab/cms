@@ -5,14 +5,12 @@ class ProjectIndexPage(FablabBasePage):
     parent_page_types = ["FolderPage", "HomePage"]
     subpage_type = ["ProjectPage"]
 
-    template = "pages/category.html"
+    template = "pages/projects.html"
 
     def get_context(self, request):
         context = super().get_context(request)
-        all_children = (
-            self.get_children().live().specific().order_by("-projectpage__category")
-        )
-        context["children"] = all_children
+        children = self.get_children().live().specific()
+        context["children"] = children
         return context
 
     class Meta:

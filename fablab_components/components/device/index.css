@@ -1,0 +1,41 @@
+.device {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template: "container";
+  gap: var(--size-2);
+  aspect-ratio: var(--ratio-square);
+  box-shadow: var(--shadow-2);
+  border-radius: var(--radius-3);
+  color: var(--text-1-dark);
+}
+
+.device > * {
+  grid-area: container;
+}
+
+.device picture {
+  height: 100%;
+}
+
+.device h2 {
+  font-size: var(--font-size-4);
+}
+
+.device--content {
+  place-self: end start;
+  margin: var(--size-fluid-1);
+  padding: var(--size-fluid-1);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-3);
+  background-color: hsla(0, 0%, 0%, 0.3);
+}
+
+.device--amount {
+  place-self: start end;
+  padding: var(--size-2);
+  margin: var(--size-2);
+  background: var(--brand-gradient);
+  border-radius: var(--radius-3);
+  display: flex;
+}

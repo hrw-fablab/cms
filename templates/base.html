@@ -62,7 +62,7 @@
         {% wagtail_site as current_site %}
         {% component "navigation" %}
         {% block content %}{% endblock %}
-        {% include "organisms/footer.html" %}
+        {% component "footer" %}
         {% component_js_dependencies %}
     </body>
 </html>

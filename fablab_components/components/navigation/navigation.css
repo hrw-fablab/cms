@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: start;
   padding-block: var(--size-2);
-  gap: var(--size-fluid-2);
+  gap: var(--size-fluid-4);
   width: 100%;
   color: var(--text-1-dark);
 }

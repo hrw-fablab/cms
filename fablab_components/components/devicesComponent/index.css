@@ -4,6 +4,7 @@
   justify-content: end;
   margin-block-end: var(--size-fluid-3);
   gap: var(--size-fluid-2);
+  flex-wrap: wrap-reverse;
 }
 
 .devices .filter {
@@ -13,6 +14,16 @@
 
 .devices--grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: var(--size-fluid-3);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 1fr));
+}
+
+@media (max-width: 768px) {
+  .devices header {
+    justify-content: start;
+  }
+
+  .devices header input {
+    flex: 1;
+  }
 }

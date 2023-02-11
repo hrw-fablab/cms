@@ -18,6 +18,10 @@
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 1fr));
 }
 
+.active {
+  background: var(--brand-gradient);
+}
+
 @media (max-width: 768px) {
   .devices header {
     justify-content: start;

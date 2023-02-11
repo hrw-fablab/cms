@@ -1,5 +1,6 @@
 const devicesSearch = document.getElementById("devices--search");
 const devices = document.querySelectorAll(".device");
+const filterButtons = document.querySelectorAll(".filter--button");
 
 let searchConfig = {
   search: "",
@@ -8,23 +9,26 @@ let searchConfig = {
 
 document
   .getElementById("print")
-  .addEventListener("click", () => handleFilter("3D DRUCKER"));
+  .addEventListener("click", (event) => handleFilter(event, "3D DRUCKER"));
 
 document
   .getElementById("wood")
-  .addEventListener("click", () => handleFilter("HOLZBEREICH"));
+  .addEventListener("click", (event) => handleFilter(event, "HOLZBEREICH"));
 
 document
   .getElementById("metall")
-  .addEventListener("click", () => handleFilter("METALL"));
+  .addEventListener("click", (event) => handleFilter(event, "METALL"));
 
-const handleFilter = (filter) => {
+const handleFilter = (event, filter) => {
+  filterButtons.forEach((element) => element.classList.remove("active"));
   if (filter == searchConfig.filter) {
     searchConfig.filter = "";
+    event.target.classList.remove("active");
     searchDevices();
     return;
   }
   searchConfig.filter = filter;
+  event.target.classList.add("active");
   searchDevices();
 };
 

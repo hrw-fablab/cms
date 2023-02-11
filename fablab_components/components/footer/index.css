@@ -5,12 +5,14 @@
   justify-content: space-between;
   align-items: center;
   padding-block: var(--size-fluid-4);
+  flex-wrap: wrap;
+  gap: var(--size-fluid-4);
 }
 
 .footer ul {
   list-style: none;
   display: flex;
-  gap: var(--size-fluid-3)
+  gap: var(--size-fluid-3);
 }
 
 .footer a {
@@ -19,4 +21,10 @@
 
 .footer a:hover {
   text-decoration: underline 0.1em var(--text-2);
+}
+
+@media (max-width: 500px) {
+  .footer ul {
+    flex-direction: column;
+  }
 }

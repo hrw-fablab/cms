@@ -4,8 +4,12 @@
     {% if image %}
         {% component "picture" image=image caption=image.caption sizes="600x600" breakpoints="600" %}
     {% endif %}
-    <div>
-        {{area}}
+    <div class="device--content">
+        <span>{{area}}</span>
         <h2>{{title}}</h2>
+        <div>{{model}} {{manufacturer}}</div>
+    </div>
+    <div class="device--amount">
+        {{amount}} Gerät
     </div>
 </div>

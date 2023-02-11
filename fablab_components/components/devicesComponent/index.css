@@ -1,0 +1,18 @@
+.devices header {
+  display: flex;
+  align-items: stretch;
+  justify-content: end;
+  margin-block-end: var(--size-fluid-3);
+  gap: var(--size-fluid-2);
+}
+
+.devices .filter {
+  display: flex;
+  gap: var(--size-fluid-1);
+}
+
+.devices--grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--size-fluid-3);
+}

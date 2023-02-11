@@ -1,0 +1,28 @@
+.device {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template: "container";
+  gap: var(--size-2);
+  aspect-ratio: var(--ratio-square);
+}
+
+.device > * {
+  grid-area: container;
+}
+
+.device figure {
+  border-radius: var(--radius-3);
+}
+
+.device picture {
+  height: 100%;
+}
+
+.device div {
+  place-self: end start;
+  margin: var(--size-fluid-1);
+  padding: var(--size-fluid-1);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-3);
+}

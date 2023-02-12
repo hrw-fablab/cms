@@ -3,10 +3,11 @@
   flex-direction: column;
   align-items: center;
   gap: var(--size-2);
+  text-align: center;
 }
 
 .person h3 {
-  font-size: var(--font-size-5);
+  font-size: var(--font-size-4);
 }
 
 .person p {

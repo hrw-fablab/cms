@@ -1,0 +1,9 @@
+{% load component_tags %}
+
+<div class="person">
+    {% if image %}
+        {% component "picture" image=image caption=image.caption sizes="300x300" breakpoints="300" %}
+    {% endif %}
+    <h2>{{title|default_if_none:""}} {{firstname}} {{lastname}}</h2>
+    <p>{{area|default_if_none:""}}</p>
+</div>

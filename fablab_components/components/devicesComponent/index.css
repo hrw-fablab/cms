@@ -1,7 +1,7 @@
 .devices header {
   display: flex;
   align-items: stretch;
-  justify-content: end;
+  justify-content: start;
   margin-block-end: var(--size-fluid-3);
   gap: var(--size-fluid-2);
   flex-wrap: wrap-reverse;

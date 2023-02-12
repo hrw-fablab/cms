@@ -2,12 +2,12 @@
 
 <div class="content devices">
     <header>
+        <input type="text" id="devices--search" />
         <div class="filter">
             <button class="filter--button" id="print">3D Drucker</button>
             <button class="filter--button" id="wood">Holzbereich</button>
             <button  class="filter--button"id="metall">Metall</button>
         </div>
-        <input type="text" id="devices--search" />
     </header>
     <div class="devices--grid">
         {% for element in devices %}

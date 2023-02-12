@@ -28,4 +28,4 @@ class ProjectMembers(blocks.StructBlock):
     class Meta:
         group = "Content Grabber"
         icon = "group"
-        template = "templates/project.html"
+        template = "blocks/project.html"

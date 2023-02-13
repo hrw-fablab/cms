@@ -23,7 +23,7 @@
   text-decoration: underline 0.1em var(--text-2);
 }
 
-@media only screen and (max-device-width: 500px) {
+@media only screen and (max-width: 500px) {
   .footer ul {
     flex-direction: column;
   }

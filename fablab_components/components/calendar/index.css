@@ -61,7 +61,7 @@
   aspect-ratio: var(--ratio-widescreen);
 }
 
-@media only screen and (max-device-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   .calendar > ol {
     grid-template-columns: 1fr;
     gap: var(--size-fluid-4);
@@ -172,7 +172,7 @@
   border-radius: var(--radius-2) 0 0 var(--radius-2);
 }
 
-@media only screen and (max-device-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   .desktop {
     display: none;
   }

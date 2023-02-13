@@ -18,7 +18,7 @@
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 1fr));
 }
 
-.active {
+.devices .active {
   background: var(--brand-gradient);
 }
 

@@ -40,13 +40,13 @@
   transform: scale(1);
 }
 
-@media (max-width: 1024px) {
+@media only screen and (max-device-width: 1024px) {
   .embed h2 {
     font-size: var(--font-size-5);
   }
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-device-width: 768px) {
   .embed {
     flex-direction: column;
   }

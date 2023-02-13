@@ -1,17 +1,22 @@
-.navigation {
+.navigation--container {
   background-color: transparent;
   position: fixed;
   top: 0;
   z-index: 10;
   display: flex;
-  align-items: center;
-  justify-content: start;
-  padding-block: var(--size-2);
-  gap: var(--size-fluid-4);
+  flex-direction: column;
   width: 100%;
   color: var(--text-1-dark);
   backdrop-filter: blur(8px);
   background-color: hsla(0, 0%, 0%, 0.5);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: var(--size-fluid-4);
+  padding-block: var(--size-2);
 }
 
 .navigation a, summary {

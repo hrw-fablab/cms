@@ -10,6 +10,20 @@
   margin-block-end: var(--size-fluid-1);
 }
 
+.calendar > header div {
+  display: flex;
+  gap: var(--size-fluid-1);
+}
+
+.calendar > header button {
+  fill: var(--text-1);
+  stroke: var(--text-1);
+}
+
+.calendar > header button:hover {
+  background-color: var(--surface-3);
+}
+
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -96,14 +110,16 @@
   padding: 0;
   border-radius: var(--radius-2);
   background-color: var(--surface-2);
-  box-shadow: var(--shadow-3);
+  box-shadow: var(--shadow-2);
 }
 
 .desktop summary {
   padding: var(--size-1);
+  color: var(--text-1-dark);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  text-decoration: none;
 }
 
 .desktop .description {
@@ -130,6 +146,13 @@
 
 .desktop .description header h3 {
   font-size: var(--font-size-4);
+}
+
+.desktop .description button {
+  border: none;
+  box-shadow: none;
+  fill: var(--text-1);
+  stroke: var(--text-1);
 }
 
 .events li > button {

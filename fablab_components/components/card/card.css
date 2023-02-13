@@ -46,7 +46,7 @@
   place-self: stretch;
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-device-width: 768px) {
   .card > div {
     margin: inherit;
     border-radius: 0 0 var(--radius-3) var(--radius-3);

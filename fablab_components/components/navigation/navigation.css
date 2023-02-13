@@ -10,6 +10,8 @@
   gap: var(--size-fluid-4);
   width: 100%;
   color: var(--text-1-dark);
+  backdrop-filter: blur(8px);
+  background-color: hsla(0, 0%, 0%, 0.5);
 }
 
 .navigation a, summary {
@@ -20,12 +22,6 @@
   color: var(--text-2);
   text-decoration-color: var(--text-2);
   fill: var(--text-2);
-}
-
-.shadow {
-  backdrop-filter: blur(8px);
-  box-shadow: var(--shadow-2);
-  background-color: hsla(0, 0%, 0%, 0.5);
 }
 
 .navigation details {

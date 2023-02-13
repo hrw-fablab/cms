@@ -31,6 +31,7 @@
   color: var(--text-1-dark);
   padding: var(--size-fluid-1);
   margin: var(--size-fluid-1);
+  background-color: hsla(0, 0%, 0%, 0.5);
 }
 
 .card a:hover {

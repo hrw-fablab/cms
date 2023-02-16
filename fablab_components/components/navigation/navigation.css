@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: start;
   gap: var(--size-fluid-4);
-  padding-block: var(--size-3);
+  padding-block: var(--size-2);
 }
 
 .navigation #menu-button {

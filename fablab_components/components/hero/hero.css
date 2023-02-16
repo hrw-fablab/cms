@@ -2,9 +2,6 @@
   display: grid;
   grid-template: "container";
   height: 70vh;
-  clip-path: polygon(0 calc(0% + 0vw), 100% 0, 100% calc(100% - 3vw), 0 100%);
-  -webkit-perspective: 3px;
-  perspective: 3px;
   color: var(--text-1-dark);
 }
 
@@ -21,7 +18,6 @@
   justify-content: center;
   gap: var(--size-fluid-2);
   width: 60%;
-  clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
   background-color: inherit;
 }
 
@@ -57,13 +53,6 @@
   height: 70vh;
   width: 100%;
   border-radius: inherit;
-}
-
-.hero::before {
-  content: "";
-  inset: 0;
-  background: linear-gradient(180deg, hsla(0, 0%, 20%, 0.519) 0%, transparent 40%);
-  position: absolute;
 }
 
 .hero img {

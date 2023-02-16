@@ -31,6 +31,52 @@ h5 {
   --desktop: 30rem;
 }
 
+:where([data-margin-block]) {
+  margin-block: var(--margin-block);
+}
+:where([data-margin-block="large"]) {
+  --margin-block: var(--size-fluid-7);
+}
+:where([data-margin-block="medium"]) {
+  --margin-block: var(--size-fluid-4);
+}
+:where([data-margin-block="small"]) {
+  --margin-block: var(--size-fluid-1);
+}
+:where([data-margin-block="tiny"]) {
+  --margin-block: var(--size-2);
+}
+:where([data-margin-block-end]) {
+  margin-block-end: var(--margin-block-end);
+}
+:where([data-margin-block-end="large"]) {
+  --margin-block-end: var(--size-fluid-7);
+}
+:where([data-margin-block-end="medium"]) {
+  --margin-block-end: var(--size-fluid-4);
+}
+:where([data-margin-block-end="small"]) {
+  --margin-block-end: var(--size-fluid-1);
+}
+:where([data-margin-block-end="tiny"]) {
+  --margin-block-end: var(--size-2);
+}
+:where([data-margin-block-start]) {
+  margin-block-start: var(--margin-block-start);
+}
+:where([data-margin-block-start="large"]) {
+  --margin-block-start: var(--size-fluid-7);
+}
+:where([data-margin-block-start="medium"]) {
+  --margin-block-start: var(--size-fluid-4);
+}
+:where([data-margin-block-start="small"]) {
+  --margin-block-start: var(--size-fluid-1);
+}
+:where([data-margin-block-start="tiny"]) {
+  --margin-block-start: var(--size-2);
+}
+
 .overflow {
   overflow: hidden !important;
 }

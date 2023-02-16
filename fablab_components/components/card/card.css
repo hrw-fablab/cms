@@ -6,10 +6,6 @@
   gap: var(--size-2);
 }
 
-.card > * {
-  grid-area: container;
-}
-
 .card h3 {
   color: var(--text-1-dark);
 }

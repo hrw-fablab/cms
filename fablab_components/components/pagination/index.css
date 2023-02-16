@@ -1,0 +1,25 @@
+.pagination {
+  font-size: var(--font-size-4);
+}
+
+.pagination ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-fluid-1);
+}
+
+.pagination a {
+  color: inherit;
+  font-size: var(--font-size-4);
+  text-decoration: underline 0.1em transparent;
+}
+
+.pagination a:hover {
+  text-decoration-color: var(--text-2);
+}
+
+.pagination .active {
+  text-decoration-color: underline 0.1em var(--text-2);
+}

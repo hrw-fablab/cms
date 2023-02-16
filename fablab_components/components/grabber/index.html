@@ -7,7 +7,7 @@
     <div class="grabber--grid" data-layout="{{value.layout}}">
         {% for pages in value.pages %}
             {% for page in pages.get_children.specific|dictsortreversed:'date'|slice:value.amount %}
-                {% component "card" title=page.title introduction=page.localized.introduction link=page.localized.url image=page.image %}
+                {% component "card" title=page.title introduction=page.localized.introduction link=page.localized.url image=page.image author=page.author date=page.date %}
             {% endfor%}
         {% endfor %}
     </div>

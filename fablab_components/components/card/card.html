@@ -1,28 +1,8 @@
-{% load wagtailimages_tags %}
+{% load wagtailimages_tags component_tags %}
 <article class="card"
     data-style="{{style}}">
     {% if image %}
-        <figure>
-            <picture>
-                {% image image fill-854x480-c70 format-webp webpquality-80 as image_768 %}
-                {% image image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
-                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-                    sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                    type="image/webp">
-                {% image image fill-854x480 format-jpeg as image_768 %}
-                {% image image fill-480x360 format-jpeg as image_480 %}
-                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-                    sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                    type="image/jpg">
-                <img src="{{ image_480.url }}"
-                    alt="{{ image_480.alt }}"
-                    decoding="async"
-                    loading="lazy">
-            </picture>
-            <figcaption>
-                {{ value.image.credit }}
-            </figcaption>
-        </figure>
+        {% component "picture" image=image caption=image.caption sizes="854x480 480x360" breakpoints="768 480" %}
     {% endif %}
     <div>
         {% if link or page or url %}
@@ -35,5 +15,17 @@
         {% else %}
             <h3>{{ title }}</h3>
         {% endif %}
+        {% if author %}
+            <div class="author">
+                {% if author.image %}
+                    {% component "picture" image=author.image caption=author.image.caption sizes="100x100" breakpoints="" %}
+                {% endif %}
+                <div>
+                    <span>{{author}}</span>
+                    <span>{{date}}</span>
+                </div>
+            </div>
+        {% endif %}
+
     </div>
 </article>

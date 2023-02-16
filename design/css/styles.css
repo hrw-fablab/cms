@@ -1,0 +1,40 @@
+body {
+  font-family: "Inter var";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Manrope VF";
+}
+
+:where(.content) {
+  --desktop: 100rem;
+  padding-inline: max((100% - var(--desktop)) /2, var(--size-fluid-2));
+}
+
+:where(.content)[data-width="large"] {
+  --desktop: 90rem;
+}
+
+:where(.content)[data-width="medium"] {
+  --desktop: 70rem;
+}
+
+:where(.content)[data-width="small"] {
+  --desktop: 55rem;
+}
+
+:where(.content)[data-width="tiny"] {
+  --desktop: 30rem;
+}
+
+.overflow {
+  overflow: hidden !important;
+}
+
+.visible {
+  display: flex !important;
+}

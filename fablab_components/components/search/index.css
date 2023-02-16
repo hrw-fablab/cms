@@ -1,4 +1,5 @@
 .search {
+  margin-inline-start: auto;
     position: relative;
     flex: 0 1 15rem;
 }
@@ -11,6 +12,10 @@
   box-shadow: unset;
 }
 
+.search .input:hover {
+  outline: var(--border-size-1) solid var(--text-2);
+}
+
 .search input:focus-within {
   outline: none;
 }
@@ -20,7 +25,7 @@
 }
 
 .search .input:focus-within {
-  outline: var(--border-size-2) solid var(--brand);
+  outline: var(--border-size-1) solid var(--brand);
 }
 
 .search .input {
@@ -47,6 +52,7 @@
   width: 100%;
   gap: var(--size-fluid-1);
   padding: var(--size-fluid-1);
+  color: var(--text-1);
 }
 
 .results li a {

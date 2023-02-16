@@ -1,5 +1,6 @@
 body {
   font-family: "Inter var";
+  scrollbar-gutter: stable;
 }
 
 h1,
@@ -80,7 +81,6 @@ h5 {
 .overflow {
   overflow: hidden !important;
 }
-
 
 main > :first-child:not(.hero, .spacer, .banner, .split, .hero-project) {
   margin-block-start: var(--size-fluid-5);

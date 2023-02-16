@@ -18,7 +18,6 @@
   justify-content: center;
   gap: var(--size-fluid-2);
   width: 60%;
-  background-color: inherit;
 }
 
 .hero p {
@@ -28,20 +27,6 @@
 
 .hero h1 {
   color: var(--text-1-dark);
-}
-
-.hero a {
-  font-size: var(--font-size-4);
-  padding-block: var(--size-1);
-  padding-inline: var(--size-2);
-  text-decoration: none;
-  border-radius: var(--radius-2);
-  border: var(--border-size-2) solid var(--gray-1);
-  color: inherit;
-}
-
-.hero a:hover {
-  border-color: var(--brand);
 }
 
 .hero picture {

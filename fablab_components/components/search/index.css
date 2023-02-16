@@ -10,6 +10,7 @@
   padding: 0;
   border-radius: 0;
   box-shadow: unset;
+  flex: 1;
 }
 
 .search .input:hover {
@@ -67,4 +68,16 @@
 .results li {
   border-block-end: var(--border-size-2) solid var(--surface-3);
   width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .search {
+    margin-inline-start: 0;
+    width: 100%;
+    flex: unset;
+  }
+
+  .search form {
+    flex: 1;
+  }
 }

@@ -78,6 +78,7 @@ MIDDLEWARE = [
     "wagtailcache.cache.UpdateCacheMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django_components.middleware.ComponentDependencyMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django_components.middleware.ComponentDependencyMiddleware",
@@ -266,3 +267,5 @@ WAGTAILEMBEDS_FINDERS = [
 PASSWORD_REQUIRED_TEMPLATE = "password_required.html"
 
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE = "wagtailadmin/login.html"
+
+COMPONENTS = {"RENDER_DEPENDENCIES": True}

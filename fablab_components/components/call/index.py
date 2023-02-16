@@ -15,4 +15,3 @@ class Call(component.Component):
 
     class Media:
         css = "call/index.css"
-        js = "call/index.js"

@@ -5,5 +5,5 @@ class EventsBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
 
     class Meta:
-        template = "organisms/events.html"
+        template = "blocks/events.html"
         icon = "date"

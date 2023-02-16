@@ -17,4 +17,3 @@ class Device(component.Component):
 
     class Media:
         css = "device/index.css"
-        js = "device/index.js"

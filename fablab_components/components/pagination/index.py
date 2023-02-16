@@ -10,4 +10,3 @@ class Grabber(component.Component):
 
     class Media:
         css = "pagination/index.css"
-        js = "pagination/index.js"

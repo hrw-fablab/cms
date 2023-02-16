@@ -18,4 +18,3 @@ class Card(component.Component):
 
     class Media:
         css = "card/card.css"
-        js = "card/card.js"

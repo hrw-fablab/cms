@@ -17,4 +17,3 @@ class Person(component.Component):
 
     class Media:
         css = "person/index.css"
-        js = "person/index.js"

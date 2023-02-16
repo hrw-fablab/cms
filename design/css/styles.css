@@ -81,6 +81,15 @@ h5 {
   overflow: hidden !important;
 }
 
-.visible {
-  display: flex !important;
+
+main > :first-child:not(.hero, .spacer, .banner, .split, .hero-project) {
+  margin-block-start: var(--size-fluid-5);
+}
+
+h2 {
+  font-size: var(--font-size-5);
+}
+
+.heading {
+  text-align: center;
 }

@@ -78,7 +78,9 @@ def get_events():
 
     max_iteration = 0
 
-    while len(result) <= 4 or max_iteration <= 3:
+    print("test")
+
+    while len(result) <= 4 and max_iteration <= 3:
         events = Event.objects.filter(
             (
                 Q(start__year=str(date.year))

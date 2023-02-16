@@ -7,7 +7,7 @@
 }
 
 .card h3 {
-  color: var(--text-1-dark);
+  font-size: var(--font-size-5);
 }
 
 .card figure {
@@ -26,8 +26,18 @@
   gap: var(--size-fluid-2);
 }
 
+.card img {
+  height: 100%;
+  border-radius: var(--radius-3);
+}
+
+.card a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .card a:hover {
-  text-decoration: underline 0.1em var(--text-1);
+  text-decoration: underline;
 }
 
 .card a::after {

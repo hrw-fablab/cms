@@ -52,15 +52,24 @@ a {
 
 @media only screen and (max-width: 1024px) {
   .menu {
-    display: none;
+    display: flex;
+    visibility: hidden;
     width: 100%;
     position: absolute;
     inset: 0;
     height: 100vh;
     background-color: var(--surface-1);
-    padding: var(--size-fluid-3);
+    padding: var(--size-fluid-2);
     padding-block-start: var(--size-fluid-5);
     font-size: var(--font-size-4);
+    transform: translate(0, -100%);
+    transition: all 0.4s ease-out;
+  }
+
+  .menu.visible {
+    visibility: visible;
+    transform: translate(0, 0);
+    transition: transform 0.5s ease-in;
   }
 
   .menu ul {

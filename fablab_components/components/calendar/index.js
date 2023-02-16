@@ -26,11 +26,14 @@ let month_number = new Date().getMonth();
 let month_string = months[month_number];
 
 const handleChange = (event) => {
+  console.log(event.target.id);
   if (event.target.id == "forward") {
     month_number += 1;
   } else {
     month_number -= 1;
   }
+
+  console.log(month_number);
 
   if (month_number == 12) {
     year += 1;
@@ -42,6 +45,7 @@ const handleChange = (event) => {
     month_number = 11;
   }
   month_string = months[month_number];
+  console.log(month_string);
   createCalendar();
 };
 

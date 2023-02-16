@@ -28,6 +28,7 @@
 }
 
 .logo {
+  z-index: 5;
   text-decoration: none;
   color: inherit;
   font-size: var(--font-size-2);

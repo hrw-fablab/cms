@@ -8,7 +8,5 @@ class BannerBlock(blocks.StructBlock):
     image = ImageChooserBlock(required=False)
     illustration = blocks.BooleanBlock(required=False)
 
-    def get_template(self, context=None):
-        if get_current_site(context["request"]).domain == "hrw-fablab":
-            return "organisms/banner.html"
-        return "organisms/banner.html"
+    class Meta:
+        template = "blocks/banner.html"

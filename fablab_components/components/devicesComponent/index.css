@@ -7,6 +7,16 @@
   flex-wrap: wrap-reverse;
 }
 
+.devices button {
+  padding: var(--size-2);
+  border-radius: var(--radius-2);
+  border: solid var(--border-size-1) var(--surface-2);
+}
+
+.devices input {
+  border: solid var(--border-size-1) var(--surface-2);
+}
+
 .devices .filter {
   display: flex;
   gap: var(--size-fluid-1);

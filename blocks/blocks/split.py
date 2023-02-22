@@ -19,4 +19,4 @@ class SplitBlock(blocks.StructBlock):
     accent = blocks.BooleanBlock(required=False)
 
     class Meta:
-        template = "organisms/split.html"
+        template = "blocks/split.html"

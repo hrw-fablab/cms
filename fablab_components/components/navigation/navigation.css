@@ -1,6 +1,7 @@
 .header {
-  backdrop-filter: blur(8px);
-  background-color: hsla(0, 0%, 0%, 0.5);
+  backdrop-filter: saturate(180%) blur(20px);
+  background-color: hsla(240, 3%, 12%, 0.9);
+  border-bottom: solid var(--border-size-1) var(--gray-7);
   color: var(--text-1-dark);
   display: flex;
   flex-direction: column;
@@ -30,7 +31,7 @@
   z-index: 5;
   text-decoration: none;
   color: inherit;
-  font-size: var(--font-size-2);
+  font-size: var(--font-size-3);
   border-block-end: var(--border-size-1) solid transparent;
 }
 
@@ -52,7 +53,6 @@
 .navigation #menu-button.close .close {
   display: inherit;
 }
-
 
 @media only screen and (max-width: 1024px) {
   .header {
@@ -83,7 +83,7 @@
     display: none;
     overflow-y: auto;
   }
-  
+
   .bottom.visible {
     display: flex;
     position: absolute;
@@ -98,5 +98,6 @@
     align-items: start;
     padding: var(--size-fluid-2);
     justify-content: flex-start;
+    font-size: var(--font-size-3);
   }
 }

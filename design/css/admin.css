@@ -1,0 +1,7 @@
+.sidebar-custom-branding {
+  margin: 0 auto;
+}
+
+:is(.w-field--model_choice_field):is(:hover, :focus-within) .chooser__actions {
+  opacity: 1;
+}

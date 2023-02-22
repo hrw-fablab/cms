@@ -1,50 +1,30 @@
 {% load wagtailcore_tags i18n wagtailimages_tags component_tags %}
 {% wagtail_site as current_site %}
-<a class="skip" href="#main">Skip to content</a>
-<header class="navigation--container" id="navigation">
-    {% if request.get_host == "hrw-fablab.de" %}
-        {% include "molecules/alert.html" %}
-    {% endif %}
+<header class="header" id="header">
+    {% include "molecules/alert.html" %}
     <div class="navigation content">
-        <a class="logo" href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
-            {% if settings.global.GlobalSettings.logo %}
-                {% image settings.global.GlobalSettings.logo original as logo_image %}
-                <img class="{% if settings.global.GlobalSettings.logo_title %} full{% endif %}"
-                    src="{{ logo_image.url }}"
-                    alt="Logo"
-                    loading="eager"
-                    decoding="sync">
+        <div class="top">
+            <a class="logo" href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
+                {% if settings.global.GlobalSettings.logo %}
+                    {% image settings.global.GlobalSettings.logo original as logo_image %}
+                    <img class="{% if settings.global.GlobalSettings.logo_title %} full{% endif %}"
+                        src="{{ logo_image.url }}"
+                        alt="Logo"
+                        loading="eager"
+                        decoding="sync">
+                {% endif %}
+                {{ settings.global.GlobalSettings.logo_title|default:'' }}
+            </a>
+            <button id="menu-button">
+                <svg class="open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+                <svg class="close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="bottom" id="bottom">
+            {% component "menu" %}
+            {% if settings.global.GlobalSettings.search %}
+                {% component "search" %}
             {% endif %}
-            {{ settings.global.GlobalSettings.logo_title|default:'' }}
-        </a>
-        <button id="menu-button" class="button">Menu</button>
-        <nav class="menu" id="menu">
-            <ul>
-                {% for element in menuitems %}
-                    <li>
-                        {% if element.content_type.model == "folderpage" or element.content_type.model == "qufolderpage" %}
-                            <details>
-                                <summary>
-                                    {{ element.localized }}
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                                </summary>
-                                <ul class="submenu">
-                                    {% for subelement in element.get_children.specific %}
-                                        <li>
-                                            <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </details>
-                        {% else %}
-                            <a href="{{ element.localized.url }}">{{ element.localized }}</a>
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
-        </nav>
-        {% if settings.global.GlobalSettings.search %}
-            {% component "search" %}
-        {% endif %}
+        </div>
     </div>
 </header>

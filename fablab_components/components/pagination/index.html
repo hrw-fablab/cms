@@ -1,0 +1,28 @@
+{% load index_tag %}
+{% if children.paginator.num_pages > 1 %}
+    <section class="content" data-width="small" data-margin-block="medium">
+        <nav class="pagination" aria-label="pagination">
+            <ul>
+                {% if children.has_previous %}
+                    <li>
+                        <a href="{% url_replace request page=children.previous_page_number %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        </a>
+                    </li>
+                {% endif %}
+                {% for page_num in children.paginator.page_range %}
+                    <li>
+                        <a class="{%if page_num == children.number %}active{%endif%}" href="{% url_replace request page=page_num %}">{{ page_num }}</a>
+                    </li>
+                {% endfor %}
+                {% if children.has_next %}
+                    <li>
+                        <a href="{% url_replace request page=children.next_page_number %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </section>
+{% endif %}

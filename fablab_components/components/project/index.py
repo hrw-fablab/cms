@@ -10,4 +10,3 @@ class Project(component.Component):
 
     class Media:
         css = "project/index.css"
-        js = "project/index.js"

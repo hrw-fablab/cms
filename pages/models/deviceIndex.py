@@ -12,7 +12,6 @@ class DeviceIndexPage(FablabBasePage):
     def get_context(self, request):
         context = super().get_context(request)
         devices = Device.objects.all().order_by("-area")
-        print(devices)
         context["devices"] = devices
         return context
 

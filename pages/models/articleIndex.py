@@ -1,6 +1,3 @@
-from django.db import models
-from wagtail.admin.panels import FieldPanel
-
 from core.models import FablabBasePage
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -18,7 +15,7 @@ class ArticleIndexPage(FablabBasePage):
             self.get_children().live().specific().order_by("-articlepage__date")
         )
 
-        paginator = Paginator(all_children, 8)
+        paginator = Paginator(all_children, 6)
         page = request.GET.get("page")
         try:
             children = paginator.page(page)
@@ -31,4 +28,4 @@ class ArticleIndexPage(FablabBasePage):
         return context
 
     class Meta:
-        verbose_name = "Index Seite"
+        verbose_name = "Artikel Index Seite"

@@ -19,13 +19,16 @@
 }
 
 .grabber--grid .card {
-  aspect-ratio: var(--aspect-ratio, var(--ratio-square));
+  aspect-ratio: var(--aspect-ratio);
   grid-column: var(--grid-column);
 }
 
 .grabber--grid[data-layout="newspaper"] .card:nth-child(1) {
   --grid-column: 1 / 3;
-  --aspect-ratio: var(--ratio-widescreen);
+}
+
+.grabber--grid[data-layout="newspaper"] .card:nth-child(2) {
+  --aspect-ratio: var(--ratio-square);
 }
 
 .grabber--grid[data-layout="magazine"] > :nth-child(1) {

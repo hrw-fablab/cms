@@ -19,7 +19,8 @@
 }
 
 .devices .active {
-  background: var(--brand-gradient);
+  background: var(--brand);
+  outline: none;
 }
 
 @media only screen and (max-width: 768px) {

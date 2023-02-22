@@ -1,41 +1,42 @@
 .card {
   position: relative;
   overflow: hidden;
-  display: grid;
-  grid-template: "container";
-  gap: var(--size-2);
-  aspect-ratio: var(--ratio-widescreen);
-}
-
-.card > * {
-  grid-area: container;
+  display: flex;
+  flex-direction: column;
 }
 
 .card h3 {
-  color: var(--text-1-dark);
+  font-size: var(--font-size-5);
 }
 
 .card figure {
   border-radius: var(--radius-3);
+  height: 100%;
 }
 
 .card picture {
   height: 100%;
 }
 
-.card div {
-  place-self: end start;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+.card > div {
+  padding: var(--size-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-fluid-1);
+}
+
+.card img {
+  height: 100%;
   border-radius: var(--radius-3);
-  color: var(--text-1-dark);
-  padding: var(--size-fluid-1);
-  margin: var(--size-fluid-1);
-  background-color: hsla(0, 0%, 0%, 0.5);
+}
+
+.card a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .card a:hover {
-  text-decoration: underline 0.1em var(--text-1);
+  text-decoration: underline;
 }
 
 .card a::after {
@@ -53,4 +54,26 @@
     border-radius: 0 0 var(--radius-3) var(--radius-3);
     width: 100%;
   }
+}
+
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+}
+
+.author div {
+  display: flex;
+  flex-direction: column;
+}
+
+.author div :first-child{
+  font-weight: bold;
+}
+
+.author img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
 }

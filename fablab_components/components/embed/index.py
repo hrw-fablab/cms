@@ -10,4 +10,3 @@ class Embed(component.Component):
 
     class Media:
         css = "embed/index.css"
-        js = "embed/index.js"

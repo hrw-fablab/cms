@@ -1,6 +1,7 @@
 .search {
-    position: relative;
-    flex: 0 1 15rem;
+  margin-inline-start: auto;
+  position: relative;
+  flex: 0 1 15rem;
 }
 
 .search input {
@@ -9,6 +10,12 @@
   padding: 0;
   border-radius: 0;
   box-shadow: unset;
+  flex: 1;
+  outline: none;
+}
+
+.search .input:hover {
+  outline: var(--border-size-1) solid var(--text-2);
 }
 
 .search input:focus-within {
@@ -20,13 +27,13 @@
 }
 
 .search .input:focus-within {
-  outline: var(--border-size-2) solid var(--brand);
+  outline: var(--border-size-1) solid var(--brand);
 }
 
 .search .input {
   display: flex;
   flex-direction: row;
-  background-color: var(--surface-3);
+  background-color: var(--surface-4);
   border-radius: var(--radius-2);
   padding-inline: var(--size-2);
   padding-block: var(--size-1);
@@ -47,6 +54,7 @@
   width: 100%;
   gap: var(--size-fluid-1);
   padding: var(--size-fluid-1);
+  color: var(--text-1);
 }
 
 .results li a {
@@ -55,10 +63,22 @@
 }
 
 .results li a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .results li {
   border-block-end: var(--border-size-2) solid var(--surface-3);
   width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .search {
+    margin-inline-start: 0;
+    width: 100%;
+    flex: unset;
+  }
+
+  .search form {
+    flex: 1;
+  }
 }

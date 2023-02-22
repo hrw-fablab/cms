@@ -1,14 +1,13 @@
-.navigation--container {
-  background-color: transparent;
-  position: fixed;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  color: var(--text-1-dark);
+.header {
   backdrop-filter: blur(8px);
   background-color: hsla(0, 0%, 0%, 0.5);
+  color: var(--text-1-dark);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .navigation {
@@ -19,82 +18,85 @@
   padding-block: var(--size-2);
 }
 
-.navigation a, summary {
-  color: inherit;
-}
-
-.navigation a:hover, summary:hover {
-  color: var(--text-2);
-  text-decoration-color: var(--text-2);
-  fill: var(--text-2);
-}
-
-.navigation details {
-  padding: inherit;
-  background-color: transparent;
-  user-select: none;
-}
-
-.navigation a,
-summary {
-  text-decoration: underline 0.1em transparent;
-  transition: text-decoration-color 250ms ease-in, fill 200ms ease-in;
-  border: none;
-  padding: inherit;
-  margin: inherit;
-  background-color: transparent;
-  font-weight: normal;
-  fill: var(--text-1-dark);
-  display: flex;
-  justify-content: space-between;
-}
-
-.navigation nav {
-  margin-inline-end: var(--size-5);
-  flex-shrink: 0;
-}
-
 .navigation #menu-button {
   display: none;
+  background: transparent;
+  border: none;
   padding: var(--size-2);
-  border-radius: var(--radius-2);
-  border: solid var(--surface-2) 0.15rem;
-  line-height: 1.5;
-  background-color: transparent;
+  z-index: 5;
 }
 
-.navigation .search {
-  margin-inline-start: auto;
+.logo {
+  z-index: 5;
+  text-decoration: none;
+  color: inherit;
+  font-size: var(--font-size-2);
+  border-block-end: var(--border-size-1) solid transparent;
 }
 
-.navigation .visible {
+.bottom {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
 }
+
+.close {
+  display: none;
+}
+
+.navigation #menu-button.close .open {
+  display: none;
+}
+
+.navigation #menu-button.close .close {
+  display: inherit;
+}
+
 
 @media only screen and (max-width: 1024px) {
-  .navigation {
+  .header {
     position: sticky;
+    background-color: var(--surface-1);
+    color: var(--text-1);
+  }
+
+  .navigation {
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: inherit;
-    background-color: var(--surface-1);
+    gap: 0;
+    padding-block: var(--size-1);
   }
 
   .navigation #menu-button {
     display: flex;
+    outline: none;
   }
 
-  .navigation nav {
-    width: 100%;
-    margin: inherit;
-    display: none;
-  }
-
-  .navigation nav a {
+  .top {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
   }
 
-  .navigation .search {
+  .bottom {
     display: none;
+    overflow-y: auto;
+  }
+  
+  .bottom.visible {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    height: 100vh;
+    width: 100%;
+    background-color: var(--surface-1);
+    flex-direction: column;
+    gap: var(--size-fluid-2);
+    align-items: start;
+    padding: var(--size-fluid-2);
+    justify-content: flex-start;
   }
 }

@@ -18,6 +18,10 @@
   height: 100%;
 }
 
+.device img {
+  width: 100%;
+}
+
 .device h2 {
   font-size: var(--font-size-4);
 }
@@ -35,7 +39,7 @@
   place-self: start end;
   padding: var(--size-2);
   margin: var(--size-2);
-  background: var(--brand-gradient);
+  background: var(--brand);
   border-radius: var(--radius-3);
   display: flex;
 }

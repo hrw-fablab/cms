@@ -30,6 +30,11 @@
   font-size: var(--font-size-2);
 }
 
+.events section a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .events section a:hover {
   text-decoration: none;
 }

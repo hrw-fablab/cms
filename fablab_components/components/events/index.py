@@ -114,3 +114,4 @@ class Events(component.Component):
 
     class Media:
         css = "events/index.css"
+        js = "events/index.js"

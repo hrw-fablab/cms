@@ -96,27 +96,9 @@ h2 {
 
 input {
   border-radius: var(--radius-2);
-  border: none;
-}
-
-input:focus-within {
-  outline-color: var(--brand);
-}
-
-input:hover {
-  outline-color: var(--brand);
-}
-
-input {
-  outline: var(--border-size-1) solid var(--surface-3);
   padding-inline: var(--size-3);
-}
-
-button {
-  border-radius: var(--radius-2);
-  border: none;
   padding: var(--size-2);
-  outline: var(--border-size-1) solid var(--surface-3);
+  border: none;
 }
 
 .grid {

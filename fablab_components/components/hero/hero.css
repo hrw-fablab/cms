@@ -48,17 +48,25 @@
 }
 
 .hero #control {
+  display: none;
   background-color: transparent;
-  display: grid;
   place-items: center;
   z-index: 2;
   position: relative;
   border-radius: inherit;
-  border: inherit;
+  border: none;
+}
+
+.hero:hover #control {
+  display: grid;
 }
 
 .hero #control svg {
   stroke: var(--surface-1-light);
+}
+
+.hero .hidden {
+  display: none !important;
 }
 
 @media only screen and (max-width: 1024px) {

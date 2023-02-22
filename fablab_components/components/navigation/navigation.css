@@ -1,6 +1,7 @@
 .header {
-  backdrop-filter: blur(8px);
-  background-color: hsla(0, 0%, 0%, 0.5);
+  backdrop-filter: saturate(180%) blur(20px);
+  background-color: hsla(240, 3%, 12%, 0.9);
+  border-bottom: solid var(--border-size-1) var(--gray-7);
   color: var(--text-1-dark);
   display: flex;
   flex-direction: column;
@@ -53,7 +54,6 @@
   display: inherit;
 }
 
-
 @media only screen and (max-width: 1024px) {
   .header {
     position: sticky;
@@ -83,7 +83,7 @@
     display: none;
     overflow-y: auto;
   }
-  
+
   .bottom.visible {
     display: flex;
     position: absolute;

@@ -3,25 +3,21 @@ from __future__ import absolute_import, unicode_literals
 from wagtail.contrib.forms.models import AbstractEmailForm
 from core.models import FablabBasePage
 
-from forms.forms import FabLabCaptchaFormBuilder, remove_captcha_field
+from forms.forms import FabLabCaptchaFormBuilder, remove_honeypot_field
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.mail import send_mail
 
-from django.core.mail import send_mail
-
 
 class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
-    """Pages implementing a captcha form with email notification should inhert from this"""
-
     form_builder = FabLabCaptchaFormBuilder
 
     def get_submission_class(self):
         return CustomFormSubmission
 
     def process_form_submission(self, form):
-        remove_captcha_field(form)
+        remove_honeypot_field(form)
         data = form.cleaned_data
         date = None
         if "date" in data:

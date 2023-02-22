@@ -8,40 +8,18 @@
         <form id="form"
             action="{% pageurl page %}"
             method="post"
-            class="content"
+            class="content form"
             data-width="small"
             data-margin-block-end="large">
             {% csrf_token %}
             {% for field in form.visible_fields %}
-                {% if field.id_for_label == "id_wagtailcaptcha" %}
-                    {% include "captcha/widget_v3.html" with field=field.field widget=field.field.widget %}
-                {% else %}
-                    <div>
-                        {{ field.label_tag }}
-                        {{ field }} 
-                        <p>{{field.help_text}}</p>
-                    </div>
-                {% endif %}
+                <div data-tag="{{field.label}}">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    <p>{{field.help_text}}</p>
+                </div>
             {% endfor %}
             <input type="submit" id="submitButton"/>
-            <div class="captcha">
-                This site is protected by reCAPTCHA and the Google
-                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-            </div>
         </form>
-        <script>
-            window.addEventListener("load", () => {
-                try {
-                    const element = document.getElementById('id_date')
-                    const url = new URL(window.location.href)
-                    if ([...element.options].find(o => o.value == url.searchParams.get('date'))) {
-                        element.value = url.searchParams.get('date')
-                    }
-                } catch (err) {
-                    return
-                }
-            })
-        </script>
     </main>
 {% endblock %}

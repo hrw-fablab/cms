@@ -1,10 +1,8 @@
 {% load wagtailcore_tags i18n wagtailimages_tags component_tags %}
 {% wagtail_site as current_site %}
-<header class="content header" id="header">
-    {% if request.get_host == "hrw-fablab.de" %}
-        {% include "molecules/alert.html" %}
-    {% endif %}
-    <div class="navigation">
+<header class="header" id="header">
+    {% include "molecules/alert.html" %}
+    <div class="navigation content">
         <div class="top">
             <a class="logo" href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
                 {% if settings.global.GlobalSettings.logo %}

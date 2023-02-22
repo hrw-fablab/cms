@@ -83,7 +83,7 @@ h5 {
 }
 
 main > :first-child:not(.hero, .spacer, .banner, .split, .hero-project) {
-  margin-block-start: var(--size-fluid-5);
+  margin-block-start: var(--size-fluid-6);
 }
 
 h2 {
@@ -117,4 +117,15 @@ button {
   border: none;
   padding: var(--size-2);
   outline: var(--border-size-1) solid var(--surface-3);
+}
+
+.grid {
+  display: grid;
+  --fill: auto-fill;
+  --card-size: 30rem;
+  grid-template-columns: repeat(
+    var(--fill),
+    minmax(min(100%, var(--card-size)), 1fr)
+  );
+  gap: var(--size-fluid-3);
 }

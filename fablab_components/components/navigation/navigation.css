@@ -34,10 +34,6 @@
   border-block-end: var(--border-size-1) solid transparent;
 }
 
-.logo:hover {
-  border-color: var(--text-2);
-}
-
 .bottom {
   display: flex;
   align-items: center;
@@ -74,6 +70,7 @@
 
   .navigation #menu-button {
     display: flex;
+    outline: none;
   }
 
   .top {

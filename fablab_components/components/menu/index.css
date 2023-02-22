@@ -23,7 +23,7 @@
 }
 
 .menu summary,
-a {
+.menu a {
   display: flex;
   align-items: center;
   gap: var(--size-1);

@@ -23,6 +23,7 @@
 
 @media only screen and (max-width: 1024px) {
   .split {
+    margin-block-start: 0 !important;
     grid-template-columns: 1fr;
   }
 }

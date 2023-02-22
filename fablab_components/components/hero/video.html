@@ -1,6 +1,6 @@
 {% load wagtailimages_tags %}
 
-{% image video.preview fill-1920x1080 format-webp-lossless as poster_image %}
+{% image video.preview fill-1920x1080 format-webp webpquality-70 as poster_image %}
 
 <video id="hero-video" muted loop poster="{{poster_image.url}}">
     <source src="{{video.url}}" type="video/mp4">

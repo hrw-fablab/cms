@@ -39,7 +39,8 @@
 
 .search .input {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   background-color: var(--surface-1);
   border-radius: var(--radius-2);
   padding-inline: var(--size-2);

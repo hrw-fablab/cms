@@ -31,7 +31,7 @@
   z-index: 5;
   text-decoration: none;
   color: inherit;
-  font-size: var(--font-size-2);
+  font-size: var(--font-size-3);
   border-block-end: var(--border-size-1) solid transparent;
 }
 
@@ -98,5 +98,6 @@
     align-items: start;
     padding: var(--size-fluid-2);
     justify-content: flex-start;
+    font-size: var(--font-size-3);
   }
 }

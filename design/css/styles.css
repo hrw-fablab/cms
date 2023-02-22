@@ -1,3 +1,24 @@
+html {
+  --scrollbarBG: var(--surface-1);
+  --thumbBG: var(--surface-4);
+
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+  width: 11px;
+}
+
+html {
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: var(--thumbBG);
+  border: 3px solid var(--scrollbarBG);
+}
+
 body {
   font-family: "Inter var";
   scrollbar-gutter: stable;

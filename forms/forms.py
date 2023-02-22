@@ -1,15 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
 from wagtail.contrib.forms.forms import FormBuilder
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV3
+from django.core.exceptions import ValidationError
 
 from django import forms
-from django.http import JsonResponse
-import json
 import datetime
 from calendar import monthrange
-from events.models import Event
 
 
 def get_repeated_event(element, year, month, day):
@@ -46,8 +42,23 @@ def get_events(element, year, month):
     return events
 
 
+class HoneypotField(forms.BooleanField):
+    default_widget = forms.CheckboxInput(attrs={"tabindex": "-1"})
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("widget", HoneypotField.default_widget)
+        kwargs["required"] = False
+        super().__init__(*args, **kwargs)
+
+    def clean(self, value):
+        if cleaned_value := super().clean(value):
+            raise ValidationError("")
+        else:
+            return cleaned_value
+
+
 class FabLabCaptchaFormBuilder(FormBuilder):
-    CAPTCHA_FIELD_NAME = "wagtailcaptcha"
+    HONEYPOT_FIELD_NAME = "submissionField"
 
     def create_multiline_field(self, field, options):
         attrs = {"cols": "40", "rows": "5"}
@@ -55,12 +66,11 @@ class FabLabCaptchaFormBuilder(FormBuilder):
 
     @property
     def formfields(self):
-        # Add wagtailcaptcha to formfields property
         fields = super(FabLabCaptchaFormBuilder, self).formfields
-        fields[self.CAPTCHA_FIELD_NAME] = ReCaptchaField(label="", widget=ReCaptchaV3())
+        fields[self.HONEYPOT_FIELD_NAME] = HoneypotField()
         return fields
 
 
-def remove_captcha_field(form):
-    form.fields.pop(FabLabCaptchaFormBuilder.CAPTCHA_FIELD_NAME, None)
-    form.cleaned_data.pop(FabLabCaptchaFormBuilder.CAPTCHA_FIELD_NAME, None)
+def remove_honeypot_field(form):
+    form.fields.pop(FabLabCaptchaFormBuilder.HONEYPOT_FIELD_NAME, None)
+    form.cleaned_data.pop(FabLabCaptchaFormBuilder.HONEYPOT_FIELD_NAME, None)

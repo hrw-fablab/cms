@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "fablab_components",
     "global",
     "forms",
-    "captcha",
     "devices",
     "search",
     "wagtailcache",
@@ -239,18 +238,13 @@ CACHES = {
     }
 }
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = os.environ.get("EMAIL_HOST")
 EMAIL_USE_TLS = True
 EMAIL_PORT = os.environ.get("EMAIL_PORT")
 EMAIL_HOST_USER = os.environ.get("EMAIL_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_ADDRESS")
-
-
-RECAPTCHA_REQUIRED_SCORE = 0.5
-RECAPTCHA_PUBLIC_KEY = str(os.environ.get("RECAPTCHA_PUBLIC_KEY"))
-RECAPTCHA_PRIVATE_KEY = str(os.environ.get("RECAPTCHA_PRIVATE_KEY"))
 
 WAGTAILEMBEDS_FINDERS = [
     {

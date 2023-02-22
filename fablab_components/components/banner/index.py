@@ -15,4 +15,3 @@ class Banner(component.Component):
 
     class Media:
         css = "banner/index.css"
-        js = "banner/index.js"

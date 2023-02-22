@@ -15,4 +15,3 @@ class Split(component.Component):
 
     class Media:
         css = "split/index.css"
-        js = "split/index.js"

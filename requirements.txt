@@ -7,6 +7,6 @@ wagtailmedia==0.13.0
 whitenoise==6.3.0
 wagtail-cache==2.2.0
 python-dateutil==2.8.2
-Office365-REST-Python-Client==2.3.16
+Office365-REST-Python-Client==2.4.0
 django-components==0.25
 mysqlclient==2.1.1

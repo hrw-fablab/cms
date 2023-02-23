@@ -8,8 +8,7 @@
 .events section {
   position: relative;
   border-radius: var(--radius-3);
-  font-size: var(--font-size-3);
-  padding: var(--size-fluid-1);
+  padding: var(--size-fluid-2);
   box-shadow: var(--shadow-2);
   display: flex;
   flex-direction: column;

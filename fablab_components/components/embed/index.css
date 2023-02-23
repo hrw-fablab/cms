@@ -53,5 +53,6 @@
 
   .embed div {
     background: transparent;
+    text-align: center;
   }
 }

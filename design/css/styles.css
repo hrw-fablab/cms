@@ -104,7 +104,7 @@ h5 {
 }
 
 main > :first-child:not(.hero, .spacer, .banner, .split, .hero-project) {
-  margin-block-start: var(--size-fluid-6);
+  margin-block-start: var(--size-fluid-3);
 }
 
 h2 {

@@ -48,17 +48,13 @@
 }
 
 .hero #control {
-  display: none;
+  display: grid;
   background-color: transparent;
   place-items: center;
   z-index: 2;
   position: relative;
   border-radius: inherit;
   border: none;
-}
-
-.hero:hover #control {
-  display: grid;
 }
 
 .hero #control svg {

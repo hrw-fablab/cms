@@ -5,7 +5,6 @@ from wagtail.images.blocks import ImageChooserBlock
 class ImageBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
     image = ImageChooserBlock(required=False)
-    accent = blocks.BooleanBlock(required=False)
 
     class Meta:
         template = "molecules/media.html"

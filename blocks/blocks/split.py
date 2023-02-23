@@ -16,7 +16,6 @@ class SplitBlock(blocks.StructBlock):
     )
     page = blocks.PageChooserBlock(required=False)
     image = ImageChooserBlock(required=False)
-    accent = blocks.BooleanBlock(required=False)
 
     class Meta:
         template = "blocks/split.html"

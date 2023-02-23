@@ -28,7 +28,6 @@ class GridBlock(blocks.StructBlock):
         ],
         default="default",
     )
-    accent = blocks.BooleanBlock(required=False)
 
     cards = GridBlockElements(label="Grid Elemente")
 

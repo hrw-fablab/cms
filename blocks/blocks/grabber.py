@@ -20,7 +20,6 @@ class GrabberBlock(blocks.StructBlock):
         default="default",
     )
     amount = blocks.IntegerBlock(default=5)
-    accent = blocks.BooleanBlock(required=False)
     pages = blocks.ListBlock(blocks.PageChooserBlock())
 
     class Meta:

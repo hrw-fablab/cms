@@ -1,23 +1,13 @@
 {% load filter_tag component_tags %}
 {% block content %}
-    <section class="content" data-width="large" data-margin-block-end="large">
+    <section class="content project" data-width="large" data-margin-block-end="large">
         {% if value.headings %}
             {% regroup value.members.members_ordered by role as role_list %}
             {% for role in role_list %}
                 {% if role.grouper.visible %}
-                    <div
-                         class="content"
-                         data-layout="small"
-                         data-margin-block-end="large">
-                        {% if role.grouper != None %}
-                            {% include "atoms/heading.html" with value=role.grouper anchor=True %}
-                        {% else %}
-                            {% include "atoms/heading.html" with value="Mitglieder" anchor=True %}
-                        {% endif %}
-                        <div class="content grid gap"
-                             data-width="{% if role.list|length == 2 %}small{% elif role.list|length <= 1 %}tiny{% endif %}"
-                             data-layout="{{ value.layout }}"
-                             data-gap="medium">
+                    <div>
+                        <h2>{{role.grouper}}</h2>
+                        <div class="project--grid" data-length="{% if role.list|length <= 2 %}small{% endif %}">
                             {% for element in role.list %}
                                 {% component "person" title=element.person.title firstname=element.person.first_name lastname=element.person.last_name image=element.person.image link="" area=element.person.responsibility %}
                             {% endfor %}
@@ -26,11 +16,7 @@
                 {% endif %}
             {% endfor %}
         {% else %}
-            <div
-                 class="content grid gap"
-                 data-width="{% if value.members.members_ordered|length == 2 %}small{% elif value.members.members_ordered|length <= 1 %}tiny{% endif %}"
-                 data-layout="{{ value.layout }}"
-                 data-gap="medium">
+            <div class="project--grid" data-length="{% if value.members.members_ordered|length <= 2 %}small{% endif %}">
                 {% for element in value.members.members_ordered %}
                     {% component "person" title=element.person.title firstname=element.person.first_name lastname=element.person.last_name image=element.person.image link="" area=element.person.responsibility %}
                 {% endfor %}

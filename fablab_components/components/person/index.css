@@ -16,6 +16,6 @@
 
 .person img {
   border-radius: 50%;
-  width: var(--size-fluid-8);
+  width: var(--size-fluid-7);
   box-shadow: var(--shadow-1);
 }

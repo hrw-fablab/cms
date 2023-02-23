@@ -6,11 +6,11 @@
             {% include_block block %}
         {% endfor %}
         <form id="form"
-            action="{% pageurl page %}"
-            method="post"
-            class="content form"
-            data-width="small"
-            data-margin-block-end="large">
+              action="{% pageurl page %}"
+              method="post"
+              class="content form"
+              data-width="small"
+              data-margin-block-end="large">
             {% csrf_token %}
             {% for field in form.visible_fields %}
                 <div data-tag="{{field.label}}">

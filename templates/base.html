@@ -39,7 +39,7 @@
         <link rel="stylesheet" href="{% static 'css/props.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
         <meta property="og:title"
-            content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}"/>
+              content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}"/>
         <meta property="og:description" content="{{ page.search_description }}" />
         {% image page.og_image original as og_image %}
         <meta property="og:image" content="{{ og_image.full_url }}" />

@@ -22,21 +22,21 @@
                     {% image page.image fill-768x576 format-webp webpquality-60 as image_768 %}
                     {% image page.image fill-260x200 format-webp webpquality-60 as image_480 %}
                     <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w, {{ image_1440.url }} 1440w, {{ image_1920.url }} 1920w"
-                        sizes=" (min-width: 1800px) 1920px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
-                        type="image/webp">
+                            sizes=" (min-width: 1800px) 1920px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+                            type="image/webp">
                     {% image page.image fill-1920x700 format-jpeg as image_1920 %}
                     {% image page.image fill-1440x700 format-jpeg as image_1440 %}
                     {% image page.image fill-1024x700 format-jpeg as image_1024 %}
                     {% image page.image fill-768x576 format-jpeg as image_768 %}
                     {% image page.image fill-260x200 format-jpeg as image_480 %}
                     <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w, {{ image_1440.url }} 1440w, {{ image_1920.url }} 1920w"
-                        sizes=" (min-width: 1800px) 1920px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
-                        type="image/jpg">
+                            sizes=" (min-width: 1800px) 1920px, (min-width: 1440px) 1440px, (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+                            type="image/jpg">
                     <img src="{{ image_480.url }}"
-                        alt="{{ image_480.alt }}"
-                        decoding="sync"
-                        loading="eager"
-                        rel="preload">
+                         alt="{{ image_480.alt }}"
+                         decoding="sync"
+                         loading="eager"
+                         rel="preload">
                 </picture>
                 <figcaption>
                     {{ value.image.credit }}

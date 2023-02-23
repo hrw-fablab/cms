@@ -3,10 +3,10 @@
 {% block content %}
     <main id="main" data-margin-block-start="medium">
         <div class="content grid gap"
-            data-width="large"
-            data-layout="large"
-            data-gap="medium"
-            data-margin-block-end="large">
+             data-width="large"
+             data-layout="large"
+             data-gap="medium"
+             data-margin-block-end="large">
             {% for page in children %}
                 {% include "molecules/card.html" with value=page %}
             {% endfor %}

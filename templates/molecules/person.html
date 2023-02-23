@@ -7,17 +7,17 @@
             {% image value.image fill-500x500 format-webp as image_768 %}
             {% image value.image fill-300x300 format-webp as image_480 %}
             <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-                sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                type="image/webp">
+                    sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                    type="image/webp">
             {% image value.image fill-500x500 format-jpeg as image_768 %}
             {% image value.image fill-300x300 format-jpeg as image_480 %}
             <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
-                sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                type="image/jpg">
+                    sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                    type="image/jpg">
             <img src="{{ image_480.url }}"
-                alt="{{ value.image.alt }}"
-                decoding="async"
-                loading="lazy">
+                 alt="{{ value.image.alt }}"
+                 decoding="async"
+                 loading="lazy">
         </picture>
         <div>
             <header>
@@ -40,17 +40,17 @@
             {% image value.image fill-500x500 format-webp as image_768 %}
             {% image value.image fill-300x300 format-webp as image_480 %}
             <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
-                sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                type="image/webp">
+                    sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                    type="image/webp">
             {% image value.image fill-500x500 format-jpeg as image_768 %}
             {% image value.image fill-300x300 format-jpeg as image_480 %}
             <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w,"
-                sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
-                type="image/jpg">
+                    sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                    type="image/jpg">
             <img src="{{ image_480.url }}"
-                alt="{{ value.image.alt }}"
-                decoding="async"
-                loading="lazy">
+                 alt="{{ value.image.alt }}"
+                 decoding="async"
+                 loading="lazy">
         </picture>
         <div>
             <header>

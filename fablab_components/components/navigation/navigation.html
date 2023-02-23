@@ -8,10 +8,10 @@
                 {% if settings.global.GlobalSettings.logo %}
                     {% image settings.global.GlobalSettings.logo original as logo_image %}
                     <img class="{% if settings.global.GlobalSettings.logo_title %} full{% endif %}"
-                        src="{{ logo_image.url }}"
-                        alt="Logo"
-                        loading="eager"
-                        decoding="sync">
+                         src="{{ logo_image.url }}"
+                         alt="Logo"
+                         loading="eager"
+                         decoding="sync">
                 {% endif %}
                 {{ settings.global.GlobalSettings.logo_title|default:'' }}
             </a>

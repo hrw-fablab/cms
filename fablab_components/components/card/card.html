@@ -1,13 +1,13 @@
 {% load wagtailimages_tags component_tags %}
 <article class="card"
-    data-style="{{style}}">
+         data-style="{{style}}">
     {% if image %}
         {% component "picture" image=image caption=image.caption sizes="854x480 480x360" breakpoints="768 480" %}
     {% endif %}
     <div>
         {% if link or page or url %}
             <a href="{% if link %}{{ link }}{% elif url%}{{url}}{% else %}{{ page.url }} {% endif %}"
-                {% if value.new_tab %}target="_blank"{% endif %}>
+               {% if value.new_tab %}target="_blank"{% endif %}>
                 {% if title %}
                     <h3>{{ title }}</h3>
                 {% endif %}

@@ -1,8 +1,8 @@
 {% load wagtailimages_tags component_tags %}
 <section class="content centered"
-    data-style="{% if value.accent %}color{% endif %}"
-    data-width="large"
-    data-margin-block="large">
+         data-style="{% if value.accent %}color{% endif %}"
+         data-width="large"
+         data-margin-block="large">
     {% include "atoms/heading.html" with value=value.title anchor=False %}
     {% if value.image %}
         <figure>
@@ -11,18 +11,18 @@
                 {% image value.image fill-768x432 format-webp webpquality-60 as image_768 %}
                 {% image value.image fill-480x270 format-webp webpquality-60 as image_480 %}
                 <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w"
-                    sizes=" (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
-                    type="image/webp">
+                        sizes=" (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+                        type="image/webp">
                 {% image value.image fill-1024x576 format-jpeg as image_1024 %}
                 {% image value.image fill-768x432 format-jpeg as image_768 %}
                 {% image value.image fill-480x270 format-jpeg as image_480 %}
                 <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w"
-                    sizes=" (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
-                    type="image/jpg">
+                        sizes=" (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
+                        type="image/jpg">
                 <img src="{{ image_480.url }}"
-                    alt="image_480.alt"
-                    decoding="async"
-                    loading="lazy">
+                     alt="image_480.alt"
+                     decoding="async"
+                     loading="lazy">
             </picture>
             <figcaption>
                 {{ value.image.credit }}

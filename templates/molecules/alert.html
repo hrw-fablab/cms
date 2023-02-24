@@ -1,9 +1,17 @@
-<div class="alert content" style="text-align: center">
-    <a href="https://www.hochschule-ruhr-west.de/hrwoffline/">
-        Aufgrund eines Ausfalls der IT-Infrastruktur finden zurzeit keine offenen
-        Abende statt
-    </a>
-</div>
+{% load wagtailcore_tags %}
+
+{% wagtail_site as current_site %}
+
+{% if request.get_host == "hrw-fablab.de"%}
+    <div class="alert content" style="text-align: center">
+        <a href="https://www.hochschule-ruhr-west.de/hrwoffline/">
+            Aufgrund eines Ausfalls der IT-Infrastruktur finden zurzeit keine offenen
+            Abende statt
+        </a>
+    </div>
+{% endif %}
+
+
 
 <style>
     .alert {

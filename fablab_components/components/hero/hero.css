@@ -27,6 +27,7 @@
 
 .hero h1 {
   color: var(--text-1-dark);
+  font-size: var(--font-size-6);
 }
 
 .hero picture {

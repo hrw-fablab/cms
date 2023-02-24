@@ -2,9 +2,16 @@
   background: var(--noise-1);
   background-size: cover;
   display: flex;
+  flex-direction: column;
+  padding-block: var(--size-fluid-4);
+  gap: var(--size-fluid-4);
+}
+
+.footer > div {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-block: var(--size-fluid-4);
   flex-wrap: wrap;
   gap: var(--size-fluid-4);
 }
@@ -22,6 +29,10 @@
 
 .footer a:hover {
   text-decoration: underline 0.1em var(--text-2);
+}
+
+.footer .footer--sponsors {
+  justify-content: flex-end;
 }
 
 @media only screen and (max-width: 500px) {

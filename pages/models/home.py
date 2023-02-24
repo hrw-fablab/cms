@@ -6,7 +6,6 @@ from blocks.models import HomeBlock
 
 
 class HomePage(FablabBasePage):
-    parent_page_types = []
     subpage_type = [
         "FolderPage",
         "FlexPage",

@@ -32,5 +32,5 @@ class GalleryBlock(blocks.StructBlock):
 
     class Meta:
         group = "Cointainer"
-        template = "templates/gallery.html"
+        template = "blocks/gallery.html"
         icon = "grip"

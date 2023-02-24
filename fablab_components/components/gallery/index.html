@@ -1,0 +1,16 @@
+{% load wagtailimages_tags component_tags %}
+{% block content %}
+    <section class="content gallery" data-width="large" data-margin-block-end="large">
+        {% include "atoms/heading.html" with value=value.title anchor=False %}
+        <div class="gallery--grid" data-grid="{{value.layout}}" data-contain="{{value.contain}}">
+            {% for element in value.cards %}
+                {% if value.contain %}
+                    {% component "picture" image=element.value caption=None sizes="854 480" breakpoints="480" %}
+                {% else %}
+                    {% component "picture" image=element.value caption=None sizes="854x480 480x360" breakpoints="768 480" %}
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}

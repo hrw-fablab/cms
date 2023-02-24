@@ -1,13 +1,32 @@
 from django_components import component
 
 
+def width_rendition(index, format, quality):
+    return f"fill-{index}|{format}|{quality}"
+
+
+def height_width_rendition(index, format, quality):
+    return f"height-{index}|{format}|{quality}"
+
+
 def getImageRendition(image, sizes, imageQuality, imageFormat):
     results = []
     for index, item in enumerate(sizes):
-        renditionParam = f"fill-{sizes[index]}|{imageFormat}|{imageQuality}"
+        size = sizes[index]
+        params = size.split("x")
+
+        if len(params) > 1:
+            renditionParam = width_rendition(size, imageFormat, imageQuality)
+            sizeParam = params[1]
+
+        if len(params) == 1:
+            renditionParam = height_width_rendition(
+                params[0], imageFormat, imageQuality
+            )
+            sizeParam = params[0]
+
         rendition = image.get_rendition(renditionParam)
-        sizeParam = sizes[index].split("x")
-        results.append(f"{rendition.url} {sizeParam[1]}w")
+        results.append(f"{rendition.url} {sizeParam}w")
 
     return ", ".join(results)
 

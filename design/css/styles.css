@@ -24,6 +24,10 @@ body {
   scrollbar-gutter: stable;
 }
 
+main {
+  min-height: 100vh;
+}
+
 h1,
 h2,
 h3,

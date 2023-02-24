@@ -8,7 +8,7 @@ from office365.sharepoint.client_context import ClientContext
 
 from core.models import FablabImage
 
-from wagtail.core.models import Collection
+from wagtail.models import Collection
 from django.core.files.images import ImageFile
 import json
 

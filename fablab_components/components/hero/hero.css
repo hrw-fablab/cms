@@ -66,6 +66,23 @@
   display: none !important;
 }
 
+.hero--link {
+  display: flex;
+}
+
+.hero--link a {
+  color: inherit;
+  text-decoration: none;
+  padding: var(--size-2);
+  color: var(--text-1-light);
+  background: var(--text-1-dark);
+  border-radius: var(--radius-2);
+}
+
+.hero--link a:hover {
+  background-color: var(--text-2-dark);
+}
+
 @media only screen and (max-width: 1024px) {
   .hero {
     height: 50vh;

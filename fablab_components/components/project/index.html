@@ -7,7 +7,7 @@
                 {% if role.grouper.visible %}
                     <div>
                         <h2>{{role.grouper}}</h2>
-                        <div class="project--grid" data-length="{% if role.list|length <= 2 %}small{% endif %}">
+                        <div class="project--grid" data-length="{% if role.list|length <= 3 %}small{% endif %}">
                             {% for element in role.list %}
                                 {% component "person" title=element.person.title firstname=element.person.first_name lastname=element.person.last_name image=element.person.image link="" area=element.person.responsibility %}
                             {% endfor %}
@@ -16,7 +16,7 @@
                 {% endif %}
             {% endfor %}
         {% else %}
-            <div class="project--grid" data-length="{% if value.members.members_ordered|length <= 2 %}small{% endif %}">
+            <div class="project--grid" data-length="{% if value.members.members_ordered|length <= 3 %}small{% endif %}">
                 {% for element in value.members.members_ordered %}
                     {% component "person" title=element.person.title firstname=element.person.first_name lastname=element.person.last_name image=element.person.image link="" area=element.person.responsibility %}
                 {% endfor %}

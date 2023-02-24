@@ -36,6 +36,15 @@ h5 {
   font-family: "Manrope VF";
 }
 
+figcaption {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--text-2);
+  font-size: var(--font-size-0);
+  padding: var(--size-2);
+}
+
 :where(.content) {
   --desktop: 100rem;
   padding-inline: max((100% - var(--desktop)) /2, var(--size-fluid-2));

@@ -9,7 +9,7 @@
     {% endif %}
 
     {% if image %}
-        {% component "picture" image=image caption="Test" sizes="1920x1080" breakpoints="1920" %}
+        {% component "picture" image=image caption=image.credit sizes="1920x1080" breakpoints="1920" %}
     {% endif %}
 
     {% if video %}

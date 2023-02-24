@@ -36,6 +36,10 @@ h5 {
   font-family: "Manrope VF";
 }
 
+figure {
+  position: relative;
+}
+
 figcaption {
   position: absolute;
   top: 0;

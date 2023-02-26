@@ -4,6 +4,7 @@
   grid-template: "container";
   background-size: cover;
   height: 40vh;
+  background-color: var(--surface-1-dark);
 }
 
 .banner > * {

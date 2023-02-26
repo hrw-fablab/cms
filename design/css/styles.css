@@ -146,27 +146,27 @@ input {
   gap: var(--size-fluid-3);
 }
 
-.grid[data-grid="extrem"] {
+.grid:where([data-grid="extrem"]) {
   --repeat: 1;
 }
 
-.grid[data-grid="large"] {
+.grid:where([data-grid="large"]) {
   --repeat: 2;
 }
 
-.grid[data-grid="medium"] {
+.grid:where([data-grid="medium"]) {
   --repeat: 3;
 }
 
-.grid[data-grid="small"] {
+.grid:where([data-grid="small"]) {
   --repeat: 4;
 }
 
-.grid[data-grid="tiny"] {
+.grid:where([data-grid="tiny"]) {
   --repeat: 5;
 }
 
-.grid[data-contain="True"] img {
+.grid:where([data-contain="True"]) img {
   object-fit: contain;
 }
 
@@ -175,6 +175,13 @@ input {
     --repeat: 2;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .grid {
+    --repeat: 1;
+  }
+}
+
 
 .form {
   display: flex;

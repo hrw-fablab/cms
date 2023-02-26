@@ -15,7 +15,7 @@ class ArticleIndexPage(FablabBasePage):
             self.get_children().live().specific().order_by("-articlepage__date")
         )
 
-        paginator = Paginator(all_children, 6)
+        paginator = Paginator(all_children, 4)
         page = request.GET.get("page")
         try:
             children = paginator.page(page)

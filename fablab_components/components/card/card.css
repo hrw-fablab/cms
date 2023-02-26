@@ -75,6 +75,10 @@
   gap: var(--size-fluid-3);
 }
 
+.card:where([data-style="horizontal"]) h3 {
+  font-size: var(--font-size-7);
+}
+
 @media only screen and (max-width: 768px) {
   .card > div {
     margin: inherit;
@@ -85,5 +89,9 @@
   .card {
     display: flex;
     flex-direction: column;
+  }
+
+  .card h3 {
+    font-size: var(--font-size-5);
   }
 }

@@ -1,7 +1,7 @@
 {% load wagtailcore_tags i18n wagtailsettings_tags component_tags %}
 {% wagtail_site as current_site %}
 
-<footer class="content footer">
+<footer class="content footer" data-margin-block-start="large">
     <div class="footer--sponsors">
         {% for element in settings.global.GlobalSettings.sponsor.all%}
             {% component "picture" image=element.logo caption=value.image.credit sizes="130" breakpoints="130" %}

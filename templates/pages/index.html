@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags component_tags %}
 {% block content %}
-    <main id="main" class="content articles" data-width="large"  data-margin-block-start="medium">
+    <main id="main" class="content" data-width="large"  data-margin-block-start="medium">
         {% if children.number == 1 %}
             <div data-margin-block-end="medium">
                 {% with children|first as first_page %}

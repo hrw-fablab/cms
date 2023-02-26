@@ -33,5 +33,5 @@ class GridBlock(blocks.StructBlock):
 
     class Meta:
         group = "Cointainer"
-        template = "templates/grid.html"
+        template = "blocks/grid.html"
         icon = "grip"

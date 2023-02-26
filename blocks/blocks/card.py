@@ -17,5 +17,5 @@ class CardBlock(blocks.StructBlock):
     )
 
     class Meta:
-        template = "templates/card.html"
+        template = "blocks/card.html"
         icon = "doc-full"

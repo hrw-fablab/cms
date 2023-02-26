@@ -140,14 +140,40 @@ input {
 }
 
 .grid {
+  --repeat: 3;
   display: grid;
-  --fill: auto-fill;
-  --card-size: 30rem;
-  grid-template-columns: repeat(
-    var(--fill),
-    minmax(min(100%, var(--card-size)), 1fr)
-  );
+  grid-template-columns: repeat(var(--repeat), 1fr);
   gap: var(--size-fluid-3);
+}
+
+.grid[data-grid="extrem"] {
+  --repeat: 1;
+}
+
+.grid[data-grid="large"] {
+  --repeat: 2;
+}
+
+.grid[data-grid="medium"] {
+  --repeat: 3;
+}
+
+.grid[data-grid="small"] {
+  --repeat: 4;
+}
+
+.grid[data-grid="tiny"] {
+  --repeat: 5;
+}
+
+.grid[data-contain="True"] img {
+  object-fit: contain;
+}
+
+@media only screen and (max-width: 1024px) {
+  .grid {
+    --repeat: 2;
+  }
 }
 
 .form {

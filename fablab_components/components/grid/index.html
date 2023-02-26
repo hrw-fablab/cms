@@ -1,6 +1,6 @@
 {% load component_tags %}
 <div>
     {% for element in value.cards %}
-        {% component "card" title=element.title text="" link=False image=False date=False author=False %}
+        {% component "card" style=False title=element.title text="" link=False image=False date=False author=False %}
     {% endfor %}
 </div>

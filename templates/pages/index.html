@@ -9,7 +9,7 @@
              data-margin-block-end="large"
         >
             {% for page in children %}
-                {% component "card" title=page.title introduction=page.localized.introduction link=page.localized.url image=page.image author=page.author date=page.date %}
+                {% component "card" title=page.title text=page.localized.introduction link=page.localized.url image=page.image author=page.author date=page.date %}
             {% endfor %}
         </div>
         {% component "pagination" %}

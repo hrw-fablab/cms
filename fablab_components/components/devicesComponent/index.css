@@ -22,12 +22,6 @@
   gap: var(--size-fluid-1);
 }
 
-.devices--grid {
-  display: grid;
-  gap: var(--size-fluid-3);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 1fr));
-}
-
 .devices .active {
   background: var(--brand);
   outline: none;

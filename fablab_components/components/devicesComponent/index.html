@@ -9,7 +9,7 @@
             <button  class="filter--button"id="metall">Metall</button>
         </div>
     </header>
-    <div class="devices--grid">
+    <div class="grid">
         {% for element in devices %}
             {% component "device" title=element.title model=element.model area=element.area manufacturer=element.manufacturer amount=element.amount image=element.image %}
         {% endfor %}

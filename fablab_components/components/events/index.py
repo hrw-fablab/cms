@@ -78,15 +78,9 @@ def get_events():
 
     max_iteration = 0
 
-    print("test")
-
     while len(result) <= 4 and max_iteration <= 3:
         events = Event.objects.filter(
-            (
-                Q(start__year=str(date.year))
-                & Q(start__month=str(date.month))
-                & Q(repeat="0")
-            )
+            (Q(start__gte=date) & Q(repeat="0"))
             | (Q(repeat="1") & Q(repeatStart__lte=date) & Q(repeatEnd__gte=date))
         )
 
@@ -96,7 +90,7 @@ def get_events():
             else:
                 result.append(get_event(element, date.year, element.month, element.day))
 
-        date = date + relativedelta(months=1)
+        date = date + relativedelta(months=1, day=1)
         max_iteration += 1
 
     result.sort(key=lambda x: x["day"])

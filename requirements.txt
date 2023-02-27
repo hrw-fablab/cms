@@ -4,7 +4,7 @@ python-dotenv==0.21.1
 wagtail==4.2
 wagtail-localize==1.5
 wagtailmedia==0.13.0
-whitenoise==6.3.0
+whitenoise==6.4.0
 wagtail-cache==2.2.0
 python-dateutil==2.8.2
 Office365-REST-Python-Client==2.4.0

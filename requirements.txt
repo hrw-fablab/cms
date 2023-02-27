@@ -1,6 +1,6 @@
 ﻿Brotli==1.0.9
 Django==4.1.7
-python-dotenv==0.21.1
+python-dotenv==1.0.0
 wagtail==4.2
 wagtail-localize==1.5
 wagtailmedia==0.13.0

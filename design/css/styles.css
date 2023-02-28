@@ -215,3 +215,8 @@ input {
   padding: var(--size-2);
   border: solid var(--border-size-1) var(--surface-3);
 }
+
+
+.form > *[data-style="error"] > textarea{
+  border-color: var(--red-7);
+}

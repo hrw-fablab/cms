@@ -215,13 +215,3 @@ input {
   padding: var(--size-2);
   border: solid var(--border-size-1) var(--surface-3);
 }
-
-div[data-tag="Submissionfield"] {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 0;
-  width: 0;
-  z-index: -1;
-}

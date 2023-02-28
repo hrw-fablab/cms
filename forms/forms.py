@@ -58,7 +58,7 @@ class HoneypotField(forms.BooleanField):
 
 
 class FabLabCaptchaFormBuilder(FormBuilder):
-    HONEYPOT_FIELD_NAME = "submissionField"
+    HONEYPOT_FIELD_NAME = "password"
 
     def create_multiline_field(self, field, options):
         attrs = {"cols": "40", "rows": "5"}

@@ -5,6 +5,17 @@
         {% for block in page.content %}
             {% include_block block %}
         {% endfor %}
+        <style>
+            div[data-tag="Password"] {
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 0;
+                width: 0;
+                z-index: -1;
+            }
+        </style>
         <form id="form"
               action="{% pageurl page %}"
               method="post"

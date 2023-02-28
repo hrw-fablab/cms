@@ -2,10 +2,13 @@ from __future__ import absolute_import, unicode_literals
 
 from wagtail.contrib.forms.forms import FormBuilder
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 from django import forms
 import datetime
 from calendar import monthrange
+
+import re
 
 
 def get_repeated_event(element, year, month, day):
@@ -42,6 +45,16 @@ def get_events(element, year, month):
     return events
 
 
+def validate_even(value):
+    pattern = re.compile(
+        "((?:(?<=[^a-zA-Z0-9]){0,}(?:(?:https?\:\/\/){0,1}(?:[a-zA-Z0-9\%]{1,}\:[a-zA-Z0-9\%]{1,}[@]){,1})(?:(?:\w{1,}\.{1}){1,5}(?:(?:[a-zA-Z]){1,})|(?:[a-zA-Z]{1,}\/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\:[0-9]{1,4}){1})){1}(?:(?:(?:\/{0,1}(?:[a-zA-Z0-9\-\_\=\-]){1,})*)(?:[?][a-zA-Z0-9\=\%\&\_\-]{1,}){0,1})(?:\.(?:[a-zA-Z0-9]){0,}){0,1})"
+    )
+    data = re.search(pattern, value)
+    if data == None:
+        return
+    raise ValidationError("")
+
+
 class HoneypotField(forms.BooleanField):
     default_widget = forms.CheckboxInput(attrs={"tabindex": "-1"})
 
@@ -62,7 +75,9 @@ class FabLabCaptchaFormBuilder(FormBuilder):
 
     def create_multiline_field(self, field, options):
         attrs = {"cols": "40", "rows": "5"}
-        return forms.CharField(widget=forms.Textarea(attrs=attrs), **options)
+        return forms.CharField(
+            widget=forms.Textarea(attrs=attrs), validators=[validate_even], **options
+        )
 
     @property
     def formfields(self):

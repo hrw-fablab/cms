@@ -21,7 +21,7 @@
               method="post"
               class="content form"
               data-width="small"
-              data-margin-block-end="large">
+              data-margin-block="large">
             {% csrf_token %}
             {% for field in form.visible_fields %}
                 <div data-tag="{{field.label}}" data-style="{% if field.errors %}error{% endif %}">

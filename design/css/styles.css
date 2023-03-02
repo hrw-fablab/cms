@@ -182,7 +182,6 @@ input {
   }
 }
 
-
 .form {
   display: flex;
   flex-direction: column;
@@ -198,11 +197,6 @@ input {
   color: var(--text-2);
 }
 
-.form input {
-  padding: var(--size-2);
-  border: solid var(--border-size-1) var(--surface-3);
-}
-
 .form button {
   padding: var(--size-2);
   border: none;
@@ -210,13 +204,14 @@ input {
   background: var(--brand);
 }
 
-.form textarea {
+.form textarea,
+.form input,
+.form select {
   border-radius: var(--radius-2);
   padding: var(--size-2);
   border: solid var(--border-size-1) var(--surface-3);
 }
 
-
-.form > *[data-style="error"] > textarea{
+.form > *[data-style="error"] > textarea {
   border-color: var(--red-7);
 }

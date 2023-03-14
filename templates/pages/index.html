@@ -3,7 +3,7 @@
 {% block content %}
     <main id="main" class="content" data-width="large"  data-margin-block-start="medium">
         {% if children.number == 1 %}
-            <div data-margin-block-end="medium">
+            <div data-margin-block-end="large">
                 {% with children|first as first_page %}
                     {% component "card" style="horizontal" title=first_page.title text=first_page.localized.introduction link=first_page.localized.url image=first_page.image author=first_page.author date=first_page.date %}
                 {% endwith %}

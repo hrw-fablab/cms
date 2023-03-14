@@ -1,42 +1,7 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags component_tags %}
 {% block content %}
     <main id="main" data-margin-block-start="medium">
-        <article class="content" data-width="small" data-margin-block-end="large">
-            {% if page.image %}
-                <figure>
-                    <picture>
-                        {% image page.image fill-1024x588-c70 format-webp webpquality-60 as image_1024 %}
-                        {% image page.image fill-768x576-c70 format-webp webpquality-60 as image_768 %}
-                        {% image page.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
-                        <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w,"
-                                sizes=" (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
-                                type="image/webp">
-                        {% image page.image fill-1024x700-c70 format-jpeg as image_1024 %}
-                        {% image page.image fill-768x576-c70 format-jpeg as image_768 %}
-                        {% image page.image fill-480x360-c70 format-jpeg as image_480 %}
-                        <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w, {{ image_1024.url }} 1024w,"
-                                sizes=" (min-width: 1024px) 1024px, (min-width: 768px) 768px, (min-width: 480px) 480px"
-                                type="image/jpg">
-                        <img src="{{ image_480.url }}"
-                             alt="{{ image_480.alt }}"
-                             decoding="async"
-                             loading="eager"
-                             rel="preload">
-                    </picture>
-                    <figcaption>
-                        {{ page.image.credit }}
-                    </figcaption>
-                </figure>
-            {% endif %}
-            <header class="flex" data-direction="column" data-margin-block-start="small" data-margin-block-end="medium">
-                <time>{{page.date}}</time>
-                <h1>{{ page.title }}</h1>
-                {% include "atoms/profile.html" with value=page.author %}
-            </header>
-            <section class="richtext">
-                {{ page.body|richtext }}
-            </section>
-        </article>
+        {% component "article" %}
     </main>
 {% endblock content %}

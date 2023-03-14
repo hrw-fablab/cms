@@ -215,3 +215,10 @@ input {
 .form > *[data-style="error"] > textarea {
   border-color: var(--red-7);
 }
+
+
+.richtext {
+  text-align: justify;
+  line-height: 1.7;
+  font-size: var(--font-size-2);
+}

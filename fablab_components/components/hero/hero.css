@@ -58,17 +58,6 @@
   border: none;
 }
 
-.hero #control svg {
-  stroke: var(--surface-1-light);
-}
-
-.hero #control span {
-  background-color: var(--surface-1);
-  border-radius: var(--radius-3);
-  padding: var(--size-3);
-  color: var(--text-1);
-}
-
 .hero .hidden {
   display: none !important;
 }
@@ -77,6 +66,10 @@
   display: none;
   align-items: center;
   justify-content: center;
+  background-color: var(--surface-1);
+  border-radius: var(--radius-3);
+  padding: var(--size-3);
+  color: var(--text-1);
 }
 
 .hero:hover #control span {

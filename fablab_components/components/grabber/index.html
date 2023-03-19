@@ -1,10 +1,10 @@
 {% load component_tags %}
 
-<div class="grabber">
+<div class="content grabber" data-width="large" data-margin-block-end="large">
     {% if title %}
         <h2>{{title}}</h2>
     {% endif %}
-    <div class="grabber--grid" data-layout="{{value.layout}}">
+    <div class="grabber--grid" data-layout="{{value.layout}}" data-style="{{value.style}}">
         {% for pages in value.pages %}
             {% for page in pages.get_children.specific|dictsortreversed:'date'|slice:value.amount %}
                 {% component "card" style=False title=page.localized.title text=False link=page.localized.url image=page.image author=page.author date=page.date %}

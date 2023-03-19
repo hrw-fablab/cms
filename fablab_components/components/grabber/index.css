@@ -31,6 +31,10 @@
   --aspect-ratio: var(--ratio-square);
 }
 
+.grabber--grid[data-layout="newspaper"] .card:nth-child(2) figure {
+  height: 100%;
+}
+
 .grabber--grid[data-layout="magazine"] > :nth-child(1) {
   --grid-column: 1 / 4;
   --aspect-ratio: var(--ratio-widescreen);
@@ -62,4 +66,27 @@
     grid-column: inherit;
     aspect-ratio: unset;
   }
+}
+
+.grabber--grid[data-style="variation"] .card {
+  display: grid;
+  grid-template: "container";
+  place-items: center;
+}
+
+.grabber--grid[data-style="variation"] .card > * {
+  grid-area: container;
+}
+
+.grabber--grid[data-style="variation"] .card > div {
+  z-index: 2;
+  place-self: end start;
+  background-color: var(--surface-2);
+  border-radius: var(--radius-3);
+  padding: var(--size-fluid-1);
+  margin: var(--size-fluid-1);
+}
+
+.grabber--grid[data-style="variation"] .card h3 {
+  font-size: var(--font-size-4);
 }

@@ -62,8 +62,29 @@
   stroke: var(--surface-1-light);
 }
 
+.hero #control span {
+  background-color: var(--surface-1);
+  border-radius: var(--radius-3);
+  padding: var(--size-3);
+  color: var(--text-1);
+}
+
 .hero .hidden {
   display: none !important;
+}
+
+.hero #control span {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero:hover #control span {
+  display: flex;
+}
+
+.hero .visible {
+  display: flex !important;
 }
 
 .hero--link {

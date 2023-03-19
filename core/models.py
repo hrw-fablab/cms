@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from wagtail.models import Page, Site
 from wagtail.documents.models import Document, AbstractDocument
@@ -25,6 +26,7 @@ INDEXCHOICES = (
     ("index", "index"),
     ("noindex", "noindex"),
 )
+
 
 # Custom Image Model
 # https://docs.wagtail.io/en/stable/advanced_topics/images/custom_image_model.html
@@ -63,12 +65,17 @@ class FablabMedia(AbstractMedia):
         related_name="+",
     )
 
+    advanced_mobile = models.FileField(
+        upload_to="media", verbose_name=_("file"), blank=True
+    )
+
     admin_form_fields = (
         "title",
         "file",
         "collection",
         "preview",
         "tags",
+        "advanced_mobile",
     )
 
 

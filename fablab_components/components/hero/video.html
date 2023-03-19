@@ -2,8 +2,11 @@
 
 {% image video.preview fill-1920x1080 format-webp webpquality-70 as poster_image %}
 
-<video id="hero-video" muted loop poster="{{poster_image.url}}" preload="none">
-    <source src="{{video.url}}" type="video/mp4">
+<video id="hero-video" muted loop {% if video.preview %}poster="{{poster_image.url}}" preload="none"{% endif %}>
+    <source src="{{video.url}}" type="video/{{video.file_extension}}">
+    {% if video.advanced_mobile %}
+        <source src="{{video.advanced_mobile.url}}" type="video/mp4">
+    {% endif %}
 </video>
 
 <button id="control">

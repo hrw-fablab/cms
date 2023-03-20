@@ -1,5 +1,6 @@
 from dateutil.relativedelta import relativedelta
 from django.db import models
+from django.shortcuts import redirect
 
 from core.models import FablabBasePage
 
@@ -7,23 +8,18 @@ from wagtail.admin.panels import (
     InlinePanel,
     FieldPanel,
     MultiFieldPanel,
+    TabbedInterface,
+    ObjectList,
 )
-from wagtail.fields import StreamField
 
 from modelcluster.fields import ParentalKey
 
 from forms.models import FabLabCaptchaEmailForm
-from wagtail.admin.panels import TabbedInterface, ObjectList
-
 from blocks.models import FormBlock
 
-from wagtail.fields import RichTextField
-from wagtail.contrib.forms.models import AbstractFormField
-
-from wagtail.contrib.forms.models import (
-    AbstractFormField,
-    FORM_FIELD_CHOICES,
-)
+from wagtail.fields import RichTextField, StreamField
+from wagtail.contrib.forms.models import AbstractFormField, FORM_FIELD_CHOICES
+from wagtail.contrib.routable_page.models import RoutablePageMixin, path
 
 
 class FormField(AbstractFormField):
@@ -77,7 +73,7 @@ def get_events(element, year, month, day):
     return ", ".join(events)
 
 
-class FormPage(FabLabCaptchaEmailForm):
+class FormPage(RoutablePageMixin, FabLabCaptchaEmailForm):
     parent_page_types = ["HomePage", "FolderPage", "FlexPage"]
     subpage_type = []
 
@@ -153,6 +149,30 @@ class FormPage(FabLabCaptchaEmailForm):
                 ),
             )
         return fields
+
+    @path("")
+    def index_route(self, request, *args, **kwargs):
+        return super(FabLabCaptchaEmailForm, self).serve(request, *args, **kwargs)
+
+    def render_landing_page(self, request, form_submission, *args, **kwargs):
+        url = self.reverse_subpage("thank_you")
+        return redirect(self.url + url, permanent=False)
+
+    @path("thank-you/")
+    def thank_you(self, request):
+        form_submission = None
+        try:
+            submission_id = int(request.GET["id"])
+        except (KeyError, TypeError):
+            pass
+        else:
+            submission_class = self.get_submission_class()
+            try:
+                form_submission = submission_class.objects.get(id=submission_id)
+            except submission_class.DoesNotExist:
+                pass
+
+        return super().render_landing_page(request, form_submission)
 
     class Meta:
         verbose_name = "Form Seite"

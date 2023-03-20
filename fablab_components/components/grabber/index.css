@@ -57,6 +57,39 @@
   --grid-column: 5 / 7;
 }
 
+.grabber--grid[data-style="variation"] .card {
+  display: grid;
+  grid-template: "container";
+  place-items: center;
+  aspect-ratio: var(--ratio-square);
+  transition: transform 0.5s ease-in-out;
+}
+
+.grabber--grid[data-style="variation"] .card > * {
+  grid-area: container;
+}
+
+.grabber--grid[data-style="variation"] .card figure {
+  height: 100%;
+}
+
+.grabber--grid[data-style="variation"] .card > div {
+  z-index: 2;
+  place-self: end start;
+  background-color: var(--surface-1);
+  border-radius: var(--radius-3);
+  padding: var(--size-fluid-1);
+  margin: var(--size-fluid-1);
+}
+
+.grabber--grid[data-style="variation"] .card:hover {
+  transform: scale(1.02);
+  transition: transform 0.5s ease-in-out;
+}
+
+.grabber--grid[data-style="variation"] .card:hover a {
+  text-decoration: none;
+}
 
 @media only screen and (max-width: 768px) {
   .grabber--grid {
@@ -66,27 +99,12 @@
     grid-column: inherit;
     aspect-ratio: unset;
   }
-}
 
-.grabber--grid[data-style="variation"] .card {
-  display: grid;
-  grid-template: "container";
-  place-items: center;
-}
+  .grabber--grid[data-style="variation"] .card {
+    aspect-ratio: inherit;
+  }
 
-.grabber--grid[data-style="variation"] .card > * {
-  grid-area: container;
-}
-
-.grabber--grid[data-style="variation"] .card > div {
-  z-index: 2;
-  place-self: end start;
-  background-color: var(--surface-2);
-  border-radius: var(--radius-3);
-  padding: var(--size-fluid-1);
-  margin: var(--size-fluid-1);
-}
-
-.grabber--grid[data-style="variation"] .card h3 {
-  font-size: var(--font-size-4);
+  .grabber--grid[data-style="variation"] .card > div {
+    width: 70%;
+  }
 }

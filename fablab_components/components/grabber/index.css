@@ -95,6 +95,7 @@
   .grabber--grid {
     grid-template-columns: 1fr;
   }
+
   .grabber--grid .card {
     grid-column: inherit;
     aspect-ratio: unset;

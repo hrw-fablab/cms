@@ -9,7 +9,7 @@ let elements = document.getElementsByTagName("details");
 const months = [
   "Januar",
   "Februar",
-  "Maerz",
+  "März",
   "April",
   "Mai",
   "Juni",
@@ -154,8 +154,8 @@ const createEvent = (element, id, category, position, day) => {
 const createRedirect = (id, category, position) => {
   let button = document.createElement("button");
   button.innerHTML = `<span>.</span>`;
+  button.classList.add("redirect");
   button.value = id;
-  button.dataset.position = position;
   button.dataset.redirect = "";
   button.dataset.type = category;
 
@@ -169,7 +169,7 @@ document.addEventListener("click", (event) => {
 
   if ("close" in event.target.dataset) {
     event.target.parentNode.parentNode.parentNode.parentNode.toggleAttribute(
-      "open"
+      "open",
     );
   }
 });
@@ -197,12 +197,12 @@ const checkExpection = (expections, check) => {
     let start = new Date(
       expection.start.year,
       expection.start.month - 1,
-      expection.start.day
+      expection.start.day,
     );
     let end = new Date(
       expection.end.year,
       expection.end.month - 1,
-      expection.end.day
+      expection.end.day,
     );
 
     if (check >= start && check <= end) {
@@ -233,8 +233,8 @@ const createCalendar = async () => {
           id,
           element.category,
           undefined,
-          item + 1
-        )
+          item + 1,
+        ),
       );
       return;
     }
@@ -243,7 +243,7 @@ const createCalendar = async () => {
       addEvent(li, element, id, element.category, "first", element.day);
       for (i = 0; i < element.length; i++) {
         let redirect = document.getElementById(
-          element.day + i + data.index + 1
+          element.day + i + data.index + 1,
         );
         if (i == element.length - 1) {
           addRedirect(redirect, id, element.category, "last");

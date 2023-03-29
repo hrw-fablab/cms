@@ -90,6 +90,10 @@
     gap: var(--size-fluid-4);
   }
 
+  .calendar header {
+    margin-block-end: var(--size-fluid-3);
+  }
+
   .weekdays {
     display: none;
   }
@@ -129,11 +133,25 @@
   display: none;
 }
 
+.redirect {
+  border: none;
+  padding: var(--size-1);
+  margin-inline-start: -2px;
+}
+
+.redirect span {
+  opacity: 0;
+}
+
 .desktop {
   padding: 0;
-  border-radius: var(--radius-2);
+  border-radius: var(--radius-1);
   background-color: var(--surface-2);
   box-shadow: var(--shadow-2);
+}
+
+.days *[data-position="first"] .desktop {
+  border-radius: var(--radius-2) 0 0 var(--radius-2);
 }
 
 .desktop summary {
@@ -201,19 +219,32 @@
     display: none;
   }
 
-  .mobile {
-    display: flex;
-    position: relative;
-    border-radius: var(--radius-3);
-    border: var(--border-size-1) solid var(--surface-3);
-    box-shadow: var(--shadow-3);
-    font-size: var(--font-size-3);
-    padding: var(--size-fluid-1);
+  .redirect {
+    display: none;
   }
 
-  .mobile:hover {
-    transition: border-color 0.5s ease-in;
-    border-color: var(--surface-4);
+  .mobile {
+    position: relative;
+    border-radius: var(--radius-3);
+    padding: var(--size-fluid-2);
+    box-shadow: var(--shadow-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-1);
+    background-color: var(--color);
+  }
+
+  .mobile a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .mobile a::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    border-radius: var(--radius-3);
+    border: var(--border-size-1) solid var(--surface-3);
   }
 
   .mobile header {
@@ -222,6 +253,10 @@
     justify-content: center;
     flex-direction: column;
     margin-block-end: var(--size-2);
+  }
+
+  .mobile h3 {
+    font-size: var(--font-size-4);
   }
 }
 
@@ -248,4 +283,33 @@ button[data-type="workshop"] {
 *[data-type="external"] .desktop,
 button[data-type="external"] {
   background-color: var(--green-7);
+}
+
+*[data-type="internal"] .desktop,
+button[data-type="internal"] {
+  background-color: var(--yellow-7);
+}
+
+.days div[data-type="student"] .mobile {
+  --color: hsla(0, 86%, 59%, 0.1);
+}
+
+.days div[data-type="teach"] .mobile {
+  --color: hsla(288, 56%, 51%, 0.1);
+}
+
+.days div[data-type="open"] .mobile {
+  --color: hsla(208, 77%, 47%, 0.1);
+}
+
+.days div[data-type="workshop"] .mobile {
+  --color: hsla(24, 94%, 50%, 0.1);
+}
+
+.days div[data-type="external"] .mobile {
+  --color: hsla(131, 53%, 46%, 0.1);
+}
+
+.days div[data-type="internal"] .mobile {
+  --color: hsla(44, 70%, 45%, 0.1);
 }

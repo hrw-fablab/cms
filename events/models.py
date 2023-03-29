@@ -17,7 +17,7 @@ CATEGORYCHOICES = (
     ("student", "Schülerkurse"),
     ("workshop", "Workshop"),
     ("external", "Extern"),
-    ("6", "FabLab Event"),
+    ("internal", "FabLab Event"),
 )
 
 from django.db import models

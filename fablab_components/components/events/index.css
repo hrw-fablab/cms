@@ -79,3 +79,7 @@
 .events section[data-type="external"] {
   --color: hsla(131, 53%, 46%, 0.1);
 }
+
+.events section[data-type="internal"] {
+  --color: hsla(44, 70%, 45%, 0.1);
+}

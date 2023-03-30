@@ -6,10 +6,12 @@
     {% endif %}
     <div class="device--content">
         <span class="area">{{area}}</span>
-        <h2>{{model}}</h2>
+        <h2>
+            {{model}}
+            {% if amount != "1" %}
+                <span class="amount">x {{amount}}</span>
+            {% endif %}
+        </h2>
         <div class="manufacturer">{{manufacturer}}</div>
-        {% if amount != "1" %}
-            <div class="amount">Anzahl: {{amount}}</div>
-        {% endif %}
     </div>
 </div>

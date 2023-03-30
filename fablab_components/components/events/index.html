@@ -3,6 +3,21 @@
     <div id="events" class="events">
         {% for element in events %}
             <section data-type="{{element.category}}">
+                <script type="application/ld+json">
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Event",
+                        "name": "{{element.title}}",
+                        "startDate": "{{element.startDate}}",
+                        "endDate": "{{element.endDate}}",
+                        "location": {
+                            "@type": "Place",
+                            "name": "{{element.adress}}"
+                        },
+                        "description": "{{element.description}}",
+                        "url": "{{element.link}}"
+                    }
+                </script>
                 <time>{{element.day}}. {{element.monthString}}</time>
                 <div>
                     <header>

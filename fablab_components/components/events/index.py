@@ -36,6 +36,8 @@ def get_event(element, year, month, day):
         "month": month,
         "day": day,
         "monthString": MONTHS[int(month) - 1],
+        "startDate": element.start.isoformat(),
+        "endDate": element.end.isoformat(),
     }
 
     if element.length >= 1:
@@ -46,6 +48,12 @@ def get_event(element, year, month, day):
 
     if element.repeatStart:
         result["repeatStart"] = int(element.repeatStart.strftime("%d"))
+        result["startDate"] = datetime.datetime(
+            year, month, day, element.start.hour, element.start.minute
+        ).isoformat()
+        result["endDate"] = datetime.datetime(
+            year, month, day, element.end.hour, element.end.minute
+        ).isoformat()
 
     if element.repeatEnd:
         result["repeatEnd"] = int(element.repeatEnd.strftime("%d"))

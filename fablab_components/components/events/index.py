@@ -1,5 +1,6 @@
 from calendar import monthrange
 import datetime
+import json
 from dateutil.relativedelta import relativedelta
 from django_components import component
 from events.models import Event
@@ -22,6 +23,7 @@ MONTHS = [
 
 
 def get_event(element, year, month, day):
+    print(element)
     result = {
         "title": element.title,
         "adress": element.adress,
@@ -40,12 +42,6 @@ def get_event(element, year, month, day):
         "endDate": element.end.isoformat(),
     }
 
-    if element.length >= 1:
-        result["start"] = f"{day}. {MONTHS[element.month - 1]} {element.timeStart}"
-        result[
-            "end"
-        ] = f"{day + element.length}. {MONTHS[element.month - 1]} {element.timeEnd}"
-
     if element.repeatStart:
         result["repeatStart"] = int(element.repeatStart.strftime("%d"))
         result["startDate"] = datetime.datetime(
@@ -57,6 +53,12 @@ def get_event(element, year, month, day):
 
     if element.repeatEnd:
         result["repeatEnd"] = int(element.repeatEnd.strftime("%d"))
+
+    if element.length >= 1:
+        result["start"] = f"{day}. {MONTHS[element.month - 1]} {element.timeStart}"
+        result[
+            "end"
+        ] = f"{day + element.length}. {MONTHS[element.month - 1]} {element.timeEnd}"
 
     return result
 
@@ -83,12 +85,13 @@ def get_repeats(element, year, month, day):
 def get_events():
     result = []
     date = datetime.date.today()
+    filter_elements = []
 
     max_iteration = 0
 
     while len(result) <= 4 and max_iteration <= 3:
         events = Event.objects.filter(
-            (Q(start__gte=date) & Q(repeat="0"))
+            (Q(start__gte=date) & Q(repeat="0") & ~Q(title__in=filter_elements))
             | (Q(repeat="1") & Q(repeatStart__lte=date) & Q(repeatEnd__gte=date))
         )
 
@@ -96,6 +99,7 @@ def get_events():
             if element.repeat != "0":
                 result.extend(get_repeats(element, date.year, date.month, date.day))
             else:
+                filter_elements.append(element.title)
                 result.append(get_event(element, date.year, element.month, element.day))
 
         date = date + relativedelta(months=1, day=1)

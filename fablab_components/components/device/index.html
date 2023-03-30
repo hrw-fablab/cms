@@ -2,14 +2,14 @@
 
 <div class="device" data-title="{{title|upper}}" data-area="{{area|upper}}">
     {% if image %}
-        {% component "picture" image=image caption=image.caption sizes="600x600" breakpoints="600" %}
+        {% component "picture" image=image caption=image.caption sizes="300x168" breakpoints="300" %}
     {% endif %}
     <div class="device--content">
-        <span>{{area}}</span>
-        <h2>{{title}}</h2>
-        <div>{{model}} {{manufacturer}}</div>
-    </div>
-    <div class="device--amount">
-        Anzahl: {{amount}}
+        <span class="area">{{area}}</span>
+        <h2>{{model}}</h2>
+        <div class="manufacturer">{{manufacturer}}</div>
+        {% if amount != "1" %}
+            <div class="amount">Anzahl: {{amount}}</div>
+        {% endif %}
     </div>
 </div>

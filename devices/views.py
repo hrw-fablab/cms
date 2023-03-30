@@ -42,11 +42,10 @@ def load(request):
     data = load_data()
     enhanced = enhance_data(data)
     reduced = reduce_data(enhanced)
-    filtered = filter_data(reduced)
 
-    images = load_images(filtered)
+    images = load_images(reduced)
 
-    devices = create_devices(filtered)
+    devices = create_devices(reduced)
 
     Device.objects.bulk_create(devices)
     return HttpResponseRedirect(reverse("devices_admin:index"))

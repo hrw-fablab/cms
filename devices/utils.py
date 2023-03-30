@@ -57,6 +57,8 @@ def enhance_data(data):
     result = []
     for element in data:
         item = element.to_json()
+        if item["Webseite"] == None:
+            continue
         result.append(
             {
                 "title": item["AssetType"] or False,

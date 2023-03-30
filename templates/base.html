@@ -51,6 +51,7 @@
         <link rel="icon" href="{% static 'svg/favicon.svg' %}" type="image/svg+xml" />
         <meta name="google-site-verification" content="39zPnXBg_tXm80l5iQ8p4pgAXEvnF9NOlWAvn7GZVWg" />
         {% component_css_dependencies %}
+        {% block structure %}{% endblock %}
     </head>
     <body id="body">
         {% block svg %}{% endblock %}

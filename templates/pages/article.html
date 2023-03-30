@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags component_tags %}
+{% block structure %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "headline": "{{ page.title }}",
+            "image": [
+                "{{ og_image.full_url }}"
+            ],
+            "datePublished": "{{ page.first_published_at|date:'Y-m-d' }}",
+            "dateModified": "{{ page.last_published_at|date:'Y-m-d' }}",
+            "author": {
+                "@type": "Person",
+                "name": "{{page.author}}"
+            },
+            "description": "{{ page.search_description }}"
+        }
+    </script>
+{% endblock structure %}
 {% block content %}
     <main id="main" data-margin-block-start="medium">
         {% component "article" %}

@@ -1,6 +1,6 @@
 {% load static component_tags %}
 
-<div class="device" data-title="{{title|upper}}" data-area="{{area|upper}}">
+<div class="device" data-title="{{model|upper}}" data-area="{{area|upper}}">
     {% if image %}
         {% component "picture" image=image caption=image.caption sizes="300x168" breakpoints="300" %}
     {% endif %}

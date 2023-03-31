@@ -37,12 +37,10 @@
 
 .grabber--grid[data-layout="magazine"] > :nth-child(1) {
   --grid-column: 1 / 4;
-  --aspect-ratio: var(--ratio-widescreen);
 }
 
 .grabber--grid[data-layout="magazine"] > :nth-child(2) {
   --grid-column: 4 / 7;
-  --aspect-ratio: var(--ratio-widescreen);
 }
 
 .grabber--grid[data-layout="magazine"] > :nth-child(3) {

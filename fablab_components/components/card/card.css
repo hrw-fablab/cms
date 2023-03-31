@@ -74,7 +74,7 @@
 }
 
 .card:where([data-style="horizontal"]) h3 {
-  font-size: var(--font-size-7);
+  font-size: var(--font-size-6);
 }
 
 @media only screen and (max-width: 768px) {

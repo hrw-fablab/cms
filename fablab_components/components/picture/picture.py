@@ -54,4 +54,4 @@ class Picture(component.Component):
         }
 
     class Media:
-        css = "picture/picture.css"
+        pass

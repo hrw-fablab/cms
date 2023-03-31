@@ -7,7 +7,7 @@
 }
 
 .article img {
-  border-radius: var(--radius-3);
+  border-radius: var(--radius-2);
   aspect-ratio: var(--ratio-widescreen);
 }
 
@@ -23,15 +23,18 @@
 
 .author div {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: var(--size-2);
+  align-items: center;
+  font-size: var(--font-size-1);
 }
 
-.author div :first-child{
-  font-weight: bold;
+.author div :last-child{
+  color: var(--text-2);
 }
 
 .author img {
-  height: 3rem;
-  width: 3rem;
+  height: 2rem;
+  width: 2rem;
   border-radius: 50%;
 }

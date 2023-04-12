@@ -1,4 +1,4 @@
-﻿Brotli==1.0.9
+Brotli==1.0.9
 Django==4.1.7
 python-dotenv==1.0.0
 wagtail==4.2.1
@@ -8,5 +8,5 @@ whitenoise==6.4.0
 wagtail-cache==2.2.0
 python-dateutil==2.8.2
 Office365-REST-Python-Client==2.4.0
-django-components==0.26.2
+django-components==0.27.0
 mysqlclient==2.1.1

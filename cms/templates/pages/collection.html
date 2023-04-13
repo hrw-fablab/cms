@@ -1,0 +1,205 @@
+{% load static wagtailcore_tags wagtailuserbar wagtailimages_tags i18n %}
+{% wagtail_site as current_site %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html class="no-js" lang="{{ LANGUAGE_CODE }}">
+    <head>
+        {% if page.index == "noindex" %}<meta name="robots" content="noindex" />{% endif %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            {% block title %}
+                {% if page.seo_title %}
+                    {{ page.seo_title }}
+                {% else %}
+                    {{ page.title }}
+                {% endif %}
+            {% endblock %}
+        </title>
+        <meta name="description" content="{{ page.search_description }}" />
+        <style>
+            @font-face {
+                font-family: 'Inter var';
+                font-weight: 100 900;
+                font-display: swap;
+                font-style: normal;
+                font-named-instance: 'Regular';
+                src: url("{% static 'fonts/inter.woff2' %}") format("woff2");
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-weight: 600;
+                font-family: 'Inter var', sans-serif;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                padding-block-start: 2rem;
+                gap: 3rem;
+                background-color: hsl(0, 0%, 95%);
+                padding-inline: max((100% - 30rem) /2, 1.2rem);
+                color: hsl(0, 0%, 15%);
+            }
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: stretch;
+                gap: 2rem;
+            }
+
+            svg {
+                width: 2rem;
+                height: 2rem;
+            }
+
+            a {
+                text-decoration: none;
+                font-size: 110%;
+                display: inline-block;
+                padding: 1.2rem;
+                width: 100%;
+                border-radius: 0.5rem;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                color: white;
+            }
+
+            a:hover {
+                filter: saturate(0.3);
+            }
+
+            main ul {
+                flex-direction: column;
+            }
+
+            footer ul {
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 0;
+            }
+
+            footer a {
+                padding: 0.5rem;
+                background-color: transparent;
+                box-shadow: inherit;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: black;
+                gap: 0.3rem;
+                font-size: 100%;
+            }
+
+            footer a:hover {
+                background-color: inherit;
+                color: hsl(202, 100%, 30%);
+            }
+
+            footer a:hover svg {
+                fill: hsl(202, 100%, 30%);
+            }
+
+            a[data-type="teach"] {
+                --color: linear-gradient(52deg, hsl(255, 93%, 72%) 26%, hsl(255, 93%, 55%) 100%);
+            }
+
+            a[data-type="open"] {
+                --color: linear-gradient(52deg, hsl(207, 91%, 55%) 26%, hsl(207, 91%, 40%) 100%);
+            }
+
+            a[data-type="school"] {
+                --color: linear-gradient(52deg, hsl(47, 100%, 50%) 26%, hsl(47, 100%, 40%) 100%);
+            }
+
+            a[data-type="workshop"] {
+                --color: linear-gradient(52deg, hsl(24, 94%, 50%) 26%, hsl(24, 94%, 35%) 100%);
+            }
+
+            a[data-type="extern"] {
+                --color: linear-gradient(52deg, hsl(84, 69%, 51%) 26%, hsl(84, 69%, 36%) 100%);
+            }
+
+            main a {
+                background: var(--color, linear-gradient(52deg,#0f4fb4 26%, #0f73b4 100%));
+            }
+        </style>
+        <meta property="og:title"
+              content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}">
+        <meta property="og:description" content="{{ page.search_description }}">
+        {% image page.og_image original as og_image %}
+        <meta property="og:image" content="{{ og_image.full_url }}">
+        <meta property="og:image:alt" content="{{ page.og_image_alt }}">
+        <meta property="og:locale" content="de">
+        <meta property="og:type" content="{{ page.og_type }}">
+        <meta property="og:url" content="{{ page.full_url }}">
+        <meta name="twitter:card" content="{{ page.tw_size }}">
+        <link rel="icon" href="{% static 'svg/favicon.svg' %}" type="image/svg+xml">
+    </head>
+    <body>
+        <header>
+            <h1>HRW FabLab</h1>
+        </header>
+        <main>
+            <ul class="collection">
+                {% for element in page.collection_links.all %}
+                    {% if element.expire %}
+                        {% if element.is_visible == False %}
+                            <li>
+                                <a data-type="{{element.category}}" href="{{ element.url }}" target="_blank">{{ element.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% else %}
+                        <li>
+                            <a data-type="{{element.category}}" href="{{ element.url }}" target="_blank">{{ element.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% for element in page.collection_pages.all %}
+                    {% for page in element.grabber.get_children|slice:element.amount %}
+                        <li>
+                            <a data-type="{{element.category}}" href="{{ page.url }}" target="_blank">{{ page.title }}</a>
+                        </li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </main>
+        <footer>
+            <ul class="social">
+                <li>
+                    <a href="https://www.instagram.com/fablab_hrwbottrop/">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2h5c3 0 5 2 5 5a83 83 0 0 1 0 10c0 3-2 5-5 5a83 83 0 0 1-10 0c-3 0-5-2-5-5A83 83 0 0 1 2 7c0-3 2-5 5-5h5zm0-2H7C3 0 0 3 0 7a84 84 0 0 0 0 10c0 4 3 7 7 7a86 86 0 0 0 10 0c4 0 7-3 7-7a84 84 0 0 0 0-10c0-4-3-7-7-7h-5zm0 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6-12a1 1 0 1 0 0 3 1 1 0 0 0 0-3z" />
+                        </svg>
+                        Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/FabLabBottrop/">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3 8h-1.4c-.5 0-.6.2-.6.8V10h2l-.2 2H13v7h-3v-7H8v-2h2V7.7C10 5.9 11 5 13 5h2v3z" />
+                        </svg>
+                        Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/HrwFablab">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M24 4.6c-.9.3-1.8.6-2.8.7a5 5 0 0 0 2.1-2.7c-1 .6-2 1-3 1.2a5 5 0 0 0-8.5 4.5A14 14 0 0 1 1.7 3a5 5 0 0 0 1.5 6.6c-.8 0-1.6-.2-2.2-.6A5 5 0 0 0 5 14a5 5 0 0 1-2.3 0 5 5 0 0 0 4.6 3.5 9.9 9.9 0 0 1-7.3 2A14 14 0 0 0 21.5 7.1 10 10 0 0 0 24 4.6z" />
+                        </svg>
+                        Twitter
+                    </a>
+                </li>
+            </ul>
+        </footer>
+    </body>
+</html>

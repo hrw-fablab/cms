@@ -1,0 +1,27 @@
+{% load wagtailcore_tags wagtailimages_tags component_tags %}
+
+<article class="content article" data-width="small" data-margin-block-end="large">
+    {% if page.image %}
+        {% component "picture" image=page.image caption=page.image.caption sizes="854x480 480x360" breakpoints="768 480" %}
+    {% endif %}
+    <header>
+        <h1>{{ page.title }}</h1>
+        {% if page.author %}
+            <div class="author">
+                {% if page.author.image %}
+                    {% component "picture" image=page.author.image caption=page.author.image.caption sizes="100x100" breakpoints="" %}
+                {% endif %}
+                <div>
+                    <span>{{page.author}}</span>
+                    <span>{{page.date}}</span>
+                </div>
+            </div>
+        {% endif %}
+        {% if text %}
+            <p>{{text}}</p>
+        {% endif %}
+    </header>
+    <div class="richtext">
+        {{ page.body|richtext }}
+    </div>
+</article>

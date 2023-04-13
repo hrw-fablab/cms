@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags component_tags %}
+{% block content %}
+    <main id="main">
+        {% component "hero" title=page.title text=page.introduction image=page.image video=False links=page.project_links.all %}
+        {% for block in page.body %}
+            {% include_block block %}
+        {% endfor %}
+    </main>
+{% endblock content %}

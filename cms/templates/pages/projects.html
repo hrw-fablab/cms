@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags component_tags %}
+{% block content %}
+    <main id="main" data-margin-block-start="medium">
+        <div class="content grid gap"
+             data-width="large"
+             data-layout="large"
+             data-gap="medium"
+             data-margin-block-end="large">
+            {% for page in children %}
+                {% component "card" style=False title=page.title text=page.localized.introduction link=page.localized.url image=page.image author=page.author date=page.date %}
+            {% endfor %}
+        </div>
+    </main>
+{% endblock content %}

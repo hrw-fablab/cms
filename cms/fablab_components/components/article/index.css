@@ -1,0 +1,40 @@
+.article header {
+  margin-block: var(--size-fluid-1);
+  margin-block-end: var(--size-fluid-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+}
+
+.article img {
+  border-radius: var(--radius-2);
+  aspect-ratio: var(--ratio-widescreen);
+}
+
+.article h1 {
+  font-size: var(--font-size-5);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+}
+
+.author div {
+  display: flex;
+  flex-direction: row;
+  gap: var(--size-2);
+  align-items: center;
+  font-size: var(--font-size-1);
+}
+
+.author div :last-child {
+  color: var(--text-2);
+}
+
+.author img {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}

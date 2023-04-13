@@ -1,0 +1,34 @@
+{% load wagtailimages_tags component_tags %}
+<article class="card"
+         data-style="{{style}}">
+    {% if image %}
+        {% component "picture" image=image caption=image.caption sizes="854x480 480x360" breakpoints="768 480" %}
+    {% endif %}
+    <div>
+        {% if link or page or url %}
+            <a href="{% if link %}{{ link }}{% elif url%}{{url}}{% else %}{{ page.url }} {% endif %}"
+               {% if value.new_tab %}target="_blank"{% endif %}>
+                {% if title %}
+                    <h3>{{ title }}</h3>
+                {% endif %}
+            </a>
+        {% else %}
+            <h3>{{ title }}</h3>
+        {% endif %}
+        {% if author %}
+            <div class="author">
+                {% if author.image %}
+                    {% component "picture" image=author.image caption=author.image.caption sizes="100x100" breakpoints="" %}
+                {% endif %}
+                <div>
+                    <span>{{author}}</span>
+                    am
+                    <span>{{date}}</span>
+                </div>
+            </div>
+        {% endif %}
+        {% if text %}
+            <p>{{text}}</p>
+        {% endif %}
+    </div>
+</article>

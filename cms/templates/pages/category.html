@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% block content %}
+    <main id="main" data-margin-block-start="medium">
+        {% regroup children.specific by category as category_list %}
+        {% for category in category_list %}
+            {% if category.grouper != None %}
+                {% include "atoms/heading.html" with value=category.grouper anchor=True %}
+            {% endif %}
+            <div class="content grid gap"
+                 data-width="large"
+                 data-layout="large"
+                 data-gap="medium"
+                 data-margin-block-end="large">
+                {% for page in category.list %}
+                    {% include "molecules/card.html" with value=page %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </main>
+{% endblock content %}

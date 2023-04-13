@@ -1,0 +1,17 @@
+{% load static component_tags %}
+
+<div class="content devices">
+    <header>
+        <input type="text" id="devices--search" placeholder="Gerätesuche ..." />
+        <div class="filter">
+            <button class="filter--button" id="print">3D Drucker</button>
+            <button class="filter--button" id="wood">Holzbereich</button>
+            <button  class="filter--button"id="metall">Metall</button>
+        </div>
+    </header>
+    <div class="grid" data-grid="small">
+        {% for element in devices %}
+            {% component "device" title=element.title model=element.model area=element.area manufacturer=element.manufacturer amount=element.amount image=element.image %}
+        {% endfor %}
+    </div>
+</div>

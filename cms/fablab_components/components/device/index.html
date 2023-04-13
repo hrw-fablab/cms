@@ -1,0 +1,17 @@
+{% load static component_tags %}
+
+<div class="device" data-title="{{model|upper}}" data-area="{{area|upper}}">
+    {% if image %}
+        {% component "picture" image=image caption=image.caption sizes="300x168" breakpoints="300" %}
+    {% endif %}
+    <div class="device--content">
+        <span class="area">{{area}}</span>
+        <h2>
+            {{model}}
+            {% if amount != "1" %}
+                <span class="amount">x {{amount}}</span>
+            {% endif %}
+        </h2>
+        <div class="manufacturer">{{manufacturer}}</div>
+    </div>
+</div>

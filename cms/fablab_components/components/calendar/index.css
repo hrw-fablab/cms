@@ -1,0 +1,315 @@
+.calendar li {
+  position: relative;
+}
+
+.calendar svg {
+  pointer-events: none;
+}
+
+.calendar details {
+  cursor: pointer;
+}
+
+.calendar details > summary {
+  list-style: none;
+}
+
+.calendar details summary::-webkit-details-marker {
+  display: none;
+}
+
+.calendar > header {
+  align-items: center;
+  display: flex;
+  font-size: var(--font-size-4);
+  justify-content: space-between;
+  margin-block-end: var(--size-fluid-1);
+}
+
+.calendar > header div {
+  display: flex;
+  gap: var(--size-fluid-1);
+}
+
+.calendar > header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--size-2);
+  border: none;
+  fill: var(--text-1);
+  stroke: var(--text-1);
+  border: solid var(--border-size-1) var(--surface-2);
+  border-radius: var(--radius-2);
+}
+
+.calendar > header button:hover {
+  background-color: var(--surface-3);
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  list-style: none;
+  padding: 0;
+  border-block: solid 0.15rem var(--surface-2);
+  border-inline-start: solid 0.15rem var(--surface-2);
+}
+
+.weekdays li {
+  align-items: center;
+  border-inline-end: solid 0.15rem var(--surface-2);
+  display: flex;
+  justify-content: center;
+  padding-block: var(--size-3);
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  list-style: none;
+  padding: 0;
+  border-inline-start: solid 0.15rem var(--surface-2);
+  counter-set: section;
+}
+
+.days li {
+  border-block-end: solid 0.15rem var(--surface-2);
+  border-inline-end: solid 0.15rem var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  justify-content: end;
+  min-width: 0;
+  aspect-ratio: var(--ratio-widescreen);
+}
+
+@media only screen and (max-width: 1024px) {
+  .calendar > ol {
+    grid-template-columns: 1fr;
+    gap: var(--size-fluid-4);
+  }
+
+  .calendar header {
+    margin-block-end: var(--size-fluid-3);
+  }
+
+  .weekdays {
+    display: none;
+  }
+
+  .days {
+    border: none;
+  }
+
+  .days li {
+    aspect-ratio: inherit;
+    gap: var(--size-fluid-4);
+    border: none;
+  }
+
+  .days li:where(:not(.full)) {
+    display: none;
+  }
+
+  .days .active::before {
+    display: none;
+  }
+}
+
+.days .active::before {
+  content: counter(section);
+  counter-increment: section;
+  font-size: var(--font-size-3);
+  padding-inline: var(--size-3);
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.mobile {
+  display: none;
+}
+
+.redirect {
+  border: none;
+  padding: var(--size-1);
+  margin-inline-start: -2px;
+}
+
+.redirect span {
+  opacity: 0;
+}
+
+.desktop {
+  padding: 0;
+  border-radius: var(--radius-1);
+  background-color: var(--surface-2);
+  box-shadow: var(--shadow-2);
+}
+
+.days *[data-position="first"] .desktop {
+  border-radius: var(--radius-2) 0 0 var(--radius-2);
+}
+
+.desktop summary {
+  padding: var(--size-1);
+  color: var(--text-1-dark);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+.desktop .description {
+  transform: translateY(5%);
+  border-radius: var(--radius-2);
+  position: absolute;
+  background-color: var(--surface-2);
+  border: var(--border-size-1) solid var(--surface-3);
+  box-shadow: var(--shadow-3);
+  width: 30rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-fluid-1);
+  padding: var(--size-fluid-1);
+}
+
+.desktop .description header div {
+  display: flex;
+  gap: var(--size-fluid-1);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.desktop .description header h3 {
+  font-size: var(--font-size-4);
+}
+
+.desktop .description button {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  fill: var(--text-1);
+  stroke: var(--text-1);
+}
+
+.events li > button {
+  padding: var(--size-1);
+  border-radius: inherit;
+  border: none;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.events li > button span {
+  opacity: 0;
+}
+
+.events li div[data-position="first"] details {
+  border-inline-end: inherit;
+  border-radius: var(--radius-2) 0 0 var(--radius-2);
+}
+
+@media only screen and (max-width: 1024px) {
+  .desktop {
+    display: none;
+  }
+
+  .redirect {
+    display: none;
+  }
+
+  .mobile {
+    position: relative;
+    border-radius: var(--radius-3);
+    padding: var(--size-fluid-2);
+    box-shadow: var(--shadow-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-1);
+    background-color: var(--color);
+  }
+
+  .mobile a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .mobile a::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    border-radius: var(--radius-3);
+    border: var(--border-size-1) solid var(--surface-3);
+  }
+
+  .mobile header {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    margin-block-end: var(--size-2);
+  }
+
+  .mobile h3 {
+    font-size: var(--font-size-4);
+  }
+}
+
+*[data-type="student"] .desktop,
+button[data-type="student"] {
+  background-color: var(--red-7);
+}
+
+*[data-type="teach"] .desktop,
+button[data-type="teach"] {
+  background-color: var(--purple-7);
+}
+
+*[data-type="open"] .desktop,
+button[data-type="open"] {
+  background-color: var(--blue-7);
+}
+
+*[data-type="workshop"] .desktop,
+button[data-type="workshop"] {
+  background-color: var(--orange-7);
+}
+
+*[data-type="external"] .desktop,
+button[data-type="external"] {
+  background-color: var(--green-7);
+}
+
+*[data-type="internal"] .desktop,
+button[data-type="internal"] {
+  background-color: var(--yellow-7);
+}
+
+.days div[data-type="student"] .mobile {
+  --color: hsla(0, 86%, 59%, 0.1);
+}
+
+.days div[data-type="teach"] .mobile {
+  --color: hsla(288, 56%, 51%, 0.1);
+}
+
+.days div[data-type="open"] .mobile {
+  --color: hsla(208, 77%, 47%, 0.1);
+}
+
+.days div[data-type="workshop"] .mobile {
+  --color: hsla(24, 94%, 50%, 0.1);
+}
+
+.days div[data-type="external"] .mobile {
+  --color: hsla(131, 53%, 46%, 0.1);
+}
+
+.days div[data-type="internal"] .mobile {
+  --color: hsla(44, 70%, 45%, 0.1);
+}

@@ -1,0 +1,25 @@
+{% load static component_tags %}
+
+<section class="hero" data-margin-block-end="large">
+    {% if title or text %}
+        <div>
+            {% if title %}<h1>{{ title }}</h1>{% endif %}
+            {% if text %}<p>{{ text }}</p>{% endif %}
+            {% if links %}
+                <div class="hero--link">
+                    {% for link in links %}
+                        <a href="{{link.url}}">{{link.title}}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if image %}
+        {% component "picture" image=image caption=image.credit sizes="1920x1080" breakpoints="1920" %}
+    {% endif %}
+
+    {% if video %}
+        {% include "hero/video.html" %}
+    {% endif %}
+</section>

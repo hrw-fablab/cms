@@ -1,0 +1,10 @@
+{% load component_tags wagtailcore_tags %}
+
+<div class="content" data-width="large" data-margin-block-end="large">
+  {% if value.title %}
+    {% include "atoms/heading.html" with value=value.title anchor=False %}
+  {% endif %}
+  <div class="grid" data-grid="{{value.layout}}">
+    {% for element in value.cards %} {% include_block element %} {% endfor %}
+  </div>
+</div>

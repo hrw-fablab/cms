@@ -1,0 +1,29 @@
+{% load i18n %}
+<form class="flex" style="margin-inline-start: auto;"
+      data-direction="row"
+      action="{% url 'set_language' %}"
+      method="post">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <label class="flex gap align-center" data-gap="tiny" for="language">
+        <svg aria-hidden="true"
+             focusable="false"
+             style="fill: white"
+             width="1.2rem"
+             viewBox="0 0 24 24">
+            <path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm1 16v-3h3c0 1.1-.2 2.2-.5 3.3L13 16zm2 2.2a12 12 0 0 1-2 3.5V18l2 .1zM13 11V8l2.5-.2c.3 1 .4 2 .5 3.2h-3zm0-5V2.3a12 12 0 0 1 2 3.5L13 6zm2.7-3.3A10 10 0 0 1 19 5l-2 .6c-.4-1-.8-2-1.3-2.8zM8.5 16.3C8.2 15.3 8 14 8 13h3v3c-.9 0-1.7.2-2.5.3zM11 18v3.6a12 12 0 0 1-2-3.5l2-.1zm-3-7c0-1.1.2-2.2.5-3.2L11 8v3H8zm1-5.2a12 12 0 0 1 2-3.5V6l-2-.2zm-2-.3-2-.6c1-1 2-1.7 3.3-2.2-.5.9-1 1.8-1.3 2.8zm-.5 1.9C6.2 8.5 6 9.7 6 11H2a10 10 0 0 1 1.7-4.5c.8.3 1.8.7 2.8.9zm0 9.3c-1 .2-2 .5-2.8.9A10 10 0 0 1 2 13h4c0 1.3.2 2.5.5 3.7zm.5 1.9 1.3 2.7A10 10 0 0 1 5 19.2c.7-.3 1.3-.5 2-.6zm10 0c.7.1 1.3.3 2 .6-1 .9-2 1.6-3.3 2 .5-.8 1-1.7 1.3-2.6zm.5-2c.3-1.1.5-2.3.5-3.6h4a10 10 0 0 1-1.7 4.6l-2.8-1zM18 11c0-1.3-.2-2.5-.5-3.6 1-.2 2-.6 2.8-1A10 10 0 0 1 22 11h-4z"/>
+        </svg>
+        Sprache
+    </label>
+    <select id="language" name="language" onchange="this.form.submit()">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"
+                    {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+</form>

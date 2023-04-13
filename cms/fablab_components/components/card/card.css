@@ -1,0 +1,91 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  font-size: var(--font-size-4);
+}
+
+.card figure {
+  border-radius: var(--radius-2);
+}
+
+.card > div {
+  padding-block: var(--size-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-fluid-1);
+}
+
+.card img {
+  height: 100%;
+  border-radius: var(--radius-2);
+}
+
+.card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.card a::after {
+  content: "";
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  place-self: stretch;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+}
+
+.author div {
+  display: flex;
+  flex-direction: row;
+  gap: var(--size-2);
+  align-items: center;
+  font-size: var(--font-size-1);
+}
+
+.author div :last-child {
+  color: var(--text-2);
+}
+
+.author img {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}
+
+.card:where([data-style="horizontal"]) {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  gap: var(--size-fluid-3);
+}
+
+.card:where([data-style="horizontal"]) h3 {
+  font-size: var(--font-size-6);
+}
+
+@media only screen and (max-width: 768px) {
+  .card > div {
+    margin: inherit;
+    border-radius: 0 0 var(--radius-3) var(--radius-3);
+    width: 100%;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+}

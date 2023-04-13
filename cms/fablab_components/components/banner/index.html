@@ -1,0 +1,14 @@
+{% load wagtailimages_tags component_tags %}
+{% if value.illustration %}
+    {% image value.image height-700 format-webp as illustration %}
+{% endif %}
+<section class="banner" data-margin-block-end="large">
+    {% if value.title or value.text %}
+        <div>
+            {% if value.title %}<h2>{{ value.title }}</h2>{% endif %}
+        </div>
+    {% endif %}
+    {% if value.image %}
+        {% component "picture" image=value.image caption=value.image.credit sizes="1920x500 1440x500 1024x500" breakpoints="1920 1440 1024" %}
+    {% endif %}
+</section>

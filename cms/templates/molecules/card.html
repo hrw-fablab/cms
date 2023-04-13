@@ -1,0 +1,46 @@
+{% load wagtailimages_tags %}
+<article class="card"
+         data-style="{{style}}">
+    {% if value.image %}
+        <figure>
+            <picture>
+                {% image value.image fill-854x480-c70 format-webp webpquality-80 as image_768 %}
+                {% image value.image fill-480x360-c70 format-webp webpquality-60 as image_480 %}
+                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
+                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                        type="image/webp">
+                {% image value.image fill-854x480 format-jpeg as image_768 %}
+                {% image value.image fill-480x360 format-jpeg as image_480 %}
+                <source srcset=" {{ image_480.url }} 480w, {{ image_768.url }} 768w"
+                        sizes=" (min-width: 768px) 768px, (min-width: 480px) 480px"
+                        type="image/jpg">
+                <img src="{{ image_480.url }}"
+                     alt="{{ image_480.alt }}"
+                     decoding="async"
+                     loading="lazy">
+            </picture>
+            <figcaption>
+                {{ value.image.credit }}
+            </figcaption>
+        </figure>
+    {% endif %}
+    <div>
+        <header>
+            {% if page.author %}
+                <time>{{page.date}}</time>
+            {% endif %}
+            {% if value.link or value.page or value.url %}
+                <a href="{% if value.link %}{{ value.link }}{% elif value.url%}{{value.localized.url}}{% else %}{{ value.page.localized.url }} {% endif %}"
+                   {% if value.new_tab %}target="_blank"{% endif %}>
+                    {% if value.title %}
+                        <h3>{{ value.title }}</h3>
+                    {% endif %}
+                </a>
+            {% else %}
+                <h3>{{ value.title }}</h3>
+            {% endif %}
+        </header>
+        {% if value.text %}<p>{{ value.text }}</p>{% endif %}
+        {% if value.introduction %}<p>{{ value.localized.introduction }}</p>{% endif %}
+    </div>
+</article>

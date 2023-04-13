@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "cms"
+version = "0.9"
+description = ""
+authors = ["Max Graw <max@graw-online.com>"]
+readme = "README.md"
+repository = "https://github.com/hrw-fablab/cms"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python="^3.8"
+django="4.1.7"
+python-dotenv="1.0.0"
+wagtail="4.2.2"
+wagtail-localize="1.5"
+wagtailmedia="0.13.0"
+whitenoise="6.4.0"
+wagtail-cache="2.2.0"
+python-dateutil="2.8.2"
+Office365-REST-Python-Client="2.4.0"
+django-components="0.26.2"
+mysqlclient="2.1.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "23.1.0"
+djhtml = "3.0.4"
+ruff = "0.0.260"
+pre-commit = "3.2.1"
+
+[settings.virtualenvs]
+in-project = "true"
+
+[tool.ruff]
+exclude = ["migrations"]

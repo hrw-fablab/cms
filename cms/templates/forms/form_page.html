@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags filter_tag %}
+{% block content %}
+    <main id="main">
+        {% for block in page.content %}
+            {% include_block block %}
+        {% endfor %}
+        <style>
+            div[data-tag="Password"] {
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 0;
+                width: 0;
+                z-index: -1;
+            }
+        </style>
+        <form id="form"
+              action="{% pageurl page %}"
+              method="post"
+              class="content form"
+              data-width="small"
+              data-margin-block="large">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                <div data-tag="{{field.label}}" data-style="{% if field.errors %}error{% endif %}">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    <p>{{field.help_text}}</p>
+                </div>
+            {% endfor %}
+            <button>Daten absenden</button>
+        </form>
+    </main>
+{% endblock %}

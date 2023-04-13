@@ -1,0 +1,15 @@
+<figure>
+    <img src=""
+         srcset="{{renditions}}"
+         sizes="{{breakpoints}}"
+         alt=""
+         decoding="sync"
+         loading="eager"
+         rel="preload"
+         class="hero-image">
+    {% if caption %}
+        <figcaption>
+            {{ caption }}
+        </figcaption>
+    {% endif %}
+</figure>

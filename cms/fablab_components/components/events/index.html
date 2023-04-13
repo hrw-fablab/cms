@@ -1,0 +1,36 @@
+<div class="content" data-width="large" data-margin-block-end="large">
+    {% include "atoms/heading.html" with value="Aktuelle Termine" anchor=False %}
+    <div id="events" class="events">
+        {% for element in events %}
+            <section data-type="{{element.category}}">
+                <script type="application/ld+json">
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Event",
+                        "name": "{{element.title}}",
+                        "startDate": "{{element.startDate}}",
+                        "endDate": "{{element.endDate}}",
+                        "location": {
+                            "@type": "Place",
+                            "name": "{{element.adress}}"
+                        },
+                        "description": "{{element.description}}",
+                        "url": "{{element.link}}"
+                    }
+                </script>
+                <time>{{element.day}}. {{element.monthString}}</time>
+                <div>
+                    <header>
+                        {% if element.link %}
+                            <a href="{{element.link}}"><h3>{{element.title}}</h3></a>
+                        {% else %}
+                            <h3>{{element.title}}</h3>
+                        {% endif %}
+                        <time>{{element.start}} bis {{element.end}}</time>
+                    </header>
+                    <p>{{element.description}}</p>
+                </div>
+            </section>
+        {% endfor %}
+    </div>
+</div>

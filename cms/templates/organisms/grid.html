@@ -1,0 +1,13 @@
+<section class="grid gap" data-layout="{{ layout }}" data-gap="medium">
+    {% for element in value %}
+        {% if element.block_type == "card" %}
+            {% include "molecules/card.html" with value=element.value style=style %}
+        {% elif element.block_type == "person" %}
+            {% include "molecules/person.html" with value=element.value.person %}
+        {% elif element.block_type == "image" %}
+            {% include "atoms/image.html" with value=element containt=containt %}
+        {% else %}
+            {{ element }}
+        {% endif %}
+    {% endfor %}
+</section>

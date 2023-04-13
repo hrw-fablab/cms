@@ -1,0 +1,7 @@
+{% load wagtailimages_tags component_tags %}
+<section class="content centered"
+         data-style="{% if value.accent %}color{% endif %}"
+         data-width="large"
+         data-margin-block="large">
+    {% component "embed" url=value.embed.url title=value.title %}
+</section>

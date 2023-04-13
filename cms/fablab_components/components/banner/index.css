@@ -1,0 +1,44 @@
+.banner {
+  background: var(--noise-1);
+  display: grid;
+  grid-template: "container";
+  background-size: cover;
+  height: 40vh;
+  background-color: var(--surface-1-dark);
+}
+
+.banner > * {
+  grid-area: container;
+  color: var(--text-1-dark);
+}
+
+.banner > div {
+  z-index: 1;
+  text-align: center;
+  place-self: center;
+}
+
+.banner:has(picture) > div {
+  backdrop-filter: saturate(180%) blur(20px);
+  background: hsla(240, 3%, 12%, 0.9);
+  padding: var(--size-fluid-1);
+  border-radius: var(--radius-2);
+}
+
+.banner figure {
+  width: 100%;
+  height: 100%;
+  place-self: center;
+}
+
+.banner img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.richtext {
+  text-align: justify;
+  font-size: var(--font-size-2);
+  line-height: 1.8;
+}

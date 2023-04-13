@@ -4,6 +4,6 @@ __pycache__/
 /media
 db.sqlite3
 .venv
-/static
-/cache
+*/static
+*/cache
 .ruff_cache

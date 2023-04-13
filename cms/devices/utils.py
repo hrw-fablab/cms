@@ -57,7 +57,7 @@ def enhance_data(data):
     result = []
     for element in data:
         item = element.to_json()
-        if item["Webseite"] == None:
+        if item["Webseite"] is None:
             continue
         result.append(
             {
@@ -109,7 +109,7 @@ def load_images(data):
     collection = get_collection()
 
     for item in data:
-        if item["image"] == False:
+        if item["image"] is False:
             continue
 
         file_url = (

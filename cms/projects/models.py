@@ -84,7 +84,7 @@ class Project(ClusterableModel):
                     ordered_list.append(member)
 
         for member in self.related_member.all():
-            if member.role == None:
+            if member.role is None:
                 ordered_list.append(member)
 
         return ordered_list

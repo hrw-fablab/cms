@@ -81,7 +81,7 @@ def get_events():
     switch = False
     iteration = 0
 
-    while switch == False:
+    while switch is False:
         for element in Event.objects.all():
             if element.visible_events(date):
                 if element.repeat != "0":

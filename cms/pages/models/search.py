@@ -20,7 +20,7 @@ class SearchPage(FablabBasePage):
         else:
             filter_local = 1
 
-        if search_query == None:
+        if search_query is None:
             return context
 
         search_results = (

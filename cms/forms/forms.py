@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from wagtail.contrib.forms.forms import FormBuilder
 from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
 
 from django import forms
 import datetime
@@ -50,7 +49,7 @@ def validate_even(value):
         "((?:(?<=[^a-zA-Z0-9]){0,}(?:(?:https?\:\/\/){0,1}(?:[a-zA-Z0-9\%]{1,}\:[a-zA-Z0-9\%]{1,}[@]){,1})(?:(?:\w{1,}\.{1}){1,5}(?:(?:[a-zA-Z]){1,})|(?:[a-zA-Z]{1,}\/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\:[0-9]{1,4}){1})){1}(?:(?:(?:\/{0,1}(?:[a-zA-Z0-9\-\_\=\-]){1,})*)(?:[?][a-zA-Z0-9\=\%\&\_\-]{1,}){0,1})(?:\.(?:[a-zA-Z0-9]){0,}){0,1})"
     )
     data = re.search(pattern, value)
-    if data == None:
+    if data is None:
         return
     raise ValidationError("")
 

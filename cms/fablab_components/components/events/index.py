@@ -1,6 +1,5 @@
 from calendar import monthrange
 import datetime
-import json
 from dateutil.relativedelta import relativedelta
 from django_components import component
 from events.models import Event

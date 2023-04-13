@@ -6,7 +6,7 @@ from core.models import FablabImage
 
 from .models import Device
 
-from .utils import enhance_data, filter_data, load_data, load_images, reduce_data
+from .utils import enhance_data, load_data, load_images, reduce_data
 
 
 def index(request):
@@ -43,7 +43,7 @@ def load(request):
     enhanced = enhance_data(data)
     reduced = reduce_data(enhanced)
 
-    images = load_images(reduced)
+    load_images(reduced)
 
     devices = create_devices(reduced)
 

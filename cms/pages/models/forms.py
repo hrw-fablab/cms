@@ -132,12 +132,12 @@ class FormPage(RoutablePageMixin, FabLabCaptchaEmailForm):
 
     def get_form_fields(self):
         fields = list(super().get_form_fields())
-        if self.event == None:
+        if self.event is None:
             return fields
         date = datetime.date.today()
         element = Event.objects.get(title=self.event)
         events = get_events(element, date.year, date.month, date.day)
-        if events != None:
+        if events is not None:
             fields.insert(
                 0,
                 FormField(

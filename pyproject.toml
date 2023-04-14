@@ -26,7 +26,7 @@ mysqlclient="2.1.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "23.1.0"
-djhtml = "3.0.4"
+djhtml = "3.0.6"
 ruff = "0.0.260"
 pre-commit = "3.2.1"
 

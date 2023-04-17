@@ -21,7 +21,7 @@ def get_index(data, model):
 def get_collection():
     try:
         Collection.objects.get(name="devices")
-    except:
+    except:  # noqa
         root_coll = Collection.get_first_root_node()
         root_coll.add_child(name="devices")
     finally:
@@ -46,7 +46,7 @@ def enhance_image(data):
     try:
         image = json.loads(data["DevicePhoto"])
         return image["fileName"]
-    except Exception:
+    except:  # noqa
         return False
 
 

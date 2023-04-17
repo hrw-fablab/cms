@@ -9,8 +9,12 @@ class MatterportFinder(EmbedFinder):
         return bool("my.matterport.com/show/" in url)
 
     def find_embed(self, url, max_width=None):
-        print("yes find")
-        html = f'<iframe src="{url}" allowfullscreen loading="lazy" style="border: none"></iframe>'
+        html = f"""<iframe 
+        src="{url}" 
+        allowfullscreen 
+        loading="lazy" 
+        style="border: none">
+        </iframe>"""
 
         return {
             "title": "Matterport 3D Scan",
@@ -32,7 +36,12 @@ class GoogleMapsFinder(EmbedFinder):
         return bool("google.com/maps/" in url)
 
     def find_embed(self, url, max_width=None):
-        html = f'<iframe src="{url}" allowfullscreen loading="lazy" style="border: none"></iframe>'
+        html = f"""<iframe 
+        src="{url}" 
+        allowfullscreen 
+        loading="lazy" 
+        style="border: none">
+        </iframe>"""
 
         return {
             "title": "Google Maps",

@@ -18,8 +18,6 @@ modeladmin_register(ProjectAdmin)
 
 
 class ProjectChooserViewSet(ChooserViewSet):
-    # The model can be specified as either the model class or an "app_label.model_name" string;
-    # using a string avoids circular imports when accessing the StreamField block class (see below)
     model = "projects.Project"
 
     icon = "group"

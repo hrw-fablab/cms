@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
-
-from wagtail.contrib.forms.models import AbstractEmailForm
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormSubmission
 from cms.core.models import FablabBasePage
 
 from .forms import FabLabCaptchaFormBuilder, remove_honeypot_field
@@ -34,15 +33,12 @@ class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
                     "",
                     [data["e_mail"]],
                 )
-            except:
+            except: # noqa
                 pass
         return submission
 
     class Meta:
         abstract = True
-
-
-from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormSubmission
 
 
 class CustomFormSubmission(AbstractFormSubmission):

@@ -33,7 +33,7 @@ class FabLabCaptchaEmailForm(AbstractEmailForm, FablabBasePage):
                     "",
                     [data["e_mail"]],
                 )
-            except: # noqa
+            except:  # noqa
                 pass
         return submission
 

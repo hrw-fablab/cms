@@ -1,5 +1,5 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from core.models import FablabBasePage
+from cms.core.models import FablabBasePage
 
 from wagtail.models import Page
 

@@ -1,7 +1,7 @@
 from wagtail import blocks
 
-from blocks.blocks.card import CardBlock
-from blocks.blocks.person import PersonBlock
+from .card import CardBlock
+from .person import PersonBlock
 
 
 class GridBlockElements(blocks.StreamBlock):

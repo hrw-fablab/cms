@@ -1,8 +1,8 @@
-from core.models import FablabBasePage
+from cms.core.models import FablabBasePage
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import StreamField
 
-from blocks.models import HomeBlock
+from cms.blocks.models import HomeBlock
 
 
 class HomePage(FablabBasePage):

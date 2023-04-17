@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from core.models import FablabImage
+from cms.core.models import FablabImage
 
 from .models import Device
 

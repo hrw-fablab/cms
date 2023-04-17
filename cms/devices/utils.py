@@ -4,7 +4,7 @@ import tempfile
 
 from office365.runtime.auth.user_credential import UserCredential
 from office365.sharepoint.client_context import ClientContext
-from core.models import FablabImage
+from cms.core.models import FablabImage
 from wagtail.models import Collection
 from django.core.files.images import ImageFile
 from dotenv import load_dotenv

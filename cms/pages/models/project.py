@@ -10,10 +10,10 @@ from wagtail.fields import StreamField
 
 from modelcluster.fields import ParentalKey
 
-from abstract.models.links import Link
+from cms.abstract.models.links import Link
 
-from blocks.models import ProjectBlock
-from core.models import FablabBasePage
+from cms.blocks.models import ProjectBlock
+from cms.core.models import FablabBasePage
 
 
 class ProjectPageLink(Orderable, Link):

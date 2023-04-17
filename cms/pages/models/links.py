@@ -8,9 +8,9 @@ from wagtail.admin.panels import (
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 
-from abstract.models.links import ExpireLink, PageLink
+from cms.abstract.models.links import ExpireLink, PageLink
 
-from core.models import FablabBasePage
+from cms.core.models import FablabBasePage
 
 
 class CollectionPagePage(Orderable, PageLink):

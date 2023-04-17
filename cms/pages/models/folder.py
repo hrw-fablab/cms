@@ -1,4 +1,4 @@
-from core.models import FablabBasePage
+from cms.core.models import FablabBasePage
 from django.http import HttpResponseRedirect
 
 

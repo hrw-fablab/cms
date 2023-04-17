@@ -1,5 +1,5 @@
 from wagtail import blocks
-from blocks.blocks import PersonChooserBlock
+from.chooser import PersonChooserBlock
 
 
 class PersonBlock(blocks.StructBlock):

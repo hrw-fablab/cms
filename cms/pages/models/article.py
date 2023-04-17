@@ -3,7 +3,7 @@ from wagtail.fields import RichTextField
 
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
-from core.models import FablabBasePage
+from cms.core.models import FablabBasePage
 
 
 class ArticlePage(FablabBasePage):

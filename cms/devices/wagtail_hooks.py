@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from wagtail.admin.menu import MenuItem
 from wagtail import hooks
 
-from devices import urls
+from cms.devices import urls
 
 
 class DeviceMenuItem(MenuItem):

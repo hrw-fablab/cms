@@ -2,7 +2,7 @@ from calendar import monthrange
 import datetime
 from dateutil.relativedelta import relativedelta
 from django_components import component
-from events.models import Event
+from cms.events.models import Event
 from django.db.models import Q
 
 MONTHS = [
@@ -22,7 +22,6 @@ MONTHS = [
 
 
 def get_event(element, year, month, day):
-    print(element)
     result = {
         "title": element.title,
         "adress": element.adress,

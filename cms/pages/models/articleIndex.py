@@ -1,4 +1,4 @@
-from core.models import FablabBasePage
+from cms.core.models import FablabBasePage
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 

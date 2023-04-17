@@ -25,20 +25,20 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    "user",
-    "core",
-    "pages",
-    "blocks",
-    "events",
-    "projects",
-    "persons",
-    "embeds",
+    "cms.user",
+    "cms.core",
+    "cms.pages",
+    "cms.blocks",
+    "cms.events",
+    "cms.projects",
+    "cms.persons",
+    "cms.embeds",
     "django_components",
-    "fablab_components",
-    "global",
-    "forms",
-    "devices",
-    "search",
+    "cms.fablab_components",
+    "cms.global",
+    "cms.forms",
+    "cms.devices",
+    "cms.search",
     "wagtailcache",
     "wagtailmedia",
     "wagtail_localize",
@@ -88,7 +88,7 @@ MIDDLEWARE = [
     "wagtailcache.cache.FetchFromCacheMiddleware",
 ]
 
-ROOT_URLCONF = "urls"
+ROOT_URLCONF = "cms.urls"
 
 TEMPLATES = [
     {
@@ -246,10 +246,10 @@ DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_ADDRESS")
 
 WAGTAILEMBEDS_FINDERS = [
     {
-        "class": "embeds.models.MatterportFinder",
+        "class": "cms.embeds.models.MatterportFinder",
     },
     {
-        "class": "embeds.models.GoogleMapsFinder",
+        "class": "cms.embeds.models.GoogleMapsFinder",
     },
     {
         "class": "wagtail.embeds.finders.oembed",

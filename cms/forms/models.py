@@ -1,9 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
 from wagtail.contrib.forms.models import AbstractEmailForm
-from core.models import FablabBasePage
+from cms.core.models import FablabBasePage
 
-from forms.forms import FabLabCaptchaFormBuilder, remove_honeypot_field
+from .forms import FabLabCaptchaFormBuilder, remove_honeypot_field
 
 from django.db import models
 from django.core.mail import send_mail

@@ -5,7 +5,7 @@ __pycache__/
 db.sqlite3
 .venv
 */static
-*/cache
+/cache
 .ruff_cache
 .vscode
 .env

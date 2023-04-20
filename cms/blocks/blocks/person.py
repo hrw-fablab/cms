@@ -1,9 +1,9 @@
 from wagtail import blocks
-from .chooser import PersonChooserBlock
+from wagtail.snippets import blocks as snippet_blocks
 
 
 class PersonBlock(blocks.StructBlock):
-    person = PersonChooserBlock(required=False)
+    person = snippet_blocks.SnippetChooserBlock("persons.Person", required=False)
 
     class Meta:
         template = "templates/person.html"

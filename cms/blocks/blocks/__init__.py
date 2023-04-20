@@ -1,6 +1,5 @@
 from .banner import *  # noqa
 from .blockquote import *  # noqa
-from .chooser import *  # noqa
 from .card import *  # noqa
 from .embed import *  # noqa
 from .gallery import *  # noqa

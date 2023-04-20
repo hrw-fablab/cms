@@ -1,7 +1,5 @@
 from wagtail import blocks
-
-from .chooser import ProjectChooserBlock
-
+from wagtail.snippets import blocks as snippet_blocks
 
 class ProjectMembers(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
@@ -17,7 +15,7 @@ class ProjectMembers(blocks.StructBlock):
         help_text="Die Anzahl an Elementen in einer Horizontalen Reihe",
     )
 
-    members = ProjectChooserBlock(required=True, label="Projektmitglieder")
+    members = snippet_blocks.SnippetChooserBlock("projects.Project", required=True)
 
     headings = blocks.BooleanBlock(
         required=False,

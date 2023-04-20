@@ -1,40 +1,13 @@
-from wagtail.admin.viewsets.chooser import ChooserViewSet
-from wagtail import hooks
-
-from wagtail.contrib.modeladmin.options import (
-    ModelAdmin,
-    modeladmin_register,
-)
+from wagtail.snippets.views.snippets import SnippetViewSet
+from wagtail.snippets.models import register_snippet
 
 from .models import Event
 
-
-class EventAdmin(ModelAdmin):
+class EventViewSet(SnippetViewSet):
     model = Event
-    menu_icon = "date"
-    menu_order = 200
-    add_to_settings_menu = False
-    exclude_from_explorer = False
-    list_display = ("title", "adress", "start", "end")
-    list_filter = ("start",)
-    search_fields = ("title",)
-
-
-modeladmin_register(EventAdmin)
-
-
-class EventChooserViewSet(ChooserViewSet):
-    model = "events.Event"
-
     icon = "date"
-    choose_one_text = "Choose a event"
-    choose_another_text = "Choose another event"
-    edit_item_text = "Edit this event"
+    menu_label = "Event"
+    menu_name = "events"
+    add_to_admin_menu = True
 
-
-event_chooser_viewset = EventChooserViewSet("event_chooser")
-
-
-@hooks.register("register_admin_viewset")
-def register_viewset():
-    return event_chooser_viewset
+register_snippet(EventViewSet)

@@ -1,6 +1,7 @@
 from wagtail import blocks
 from wagtail.snippets import blocks as snippet_blocks
 
+
 class ProjectMembers(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
 

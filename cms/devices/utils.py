@@ -8,12 +8,12 @@ from cms.core.models import FablabImage
 from wagtail.models import Collection
 from django.core.files.images import ImageFile
 from dotenv import load_dotenv
-from cms.core.models import FablabImage
 
 from .models import Device
 
 
 load_dotenv()
+
 
 def link_image(item):
     if not item:
@@ -35,6 +35,7 @@ def create_devices(data):
             )
         )
     return devices
+
 
 def get_index(data, model):
     for i, item in enumerate(data):
@@ -108,6 +109,7 @@ def reduce_data(data):
         reduced.append(item)
 
     return reduced
+
 
 def load_images(data):
     site_url = "https://hrwfablab.sharepoint.com/sites/HRWFablab"

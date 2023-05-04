@@ -1,45 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from wagtail.models import Collection
 from cms.core.models import FablabImage
 
 from .models import Device
 
-from .utils import enhance_data, load_data, load_images, reduce_data
+from .utils import enhance_data, load_data, load_images, reduce_data, create_devices
 
 
 def index(request):
-    return render(request, "devices/index.html")
-
-
-def link_image(item):
-    if not item:
-        return None
-    return FablabImage.objects.filter(title=item).first()
-
-
-def create_devices(data):
-    devices = []
-    for item in data:
-        devices.append(
-            Device(
-                title=item["title"],
-                model=item["model"],
-                area=item["area"],
-                manufacturer=item["manufacturer"],
-                amount=item["amount"],
-                image=link_image(item["image"]),
-            )
-        )
-    return devices
-
+    return render(request, "devices/index.html", {"devices": Device.objects.all()})
 
 def load(request):
     Device.objects.all().delete()
     devices = []
 
     data = load_data()
+
     enhanced = enhance_data(data)
     reduced = reduce_data(enhanced)
 
@@ -48,4 +26,12 @@ def load(request):
     devices = create_devices(reduced)
 
     Device.objects.bulk_create(devices)
+    return HttpResponseRedirect(reverse("devices_admin:index"))
+
+def delete(request):
+    print("delete")
+    Device.objects.all().delete()
+
+    FablabImage.objects.all().filter(collection__name="devices").delete()
+
     return HttpResponseRedirect(reverse("devices_admin:index"))

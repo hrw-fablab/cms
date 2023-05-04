@@ -8,9 +8,33 @@ from cms.core.models import FablabImage
 from wagtail.models import Collection
 from django.core.files.images import ImageFile
 from dotenv import load_dotenv
+from cms.core.models import FablabImage
+
+from .models import Device
+
 
 load_dotenv()
 
+def link_image(item):
+    if not item:
+        return None
+    return FablabImage.objects.filter(title=item).first()
+
+
+def create_devices(data):
+    devices = []
+    for item in data:
+        devices.append(
+            Device(
+                title=item["title"],
+                model=item["model"],
+                area=item["area"],
+                manufacturer=item["manufacturer"],
+                amount=item["amount"],
+                image=link_image(item["image"]),
+            )
+        )
+    return devices
 
 def get_index(data, model):
     for i, item in enumerate(data):
@@ -84,16 +108,6 @@ def reduce_data(data):
         reduced.append(item)
 
     return reduced
-
-
-def filter_data(data):
-    filtered = []
-    for item in data:
-        if item["area"] == "Küche" or item["area"] == "Mitarbeiterbereich":
-            continue
-        filtered.append(item)
-    return filtered
-
 
 def load_images(data):
     site_url = "https://hrwfablab.sharepoint.com/sites/HRWFablab"

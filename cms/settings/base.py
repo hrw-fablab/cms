@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "cms.forms",
     "cms.devices",
     "cms.search",
+    "cms.commands",
     "wagtailcache",
     "wagtailmedia",
     "wagtail_localize",

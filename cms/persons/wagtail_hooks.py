@@ -1,4 +1,4 @@
-from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
+from wagtail.snippets.views.snippets import SnippetViewSet
 from wagtail.snippets.models import register_snippet
 
 from .models import Person

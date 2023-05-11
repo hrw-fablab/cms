@@ -28,7 +28,7 @@ mysqlclient="2.1.1"
 black = "23.3.0"
 djhtml = "3.0.6"
 ruff = "0.0.263"
-pre-commit = "3.2.2"
+pre-commit = "3.3.1"
 
 [settings.virtualenvs]
 in-project = "true"

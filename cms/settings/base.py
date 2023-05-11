@@ -25,20 +25,21 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    "user",
-    "core",
-    "pages",
-    "blocks",
-    "events",
-    "projects",
-    "persons",
-    "embeds",
+    "cms.user",
+    "cms.core",
+    "cms.pages",
+    "cms.blocks",
+    "cms.events",
+    "cms.projects",
+    "cms.persons",
+    "cms.embeds",
     "django_components",
-    "fablab_components",
-    "global",
-    "forms",
-    "devices",
-    "search",
+    "cms.fablab_components",
+    "cms.global",
+    "cms.forms",
+    "cms.devices",
+    "cms.search",
+    "cms.commands",
     "wagtailcache",
     "wagtailmedia",
     "wagtail_localize",
@@ -88,7 +89,7 @@ MIDDLEWARE = [
     "wagtailcache.cache.FetchFromCacheMiddleware",
 ]
 
-ROOT_URLCONF = "urls"
+ROOT_URLCONF = "cms.urls"
 
 TEMPLATES = [
     {
@@ -118,7 +119,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "wsgi.application"
+WSGI_APPLICATION = "cms.wsgi.application"
 
 
 # Database
@@ -127,7 +128,7 @@ WSGI_APPLICATION = "wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(PROJECT_DIR, "db.sqlite3"),
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 
@@ -137,16 +138,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",  # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",  # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",  # noqa
     },
 ]
 
@@ -230,7 +231,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": os.path.join(PROJECT_DIR, "cache"),
+        "LOCATION": os.path.join(BASE_DIR, "cache"),
         "KEY_PREFIX": "wagtailcache",
         "TIMEOUT": 3600,
     }
@@ -246,10 +247,10 @@ DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_ADDRESS")
 
 WAGTAILEMBEDS_FINDERS = [
     {
-        "class": "embeds.models.MatterportFinder",
+        "class": "cms.embeds.models.MatterportFinder",
     },
     {
-        "class": "embeds.models.GoogleMapsFinder",
+        "class": "cms.embeds.models.GoogleMapsFinder",
     },
     {
         "class": "wagtail.embeds.finders.oembed",

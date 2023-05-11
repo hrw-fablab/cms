@@ -4,12 +4,37 @@ import tempfile
 
 from office365.runtime.auth.user_credential import UserCredential
 from office365.sharepoint.client_context import ClientContext
-from core.models import FablabImage
+from cms.core.models import FablabImage
 from wagtail.models import Collection
 from django.core.files.images import ImageFile
 from dotenv import load_dotenv
 
+from .models import Device
+
+
 load_dotenv()
+
+
+def link_image(item):
+    if not item:
+        return None
+    return FablabImage.objects.filter(title=item).first()
+
+
+def create_devices(data):
+    devices = []
+    for item in data:
+        devices.append(
+            Device(
+                title=item["title"],
+                model=item["model"],
+                area=item["area"],
+                manufacturer=item["manufacturer"],
+                amount=item["amount"],
+                image=link_image(item["image"]),
+            )
+        )
+    return devices
 
 
 def get_index(data, model):
@@ -21,7 +46,7 @@ def get_index(data, model):
 def get_collection():
     try:
         Collection.objects.get(name="devices")
-    except:
+    except:  # noqa
         root_coll = Collection.get_first_root_node()
         root_coll.add_child(name="devices")
     finally:
@@ -46,7 +71,7 @@ def enhance_image(data):
     try:
         image = json.loads(data["DevicePhoto"])
         return image["fileName"]
-    except Exception:
+    except:  # noqa
         return False
 
 
@@ -84,15 +109,6 @@ def reduce_data(data):
         reduced.append(item)
 
     return reduced
-
-
-def filter_data(data):
-    filtered = []
-    for item in data:
-        if item["area"] == "Küche" or item["area"] == "Mitarbeiterbereich":
-            continue
-        filtered.append(item)
-    return filtered
 
 
 def load_images(data):

@@ -9,9 +9,9 @@ from wagtail.documents import urls as wagtaildocs_urls
 from django.views.decorators.csrf import csrf_exempt
 from django.views.i18n import set_language
 
-from core.sitemaps import sitemap, FablabSiteMap
-from core.views import get_calendar
-from search.views import search_json
+from cms.core.sitemaps import sitemap, FablabSiteMap
+from cms.core.views import get_calendar
+from cms.search.views import search_json
 
 sitemaps = {
     "fablab": FablabSiteMap,

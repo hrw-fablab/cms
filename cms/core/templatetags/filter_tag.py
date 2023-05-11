@@ -10,7 +10,7 @@ def filter_organisation(self, value):
         try:
             if element.person.organisation == value:
                 result.append(element)
-        except:
+        except:  # noqa
             continue
     return result
 

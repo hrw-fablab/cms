@@ -1,6 +1,6 @@
-from core.models import FablabBasePage
+from cms.core.models import FablabBasePage
 
-from devices.models import Device
+from cms.devices.models import Device
 
 
 class DeviceIndexPage(FablabBasePage):

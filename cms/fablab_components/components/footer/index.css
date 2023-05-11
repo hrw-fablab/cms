@@ -40,3 +40,21 @@
     flex-direction: column;
   }
 }
+
+.footer .language {
+  display: flex;
+  gap: var(--size-fluid-1);
+  align-items: center;
+}
+
+.footer .language select {
+  padding: var(--size-2);
+}
+
+.footer .language label {
+  display: flex;
+  align-items: center;
+  gap: var(--size-1);
+  color: var(--text-1);
+  fill: var(--text-1);
+}

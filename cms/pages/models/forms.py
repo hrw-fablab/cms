@@ -1,11 +1,11 @@
 import datetime
 
-from events.models import Event
+from cms.events.models import Event
 from calendar import monthrange
 from dateutil.relativedelta import relativedelta
 from django.db import models
 from django.shortcuts import redirect
-from core.models import FablabBasePage
+from cms.core.models import FablabBasePage
 from wagtail.admin.panels import (
     InlinePanel,
     FieldPanel,
@@ -14,8 +14,8 @@ from wagtail.admin.panels import (
     ObjectList,
 )
 from modelcluster.fields import ParentalKey
-from forms.models import FabLabCaptchaEmailForm
-from blocks.models import FormBlock
+from cms.forms.models import FabLabCaptchaEmailForm
+from cms.blocks.models import FormBlock
 from wagtail.fields import RichTextField, StreamField
 from wagtail.contrib.forms.models import AbstractFormField, FORM_FIELD_CHOICES
 from wagtail.contrib.routable_page.models import RoutablePageMixin, path

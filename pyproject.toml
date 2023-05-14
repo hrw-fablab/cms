@@ -28,7 +28,7 @@ urllib3 = "1.26.15"
 [tool.poetry.group.dev.dependencies]
 black = "23.3.0"
 djhtml = "3.0.6"
-ruff = "0.0.263"
+ruff = "0.0.267"
 pre-commit = "3.3.1"
 
 [settings.virtualenvs]

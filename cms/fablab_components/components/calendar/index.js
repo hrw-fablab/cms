@@ -33,8 +33,6 @@ const handleChange = (event) => {
     month_number -= 1;
   }
 
-  console.log(month_number);
-
   if (month_number == 12) {
     year += 1;
     month_number = 0;

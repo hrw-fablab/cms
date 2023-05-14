@@ -15,7 +15,7 @@ from .blocks import (
     BlockquoteBlock,
     ImageBlock,
     VideoBlock,
-    EmbedBlock,
+    EmbedsBlock,
     CardBlock,
     ProjectMembers,
     TableBlock,
@@ -37,7 +37,7 @@ class HomeBlock(blocks.StreamBlock):
     spacer = SpacerBlock(label="Spacer")
     video = VideoBlock(label="Video")
     image = ImageBlock(label="Bild")
-    embed = EmbedBlock(label="Website einbetten")
+    embed = EmbedsBlock(label="Website einbetten")
     card = CardBlock(label="Card")
     person = PersonBlock(label="Person")
     html = HTMLBlock(label="HTML")
@@ -60,7 +60,7 @@ class FlexBlock(blocks.StreamBlock):
     spacer = SpacerBlock(label="Spacer")
     video = VideoBlock(label="Video")
     image = ImageBlock(label="Bild")
-    embed = EmbedBlock(label="Website einbetten")
+    embed = EmbedsBlock(label="Website einbetten")
     card = CardBlock(label="Card")
     person = PersonBlock(label="Person")
     html = HTMLBlock(label="HTML")
@@ -82,7 +82,7 @@ class ProjectBlock(blocks.StreamBlock):
     spacer = SpacerBlock(label="Spacer")
     video = VideoBlock(label="Video")
     image = ImageBlock(label="Bild")
-    embed = EmbedBlock(label="Website einbetten")
+    embed = EmbedsBlock(label="Website einbetten")
     card = CardBlock(label="Card")
     html = HTMLBlock(label="HTML")
     banner = BannerBlock(label="Banner")
@@ -99,7 +99,7 @@ class DeviceBlock(blocks.StreamBlock):
     spacer = SpacerBlock(label="Spacer")
     video = VideoBlock(label="Video")
     image = ImageBlock(label="Bild")
-    embed = EmbedBlock(label="Website einbetten")
+    embed = EmbedsBlock(label="Website einbetten")
     html = HTMLBlock(label="HTML")
     table = TableBlock(label="Tabelle")
 
@@ -113,4 +113,4 @@ class FormBlock(blocks.StreamBlock):
     banner = BannerBlock(label="Banner")
     video = VideoBlock(label="Video")
     image = ImageBlock(label="Bild")
-    embed = EmbedBlock(label="Website einbetten")
+    embed = EmbedsBlock(label="Website einbetten")

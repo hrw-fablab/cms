@@ -1,7 +1,7 @@
 from .banner import *  # noqa
 from .blockquote import *  # noqa
 from .card import *  # noqa
-from .embed import *  # noqa
+from .embeds import *  # noqa
 from .gallery import *  # noqa
 from .grabber import *  # noqa
 from .grid import *  # noqa

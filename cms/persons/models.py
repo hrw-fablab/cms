@@ -48,8 +48,8 @@ class Person(Indexed, ClusterableModel):
 
     search_fields = [
         SearchField("title", partial_match=True, boost=10),
-        SearchField("first_name", partial_match=True),
-        SearchField("last_name", partial_match=True),
+        SearchField("first_name"),
+        SearchField("last_name"),
     ]
 
     @property

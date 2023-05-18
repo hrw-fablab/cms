@@ -72,7 +72,7 @@ class Project(ClusterableModel):
     ]
 
     @property
-    def Personenanzahl(self):
+    def members_amount(self):
         return self.related_member.count()
 
     @property

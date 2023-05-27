@@ -71,10 +71,16 @@
   border-radius: var(--radius-3);
   padding: var(--size-3);
   color: var(--text-1-dark);
+  transition: transform 0.2s ease-in-out;
 }
 
 .hero:hover #control span {
   display: flex;
+}
+
+.hero #control span:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
 }
 
 .hero .visible {

@@ -12,7 +12,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
 python="^3.8"
-django="4.1.7"
+django="4.1.9"
 python-dotenv="1.0.0"
 wagtail="5.0"
 wagtail-localize="1.5"

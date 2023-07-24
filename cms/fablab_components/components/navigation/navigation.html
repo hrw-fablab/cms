@@ -3,7 +3,7 @@
 <header class="header" id="header">
     <div class="navigation content">
         <div class="top">
-            <a class="logo" href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}">
+            <a class="logo" href="{{ current_site.root_url }}/{{ LANGUAGE_CODE }}" hx-boost="true">
                 {% if settings.global.GlobalSettings.logo %}
                     {% image settings.global.GlobalSettings.logo original as logo_image %}
                     <img class="{% if settings.global.GlobalSettings.logo_title %} full{% endif %}"

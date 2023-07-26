@@ -31,7 +31,7 @@
   gap: var(--size-fluid-1);
 }
 
-.calendar > header button {
+.calendar > header button, .calendar > header a {
   display: flex;
   align-items: center;
   justify-content: center;

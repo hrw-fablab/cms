@@ -11,13 +11,13 @@
                         <ul class="menu" data-type="submenu">
                             {% for subelement in element.get_children.specific %}
                                 <li>
-                                    <a href="{{ subelement.localized.url }}" hx-boost="true" hx-push-url="true">{{ subelement.localized }}</a>
+                                    <a href="{{ subelement.localized.url }}">{{ subelement.localized }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
                     </details>
                 {% else %}
-                    <a href="{{ element.localized.url }}" hx-boost="true" hx-push-url="true">{{ element.localized }}</a>
+                    <a href="{{ element.localized.url }}">{{ element.localized }}</a>
                 {% endif %}
             </li>
         {% endfor %}

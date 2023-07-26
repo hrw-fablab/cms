@@ -38,6 +38,10 @@
         <link rel="stylesheet" href="{% static 'css/reset.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/props.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+        <script src="https://unpkg.com/htmx.org@1.9.3"></script>
+        <script src="https://unpkg.com/htmx.org/dist/ext/head-support.js"></script>
+
         <meta property="og:title"
               content="{% if page.localized.seo_title %}{{ page.localized.seo_title }}{% else %}{{ page.localized.title }}{% endif %}"/>
         <meta property="og:description" content="{{ page.localized.search_description }}" />
@@ -53,7 +57,7 @@
         {% component_css_dependencies %}
         {% block structure %}{% endblock %}
     </head>
-    <body id="body">
+    <body id="body" hx-ext="head-support" hx-boost="true" hx-push-url="true">
         {% block svg %}{% endblock %}
         {% wagtailuserbar %}
         {% wagtail_site as current_site %}

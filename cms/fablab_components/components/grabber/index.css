@@ -60,7 +60,7 @@
   grid-template: "container";
   place-items: center;
   aspect-ratio: var(--ratio-square);
-  transition: transform 0.5s ease-in-out;
+  border-radius: var(--radius-2);
 }
 
 .grabber--grid[data-style="variation"] .card > * {
@@ -69,6 +69,7 @@
 
 .grabber--grid[data-style="variation"] .card figure {
   height: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
 .grabber--grid[data-style="variation"] .card > div {
@@ -80,8 +81,8 @@
   margin: var(--size-fluid-1);
 }
 
-.grabber--grid[data-style="variation"] .card:hover {
-  transform: scale(1.02);
+.grabber--grid[data-style="variation"] .card:hover figure {
+  transform: scale(1.03);
   transition: transform 0.5s ease-in-out;
 }
 

@@ -57,7 +57,7 @@
         {% component_css_dependencies %}
         {% block structure %}{% endblock %}
     </head>
-    <body id="body" hx-ext="head-support">
+    <body id="body" hx-ext="head-support" hx-boost="true" hx-push-url="true">
         {% block svg %}{% endblock %}
         {% wagtailuserbar %}
         {% wagtail_site as current_site %}

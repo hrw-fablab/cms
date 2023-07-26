@@ -7,11 +7,25 @@
 .embed div {
   flex: 0.4;
   background: var(--brand-gradient);
+  background-size: 400% 400%;
   border-radius: var(--radius-3);
   padding: var(--size-fluid-1);
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: gradient 15s ease infinite alternate;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .embed h2 {

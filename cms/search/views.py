@@ -2,6 +2,7 @@ from wagtail.models import Page
 from wagtail.search.models import Query
 from django.shortcuts import render
 
+
 def search(request):
     search_query = request.GET.get("query", None)
 
@@ -13,4 +14,6 @@ def search(request):
 
         query.add_hit()
 
-    return render(request, "search.html", context={"search_results": search_results[0:5]})
+    return render(
+        request, "search.html", context={"search_results": search_results[0:5]}
+    )

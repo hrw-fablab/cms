@@ -2,10 +2,9 @@ from django_components import component
 import datetime
 from cms.events.models import Event
 from calendar import monthrange
+from django.db.models import Q
 
 FILLED_SLOTS_CONTEXT_KEY = "_DJANGO_COMPONENTS_FILLED_SLOTS"
-
-from django.db.models import Q
 
 MONTHS = [
     "Januar",
@@ -82,8 +81,6 @@ def get_before_date(year, month):
 
 
 def get_data(year, month):
-    days_count = monthrange(year, month)[1]
-
     days = {key: [] for key in range(38)}
     date = datetime.date(year, month, 1)
 

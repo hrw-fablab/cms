@@ -39,6 +39,12 @@ def get_event(element, day):
 
     return result
 
+def check_for_exception(element, date):
+    for exception in element.related_expection.all():
+        if date >= exception.start and date <= exception.end:
+            return False
+
+    return True
 
 def get_repeats(element, year, month):
     repeated = []
@@ -46,14 +52,13 @@ def get_repeats(element, year, month):
     weekday = element.start.weekday()
 
     for days in range(count):
-        switch = True
         current_date = datetime.date(year, month, days + 1)
 
-        for exception in element.related_expection.all():
-            if current_date >= exception.start and current_date <= exception.end:
-                switch = False
+        exception = check_for_exception(element, current_date)
+        if exception == False:
+            continue
 
-        if weekday == current_date.weekday() and switch:
+        if weekday == current_date.weekday():
             repeated.append(get_event(element, current_date.day))
 
     return repeated
@@ -99,7 +104,6 @@ def get_data(year, month):
 
     for element in elements:
         if element.repeat == "0":
-            print(element.start.day)
             days[element.start.day + date_start - 1].append(
                 get_event(element, element.start.day)
             )
@@ -138,8 +142,6 @@ class Calendar(component.Component):
             )
         else:
             result = get_data(int(year), int(month))
-
-        print(result)
 
         context.update({"data": result})
 

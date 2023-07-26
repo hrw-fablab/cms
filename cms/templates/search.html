@@ -1,0 +1,7 @@
+{% if search_results|length >= 1%}
+<ul class="results">
+  {% for item in search_results %}
+  <li><a href={{item.url}}>{{item.title}}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}

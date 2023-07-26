@@ -93,14 +93,6 @@ class GlobalSettings(BaseSiteSetting, ClusterableModel):
         related_name="+",
     )
 
-    search = models.ForeignKey(
-        "wagtailcore.Page",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
     facebook = models.URLField(null=True, blank=True)
     instagram = models.URLField(null=True, blank=True)
     youtube = models.URLField(null=True, blank=True)
@@ -164,7 +156,6 @@ class GlobalSettings(BaseSiteSetting, ClusterableModel):
                 FieldPanel("contact"),
                 FieldPanel("impressum"),
                 FieldPanel("data_protection"),
-                FieldPanel("search"),
             ],
             heading="Service",
         ),

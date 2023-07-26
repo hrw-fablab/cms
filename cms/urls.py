@@ -11,7 +11,7 @@ from django.views.i18n import set_language
 
 from cms.core.sitemaps import sitemap, FablabSiteMap
 from cms.core.views import get_calendar
-from cms.search.views import search_json
+from cms.search.views import search
 
 sitemaps = {
     "fablab": FablabSiteMap,
@@ -30,7 +30,7 @@ urlpatterns = [
         name="wagtail.contrib.sitemaps.views.sitemap",
     ),
     path("calendar", get_calendar, name="calendar"),
-    path("search_json/", search_json, name="search"),
+    path("search/", search, name="search"),
 ]
 
 

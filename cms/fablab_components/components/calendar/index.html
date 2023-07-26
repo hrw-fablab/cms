@@ -38,15 +38,15 @@
     </ol>
     <ol class="days">
         {% for key, value in data.days.items %}
-        {% if key <= data.index %}
-        <li id="{{key}}"></li>
-        {% else %}
-        <li id="{{key}}" class="active {%if value|length >= 1 %}full{% endif %}">
-            {% for element in value %}
-                {% include "calendar/element.html" %}
-            {% endfor %}
-        </li>
-        {% endif %}
+            {% if key <= data.index %}
+                <li id="{{key}}"></li>
+            {% else %}
+                <li id="{{key}}" class="active {%if value|length >= 1 %}full{% endif %}">
+                    {% for element in value %}
+                        {% include "calendar/element.html" %}
+                    {% endfor %}
+                </li>
+            {% endif %}
         {% endfor %}
     </ol>
 </div>

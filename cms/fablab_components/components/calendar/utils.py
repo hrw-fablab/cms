@@ -1,4 +1,3 @@
-from django_components import component
 import datetime
 from cms.events.models import Event
 from calendar import monthrange
@@ -78,7 +77,7 @@ def get_repeats(element, year, month):
         current_date = datetime.date(year, month, days + 1)
 
         exception = check_for_exception(element, current_date)
-        if exception == False:
+        if exception is False:
             continue
 
         if weekday == current_date.weekday():

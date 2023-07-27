@@ -31,7 +31,8 @@
   gap: var(--size-fluid-1);
 }
 
-.calendar > header button, .calendar > header a {
+.calendar > header button,
+.calendar > header a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,6 +151,16 @@
   box-shadow: var(--shadow-2);
 }
 
+.desktop[data-multi="multi"] {
+  border-radius: 0;
+  box-shadow: none;
+  margin-inline-start: -2px;
+}
+
+.desktop[data-redirect="redirect"] summary {
+  opacity: 0;
+}
+
 .days *[data-position="first"] .desktop {
   border-radius: var(--radius-2) 0 0 var(--radius-2);
 }
@@ -170,7 +181,7 @@
   background-color: var(--surface-2);
   border: var(--border-size-1) solid var(--surface-3);
   box-shadow: var(--shadow-3);
-  width: 30rem;
+  width: 20rem;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -195,23 +206,6 @@
   background-color: transparent;
   fill: var(--text-1);
   stroke: var(--text-1);
-}
-
-.events li > button {
-  padding: var(--size-1);
-  border-radius: inherit;
-  border: none;
-  align-items: start;
-  justify-content: space-between;
-}
-
-.events li > button span {
-  opacity: 0;
-}
-
-.events li div[data-position="first"] details {
-  border-inline-end: inherit;
-  border-radius: var(--radius-2) 0 0 var(--radius-2);
 }
 
 @media only screen and (max-width: 1024px) {
@@ -260,33 +254,27 @@
   }
 }
 
-*[data-type="student"] .desktop,
-button[data-type="student"] {
+*[data-type="student"] .desktop {
   background-color: var(--red-7);
 }
 
-*[data-type="teach"] .desktop,
-button[data-type="teach"] {
+*[data-type="teach"] .desktop {
   background-color: var(--purple-7);
 }
 
-*[data-type="open"] .desktop,
-button[data-type="open"] {
+*[data-type="open"] .desktop {
   background-color: var(--blue-7);
 }
 
-*[data-type="workshop"] .desktop,
-button[data-type="workshop"] {
+*[data-type="workshop"] .desktop {
   background-color: var(--orange-7);
 }
 
-*[data-type="external"] .desktop,
-button[data-type="external"] {
+*[data-type="external"] .desktop {
   background-color: var(--green-7);
 }
 
-*[data-type="internal"] .desktop,
-button[data-type="internal"] {
+*[data-type="internal"] .desktop {
   background-color: var(--yellow-7);
 }
 

@@ -1,8 +1,13 @@
 from django_components import component
 import datetime
-from cms.events.models import Event
 from calendar import monthrange
-from django.db.models import Q
+from cms.fablab_components.components.calendar.utils import (
+    get_events,
+    get_event,
+    get_repeats,
+    get_next_date,
+    get_before_date,
+)
 
 FILLED_SLOTS_CONTEXT_KEY = "_DJANGO_COMPONENTS_FILLED_SLOTS"
 
@@ -21,99 +26,42 @@ MONTHS = [
     "Dezember",
 ]
 
-
-def get_event(element, day):
-    result = {
-        "title": element.title,
-        "adress": element.adress,
-        "link": element.link,
-        "link_text": element.link_text,
-        "length": element.length,
-        "timeStart": element.timeStart,
-        "timeEnd": element.timeEnd,
-        "start": element.start.weekday(),
-        "description": element.description,
-        "category": element.category,
-        "day": day,
-    }
-
-    return result
-
-def check_for_exception(element, date):
-    for exception in element.related_expection.all():
-        if date >= exception.start and date <= exception.end:
-            return False
-
-    return True
-
-def get_repeats(element, year, month):
-    repeated = []
-    count = monthrange(year, month)[1]
-    weekday = element.start.weekday()
-
-    for days in range(count):
-        current_date = datetime.date(year, month, days + 1)
-
-        exception = check_for_exception(element, current_date)
-        if exception == False:
-            continue
-
-        if weekday == current_date.weekday():
-            repeated.append(get_event(element, current_date.day))
-
-    return repeated
-
-
-def get_next_date(year, month):
-    new_month = month + 1
-    new_year = year
-
-    if month == 12:
-        new_year = year + 1
-        new_month = 1
-
-    return f"?year={new_year}&month={new_month}"
-
-def get_before_date(year, month):
-    new_month = month - 1
-    new_year = year
-
-    if month == 1:
-        new_year = year - 1
-        new_month = 12
-
-    return f"?year={new_year}&month={new_month}"
-
-
-def get_data(year, month):
-    days = {key: [] for key in range(38)}
-    date = datetime.date(year, month, 1)
-
-    date_start = date.weekday()
-
-    elements = Event.objects.filter(
-        (Q(repeat="0") & Q(start__year=year) & Q(start__month=month))
-        | (
-            Q(repeat="1")
-            & Q(repeatStart__year__lte=year)
-            & Q(repeatStart__month__lte=month)
-            & Q(repeatEnd__year__gte=year)
-            & Q(repeatEnd__month__gte=month)
-        )
-    )
-
+def get_days_events(days, elements, year, month, start):
     for element in elements:
         if element.repeat == "0":
-            days[element.start.day + date_start - 1].append(
-                get_event(element, element.start.day)
-            )
-        else:
+            day_index = element.start.day + start
+            days[day_index]["events"].append(get_event(element, element.start.day))
+
+        if element.length > 1 and element.repeat == "0":
+            for day in range(element.length - 1):
+                day_index = element.start.day + day + start + 1
+                days[day_index]["events"].append(
+                    get_event(element, element.start.day + day, redirect=True)
+                )
+                days[day_index]["repeat"] = True
+            continue
+
+        if element.repeat == "1":
             repeats = get_repeats(element, year, month)
             for repeat in repeats:
-                days[repeat["day"] + date_start - 1].append(repeat)
+                day_index = repeat["day"] + start
+                days[day_index]["events"].append(repeat)
+    
+    return days
+
+def get_data(year, month):
+    days = {key: {"repeat": None, "events": []} for key in range(38)}
+    date = datetime.date(year, month, 1)
+
+    date_start = date.weekday() - 1
+
+    elements = get_events(year, month)
+
+    days = get_days_events(days, elements, year, month, date_start)
 
     return {
-        "index": date_start - 1,
+        "index": date_start,
+        "month_length": monthrange(year, month)[1] + date_start + 1,
         "month_string": MONTHS[month - 1],
         "month": month,
         "year": year,

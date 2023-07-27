@@ -1,5 +1,5 @@
 <div data-type="{{element.category}}">
-    <details class="desktop">
+    <details class="desktop" data-multi="{{element.type}}" data-redirect="{{element.redirect}}">
         <summary>
             <span class="title"> {{element.title}}</span>
         </summary>
@@ -16,9 +16,12 @@
                 <div>{{element.timeStart}} - {{element.timeEnd}}</div>
             </header>
             <p>{{element.description}}</p>
+            {% if element.link %}
+            <a href="{{element.link}}">{{element.link_text}}</a>
+            {% endif %}
         </div>
     </details>
-    <div class="mobile">
+    <div class="mobile" data-redirect="{{element.redirect}}">
         <section>
             <time>{{key}}. {{data.month_string}}</time>
             <div>

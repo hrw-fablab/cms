@@ -40,9 +40,11 @@
         {% for key, value in data.days.items %}
             {% if key <= data.index %}
                 <li id="{{key}}"></li>
+            {% elif key >= data.month_length%}
+                <li id="{{key}}"></li>
             {% else %}
-                <li id="{{key}}" class="active {%if value|length >= 1 %}full{% endif %}">
-                    {% for element in value %}
+                <li id="{{key}}" class="active {%if value.events|length >= 1 and value.repeat == None %}full{% endif %}">
+                    {% for element in value.events %}
                         {% include "calendar/element.html" %}
                     {% endfor %}
                 </li>

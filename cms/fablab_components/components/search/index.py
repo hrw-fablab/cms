@@ -12,4 +12,3 @@ class Search(component.Component):
 
     class Media:
         css = "search/index.css"
-        js = "search/index.js"

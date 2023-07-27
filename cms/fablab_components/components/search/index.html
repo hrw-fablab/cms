@@ -1,10 +1,29 @@
+{% load wagtailcore_tags %}
+{% wagtail_site as current_site %}
 <div class="search" id="form-search">
-    <form role="search" action="{{ settings.global.GlobalSettings.search.localized.url }}" method="get" autocomplete="off">
-        <div class="input">
-            <input placeholder="Suche ..." id="search" type="search" aria-label="search text" name="query" />
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        </div>
-        <input type="submit" style="display: none" />
-    </form>
-    <ul class="results" id="results"> </ul>
+  <div class="input">
+    <input
+      type="search"
+      name="query"
+      hx-get="{{current_site.root_url }}/search"
+      hx-trigger="keyup changed delay:500ms"
+      hx-target="#result"
+    />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </div>
+
+  <div id="result"></div>
 </div>

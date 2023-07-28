@@ -392,13 +392,13 @@ files = [
 
 [[package]]
 name = "django"
-version = "4.1.7"
+version = "4.1.10"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "Django-4.1.7-py3-none-any.whl", hash = "sha256:f2f431e75adc40039ace496ad3b9f17227022e8b11566f4b363da44c7e44761e"},
-    {file = "Django-4.1.7.tar.gz", hash = "sha256:44f714b81c5f190d9d2ddad01a532fe502fa01c4cb8faf1d081f4264ed15dcd8"},
+    {file = "Django-4.1.10-py3-none-any.whl", hash = "sha256:26d0260c2fb8121009e62ffc548b2398dea2522b6454208a852fb0ef264c206c"},
+    {file = "Django-4.1.10.tar.gz", hash = "sha256:56343019a9fd839e2e5bf203daf45f25af79d5bffa4c71d56eae4f4404d82ade"},
 ]
 
 [package.dependencies]
@@ -1220,6 +1220,24 @@ docs = ["Sphinx (>=1.5.2)", "myst-parser (==0.18.1)", "pyenchant (>=3.1.1,<4)", 
 testing = ["Jinja2 (>=3.0,<3.2)", "azure-mgmt-cdn (>=12.0,<13.0)", "azure-mgmt-frontdoor (>=1.0,<1.1)", "black (==22.3.0)", "boto3 (>=1.16,<1.17)", "coverage (>=3.7.0)", "curlylint (==0.13.1)", "django-pattern-library (>=0.7,<0.8)", "djhtml (==1.5.2)", "doc8 (==0.8.1)", "elasticsearch (>=5.0,<6.0)", "factory-boy (>=3.2)", "flake8 (>=3.6.0)", "flake8-assertive (==2.0.0)", "flake8-blind-except (==0.1.1)", "flake8-comprehensions (==3.8.0)", "flake8-print (==5.0.0)", "freezegun (>=0.3.8)", "isort (==5.6.4)", "polib (>=1.1,<2.0)", "python-dateutil (>=2.7)", "pytz (>=2014.7)", "semgrep (==1.3.0)"]
 
 [[package]]
+name = "wagtail-cache"
+version = "2.3.0"
+description = "A simple page cache for Wagtail based on the Django cache middleware."
+optional = false
+python-versions = "*"
+files = []
+develop = false
+
+[package.dependencies]
+wagtail = ">=4.1"
+
+[package.source]
+type = "git"
+url = "https://github.com/torchbox-forks/wagtail-cache.git"
+reference = "support/wagtail-50"
+resolved_reference = "18364ebb65c91444231bb375577dc8f4334134c9"
+
+[[package]]
 name = "wagtail-localize"
 version = "1.5"
 description = "Translation plugin for Wagtail CMS"
@@ -1302,4 +1320,4 @@ testing = ["Pillow (>=9.1.0,<11.0.0)", "Wand (>=0.6,<1.0)", "mock (>=3.0,<4.0)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "8b10d673644a03df7b21ab6fee4088ba1cedf090801dc617c17a37d50c52f480"
+content-hash = "6dafa1e1f9818a3b9c1dbc730a2a95de2a02a383506593c0ab36971f8aecbcb5"

@@ -9,7 +9,6 @@ from cms.pages.models import (
     FolderPage,
     FormPage,
     LinkPage,
-    SearchPage,
     ArticleIndexPage,
     ProjectIndexPage,
 )
@@ -58,7 +57,6 @@ class Command(BaseCommand):
                 self.create_page("Neuigkeiten", ArticleIndexPage, show_in_menus=True),
                 self.create_page("Unser FabLab", FolderPage, show_in_menus=True),
                 self.create_page("Dein Besuch", FolderPage, show_in_menus=True),
-                self.create_page("Suche", SearchPage),
                 self.create_page("Links", LinkPage),
             ],
         )

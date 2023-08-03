@@ -3,7 +3,9 @@
   <p><span>“</span>{{ value.text }}<span>”</span></p>
 
   <cite>
-    {% component "picture" image=value.image caption=value.image.credit sizes="40x40" breakpoints="40" %}
+    {% if value.image %}
+      {% component "picture" image=value.image caption=value.image.credit sizes="40x40" breakpoints="40" %}
+    {% endif %}
     {{ value.cite }}
   </cite>
 </blockquote>

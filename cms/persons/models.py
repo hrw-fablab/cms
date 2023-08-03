@@ -54,7 +54,9 @@ class Person(index.Indexed, ClusterableModel):
     @property
     def name(self):
         if self.personal_title:
-            return "{} {} {}".format(self.personal_title, self.first_name, self.last_name)
+            return "{} {} {}".format(
+                self.personal_title, self.first_name, self.last_name
+            )
         else:
             return "{} {}".format(self.first_name, self.last_name)
 
@@ -66,12 +68,14 @@ class Person(index.Indexed, ClusterableModel):
             return self.image.get_rendition("fill-70x70").img_tag()
         except:  # noqa: E722 FIXME: remove bare 'except:'
             return ""
-    
+
     thumb_image.fget.short_description = "Bild"
 
     def __str__(self):
         if self.personal_title:
-            return "{} {} {}".format(self.personal_title, self.first_name, self.last_name)
+            return "{} {} {}".format(
+                self.personal_title, self.first_name, self.last_name
+            )
         else:
             return "{} {}".format(self.first_name, self.last_name)
 

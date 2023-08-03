@@ -91,7 +91,7 @@ class Event(Indexed, ClusterableModel):
     ]
 
     search_fields = [
-        SearchField("title", partial_match=True),
+        SearchField("title"),
     ]
 
     @property

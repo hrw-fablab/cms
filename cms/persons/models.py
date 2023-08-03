@@ -47,7 +47,7 @@ class Person(Indexed, ClusterableModel):
     ]
 
     search_fields = [
-        SearchField("title", partial_match=True, boost=10),
+        SearchField("title", boost=10),
         SearchField("first_name"),
         SearchField("last_name"),
     ]

@@ -6,5 +6,5 @@ class PersonBlock(blocks.StructBlock):
     person = snippet_blocks.SnippetChooserBlock("persons.Person", required=False)
 
     class Meta:
-        template = "templates/person.html"
+        template = "blocks/person.html"
         icon = "user"

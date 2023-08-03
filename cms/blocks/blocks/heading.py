@@ -5,5 +5,5 @@ class HeadingBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
 
     class Meta:
-        template = "molecules/heading.html"
+        template = "blocks/heading.html"
         icon = "title"

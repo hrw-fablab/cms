@@ -4,6 +4,6 @@
     {% if image %}
         {% component "picture" image=image caption=image.caption sizes="300x300" breakpoints="300" %}
     {% endif %}
-    <h3>{{title|default_if_none:""}} {{firstname}} {{lastname}}</h3>
+    <h3>{{personal_title|default_if_none:""}} {{firstname}} {{lastname}}</h3>
     <p>{{area|default_if_none:""}}</p>
 </div>

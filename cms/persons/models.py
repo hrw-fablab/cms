@@ -4,11 +4,11 @@ from modelcluster.models import ClusterableModel
 
 from wagtail.admin.panels import MultiFieldPanel, FieldPanel, FieldRowPanel
 
-from wagtail.search.index import Indexed, SearchField
+from wagtail.search import index
 
 
-class Person(Indexed, ClusterableModel):
-    title = models.CharField("First Name", max_length=100, null=True, blank=True)
+class Person(index.Indexed, ClusterableModel):
+    personal_title = models.CharField("Title", max_length=100, null=True, blank=True)
     first_name = models.CharField("First Name", max_length=254)
     last_name = models.CharField("Last Name", max_length=254)
 
@@ -26,7 +26,7 @@ class Person(Indexed, ClusterableModel):
     panels = [
         MultiFieldPanel(
             [
-                FieldPanel("title", heading="Titel"),
+                FieldPanel("personal_title", heading="Titel"),
                 FieldRowPanel(
                     [
                         FieldPanel("first_name", heading="Vorname"),
@@ -47,17 +47,18 @@ class Person(Indexed, ClusterableModel):
     ]
 
     search_fields = [
-        SearchField("title", partial_match=True, boost=10),
-        SearchField("first_name"),
-        SearchField("last_name"),
+        index.AutocompleteField("first_name"),
+        index.AutocompleteField("last_name"),
     ]
 
     @property
     def name(self):
-        if self.title:
-            return "{} {}".format(self.title, self.first_name)
+        if self.personal_title:
+            return "{} {} {}".format(
+                self.personal_title, self.first_name, self.last_name
+            )
         else:
-            return "{}".format(self.first_name)
+            return "{} {}".format(self.first_name, self.last_name)
 
     @property
     def thumb_image(self):
@@ -68,9 +69,13 @@ class Person(Indexed, ClusterableModel):
         except:  # noqa: E722 FIXME: remove bare 'except:'
             return ""
 
+    thumb_image.fget.short_description = "Bild"
+
     def __str__(self):
-        if self.title:
-            return "{} {} {}".format(self.title, self.first_name, self.last_name)
+        if self.personal_title:
+            return "{} {} {}".format(
+                self.personal_title, self.first_name, self.last_name
+            )
         else:
             return "{} {}".format(self.first_name, self.last_name)
 

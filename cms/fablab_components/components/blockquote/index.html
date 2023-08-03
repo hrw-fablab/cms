@@ -1,0 +1,9 @@
+{% load wagtailimages_tags component_tags %}
+<blockquote class="blockquote">
+  <p><span>“</span>{{ value.text }}<span>”</span></p>
+
+  <cite>
+    {% component "picture" image=value.image caption=value.image.credit sizes="40x40" breakpoints="40" %}
+    {{ value.cite }}
+  </cite>
+</blockquote>

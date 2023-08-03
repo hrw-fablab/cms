@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     "wagtail_localize",
     "wagtail_localize.locales",
     "wagtail.contrib.table_block",
-    "wagtail.contrib.modeladmin",
     "wagtail.contrib.settings",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",

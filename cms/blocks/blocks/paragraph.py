@@ -17,5 +17,5 @@ class ParagraphBlock(blocks.StructBlock):
     )
 
     class Meta:
-        template = "molecules/paragraph.html"
+        template = "blocks/paragraph.html"
         icon = "doc-full"

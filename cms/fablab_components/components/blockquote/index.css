@@ -1,0 +1,27 @@
+.blockquote {
+  font-style: italic;
+  text-align: center;
+  font-size: var(--font-size-fluid-1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-fluid-1);
+}
+
+.blockquote span {
+    color: var(--brand);
+    font-weight: bold;
+}
+
+.blockquote cite {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  font-weight: bold;
+  font-style: normal;
+}
+
+.blockquote cite img {
+  border-radius: 50%;
+}

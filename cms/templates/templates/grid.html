@@ -1,9 +1,0 @@
-{% block content %}
-    <section class="content"
-             data-style="{% if value.accent %}color{% endif %}"
-             data-width="large"
-             data-margin-block-end="large">
-        {% include "atoms/heading.html" with value=value.title anchor=True %}
-        {% include "organisms/grid.html" with value=value.cards layout=value.layout style=value.style %}
-    </section>
-{% endblock content %}

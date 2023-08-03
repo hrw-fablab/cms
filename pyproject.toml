@@ -12,13 +12,13 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
 python="^3.8"
-django="4.1.7"
+django="4.1.10"
 python-dotenv="1.0.0"
-wagtail="5.0"
+wagtail="5.1"
 wagtail-localize="1.5"
 wagtailmedia="0.14.1"
 whitenoise="6.4.0"
-wagtail-cache = { git = "https://github.com/torchbox-forks/wagtail-cache.git", branch = "support/wagtail-50" }
+wagtail-cache = "2.3.0"
 python-dateutil="2.8.2"
 Office365-REST-Python-Client="2.4.0"
 django-components="0.27.2"

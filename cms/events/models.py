@@ -3,7 +3,7 @@ import calendar
 from django.db import models
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel, FieldRowPanel
 from modelcluster.models import ClusterableModel
-from wagtail.search.index import Indexed, SearchField
+from wagtail.search import index
 from modelcluster.fields import ParentalKey
 
 REAPEATCHOICES = (
@@ -38,7 +38,7 @@ class Expection(ClusterableModel):
     ]
 
 
-class Event(Indexed, ClusterableModel):
+class Event(index.Indexed, ClusterableModel):
     title = models.CharField("Titel", max_length=60, null=True, blank=True)
     adress = models.CharField("Adresse", max_length=60, null=True, blank=True)
     description = models.TextField(
@@ -91,7 +91,8 @@ class Event(Indexed, ClusterableModel):
     ]
 
     search_fields = [
-        SearchField("title"),
+        index.AutocompleteField("title"),
+        index.AutocompleteField("adress"),
     ]
 
     @property

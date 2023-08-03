@@ -6,7 +6,7 @@ db.sqlite3
 .venv
 */static
 /cache
-/media
+*/media
 .ruff_cache
 .vscode
 .env

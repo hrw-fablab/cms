@@ -23,7 +23,7 @@ python-dateutil="2.8.2"
 Office365-REST-Python-Client="2.4.0"
 django-components="0.27.2"
 mysqlclient="2.1.1"
-urllib3 = "1.26.15"
+urllib3 = "2.0.4"
 
 [tool.poetry.group.dev.dependencies]
 black = "23.3.0"

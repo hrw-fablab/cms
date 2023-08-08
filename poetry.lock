@@ -713,13 +713,13 @@ setuptools = "*"
 
 [[package]]
 name = "office365-rest-python-client"
-version = "2.4.0"
+version = "2.4.3"
 description = "Microsoft 365 & Microsoft Graph Library for Python"
 optional = false
 python-versions = "*"
 files = [
-    {file = "Office365-REST-Python-Client-2.4.0.tar.gz", hash = "sha256:6fbc1c53fd71359b51dd58e147bda7f20e348bba0ae1493fb8c6d5ff03a255bb"},
-    {file = "Office365_REST_Python_Client-2.4.0-py3-none-any.whl", hash = "sha256:c261ac23ac3b8b373f337219e6e9da312f2b5d29abcf9095b642b657e9d0d05a"},
+    {file = "Office365-REST-Python-Client-2.4.3.tar.gz", hash = "sha256:9087dcd9d7231437afc66b98dbef2ce21f589c61d2e82f941955cff4a53cd3ff"},
+    {file = "Office365_REST_Python_Client-2.4.3-py3-none-any.whl", hash = "sha256:e1372eea94b39e8e8a7ae5edb1b5b7ccb53d7a7bc3105949b616da8b49ee6d02"},
 ]
 
 [package.dependencies]
@@ -1383,4 +1383,4 @@ testing = ["Pillow (>=9.1.0,<11.0.0)", "Wand (>=0.6,<1.0)", "black (==22.3.0)", 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "880c53f921f89ecbd04c099f9a49a93e8d7e371db813eba02acd77a375dee28d"
+content-hash = "16cb8d0b8e40e0614421ef43b2542a6e581ab2f08bf425a3fef6e4b2e3cbbfd2"
